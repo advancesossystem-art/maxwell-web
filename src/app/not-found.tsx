@@ -1,6 +1,15 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
+import { buildSeoMetadata } from "@/lib/seo/metadata-utils";
+
+export const metadata = buildSeoMetadata({
+  title: "Page not found",
+  description: "The page you requested could not be found on Maxwell Electrodeal.",
+  path: "/404",
+  noIndex: true,
+  includeIndiaGeo: false,
+});
 
 export default function NotFound() {
   return (

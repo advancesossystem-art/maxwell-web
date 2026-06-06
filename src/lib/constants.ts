@@ -1,5 +1,7 @@
 import { companyMetrics } from "@/lib/company-metrics";
 
+import { businessAddress } from "@/lib/business-address";
+
 const siteUrl =
   typeof process !== "undefined" && process.env.NEXT_PUBLIC_SITE_URL
     ? process.env.NEXT_PUBLIC_SITE_URL
@@ -14,7 +16,7 @@ export const siteConfig = {
   url: siteUrl.replace(/\/$/, ""),
   email: "maxwellelectrodealsystems@gmail.com",
   phone: "+91 95868 68538",
-  address: "Vadodara, Gujarat, India",
+  address: businessAddress.formatted,
   locale: "en_IN",
 } as const;
 

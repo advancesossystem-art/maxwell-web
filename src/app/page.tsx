@@ -3,7 +3,8 @@ import dynamic from "next/dynamic";
 import { createHomeMetadata } from "@/lib/seo/metadata-utils";
 import { Hero } from "@/components/home/Hero";
 import { AiEntitySummary } from "@/components/seo/AiEntitySummary";
-import { ServicesJsonLd, HomeFAQJsonLd } from "@/components/seo/JsonLd";
+import { HomeFAQJsonLd } from "@/components/seo/JsonLd";
+import { LocalSeoHomeSection } from "@/components/home/LocalSeoHomeSection";
 
 const HomeProblem = dynamic(() =>
   import("@/components/home/HomeProblem").then((m) => ({ default: m.HomeProblem })),
@@ -41,7 +42,6 @@ export const metadata: Metadata = createHomeMetadata();
 export default function HomePage() {
   return (
     <>
-      <ServicesJsonLd />
       <HomeFAQJsonLd />
       <AiEntitySummary />
       <Hero />
@@ -54,6 +54,7 @@ export default function HomePage() {
       <HomeTrust />
       <WhyMaxwell />
       <HomeFAQ />
+      <LocalSeoHomeSection />
       <FinalCTA />
     </>
   );

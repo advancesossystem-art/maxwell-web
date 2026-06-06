@@ -1,4 +1,5 @@
 import { siteConfig } from "@/lib/constants";
+import { businessAddress } from "@/lib/business-address";
 import { getAllServices } from "@/lib/services-data";
 import {
   areaServedCountries,
@@ -42,8 +43,8 @@ export function GlobalSiteJsonLd() {
         },
         geo: {
           "@type": "GeoCoordinates",
-          latitude: 22.3072,
-          longitude: 73.1812,
+          latitude: businessAddress.latitude,
+          longitude: businessAddress.longitude,
         },
         areaServed: areaServedCountries.map((code) => ({
           "@type": "Country",
@@ -124,10 +125,19 @@ export function GlobalSiteJsonLd() {
         },
         geo: {
           "@type": "GeoCoordinates",
-          latitude: 22.3072,
-          longitude: 73.1812,
+          latitude: businessAddress.latitude,
+          longitude: businessAddress.longitude,
         },
         areaServed: { "@type": "Country", name: "India" },
+        hasMap: businessAddress.googleMapsLink,
+        openingHoursSpecification: [
+          {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            opens: "09:00",
+            closes: "19:00",
+          },
+        ],
         parentOrganization: { "@id": seoIds.organization },
       },
       {
@@ -140,12 +150,12 @@ export function GlobalSiteJsonLd() {
         publisher: { "@id": seoIds.organization },
         about: { "@id": seoIds.organization },
         potentialAction: {
-          "@type": "ReadAction",
-          target: [
-            `${siteConfig.url}/services`,
-            `${siteConfig.url}/contact`,
-            `${siteConfig.url}/get-estimate`,
-          ],
+          "@type": "SearchAction",
+          target: {
+            "@type": "EntryPoint",
+            urlTemplate: `${siteConfig.url}/blog?q={search_term_string}`,
+          },
+          "query-input": "required name=search_term_string",
         },
       },
     ],

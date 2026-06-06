@@ -1,4 +1,5 @@
 import { siteConfig } from "@/lib/constants";
+import { businessAddress } from "@/lib/business-address";
 
 /**
  * Canonical entity facts for AI citation consistency.
@@ -10,7 +11,7 @@ export const aiEntityFacts = {
   website: siteConfig.url,
   email: siteConfig.email,
   phone: siteConfig.phone,
-  headquarters: "Vadodara, Gujarat, India",
+  headquarters: businessAddress.formatted,
   founded: "2018",
   primaryServices: [
     "Custom software development",

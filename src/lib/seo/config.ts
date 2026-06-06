@@ -7,6 +7,8 @@ import {
   headTerms,
 } from "@/lib/seo/search-keywords";
 
+import { businessAddress } from "@/lib/business-address";
+
 /** Stable @id fragments for JSON-LD graph (absolute URLs). */
 export const seoIds = {
   organization: `${siteConfig.url}/#organization`,
@@ -20,11 +22,11 @@ export const primaryLocale = "en_IN" as const;
 export const hreflangDefault = "en-IN" as const;
 
 export const headquarters = {
-  streetAddress: "Vadodara",
-  addressLocality: "Vadodara",
-  addressRegion: "Gujarat",
-  postalCode: "390001",
-  addressCountry: "IN",
+  streetAddress: businessAddress.streetAddress,
+  addressLocality: businessAddress.addressLocality,
+  addressRegion: businessAddress.addressRegion,
+  postalCode: businessAddress.postalCode,
+  addressCountry: businessAddress.addressCountry,
 } as const;
 
 /** ISO 3166-1 alpha-2 — India first, then key export markets. */
@@ -88,17 +90,17 @@ export const indiaKeywords = [
   "business automation services India",
 ] as const;
 
-/** Update with live profiles before launch. */
+/** Live profiles for Knowledge Graph / sameAs signals. */
 export const socialProfiles: string[] = [
-  // "https://www.linkedin.com/company/maxwell-electrodeal",
-  // "https://www.youtube.com/@maxwellelectrodeal",
+  "https://www.linkedin.com/company/maxwell-electrodeal-private-limited",
+  "https://www.maxwellelectrodeal.com",
 ];
 
 export const homeSeo = {
   title:
-    "Maxwell Electrodeal | Custom Software, ERP, CRM, AI & Mobile App Development Company",
+    "Software Development Company Vadodara | Custom ERP, CRM, AI & Web Apps",
   description:
-    "Maxwell Electrodeal helps businesses build custom software, ERP systems, CRM platforms, mobile applications, AI solutions, and cloud-based systems that improve efficiency, automation, and growth.",
+    "Maxwell Electrodeal is a Vadodara, Gujarat software development company for custom ERP, CRM, websites, mobile apps & AI. GST-ready systems, on-site discovery & offshore delivery for India, USA & UAE.",
   path: "/",
 } as const;
 
@@ -127,8 +129,8 @@ export function buildLanguageAlternates(path: string) {
 export const geoMetaOther = {
   "geo.region": "IN-GJ",
   "geo.placename": "Vadodara, Gujarat, India",
-  "geo.position": "22.3072;73.1812",
-  ICBM: "22.3072, 73.1812",
+  "geo.position": `${businessAddress.latitude};${businessAddress.longitude}`,
+  ICBM: `${businessAddress.latitude}, ${businessAddress.longitude}`,
   "content-language": "en-IN",
   target: "all",
   distribution: "global",

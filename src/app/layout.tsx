@@ -52,6 +52,7 @@ export default function RootLayout({
         <link rel="preload" href="/logo.png" as="image" type="image/png" />
         <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM site summary" />
         <link rel="alternate" type="text/plain" href="/ai.txt" title="AI assistant discovery" />
+        <link rel="alternate" type="application/rss+xml" href="/feed.xml" title="Maxwell Electrodeal Blog RSS" />
       </head>
       <body className="min-h-screen bg-background font-sans text-foreground antialiased">
         <GTMNoScript />

@@ -11,6 +11,7 @@ import { TrustBadgesRow } from "@/components/leads/LeadConversionLayer";
 import { FormCard } from "@/components/design/Form";
 import { MicroConversionCTA } from "@/components/conversion/MicroConversionCTA";
 import { siteConfig } from "@/lib/constants";
+import { businessAddress } from "@/lib/business-address";
 import {
   contactFaqs,
   globalServiceAreas,
@@ -110,6 +111,17 @@ export function ContactPageContent() {
                 <Caption className="mt-2 block">{siteConfig.address}</Caption>
                 <Caption className="mt-4 block">Response time: within 24 hours</Caption>
               </Card>
+              <div className="mt-6 overflow-hidden rounded-2xl border border-white/[0.08]">
+                <iframe
+                  title="Maxwell Electrodeal office location — Vadodara, Gujarat"
+                  src={businessAddress.googleMapsEmbedUrl}
+                  width="100%"
+                  height="280"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="block w-full border-0"
+                />
+              </div>
             </div>
             <div>
               <H3>Global service areas</H3>

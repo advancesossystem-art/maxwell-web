@@ -55,6 +55,12 @@ function baseTwitter(title: string, description: string) {
   };
 }
 
+function formatPageTitle(title: string): string {
+  if (title.includes(siteConfig.name)) return title;
+  const withBrand = `${title} | ${siteConfig.name}`;
+  return withBrand.length > 68 ? title : withBrand;
+}
+
 export function buildSeoMetadata({
   title,
   description,
@@ -76,9 +82,7 @@ export function buildSeoMetadata({
   publishedTime?: string;
   authors?: string[];
 }): Metadata {
-  const pageTitle = title
-    ? `${title} | ${siteConfig.name}`
-    : `${siteConfig.name} — ${siteConfig.tagline}`;
+  const pageTitle = title ? formatPageTitle(title) : `${siteConfig.name} — ${siteConfig.tagline}`;
 
   const pageDescription = description ?? siteConfig.description;
   const alternates = buildLanguageAlternates(path);
@@ -180,7 +184,7 @@ export function buildArticleSeoMetadata(args: {
   authorName: string;
   tags?: string[];
 }): Metadata {
-  const pageTitle = `${args.title} | ${siteConfig.name}`;
+  const pageTitle = formatPageTitle(args.title);
   const alternates = buildLanguageAlternates(args.path);
 
   return {
