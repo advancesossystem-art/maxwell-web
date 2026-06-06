@@ -1,0 +1,53 @@
+"use client";
+
+import Link from "next/link";
+import { homepageIndustries } from "@/lib/homepage";
+import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion/FadeIn";
+
+export function IndustriesShowcase() {
+  return (
+    <section className="v6-section v6-section--white" aria-label="Industries">
+      <div className="v6-container">
+        <FadeIn>
+          <p className="v6-eyebrow-line v6-eyebrow">Industries</p>
+          <h2 className="v6-section-title v6-section-title--wide mt-4 text-balance">
+            Where complex operations need a steady partner
+          </h2>
+          <p className="v6-lead mt-4 max-w-3xl">
+            We deliver for manufacturing, healthcare, logistics, and more—always anchored in measurable
+            outcomes.
+          </p>
+        </FadeIn>
+
+        <StaggerContainer className="v6-bento mt-14" stagger={0.06}>
+          {homepageIndustries.map((industry) => (
+            <StaggerItem key={industry.slug} className="v6-bento-item">
+              <Link
+                href={`/industries/${industry.slug}`}
+                className="group flex h-full flex-col"
+              >
+                <div
+                  className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl text-lg font-bold text-white"
+                  style={{
+                    background: `linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)`,
+                  }}
+                >
+                  {industry.title.charAt(0)}
+                </div>
+                <h3 className="font-display text-xl font-semibold text-[var(--v6-text)] group-hover:text-[#4f46e5] transition-colors">
+                  {industry.title}
+                </h3>
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-[var(--v6-text-secondary)]">
+                  {industry.outcome}
+                </p>
+                <span className="mt-4 text-sm font-medium text-[#4f46e5]">
+                  Explore sector →
+                </span>
+              </Link>
+            </StaggerItem>
+          ))}
+        </StaggerContainer>
+      </div>
+    </section>
+  );
+}

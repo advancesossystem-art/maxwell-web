@@ -1,0 +1,38 @@
+            <h1
+              className={cn(
+                "mt-4 font-display text-[2.5rem] font-bold leading-[1.02] tracking-[-0.04em] text-white sm:text-5xl lg:text-[3.5rem]",
+                revealClass(revealed),
+              )}
+              style={revealStyle(revealed, 40, 800)}
+            >
+              Software built around{" "}
+              <span className="gradient-text">how your business works</span>.
+            </h1>
+
+            <p
+              className={cn("mt-6 max-w-lg text-lg leading-relaxed text-muted", revealClass(revealed))}
+              style={revealStyle(revealed, 100, 750)}
+            >
+              Maxwell partners with owners and operators to design systems that automate work,
+              unify operations, and support growth—clear scope, milestone billing, and full code
+              ownership from ₹1L to ₹50L+.
+            </p>
+---OLD---
+            <h1
+              className={cn(
+                "mt-4 font-display text-[2.5rem] font-bold leading-[1.02] tracking-[-0.04em] text-white sm:text-5xl lg:text-[3.5rem]",
+                revealClass(revealed),
+              )}
+              style={revealStyle(revealed, 40, 800)}
+            >
+              Software built for{" "}
+              <span className="gradient-text">growth</span>.
+            </h1>
+
+            <p
+              className={cn("mt-6 max-w-lg text-lg leading-relaxed text-muted", revealClass(revealed))}
+              style={revealStyle(revealed, 100, 750)}
+            >
+              We help businesses scale, automate operations, and build digital systems that drive
+              revenue—from ₹1L to ₹50L+ engagements across India and global markets.
+            </p>

@@ -1,0 +1,68 @@
+NEW:
+  --brand-700: #131c2e;
+  --brand-600: #2563eb;
+  --brand-500: #3b82f6;
+  --brand-400: #60a5fa;
+  --brand-100: rgba(37, 99, 235, 0.12);
+  --brand-50: rgba(37, 99, 235, 0.05);
+  --accent-premium: #ffb547;
+  --accent-warm: #ffb547;
+  --accent-success: #22c55e;
+  --surface: #171f2e;
+  --surface-elevated: #171f2e;
+  --portal-blue: rgba(37, 99, 235, 0.08);
+OLD:
+  --brand-700: #111827;
+  --brand-600: #2563eb;
+  --brand-500: #3b82f6;
+  --brand-400: #60a5fa;
+  --brand-100: rgba(37, 99, 235, 0.14);
+  --brand-50: rgba(37, 99, 235, 0.06);
+  --accent-premium: #ffb547;
+  --accent-warm: #ffb547;
+  --accent-success: #22c55e;
+  --surface: #111827;
+  --surface-elevated: #171f2e;
+  --portal-blue: rgba(37, 99, 235, 0.12);
+---
+NEW:
+.enterprise-card {
+  border-radius: 1.25rem;
+  border: 1px solid var(--hairline);
+  background: rgba(255, 255, 255, 0.02);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset;
+  transition:
+    border-color 0.35s var(--mx-ease),
+    transform 0.35s var(--mx-ease),
+    box-shadow 0.35s var(--mx-ease),
+    background-color 0.35s var(--mx-ease);
+}
+
+@media (hover: hover) {
+  .enterprise-card:hover {
+    border-color: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.035);
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.32);
+  }
+}
+OLD:
+.enterprise-card {
+  border-radius: 1.25rem;
+  border: 1px solid var(--hairline);
+  background: rgba(255, 255, 255, 0.02);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset;
+  transition:
+    border-color 0.4s var(--mx-ease),
+    transform 0.4s var(--mx-ease),
+    box-shadow 0.4s var(--mx-ease);
+}
+
+@media (hover: hover) {
+  .enterprise-card:hover {
+    border-color: rgba(79, 142, 247, 0.28);
+    transform: translateY(-3px);
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.35);
+  }
+}
+---

@@ -1,0 +1,225 @@
+/**
+ * Maxwell Design System 2026
+ * Premium product-company aesthetic — intentional, minimal, high craft.
+ */
+
+/* —— Surfaces —— */
+.mx-surface {
+  border-radius: 1rem;
+  border: 1px solid var(--hairline);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.mx-surface-elevated {
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--surface-elevated);
+}
+
+.mx-surface-interactive {
+  transition:
+    border-color 0.35s var(--mx-ease),
+    background-color 0.35s var(--mx-ease),
+    transform 0.35s var(--mx-ease),
+    box-shadow 0.35s var(--mx-ease);
+}
+
+@media (hover: hover) {
+  .mx-surface-interactive:hover {
+    border-color: rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.04);
+    transform: translateY(-2px);
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.28);
+  }
+}
+
+/* —— Typography utilities —— */
+.mx-eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--brand-500);
+}
+
+.mx-display {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  color: var(--foreground);
+}
+
+.mx-lead {
+  font-size: clamp(1.0625rem, 2vw, 1.25rem);
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+.mx-accent-line {
+  display: block;
+  width: 2.5rem;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--brand-600);
+}
+
+/* —— Page chrome —— */
+.mx-page-hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--background);
+}
+
+.mx-page-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 80% 45% at 50% -10%,
+    rgba(37, 99, 235, 0.07),
+    transparent 65%
+  );
+}
+
+.mx-page-hero::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--hairline), transparent);
+}
+
+.mx-section {
+  position: relative;
+}
+
+.mx-section--base {
+  background: var(--background);
+}
+
+.mx-section--raised {
+  background: var(--brand-800);
+}
+
+.mx-section--deep {
+  background: #070d1a;
+}
+
+/* —— Navigation —— */
+.mx-header-bar {
+  border: 1px solid transparent;
+  border-radius: 1rem;
+  transition:
+    border-color 0.4s var(--mx-ease),
+    background 0.4s var(--mx-ease),
+    box-shadow 0.4s var(--mx-ease);
+}
+
+.mx-header-bar--scrolled {
+  border-color: var(--hairline);
+  background: rgba(5, 8, 22, 0.82);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+}
+
+.mx-nav-link {
+  padding: 0.5rem 0.875rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: color-mix(in srgb, var(--muted) 92%, transparent);
+  transition: color 0.2s ease;
+}
+
+.mx-nav-link:hover {
+  color: #fff;
+}
+
+.mx-nav-link--active {
+  color: #fff;
+}
+
+/* —— Buttons —— */
+.mx-btn-primary {
+  background: var(--brand-600);
+  color: #fff;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset, 0 8px 24px rgba(37, 99, 235, 0.28);
+}
+
+@media (hover: hover) {
+  .mx-btn-primary:hover {
+    background: #3b82f6;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.12) inset, 0 12px 32px rgba(37, 99, 235, 0.35);
+  }
+}
+
+.mx-btn-secondary {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: transparent;
+  color: #fff;
+}
+
+@media (hover: hover) {
+  .mx-btn-secondary:hover {
+    border-color: rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.05);
+  }
+}
+
+/* —— Cards (hub pages) —— */
+.mx-hub-card {
+  border-radius: 1.25rem;
+  border: 1px solid var(--hairline);
+  background: rgba(255, 255, 255, 0.025);
+  padding: 1.75rem 2rem;
+  transition:
+    border-color 0.35s var(--mx-ease),
+    background 0.35s var(--mx-ease),
+    transform 0.35s var(--mx-ease);
+}
+
+@media (hover: hover) {
+  .mx-hub-card:hover {
+    border-color: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+    transform: translateY(-2px);
+  }
+}
+
+/* —— Form —— */
+.mx-form-panel {
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--surface-elevated);
+  padding: 2rem;
+}
+
+@media (min-width: 640px) {
+  .mx-form-panel {
+    padding: 2.5rem;
+  }
+}
+
+/* —— Portfolio —— */
+.mx-work-visual {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.25rem 1.25rem 0 0;
+  min-height: 12rem;
+}
+
+.mx-work-body {
+  padding: 1.5rem 1.75rem 1.75rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mx-surface-interactive:hover,
+  .mx-hub-card:hover,
+  .mx-btn:hover {
+    transform: none;
+  }
+}

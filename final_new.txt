@@ -1,0 +1,7 @@
+            <h2 className="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              Ready to talk about what your business needs next?
+            </h2>
+            <p className="mt-5 text-lg text-muted">
+              Book a consultation—a project lead will respond within one business day with a clear
+              next step, not a generic pitch deck.
+            </p>

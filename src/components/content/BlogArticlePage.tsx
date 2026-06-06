@@ -1,0 +1,123 @@
+import Link from "next/link";
+import { Container } from "@/components/ui/Container";
+import { ContentRenderer } from "@/components/content/ContentRenderer";
+import { AuthorCard } from "@/components/content/AuthorCard";
+import { ContentCard } from "@/components/content/ContentCard";
+import { NewsletterSignup } from "@/components/content/NewsletterSignup";
+import { ArticlePageJsonLd } from "@/components/seo/JsonLd";
+import { getAuthorById } from "@/lib/content/authors";
+import { getCategoryBySlug } from "@/lib/content/categories";
+import { formatPublishDate } from "@/lib/content/utils";
+import { getRelatedContent } from "@/lib/content/search";
+import type { Article } from "@/lib/content/schema";
+
+export function BlogArticlePage({ article }: { article: Article }) {
+  const author = getAuthorById(article.authorId);
+  const category = getCategoryBySlug(article.category);
+  const related = getRelatedContent(article.slug, "article", article.relatedSlugs);
+
+  return (
+    <>
+      <ArticlePageJsonLd article={article} authorName={author?.name ?? "Maxwell Team"} />
+      <section className="relative overflow-hidden bg-[#030712] pb-16 pt-28 lg:pt-36">
+        <Container className="relative">
+          <nav className="mb-6 text-sm text-white/50">
+            <Link href="/" className="hover:text-white">Home</Link>
+            <span className="mx-2">/</span>
+            <Link href="/blog" className="hover:text-white">Blog</Link>
+            <span className="mx-2">/</span>
+            <span className="text-white/80">{article.title}</span>
+          </nav>
+          <span className="text-xs font-semibold uppercase tracking-wider text-brand-400">{category?.name}</span>
+          <h1 className="mt-4 max-w-4xl font-display text-3xl font-bold text-white sm:text-4xl lg:text-5xl">{article.title}</h1>
+          <p className="mt-4 max-w-2xl text-lg text-white/55">{article.excerpt}</p>
+          <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-white/50">
+            {author && (
+              <Link href={`/authors/${author.slug}`} className="hover:text-white transition-colors">
+                {author.name}
+              </Link>
+            )}
+            <span>{formatPublishDate(article.publishedAt)}</span>
+            <span>{article.readingTimeMinutes} min read</span>
+          </div>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {article.tags.map((tag) => (
+              <span key={tag} className="rounded-full border border-white/10 px-3 py-1 text-xs text-white/60">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section className="py-16 lg:py-20">
+        <Container>
+          <div className="grid gap-12 lg:grid-cols-12">
+            {article.tableOfContents && article.tableOfContents.length > 0 && (
+              <aside className="lg:col-span-3">
+                <div className="sticky top-28 rounded-2xl border border-border bg-surface-elevated p-6">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-muted">On this page</p>
+                  <ul className="mt-4 space-y-2 text-sm">
+                    {article.tableOfContents.map((item) => (
+                      <li key={item.id}>
+                        <a href={`#${item.id}`} className="text-muted hover:text-brand-600 transition-colors">
+                          {item.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </aside>
+            )}
+            <article className={article.tableOfContents?.length ? "lg:col-span-9" : "lg:col-span-12 max-w-3xl"}>
+              <ContentRenderer blocks={article.sections} />
+            </article>
+          </div>
+        </Container>
+      </section>
+
+      {article.faqs && article.faqs.length > 0 && (
+        <section className="bg-surface py-16">
+          <Container className="max-w-3xl">
+            <h2 className="font-display text-2xl font-bold">FAQ</h2>
+            <div className="mt-6 space-y-3">
+              {article.faqs.map((faq) => (
+                <details key={faq.question} className="rounded-2xl border border-border bg-surface-elevated open:border-brand-600/20">
+                  <summary className="cursor-pointer px-6 py-4 font-medium">{faq.question}</summary>
+                  <p className="px-6 pb-4 text-sm text-muted">{faq.answer}</p>
+                </details>
+              ))}
+            </div>
+          </Container>
+        </section>
+      )}
+
+      {author && (
+        <section className="border-t border-border py-12">
+          <Container className="max-w-3xl">
+            <AuthorCard author={author} variant="full" />
+          </Container>
+        </section>
+      )}
+
+      {related.length > 0 && (
+        <section className="py-16">
+          <Container>
+            <h2 className="font-display text-2xl font-bold">Related articles</h2>
+            <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {related.map((doc) => (
+                <ContentCard key={doc.slug} doc={doc} variant="compact" />
+              ))}
+            </div>
+          </Container>
+        </section>
+      )}
+
+      <section className="bg-surface py-16">
+        <Container className="max-w-xl">
+          <NewsletterSignup />
+        </Container>
+      </section>
+    </>
+  );
+}

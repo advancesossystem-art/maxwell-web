@@ -1,0 +1,57 @@
+import { z } from "zod";
+
+const serverSchema = z.object({
+  NODE_ENV: z.enum(["development", "production", "test"]).default("development"),
+  LEAD_WEBHOOK_URL: z.string().url().optional(),
+  LEAD_WEBHOOK_SECRET: z.string().min(16).optional(),
+  HUBSPOT_WEBHOOK_URL: z.string().url().optional(),
+  ZOHO_WEBHOOK_URL: z.string().url().optional(),
+  SALESFORCE_WEBHOOK_URL: z.string().url().optional(),
+  LEAD_NOTIFICATION_EMAIL: z.string().email().optional(),
+  RESEND_API_KEY: z.string().min(1).optional(),
+  RESEND_FROM_EMAIL: z.string().min(3).optional(),
+  EMAIL_PROVIDER: z.enum(["gmail", "smtp", "google", "resend", "auto"]).optional(),
+  SMTP_HOST: z.string().min(1).optional(),
+  SMTP_PORT: z.string().optional(),
+  SMTP_SECURE: z.enum(["true", "false"]).optional(),
+  SMTP_USER: z.string().min(1).optional(),
+  SMTP_PASS: z.string().min(1).optional(),
+  SMTP_FROM: z.string().min(3).optional(),
+  ADMIN_AUDIT_TOKEN: z.string().min(16).optional(),
+  ENABLE_PORTAL_DEMO: z.enum(["true", "false"]).optional(),
+});
+
+const clientSchema = z.object({
+  NEXT_PUBLIC_GTM_ID: z.string().optional(),
+  NEXT_PUBLIC_GA_MEASUREMENT_ID: z.string().optional(),
+  NEXT_PUBLIC_META_PIXEL_ID: z.string().optional(),
+  NEXT_PUBLIC_SITE_URL: z.string().url().optional(),
+});
+
+export type ServerEnv = z.infer<typeof serverSchema>;
+export type ClientEnv = z.infer<typeof clientSchema>;
+
+export function getServerEnv(): ServerEnv {
+  return serverSchema.parse(process.env);
+}
+
+export function getClientEnv(): ClientEnv {
+  return clientSchema.parse({
+    NEXT_PUBLIC_GTM_ID: process.env.NEXT_PUBLIC_GTM_ID,
+    NEXT_PUBLIC_GA_MEASUREMENT_ID: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID,
+    NEXT_PUBLIC_META_PIXEL_ID: process.env.NEXT_PUBLIC_META_PIXEL_ID,
+    NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
+  });
+}
+
+export const secretManagementChecklist = [
+  "Store all secrets in hosting env vars (Production only) — never in git",
+  "Never commit .env.local — use .env.example as template",
+  "Set ADMIN_AUDIT_TOKEN (min 16 chars) before exposing /admin in production",
+  "Set ENABLE_PORTAL_DEMO=false in production unless demo is intentional",
+  "Optional LEAD_WEBHOOK_SECRET — Bearer token on outbound CRM webhooks",
+  "Rotate SMTP app password and API keys if ever exposed in chat or screenshots",
+  "Use separate env vars for Preview vs Production on Vercel",
+  "Enable Vercel Deployment Protection for preview URLs",
+  "Only NEXT_PUBLIC_* vars are browser-visible — never put SMTP_PASS or API keys there",
+] as const;

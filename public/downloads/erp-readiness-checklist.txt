@@ -1,0 +1,17 @@
+ERP READINESS CHECKLIST — Maxwell Electrodeal
+==========================================
+
+Use this checklist before starting a custom ERP project.
+
+□ Executive sponsor identified
+□ Shop-floor process documented
+□ Inventory accuracy baseline measured
+□ Tally integration requirements defined
+□ GST / e-invoicing scope confirmed
+□ User roles and permissions mapped
+□ Data migration sources inventoried
+□ Change management champions assigned
+□ Budget range approved (₹15L–₹50L typical SME)
+□ Timeline expectations set (MVP 10–14 weeks)
+
+Contact: maxwellitsolution05@gmail.com | maxwellelectrodeal.com/contact
