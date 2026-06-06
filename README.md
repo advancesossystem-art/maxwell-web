@@ -44,7 +44,9 @@ All lead forms POST to `/api/leads`. On submit, an email is sent to `LEAD_NOTIFI
 5. Test: `npm run test:email` — you should receive a test message in your inbox
 6. Restart dev server, then submit the contact form
 
-You do **not** need Vercel changes for local testing — only Google App Password + `.env.local`. When the site is live, add the same three variables in your host’s env settings.
+You do **not** need Vercel changes for local testing — only Google App Password + `.env.local`. **For the live site**, add the same three variables in Vercel → Settings → Environment Variables → Redeploy. Or run `powershell -File scripts/print-vercel-env.ps1` to print them from your `.env.local`.
+
+**Production alternative (no App Password on Vercel):** deploy `scripts/gmail-form-relay.gs` in Google Apps Script and set the Web app URL in `src/lib/gmail-script-config.ts`.
 
 ## Security
 

@@ -13,6 +13,9 @@ import { getClientIp, rateLimit, rateLimits } from "@/lib/rate-limit";
 import { safeOutboundFetch } from "@/lib/security/ssrf";
 import { webhookHeaders } from "@/lib/security/webhook-auth";
 
+export const runtime = "nodejs";
+export const maxDuration = 30;
+
 const schema = z.object({
   email: z.string().trim().email("Valid email is required").max(254),
   name: z.string().trim().max(80).optional(),

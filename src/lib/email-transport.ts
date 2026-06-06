@@ -1,4 +1,5 @@
 import { getGmailAppPassword, getGmailUser, isGmailConfigured } from "@/lib/gmail-config";
+import type SMTPTransport from "nodemailer/lib/smtp-transport";
 
 export type OutboundEmail = {
   to: string;
@@ -58,10 +59,13 @@ async function sendViaGmail(email: OutboundEmail): Promise<void> {
   const user = getGmailUser()!;
   const pass = getGmailAppPassword()!;
 
-  const transporter = nodemailer.createTransport({
-    service: "gmail",
+  const options: SMTPTransport.Options = {
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
     auth: { user, pass },
-  });
+  };
+  const transporter = nodemailer.createTransport(options);
 
   try {
     await transporter.sendMail({
@@ -86,12 +90,13 @@ async function sendViaLegacySmtp(email: OutboundEmail): Promise<void> {
   const user = process.env.SMTP_USER!.trim();
   const pass = getGmailAppPassword() ?? process.env.SMTP_PASS!.trim();
 
-  const transporter = nodemailer.createTransport({
+  const options: SMTPTransport.Options = {
     host: process.env.SMTP_HOST!.trim(),
     port: Number(process.env.SMTP_PORT?.trim() || "587"),
     secure: process.env.SMTP_SECURE === "true",
     auth: { user, pass },
-  });
+  };
+  const transporter = nodemailer.createTransport(options);
 
   await transporter.sendMail({
     from: email.from,

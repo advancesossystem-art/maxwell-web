@@ -10,6 +10,9 @@ import {
 import { getClientIp, rateLimit, rateLimits } from "@/lib/rate-limit";
 import { submitLead } from "@/lib/submit-lead";
 
+export const runtime = "nodejs";
+export const maxDuration = 30;
+
 export async function POST(request: Request) {
   try {
     const blocked = guardPublicApiPost(request);

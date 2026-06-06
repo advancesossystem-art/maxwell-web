@@ -1,6 +1,8 @@
 import type { LeadPayload } from "@/lib/crm";
 import { isEmailDeliveryConfigured, sendOutboundEmail } from "@/lib/email-transport";
 import { getGmailFromAddress, getLeadInbox } from "@/lib/gmail-config";
+import { isGoogleScriptConfigured } from "@/lib/gmail-script-config";
+import { sendViaGoogleAppsScript } from "@/lib/send-via-google-script";
 import { sanitizeEmailHeader } from "@/lib/security/sanitize";
 
 /** Fallback inbox if env vars are missing */
@@ -109,14 +111,28 @@ export async function deliverLeadNotificationEmail(payload: LeadPayload): Promis
   const text = buildLeadEmailText(payload);
   const html = buildLeadEmailHtml(payload);
 
-  if (!isEmailDeliveryConfigured()) {
+  if (!isGoogleScriptConfigured() && !isEmailDeliveryConfigured()) {
     const hint =
-      "Set GMAIL_USER + GMAIL_APP_PASSWORD in .env.local — see https://myaccount.google.com/apppasswords";
+      "Set GMAIL_APPS_SCRIPT_URL (recommended for production) or GMAIL_USER + GMAIL_APP_PASSWORD";
     if (process.env.NODE_ENV === "production") {
       throw new Error(`Form email not configured. ${hint}`);
     }
     console.warn(`[Lead Email] ${hint}`);
     console.log("[Lead Email preview]", { to, subject, text });
+    return;
+  }
+
+  if (isGoogleScriptConfigured()) {
+    await sendViaGoogleAppsScript({
+      to,
+      subject,
+      html,
+      text,
+      replyTo: sanitizeEmailHeader(payload.email),
+    });
+    if (process.env.NODE_ENV !== "production") {
+      console.log(`[Lead Email] Sent via Google Apps Script to ${to}`);
+    }
     return;
   }
 
