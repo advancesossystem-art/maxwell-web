@@ -45,10 +45,10 @@ These exist **only** in server environment variables (`.env.local` / Vercel):
 EMAIL_PROVIDER=gmail
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
-SMTP_USER=maxwellitsolution05@gmail.com
+SMTP_USER=maxwellelctrodealsystems@gmail.com
 SMTP_PASS="your-app-password"
-SMTP_FROM=Maxwell Electrodeal <maxwellitsolution05@gmail.com>
-LEAD_NOTIFICATION_EMAIL=maxwellitsolution05@gmail.com
+SMTP_FROM=Maxwell Electrodeal <maxwellelctrodealsystems@gmail.com>
+LEAD_NOTIFICATION_EMAIL=maxwellelctrodealsystems@gmail.com
 
 # Security
 ADMIN_AUDIT_TOKEN=<random-string-min-16-chars>
@@ -74,4 +74,4 @@ Dev-only: `?token=` query param still works locally for convenience.
 
 ## Reporting issues
 
-Email **maxwellitsolution05@gmail.com** for security concerns.
+Email **maxwellelctrodealsystems@gmail.com** for security concerns.

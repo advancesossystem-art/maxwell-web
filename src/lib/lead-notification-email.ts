@@ -3,7 +3,7 @@ import { isEmailDeliveryConfigured, sendOutboundEmail } from "@/lib/email-transp
 import { sanitizeEmailHeader } from "@/lib/security/sanitize";
 
 /** Inbox for consultation, contact, estimate, and newsletter lead alerts */
-export const LEAD_NOTIFICATION_EMAIL = "maxwellitsolution05@gmail.com";
+export const LEAD_NOTIFICATION_EMAIL = "maxwellelctrodealsystems@gmail.com";
 
 const SOURCE_LABELS: Record<string, string> = {
   contact: "Contact form",
@@ -106,7 +106,7 @@ function resolveFromAddress(): string {
   if (user) {
     return `Maxwell Electrodeal <${user}>`;
   }
-  return "Maxwell Electrodeal <maxwellitsolution05@gmail.com>";
+  return "Maxwell Electrodeal <maxwellelctrodealsystems@gmail.com>";
 }
 
 export async function deliverLeadNotificationEmail(payload: LeadPayload): Promise<void> {

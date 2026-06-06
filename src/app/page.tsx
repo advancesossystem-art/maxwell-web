@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { createHomeMetadata } from "@/lib/seo/metadata-utils";
-import { IntroBootScript } from "@/components/brand/IntroBootScript";
-import { HomeIntroBoundary } from "@/components/layout/HomeIntroBoundary";
 import { Hero } from "@/components/home/Hero";
 import { AiEntitySummary } from "@/components/seo/AiEntitySummary";
 import { ServicesJsonLd, HomeFAQJsonLd } from "@/components/seo/JsonLd";
@@ -42,8 +40,7 @@ export const metadata: Metadata = createHomeMetadata();
 
 export default function HomePage() {
   return (
-    <HomeIntroBoundary>
-      <IntroBootScript />
+    <>
       <ServicesJsonLd />
       <HomeFAQJsonLd />
       <AiEntitySummary />
@@ -58,6 +55,6 @@ export default function HomePage() {
       <WhyMaxwell />
       <HomeFAQ />
       <FinalCTA />
-    </HomeIntroBoundary>
+    </>
   );
 }

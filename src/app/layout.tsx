@@ -30,6 +30,14 @@ const siteVerification = buildSiteVerificationMetadata();
 export const metadata: Metadata = {
   ...buildSeoMetadata({}),
   ...(siteVerification ?? {}),
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "361x361" },
+    ],
+    apple: [{ url: "/apple-icon.png", type: "image/png", sizes: "361x361" }],
+    shortcut: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({

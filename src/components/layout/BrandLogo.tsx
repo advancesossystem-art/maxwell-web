@@ -20,7 +20,7 @@ const heightPx = {
   sm: 140,
   md: 160,
   lg: 200,
-  header: 120,
+  header: 140,
 } as const;
 
 const heightClass = {
@@ -28,7 +28,7 @@ const heightClass = {
   sm: "h-[8.75rem]",
   md: "h-40",
   lg: "h-[12.5rem]",
-  header: "h-[7.5rem] sm:h-28",
+  header: "h-[8.5rem] sm:h-32",
 } as const;
 
 export function BrandLogo({

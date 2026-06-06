@@ -6,7 +6,7 @@ const MODES: IntroMode[] = ["full", "minimal", "disabled"];
 export function getIntroModeFromEnv(): IntroMode {
   const raw = process.env.NEXT_PUBLIC_INTRO_MODE?.toLowerCase();
   if (raw && MODES.includes(raw as IntroMode)) return raw as IntroMode;
-  return "full";
+  return "disabled";
 }
 
 /** Client override: `?intro_mode=minimal` | `?intro_mode=disabled` | `?intro_mode=full` */
