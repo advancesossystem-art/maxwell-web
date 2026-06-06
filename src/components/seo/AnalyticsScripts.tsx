@@ -4,31 +4,35 @@ const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
 const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 const metaPixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID;
 
+/** GTM container — load as early as possible in `<head>`. */
+export function GTMHeadScript() {
+  if (!gtmId) return null;
+
+  return (
+    <Script id="gtm" strategy="afterInteractive">{`
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','${gtmId}');
+    `}</Script>
+  );
+}
+
 export function AnalyticsScripts() {
   return (
     <>
-      {gtmId && (
-        <>
-          <Script id="gtm-init" strategy="lazyOnload">{`
-            window.dataLayer = window.dataLayer || [];
-          `}</Script>
-          <Script id="gtm" strategy="lazyOnload">{`
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','${gtmId}');
-          `}</Script>
-        </>
-      )}
       {gaId && !gtmId && (
         <>
-          <Script src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} strategy="lazyOnload" />
-          <Script id="ga4" strategy="lazyOnload">{`
+          <Script
+            src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+            strategy="afterInteractive"
+          />
+          <Script id="ga4" strategy="afterInteractive">{`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', '${gaId}', { send_page_view: true });
+            gtag('config', '${gaId}');
           `}</Script>
         </>
       )}

@@ -93,7 +93,7 @@ export function buildAuditChecks(): AuditCheck[] {
     { id: "seo-sitemap", category: "SEO", label: "Segmented sitemaps (8)", status: "pass", detail: "pages, services, industries, work, locations, solutions, content, tools" },
     { id: "seo-og", category: "SEO", label: "Open Graph + Twitter", status: "pass", detail: "OG tags + opengraph-image" },
     { id: "seo-portal-noindex", category: "SEO", label: "Portal auth pages noindex", status: "pass", detail: "Dashboard and inner portal noIndex" },
-    { id: "sec-headers", category: "Security", label: "Security headers", status: "pass", detail: "CSP, HSTS, X-Frame-Options via middleware" },
+    { id: "sec-headers", category: "Security", label: "Security headers", status: "pass", detail: "CSP, HSTS, X-Frame-Options via proxy" },
     { id: "sec-rate", category: "Security", label: "API rate limiting", status: "pass", detail: "20 req/min per IP on /api/leads" },
     { id: "sec-zod", category: "Security", label: "Input validation (Zod)", status: "pass", detail: "Leads + newsletter APIs" },
     { id: "sec-honeypot", category: "Security", label: "Honeypot field", status: "pass", detail: "website_url field rejects bots" },
