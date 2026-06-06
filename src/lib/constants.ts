@@ -12,7 +12,7 @@ export const siteConfig = {
   description:
     "India-based enterprise software development company — websites, mobile apps, ERP, CRM, SaaS, AI & cloud for businesses in Gujarat, Mumbai, Bengaluru, Delhi & worldwide.",
   url: siteUrl.replace(/\/$/, ""),
-  email: "maxwellelctrodealsystems@gmail.com",
+  email: "maxwellelectrodealsystems@gmail.com",
   phone: "+91 95868 68538",
   address: "Vadodara, Gujarat, India",
   locale: "en_IN",

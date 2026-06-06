@@ -103,7 +103,7 @@ export const leadSchema = z
 
 export type SubmitLeadResult =
   | { ok: true; leadScore: number; leadTier: string }
-  | { ok: false; error: string; status: 400 };
+  | { ok: false; error: string; status: 400 | 503 };
 
 export async function submitLead(raw: Record<string, unknown>): Promise<SubmitLeadResult> {
   const data = leadSchema.parse(raw);
@@ -174,22 +174,23 @@ export async function submitLead(raw: Record<string, unknown>): Promise<SubmitLe
     tier: leadScore.tier,
   });
 
-  const [crmResult, emailResult] = await Promise.allSettled([
-    dispatchLeadToCRM(payload),
-    sendLeadNotificationEmail(payload),
-  ]);
+  void dispatchLeadToCRM(payload).catch((err) => {
+    console.error("[Lead CRM]", err instanceof Error ? err.message : "CRM dispatch failed");
+  });
 
-  if (crmResult.status === "rejected") {
-    console.error("[Lead CRM]", crmResult.reason instanceof Error ? crmResult.reason.message : "CRM dispatch failed");
-  }
-  if (emailResult.status === "rejected") {
-    const reason = emailResult.reason;
-    console.error("[Lead Email]", reason instanceof Error ? reason.message : "Email send failed");
-    if (process.env.NODE_ENV !== "production" && reason instanceof Error && reason.message.includes("EAUTH")) {
-      console.error(
-        "[Lead Email] Gmail auth failed — regenerate App Password at https://myaccount.google.com/apppasswords",
-      );
-    }
+  try {
+    await sendLeadNotificationEmail(payload);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Email send failed";
+    console.error("[Lead Email]", message);
+    return {
+      ok: false,
+      error:
+        process.env.NODE_ENV === "production"
+          ? "We could not deliver your message right now. Please email maxwellelectrodealsystems@gmail.com or call us directly."
+          : `Email failed: ${message}. Regenerate App Password at https://myaccount.google.com/apppasswords`,
+      status: 503,
+    };
   }
 
   return {

@@ -1,9 +1,10 @@
 import type { LeadPayload } from "@/lib/crm";
 import { isEmailDeliveryConfigured, sendOutboundEmail } from "@/lib/email-transport";
+import { getGmailFromAddress, getLeadInbox } from "@/lib/gmail-config";
 import { sanitizeEmailHeader } from "@/lib/security/sanitize";
 
-/** Inbox for consultation, contact, estimate, and newsletter lead alerts */
-export const LEAD_NOTIFICATION_EMAIL = "maxwellelctrodealsystems@gmail.com";
+/** Fallback inbox if env vars are missing */
+export const LEAD_NOTIFICATION_EMAIL = "maxwellelectrodealsystems@gmail.com";
 
 const SOURCE_LABELS: Record<string, string> = {
   contact: "Contact form",
@@ -99,26 +100,22 @@ function resolveFromAddress(): string {
   if (process.env.RESEND_FROM_EMAIL?.trim()) {
     return process.env.RESEND_FROM_EMAIL.trim();
   }
-  if (process.env.SMTP_FROM?.trim()) {
-    return process.env.SMTP_FROM.trim();
-  }
-  const user = process.env.SMTP_USER?.trim();
-  if (user) {
-    return `Maxwell Electrodeal <${user}>`;
-  }
-  return "Maxwell Electrodeal <maxwellelctrodealsystems@gmail.com>";
+  return getGmailFromAddress();
 }
 
 export async function deliverLeadNotificationEmail(payload: LeadPayload): Promise<void> {
-  const to = process.env.LEAD_NOTIFICATION_EMAIL?.trim() || LEAD_NOTIFICATION_EMAIL;
+  const to = getLeadInbox();
   const subject = buildLeadEmailSubject(payload);
   const text = buildLeadEmailText(payload);
   const html = buildLeadEmailHtml(payload);
 
   if (!isEmailDeliveryConfigured()) {
-    console.warn(
-      "[Lead Email] No email provider configured — lead saved in logs only. Set Gmail SMTP (SMTP_*) or RESEND_API_KEY in .env.local",
-    );
+    const hint =
+      "Set GMAIL_USER + GMAIL_APP_PASSWORD in .env.local — see https://myaccount.google.com/apppasswords";
+    if (process.env.NODE_ENV === "production") {
+      throw new Error(`Form email not configured. ${hint}`);
+    }
+    console.warn(`[Lead Email] ${hint}`);
     console.log("[Lead Email preview]", { to, subject, text });
     return;
   }

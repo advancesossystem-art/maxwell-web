@@ -22,9 +22,10 @@
 
 ## Credentials — what is NOT exposed on the web
 
-These exist **only** in server environment variables (`.env.local` / Vercel):
+These exist **only** in server environment variables (`.env.local` / hosting dashboard):
 
-- `SMTP_PASS` — Gmail app password
+- `GMAIL_APP_PASSWORD` — Google App Password (never your normal Gmail password)
+- `SMTP_PASS` — legacy alias for app password
 - `RESEND_API_KEY`
 - `ADMIN_AUDIT_TOKEN`
 - `LEAD_WEBHOOK_SECRET`
@@ -41,14 +42,10 @@ These exist **only** in server environment variables (`.env.local` / Vercel):
 ## Production environment variables
 
 ```env
-# Email (server-only)
-EMAIL_PROVIDER=gmail
-SMTP_HOST=smtp.gmail.com
-SMTP_PORT=587
-SMTP_USER=maxwellelctrodealsystems@gmail.com
-SMTP_PASS="your-app-password"
-SMTP_FROM=Maxwell Electrodeal <maxwellelctrodealsystems@gmail.com>
-LEAD_NOTIFICATION_EMAIL=maxwellelctrodealsystems@gmail.com
+# Email (server-only — create App Password at myaccount.google.com/apppasswords)
+GMAIL_USER=maxwellelectrodealsystems@gmail.com
+GMAIL_APP_PASSWORD=<16-char-app-password>
+LEAD_NOTIFICATION_EMAIL=maxwellelectrodealsystems@gmail.com
 
 # Security
 ADMIN_AUDIT_TOKEN=<random-string-min-16-chars>
@@ -74,4 +71,4 @@ Dev-only: `?token=` query param still works locally for convenience.
 
 ## Reporting issues
 
-Email **maxwellelctrodealsystems@gmail.com** for security concerns.
+Email **maxwellelectrodealsystems@gmail.com** for security concerns.

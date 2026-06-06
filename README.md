@@ -18,18 +18,33 @@ Copy `.env.local.example` → `.env.local`. **Never commit `.env.local`.**
 
 | Variable | Purpose |
 |----------|---------|
-| `LEAD_NOTIFICATION_EMAIL` | Inbox for form alerts |
-| `EMAIL_PROVIDER` | `gmail` (default) or `resend` |
-| `SMTP_USER` / `SMTP_PASS` | Gmail + [Google App Password](https://myaccount.google.com/apppasswords) |
-| `RESEND_API_KEY` | Optional — only if using Resend |
+| `GMAIL_USER` | Your Gmail address |
+| `GMAIL_APP_PASSWORD` | [Google App Password](https://myaccount.google.com/apppasswords) (16 chars) |
+| `LEAD_NOTIFICATION_EMAIL` | Inbox for form alerts (usually same as `GMAIL_USER`) |
 | `ADMIN_AUDIT_TOKEN` | Protects `/admin` in production |
 | `ENABLE_PORTAL_DEMO` | `false` in production (blocks demo portal) |
 
 See `.env.example` for full list.
 
-## Forms → email
+## Forms → email (Gmail)
 
-All lead forms POST to `/api/leads`. On submit, an email is sent to `LEAD_NOTIFICATION_EMAIL` via **Gmail SMTP** (or Resend if configured).
+All lead forms POST to `/api/leads`. On submit, an email is sent to `LEAD_NOTIFICATION_EMAIL` via **Gmail + Nodemailer** (Google App Password).
+
+### Google setup (5 minutes)
+
+1. Sign in to **maxwellelectrodealsystems@gmail.com**
+2. Turn on **2-Step Verification**: [Google Security](https://myaccount.google.com/security)
+3. Create an **App Password** (app: Mail): [App Passwords](https://myaccount.google.com/apppasswords)
+4. Add to `.env.local`:
+   ```
+   GMAIL_USER=maxwellelectrodealsystems@gmail.com
+   GMAIL_APP_PASSWORD=xxxx xxxx xxxx xxxx
+   LEAD_NOTIFICATION_EMAIL=maxwellelectrodealsystems@gmail.com
+   ```
+5. Test: `npm run test:email` — you should receive a test message in your inbox
+6. Restart dev server, then submit the contact form
+
+You do **not** need Vercel changes for local testing — only Google App Password + `.env.local`. When the site is live, add the same three variables in your host’s env settings.
 
 ## Security
 

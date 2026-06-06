@@ -33,7 +33,7 @@
 
 ## Email Setup
 
-- [ ] `maxwellelctrodealsystems@gmail.com` inbox (site contact + lead notifications via Gmail SMTP)
+- [ ] `maxwellelectrodealsystems@gmail.com` inbox (site contact + lead notifications via Gmail SMTP)
 - [ ] SPF, DKIM, DMARC for domain
 - [ ] Integrate Resend/SendGrid API for `sendLeadNotificationEmail`
 

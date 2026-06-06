@@ -1,3 +1,5 @@
+import { getGmailAppPassword, getGmailUser, isGmailConfigured } from "@/lib/gmail-config";
+
 export type OutboundEmail = {
   to: string;
   from: string;
@@ -11,7 +13,7 @@ function hasResendConfig(): boolean {
   return Boolean(process.env.RESEND_API_KEY?.trim());
 }
 
-function hasSmtpConfig(): boolean {
+function hasLegacySmtpConfig(): boolean {
   return Boolean(
     process.env.SMTP_HOST?.trim() &&
       process.env.SMTP_USER?.trim() &&
@@ -20,7 +22,7 @@ function hasSmtpConfig(): boolean {
 }
 
 export function isEmailDeliveryConfigured(): boolean {
-  return hasResendConfig() || hasSmtpConfig();
+  return isGmailConfigured() || hasResendConfig() || hasLegacySmtpConfig();
 }
 
 async function sendViaResend(email: OutboundEmail): Promise<void> {
@@ -51,32 +53,45 @@ async function sendViaResend(email: OutboundEmail): Promise<void> {
   }
 }
 
-function smtpPassword(): string {
-  const raw = process.env.SMTP_PASS?.trim() ?? "";
-  return raw.replace(/^["']|["']$/g, "").replace(/\s+/g, "");
+async function sendViaGmail(email: OutboundEmail): Promise<void> {
+  const nodemailer = await import("nodemailer");
+  const user = getGmailUser()!;
+  const pass = getGmailAppPassword()!;
+
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: { user, pass },
+  });
+
+  try {
+    await transporter.sendMail({
+      from: user,
+      to: email.to,
+      replyTo: email.replyTo,
+      subject: email.subject,
+      html: email.html,
+      text: email.text,
+    });
+  } catch (error) {
+    const detail = error instanceof Error ? error.message : "Gmail send failed";
+    if (process.env.NODE_ENV === "production") {
+      throw new Error("Email delivery failed");
+    }
+    throw new Error(detail);
+  }
 }
 
-async function sendViaSmtp(email: OutboundEmail): Promise<void> {
+async function sendViaLegacySmtp(email: OutboundEmail): Promise<void> {
   const nodemailer = await import("nodemailer");
   const user = process.env.SMTP_USER!.trim();
-  const pass = smtpPassword();
-  const host = process.env.SMTP_HOST?.trim().toLowerCase();
-  const isGmail = host === "smtp.gmail.com" || user.endsWith("@gmail.com");
+  const pass = getGmailAppPassword() ?? process.env.SMTP_PASS!.trim();
 
-  const transporter = isGmail
-    ? nodemailer.createTransport({
-        host: "smtp.gmail.com",
-        port: 587,
-        secure: false,
-        requireTLS: true,
-        auth: { user, pass },
-      })
-    : nodemailer.createTransport({
-        host: process.env.SMTP_HOST!.trim(),
-        port: Number(process.env.SMTP_PORT?.trim() || "587"),
-        secure: process.env.SMTP_SECURE === "true",
-        auth: { user, pass },
-      });
+  const transporter = nodemailer.createTransport({
+    host: process.env.SMTP_HOST!.trim(),
+    port: Number(process.env.SMTP_PORT?.trim() || "587"),
+    secure: process.env.SMTP_SECURE === "true",
+    auth: { user, pass },
+  });
 
   await transporter.sendMail({
     from: email.from,
@@ -110,8 +125,13 @@ export async function sendOutboundEmail(email: OutboundEmail): Promise<"resend" 
     return "resend";
   }
 
-  if (hasSmtpConfig()) {
-    await sendViaSmtp(email);
+  if (isGmailConfigured()) {
+    await sendViaGmail(email);
+    return "smtp";
+  }
+
+  if (hasLegacySmtpConfig()) {
+    await sendViaLegacySmtp(email);
     return "smtp";
   }
 
@@ -121,6 +141,6 @@ export async function sendOutboundEmail(email: OutboundEmail): Promise<"resend" 
   }
 
   throw new Error(
-    "Email not configured. Add Gmail SMTP (SMTP_HOST, SMTP_USER, SMTP_PASS) or RESEND_API_KEY in .env.local",
+    "Email not configured. Add GMAIL_USER + GMAIL_APP_PASSWORD in .env.local (see .env.local.example)",
   );
 }
