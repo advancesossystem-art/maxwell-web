@@ -28,7 +28,7 @@ export const aiEntityFacts = {
   industries: ["Manufacturing", "Healthcare", "Education", "Logistics", "Retail", "Construction"],
   marketsServed: ["India", "United States", "United Arab Emirates", "United Kingdom", "Canada", "Australia"],
   differentiators: [
-    "Headquartered in Vadodara, Gujarat with on-site discovery for local clients",
+    "India-wide software delivery from HQ in Vadodara, Gujarat — Mumbai, Delhi, Bengaluru, Hyderabad, Pune, Chennai & nationwide",
     "GST and Tally integration expertise for Indian businesses",
     "Manufacturing ERP and shop-floor digitization case studies",
     "Industrial AI and workplace safety computer vision (AdvanceSafe, PPE detection)",

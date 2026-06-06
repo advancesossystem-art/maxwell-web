@@ -4,7 +4,7 @@ import { createHomeMetadata } from "@/lib/seo/metadata-utils";
 import { Hero } from "@/components/home/Hero";
 import { AiEntitySummary } from "@/components/seo/AiEntitySummary";
 import { HomeFAQJsonLd } from "@/components/seo/JsonLd";
-import { LocalSeoHomeSection } from "@/components/home/LocalSeoHomeSection";
+import { IndiaSeoHomeSection } from "@/components/home/IndiaSeoHomeSection";
 
 const HomeProblem = dynamic(() =>
   import("@/components/home/HomeProblem").then((m) => ({ default: m.HomeProblem })),
@@ -54,7 +54,7 @@ export default function HomePage() {
       <HomeTrust />
       <WhyMaxwell />
       <HomeFAQ />
-      <LocalSeoHomeSection />
+      <IndiaSeoHomeSection />
       <FinalCTA />
     </>
   );

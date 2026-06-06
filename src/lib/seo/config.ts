@@ -76,7 +76,10 @@ export const indiaKeywords = [
   "ERP development company in Gujarat",
   "website development company in Gujarat",
   "AI development company in Gujarat",
-  "ERP development India",
+  "software development company Chennai",
+  "software development company Hyderabad",
+  "software development company Pune",
+  "ERP development company India",
   "CRM development India",
   "AI development India",
   "software development Mumbai",
@@ -98,9 +101,9 @@ export const socialProfiles: string[] = [
 
 export const homeSeo = {
   title:
-    "Software Development Company Vadodara | Custom ERP, CRM, AI & Web Apps",
+    "Software Development Company India | Custom ERP, CRM, AI & Web Apps",
   description:
-    "Maxwell Electrodeal is a Vadodara, Gujarat software development company for custom ERP, CRM, websites, mobile apps & AI. GST-ready systems, on-site discovery & offshore delivery for India, USA & UAE.",
+    "Maxwell Electrodeal is an India-based software development company serving Mumbai, Delhi, Bengaluru, Hyderabad, Pune, Chennai & nationwide. Custom ERP, CRM, websites, mobile apps & AI. GST-ready. HQ Vadodara, Gujarat.",
   path: "/",
 } as const;
 
