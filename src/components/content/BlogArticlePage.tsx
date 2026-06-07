@@ -105,7 +105,7 @@ export function BlogArticlePage({ article }: { article: Article }) {
       {related.length > 0 && (
         <section className="py-16">
           <Container>
-            <h2 className="font-display text-2xl font-bold">Related articles</h2>
+            <h2 className="font-display text-2xl font-bold">Related reading</h2>
             <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {related.map((doc) => (
                 <ContentCard key={doc.slug} doc={doc} variant="compact" />

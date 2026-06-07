@@ -25,7 +25,7 @@ export const toolRelatedLinks: Record<string, ToolRelatedLink[]> = {
   ],
   "digital-transformation-assessment": [
     { href: "/tools/ai-readiness-assessment", label: "AI Readiness Assessment" },
-    { href: "/services/software-development", label: "Custom Software Development" },
+    { href: "/services/custom-software-development", label: "Custom Software Development" },
     { href: "/resources", label: "Resource Center" },
     { href: "/discovery-call", label: "Discovery Call" },
   ],
@@ -56,7 +56,7 @@ export const toolRelatedLinks: Record<string, ToolRelatedLink[]> = {
     { href: "/services/crm-development", label: "CRM Development Services" },
     { href: "/tools/crm-roi-calculator", label: "CRM ROI Calculator" },
     { href: "/cost/crm-development-cost-india", label: "CRM Cost Guide" },
-    { href: "/case-studies/crm-implementation", label: "CRM Case Study" },
+    { href: "/case-studies/retail-analytics", label: "CRM Case Study" },
   ],
   "project-timeline-estimator": [
     { href: "/tools/project-roadmap", label: "Project Roadmap Generator" },

@@ -111,8 +111,9 @@ export function getRelatedContent(slug: string, type: ContentItem["type"], relat
   const index = buildSearchIndex();
   if (relatedSlugs?.length) {
     return relatedSlugs
-      .map((s) => index.find((d) => d.slug === s && d.type === "article"))
-      .filter((d): d is SearchDocument => !!d);
+      .map((s) => index.find((d) => d.slug === s))
+      .filter((d): d is SearchDocument => !!d)
+      .slice(0, 6);
   }
   const current = index.find((d) => d.slug === slug && d.type === type);
   if (!current) return [];

@@ -463,7 +463,7 @@ const articlesList: Article[] = [
       { heading: "Quarter 2–3: Automation", paragraphs: ["ERP modules, mobile field apps, CRM pipeline digitization."] },
       { heading: "Quarter 4: Intelligence", paragraphs: ["AI for forecasting, quality, and customer insights—only after data quality is proven."] },
     ],
-    relatedSlugs: ["digital-transformation-manufacturing"],
+    relatedSlugs: ["digital-transformation-playbook", "digital-transformation-sme-roadmap"],
   }),
   createArticle({
     slug: "change-management-software",
