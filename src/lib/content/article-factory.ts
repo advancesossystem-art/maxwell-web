@@ -1,7 +1,15 @@
 import type { Article, ContentBlock, ContentCategorySlug, ContentFAQ } from "./schema";
 import { buildTableOfContents, calculateReadingTime } from "./utils";
 
-type ArticleDef = {
+export type RichSection = {
+  heading: string;
+  paragraphs: string[];
+  list?: string[];
+  subsections?: { heading: string; paragraphs: string[]; list?: string[] }[];
+  callout?: { variant: "info" | "tip" | "warning"; title?: string; text: string };
+};
+
+export type ArticleDef = {
   slug: string;
   title: string;
   excerpt: string;
@@ -13,25 +21,42 @@ type ArticleDef = {
   featured?: boolean;
   trending?: boolean;
   popular?: boolean;
-  intro: string;
-  sections: { heading: string; paragraphs: string[]; list?: string[] }[];
+  intro: string | string[];
+  sections: RichSection[];
   faqs?: ContentFAQ[];
   relatedSlugs?: string[];
 };
 
+function introBlocks(intro: string | string[]): ContentBlock[] {
+  const parts = Array.isArray(intro) ? intro : [intro];
+  return parts.map((text) => ({ type: "paragraph" as const, text }));
+}
+
+function sectionToBlocks(s: RichSection): ContentBlock[] {
+  const blocks: ContentBlock[] = [
+    { type: "heading", level: 2, text: s.heading },
+    ...s.paragraphs.map((p) => ({ type: "paragraph" as const, text: p })),
+  ];
+  if (s.list?.length) {
+    blocks.push({ type: "list", items: s.list });
+  }
+  if (s.callout) {
+    blocks.push({ type: "callout", ...s.callout });
+  }
+  for (const sub of s.subsections ?? []) {
+    blocks.push({ type: "heading", level: 3, text: sub.heading });
+    blocks.push(...sub.paragraphs.map((p) => ({ type: "paragraph" as const, text: p })));
+    if (sub.list?.length) {
+      blocks.push({ type: "list", items: sub.list });
+    }
+  }
+  return blocks;
+}
+
 export function createArticle(def: ArticleDef): Article {
   const blocks: ContentBlock[] = [
-    { type: "paragraph", text: def.intro },
-    ...def.sections.flatMap((s) => {
-      const sectionBlocks: ContentBlock[] = [
-        { type: "heading", level: 2, text: s.heading },
-        ...s.paragraphs.map((p) => ({ type: "paragraph" as const, text: p })),
-      ];
-      if (s.list?.length) {
-        sectionBlocks.push({ type: "list", items: s.list });
-      }
-      return sectionBlocks;
-    }),
+    ...introBlocks(def.intro),
+    ...def.sections.flatMap(sectionToBlocks),
     {
       type: "cta",
       title: "Need expert help?",

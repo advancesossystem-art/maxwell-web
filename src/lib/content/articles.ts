@@ -1,9 +1,9 @@
 import type { Article } from "./schema";
-import { createArticle } from "./article-factory";
+import { enrichedCreateArticle } from "./article-enrichment";
 import { buildSeoArticlesBatch } from "./seo-articles-batch";
 
 const articlesList: Article[] = [
-  createArticle({
+  enrichedCreateArticle({
     slug: "nextjs-enterprise-website-architecture",
     title: "Next.js Enterprise Website Architecture in 2026",
     excerpt: "How to structure Next.js App Router sites for SEO, performance, and conversion at enterprise scale.",
@@ -23,7 +23,7 @@ const articlesList: Article[] = [
     faqs: [{ question: "Is Next.js suitable for enterprise SEO?", answer: "Yes. With SSG and proper metadata APIs, Next.js consistently achieves Core Web Vitals in the green zone—critical for B2B rankings." }],
     relatedSlugs: ["core-web-vitals-checklist", "website-planning-checklist"],
   }),
-  createArticle({
+  enrichedCreateArticle({
     slug: "core-web-vitals-checklist",
     title: "Core Web Vitals Checklist for B2B Websites",
     excerpt: "A practical audit checklist to hit LCP, INP, and CLS targets without sacrificing rich design.",
@@ -40,7 +40,7 @@ const articlesList: Article[] = [
     ],
     relatedSlugs: ["nextjs-enterprise-website-architecture"],
   }),
-  createArticle({
+  enrichedCreateArticle({
     slug: "b2b-website-conversion-patterns",
     title: "7 B2B Website Conversion Patterns That Actually Work",
     excerpt: "CTA placement, social proof, and estimator tools that turn traffic into qualified pipeline.",
@@ -55,7 +55,7 @@ const articlesList: Article[] = [
       { heading: "Pattern 2: Interactive estimators", paragraphs: ["Project calculators increase form completion 40%+ vs. static contact forms in our client data."] },
     ],
   }),
-  createArticle({
+  enrichedCreateArticle({
     slug: "custom-software-vs-saas",
     title: "Custom Software vs SaaS: A Decision Framework for SMEs",
     excerpt: "When off-the-shelf wins—and when bespoke engineering is the only path to competitive advantage.",
@@ -72,7 +72,7 @@ const articlesList: Article[] = [
     ],
     relatedSlugs: ["custom-software-development-guide", "custom-website-cost-us-2026"],
   }),
-  createArticle({
+  enrichedCreateArticle({
     slug: "custom-website-cost-us-2026",
     title: "How Much Does a Custom Website Cost in the US in 2026?",
     excerpt:
@@ -118,7 +118,7 @@ const articlesList: Article[] = [
     ],
     relatedSlugs: ["web-app-vs-mobile-app-business", "nextjs-enterprise-website-architecture"],
   }),
-  createArticle({
+  enrichedCreateArticle({
     slug: "web-app-vs-mobile-app-business",
     title: "Web App vs Mobile App — Which Does Your Business Need?",
     excerpt: "A practical decision guide for US and UAE SMBs choosing between responsive web and native/cross-platform apps.",
@@ -159,7 +159,7 @@ const articlesList: Article[] = [
     ],
     relatedSlugs: ["custom-website-cost-us-2026", "mobile-app-development-cost-uae-2026"],
   }),
-  createArticle({
+  enrichedCreateArticle({
     slug: "mobile-app-development-cost-uae-2026",
     title: "Mobile App Development Cost in UAE 2026",
     excerpt: "Realistic AED and USD ranges for Dubai and UAE startup apps—MVP to enterprise.",
@@ -203,7 +203,7 @@ const articlesList: Article[] = [
     ],
     relatedSlugs: ["web-app-vs-mobile-app-business"],
   }),
-  createArticle({
+  enrichedCreateArticle({
     slug: "api-first-architecture-guide",
     title: "API-First Architecture: Integration Without Chaos",
     excerpt: "Design APIs before UIs to survive Tally, payment gateways, and legacy ERP connections.",
@@ -218,7 +218,7 @@ const articlesList: Article[] = [
       { heading: "Event-driven sync", paragraphs: ["Use webhooks and queues for Tally sync—not nightly batch jobs that fail silently."] },
     ],
   }),
-  createArticle({
+  enrichedCreateArticle({
     slug: "legacy-modernization-roadmap",
     title: "Legacy Modernization Roadmap for Indian Enterprises",
     excerpt: "Phased migration without shutting down operations—strangler fig pattern in practice.",
@@ -234,7 +234,7 @@ const articlesList: Article[] = [
       { heading: "Phase 2: Production modules", paragraphs: ["Shop-floor mobile apps integrate with existing finance until bi-directional Tally sync is proven."] },
     ],
   }),
-  createArticle({
+  enrichedCreateArticle({
     slug: "llm-integration-enterprise",
     title: "LLM Integration for Enterprise: Beyond the Chatbot Demo",
     excerpt: "Production LLM patterns—RAG, guardrails, cost control, and human-in-the-loop workflows.",
@@ -252,7 +252,7 @@ const articlesList: Article[] = [
     ],
     relatedSlugs: ["ai-implementation-guide", "ai-adoption-framework"],
   }),
-  createArticle({
+  enrichedCreateArticle({
     slug: "computer-vision-manufacturing",
     title: "Computer Vision in Manufacturing: Safety and Quality Use Cases",
     excerpt: "Practical vision AI for PPE detection, defect inspection, and shop-floor monitoring.",
@@ -267,7 +267,7 @@ const articlesList: Article[] = [
       { heading: "Quality inspection", paragraphs: ["Automate visual defect detection on production lines—60% faster than manual rounds."] },
     ],
   }),
-  createArticle({
+  enrichedCreateArticle({
     slug: "ai-roi-measurement",
     title: "How to Measure AI ROI Before You Scale",
     excerpt: "Baseline metrics, pilot KPIs, and executive dashboards that justify AI investment.",
@@ -282,7 +282,7 @@ const articlesList: Article[] = [
       { heading: "Pilot success criteria", paragraphs: ["Set kill criteria: if accuracy < 90% after 8 weeks, pivot architecture before scaling spend."] },
     ],
   }),
-  createArticle({
+  enrichedCreateArticle({
     slug: "erp-selection-mistakes",
     title: "5 ERP Selection Mistakes That Cost Manufacturers Lakhs",
     excerpt: "Why generic ERP fails Gujarat SMEs—and how to evaluate fit before signing.",
@@ -299,7 +299,7 @@ const articlesList: Article[] = [
     ],
     relatedSlugs: ["complete-erp-development-guide", "erp-readiness-checklist"],
   }),
-  createArticle({
+  enrichedCreateArticle({
     slug: "tally-erp-integration",
     title: "Tally ERP Integration: Bi-Directional Sync Patterns",
     excerpt: "Technical patterns for syncing operational ERP with Tally Prime without data conflicts.",
@@ -313,7 +313,7 @@ const articlesList: Article[] = [
       { heading: "Sync architecture", paragraphs: ["Event-sourced ledger entries with idempotent webhooks. Never blind overwrite—always merge with audit trail."] },
     ],
   }),
-  createArticle({
+  enrichedCreateArticle({
     slug: "manufacturing-erp-modules",
     title: "Essential ERP Modules for Manufacturing SMEs",
     excerpt: "Inventory, production, quality, and maintenance modules ranked by ROI priority.",
@@ -328,7 +328,7 @@ const articlesList: Article[] = [
       { heading: "Module priority matrix", paragraphs: ["Score modules by pain × feasibility. Inventory and barcode scanning typically rank highest."] },
     ],
   }),
-  createArticle({
+  enrichedCreateArticle({
     slug: "crm-pipeline-design-b2b",
     title: "B2B CRM Pipeline Design That Matches Your Sales Process",
     excerpt: "Stop forcing Salesforce stages—design pipelines around approvals, distributors, and long cycles.",
@@ -343,7 +343,7 @@ const articlesList: Article[] = [
     ],
     relatedSlugs: ["crm-implementation-guide"],
   }),
-  createArticle({
+  enrichedCreateArticle({
     slug: "crm-automation-roi",
     title: "CRM Automation ROI: Follow-Up, Routing, and Alerts",
     excerpt: "Automations that recover 30% of lost leads without annoying buyers.",
@@ -357,7 +357,7 @@ const articlesList: Article[] = [
       { heading: "High-ROI automations", paragraphs: ["Lead assignment by territory, 24hr SLA escalation, and proposal-viewed notifications."], list: ["Auto-assign by region", "Stale deal alerts", "Proposal open tracking"] },
     ],
   }),
-  createArticle({
+  enrichedCreateArticle({
     slug: "aws-cost-optimization-smes",
     title: "AWS Cost Optimization for SME Production Workloads",
     excerpt: "FinOps tactics that cut cloud bills 30% without sacrificing uptime.",
@@ -371,7 +371,7 @@ const articlesList: Article[] = [
       { heading: "Quick wins", paragraphs: ["Delete unused EIPs, snapshot old volumes, move dev to scheduled shutdown."], list: ["Enable Cost Explorer tags", "Rightsize RDS instances", "Use S3 lifecycle policies"] },
     ],
   }),
-  createArticle({
+  enrichedCreateArticle({
     slug: "cloud-migration-phases",
     title: "Cloud Migration in 4 Phases: Assessment to Cutover",
     excerpt: "Lift-and-shift fails—here's a phased migration model that preserves uptime.",
@@ -386,7 +386,7 @@ const articlesList: Article[] = [
       { heading: "Phase 4: Cutover", paragraphs: ["Blue-green deployments with rollback plans tested under load."] },
     ],
   }),
-  createArticle({
+  enrichedCreateArticle({
     slug: "saas-mvp-architecture",
     title: "SaaS MVP Architecture: Multi-Tenant from Day One",
     excerpt: "Why rewiring tenancy after funding is the most expensive mistake SaaS founders make.",
@@ -403,7 +403,7 @@ const articlesList: Article[] = [
     ],
     relatedSlugs: ["saas-development-guide"],
   }),
-  createArticle({
+  enrichedCreateArticle({
     slug: "saas-pricing-psychology",
     title: "SaaS Pricing Psychology for Indian B2B Markets",
     excerpt: "Tier design, annual discounts, and GST invoicing that increase conversion.",
@@ -417,7 +417,7 @@ const articlesList: Article[] = [
       { heading: "Three-tier anchor", paragraphs: ["Good-better-best with middle tier as target. Feature gate on integrations, not core workflow."] },
     ],
   }),
-  createArticle({
+  enrichedCreateArticle({
     slug: "react-native-offline-first",
     title: "React Native Offline-First Apps for Field Teams",
     excerpt: "Sync patterns for low-connectivity warehouses, sales routes, and shop floors.",
@@ -433,7 +433,7 @@ const articlesList: Article[] = [
     ],
     relatedSlugs: ["mobile-app-development-guide"],
   }),
-  createArticle({
+  enrichedCreateArticle({
     slug: "app-store-launch-checklist",
     title: "Enterprise App Store Launch Checklist",
     excerpt: "Apple and Google review requirements, MDM distribution, and analytics setup.",
@@ -447,7 +447,7 @@ const articlesList: Article[] = [
       { heading: "Pre-submission", paragraphs: ["Test on physical devices across OS versions. Prepare rejection response templates."] },
     ],
   }),
-  createArticle({
+  enrichedCreateArticle({
     slug: "digital-transformation-sme-roadmap",
     title: "Digital Transformation Roadmap for Indian SMEs",
     excerpt: "A 12-month modernization sequence that doesn't overwhelm operations teams.",
@@ -465,7 +465,7 @@ const articlesList: Article[] = [
     ],
     relatedSlugs: ["digital-transformation-playbook", "digital-transformation-sme-roadmap"],
   }),
-  createArticle({
+  enrichedCreateArticle({
     slug: "change-management-software",
     title: "Change Management for Software Rollouts",
     excerpt: "Training, champions, and adoption metrics that determine ERP success.",
@@ -479,7 +479,7 @@ const articlesList: Article[] = [
       { heading: "Champion network", paragraphs: ["Identify power users per department. Give them early access and feedback channels."] },
     ],
   }),
-  createArticle({
+  enrichedCreateArticle({
     slug: "data-quality-before-ai",
     title: "Fix Data Quality Before AI: A Practitioner's Guide",
     excerpt: "Garbage-in-garbage-out isn't a cliché—it's why AI pilots fail in manufacturing.",
@@ -493,7 +493,7 @@ const articlesList: Article[] = [
       { heading: "Data audit checklist", paragraphs: ["Completeness, consistency, timeliness scores per domain before any model training."] },
     ],
   }),
-  createArticle({
+  enrichedCreateArticle({
     slug: "vendor-lock-in-avoidance",
     title: "Avoiding Vendor Lock-In in Enterprise Software",
     excerpt: "Contract clauses, open APIs, and exit strategies that protect your business.",
@@ -508,7 +508,7 @@ const articlesList: Article[] = [
     ],
     relatedSlugs: ["software-vendor-selection-guide"],
   }),
-  createArticle({
+  enrichedCreateArticle({
     slug: "gst-compliant-software-design",
     title: "GST-Compliant Software Design for Indian Businesses",
     excerpt: "E-invoicing, HSN codes, and Tally sync requirements baked into architecture.",
@@ -524,7 +524,7 @@ const articlesList: Article[] = [
     ],
   }),
 
-  createArticle({
+  enrichedCreateArticle({
     slug: "software-development-cost-india-2026",
     title: "Software Development Cost in India 2026 — Complete Pricing Guide",
     excerpt: "Realistic ₹ ranges for custom software, web apps, ERP, and mobile—what drives price and how to budget.",
@@ -567,7 +567,7 @@ const articlesList: Article[] = [
     relatedSlugs: ["erp-development-cost-india-2026", "mobile-app-development-cost-india-2026"],
   }),
 
-  createArticle({
+  enrichedCreateArticle({
     slug: "erp-development-cost-india-2026",
     title: "ERP Development Cost in India 2026 — Manufacturing & SME Guide",
     excerpt: "Module-by-module ERP pricing for Gujarat and India manufacturers—Tally sync, shop-floor, inventory.",
@@ -601,7 +601,7 @@ const articlesList: Article[] = [
     relatedSlugs: ["erp-vs-excel-manufacturing", "manufacturing-erp-modules"],
   }),
 
-  createArticle({
+  enrichedCreateArticle({
     slug: "crm-development-cost-india",
     title: "CRM Development Cost in India — Custom vs Salesforce",
     excerpt: "When ₹5L–₹20L custom CRM beats ₹3,000/seat/month SaaS for Indian B2B sales teams.",
@@ -618,7 +618,7 @@ const articlesList: Article[] = [
     relatedSlugs: ["custom-crm-vs-salesforce", "crm-pipeline-design-b2b"],
   }),
 
-  createArticle({
+  enrichedCreateArticle({
     slug: "mobile-app-development-cost-india-2026",
     title: "Mobile App Development Cost in India 2026",
     excerpt: "Flutter and React Native pricing for MVPs and enterprise apps—realistic ₹ ranges.",
@@ -641,7 +641,7 @@ const articlesList: Article[] = [
     relatedSlugs: ["flutter-vs-react-native-2026", "software-development-cost-india-2026"],
   }),
 
-  createArticle({
+  enrichedCreateArticle({
     slug: "erp-vs-crm-business-systems",
     title: "ERP vs CRM — Which System Does Your Business Need First?",
     excerpt: "Operations backbone vs sales engine—a decision guide for Indian SMEs scaling past spreadsheets.",
@@ -660,7 +660,7 @@ const articlesList: Article[] = [
     relatedSlugs: ["erp-development-cost-india-2026", "crm-development-cost-india"],
   }),
 
-  createArticle({
+  enrichedCreateArticle({
     slug: "erp-vs-excel-manufacturing",
     title: "ERP vs Excel for Manufacturing — When Spreadsheets Break",
     excerpt: "The hidden cost of Excel on shop floors—and the ROI timeline for custom ERP.",
@@ -677,7 +677,7 @@ const articlesList: Article[] = [
     relatedSlugs: ["erp-development-cost-india-2026", "manufacturing-erp-modules"],
   }),
 
-  createArticle({
+  enrichedCreateArticle({
     slug: "flutter-vs-react-native-2026",
     title: "Flutter vs React Native in 2026 — Which to Choose?",
     excerpt: "Cross-platform decision guide for Indian startups and enterprises building iOS + Android.",
@@ -695,7 +695,7 @@ const articlesList: Article[] = [
     relatedSlugs: ["mobile-app-development-cost-india-2026", "react-native-offline-first"],
   }),
 
-  createArticle({
+  enrichedCreateArticle({
     slug: "build-vs-buy-software",
     title: "Build vs Buy Software — A Practical Framework",
     excerpt: "When SaaS wins, when custom software is the only path, and how to calculate TCO.",
@@ -712,7 +712,7 @@ const articlesList: Article[] = [
     relatedSlugs: ["custom-software-vs-saas", "how-to-choose-software-development-company"],
   }),
 
-  createArticle({
+  enrichedCreateArticle({
     slug: "custom-crm-vs-salesforce",
     title: "Custom CRM vs Salesforce — TCO for Indian B2B Teams",
     excerpt: "Per-seat scaling, WhatsApp workflows, and when ₹8L custom CRM beats ₹40L+ Salesforce over 3 years.",
@@ -730,7 +730,7 @@ const articlesList: Article[] = [
     relatedSlugs: ["crm-development-cost-india", "crm-pipeline-design-b2b"],
   }),
 
-  createArticle({
+  enrichedCreateArticle({
     slug: "how-to-choose-software-development-company",
     title: "How to Choose a Software Development Company in 2026",
     excerpt: "Evaluation checklist—case studies, IP, milestones, tech proof, and red flags to avoid.",
@@ -760,7 +760,7 @@ const articlesList: Article[] = [
     relatedSlugs: ["software-development-cost-india-2026", "build-vs-buy-software"],
   }),
 
-  createArticle({
+  enrichedCreateArticle({
     slug: "benefits-custom-software-business",
     title: "Benefits of Custom Software for Growing Businesses",
     excerpt: "Workflow fit, integration depth, IP ownership, and flat TCO versus per-seat SaaS.",
@@ -777,7 +777,7 @@ const articlesList: Article[] = [
     relatedSlugs: ["custom-software-vs-saas", "software-development-cost-india-2026"],
   }),
 
-  createArticle({
+  enrichedCreateArticle({
     slug: "business-automation-guide",
     title: "Business Automation Guide for Indian SMEs",
     excerpt: "Workflow mapping, API integrations, and AI—where to automate first for fastest ROI.",
@@ -794,7 +794,7 @@ const articlesList: Article[] = [
     relatedSlugs: ["crm-automation-roi", "digital-transformation-sme-roadmap"],
   }),
 
-  createArticle({
+  enrichedCreateArticle({
     slug: "ai-for-manufacturing-industrial-safety",
     title: "AI for Manufacturing — Industrial Safety & Computer Vision",
     excerpt: "PPE detection, workplace safety AI, and production quality vision—ROI on the factory floor.",
@@ -814,7 +814,7 @@ const articlesList: Article[] = [
     relatedSlugs: ["computer-vision-manufacturing", "data-quality-before-ai"],
   }),
 
-  createArticle({
+  enrichedCreateArticle({
     slug: "best-software-company-vadodara",
     title: "Best Software Development Company in Vadodara — What to Look For",
     excerpt: "Local HQ accountability, ERP depth, Tally integration, and production references—not generic web shops.",
