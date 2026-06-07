@@ -97,6 +97,19 @@ export const toolsRegistry: ToolDefinition[] = [
     estimatedMinutes: 3,
     tags: ["ROI", "savings", "automation"],
   },
+  {
+    slug: "erp-roi-calculator",
+    name: "ERP ROI Calculator",
+    shortName: "ERP ROI",
+    description: "Calculate ERP payback period, inventory savings, and 5-year ROI for manufacturing and distribution SMEs.",
+    category: "finance",
+    icon: "roi",
+    accent: "#1A4B8C",
+    featured: true,
+    popular: true,
+    estimatedMinutes: 4,
+    tags: ["ERP ROI", "ERP payback", "manufacturing ERP", "ERP cost savings"],
+  },
 ];
 
 export const toolSlugs = toolsRegistry.map((t) => t.slug);

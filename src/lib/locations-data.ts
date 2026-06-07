@@ -1,4 +1,5 @@
 import { siteConfig } from "./constants";
+import { extendedCitySlugs, getExtendedCity } from "./locations-extended";
 
 export interface LocationChallenge {
   title: string;
@@ -306,7 +307,7 @@ export function getCountryBySlug(slug: string): CountryPageData | undefined {
 
 export function getCityBySlug(countrySlug: string, citySlug: string): CityPageData | undefined {
   if (countrySlug !== "india") return undefined;
-  return citiesMap[citySlug as CitySlug];
+  return citiesMap[citySlug as CitySlug] ?? getExtendedCity(citySlug);
 }
 
 export function getAllCountries(): CountryPageData[] {
@@ -320,6 +321,7 @@ export function getAllCities(): CityPageData[] {
 export function getLocationStaticParams(): { country: string; city?: string }[] {
   const params: { country: string; city?: string }[] = [{ country: "india" }];
   indiaCities.forEach((c) => params.push({ country: "india", city: c.slug }));
+  extendedCitySlugs.forEach((slug) => params.push({ country: "india", city: slug }));
   internationalCountries.forEach((c) => params.push({ country: c.slug }));
   return params;
 }

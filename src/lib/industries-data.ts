@@ -1,3 +1,5 @@
+import { getExtendedIndustry } from "./industries-extended";
+
 export const industrySlugs = [
   "manufacturing",
   "healthcare",
@@ -5,6 +7,41 @@ export const industrySlugs = [
   "logistics",
   "retail",
   "construction",
+  "chemical",
+  "pharma",
+  "textile",
+  "automotive",
+  "fmcg",
+  "metals",
+  "plastics",
+  "food-processing",
+  "oil-gas",
+  "energy",
+  "agriculture",
+  "real-estate",
+  "hospitality",
+  "banking",
+  "insurance",
+  "ecommerce",
+  "import-export",
+  "warehouse",
+  "cold-chain",
+  "packaging",
+  "rubber",
+  "ceramics",
+  "gems-jewelry",
+  "steel",
+  "cement",
+  "paper",
+  "printing",
+  "electronics",
+  "aerospace",
+  "renewable-energy",
+  "water-treatment",
+  "mining",
+  "agro-processing",
+  "dairy",
+  "paint-coatings",
 ] as const;
 
 export type IndustrySlug = (typeof industrySlugs)[number];
@@ -58,7 +95,7 @@ const sharedWhyMaxwell = [
   },
 ] as const;
 
-export const industriesData: Record<IndustrySlug, IndustryPageData> = {
+export const industriesData: Partial<Record<IndustrySlug, IndustryPageData>> = {
   manufacturing: {
     slug: "manufacturing",
     title: "Manufacturing",
@@ -561,9 +598,11 @@ export const industriesData: Record<IndustrySlug, IndustryPageData> = {
 };
 
 export function getIndustryBySlug(slug: string): IndustryPageData | undefined {
-  return industriesData[slug as IndustrySlug];
+  const core = industriesData[slug as keyof typeof industriesData];
+  if (core) return core;
+  return getExtendedIndustry(slug);
 }
 
 export function getAllIndustries(): IndustryPageData[] {
-  return industrySlugs.map((slug) => industriesData[slug]);
+  return industrySlugs.map((slug) => getIndustryBySlug(slug)).filter(Boolean) as IndustryPageData[];
 }

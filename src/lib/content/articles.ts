@@ -1,5 +1,6 @@
 import type { Article } from "./schema";
 import { createArticle } from "./article-factory";
+import { buildSeoArticlesBatch } from "./seo-articles-batch";
 
 const articlesList: Article[] = [
   createArticle({
@@ -830,6 +831,7 @@ const articlesList: Article[] = [
     ],
     relatedSlugs: ["software-development-cost-india-2026", "erp-development-cost-india-2026"],
   }),
+  ...buildSeoArticlesBatch(),
 ];
 
 export const articleSlugs = articlesList.map((a) => a.slug);

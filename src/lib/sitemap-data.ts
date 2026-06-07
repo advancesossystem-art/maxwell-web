@@ -11,6 +11,7 @@ import { resourceSlugs } from "./content/resources";
 import { reportSlugs } from "./content/reports";
 import { authors } from "./content/authors";
 import { toolSlugs } from "./tools/registry";
+import { compareSlugs, costSlugs, industryServiceParams, cityServiceParams } from "./seo/programmatic/build-pages";
 
 const staticPages = [
   "",
@@ -20,6 +21,8 @@ const staticPages = [
   "/case-studies",
   "/locations",
   "/solutions",
+  "/compare",
+  "/cost",
   "/blog",
   "/resources",
   "/guides",
@@ -70,6 +73,10 @@ export function getIndustriesSitemapEntries() {
       url: `${siteConfig.url}/industries/${slug}`,
       priority: 0.85,
     })),
+    ...industryServiceParams.map(({ industry, service }) => ({
+      url: `${siteConfig.url}/industries/${industry}/${service}`,
+      priority: 0.82,
+    })),
   ];
 }
 
@@ -103,6 +110,13 @@ export function getLocationsSitemapEntries() {
         priority: p.country === "india" ? 0.95 : 0.84,
       });
     }
+  });
+
+  cityServiceParams.forEach(({ country, city, service }) => {
+    entries.push({
+      url: `${siteConfig.url}/locations/${country}/${city}/${service}`,
+      priority: 0.88,
+    });
   });
 
   return entries;
@@ -140,6 +154,26 @@ export function getContentSitemapEntries() {
   return entries;
 }
 
+export function getCompareSitemapEntries() {
+  return [
+    { url: `${siteConfig.url}/compare`, priority: 0.87 },
+    ...compareSlugs.map((slug) => ({
+      url: `${siteConfig.url}/compare/${slug}`,
+      priority: 0.84,
+    })),
+  ];
+}
+
+export function getCostSitemapEntries() {
+  return [
+    { url: `${siteConfig.url}/cost`, priority: 0.9 },
+    ...costSlugs.map((slug) => ({
+      url: `${siteConfig.url}/cost/${slug}`,
+      priority: 0.86,
+    })),
+  ];
+}
+
 export const sitemapIndexEntries = [
   { loc: `${siteConfig.url}/sitemap-pages.xml` },
   { loc: `${siteConfig.url}/sitemap-services.xml` },
@@ -147,6 +181,8 @@ export const sitemapIndexEntries = [
   { loc: `${siteConfig.url}/sitemap-work.xml` },
   { loc: `${siteConfig.url}/sitemap-locations.xml` },
   { loc: `${siteConfig.url}/sitemap-solutions.xml` },
+  { loc: `${siteConfig.url}/sitemap-compare.xml` },
+  { loc: `${siteConfig.url}/sitemap-cost.xml` },
   { loc: `${siteConfig.url}/sitemap-content.xml` },
   { loc: `${siteConfig.url}/sitemap-tools.xml` },
 ];

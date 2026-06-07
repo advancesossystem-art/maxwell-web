@@ -17,13 +17,17 @@ import { IndustryCTA, IndustryCTAStrip } from "@/components/industries/IndustryC
 import { IndustryPageJsonLd } from "@/components/seo/JsonLd";
 import type { IndustryPageData, IndustrySlug } from "@/lib/industries-data";
 
-const industryCaseStudySlug: Record<IndustrySlug, string> = {
+const industryCaseStudySlug: Partial<Record<IndustrySlug, string>> = {
   manufacturing: "manufacturing-erp",
   healthcare: "healthcare-management",
   education: "educational-portal",
   logistics: "logistics-platform",
   retail: "retail-analytics",
   construction: "construction-platform",
+  chemical: "manufacturing-erp",
+  pharma: "healthcare-management",
+  textile: "manufacturing-erp",
+  automotive: "manufacturing-erp",
 };
 
 export function IndustryLandingPage({ industry }: { industry: IndustryPageData }) {
@@ -44,7 +48,7 @@ export function IndustryLandingPage({ industry }: { industry: IndustryPageData }
       <Container>
         <IndustryCTA
           industryName={industry.title}
-          caseStudySlug={industryCaseStudySlug[industry.slug]}
+          caseStudySlug={industryCaseStudySlug[industry.slug] ?? "manufacturing-erp"}
         />
       </Container>
       <IndustryCTAStrip industryName={industry.title} />

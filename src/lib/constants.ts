@@ -38,6 +38,8 @@ export const navLinks = [
   { label: "Case Studies", href: "/case-studies" },
   { label: "Blog", href: "/blog" },
   { label: "Tools", href: "/tools" },
+  { label: "Compare", href: "/compare" },
+  { label: "Cost Guides", href: "/cost" },
   { label: "Portal", href: "/portal" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
