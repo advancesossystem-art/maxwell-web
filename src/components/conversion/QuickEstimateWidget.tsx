@@ -30,7 +30,7 @@ type QuickEstimateData = {
   timeline: LeadTimeline;
 };
 
-export function QuickEstimateWidget() {
+export function QuickEstimateWidget({ stickyBarDismissed = false }: { stickyBarDismissed?: boolean }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [step, setStep] = useState(0);
@@ -78,7 +78,8 @@ export function QuickEstimateWidget() {
           data-intro-chrome
           className={cn(
             "mobile-fixed-chrome fixed z-50 rounded-full bg-[#4f46e5] px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/30 transition-transform hover:scale-105 active:scale-95",
-            "bottom-[4.5rem] left-4 lg:bottom-8 lg:left-8",
+            "left-4 lg:bottom-8 lg:left-8",
+            stickyBarDismissed ? "bottom-4 lg:bottom-8" : "bottom-[4.5rem] lg:bottom-8",
           )}
           aria-label="Get instant project estimate"
         >

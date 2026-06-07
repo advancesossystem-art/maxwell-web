@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
 import { MobileBodyState } from "@/components/layout/MobileBodyState";
 import { StickyCTA } from "@/components/conversion/StickyCTA";
+import { useStickyBarDismiss } from "@/hooks/useStickyBarDismiss";
 import { isMarketingChromeRoute } from "@/lib/mobile-sticky";
 import { WHATSAPP_NUMBER } from "@/lib/leads-data";
 import { leadTrustBadges } from "@/lib/company-metrics";
@@ -58,15 +59,16 @@ export function TrustBadgesRow() {
 export function LeadConversionLayer() {
   const pathname = usePathname();
   const showMarketing = isMarketingChromeRoute(pathname);
+  const { dismissed: stickyDismissed, dismiss: dismissStickyBar } = useStickyBarDismiss();
 
   return (
     <>
-      <MobileBodyState stickyBarActive={showMarketing} />
+      <MobileBodyState stickyBarActive={showMarketing && !stickyDismissed} />
       {showMarketing ? (
         <>
           <WhatsAppFloat />
-          <StickyCTA location="global_sticky" />
-          <QuickEstimateWidget />
+          <StickyCTA location="global_sticky" dismissed={stickyDismissed} onDismiss={dismissStickyBar} />
+          <QuickEstimateWidget stickyBarDismissed={stickyDismissed} />
           <ExitIntentModal />
         </>
       ) : null}
