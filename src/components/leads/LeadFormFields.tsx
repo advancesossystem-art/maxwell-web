@@ -21,7 +21,7 @@ export function ProgressBar({ current, total }: { current: number; total: number
         aria-valuemin={1}
         aria-valuemax={total}
         aria-valuenow={current}
-        className="h-2 overflow-hidden rounded-full bg-white/[0.06]"
+        className="h-2 overflow-hidden rounded-full bg-[var(--v6-bg-soft)]"
       >
         <div
           className="h-full rounded-full bg-brand-600 transition-all duration-500 ease-out"
@@ -51,8 +51,8 @@ export function OptionCard({
       className={cn(
         "min-h-11 rounded-xl border p-4 text-left transition-all duration-200",
         selected
-          ? "border-brand-500/50 bg-brand-500/10 ring-1 ring-brand-500/30"
-          : "border-white/[0.08] bg-white/[0.03] hover:border-brand-500/25",
+          ? "border-[#4f46e5]/50 bg-[#4f46e5]/8 ring-1 ring-[#4f46e5]/25"
+          : "border-[var(--v6-border)] bg-white hover:border-[#4f46e5]/30",
       )}
     >
       <div className="text-h3 text-base">{title}</div>

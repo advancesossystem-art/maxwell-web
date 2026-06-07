@@ -2,8 +2,8 @@
 
 import { type ReactNode } from "react";
 import { Button } from "@/components/ui/Button";
-import { ProgressBar } from "@/components/leads/LeadFormFields";
 import { ArrowRight } from "@/components/ui/Icons";
+import { cn } from "@/lib/utils";
 
 export function ToolWizard({
   step,
@@ -28,18 +28,33 @@ export function ToolWizard({
   isLastStep?: boolean;
   onFinish?: () => void;
 }) {
+  const pct = Math.round((step / totalSteps) * 100);
+
   return (
-    <div className="rounded-2xl border border-border bg-surface-elevated shadow-sm">
-      <div className="border-b border-border px-4 py-4 sm:px-6 sm:py-5 lg:px-8">
-        <ProgressBar current={step} total={totalSteps} />
-        <h2 className="mt-3 font-display text-base font-semibold sm:mt-4 sm:text-lg">{stepTitle}</h2>
+    <div className="tool-wizard">
+      <div className="tool-wizard__head">
+        <div
+          role="progressbar"
+          aria-valuemin={1}
+          aria-valuemax={totalSteps}
+          aria-valuenow={step}
+          aria-label={`Step ${step} of ${totalSteps}`}
+          className="tool-wizard__progress-track"
+        >
+          <div className="tool-wizard__progress-fill" style={{ width: `${pct}%` }} />
+        </div>
+        <div className="tool-wizard__step-label">
+          <span>Step {step} of {totalSteps}</span>
+          <span>{pct}% complete</span>
+        </div>
+        <h2 className="tool-wizard__step-title">{stepTitle}</h2>
       </div>
-      <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
+      <div className="tool-wizard__body">
         <div key={step} className="animate-[fadeSlideIn_0.25s_ease-out]">
           {children}
         </div>
       </div>
-      <div className="flex flex-col-reverse gap-3 border-t border-border px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 sm:py-5 lg:px-8">
+      <div className="tool-wizard__foot">
         {onBack && step > 1 ? (
           <Button type="button" variant="secondary" onClick={onBack} className="w-full sm:w-auto">
             Back

@@ -3,68 +3,131 @@
 import { useEffect, type ReactNode } from "react";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { H1, Caption } from "@/components/design/typography";
 import { trackToolView } from "@/lib/tools/analytics";
+import { toolCategoryLabels } from "@/lib/tools/registry";
 import type { ToolDefinition } from "@/lib/tools/types";
+
+const categoryOutcomes: Record<ToolDefinition["category"], string[]> = {
+  planning: [
+    "Phased delivery roadmap with milestones",
+    "Realistic timeline based on your scope",
+    "Team sizing recommendations",
+    "Exportable PDF for stakeholders",
+  ],
+  sales: [
+    "Structured scope and requirements",
+    "Vendor-ready documentation",
+    "Professional proposal sections",
+    "Shareable output for your team",
+  ],
+  technical: [
+    "Stack recommendations for your scale",
+    "Architecture guidance by budget",
+    "Technology trade-off summary",
+    "Implementation-ready shortlist",
+  ],
+  finance: [
+    "INR-based ROI and payback model",
+    "Annual savings breakdown",
+    "5-year value projection",
+    "Investment range for planning",
+  ],
+  strategy: [
+    "Maturity score across key pillars",
+    "Gap analysis with priorities",
+    "Phased improvement roadmap",
+    "Executive-ready summary",
+  ],
+};
 
 export function ToolShell({
   tool,
   children,
-  sidebar,
+  previewLabel,
+  previewValue,
 }: {
   tool: ToolDefinition;
   children: ReactNode;
-  sidebar?: ReactNode;
+  previewLabel?: string;
+  previewValue?: string;
 }) {
   useEffect(() => {
     trackToolView(tool.slug);
   }, [tool.slug]);
 
+  const outcomes = categoryOutcomes[tool.category];
+
   return (
-    <div className="min-h-screen bg-background">
-      <div className="border-b border-white/[0.08] bg-surface">
-        <Container className="flex items-center justify-between py-5">
-          <div className="flex items-center gap-4">
-            <Link
-              href="/tools"
-              className="text-caption text-[#94A3B8] underline decoration-white/20 underline-offset-4 transition-colors hover:text-brand-500 hover:decoration-brand-500/50"
-            >
-              ← Tools
-            </Link>
-            <div className="hidden h-4 w-px bg-white/10 sm:block" />
-            <div>
-              <H1 as="h1" className="mt-0 text-2xl sm:text-3xl">
-                {tool.name}
-              </H1>
-              <Caption className="mt-1">
-                ~{tool.estimatedMinutes} min · {toolCategoryLabel(tool.category)}
-              </Caption>
-            </div>
+    <div className="tool-shell" style={{ ["--tool-accent" as string]: tool.accent }}>
+      <header className="tool-shell__hero">
+        <Container className="tool-shell__hero-inner">
+          <Link href="/tools" className="tool-shell__back">
+            ← All tools
+          </Link>
+          <div className="mt-4 flex flex-wrap items-center gap-3">
+            <span className="tool-shell__badge">{toolCategoryLabels[tool.category]}</span>
+            <span className="tool-shell__badge">Free · No signup</span>
           </div>
-          <div
-            className="hidden h-2 w-2 rounded-full sm:block"
-            style={{ backgroundColor: "#2563EB" }}
-            title="Active tool"
-          />
+          <h1 className="tool-shell__title">{tool.name}</h1>
+          <p className="tool-shell__desc">{tool.description}</p>
+          <div className="tool-shell__meta">
+            <span className="tool-shell__meta-pill">⏱ ~{tool.estimatedMinutes} min</span>
+            <span className="tool-shell__meta-pill">📊 Instant results</span>
+            <span className="tool-shell__meta-pill">📄 Export PDF</span>
+            {tool.popular ? <span className="tool-shell__meta-pill">★ Popular</span> : null}
+          </div>
         </Container>
-      </div>
-      <Container className="section-py !pt-10 !pb-16">
-        <div className="grid gap-8 lg:grid-cols-12">
-          {sidebar && <aside className="lg:col-span-3">{sidebar}</aside>}
-          <main className={sidebar ? "lg:col-span-9" : "lg:col-span-12"}>{children}</main>
+      </header>
+
+      <Container>
+        <div className="tool-shell__layout">
+          <aside className="tool-aside">
+            <div className="tool-aside__card">
+              <h2 className="tool-aside__title">What you&apos;ll get</h2>
+              <ul className="tool-aside__list">
+                {outcomes.map((item) => (
+                  <li key={item} className="tool-aside__item">
+                    <span className="tool-aside__check" aria-hidden>
+                      ✓
+                    </span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {previewLabel && previewValue ? (
+              <div className="tool-aside__card">
+                <p className="tool-aside__title">Live preview</p>
+                <div className="tool-aside__preview">
+                  <p className="tool-aside__preview-label">{previewLabel}</p>
+                  <p className="tool-aside__preview-value">{previewValue}</p>
+                </div>
+              </div>
+            ) : null}
+
+            <div className="tool-aside__card">
+              <h2 className="tool-aside__title">How it works</h2>
+              <ol className="tool-aside__list">
+                <li className="tool-aside__item">
+                  <span className="tool-aside__check">1</span>
+                  Enter your business inputs
+                </li>
+                <li className="tool-aside__item">
+                  <span className="tool-aside__check">2</span>
+                  Get instant analysis
+                </li>
+                <li className="tool-aside__item">
+                  <span className="tool-aside__check">3</span>
+                  Export or book a consultation
+                </li>
+              </ol>
+            </div>
+          </aside>
+
+          <main>{children}</main>
         </div>
       </Container>
     </div>
   );
-}
-
-function toolCategoryLabel(category: ToolDefinition["category"]): string {
-  const labels: Record<ToolDefinition["category"], string> = {
-    planning: "Planning",
-    sales: "Sales",
-    technical: "Technical",
-    finance: "Finance",
-    strategy: "Strategy",
-  };
-  return labels[category] ?? category;
 }

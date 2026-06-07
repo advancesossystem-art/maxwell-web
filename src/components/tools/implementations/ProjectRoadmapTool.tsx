@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import { ToolShell } from "@/components/tools/ToolShell";
 import { ToolWizard } from "@/components/tools/ToolWizard";
 import { ExportToolbar } from "@/components/tools/ExportToolbar";
-import { MetricCard, PhaseTimeline } from "@/components/tools/ToolUI";
+import { MetricCard, PhaseTimeline, ToolSection } from "@/components/tools/ToolUI";
+import { ToolResultsLayout } from "@/components/tools/ToolLayout";
 import { FormField, inputClass, OptionCard } from "@/components/leads/LeadFormFields";
 import { getToolBySlug } from "@/lib/tools/registry";
 import { generateProjectRoadmap } from "@/lib/tools/engines";
@@ -34,33 +35,33 @@ export function ProjectRoadmapTool() {
   if (showResults && result) {
     return (
       <ToolShell tool={tool}>
-        <div id="tool-report" className="space-y-8">
-          <div className="flex flex-wrap items-start justify-between gap-4">
-            <div>
-              <h2 className="font-display text-2xl font-bold">Your project roadmap</h2>
-              <p className="mt-2 text-muted">{result.summary}</p>
-            </div>
+        <ToolResultsLayout
+          title="Your project roadmap"
+          summary={result.summary}
+          toolbar={
             <ExportToolbar
               toolSlug={TOOL_SLUG}
               toolName={tool.name}
               resultSummary={result.summary}
               resultData={{ input, result }}
             />
-          </div>
+          }
+          footer={
+            <button type="button" onClick={() => setShowResults(false)} className="text-sm font-medium text-brand-600 hover:underline">
+              ← Edit inputs
+            </button>
+          }
+        >
           <MetricCard label="Estimated timeline" value={result.totalWeeks} accent={tool.accent} />
           <PhaseTimeline phases={result.phases} />
-          <div className="rounded-2xl border border-border bg-brand-50/50 p-6">
-            <h3 className="font-display font-semibold">Recommendations</h3>
-            <ul className="mt-3 space-y-2 text-sm text-muted">
+          <ToolSection title="Recommendations">
+            <ul className="space-y-2">
               {result.recommendations.map((r) => (
                 <li key={r}>• {r}</li>
               ))}
             </ul>
-          </div>
-          <button type="button" onClick={() => setShowResults(false)} className="text-sm font-medium text-brand-600 hover:underline">
-            ← Edit inputs
-          </button>
-        </div>
+          </ToolSection>
+        </ToolResultsLayout>
       </ToolShell>
     );
   }

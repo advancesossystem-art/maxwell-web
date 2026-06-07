@@ -7,15 +7,15 @@ export function ToolRelatedLinks({ slug }: { slug: string }) {
   if (links.length === 0) return null;
 
   return (
-    <section className="rounded-2xl border border-border bg-surface-elevated p-6 print:hidden">
-      <h3 className="font-display font-semibold">Related services & tools</h3>
-      <p className="mt-1 text-sm text-muted">Continue your evaluation with these Maxwell resources.</p>
+    <section className="tool-section print:hidden">
+      <h3 className="tool-section__title">Related services & tools</h3>
+      <p className="tool-section__body">Continue your evaluation with these Maxwell resources.</p>
       <ul className="mt-4 grid gap-3 sm:grid-cols-2">
         {links.map((link) => (
           <li key={link.href}>
             <Link
               href={link.href}
-              className="group flex items-start justify-between gap-2 rounded-xl border border-border bg-surface p-4 transition-colors hover:border-brand-600/40"
+              className="group flex items-start justify-between gap-2 rounded-xl border border-[var(--v6-border)] bg-[var(--v6-bg-soft)] p-4 transition-colors hover:border-[#4f46e5]/35"
             >
               <div>
                 <span className="font-medium text-foreground group-hover:text-brand-600">{link.label}</span>
