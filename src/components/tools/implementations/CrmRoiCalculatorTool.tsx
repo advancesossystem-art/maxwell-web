@@ -17,16 +17,16 @@ import { calculateRoi } from "@/lib/tools/engines";
 import { formatINR } from "@/lib/tools/format";
 import { trackToolStart, trackToolComplete } from "@/lib/tools/analytics";
 
-const SLUG = "roi-calculator";
+const SLUG = "crm-roi-calculator";
 
-export function RoiCalculatorTool() {
+export function CrmRoiCalculatorTool() {
   const tool = getToolBySlug(SLUG)!;
   const [input, setInput] = useState({
-    monthlyProcessCost: 500000,
-    employeeCount: 25,
-    hoursPerWeekManual: 8,
-    errorRatePercent: 5,
-    automationReductionPercent: 40,
+    monthlyProcessCost: 400000,
+    employeeCount: 15,
+    hoursPerWeekManual: 10,
+    errorRatePercent: 12,
+    automationReductionPercent: 35,
   });
   const [result, setResult] = useState<ReturnType<typeof calculateRoi> | null>(null);
 
@@ -37,32 +37,24 @@ export function RoiCalculatorTool() {
   const run = useCallback(() => {
     const r = calculateRoi(input);
     setResult(r);
-    trackToolComplete(SLUG, 100, `${r.roiPercent}% ROI`);
+    trackToolComplete(SLUG, 100, `${r.roiPercent}% CRM ROI`);
   }, [input]);
 
   if (result) {
     return (
       <ToolShell tool={tool}>
-        <div id="tool-report" className="space-y-8" aria-labelledby="roi-results-heading">
+        <div id="tool-report" className="space-y-8">
           <div className="flex flex-wrap justify-between gap-4">
-            <h2 className="font-display text-2xl font-bold" id="roi-results-heading">
-              ROI analysis
-            </h2>
+            <h2 className="font-display text-2xl font-bold">CRM ROI analysis</h2>
             <ExportToolbar toolSlug={SLUG} toolName={tool.name} resultSummary={result.summary} resultData={{ input, result }} />
           </div>
           <p className="text-muted">{result.summary}</p>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <MetricCard label="Annual benefit" value={formatINR(result.totalAnnualBenefit)} accent={tool.accent} />
-            <MetricCard label="ROI" value={`${result.roiPercent}%`} sub="Year 1 vs project cost" />
-            <MetricCard label="Payback" value={`${result.paybackMonths} mo`} />
-            <MetricCard label="5-year value" value={formatINR(result.fiveYearValue)} />
+            <MetricCard label="Annual CRM benefit" value={formatINR(result.totalAnnualBenefit)} accent={tool.accent} />
+            <MetricCard label="CRM ROI (Year 1)" value={`${result.roiPercent}%`} />
+            <MetricCard label="Payback period" value={`${result.paybackMonths} mo`} />
+            <MetricCard label="5-year net value" value={formatINR(result.fiveYearValue)} />
           </div>
-          <div className="grid gap-4 sm:grid-cols-3">
-            <MetricCard label="Labor savings" value={formatINR(result.annualSavings)} />
-            <MetricCard label="Productivity" value={`${result.productivityGainHours.toLocaleString()} hrs/yr`} />
-            <MetricCard label="Error reduction" value={formatINR(result.errorReductionValue)} />
-          </div>
-          <MetricCard label="Indicative project investment" value={formatINR(result.estimatedProjectCost)} sub="For planning purposes" />
           <Button variant="secondary" onClick={() => setResult(null)}>Recalculate</Button>
           <ToolRelatedLinks slug={SLUG} />
         </div>
@@ -72,27 +64,24 @@ export function RoiCalculatorTool() {
 
   return (
     <ToolShell tool={tool}>
-      <div className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-8 space-y-5" aria-labelledby="roi-form-heading">
-        <h2 id="roi-form-heading" className="sr-only">
-          ROI calculator inputs
-        </h2>
-        <FormField label="Monthly process cost (₹)" htmlFor="cost">
+      <div className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-8 space-y-5">
+        <p className="text-sm text-muted">Model CRM ROI from faster follow-ups, pipeline visibility, and reduced lead leakage.</p>
+        <FormField label="Monthly sales ops cost (₹)" htmlFor="cost">
           <input id="cost" type="number" className={inputClass} value={input.monthlyProcessCost} onChange={(e) => setInput({ ...input, monthlyProcessCost: Number(e.target.value) })} />
         </FormField>
-        <FormField label="Employees in process" htmlFor="emp">
+        <FormField label="Sales team size" htmlFor="emp">
           <input id="emp" type="number" className={inputClass} value={input.employeeCount} onChange={(e) => setInput({ ...input, employeeCount: Number(e.target.value) })} />
         </FormField>
-        <FormField label="Manual hours per employee / week" htmlFor="hrs">
+        <FormField label="Manual admin hours/person/week" htmlFor="hrs">
           <input id="hrs" type="number" className={inputClass} value={input.hoursPerWeekManual} onChange={(e) => setInput({ ...input, hoursPerWeekManual: Number(e.target.value) })} />
         </FormField>
-        <FormField label="Error rate (%)" htmlFor="err">
+        <FormField label="Lost-lead / error rate (%)" htmlFor="err">
           <input id="err" type="number" className={inputClass} value={input.errorRatePercent} onChange={(e) => setInput({ ...input, errorRatePercent: Number(e.target.value) })} />
         </FormField>
-        <FormField label="Automation reduction target (%)" htmlFor="auto">
-          <input id="auto" type="range" min={10} max={80} value={input.automationReductionPercent} onChange={(e) => setInput({ ...input, automationReductionPercent: Number(e.target.value) })} className="w-full" />
-          <p className="text-xs text-muted mt-1">{input.automationReductionPercent}%</p>
+        <FormField label="Expected CRM efficiency gain (%)" htmlFor="auto">
+          <input id="auto" type="number" className={inputClass} value={input.automationReductionPercent} onChange={(e) => setInput({ ...input, automationReductionPercent: Number(e.target.value) })} />
         </FormField>
-        <Button onClick={run}>Calculate ROI</Button>
+        <Button onClick={run} size="lg">Calculate CRM ROI</Button>
       </div>
     </ToolShell>
   );

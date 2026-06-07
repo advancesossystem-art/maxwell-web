@@ -8,6 +8,7 @@ const ExportToolbar = dynamic(
   () => import("@/components/tools/ExportToolbar").then((m) => ({ default: m.ExportToolbar })),
   { ssr: false },
 );
+import { ToolRelatedLinks } from "@/components/tools/ToolRelatedLinks";
 import { MetricCard } from "@/components/tools/ToolUI";
 import { FormField, inputClass } from "@/components/leads/LeadFormFields";
 import { Button } from "@/components/ui/Button";
@@ -56,6 +57,7 @@ export function ErpRoiCalculatorTool() {
           </div>
           <MetricCard label="Indicative ERP investment" value={formatINR(result.estimatedProjectCost)} sub="Custom ERP — planning estimate" />
           <Button variant="secondary" onClick={() => setResult(null)}>Recalculate</Button>
+          <ToolRelatedLinks slug={SLUG} />
         </div>
       </ToolShell>
     );

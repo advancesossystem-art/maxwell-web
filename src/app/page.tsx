@@ -5,6 +5,8 @@ import { Hero } from "@/components/home/Hero";
 import { AiEntitySummary } from "@/components/seo/AiEntitySummary";
 import { HomeFAQJsonLd } from "@/components/seo/JsonLd";
 import { IndiaSeoHomeSection } from "@/components/home/IndiaSeoHomeSection";
+import { GlobalTrustBar } from "@/components/conversion/GlobalTrustBar";
+import { RiskReductionBar } from "@/components/conversion/RiskReductionBar";
 
 const HomeProblem = dynamic(() =>
   import("@/components/home/HomeProblem").then((m) => ({ default: m.HomeProblem })),
@@ -23,6 +25,9 @@ const DevelopmentProcess = dynamic(() =>
 );
 const FeaturedWork = dynamic(() =>
   import("@/components/home/FeaturedWork").then((m) => ({ default: m.FeaturedWork })),
+);
+const HomeToolsSpotlight = dynamic(() =>
+  import("@/components/home/HomeToolsSpotlight").then((m) => ({ default: m.HomeToolsSpotlight })),
 );
 const HomeTrust = dynamic(() =>
   import("@/components/home/HomeTrust").then((m) => ({ default: m.HomeTrust })),
@@ -45,12 +50,15 @@ export default function HomePage() {
       <HomeFAQJsonLd />
       <AiEntitySummary />
       <Hero />
+      <GlobalTrustBar />
+      <RiskReductionBar />
       <HomeProblem />
       <HomeSolution />
       <ServicesExperience />
-      <IndustriesShowcase />
-      <DevelopmentProcess />
       <FeaturedWork />
+      <HomeToolsSpotlight />
+      <DevelopmentProcess />
+      <IndustriesShowcase />
       <HomeTrust />
       <WhyMaxwell />
       <HomeFAQ />

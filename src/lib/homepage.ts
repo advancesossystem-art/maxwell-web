@@ -1,16 +1,17 @@
 /** Maxwell 2026 — homepage narrative (single source of truth) */
 
 export const homeHero = {
-  eyebrow: "Maxwell Electrodeal",
+  eyebrow: "Maxwell Electrodeal · India & Global Delivery",
+  headline: "Custom ERP, CRM & Software Solutions Built for Growth",
   subhead:
-    "Maxwell partners with owners and operators to design systems that automate work, unify operations, and support growth—clear scope, milestone billing, and full code ownership from ₹1L to ₹50L+.",
+    "We help manufacturers, distributors, and growing enterprises replace spreadsheets with ERP, CRM, and AI systems that deliver measurable ROI—milestone billing, full code ownership, from ₹1L to ₹50L+.",
 } as const;
 
 export const heroTrustMetrics = [
   { value: "50+", label: "Projects delivered" },
-  { value: "15+", label: "Industries served" },
+  { value: "20+", label: "Industries served" },
+  { value: "95%", label: "Client satisfaction" },
   { value: "24/7", label: "Support available" },
-  { value: "100%", label: "Ownership & security" },
 ] as const;
 
 export const businessProblems = [

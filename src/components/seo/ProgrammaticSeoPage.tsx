@@ -6,6 +6,8 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { ArrowRight } from "@/components/ui/Icons";
 import type { ProgrammaticPageData } from "@/lib/seo/programmatic/types";
+import { TrustNearCTA } from "@/components/conversion/TrustNearCTA";
+import { companyMetricDisplay } from "@/lib/company-metrics";
 import { siteConfig } from "@/lib/constants";
 
 function PageFAQJsonLd({ faqs }: { faqs: { question: string; answer: string }[] }) {
@@ -93,6 +95,35 @@ export function ProgrammaticSeoPage({ page }: { page: ProgrammaticPageData }) {
       <section className="border-b border-border py-16">
         <Container>
           <p className="max-w-3xl text-lg leading-relaxed text-muted">{page.intro}</p>
+          <TrustNearCTA variant="dark" compact className="mt-6 justify-start" />
+        </Container>
+      </section>
+
+      <section className="border-b border-border bg-[#0a0f1a] py-10">
+        <Container>
+          <p className="text-xs font-semibold uppercase tracking-wider text-brand-400">Industry insight</p>
+          <div className="mt-4 grid gap-4 sm:grid-cols-3">
+            <StatCard value="78%" label="Indian SMEs still run core ops on spreadsheets (2025)" />
+            <StatCard value={companyMetricDisplay.avgRoiTimeline} label="Average ERP payback for our clients" />
+            <StatCard value="40–60%" label="Typical manual work reduction post go-live" />
+          </div>
+        </Container>
+      </section>
+
+      <section className="border-b border-border py-8">
+        <Container>
+          <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-brand-400">Free — no obligation</p>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/get-estimate" className="rounded-lg border border-white/10 bg-white/[0.03] px-4 py-2 text-sm text-white hover:border-brand-500/40">
+              Free Project Estimate
+            </Link>
+            <Link href="/book-consultation" className="rounded-lg border border-white/10 bg-white/[0.03] px-4 py-2 text-sm text-white hover:border-brand-500/40">
+              Free Consultation
+            </Link>
+            <Link href="/tools/erp-roi-calculator" className="rounded-lg border border-white/10 bg-white/[0.03] px-4 py-2 text-sm text-white hover:border-brand-500/40">
+              Free ERP Assessment
+            </Link>
+          </div>
         </Container>
       </section>
 
@@ -194,5 +225,14 @@ export function ProgrammaticSeoPage({ page }: { page: ProgrammaticPageData }) {
         </Container>
       </section>
     </>
+  );
+}
+
+function StatCard({ value, label }: { value: string; label: string }) {
+  return (
+    <div className="rounded-xl border border-white/[0.08] bg-white/[0.03] p-4">
+      <p className="font-display text-2xl font-bold text-white">{value}</p>
+      <p className="mt-1 text-xs leading-relaxed text-slate-400">{label}</p>
+    </div>
   );
 }

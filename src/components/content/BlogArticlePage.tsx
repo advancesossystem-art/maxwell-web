@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
+import { ReadingProgressBar } from "@/components/content/ReadingProgressBar";
 import { ContentRenderer } from "@/components/content/ContentRenderer";
 import { AuthorCard } from "@/components/content/AuthorCard";
 import { ContentCard } from "@/components/content/ContentCard";
@@ -18,6 +19,7 @@ export function BlogArticlePage({ article }: { article: Article }) {
 
   return (
     <>
+      <ReadingProgressBar />
       <ArticlePageJsonLd article={article} authorName={author?.name ?? "Maxwell Team"} />
       <section className="relative overflow-hidden bg-[#030712] pb-16 pt-28 lg:pt-36">
         <Container className="relative">

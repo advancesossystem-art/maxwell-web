@@ -23,6 +23,7 @@ export interface LeadScoringInput {
   scope?: string;
   features?: string[];
   email?: string;
+  source?: string;
 }
 
 export interface LeadScoreResult {
@@ -121,6 +122,18 @@ export function calculateLeadScore(input: LeadScoringInput): LeadScoreResult {
   const featurePoints = Math.min(featureCount * 2, 10);
   breakdown.push({ factor: "Feature Detail", points: featurePoints, max: 10 });
   score += featurePoints;
+
+  const source = input.source ?? "";
+  let sourcePoints = 0;
+  if (source.startsWith("tool-") || source === "quick-estimate-widget") {
+    sourcePoints = 15;
+  } else if (source === "get-estimate" || source === "book-consultation" || source === "discovery-call") {
+    sourcePoints = 12;
+  } else if (source === "project-calculator") {
+    sourcePoints = 10;
+  }
+  breakdown.push({ factor: "Intent Source", points: sourcePoints, max: 15 });
+  score += sourcePoints;
 
   const tier: LeadTier = score >= 70 ? "hot" : score >= 45 ? "warm" : "cold";
 

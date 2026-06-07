@@ -19,7 +19,9 @@ export type ConversionEventName =
   | "calculator_use"
   | "lead_score"
   | "exit_intent_shown"
-  | "exit_intent_convert";
+  | "exit_intent_convert"
+  | "scroll_depth"
+  | "tool_complete";
 
 type EventParams = Record<string, string | number | boolean | undefined>;
 
@@ -120,4 +122,12 @@ export function trackExitIntent(action: "shown" | "convert", offer?: string): vo
     action === "shown" ? "exit_intent_shown" : "exit_intent_convert",
     { offer },
   );
+}
+
+export function trackScrollDepth(percent: 25 | 50 | 75 | 100, pagePath?: string): void {
+  pushConversionEvent("scroll_depth", { scroll_depth: percent, page_path: pagePath });
+}
+
+export function trackToolComplete(toolSlug: string, summary?: string): void {
+  pushConversionEvent("tool_complete", { tool_slug: toolSlug, result_summary: summary });
 }

@@ -127,6 +127,7 @@ export async function submitLead(raw: Record<string, unknown>): Promise<SubmitLe
     scope: data.scope,
     features: data.features,
     email: data.email,
+    source: data.source,
   });
 
   let estimate = data.estimate;

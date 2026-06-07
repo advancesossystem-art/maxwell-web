@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
 import { MobileBodyState } from "@/components/layout/MobileBodyState";
+import { StickyCTA } from "@/components/conversion/StickyCTA";
 import { isMarketingChromeRoute } from "@/lib/mobile-sticky";
 import { WHATSAPP_NUMBER } from "@/lib/leads-data";
 import { leadTrustBadges } from "@/lib/company-metrics";
@@ -10,6 +11,11 @@ import { trackCTAClick } from "@/lib/conversion-events";
 
 const ExitIntentModal = dynamic(
   () => import("@/components/leads/ExitIntentModal").then((m) => ({ default: m.ExitIntentModal })),
+  { ssr: false },
+);
+
+const QuickEstimateWidget = dynamic(
+  () => import("@/components/conversion/QuickEstimateWidget").then((m) => ({ default: m.QuickEstimateWidget })),
   { ssr: false },
 );
 
@@ -55,10 +61,12 @@ export function LeadConversionLayer() {
 
   return (
     <>
-      <MobileBodyState stickyBarActive={false} />
+      <MobileBodyState stickyBarActive={showMarketing} />
       {showMarketing ? (
         <>
           <WhatsAppFloat />
+          <StickyCTA location="global_sticky" />
+          <QuickEstimateWidget />
           <ExitIntentModal />
         </>
       ) : null}

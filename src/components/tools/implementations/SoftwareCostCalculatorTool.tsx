@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { ToolShell } from "@/components/tools/ToolShell";
 import { ToolWizard } from "@/components/tools/ToolWizard";
 import { ExportToolbar } from "@/components/tools/ExportToolbar";
+import { ToolRelatedLinks } from "@/components/tools/ToolRelatedLinks";
 import { MetricCard, BarChart } from "@/components/tools/ToolUI";
 import { FormField, inputClass, OptionCard, FeatureChip } from "@/components/leads/LeadFormFields";
 import { getToolBySlug } from "@/lib/tools/registry";
@@ -78,6 +79,7 @@ export function SoftwareCostCalculatorTool() {
               <span key={t} className="rounded-md border border-border px-3 py-1 text-xs">{t}</span>
             ))}
           </div>
+          <ToolRelatedLinks slug={SLUG} />
           <button type="button" onClick={() => setShowResults(false)} className="text-sm text-brand-600 hover:underline">← Edit</button>
         </div>
       </ToolShell>
