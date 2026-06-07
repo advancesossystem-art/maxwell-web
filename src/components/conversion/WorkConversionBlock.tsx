@@ -63,7 +63,7 @@ export function WorkConversionBlock({ project, relatedCaseStudySlug }: WorkConve
             <Caption className="font-semibold uppercase text-brand-500">Related service</Caption>
             <Link
               href={`/services/${serviceSlug}`}
-              className="mt-2 block font-display font-semibold text-white hover:text-brand-400"
+              className="mt-2 block font-display font-semibold text-[var(--v6-text)] hover:text-brand-600"
             >
               {project.projectType}
             </Link>
@@ -72,7 +72,7 @@ export function WorkConversionBlock({ project, relatedCaseStudySlug }: WorkConve
             <Caption className="font-semibold uppercase text-brand-500">Industry</Caption>
             <Link
               href={`/industries/${industrySlug}`}
-              className="mt-2 block font-display font-semibold text-white hover:text-brand-400"
+              className="mt-2 block font-display font-semibold text-[var(--v6-text)] hover:text-brand-600"
             >
               {project.industry}
             </Link>
@@ -82,14 +82,14 @@ export function WorkConversionBlock({ project, relatedCaseStudySlug }: WorkConve
             {caseSlug ? (
               <Link
                 href={`/case-studies/${caseSlug}`}
-                className="mt-2 block font-display font-semibold text-white hover:text-brand-400"
+                className="mt-2 block font-display font-semibold text-[var(--v6-text)] hover:text-brand-600"
               >
                 {CTA_LABELS.tertiary}
               </Link>
             ) : (
               <Link
                 href={CONVERSION_ROUTES.caseStudies}
-                className="mt-2 block font-display font-semibold text-white hover:text-brand-400"
+                className="mt-2 block font-display font-semibold text-[var(--v6-text)] hover:text-brand-600"
               >
                 {CTA_LABELS.tertiary}
               </Link>

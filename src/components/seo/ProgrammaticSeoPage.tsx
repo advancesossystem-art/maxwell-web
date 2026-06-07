@@ -95,7 +95,7 @@ export function ProgrammaticSeoPage({ page }: { page: ProgrammaticPageData }) {
       <section className="border-b border-border py-16">
         <Container>
           <p className="max-w-3xl text-lg leading-relaxed text-muted">{page.intro}</p>
-          <TrustNearCTA variant="dark" compact className="mt-6 justify-start" />
+          <TrustNearCTA compact className="mt-6 justify-start" />
         </Container>
       </section>
 
@@ -114,13 +114,13 @@ export function ProgrammaticSeoPage({ page }: { page: ProgrammaticPageData }) {
         <Container>
           <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-brand-400">Free — no obligation</p>
           <div className="flex flex-wrap gap-3">
-            <Link href="/get-estimate" className="rounded-lg border border-white/10 bg-white/[0.03] px-4 py-2 text-sm text-white hover:border-brand-500/40">
+            <Link href="/get-estimate" className="rounded-lg border border-[var(--v6-border)] bg-[var(--v6-bg-soft)] px-4 py-2 text-sm text-[var(--v6-text)] hover:border-brand-500/40">
               Free Project Estimate
             </Link>
-            <Link href="/book-consultation" className="rounded-lg border border-white/10 bg-white/[0.03] px-4 py-2 text-sm text-white hover:border-brand-500/40">
+            <Link href="/book-consultation" className="rounded-lg border border-[var(--v6-border)] bg-[var(--v6-bg-soft)] px-4 py-2 text-sm text-[var(--v6-text)] hover:border-brand-500/40">
               Free Consultation
             </Link>
-            <Link href="/tools/erp-roi-calculator" className="rounded-lg border border-white/10 bg-white/[0.03] px-4 py-2 text-sm text-white hover:border-brand-500/40">
+            <Link href="/tools/erp-roi-calculator" className="rounded-lg border border-[var(--v6-border)] bg-[var(--v6-bg-soft)] px-4 py-2 text-sm text-[var(--v6-text)] hover:border-brand-500/40">
               Free ERP Assessment
             </Link>
           </div>
@@ -130,12 +130,12 @@ export function ProgrammaticSeoPage({ page }: { page: ProgrammaticPageData }) {
       {page.sections.map((section) => (
         <section key={section.title} className="border-b border-border py-16">
           <Container>
-            <h2 className="font-display text-2xl font-bold text-white md:text-3xl">{section.title}</h2>
+            <h2 className="font-display text-2xl font-bold text-[var(--v6-text)] md:text-3xl">{section.title}</h2>
             <p className="mt-4 max-w-3xl leading-relaxed text-muted">{section.content}</p>
             {section.bullets && (
               <ul className="mt-6 grid gap-3 sm:grid-cols-2">
                 {section.bullets.map((b) => (
-                  <li key={b} className="flex gap-2 text-sm text-slate-300">
+                  <li key={b} className="flex gap-2 text-sm text-[var(--v6-text-secondary)]">
                     <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-500" />
                     {b}
                   </li>
@@ -148,11 +148,11 @@ export function ProgrammaticSeoPage({ page }: { page: ProgrammaticPageData }) {
 
       <section className="border-b border-border py-16">
         <Container>
-          <h2 className="font-display text-2xl font-bold text-white">Key challenges we solve</h2>
+          <h2 className="font-display text-2xl font-bold text-[var(--v6-text)]">Key challenges we solve</h2>
           <div className="mt-8 grid gap-6 md:grid-cols-3">
             {page.challenges.map((c) => (
-              <div key={c.title} className="rounded-xl border border-white/[0.08] bg-white/[0.03] p-6">
-                <h3 className="font-semibold text-white">{c.title}</h3>
+              <div key={c.title} className="v6-card rounded-xl p-6">
+                <h3 className="font-semibold text-[var(--v6-text)]">{c.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{c.description}</p>
               </div>
             ))}
@@ -162,7 +162,7 @@ export function ProgrammaticSeoPage({ page }: { page: ProgrammaticPageData }) {
 
       <section className="border-b border-border py-16">
         <Container>
-          <h2 className="font-display text-2xl font-bold text-white">Recommended approach</h2>
+          <h2 className="font-display text-2xl font-bold text-[var(--v6-text)]">Recommended approach</h2>
           <ol className="mt-6 space-y-3">
             {page.approach.map((step, i) => (
               <li key={step} className="flex gap-4 text-muted">
@@ -178,15 +178,15 @@ export function ProgrammaticSeoPage({ page }: { page: ProgrammaticPageData }) {
 
       <section className="border-b border-border py-16">
         <Container>
-          <h2 className="font-display text-2xl font-bold text-white">Related pages</h2>
+          <h2 className="font-display text-2xl font-bold text-[var(--v6-text)]">Related pages</h2>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {page.internalLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="group rounded-xl border border-white/[0.08] bg-white/[0.03] p-5 transition-colors hover:border-brand-500/40"
+                className="group v6-card rounded-xl p-5 transition-colors hover:border-brand-500/40"
               >
-                <p className="font-semibold text-white group-hover:text-brand-400">{link.label}</p>
+                <p className="font-semibold text-[var(--v6-text)] group-hover:text-brand-600">{link.label}</p>
                 {link.description && <p className="mt-1 text-sm text-muted">{link.description}</p>}
               </Link>
             ))}
@@ -196,11 +196,11 @@ export function ProgrammaticSeoPage({ page }: { page: ProgrammaticPageData }) {
 
       <section className="py-16" data-seo-speakable>
         <Container>
-          <h2 className="font-display text-2xl font-bold text-white">Frequently asked questions</h2>
+          <h2 className="font-display text-2xl font-bold text-[var(--v6-text)]">Frequently asked questions</h2>
           <dl className="mt-8 space-y-6">
             {page.faqs.map((faq) => (
               <div key={faq.question}>
-                <dt className="font-semibold text-white">{faq.question}</dt>
+                <dt className="font-semibold text-[var(--v6-text)]">{faq.question}</dt>
                 <dd className="mt-2 leading-relaxed text-muted">{faq.answer}</dd>
               </div>
             ))}

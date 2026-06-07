@@ -82,7 +82,7 @@ export function ServiceCTA({
           {serviceSlug ? (
             <Link
               href={`${CONVERSION_ROUTES.services}/${serviceSlug}`}
-              className="text-[#94A3B8] hover:text-white"
+              className="font-medium text-[var(--v6-text-secondary)] hover:text-brand-600"
             >
               All {serviceName} capabilities
             </Link>

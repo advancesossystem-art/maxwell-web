@@ -25,13 +25,13 @@ export function InlineCTA({
       interactive={false}
       padding="lg"
       className={cn(
-        "flex flex-col items-center justify-between gap-6 border-brand-600/15 bg-brand-50/5 sm:flex-row",
+        "v6-card flex flex-col items-center justify-between gap-6 border-[#4f46e5]/15 sm:flex-row",
         className,
       )}
     >
       <div className="text-center sm:text-left">
-        <p className="font-display font-semibold text-white">{title}</p>
-        <p className="mt-1 text-sm text-[#94A3B8]">{description}</p>
+        <p className="font-display font-semibold text-[var(--v6-text)]">{title}</p>
+        <p className="mt-1 text-sm text-[var(--v6-text-secondary)]">{description}</p>
         <TrustNearCTA compact className="mt-4 justify-start" />
       </div>
       <div className="flex flex-wrap justify-center gap-3">

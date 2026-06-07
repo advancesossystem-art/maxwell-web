@@ -37,8 +37,9 @@
   --muted: var(--v6-text-secondary);
   --border: var(--v6-border);
   --hairline: var(--v6-border);
-  --brand-900: var(--v6-bg);
-  --brand-800: var(--v6-bg-white);
+  /* Dark brand scale — used for emphasis text on light UI and dark section backgrounds */
+  --brand-900: #0f172a;
+  --brand-800: #1e1b4b;
   /* brand-700: emphasis text on light UI (not a background surface) */
   --brand-700: #4338ca;
   --brand-600: var(--v6-blue);
@@ -656,6 +657,38 @@ body:not(.portal-shell) .section-hero .glass-dark {
 
 /* Metric / stat cards — never white-on-white */
 body:not(.portal-shell) .card-premium .text-white {
+  color: var(--v6-text);
+}
+
+/* Hub / inline CTA cards — legacy dark-theme text on light surfaces */
+body:not(.portal-shell) .mx-hub-card:not([class*="bg-[#03"]):not([class*="bg-[#0B"]):not([class*="bg-[#030"]) {
+  border-color: var(--v6-border);
+  background: var(--v6-bg-white);
+  box-shadow: var(--v6-shadow-sm);
+}
+
+body:not(.portal-shell)
+  .mx-hub-card:not([class*="bg-[#03"]):not([class*="bg-[#0B"]):not([class*="bg-[#030"])
+  :is(p, h2, h3, a, span).text-white {
+  color: var(--v6-text);
+}
+
+body:not(.portal-shell)
+  .mx-hub-card:not([class*="bg-[#03"]):not([class*="bg-[#0B"]):not([class*="bg-[#030"])
+  .text-\[\#94A3B8\] {
+  color: var(--v6-text-secondary);
+}
+
+body:not(.portal-shell)
+  .mx-hub-card:not([class*="bg-[#03"]):not([class*="bg-[#0B"]):not([class*="bg-[#030"])
+  a.text-white:hover {
+  color: var(--v6-blue);
+}
+
+/* Light page sections — legacy dark-theme headings */
+body:not(.portal-shell)
+  section:not(.section-hero):not([class*="bg-[#0"]):not([class*="bg-[#03"]):not([class*="bg-[#030"])
+  :is(h1, h2, h3, h4, dt).text-white {
   color: var(--v6-text);
 }
 

@@ -107,7 +107,7 @@ export function ContactPageContent() {
                 Headquartered in India with remote delivery capabilities worldwide.
               </Caption>
               <Card className="mt-6" interactive={false}>
-                <p className="font-display font-semibold text-white">{siteConfig.legalName}</p>
+                <p className="font-display font-semibold text-[var(--v6-text)]">{siteConfig.legalName}</p>
                 <Caption className="mt-2 block">{siteConfig.address}</Caption>
                 <Caption className="mt-4 block">Response time: within 24 hours</Caption>
               </Card>

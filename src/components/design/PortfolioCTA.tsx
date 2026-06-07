@@ -25,10 +25,10 @@ export function PortfolioCTA({
 }: PortfolioCTAProps) {
   if (variant === "inline") {
     return (
-      <Card interactive={false} padding="lg" className="flex flex-col items-center justify-between gap-6 sm:flex-row">
+      <Card interactive={false} padding="lg" className="v6-card flex flex-col items-center justify-between gap-6 border-[#4f46e5]/15 sm:flex-row">
         <div>
-          <p className="font-display font-semibold text-white">{title}</p>
-          <p className="mt-1 text-sm text-[#94A3B8]">{description}</p>
+          <p className="font-display font-semibold text-[var(--v6-text)]">{title}</p>
+          <p className="mt-1 text-sm text-[var(--v6-text-secondary)]">{description}</p>
         </div>
         {actions ?? (
           <div className="flex flex-wrap gap-3">
