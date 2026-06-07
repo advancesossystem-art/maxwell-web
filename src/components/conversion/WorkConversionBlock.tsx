@@ -58,12 +58,12 @@ export function WorkConversionBlock({ project, relatedCaseStudySlug }: WorkConve
           location="work_conversion_block"
         />
 
-        <Card interactive={false} padding="md" className="grid gap-4 sm:grid-cols-3">
+        <Card interactive={false} padding="md" className="v6-card grid gap-4 sm:grid-cols-3">
           <div>
             <Caption className="font-semibold uppercase text-brand-500">Related service</Caption>
             <Link
               href={`/services/${serviceSlug}`}
-              className="mt-2 block font-display font-semibold text-[var(--v6-text)] hover:text-brand-600"
+              className="v6-inline-cta__title mt-2 block hover:text-brand-600"
             >
               {project.projectType}
             </Link>
@@ -72,7 +72,7 @@ export function WorkConversionBlock({ project, relatedCaseStudySlug }: WorkConve
             <Caption className="font-semibold uppercase text-brand-500">Industry</Caption>
             <Link
               href={`/industries/${industrySlug}`}
-              className="mt-2 block font-display font-semibold text-[var(--v6-text)] hover:text-brand-600"
+              className="v6-inline-cta__title mt-2 block hover:text-brand-600"
             >
               {project.industry}
             </Link>
@@ -82,14 +82,14 @@ export function WorkConversionBlock({ project, relatedCaseStudySlug }: WorkConve
             {caseSlug ? (
               <Link
                 href={`/case-studies/${caseSlug}`}
-                className="mt-2 block font-display font-semibold text-[var(--v6-text)] hover:text-brand-600"
+                className="v6-inline-cta__title mt-2 block hover:text-brand-600"
               >
                 {CTA_LABELS.tertiary}
               </Link>
             ) : (
               <Link
                 href={CONVERSION_ROUTES.caseStudies}
-                className="mt-2 block font-display font-semibold text-[var(--v6-text)] hover:text-brand-600"
+                className="v6-inline-cta__title mt-2 block hover:text-brand-600"
               >
                 {CTA_LABELS.tertiary}
               </Link>

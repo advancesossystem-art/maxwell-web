@@ -2,7 +2,6 @@ import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { ArrowRight } from "@/components/ui/Icons";
 import { H2, Lead } from "@/components/design/typography";
-import { Card } from "@/components/design/Card";
 
 const WHATSAPP = "919586868538";
 
@@ -25,10 +24,10 @@ export function PortfolioCTA({
 }: PortfolioCTAProps) {
   if (variant === "inline") {
     return (
-      <Card interactive={false} padding="lg" className="v6-card flex flex-col items-center justify-between gap-6 border-[#4f46e5]/15 sm:flex-row">
+      <div className="v6-inline-cta">
         <div>
-          <p className="font-display font-semibold text-[var(--v6-text)]">{title}</p>
-          <p className="mt-1 text-sm text-[var(--v6-text-secondary)]">{description}</p>
+          <p className="v6-inline-cta__title">{title}</p>
+          <p className="v6-inline-cta__desc">{description}</p>
         </div>
         {actions ?? (
           <div className="flex flex-wrap gap-3">
@@ -40,7 +39,7 @@ export function PortfolioCTA({
             </Button>
           </div>
         )}
-      </Card>
+      </div>
     );
   }
 

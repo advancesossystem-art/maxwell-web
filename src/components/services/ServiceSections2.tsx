@@ -88,8 +88,8 @@ export function ServiceProjects({ service }: { service: ServicePageData }) {
                   <span className="font-medium text-foreground">Challenge: </span>
                   {project.challenge}
                 </p>
-                <div className="mt-4 rounded-xl border border-brand-600/15 bg-brand-50/50 p-4">
-                  <p className="font-display text-sm font-semibold text-brand-800">{project.result}</p>
+                <div className="v6-result-bar">
+                  <p className="v6-result-bar__text">{project.result}</p>
                 </div>
                 <div className="mt-4 flex flex-wrap gap-1.5">
                   {project.tech.map((t) => (

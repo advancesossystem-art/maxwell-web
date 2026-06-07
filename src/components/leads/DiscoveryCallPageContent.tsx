@@ -81,7 +81,7 @@ export function DiscoveryCallPageContent() {
             <h2 className="font-display text-2xl font-bold">Schedule your call</h2>
             <p className="mt-2 text-muted">Choose a time that works for you</p>
             <div className="mt-10 rounded-2xl border-2 border-dashed border-brand-600/30 bg-brand-50/50 p-12">
-              <p className="font-display text-lg font-semibold text-brand-800">Calendly Integration</p>
+              <p className="v6-result-bar__text text-lg">Calendly Integration</p>
               <p className="mt-2 text-sm text-muted">
                 Connect your Calendly embed here. Replace this placeholder with your scheduling widget.
               </p>

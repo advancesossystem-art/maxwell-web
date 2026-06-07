@@ -51,7 +51,7 @@ export function ContentRenderer({ blocks }: { blocks: ContentBlock[] }) {
                 key={i}
                 className="mt-6 rounded-2xl border border-brand-600/20 bg-brand-50/50 p-6"
               >
-                {block.title && <p className="font-display font-semibold text-brand-800">{block.title}</p>}
+                {block.title && <p className="v6-result-bar__text text-base">{block.title}</p>}
                 <p className="mt-2 text-sm leading-relaxed text-muted">{block.text}</p>
               </div>
             );

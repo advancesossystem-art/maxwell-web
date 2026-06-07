@@ -69,7 +69,7 @@ export function ProcessFlowInteractive() {
               <h4 className="text-xs font-semibold uppercase tracking-wider text-brand-600">Expected Outcomes</h4>
               <div className="mt-2 flex flex-wrap gap-2">
                 {phase.outcomes.map((o) => (
-                  <span key={o} className="rounded-md bg-brand-50 px-2.5 py-1 text-xs font-medium text-brand-800">{o}</span>
+                  <span key={o} className="v6-result-bar__text rounded-md bg-brand-50 px-2.5 py-1 text-xs">{o}</span>
                 ))}
               </div>
             </div>

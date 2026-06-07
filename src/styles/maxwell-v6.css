@@ -309,6 +309,56 @@
   background: var(--v6-gradient);
 }
 
+/* Outcome / result highlight — always dark text on light tint */
+.v6-result-bar {
+  margin-top: 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(79, 70, 229, 0.15);
+  background: rgba(79, 70, 229, 0.06);
+  padding: 1rem;
+}
+
+.v6-result-bar__text {
+  font-family: var(--font-space-grotesk), var(--font-inter), system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #312e81;
+}
+
+/* Inline conversion strip on light pages */
+.v6-inline-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  border: 1px solid rgba(79, 70, 229, 0.15);
+  border-radius: var(--v6-radius-lg);
+  background: var(--v6-bg-white);
+  box-shadow: var(--v6-shadow-md);
+  padding: clamp(1.5rem, 3vw, 2rem);
+}
+
+@media (min-width: 640px) {
+  .v6-inline-cta {
+    flex-direction: row;
+  }
+}
+
+.v6-inline-cta__title {
+  font-family: var(--font-space-grotesk), var(--font-inter), system-ui, sans-serif;
+  font-weight: 600;
+  color: var(--v6-text);
+}
+
+.v6-inline-cta__desc {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--v6-text-secondary);
+}
+
 /* Trust bar */
 .v6-trust-bar {
   margin-top: 3rem;
