@@ -27,20 +27,44 @@ export function BookConsultationPageContent() {
         }
         description="Discuss scope, timeline, and investment with the people who will actually build your system—not a sales script."
         aside={
-          <div className="grid w-full gap-2.5 sm:grid-cols-2">
-            {consultationReasons.map((r) => (
-              <div key={r.title} className="v6-card h-full p-3.5 sm:p-4">
+          <div id="consultation-form" className="v6-card w-full p-5 sm:p-6 lg:sticky lg:top-24">
+            <p className="mb-4 font-display text-base font-semibold text-[var(--v6-text)]">
+              Request your consultation
+            </p>
+            <p className="mb-4 text-xs text-[var(--v6-text-secondary)]">
+              We respond within one business day to schedule your session.
+            </p>
+            <LeadContactForm source="book-consultation" submitLabel="Book Consultation" compact />
+            <div className="mt-4 flex flex-wrap gap-2 border-t border-[var(--v6-border)] pt-4">
+              <Button href="/get-estimate" variant="secondary" size="sm">
+                Get Estimate
+              </Button>
+              <Button href="/project-calculator" variant="secondary" size="sm">
+                Cost Calculator
+              </Button>
+            </div>
+          </div>
+        }
+      />
+
+      <PageSection compact tone="raised">
+        <SectionHeader
+          dense
+          eyebrow="Why book"
+          title="What you get from the session"
+          description="A working session with engineers—not a generic sales pitch."
+        />
+        <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-4">
+          {consultationReasons.map((r, i) => (
+            <FadeIn key={r.title} delay={i * 0.05}>
+              <div className="v6-card h-full p-3.5 sm:p-4">
                 <h3 className="font-display text-sm font-semibold text-[var(--v6-text)]">{r.title}</h3>
                 <p className="mt-1 text-xs leading-snug text-[var(--v6-text-secondary)]">{r.description}</p>
               </div>
-            ))}
-          </div>
-        }
-      >
-        <Button href="#consultation-form" size="lg">
-          Request consultation
-        </Button>
-      </PageHero>
+            </FadeIn>
+          ))}
+        </div>
+      </PageSection>
 
       <PageSection compact>
         <SectionHeader
@@ -94,31 +118,6 @@ export function BookConsultationPageContent() {
               </div>
             </FadeIn>
           ))}
-        </div>
-      </PageSection>
-
-      <PageSection compact id="consultation-form">
-        <div className="grid gap-6 lg:grid-cols-12 lg:items-start lg:gap-8">
-          <SectionHeader
-            dense
-            className="mb-0 lg:col-span-4"
-            title="Request your consultation"
-            description="We respond within one business day to schedule your session."
-          />
-
-          <div className="lg:col-span-8">
-            <div className="v6-card w-full p-5 sm:p-7">
-              <LeadContactForm source="book-consultation" submitLabel="Book Consultation" compact />
-            </div>
-            <div className="mt-4 flex flex-wrap gap-3">
-              <Button href="/get-estimate" variant="secondary" size="md">
-                Get Project Estimate
-              </Button>
-              <Button href="/project-calculator" variant="secondary" size="md">
-                Use Cost Calculator
-              </Button>
-            </div>
-          </div>
         </div>
       </PageSection>
     </>
