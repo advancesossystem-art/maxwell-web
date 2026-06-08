@@ -8,6 +8,8 @@ import {
   validateLeadFormFields,
   type LeadFormFieldErrors,
 } from "@/lib/form-validation";
+import { composeInternationalPhone, defaultCountryIso } from "@/lib/country-phone-codes";
+import { PhoneCountryFields } from "@/components/leads/PhoneCountryFields";
 
 type FormState = "idle" | "loading" | "success" | "error";
 
@@ -67,10 +69,15 @@ function ContactFormInner() {
       return;
     }
 
+    const phone = composeInternationalPhone(
+      raw.phoneCountry || defaultCountryIso,
+      raw.phoneLocal || raw.phone || "",
+    );
+
     const validation = validateLeadFormFields({
       name: raw.name,
       email: raw.email,
-      phone: raw.phone,
+      phone,
       company: raw.company,
       message: raw.message,
       projectType: raw.service,
@@ -192,48 +199,27 @@ function ContactFormInner() {
         </div>
       </div>
 
-      <div className="grid gap-5 sm:grid-cols-2">
-        <div>
-          <label htmlFor="company" className="mb-1.5 block text-sm font-medium">
-            Company
-          </label>
-          <input
-            id="company"
-            name="company"
-            type="text"
-            autoComplete="organization"
-            maxLength={120}
-            className={fieldInputClass(inputClass, Boolean(fieldErrors.company))}
-            placeholder="Your Company"
-          />
-          <FieldError id="company-error" message={fieldErrors.company} />
-        </div>
-        <div>
-          <label htmlFor="phone" className="mb-1.5 block text-sm font-medium">
-            Phone *
-          </label>
-          <input
-            id="phone"
-            name="phone"
-            type="tel"
-            required
-            autoComplete="tel"
-            inputMode="tel"
-            minLength={7}
-            maxLength={25}
-            aria-invalid={fieldErrors.phone ? true : undefined}
-            aria-describedby={fieldErrors.phone ? "phone-error" : undefined}
-            className={fieldInputClass(inputClass, Boolean(fieldErrors.phone))}
-            placeholder="+91 XXXXX XXXXX"
-          />
-          <FieldError id="phone-error" message={fieldErrors.phone} />
-          {!fieldErrors.phone ? (
-            <p className="mt-1 text-xs text-muted">
-              International format with country code (e.g. +91 9876543210, +1 555 123 4567)
-            </p>
-          ) : null}
-        </div>
+      <div>
+        <label htmlFor="company" className="mb-1.5 block text-sm font-medium">
+          Company
+        </label>
+        <input
+          id="company"
+          name="company"
+          type="text"
+          autoComplete="organization"
+          maxLength={120}
+          className={fieldInputClass(inputClass, Boolean(fieldErrors.company))}
+          placeholder="Your Company"
+        />
+        <FieldError id="company-error" message={fieldErrors.company} />
       </div>
+
+      <PhoneCountryFields
+        phoneError={fieldErrors.phone}
+        countryInputClassName={fieldInputClass(inputClass, false)}
+        phoneInputClassName={fieldInputClass(inputClass, Boolean(fieldErrors.phone))}
+      />
 
       <div className="grid gap-5 sm:grid-cols-2">
         <div>

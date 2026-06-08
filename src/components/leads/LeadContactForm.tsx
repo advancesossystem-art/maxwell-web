@@ -10,6 +10,8 @@ import {
   validateLeadFormFields,
   type LeadFormFieldErrors,
 } from "@/lib/form-validation";
+import { composeInternationalPhone, defaultCountryIso } from "@/lib/country-phone-codes";
+import { PhoneCountryFields } from "@/components/leads/PhoneCountryFields";
 import { cn } from "@/lib/utils";
 
 const budgetOptions = [
@@ -77,10 +79,15 @@ function LeadContactFormInner({
       return;
     }
 
+    const phone = composeInternationalPhone(
+      raw.phoneCountry || defaultCountryIso,
+      raw.phoneLocal || raw.phone || "",
+    );
+
     const validation = validateLeadFormFields({
       name: raw.name,
       email: raw.email,
-      phone: raw.phone,
+      phone,
       company: raw.company,
       message: raw.message,
       projectType: raw.projectType,
@@ -156,7 +163,7 @@ function LeadContactFormInner({
           />
         </FormField>
       </div>
-      <div className="grid gap-3.5 sm:grid-cols-2">
+      <div className="space-y-3.5">
         <FormField label="Company" htmlFor="company" error={fieldErrors.company}>
           <input
             id="company"
@@ -168,26 +175,12 @@ function LeadContactFormInner({
             placeholder="Your Company"
           />
         </FormField>
-        <FormField
-          label="Phone"
-          htmlFor="phone"
-          required
-          error={fieldErrors.phone}
-          hint="International format with country code (e.g. +91 9876543210, +1 555 123 4567, +44 7911 123456)"
-        >
-          <input
-            id="phone"
-            name="phone"
-            type="tel"
-            required
-            autoComplete="tel"
-            inputMode="tel"
-            minLength={7}
-            maxLength={25}
-            className={ic(fieldErrors.phone)}
-            placeholder="+91 XXXXX XXXXX"
-          />
-        </FormField>
+        <PhoneCountryFields
+          phoneError={fieldErrors.phone}
+          countryInputClassName={ic(false)}
+          phoneInputClassName={ic(fieldErrors.phone)}
+          compact={compact}
+        />
       </div>
       <div className="grid gap-3.5 sm:grid-cols-2">
         <FormField label="Service Needed" htmlFor="service" required error={fieldErrors.projectType}>
