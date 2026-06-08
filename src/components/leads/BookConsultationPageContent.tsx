@@ -29,7 +29,7 @@ export function BookConsultationPageContent() {
         aside={
           <div
             id="consultation-form"
-            className="v6-card flex w-full max-h-[min(85vh,720px)] flex-col overflow-hidden lg:sticky lg:top-24"
+            className="v6-card flex w-full flex-col lg:sticky lg:top-24"
           >
             <div className="shrink-0 border-b border-[var(--v6-border)] p-5 sm:p-6 sm:pb-4">
               <p className="font-display text-base font-semibold text-[var(--v6-text)]">
@@ -39,7 +39,7 @@ export function BookConsultationPageContent() {
                 We respond within one business day to schedule your session.
               </p>
             </div>
-            <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-5 sm:p-6 sm:pt-4 [scrollbar-gutter:stable]">
+            <div className="flex-1 p-5 sm:p-6 sm:pt-4">
               <LeadContactForm source="book-consultation" submitLabel="Book Consultation" compact />
             </div>
             <div className="shrink-0 flex flex-wrap gap-2 border-t border-[var(--v6-border)] p-5 sm:p-6 sm:pt-4">
