@@ -14,6 +14,7 @@ import {
   ServiceFAQ,
 } from "@/components/services/ServiceSections2";
 import { ServiceCTA, ServiceCTAStrip } from "@/components/services/ServiceCTA";
+import { RecommendedServicesBlock } from "@/components/engagement/RecommendedServicesBlock";
 import { ServicePageJsonLd } from "@/components/seo/JsonLd";
 import type { ServicePageData } from "@/lib/services-data";
 
@@ -32,6 +33,7 @@ export function ServiceLandingPage({ service }: { service: ServicePageData }) {
       <ServiceWhy service={service} />
       <ServiceFAQ service={service} />
       <Container>
+        <RecommendedServicesBlock serviceSlug={service.slug} />
         <ServiceCTA serviceName={service.title} serviceSlug={service.slug} />
       </Container>
       <ServiceCTAStrip serviceName={service.title} />

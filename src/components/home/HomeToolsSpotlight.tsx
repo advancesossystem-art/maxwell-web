@@ -25,9 +25,9 @@ export function HomeToolsSpotlight() {
     <HomeSection tone="elevated" aria-label="Free assessment tools">
       <FadeIn>
         <HomeSectionIntro
-          eyebrow="Free tools"
+          eyebrow="ROI & value"
           title="Calculate ROI before you commit"
-          description="Ten self-serve calculators and generators used by CTOs and operations heads to build the business case—then talk to our team for a fixed-scope quote."
+          description="Interactive calculators and assessment tools—ERP ROI, software cost, project timeline, and CRM payback. Visitors love seeing numbers before vendor calls."
         />
       </FadeIn>
       <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">

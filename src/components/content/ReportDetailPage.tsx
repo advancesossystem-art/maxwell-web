@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { ContentRenderer } from "@/components/content/ContentRenderer";
 import { NewsletterSignup } from "@/components/content/NewsletterSignup";
+import { RelatedContentRail } from "@/components/content/RelatedContentRail";
 import { ContentPageJsonLd } from "@/components/seo/JsonLd";
 import { formatPublishDate } from "@/lib/content/utils";
 import type { Report } from "@/lib/content/schema";
@@ -60,6 +61,7 @@ export function ReportDetailPage({ report }: { report: Report }) {
               </aside>
             )}
           </div>
+          <RelatedContentRail slug={report.slug} type="report" title="Related reports & authority content" />
         </Container>
       </section>
     </>

@@ -36,6 +36,16 @@ export const companySizes = [
   "200+ employees",
 ] as const;
 
+export const leadUserCounts = [
+  "1–10 users",
+  "11–30 users",
+  "31–75 users",
+  "76–150 users",
+  "150+ users",
+] as const;
+
+export type LeadUserCount = (typeof leadUserCounts)[number];
+
 export type LeadProjectType = (typeof leadProjectTypes)[number];
 export type LeadIndustry = (typeof leadIndustries)[number];
 export type LeadScope = (typeof leadScopes)[number];

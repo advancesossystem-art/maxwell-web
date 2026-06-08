@@ -9,7 +9,7 @@ export function GlobalTrustBar() {
   return (
     <section className="border-y border-[var(--v6-border)] bg-[#f8fafc]" aria-label="Company trust metrics">
       <div className="v6-container py-5">
-        <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+        <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
           {items.map((item) => (
             <li key={item.label} className="text-center sm:text-left">
               <p className="font-display text-2xl font-bold text-[#0f172a]">{item.value}</p>

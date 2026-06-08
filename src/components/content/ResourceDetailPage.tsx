@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { ContentRenderer } from "@/components/content/ContentRenderer";
 import { NewsletterSignup } from "@/components/content/NewsletterSignup";
+import { RelatedContentRail } from "@/components/content/RelatedContentRail";
 import { ContentPageJsonLd } from "@/components/seo/JsonLd";
 import type { Resource } from "@/lib/content/schema";
 
@@ -55,6 +56,7 @@ export function ResourceDetailPage({ resource }: { resource: Resource }) {
               />
             </div>
           </div>
+          <RelatedContentRail slug={resource.slug} type="resource" title="Related resources & guides" />
         </Container>
       </section>
     </>

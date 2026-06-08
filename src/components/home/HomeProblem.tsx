@@ -12,9 +12,9 @@ export function HomeProblem() {
           <HomeSectionIntro
             align="left"
             wideTitle
-            eyebrow="The challenge"
-            title="Growth exposes what disconnected operations cannot carry"
-            description="If this sounds like your business, the answer is usually better systems—not more headcount."
+            eyebrow="Sound familiar?"
+            title="Facing these business challenges?"
+            description="If any of these describe your operations, you are not alone—and spreadsheets are not the long-term answer."
           />
         </FadeIn>
 

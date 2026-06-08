@@ -100,3 +100,28 @@ export const testimonials: TestimonialRecord[] = [
     verified: true,
   },
 ];
+
+/** Anonymized success story cards for homepage social proof */
+export const successStories = [
+  {
+    title: "Chemical batch ERP",
+    industry: "Chemical",
+    challenge: "Batch traceability and MSDS compliance tracked in spreadsheets",
+    result: "99.5% batch record accuracy · audit-ready in 48 hours",
+    href: "/case-studies/chemical-industry-erp",
+  },
+  {
+    title: "Manufacturing CRM rollout",
+    industry: "Manufacturing",
+    challenge: "Field sales and distributor follow-ups lost in WhatsApp threads",
+    result: "28% pipeline conversion lift · 40% faster quote turnaround",
+    href: "/case-studies/manufacturing-crm",
+  },
+  {
+    title: "Inventory automation",
+    industry: "Distribution",
+    challenge: "Multi-warehouse stock mismatches causing write-offs and delays",
+    result: "96% inventory accuracy · ₹8L annual waste reduction",
+    href: "/case-studies/inventory-automation",
+  },
+] as const;

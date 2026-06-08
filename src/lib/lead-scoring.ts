@@ -156,6 +156,7 @@ export type EstimateFormData = {
   projectType: LeadProjectType;
   industry: LeadIndustry;
   scope: string;
+  userCount: string;
   features: string[];
   timeline: LeadTimeline;
   budget: LeadBudget;

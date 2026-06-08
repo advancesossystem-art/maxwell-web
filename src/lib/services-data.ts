@@ -992,10 +992,14 @@ export const servicesData: Record<ServiceSlug, ServicePageData> = {
   },
 };
 
+import { expandServiceFaqs } from "./service-faq-expansion";
+
 export function getServiceBySlug(slug: string): ServicePageData | undefined {
-  return servicesData[slug as ServiceSlug];
+  const service = servicesData[slug as ServiceSlug];
+  if (!service) return undefined;
+  return { ...service, faqs: expandServiceFaqs(slug, service.faqs) };
 }
 
 export function getAllServices(): ServicePageData[] {
-  return serviceSlugs.map((slug) => servicesData[slug]);
+  return serviceSlugs.map((slug) => getServiceBySlug(slug)!);
 }

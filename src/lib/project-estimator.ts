@@ -6,6 +6,7 @@ export interface ProjectEstimateInput {
   scope?: LeadScope | string;
   features?: string[];
   timeline?: LeadTimeline | string;
+  userCount?: string;
 }
 
 export interface ProjectEstimateResult {
@@ -15,6 +16,7 @@ export interface ProjectEstimateResult {
   technologies: string[];
   complexityScore: number;
   complexityLabel: string;
+  suggestedSolution: string;
   summary: string;
 }
 
@@ -53,6 +55,24 @@ const TECH_BY_TYPE: Record<string, string[]> = {
   "Custom Software": ["React", "Node.js", "PostgreSQL", "Docker", "AWS"],
 };
 
+const SUGGESTED_SOLUTION: Record<string, string> = {
+  Website: "SEO-optimized Next.js marketing site with CMS and lead capture",
+  "Mobile App": "Cross-platform mobile app with offline sync and push notifications",
+  ERP: "Custom ERP with inventory, production, Tally/GST integration, and dashboards",
+  CRM: "Custom CRM with pipeline automation, field mobile app, and ERP sync",
+  AI: "Practical AI module—forecasting, document extraction, or vision—embedded in ops",
+  SaaS: "Multi-tenant SaaS platform with subscription billing and admin console",
+  "Custom Software": "Workflow automation platform tailored to your operational processes",
+};
+
+const USER_COUNT_MULTIPLIER: Record<string, number> = {
+  "1–10 users": 0.85,
+  "11–30 users": 1,
+  "31–75 users": 1.15,
+  "76–150 users": 1.35,
+  "150+ users": 1.6,
+};
+
 const TEAM_BY_SCOPE: Record<string, string> = {
   Small: "2–3 specialists",
   Medium: "4–5 engineers",
@@ -84,8 +104,10 @@ export function calculateProjectEstimate(input: ProjectEstimateInput): ProjectEs
   const timelineMul = TIMELINE_MULTIPLIER[timeline] ?? 1;
   const featureMul = 1 + Math.min(features.length * 0.05, 0.35);
 
-  const min = Math.round(base.min * scopeMul * timelineMul * featureMul);
-  const max = Math.round(base.max * scopeMul * timelineMul * featureMul);
+  const userMul = USER_COUNT_MULTIPLIER[input.userCount ?? "11–30 users"] ?? 1;
+
+  const min = Math.round(base.min * scopeMul * timelineMul * featureMul * userMul);
+  const max = Math.round(base.max * scopeMul * timelineMul * featureMul * userMul);
 
   const weeks = WEEKS_BY_SCOPE[scope] ?? WEEKS_BY_SCOPE.Medium;
   const timelineAdj = timeline === "ASAP" ? 0.85 : timeline === "1 Month" ? 0.9 : 1;
@@ -97,12 +119,14 @@ export function calculateProjectEstimate(input: ProjectEstimateInput): ProjectEs
   complexityScore += Math.min(features.length * 3, 25);
   if (["ERP", "AI", "SaaS"].includes(type)) complexityScore += 15;
   if (input.industry && input.industry !== "Other") complexityScore += 5;
+  if (input.userCount && input.userCount.includes("150+")) complexityScore += 10;
   complexityScore = Math.min(Math.round(complexityScore), 100);
 
   const complexityLabel =
     complexityScore >= 75 ? "High Complexity" : complexityScore >= 50 ? "Medium Complexity" : "Standard Complexity";
 
   const technologies = TECH_BY_TYPE[type] ?? TECH_BY_TYPE["Custom Software"];
+  const suggestedSolution = SUGGESTED_SOLUTION[type] ?? SUGGESTED_SOLUTION["Custom Software"];
 
   const summary = `Based on a ${scope.toLowerCase()} ${type.toLowerCase()} project with ${features.length} selected features, we estimate ${formatINR(min)}–${formatINR(max)} over ${devMin}–${devMax} weeks with a ${TEAM_BY_SCOPE[scope] ?? "4–5 engineers"}. Recommended stack: ${technologies.slice(0, 3).join(", ")}.`;
 
@@ -113,6 +137,7 @@ export function calculateProjectEstimate(input: ProjectEstimateInput): ProjectEs
     technologies,
     complexityScore,
     complexityLabel,
+    suggestedSolution,
     summary,
   };
 }

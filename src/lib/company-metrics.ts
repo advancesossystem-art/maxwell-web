@@ -46,18 +46,23 @@ export type TrustStripItem = {
   description?: string;
 };
 
-/** Default trust strip — Projects, Industries, Satisfaction, Support, Delivery */
+/** Default trust strip — instant trust below hero */
 export function getTrustStripItems(): TrustStripItem[] {
   return [
     {
       value: companyMetricDisplay.projectsCompleted,
-      label: "Projects Completed",
-      description: "Documented enterprise deliveries",
+      label: "Projects Delivered",
+      description: "ERP, CRM, AI & custom software",
     },
     {
       value: companyMetricDisplay.industriesServed,
       label: "Industries Served",
-      description: "Manufacturing, healthcare, logistics & more",
+      description: "Manufacturing, pharma, logistics & more",
+    },
+    {
+      value: companyMetricDisplay.yearsInBusiness,
+      label: "Years of Experience",
+      description: "Enterprise delivery since 2018",
     },
     {
       value: companyMetricDisplay.satisfactionPercent,
@@ -65,14 +70,14 @@ export function getTrustStripItems(): TrustStripItem[] {
       description: `Post-delivery surveys (${companyMetricDisplay.satisfaction})`,
     },
     {
-      value: companyMetricDisplay.supportResponse,
-      label: "Support Response",
-      description: `Business hours · ${companyMetricDisplay.supportCoverage} critical coverage`,
+      value: companyMetricDisplay.technologiesUsed,
+      label: "Technologies Used",
+      description: "React, Node.js, AWS, Flutter & more",
     },
     {
-      value: companyMetricDisplay.deliverySuccess,
-      label: "Delivery Success",
-      description: "On-time milestone completion",
+      value: companyMetricDisplay.supportResponse,
+      label: "Response Time",
+      description: `Avg. business-hours reply · ${companyMetricDisplay.supportCoverage} support`,
     },
   ];
 }

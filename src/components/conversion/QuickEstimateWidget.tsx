@@ -66,7 +66,7 @@ export function QuickEstimateWidget({ stickyBarDismissed = false }: { stickyBarD
   const openWidget = () => {
     setOpen(true);
     trackFormStart("quick-estimate-widget");
-    trackCTAClick("Instant Estimate", "#quick-estimate", "floating_widget");
+    trackCTAClick(CTA_LABELS.instantEstimate, "#quick-estimate", "floating_widget");
   };
 
   return (
@@ -81,9 +81,9 @@ export function QuickEstimateWidget({ stickyBarDismissed = false }: { stickyBarD
             "left-4 lg:bottom-8 lg:left-8",
             stickyBarDismissed ? "bottom-4 lg:bottom-8" : "bottom-[4.5rem] lg:bottom-8",
           )}
-          aria-label="Get instant project estimate"
+          aria-label={CTA_LABELS.instantEstimate}
         >
-          ⚡ Instant Estimate
+          ⚡ {CTA_LABELS.instantEstimate}
         </button>
       ) : null}
 

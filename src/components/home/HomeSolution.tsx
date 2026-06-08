@@ -15,8 +15,8 @@ export function HomeSolution() {
               align="left"
               wideTitle
               eyebrow="The transformation"
-              title="From friction to flow"
-              description="Maxwell maps how your business runs today, then builds systems that remove bottlenecks—not slides about them."
+              title="From friction to measurable flow"
+              description="Maxwell maps how your business runs today, then builds ERP, CRM, AI, and automation that remove bottlenecks—not slide decks about them."
             />
           </FadeIn>
 

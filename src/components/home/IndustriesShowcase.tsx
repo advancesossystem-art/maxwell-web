@@ -9,13 +9,13 @@ export function IndustriesShowcase() {
     <section className="v6-section v6-section--white" aria-label="Industries">
       <div className="v6-container">
         <FadeIn>
-          <p className="v6-eyebrow-line v6-eyebrow">Industries</p>
+          <p className="v6-eyebrow-line v6-eyebrow">Industries we serve</p>
           <h2 className="v6-section-title v6-section-title--wide mt-4 text-balance">
-            Where complex operations need a steady partner
+            Deep expertise across India&apos;s core industrial sectors
           </h2>
           <p className="v6-lead mt-4 max-w-3xl">
-            We deliver for manufacturing, healthcare, logistics, and more—always anchored in measurable
-            outcomes.
+            From manufacturing plants in Gujarat to distribution networks nationwide—we build ERP, CRM, and
+            custom software tuned to your industry&apos;s compliance and workflows.
           </p>
         </FadeIn>
 
@@ -23,7 +23,7 @@ export function IndustriesShowcase() {
           {homepageIndustries.map((industry) => (
             <StaggerItem key={industry.slug} className="v6-bento-item">
               <Link
-                href={`/industries/${industry.slug}`}
+                href={industry.href}
                 className="group flex h-full flex-col"
               >
                 <div

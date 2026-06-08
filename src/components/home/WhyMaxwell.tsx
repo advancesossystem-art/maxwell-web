@@ -14,17 +14,22 @@ export function WhyMaxwell() {
           align="left"
           wideTitle
           eyebrow="Why Maxwell"
-          title="Built for leaders who need a partner, not a vendor"
-          description="Compared to freelancers, small agencies, and traditional vendors—here is what changes when you work with us."
+          title="Why businesses choose Maxwell"
+          description="Not another generic agency—a business technology partner with industry depth, transparent delivery, and long-term support."
         />
       </FadeIn>
 
-      <ul className="mt-14 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <ul className="mt-14 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         {whyMaxwellPillars.map((item, i) => (
           <FadeIn key={item.title} delay={i * 0.05}>
             <li className="v6-card h-full p-6 sm:p-7">
               <p className="font-display text-lg font-semibold text-[var(--v6-text)]">{item.title}</p>
               <p className="mt-2 text-sm leading-relaxed text-[var(--v6-text-secondary)]">{item.description}</p>
+              {"benefit" in item && item.benefit ? (
+                <p className="mt-4 rounded-lg bg-[#f8fafc] px-3 py-2 text-xs font-semibold text-[#4f46e5]">
+                  {item.benefit}
+                </p>
+              ) : null}
             </li>
           </FadeIn>
         ))}

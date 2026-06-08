@@ -3,6 +3,11 @@
 import dynamic from "next/dynamic";
 import { MotionProvider } from "@/components/motion/MotionProvider";
 
+const RecentlyViewedTracker = dynamic(
+  () => import("@/components/engagement/RecentlyViewed").then((m) => ({ default: m.RecentlyViewedTracker })),
+  { ssr: false },
+);
+
 const SmoothScrollProvider = dynamic(
   () =>
     import("@/components/providers/SmoothScrollProvider").then((m) => ({
@@ -32,6 +37,7 @@ export function DeferredClientChrome({ children }: { children: React.ReactNode }
     <MotionProvider>
       <SmoothScrollProvider>
         <LeadConversionLayer />
+        <RecentlyViewedTracker />
         {children}
         <CookieConsent />
       </SmoothScrollProvider>

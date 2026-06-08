@@ -50,7 +50,7 @@ export function StickyCTA({ context, location = "sticky_bar", className, dismiss
   return (
     <div
       className={cn(
-        "mobile-fixed-chrome fixed bottom-0 left-0 right-0 z-40 border-t border-white/10 bg-[#030b1f]/95 px-3 py-3 backdrop-blur-md sm:px-4 lg:py-2.5",
+        "mobile-fixed-chrome fixed bottom-0 left-0 right-0 z-40 border-t border-[var(--v6-border)] bg-white/95 px-3 py-3 shadow-[0_-4px_24px_rgba(15,23,42,0.08)] backdrop-blur-md sm:px-4 lg:py-2.5",
         className,
       )}
       role="region"
@@ -64,21 +64,21 @@ export function StickyCTA({ context, location = "sticky_bar", className, dismiss
             onClick={() => trackCTAClick(CTA_LABELS.secondary, estHref, location)}
             className="v6-btn v6-btn-primary min-w-0 flex-1 text-center text-sm sm:flex-none sm:px-6"
           >
-            Get Cost Estimate
+            {CTA_LABELS.secondary}
           </Link>
           <Link
             href={consultHref}
-            onClick={() => trackCTAClick(CTA_LABELS.primary, consultHref, location)}
-            className="v6-btn v6-btn-secondary min-w-0 flex-1 border-white/20 text-sm text-white sm:flex-none sm:px-6"
+            onClick={() => trackCTAClick(CTA_LABELS.strategyCall, consultHref, location)}
+            className="v6-btn v6-btn-secondary min-w-0 flex-1 text-sm sm:flex-none sm:px-6"
           >
-            Book Consultation
+            {CTA_LABELS.strategyCall}
           </Link>
         </div>
         {onDismiss ? (
           <button
             type="button"
             onClick={onDismiss}
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/15 text-white/70 transition-colors hover:border-white/30 hover:bg-white/10 hover:text-white"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[var(--v6-border)] text-[var(--v6-text-muted)] transition-colors hover:border-[#4f46e5]/30 hover:bg-[#f8fafc] hover:text-[var(--v6-text)]"
             aria-label="Close quick actions bar"
           >
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden>

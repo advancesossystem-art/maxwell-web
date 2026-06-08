@@ -5,7 +5,7 @@ import { PageSection, SectionHeader } from "@/components/design/PageSection";
 import { CompanyCTA } from "@/components/company/CompanyCTA";
 import { CompanyPageHero } from "@/components/company/CompanyPageHero";
 import { TeamCard, HiringBanner } from "@/components/company/TeamCard";
-import { teamMembers, teamDepartments, teamDepartmentHighlights } from "@/lib/company-data";
+import { teamMembers, teamDepartments, teamDepartmentHighlights, companyStory } from "@/lib/company-data";
 import type { TeamDepartment } from "@/lib/company-data";
 import { FilterPill } from "@/components/design/FilterPill";
 import { AccentGradient, H3, Text } from "@/components/design/typography";
@@ -31,6 +31,23 @@ export function TeamPageContent() {
         description={`${companyMetricDisplay.expertEngineers} engineers, designers, and project leaders with documented enterprise delivery experience.`}
         below={<TrustStrip compact />}
       />
+
+      <PageSection tone="elevated">
+        <SectionHeader title="Founder & leadership" description="Accountability starts at the top." />
+        <Card interactive={false} padding="lg" className="max-w-3xl">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-start">
+            <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-600 to-brand-800 font-display text-2xl font-bold text-white">
+              {teamMembers[0].initials}
+            </div>
+            <div>
+              <p className="font-display text-xl font-semibold text-white">{teamMembers[0].name}</p>
+              <p className="text-sm text-brand-400">{teamMembers[0].role}</p>
+              <Text className="mt-3">{teamMembers[0].bio}</Text>
+              <Text className="mt-4 text-sm">{companyStory.mission}</Text>
+            </div>
+          </div>
+        </Card>
+      </PageSection>
 
       <PageSection tone="elevated">
         <SectionHeader title="Practice leads" description="Accountability by discipline—not a single generic delivery pool." />

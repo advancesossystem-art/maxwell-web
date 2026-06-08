@@ -1,39 +1,84 @@
 /** Maxwell 2026 — homepage narrative (single source of truth) */
 
 export const homeHero = {
-  eyebrow: "Maxwell Electrodeal · India & Global Delivery",
-  headline: "Custom ERP, CRM & Software Solutions Built for Growth",
+  eyebrow: "Maxwell Electrodeal · Business Technology Partner",
+  headlineLine1: "You Have an Idea.",
+  headlineLine2: "We Build It.",
   subhead:
-    "We help manufacturers, distributors, and growing enterprises replace spreadsheets with ERP, CRM, and AI systems that deliver measurable ROI—milestone billing, full code ownership, from ₹1L to ₹50L+.",
+    "Custom ERP, CRM, AI, Automation and Software Solutions designed to help manufacturers, enterprises and growing businesses streamline operations, increase efficiency and accelerate growth.",
 } as const;
+
+export const heroServiceBadges = [
+  { label: "ERP", href: "/services/erp-development" },
+  { label: "CRM", href: "/services/crm-development" },
+  { label: "AI", href: "/services/ai-solutions" },
+  { label: "Automation", href: "/services/custom-software-development" },
+  { label: "Mobile Apps", href: "/services/mobile-app-development" },
+  { label: "Custom Software", href: "/services/custom-software-development" },
+] as const;
 
 export const heroTrustMetrics = [
   { value: "50+", label: "Projects delivered" },
-  { value: "20+", label: "Industries served" },
+  { value: "15+", label: "Industries served" },
   { value: "95%", label: "Client satisfaction" },
-  { value: "24/7", label: "Support available" },
+  { value: "<4hr", label: "Response time" },
 ] as const;
 
 export const businessProblems = [
+  {
+    title: "Manual operations",
+    description: "Critical work still depends on phone calls, paper forms, and people re-keying the same data.",
+  },
+  {
+    title: "Spreadsheet chaos",
+    description: "Version conflicts, broken formulas, and no single source of truth across teams.",
+  },
+  {
+    title: "Inventory errors",
+    description: "Stock mismatches cause write-offs, delayed orders, and lost customer trust.",
+  },
+  {
+    title: "Poor sales tracking",
+    description: "Leads fall through cracks when follow-ups live in personal inboxes and WhatsApp threads.",
+  },
   {
     title: "Disconnected systems",
     description: "Sales, operations, and finance run on tools that never share the same truth.",
   },
   {
-    title: "Manual operations",
-    description: "Your best people spend hours on spreadsheets, calls, and duplicate entry.",
+    title: "Lack of visibility",
+    description: "Leaders decide without live insight into inventory, pipeline, or delivery status.",
   },
   {
-    title: "Slow workflows",
-    description: "Approvals, reporting, and customer updates take days when they should take minutes.",
+    title: "Slow decision making",
+    description: "Reports take days to compile—by then the window to act has already closed.",
+  },
+] as const;
+
+export const problemSolutionMap = [
+  {
+    problem: "Inventory errors & stock chaos",
+    solution: "ERP Solution",
+    description: "Real-time inventory, production planning, and Tally/GST integration.",
+    href: "/services/erp-development",
   },
   {
-    title: "No real visibility",
-    description: "Leaders decide without live insight into inventory, pipeline, or delivery.",
+    problem: "Poor customer & sales tracking",
+    solution: "CRM Solution",
+    description: "Pipeline clarity, automated follow-ups, and field team visibility.",
+    href: "/services/crm-development",
   },
   {
-    title: "Growth bottlenecks",
-    description: "Every new customer or location exposes gaps in process and accountability.",
+    problem: "Manual processes & spreadsheet work",
+    solution: "Automation Solution",
+    description: "Workflow automation that removes repetitive steps your team dreads.",
+    href: "/services/custom-software-development",
+  },
+  {
+    problem: "Lack of insights & forecasting gaps",
+    solution: "AI Solution",
+    description: "Practical AI for demand forecasting, document extraction, and exception alerts.",
+    href: "/services/ai-solutions",
   },
 ] as const;
 
@@ -137,66 +182,167 @@ export const homepageIndustries = [
   {
     slug: "manufacturing",
     title: "Manufacturing",
-    outcome: "Production and inventory visibility across every facility.",
+    outcome: "Production, inventory, and shop-floor visibility across every facility.",
+    href: "/industries/manufacturing",
     icon: "factory",
   },
   {
-    slug: "healthcare",
-    title: "Healthcare",
-    outcome: "Patient access and clinic operations without cutting corners on compliance.",
+    slug: "chemical",
+    title: "Chemical",
+    outcome: "Batch traceability, MSDS compliance, and reactor scheduling in one system.",
+    href: "/blog/erp-for-chemical-india",
+    icon: "factory",
+  },
+  {
+    slug: "textile",
+    title: "Textile",
+    outcome: "Fabric inventory, job-work tracking, and seasonal order management.",
+    href: "/blog/erp-for-textile-india",
+    icon: "factory",
+  },
+  {
+    slug: "pharma",
+    title: "Pharma",
+    outcome: "GMP batch records, expiry tracking, and audit-ready documentation.",
+    href: "/blog/erp-for-pharma-india",
     icon: "health",
   },
   {
-    slug: "education",
-    title: "Education",
-    outcome: "Learning, administration, and communication on one platform.",
-    icon: "education",
-  },
-  {
-    slug: "logistics",
-    title: "Logistics",
-    outcome: "Fleet, routes, and delivery status your clients can rely on.",
-    icon: "logistics",
+    slug: "fmcg",
+    title: "Distribution",
+    outcome: "Route sales, distributor claims, and multi-location inventory control.",
+    href: "/blog/erp-for-fmcg-india",
+    icon: "retail",
   },
   {
     slug: "retail",
     title: "Retail",
-    outcome: "Inventory and orders that scale across stores and online.",
+    outcome: "POS reconciliation, stock-outs prevention, and omnichannel orders.",
+    href: "/industries/retail",
     icon: "retail",
   },
   {
-    slug: "construction",
-    title: "Construction",
-    outcome: "Site reporting and project control for teams in the field.",
-    icon: "construction",
+    slug: "logistics",
+    title: "Logistics",
+    outcome: "Fleet, dispatch, POD reconciliation, and warehouse slotting.",
+    href: "/industries/logistics",
+    icon: "logistics",
   },
-] as const;
-
-export const developmentProcess = [
-  { step: "01", title: "Discover", description: "Your goals, users, constraints, and what success looks like." },
-  { step: "02", title: "Plan", description: "Phased timeline, investment, and architecture you can defend." },
-  { step: "03", title: "Design", description: "Flows and interfaces aligned to how people work today." },
-  { step: "04", title: "Build", description: "Weekly demos and production-ready code—not slide decks." },
-  { step: "05", title: "Deploy", description: "Launch, training, and a clean handoff you control." },
-  { step: "06", title: "Support", description: "Maintenance, monitoring, and the next phase of growth." },
+  {
+    slug: "automotive",
+    title: "Engineering",
+    outcome: "OEM delivery schedules, tool tracking, and supplier quality audits.",
+    href: "/blog/erp-for-automotive-india",
+    icon: "factory",
+  },
 ] as const;
 
 export const whyMaxwellPillars = [
   {
-    title: "You talk to the people building",
-    description: "Direct access to project leads and engineers—no layers of account managers.",
+    title: "Industry-first approach",
+    description: "We start with shop-floor visits, field ride-alongs, and process mapping—not wireframes.",
+    benefit: "Software that matches how your team actually works, so adoption sticks.",
   },
   {
-    title: "Scope you can see and approve",
-    description: "Written milestones, weekly demos, and billing tied to delivered value.",
+    title: "Business understanding before development",
+    description: "Discovery quantifies pain in hours saved, error rates, and cash leakage before a line of code.",
+    benefit: "Fixed-scope quotes tied to measurable ROI—not hourly billing surprises.",
   },
   {
-    title: "You own what we build",
-    description: "Full source, designs, and IP transfer when the engagement completes.",
+    title: "ERP, CRM & AI expertise",
+    description: "Dedicated practice areas for operations, sales, and practical AI—not generalist freelancers.",
+    benefit: "Faster go-live with Tally/GST integration, pipeline automation, and production-ready AI.",
   },
   {
-    title: "Partnership after launch",
-    description: "We stay for maintenance, scaling, and the roadmap that follows go-live.",
+    title: "Scalable architecture",
+    description: "API-first systems on React, Node.js, PostgreSQL, and AWS—built for multi-plant growth.",
+    benefit: "Add users, locations, and modules without rebuilding from scratch.",
+  },
+  {
+    title: "Dedicated support",
+    description: "Named post-go-live SLA, hypercare, and monitoring—not a ticket black hole.",
+    benefit: "Issues resolved in hours, not weeks—critical when operations depend on your system.",
+  },
+  {
+    title: "Long-term technology partnership",
+    description: "98% client retention. We maintain, scale, and roadmap what we build—you own 100% of the code.",
+    benefit: "One partner from MVP through enterprise scale instead of vendor churn.",
+  },
+] as const;
+
+export const trustProofItems = [
+  {
+    label: "Manufacturing, Chemical, Textile & Pharma expertise",
+    href: "/industries/manufacturing",
+  },
+  { label: "Custom ERP, CRM & AI solutions", href: "/services/erp-development" },
+  { label: "End-to-end development partner", href: "/process" },
+  { label: "Free project assessment", href: "/get-estimate" },
+] as const;
+
+export const developmentProcess = [
+  {
+    step: "01",
+    title: "Discovery & Strategy",
+    description: "Map goals, users, constraints, and success metrics with stakeholders who own the outcome.",
+  },
+  {
+    step: "02",
+    title: "Requirements & Planning",
+    description: "Phased roadmap, fixed milestones, integration specs, and a timeline you can defend to leadership.",
+  },
+  {
+    step: "03",
+    title: "UI/UX Design",
+    description: "Flows and interfaces aligned to shop floor, field teams, and HO—tested before build starts.",
+  },
+  {
+    step: "04",
+    title: "Development",
+    description: "Weekly demos, production-ready code, and transparent progress—not slide decks.",
+  },
+  {
+    step: "05",
+    title: "Testing & Deployment",
+    description: "UAT on real data, training, go-live support, and clean handover documentation.",
+  },
+  {
+    step: "06",
+    title: "Support & Growth",
+    description: "Hypercare, maintenance SLAs, and the next phase of modules as your business scales.",
+  },
+] as const;
+
+export const businessOutcomesDelivered = [
+  {
+    title: "Improve operational efficiency",
+    description: "Remove duplicate entry and manual handoffs so teams focus on customers—not spreadsheets.",
+    metric: "Typical: 35–60% less manual work",
+  },
+  {
+    title: "Reduce manual processes",
+    description: "Automate approvals, dispatch, and reporting workflows that currently depend on WhatsApp and calls.",
+    metric: "Typical: 10–20 hrs/week saved per team",
+  },
+  {
+    title: "Increase data visibility",
+    description: "Live dashboards for inventory, pipeline, and delivery—decisions in minutes, not days.",
+    metric: "Typical: same-day reporting vs 2-week close",
+  },
+  {
+    title: "Improve inventory accuracy",
+    description: "Barcode scanning, GRN sync, and multi-location stock truth for manufacturers and distributors.",
+    metric: "Typical: 95%+ inventory accuracy",
+  },
+  {
+    title: "Better sales tracking",
+    description: "Pipeline stages, follow-up automation, and field visit proof tied to revenue outcomes.",
+    metric: "Typical: 25%+ faster lead response",
+  },
+  {
+    title: "Faster reporting",
+    description: "Month-end and management reports generated from approved transactions—not reconstructed in Excel.",
+    metric: "Typical: 50%+ faster month-end close",
   },
 ] as const;
 
@@ -226,10 +372,17 @@ export const trustHighlights = [
 ] as const;
 
 export const homeFinalCta = {
-  title: "Your next stage of growth starts with one conversation.",
+  title: "Turn your idea into ERP, CRM, AI, or custom software—with a partner you can trust.",
   description:
-    "Book a consultation. We respond within one business day with a clear next step—not a generic pitch.",
+    "Free consultation, free project estimate, and free assessment tools. Low risk, high value—we respond within one business day with a clear next step.",
 } as const;
+
+/** Featured case studies on homepage — slugs from case-studies-data */
+export const homepageCaseStudySlugs = [
+  "manufacturing-erp",
+  "healthcare-management",
+  "logistics-platform",
+] as const;
 
 export const homepageTestimonials = [
   {

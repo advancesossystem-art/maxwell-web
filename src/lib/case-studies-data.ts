@@ -114,11 +114,18 @@ export const caseStudySlugs = [
   "construction-platform",
   "ai-safety-monitoring",
   "saas-workforce-management",
+  "chemical-industry-erp",
+  "textile-industry-erp",
+  "manufacturing-crm",
+  "inventory-automation",
+  "business-process-automation",
 ] as const;
 
 export type CaseStudySlug = (typeof caseStudySlugs)[number];
 
 export { caseStudyStats } from "@/lib/company-metrics";
+
+import { phase2CaseStudies } from "./case-studies-phase2";
 
 export const caseStudiesData: Record<CaseStudySlug, CaseStudyData> = {
   "manufacturing-erp": {
@@ -1277,6 +1284,7 @@ export const caseStudiesData: Record<CaseStudySlug, CaseStudyData> = {
     cardHighlight: "₹2Cr ARR · $1.2M seed",
     publishedAt: "2024-08-14",
   },
+  ...phase2CaseStudies,
 };
 
 export function getCaseStudyBySlug(slug: string): CaseStudyData | undefined {

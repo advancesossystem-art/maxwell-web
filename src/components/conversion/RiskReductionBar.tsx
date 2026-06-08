@@ -18,16 +18,16 @@ const offers = [
     track: CTA_LABELS.secondary,
   },
   {
-    label: "Free Technical Audit",
-    href: `${CONVERSION_ROUTES.consultation}?intent=audit`,
-    desc: "Workflow & systems review",
-    track: CTA_LABELS.industryAudit,
-  },
-  {
     label: "Free ERP Assessment",
     href: "/tools/erp-roi-calculator",
     desc: "ROI & readiness check",
-    track: "ERP ROI Calculator",
+    track: CTA_LABELS.freeErpAssessment,
+  },
+  {
+    label: "Free Custom Roadmap",
+    href: "/tools/project-roadmap",
+    desc: "Phased delivery plan",
+    track: CTA_LABELS.customRoadmap,
   },
 ] as const;
 

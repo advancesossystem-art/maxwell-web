@@ -3,13 +3,11 @@
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { HeroEcosystemVisual } from "@/components/home/HeroEcosystemVisual";
-import { heroTrustMetrics, homeHero } from "@/lib/homepage";
-import {
-  CTA_LABELS,
-  CONVERSION_ROUTES,
-  estimateHref,
-} from "@/lib/conversion-copy";
+import { heroServiceBadges, heroTrustMetrics, homeHero } from "@/lib/homepage";
+import { CTA_LABELS } from "@/lib/conversion-copy";
 import { trackCTAClick } from "@/lib/conversion-events";
+import { PrimaryCTA } from "@/components/conversion/PrimaryCTA";
+import { SecondaryCTA } from "@/components/conversion/SecondaryCTA";
 
 const trustIcons = ["rocket", "users", "support", "shield"] as const;
 
@@ -65,34 +63,38 @@ export function Hero() {
           <motion.div {...fade}>
             <p className="v6-eyebrow-line v6-eyebrow">{homeHero.eyebrow}</p>
             <h1 className="v6-hero-title mt-4 text-balance" data-seo-speakable>
-              Custom ERP, CRM & Software Solutions{" "}
-              <span className="v6-gradient-text">Built for Growth</span>
+              {homeHero.headlineLine1}{" "}
+              <span className="v6-gradient-text">{homeHero.headlineLine2}</span>
             </h1>
             <p className="v6-lead mt-4 max-w-2xl text-balance lg:max-w-none" data-seo-speakable>
               {homeHero.subhead}
             </p>
 
-            <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <Link
-                href={estimateHref({ source: "homepage-hero" })}
-                className="v6-btn v6-btn-primary v6-btn-lg"
-                onClick={() =>
-                  trackCTAClick(CTA_LABELS.secondary, CONVERSION_ROUTES.estimate, "homepage_hero")
-                }
-              >
-                Get Free Project Estimate
-                <span aria-hidden>→</span>
-              </Link>
-              <Link
-                href={CONVERSION_ROUTES.caseStudies}
-                className="v6-btn v6-btn-secondary v6-btn-lg"
-                onClick={() =>
-                  trackCTAClick("View Case Studies", CONVERSION_ROUTES.caseStudies, "homepage_hero")
-                }
-              >
-                View Case Studies
-                <span aria-hidden>→</span>
-              </Link>
+            <div className="mt-5 flex flex-wrap gap-2">
+              {heroServiceBadges.map((badge) => (
+                <Link
+                  key={badge.label}
+                  href={badge.href}
+                  className="rounded-full border border-[var(--v6-border)] bg-white px-3 py-1.5 text-xs font-semibold text-[var(--v6-text-secondary)] transition-colors hover:border-[#4f46e5]/40 hover:text-[#4f46e5]"
+                >
+                  {badge.label}
+                </Link>
+              ))}
+            </div>
+
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <SecondaryCTA
+                location="homepage_hero"
+                context={{ source: "homepage-hero" }}
+                label={CTA_LABELS.secondary}
+                variant="primary"
+              />
+              <PrimaryCTA
+                location="homepage_hero"
+                context={{ source: "homepage-hero" }}
+                label={CTA_LABELS.primary}
+                variant="outline"
+              />
             </div>
 
             <ul className="v6-trust-bar grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

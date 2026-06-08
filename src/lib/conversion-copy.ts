@@ -4,8 +4,8 @@
  */
 
 export const CTA_LABELS = {
-  primary: "Book Consultation",
-  secondary: "Get Project Estimate",
+  primary: "Book Strategy Consultation",
+  secondary: "Get Free Project Estimate",
   tertiary: "Explore Services",
   exploreProcess: "Our Process",
   howWeWork: "How We Work",
@@ -15,6 +15,11 @@ export const CTA_LABELS = {
   industryAudit: "Request Industry Audit",
   discoveryCall: "Book Discovery Call",
   freeStrategySession: "Free Strategy Session",
+  instantEstimate: "Get Instant Project Estimate",
+  freeErpAssessment: "Get Free ERP Assessment",
+  calculateCost: "Calculate Project Cost",
+  customRoadmap: "Get Custom Roadmap",
+  strategyCall: "Book Strategy Call",
 } as const;
 
 export const CONVERSION_ROUTES = {
