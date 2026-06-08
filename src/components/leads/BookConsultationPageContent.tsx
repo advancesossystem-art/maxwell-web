@@ -27,15 +27,22 @@ export function BookConsultationPageContent() {
         }
         description="Discuss scope, timeline, and investment with the people who will actually build your system—not a sales script."
         aside={
-          <div id="consultation-form" className="v6-card w-full p-5 sm:p-6 lg:sticky lg:top-24">
-            <p className="mb-4 font-display text-base font-semibold text-[var(--v6-text)]">
-              Request your consultation
-            </p>
-            <p className="mb-4 text-xs text-[var(--v6-text-secondary)]">
-              We respond within one business day to schedule your session.
-            </p>
-            <LeadContactForm source="book-consultation" submitLabel="Book Consultation" compact />
-            <div className="mt-4 flex flex-wrap gap-2 border-t border-[var(--v6-border)] pt-4">
+          <div
+            id="consultation-form"
+            className="v6-card flex w-full max-h-[min(85vh,720px)] flex-col overflow-hidden lg:sticky lg:top-24"
+          >
+            <div className="shrink-0 border-b border-[var(--v6-border)] p-5 sm:p-6 sm:pb-4">
+              <p className="font-display text-base font-semibold text-[var(--v6-text)]">
+                Request your consultation
+              </p>
+              <p className="mt-1 text-xs text-[var(--v6-text-secondary)]">
+                We respond within one business day to schedule your session.
+              </p>
+            </div>
+            <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-5 sm:p-6 sm:pt-4 [scrollbar-gutter:stable]">
+              <LeadContactForm source="book-consultation" submitLabel="Book Consultation" compact />
+            </div>
+            <div className="shrink-0 flex flex-wrap gap-2 border-t border-[var(--v6-border)] p-5 sm:p-6 sm:pt-4">
               <Button href="/get-estimate" variant="secondary" size="sm">
                 Get Estimate
               </Button>

@@ -1,9 +1,9 @@
 import { z } from "zod";
 import {
   isValidFullName,
-  isValidIndianPhone,
+  isValidInternationalPhone,
   isValidWorkEmail,
-  normalizeIndianPhone,
+  normalizeInternationalPhone,
 } from "@/lib/form-validation";
 import { calculateLeadScore, type LeadSource } from "@/lib/lead-scoring";
 import { calculateProjectEstimate } from "@/lib/project-estimator";
@@ -47,7 +47,7 @@ export const leadSchema = z
       .string()
       .trim()
       .refine(isValidWorkEmail, "Enter a valid work email address"),
-    phone: z.string().trim().max(20).optional(),
+    phone: z.string().trim().max(25).optional(),
     company: z.string().trim().max(120).optional(),
     message: z.string().trim().max(8000).optional(),
     projectType: z.string().trim().max(120).optional(),
@@ -77,17 +77,17 @@ export const leadSchema = z
           message: "Phone number is required",
           path: ["phone"],
         });
-      } else if (!isValidIndianPhone(phone)) {
+      } else if (!isValidInternationalPhone(phone)) {
         ctx.addIssue({
           code: "custom",
-          message: "Enter a valid 10-digit Indian mobile number",
+          message: "Enter a valid international phone number with country code",
           path: ["phone"],
         });
       }
-    } else if (phone && !isValidIndianPhone(phone)) {
+    } else if (phone && !isValidInternationalPhone(phone)) {
       ctx.addIssue({
         code: "custom",
-        message: "Enter a valid 10-digit Indian mobile number",
+        message: "Enter a valid international phone number with country code",
         path: ["phone"],
       });
     }
@@ -148,7 +148,7 @@ export async function submitLead(raw: Record<string, unknown>): Promise<SubmitLe
     };
   }
 
-  const normalizedPhone = data.phone ? normalizeIndianPhone(data.phone) ?? data.phone : undefined;
+  const normalizedPhone = data.phone ? normalizeInternationalPhone(data.phone) ?? data.phone : undefined;
 
   const payload: LeadPayload = {
     source: data.source as LeadSource,

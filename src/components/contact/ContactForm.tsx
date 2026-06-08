@@ -219,16 +219,18 @@ function ContactFormInner() {
             required
             autoComplete="tel"
             inputMode="tel"
-            minLength={10}
-            maxLength={18}
+            minLength={7}
+            maxLength={25}
             aria-invalid={fieldErrors.phone ? true : undefined}
             aria-describedby={fieldErrors.phone ? "phone-error" : undefined}
             className={fieldInputClass(inputClass, Boolean(fieldErrors.phone))}
-            placeholder="9586868538"
+            placeholder="+91 XXXXX XXXXX"
           />
           <FieldError id="phone-error" message={fieldErrors.phone} />
           {!fieldErrors.phone ? (
-            <p className="mt-1 text-xs text-muted">10-digit Indian mobile (e.g. 9586868538)</p>
+            <p className="mt-1 text-xs text-muted">
+              International format with country code (e.g. +91 9876543210, +1 555 123 4567)
+            </p>
           ) : null}
         </div>
       </div>

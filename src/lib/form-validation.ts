@@ -58,6 +58,21 @@ export function isValidIndianPhone(phone: string): boolean {
   return normalizeIndianPhone(phone) !== null;
 }
 
+/** E.164-style: 7–15 digits; optional +, spaces, hyphens, parentheses */
+export function normalizeInternationalPhone(phone: string): string | null {
+  const trimmed = phone.trim();
+  if (!trimmed || !/^[\d\s+\-().]+$/.test(trimmed)) return null;
+
+  const digits = trimmed.replace(/\D/g, "");
+  if (digits.length < 7 || digits.length > 15) return null;
+
+  return trimmed.startsWith("+") ? `+${digits}` : digits;
+}
+
+export function isValidInternationalPhone(phone: string): boolean {
+  return normalizeInternationalPhone(phone) !== null;
+}
+
 export function isValidFullName(name: string): boolean {
   const value = name.trim();
   return value.length >= 2 && value.length <= 80 && NAME_REGEX.test(value);
@@ -80,7 +95,11 @@ const phoneField = z
   .string()
   .trim()
   .min(1, "Phone number is required")
-  .refine(isValidIndianPhone, "Enter a valid 10-digit Indian mobile number (e.g. 9586868538)");
+  .max(25, "Phone number is too long")
+  .refine(
+    isValidInternationalPhone,
+    "Enter a valid international phone number with country code (e.g. +91 9876543210 or +1 555 123 4567)",
+  );
 
 const messageField = z
   .string()

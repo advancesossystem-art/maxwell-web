@@ -173,7 +173,7 @@ function LeadContactFormInner({
           htmlFor="phone"
           required
           error={fieldErrors.phone}
-          hint="10-digit Indian mobile (e.g. 9876543210 or +91 9876543210)"
+          hint="International format with country code (e.g. +91 9876543210, +1 555 123 4567, +44 7911 123456)"
         >
           <input
             id="phone"
@@ -182,10 +182,10 @@ function LeadContactFormInner({
             required
             autoComplete="tel"
             inputMode="tel"
-            minLength={10}
-            maxLength={18}
+            minLength={7}
+            maxLength={25}
             className={ic(fieldErrors.phone)}
-            placeholder="9586868538"
+            placeholder="+91 XXXXX XXXXX"
           />
         </FormField>
       </div>
