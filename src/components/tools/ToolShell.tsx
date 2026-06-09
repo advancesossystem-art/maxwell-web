@@ -64,7 +64,7 @@ export function ToolShell({
           <Link href="/tools" className="tool-shell__back">
             ← All tools
           </Link>
-          <div className="mt-4 flex flex-wrap items-center gap-3">
+          <div className="mt-2 flex flex-wrap items-center gap-2">
             <span className="tool-shell__badge">{toolCategoryLabels[tool.category]}</span>
             <span className="tool-shell__badge">Free · No signup</span>
           </div>
