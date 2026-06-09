@@ -8,6 +8,7 @@ import {
   CONVERSION_ROUTES,
   consultationHref,
   estimateHref,
+  CONVERSION_EXPECTATIONS,
 } from "@/lib/conversion-copy";
 import { trackCTAClick } from "@/lib/conversion-events";
 
@@ -22,26 +23,29 @@ export function FinalCTA() {
                 {homeFinalCta.title}
               </h2>
               <p className="v6-lead mt-5 max-w-2xl">{homeFinalCta.description}</p>
+              <p className="mt-3 text-sm text-[var(--v6-text-muted)]">
+                {CONVERSION_EXPECTATIONS.consultationLength} · {CONVERSION_EXPECTATIONS.responseTime}
+              </p>
             </div>
             <div className="flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap lg:w-auto lg:shrink-0">
               <Link
-                href={estimateHref({ source: "homepage-final" })}
+                href={consultationHref({ source: "homepage-final" })}
                 className="v6-btn v6-btn-primary v6-btn-lg text-center"
+                onClick={() =>
+                  trackCTAClick(CTA_LABELS.primary, CONVERSION_ROUTES.consultation, "homepage_final")
+                }
+              >
+                {CTA_LABELS.primary}
+                <span aria-hidden>→</span>
+              </Link>
+              <Link
+                href={estimateHref({ source: "homepage-final" })}
+                className="v6-btn v6-btn-secondary v6-btn-lg text-center"
                 onClick={() =>
                   trackCTAClick(CTA_LABELS.secondary, CONVERSION_ROUTES.estimate, "homepage_final")
                 }
               >
                 {CTA_LABELS.secondary}
-                <span aria-hidden>→</span>
-              </Link>
-              <Link
-                href={consultationHref({ source: "homepage-final" })}
-                className="v6-btn v6-btn-secondary v6-btn-lg text-center"
-                onClick={() =>
-                  trackCTAClick(CTA_LABELS.strategyCall, CONVERSION_ROUTES.consultation, "homepage_final")
-                }
-              >
-                {CTA_LABELS.strategyCall}
               </Link>
               <Link
                 href="/tools/software-cost-calculator"

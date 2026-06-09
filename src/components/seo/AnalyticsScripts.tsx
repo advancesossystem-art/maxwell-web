@@ -3,6 +3,7 @@ import Script from "next/script";
 const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
 const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 const metaPixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID;
+const clarityId = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID;
 
 /** GTM container — load as early as possible in `<head>`. */
 export function GTMHeadScript() {
@@ -22,6 +23,14 @@ export function GTMHeadScript() {
 export function AnalyticsScripts() {
   return (
     <>
+      {gaId && gtmId && (
+        <Script id="ga4-events-bridge" strategy="afterInteractive">{`
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = window.gtag || function(){dataLayer.push(arguments);};
+          gtag('js', new Date());
+          gtag('config', '${gaId}', { send_page_view: false });
+        `}</Script>
+      )}
       {gaId && !gtmId && (
         <>
           <Script
@@ -35,6 +44,15 @@ export function AnalyticsScripts() {
             gtag('config', '${gaId}');
           `}</Script>
         </>
+      )}
+      {clarityId && (
+        <Script id="ms-clarity" strategy="lazyOnload">{`
+          (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+          })(window, document, "clarity", "script", "${clarityId}");
+        `}</Script>
       )}
       {metaPixelId && (
         <Script id="meta-pixel" strategy="lazyOnload">{`

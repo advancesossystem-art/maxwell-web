@@ -6,6 +6,9 @@ export const homeHero = {
   headlineLine2: "We Build It.",
   subhead:
     "Custom ERP, CRM, AI, Automation and Software Solutions designed to help manufacturers, enterprises and growing businesses streamline operations, increase efficiency and accelerate growth.",
+  /** Social proof in first viewport — pairs with primary CTA */
+  proofOutcome: "10,000+ users on a live healthcare portal · 99.9% uptime since launch",
+  proofLink: { label: "See case outcomes", href: "/case-studies" },
 } as const;
 
 export const heroServiceBadges = [

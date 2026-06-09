@@ -8,12 +8,20 @@ import { Button } from "@/components/ui/Button";
 import { WHATSAPP_NUMBER } from "@/lib/leads-data";
 import { getLeadMagnetById } from "@/lib/content/lead-magnets";
 import { ArrowRight } from "@/components/ui/Icons";
+import { CalendlyEmbed } from "@/components/leads/CalendlyEmbed";
+import { getCalendlyUrl } from "@/lib/calendly";
+import { CONVERSION_EXPECTATIONS } from "@/lib/conversion-copy";
 
 function ThankYouInner() {
   const searchParams = useSearchParams();
   const source = searchParams.get("source") ?? "contact";
   const magnetId = searchParams.get("magnet");
   const magnet = magnetId ? getLeadMagnetById(magnetId) : undefined;
+
+  const calendlyUrl = getCalendlyUrl();
+  const showCalendly =
+    !!calendlyUrl &&
+    (source === "book-consultation" || source === "discovery-call" || source === "get-estimate");
 
   const isNewsletter =
     source === "newsletter" ||
@@ -50,8 +58,24 @@ function ThankYouInner() {
             ? magnet
               ? `Your download is ready. We've also sent ${magnet.title} details to your inbox.`
               : "You're subscribed to Maxwell engineering insights. Check your inbox to confirm."
-            : `Your ${sourceLabels[source] ?? "inquiry"} has been received. Our team will respond within 24 hours.`}
+            : showCalendly
+              ? `Your ${sourceLabels[source] ?? "inquiry"} is confirmed. Pick a time below — or we'll reach out within one business day.`
+              : `Your ${sourceLabels[source] ?? "inquiry"} has been received. Our team will respond within 24 hours.`}
         </p>
+
+        {showCalendly && calendlyUrl ? (
+          <div className="mt-10 text-left">
+            <h2 className="font-display text-lg font-bold text-center sm:text-left">
+              {source === "get-estimate" ? "Prefer to talk sooner?" : "Book your session now"}
+            </h2>
+            <p className="mt-2 text-center text-sm text-muted sm:text-left">
+              {CONVERSION_EXPECTATIONS.consultationLength} · {CONVERSION_EXPECTATIONS.responseTime}
+            </p>
+            <div className="mt-6">
+              <CalendlyEmbed url={calendlyUrl} height={source === "get-estimate" ? 600 : 700} />
+            </div>
+          </div>
+        ) : null}
 
         {magnet?.downloadPath && (
           <Button href={magnet.downloadPath} external className="mt-8" size="lg">

@@ -60,18 +60,18 @@ export function StickyCTA({ context, location = "sticky_bar", className, dismiss
       <div className="mx-auto flex max-w-3xl items-center gap-2 sm:gap-3">
         <div className="flex min-w-0 flex-1 items-center justify-center gap-2 sm:gap-3">
           <Link
-            href={estHref}
-            onClick={() => trackCTAClick(CTA_LABELS.secondary, estHref, location)}
+            href={consultHref}
+            onClick={() => trackCTAClick(CTA_LABELS.primary, consultHref, location)}
             className="v6-btn v6-btn-primary min-w-0 flex-1 text-center text-sm sm:flex-none sm:px-6"
           >
-            {CTA_LABELS.secondary}
+            {CTA_LABELS.primary}
           </Link>
           <Link
-            href={consultHref}
-            onClick={() => trackCTAClick(CTA_LABELS.strategyCall, consultHref, location)}
+            href={estHref}
+            onClick={() => trackCTAClick(CTA_LABELS.secondary, estHref, location)}
             className="v6-btn v6-btn-secondary min-w-0 flex-1 text-sm sm:flex-none sm:px-6"
           >
-            {CTA_LABELS.strategyCall}
+            {CTA_LABELS.secondary}
           </Link>
         </div>
         {onDismiss ? (

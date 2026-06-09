@@ -12,9 +12,12 @@ import {
   contactFaqs,
 } from "@/lib/leads-data";
 import { CheckIcon, ArrowRight } from "@/components/ui/Icons";
+import { CalendlyEmbed } from "@/components/leads/CalendlyEmbed";
+import { getCalendlyUrl } from "@/lib/calendly";
 
 export function DiscoveryCallPageContent() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const calendlyUrl = getCalendlyUrl();
 
   return (
     <>
@@ -80,16 +83,24 @@ export function DiscoveryCallPageContent() {
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="font-display text-2xl font-bold">Schedule your call</h2>
             <p className="mt-2 text-muted">Choose a time that works for you</p>
-            <div className="mt-10 rounded-2xl border-2 border-dashed border-brand-600/30 bg-brand-50/50 p-12">
-              <p className="v6-result-bar__text text-lg">Calendly Integration</p>
-              <p className="mt-2 text-sm text-muted">
-                Connect your Calendly embed here. Replace this placeholder with your scheduling widget.
-              </p>
-              <div className="mt-6 flex flex-wrap justify-center gap-3">
-                <Button href="/contact" size="lg">Request Callback Instead <ArrowRight /></Button>
-                <Button href="https://calendly.com" external variant="secondary" size="lg">Open Calendly</Button>
+            {calendlyUrl ? (
+              <div className="mt-10 text-left">
+                <CalendlyEmbed url={calendlyUrl} />
               </div>
-            </div>
+            ) : (
+              <div className="mt-10 rounded-2xl border-2 border-dashed border-brand-600/30 bg-brand-50/50 p-12">
+                <p className="v6-result-bar__text text-lg">Schedule instantly</p>
+                <p className="mt-2 text-sm text-muted">
+                  Add your Calendly link to <code className="text-xs">NEXT_PUBLIC_CALENDLY_URL</code> to enable
+                  live scheduling here.
+                </p>
+                <div className="mt-6 flex flex-wrap justify-center gap-3">
+                  <Button href="/contact" size="lg">
+                    Request Callback Instead <ArrowRight />
+                  </Button>
+                </div>
+              </div>
+            )}
           </div>
         </Container>
       </section>

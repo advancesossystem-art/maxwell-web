@@ -17,12 +17,9 @@ const PHONE_REQUIRED_SOURCES = new Set([
   "get-estimate",
 ]);
 
-const MESSAGE_REQUIRED_SOURCES = new Set([
-  "contact",
-  "book-consultation",
-  "discovery-call",
-  "get-estimate",
-]);
+const MESSAGE_REQUIRED_SOURCES = new Set(["contact", "get-estimate"]);
+
+const CONSULTATION_SOURCES = new Set(["book-consultation", "discovery-call"]);
 
 export const leadSchema = z
   .object({
@@ -109,12 +106,14 @@ export async function submitLead(raw: Record<string, unknown>): Promise<SubmitLe
   const data = leadSchema.parse(raw);
 
   const message =
-    data.message ??
-    (data.source === "get-estimate"
-      ? `Estimate request: ${data.projectType}, ${data.industry}, scope ${data.scope}, budget ${data.budget}, timeline ${data.timeline}. Features: ${data.features?.join(", ") || "none"}.`
-      : data.source === "project-calculator"
-        ? `Calculator estimate: ${data.projectType}, scope ${data.scope}, timeline ${data.timeline}.`
-        : undefined);
+    data.message?.trim() ||
+    (CONSULTATION_SOURCES.has(data.source)
+      ? "Consultation request — details to be discussed on the call."
+      : data.source === "get-estimate"
+        ? `Estimate request: ${data.projectType}, ${data.industry}, scope ${data.scope}, budget ${data.budget}, timeline ${data.timeline}. Features: ${data.features?.join(", ") || "none"}.`
+        : data.source === "project-calculator"
+          ? `Calculator estimate: ${data.projectType}, scope ${data.scope}, timeline ${data.timeline}.`
+          : undefined);
 
   const leadScore = calculateLeadScore({
     budget: data.budget,

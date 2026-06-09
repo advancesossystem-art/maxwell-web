@@ -25,10 +25,31 @@ export type ConversionEventName =
 
 type EventParams = Record<string, string | number | boolean | undefined>;
 
+/** GA4 recommended / custom event names for key conversion tracking */
+const GA4_EVENT_MAP: Partial<Record<ConversionEventName, string>> = {
+  consultation_request: "consultation_request",
+  estimate_request: "estimate_request",
+  discovery_request: "discovery_request",
+  form_complete: "generate_lead",
+  cta_click: "select_content",
+  newsletter_signup: "sign_up",
+};
+
 declare global {
   interface Window {
     dataLayer?: Record<string, unknown>[];
+    gtag?: (...args: unknown[]) => void;
   }
+}
+
+function forwardToGtag(event: ConversionEventName, params?: EventParams): void {
+  const gaEvent = GA4_EVENT_MAP[event];
+  if (!gaEvent || typeof window.gtag !== "function") return;
+
+  window.gtag("event", gaEvent, {
+    event_category: "conversion",
+    ...params,
+  });
 }
 
 export function pushConversionEvent(
@@ -46,6 +67,7 @@ export function pushConversionEvent(
 
   window.dataLayer = window.dataLayer ?? [];
   window.dataLayer.push(payload);
+  forwardToGtag(event, params);
 
   if (process.env.NODE_ENV === "development") {
     console.log("[Conversion]", payload);

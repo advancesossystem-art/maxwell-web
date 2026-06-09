@@ -5,7 +5,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { useMotionTransformEnabled } from "@/components/motion/FadeIn";
 import { HeroEcosystemVisual } from "@/components/home/HeroEcosystemVisual";
 import { heroServiceBadges, heroTrustMetrics, homeHero } from "@/lib/homepage";
-import { CTA_LABELS } from "@/lib/conversion-copy";
+import { CTA_LABELS, CONVERSION_EXPECTATIONS } from "@/lib/conversion-copy";
 import { trackCTAClick } from "@/lib/conversion-events";
 import { PrimaryCTA } from "@/components/conversion/PrimaryCTA";
 import { SecondaryCTA } from "@/components/conversion/SecondaryCTA";
@@ -84,20 +84,35 @@ export function Hero() {
               ))}
             </div>
 
+            <p className="mt-4 rounded-xl border border-[#4f46e5]/15 bg-[#f8fafc] px-4 py-3 text-sm text-[var(--v6-text-secondary)]">
+              <span className="font-semibold text-[#4f46e5]">Proven delivery:</span>{" "}
+              {homeHero.proofOutcome}.{" "}
+              <Link
+                href={homeHero.proofLink.href}
+                className="font-semibold text-[#4f46e5] hover:underline"
+                onClick={() => trackCTAClick("See case outcomes", homeHero.proofLink.href, "homepage_hero_proof")}
+              >
+                {homeHero.proofLink.label} →
+              </Link>
+            </p>
+
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <SecondaryCTA
-                location="homepage_hero"
-                context={{ source: "homepage-hero" }}
-                label={CTA_LABELS.secondary}
-                variant="primary"
-              />
               <PrimaryCTA
                 location="homepage_hero"
                 context={{ source: "homepage-hero" }}
                 label={CTA_LABELS.primary}
+                variant="primary"
+              />
+              <SecondaryCTA
+                location="homepage_hero"
+                context={{ source: "homepage-hero" }}
+                label={CTA_LABELS.secondary}
                 variant="outline"
               />
             </div>
+            <p className="mt-3 text-sm text-[var(--v6-text-muted)]">
+              {CONVERSION_EXPECTATIONS.consultationLength} · {CONVERSION_EXPECTATIONS.responseTime}
+            </p>
 
             <ul className="v6-trust-bar grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {heroTrustMetrics.map((stat, i) => (

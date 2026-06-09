@@ -3,11 +3,13 @@
 import { useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/Button";
-import { FormField, inputClass } from "@/components/leads/LeadFormFields";
-import { trackFormStart, trackFormComplete } from "@/lib/conversion-events";
+import { FormField, inputClass, ProgressBar } from "@/components/leads/LeadFormFields";
+import { trackFormStart, trackFormComplete, trackFormStep } from "@/lib/conversion-events";
 import { FormTrustFooter } from "@/components/conversion/FormTrustFooter";
 import {
   validateLeadFormFields,
+  validateConsultationStep1,
+  validateConsultationFormFields,
   type LeadFormFieldErrors,
 } from "@/lib/form-validation";
 import { composeInternationalPhone, defaultCountryIso } from "@/lib/country-phone-codes";
@@ -47,6 +49,10 @@ function fieldInputClass(hasError?: boolean, compact?: boolean) {
   );
 }
 
+function isConsultationSource(source: string) {
+  return source === "book-consultation" || source === "discovery-call";
+}
+
 function LeadContactFormInner({
   source = "contact",
   defaultService = "",
@@ -66,6 +72,46 @@ function LeadContactFormInner({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [fieldErrors, setFieldErrors] = useState<LeadFormFieldErrors>({});
+  const [step, setStep] = useState(1);
+  const isTwoStep = isConsultationSource(source);
+
+  function focusFirstInvalid(form: HTMLFormElement) {
+    const firstInvalid = form.querySelector<HTMLElement>("[aria-invalid='true']");
+    firstInvalid?.focus();
+  }
+
+  function handleContinue(e: React.MouseEvent<HTMLButtonElement>) {
+    const form = e.currentTarget.form;
+    if (!form) return;
+
+    setError("");
+    setFieldErrors({});
+
+    const formData = new FormData(form);
+    const raw = Object.fromEntries(formData.entries()) as Record<string, string>;
+    const phone = composeInternationalPhone(
+      raw.phoneCountry || defaultCountryIso,
+      raw.phoneLocal || raw.phone || "",
+    );
+
+    const validation = validateConsultationStep1({
+      name: raw.name,
+      email: raw.email,
+      phone,
+      projectType: raw.projectType,
+    });
+
+    if (!validation.success) {
+      setFieldErrors(validation.errors);
+      focusFirstInvalid(form);
+      return;
+    }
+
+    trackFormStart(source);
+    trackFormStep(source, 1, "contact");
+    setStep(2);
+    trackFormStep(source, 2, "details");
+  }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -84,25 +130,39 @@ function LeadContactFormInner({
       raw.phoneLocal || raw.phone || "",
     );
 
-    const validation = validateLeadFormFields({
-      name: raw.name,
-      email: raw.email,
-      phone,
-      company: raw.company,
-      message: raw.message,
-      projectType: raw.projectType,
-      budget: raw.budget,
-    });
+    const validation = isTwoStep
+      ? validateConsultationFormFields({
+          name: raw.name,
+          email: raw.email,
+          phone,
+          company: raw.company,
+          message: raw.message,
+          projectType: raw.projectType,
+          budget: raw.budget,
+        })
+      : validateLeadFormFields({
+          name: raw.name,
+          email: raw.email,
+          phone,
+          company: raw.company,
+          message: raw.message,
+          projectType: raw.projectType,
+          budget: raw.budget,
+        });
 
     if (!validation.success) {
       setFieldErrors(validation.errors);
-      const firstInvalid = e.currentTarget.querySelector<HTMLElement>("[aria-invalid='true']");
-      firstInvalid?.focus();
+      if (isTwoStep && (validation.errors.budget || validation.errors.message || validation.errors.company)) {
+        setStep(2);
+      }
+      focusFirstInvalid(e.currentTarget);
       return;
     }
 
     setLoading(true);
-    trackFormStart(source);
+    if (!isTwoStep) {
+      trackFormStart(source);
+    }
 
     try {
       const res = await fetch("/api/leads", {
@@ -131,109 +191,165 @@ function LeadContactFormInner({
 
   return (
     <form onSubmit={handleSubmit} className={cn(compact ? "space-y-3.5" : "space-y-5")} noValidate>
+      {isTwoStep ? <ProgressBar current={step} total={2} /> : null}
+
       <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
         <label htmlFor="website_url">Website</label>
         <input id="website_url" name="website_url" type="text" tabIndex={-1} autoComplete="off" />
       </div>
-      <div className="grid gap-3.5 sm:grid-cols-2">
-        <FormField label="Full Name" htmlFor="name" required error={fieldErrors.name}>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            required
-            autoComplete="name"
-            minLength={2}
-            maxLength={80}
-            className={ic(fieldErrors.name)}
-            placeholder="Your full name"
-          />
-        </FormField>
-        <FormField label="Work Email" htmlFor="email" required error={fieldErrors.email}>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            required
-            autoComplete="email"
-            inputMode="email"
-            maxLength={254}
-            className={ic(fieldErrors.email)}
-            placeholder="you@company.com"
-          />
-        </FormField>
-      </div>
-      <div className="space-y-3.5">
-        <FormField label="Company" htmlFor="company" error={fieldErrors.company}>
-          <input
-            id="company"
-            name="company"
-            type="text"
-            autoComplete="organization"
-            maxLength={120}
-            className={ic(fieldErrors.company)}
-            placeholder="Your Company"
-          />
-        </FormField>
-        <PhoneCountryFields
-          phoneError={fieldErrors.phone}
-          countryInputClassName={ic(false)}
-          phoneInputClassName={ic(fieldErrors.phone)}
-          compact={compact}
-        />
-      </div>
-      <div className="grid gap-3.5 sm:grid-cols-2">
-        <FormField label="Service Needed" htmlFor="service" required error={fieldErrors.projectType}>
-          <select
-            id="service"
-            name="projectType"
-            required
-            className={ic(fieldErrors.projectType)}
-            defaultValue={defaultService}
+
+      {(!isTwoStep || step === 1) && (
+        <>
+          <div className="grid gap-3.5 sm:grid-cols-2">
+            <FormField label="Full Name" htmlFor="name" required error={fieldErrors.name}>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                required
+                autoComplete="name"
+                minLength={2}
+                maxLength={80}
+                className={ic(fieldErrors.name)}
+                placeholder="Your full name"
+              />
+            </FormField>
+            <FormField label="Work Email" htmlFor="email" required error={fieldErrors.email}>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                required
+                autoComplete="email"
+                inputMode="email"
+                maxLength={254}
+                className={ic(fieldErrors.email)}
+                placeholder="you@company.com"
+              />
+            </FormField>
+          </div>
+          <div className="space-y-3.5">
+            {!isTwoStep ? (
+              <FormField label="Company" htmlFor="company" error={fieldErrors.company}>
+                <input
+                  id="company"
+                  name="company"
+                  type="text"
+                  autoComplete="organization"
+                  maxLength={120}
+                  className={ic(fieldErrors.company)}
+                  placeholder="Your Company"
+                />
+              </FormField>
+            ) : null}
+            <PhoneCountryFields
+              phoneError={fieldErrors.phone}
+              countryInputClassName={ic(false)}
+              phoneInputClassName={ic(fieldErrors.phone)}
+              compact={compact}
+            />
+          </div>
+          <div className={cn(!isTwoStep && "grid gap-3.5 sm:grid-cols-2")}>
+            <FormField label="Service Needed" htmlFor="service" required error={fieldErrors.projectType}>
+              <select
+                id="service"
+                name="projectType"
+                required
+                className={ic(fieldErrors.projectType)}
+                defaultValue={defaultService}
+              >
+                <option value="">Select a service</option>
+                {serviceOptions.map((s) => (
+                  <option key={s} value={s}>
+                    {s}
+                  </option>
+                ))}
+              </select>
+            </FormField>
+            {!isTwoStep ? (
+              <FormField label="Project Budget" htmlFor="budget" required error={fieldErrors.budget}>
+                <select id="budget" name="budget" required className={ic(fieldErrors.budget)}>
+                  <option value="">Select budget range</option>
+                  {budgetOptions.map((b) => (
+                    <option key={b} value={b}>
+                      {b}
+                    </option>
+                  ))}
+                </select>
+              </FormField>
+            ) : null}
+          </div>
+        </>
+      )}
+
+      {(!isTwoStep || step === 2) && (
+        <>
+          {isTwoStep ? (
+            <FormField label="Company" htmlFor="company" error={fieldErrors.company} hint="Optional">
+              <input
+                id="company"
+                name="company"
+                type="text"
+                autoComplete="organization"
+                maxLength={120}
+                className={ic(fieldErrors.company)}
+                placeholder="Your Company"
+              />
+            </FormField>
+          ) : null}
+
+          {isTwoStep ? (
+            <FormField
+              label="Project Budget"
+              htmlFor="budget"
+              error={fieldErrors.budget}
+              hint="Optional — helps us prepare for your call"
+            >
+              <select id="budget" name="budget" className={ic(fieldErrors.budget)}>
+                <option value="">Select budget range (optional)</option>
+                {budgetOptions.map((b) => (
+                  <option key={b} value={b}>
+                    {b}
+                  </option>
+                ))}
+              </select>
+            </FormField>
+          ) : null}
+
+          {defaultIndustry && <input type="hidden" name="industry" value={defaultIndustry} />}
+
+          <FormField
+            label="Project Details"
+            htmlFor="message"
+            required={!isTwoStep}
+            error={fieldErrors.message}
+            hint={isTwoStep ? "Optional — share goals or timeline if you have them" : undefined}
           >
-            <option value="">Select a service</option>
-            {serviceOptions.map((s) => (
-              <option key={s} value={s}>
-                {s}
-              </option>
-            ))}
-          </select>
-        </FormField>
-        <FormField label="Project Budget" htmlFor="budget" required error={fieldErrors.budget}>
-          <select
-            id="budget"
-            name="budget"
-            required
-            className={ic(fieldErrors.budget)}
-          >
-            <option value="">Select budget range</option>
-            {budgetOptions.map((b) => (
-              <option key={b} value={b}>
-                {b}
-              </option>
-            ))}
-          </select>
-        </FormField>
-      </div>
-      {defaultIndustry && <input type="hidden" name="industry" value={defaultIndustry} />}
-      <FormField label="Project Details" htmlFor="message" required error={fieldErrors.message}>
-        <textarea
-          id="message"
-          name="message"
-          required
-          rows={compact ? 4 : 5}
-          minLength={20}
-          maxLength={5000}
-          defaultValue={defaultMessage}
-          className={cn(ic(fieldErrors.message), "resize-none")}
-          placeholder="Tell us about your project goals, timeline, and requirements..."
-        />
-      </FormField>
+            <textarea
+              id="message"
+              name="message"
+              required={!isTwoStep}
+              rows={compact ? 4 : 5}
+              minLength={isTwoStep ? undefined : 20}
+              maxLength={5000}
+              defaultValue={defaultMessage}
+              className={cn(ic(fieldErrors.message), "resize-none")}
+              placeholder={
+                isTwoStep
+                  ? "Brief context for your consultation (optional)..."
+                  : "Tell us about your project goals, timeline, and requirements..."
+              }
+            />
+          </FormField>
+        </>
+      )}
+
       {error ? (
         <p role="alert" className="rounded-lg bg-red-500/10 px-4 py-3 text-sm text-red-300">
           {error}
         </p>
       ) : null}
+
       <FormTrustFooter
         variant={
           source === "book-consultation"
@@ -247,9 +363,29 @@ function LeadContactFormInner({
         showTrustStrip={false}
         className={compact ? "!mt-2" : undefined}
       />
-      <Button type="submit" size={compact ? "md" : "lg"} disabled={loading} className="w-full sm:w-auto">
-        {loading ? "Sending..." : submitLabel}
-      </Button>
+
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+        {isTwoStep && step === 2 ? (
+          <Button
+            type="button"
+            variant="secondary"
+            size={compact ? "md" : "lg"}
+            onClick={() => setStep(1)}
+            disabled={loading}
+          >
+            Back
+          </Button>
+        ) : null}
+        {isTwoStep && step === 1 ? (
+          <Button type="button" size={compact ? "md" : "lg"} onClick={handleContinue} className="w-full sm:w-auto">
+            Continue
+          </Button>
+        ) : (
+          <Button type="submit" size={compact ? "md" : "lg"} disabled={loading} className="w-full sm:w-auto">
+            {loading ? "Sending..." : submitLabel}
+          </Button>
+        )}
+      </div>
     </form>
   );
 }

@@ -120,6 +120,108 @@ export type LeadFormFieldErrors = Partial<
   Record<"name" | "email" | "phone" | "company" | "message" | "projectType" | "budget", string>
 >;
 
+export const consultationStep1Schema = z.object({
+  name: nameField,
+  email: emailField,
+  phone: phoneField,
+  projectType: z.string().trim().min(1, "Select a service"),
+});
+
+export const consultationLeadFormSchema = z.object({
+  name: nameField,
+  email: emailField,
+  phone: phoneField,
+  company: z.string().trim().max(120).optional(),
+  message: z.string().trim().max(5000).optional(),
+  projectType: z.string().trim().min(1, "Select a service"),
+  budget: z.string().trim().max(80).optional(),
+});
+
+export const CONSULTATION_DEFAULT_MESSAGE =
+  "Consultation request — details to be discussed on the call.";
+
+export function validateConsultationStep1(data: {
+  name?: string;
+  email?: string;
+  phone?: string;
+  projectType?: string;
+}):
+  | { success: true; data: z.infer<typeof consultationStep1Schema> }
+  | { success: false; errors: LeadFormFieldErrors } {
+  const result = consultationStep1Schema.safeParse({
+    name: data.name ?? "",
+    email: data.email ?? "",
+    phone: data.phone ?? "",
+    projectType: data.projectType ?? "",
+  });
+
+  if (result.success) {
+    return { success: true, data: result.data };
+  }
+
+  const errors: LeadFormFieldErrors = {};
+  for (const issue of result.error.issues) {
+    const key = issue.path[0];
+    if (key === "name" || key === "email" || key === "phone" || key === "projectType") {
+      if (!errors[key]) errors[key] = issue.message;
+    }
+  }
+
+  return { success: false, errors };
+}
+
+export function validateConsultationFormFields(data: {
+  name?: string;
+  email?: string;
+  phone?: string;
+  company?: string;
+  message?: string;
+  projectType?: string;
+  budget?: string;
+}):
+  | { success: true; data: z.infer<typeof consultationLeadFormSchema> & { message: string } }
+  | { success: false; errors: LeadFormFieldErrors } {
+  const result = consultationLeadFormSchema.safeParse({
+    name: data.name ?? "",
+    email: data.email ?? "",
+    phone: data.phone ?? "",
+    company: data.company ?? "",
+    message: data.message ?? "",
+    projectType: data.projectType ?? "",
+    budget: data.budget ?? "",
+  });
+
+  if (result.success) {
+    const trimmedMessage = result.data.message?.trim() ?? "";
+    return {
+      success: true,
+      data: {
+        ...result.data,
+        message:
+          trimmedMessage.length >= 20 ? trimmedMessage : CONSULTATION_DEFAULT_MESSAGE,
+      },
+    };
+  }
+
+  const errors: LeadFormFieldErrors = {};
+  for (const issue of result.error.issues) {
+    const key = issue.path[0];
+    if (
+      key === "name" ||
+      key === "email" ||
+      key === "phone" ||
+      key === "company" ||
+      key === "message" ||
+      key === "projectType" ||
+      key === "budget"
+    ) {
+      if (!errors[key]) errors[key] = issue.message;
+    }
+  }
+
+  return { success: false, errors };
+}
+
 export function validateLeadFormFields(data: {
   name?: string;
   email?: string;
