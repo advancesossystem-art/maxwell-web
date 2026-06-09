@@ -331,7 +331,7 @@ export function CaseStudyDetailPage({ study }: { study: CaseStudyData }) {
       <CaseStudyAuthorityBlock study={study} />
 
       {/* Lessons Learned */}
-      <section className="bg-surface py-20 lg:py-28">
+      <section className="bg-surface py-12 lg:py-16">
         <Container>
           <FadeIn>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-600">Insights</p>

@@ -14,9 +14,9 @@ import { ProjectCardCompact } from "@/components/work/ProjectCard";
 import { WorkBreadcrumb, WorkCTA, WorkCTAStrip } from "@/components/work/WorkCTA";
 import { CheckIcon, ArrowRight } from "@/components/ui/Icons";
 import type { ProjectData } from "@/lib/projects-data";
-import { formatClientDescriptor, formatTestimonialAttribution } from "@/lib/client-attribution";
+import { formatClientDescriptor } from "@/lib/client-attribution";
+import { ClientQuoteCard } from "@/components/trust/ClientQuoteCard";
 import { getRelatedProjects } from "@/lib/projects-data";
-import { cn } from "@/lib/utils";
 
 export function ProjectDetailPage({ project }: { project: ProjectData }) {
   const related = getRelatedProjects(project.slug);
@@ -199,7 +199,7 @@ export function ProjectDetailPage({ project }: { project: ProjectData }) {
       </section>
 
       {/* Results */}
-      <section className="py-20 lg:py-28">
+      <section className="py-12 lg:py-16">
         <Container>
           <FadeIn>
             <div className="mx-auto max-w-2xl text-center">
@@ -226,42 +226,87 @@ export function ProjectDetailPage({ project }: { project: ProjectData }) {
         </Container>
       </section>
 
-      {/* Testimonial */}
-      <section className="bg-surface py-20 lg:py-28">
+      {/* Client voice + related */}
+      <section className="border-t border-[var(--v6-border)] bg-[#f8fafc] py-12 lg:py-16">
         <Container>
-          <FadeIn>
-            <blockquote className="mx-auto max-w-3xl rounded-2xl border border-border bg-surface-elevated p-8 lg:p-12">
-              <div className="mb-4 flex gap-1">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <svg key={i} className="h-4 w-4 text-brand-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
+          <div className="grid gap-8 lg:grid-cols-12 lg:items-start lg:gap-10">
+            <FadeIn className="lg:col-span-7">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#4f46e5]">Client feedback</p>
+              <div className="mt-4">
+                <ClientQuoteCard
+                  quote={project.testimonial.quote}
+                  role={project.testimonial.role}
+                  industry={project.industry}
+                  accent={project.accent}
+                  subtitle={project.heroResult}
+                />
+              </div>
+            </FadeIn>
+
+            <FadeIn delay={0.08} className="lg:col-span-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#4f46e5]">Project snapshot</p>
+              <div className="mt-4 rounded-2xl border border-[var(--v6-border)] bg-white p-6 shadow-[var(--v6-shadow-md)]">
+                <p className="font-display text-3xl font-bold" style={{ color: project.accent }}>
+                  {project.heroResult}
+                </p>
+                <p className="mt-1 text-sm text-[var(--v6-text-muted)]">Primary outcome</p>
+                <dl className="mt-6 space-y-3 border-t border-[var(--v6-border)] pt-5 text-sm">
+                  <div className="flex justify-between gap-4">
+                    <dt className="text-[var(--v6-text-muted)]">Industry</dt>
+                    <dd className="font-medium text-[var(--v6-text)]">{project.industry}</dd>
+                  </div>
+                  <div className="flex justify-between gap-4">
+                    <dt className="text-[var(--v6-text-muted)]">Duration</dt>
+                    <dd className="font-medium text-[var(--v6-text)]">{project.duration}</dd>
+                  </div>
+                  <div className="flex justify-between gap-4">
+                    <dt className="text-[var(--v6-text-muted)]">Team</dt>
+                    <dd className="font-medium text-[var(--v6-text)]">{project.teamSize}</dd>
+                  </div>
+                </dl>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {project.technologies.slice(0, 4).map((t) => (
+                    <span
+                      key={t}
+                      className="rounded-lg border border-[var(--v6-border)] bg-[#f8fafc] px-2.5 py-1 text-xs font-medium text-[var(--v6-text-secondary)]"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+                <Button
+                  href={similarHref}
+                  variant="outline"
+                  size="sm"
+                  className="mt-6 w-full"
+                  onClick={() => trackCTAClick(CTA_LABELS.similarProject, similarHref, "work_testimonial")}
+                >
+                  {CTA_LABELS.similarProject}
+                </Button>
+              </div>
+            </FadeIn>
+          </div>
+
+          {related.length > 0 ? (
+            <div className="mt-12 border-t border-[var(--v6-border)] pt-10">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--v6-text-muted)]">Portfolio</p>
+                  <h2 className="mt-2 font-display text-2xl font-bold text-[var(--v6-text)]">Related projects</h2>
+                </div>
+                <Button href="/work" variant="secondary" size="sm">
+                  View all work <ArrowRight />
+                </Button>
+              </div>
+              <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {related.map((p) => (
+                  <ProjectCardCompact key={p.slug} project={p} />
                 ))}
               </div>
-              <p className="text-lg leading-relaxed text-foreground lg:text-xl">&ldquo;{project.testimonial.quote}&rdquo;</p>
-              <footer className="mt-8 border-t border-border pt-6">
-                <div className="font-display font-semibold text-[var(--v6-text)]">
-                  {formatTestimonialAttribution(project.testimonial.role, project.industry)}
-                </div>
-              </footer>
-            </blockquote>
-          </FadeIn>
+            </div>
+          ) : null}
         </Container>
       </section>
-
-      {/* Related + CTA */}
-      {related.length > 0 && (
-        <section className="py-20 lg:py-28">
-          <Container>
-            <h2 className="font-display text-2xl font-bold">Related projects</h2>
-            <div className="mt-8 grid gap-4 sm:grid-cols-3">
-              {related.map((p) => (
-                <ProjectCardCompact key={p.slug} project={p} />
-              ))}
-            </div>
-          </Container>
-        </section>
-      )}
 
       <WorkConversionBlock project={project} />
 

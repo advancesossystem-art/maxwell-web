@@ -1,6 +1,7 @@
 import { Container } from "@/components/ui/Container";
 import type { CaseStudyData } from "@/lib/case-studies-data";
-import { formatClientDescriptor, formatTestimonialAttribution } from "@/lib/client-attribution";
+import { formatClientDescriptor } from "@/lib/client-attribution";
+import { ClientQuoteCard } from "@/components/trust/ClientQuoteCard";
 
 function AuthorityRow({ label, children }: { label: string; children: React.ReactNode }) {
   return (
@@ -87,17 +88,36 @@ export function CaseStudyAuthorityBlock({ study }: { study: CaseStudyData }) {
             </div>
           </div>
 
-          <blockquote className="mt-8 border-t border-[var(--v6-border)] pt-8">
-            <p className="text-xs font-semibold uppercase tracking-wider text-[#4f46e5]">Client quote</p>
-            <p className="mt-3 text-base leading-relaxed text-[var(--v6-text)]">
-              &ldquo;{study.testimonial.quote}&rdquo;
-            </p>
-            <footer className="mt-4">
-              <p className="font-display font-semibold text-[var(--v6-text)]">
-                {formatTestimonialAttribution(study.testimonial.role, study.trust.industry)}
-              </p>
-            </footer>
-          </blockquote>
+          <div className="mt-8 grid gap-6 border-t border-[var(--v6-border)] pt-8 lg:grid-cols-12 lg:items-start">
+            <div className="lg:col-span-7">
+              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-[#4f46e5]">Client feedback</p>
+              <ClientQuoteCard
+                quote={study.testimonial.quote}
+                role={study.testimonial.role}
+                industry={study.trust.industry}
+                accent={study.accent}
+                subtitle={primaryResult.metric ? `${primaryResult.metric} ${primaryResult.label}` : undefined}
+              />
+            </div>
+            <div className="lg:col-span-5">
+              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-[#4f46e5]">ROI highlight</p>
+              <div className="rounded-2xl border border-[var(--v6-border)] bg-[#f8fafc] p-6">
+                <p className="font-display text-3xl font-bold text-[#4f46e5]">{primaryRoi.value}</p>
+                <p className="mt-1 text-sm font-semibold text-[var(--v6-text)]">{primaryRoi.label}</p>
+                <p className="mt-2 text-sm text-[var(--v6-text-secondary)]">{primaryRoi.description}</p>
+                <dl className="mt-5 space-y-3 border-t border-[var(--v6-border)] pt-5 text-sm">
+                  <div className="flex justify-between gap-4">
+                    <dt className="text-[var(--v6-text-muted)]">Timeline</dt>
+                    <dd className="font-medium text-[var(--v6-text)]">{study.trust.timeline}</dd>
+                  </div>
+                  <div className="flex justify-between gap-4">
+                    <dt className="text-[var(--v6-text-muted)]">Team</dt>
+                    <dd className="font-medium text-[var(--v6-text)]">{study.trust.teamSize}</dd>
+                  </div>
+                </dl>
+              </div>
+            </div>
+          </div>
         </div>
       </Container>
     </section>
