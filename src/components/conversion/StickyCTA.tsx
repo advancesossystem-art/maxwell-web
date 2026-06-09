@@ -50,7 +50,7 @@ export function StickyCTA({ context, location = "sticky_bar", className, dismiss
   return (
     <div
       className={cn(
-        "mobile-fixed-chrome fixed bottom-0 left-0 right-0 z-40 border-t border-[var(--v6-border)] bg-white/95 px-3 py-3 shadow-[0_-4px_24px_rgba(15,23,42,0.08)] backdrop-blur-md sm:px-4 lg:py-2.5",
+        "mobile-fixed-chrome fixed bottom-0 left-0 right-0 z-40 border-t border-[var(--v6-border)] bg-white px-3 py-3 shadow-[0_-4px_24px_rgba(15,23,42,0.08)] sm:bg-white/95 sm:px-4 sm:backdrop-blur-md lg:py-2.5",
         className,
       )}
       role="region"

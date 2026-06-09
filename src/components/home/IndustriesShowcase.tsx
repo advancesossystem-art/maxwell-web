@@ -21,10 +21,10 @@ export function IndustriesShowcase() {
 
         <StaggerContainer className="v6-bento mt-14" stagger={0.06}>
           {homepageIndustries.map((industry) => (
-            <StaggerItem key={industry.slug} className="v6-bento-item">
+            <StaggerItem key={industry.slug} className="v6-bento-item min-w-0 overflow-hidden">
               <Link
                 href={industry.href}
-                className="group flex h-full flex-col"
+                className="group flex h-full min-w-0 flex-col"
               >
                 <div
                   className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl text-lg font-bold text-white"
@@ -37,7 +37,7 @@ export function IndustriesShowcase() {
                 <h3 className="font-display text-xl font-semibold text-[var(--v6-text)] group-hover:text-[#4f46e5] transition-colors">
                   {industry.title}
                 </h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-[var(--v6-text-secondary)]">
+                <p className="mt-2 text-sm leading-relaxed text-[var(--v6-text-secondary)]">
                   {industry.outcome}
                 </p>
                 <span className="mt-4 text-sm font-medium text-[#4f46e5]">

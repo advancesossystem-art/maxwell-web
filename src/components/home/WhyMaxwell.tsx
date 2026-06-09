@@ -20,30 +20,26 @@ export function WhyMaxwell() {
       </FadeIn>
 
       <ul className="mt-14 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-        {whyMaxwellPillars.map((item, i) => (
-          <FadeIn key={item.title} delay={i * 0.05}>
-            <li className="v6-card h-full p-6 sm:p-7">
-              <p className="font-display text-lg font-semibold text-[var(--v6-text)]">{item.title}</p>
-              <p className="mt-2 text-sm leading-relaxed text-[var(--v6-text-secondary)]">{item.description}</p>
-              {"benefit" in item && item.benefit ? (
-                <p className="mt-4 rounded-lg bg-[#f8fafc] px-3 py-2 text-xs font-semibold text-[#4f46e5]">
-                  {item.benefit}
-                </p>
-              ) : null}
-            </li>
-          </FadeIn>
+        {whyMaxwellPillars.map((item) => (
+          <li key={item.title} className="v6-card min-w-0 overflow-hidden p-6 sm:p-7">
+            <p className="font-display text-lg font-semibold text-[var(--v6-text)]">{item.title}</p>
+            <p className="mt-2 text-sm leading-relaxed text-[var(--v6-text-secondary)]">{item.description}</p>
+            {"benefit" in item && item.benefit ? (
+              <p className="mt-4 rounded-lg bg-[#f8fafc] px-3 py-2 text-xs font-semibold text-[#4f46e5]">
+                {item.benefit}
+              </p>
+            ) : null}
+          </li>
         ))}
       </ul>
 
       <div className="mt-12 space-y-3">
-        {partnerComparison.map((row, i) => (
-          <FadeIn key={row.type} delay={i * 0.06}>
-            <div className="v6-card grid gap-4 p-6 sm:grid-cols-[10rem_1fr_1fr] sm:gap-6 sm:p-7">
-              <p className="font-display font-semibold text-[var(--v6-text)]">{row.type}</p>
-              <p className="text-sm text-[var(--v6-text-muted)]">{row.risk}</p>
-              <p className="text-sm text-[var(--v6-text-secondary)]">{row.maxwell}</p>
-            </div>
-          </FadeIn>
+        {partnerComparison.map((row) => (
+          <div key={row.type} className="v6-card grid min-w-0 gap-4 overflow-hidden p-6 sm:grid-cols-[10rem_1fr_1fr] sm:gap-6 sm:p-7">
+            <p className="font-display font-semibold text-[var(--v6-text)]">{row.type}</p>
+            <p className="text-sm text-[var(--v6-text-muted)]">{row.risk}</p>
+            <p className="text-sm text-[var(--v6-text-secondary)]">{row.maxwell}</p>
+          </div>
         ))}
       </div>
 

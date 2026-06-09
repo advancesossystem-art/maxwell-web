@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
+import { useMotionTransformEnabled } from "@/components/motion/FadeIn";
 import { HeroEcosystemVisual } from "@/components/home/HeroEcosystemVisual";
 import { heroServiceBadges, heroTrustMetrics, homeHero } from "@/lib/homepage";
 import { CTA_LABELS } from "@/lib/conversion-copy";
@@ -48,10 +49,11 @@ function TrustIcon({ type }: { type: (typeof trustIcons)[number] }) {
 
 export function Hero() {
   const reduce = useReducedMotion();
+  const transformEnabled = useMotionTransformEnabled();
   const fade = reduce
     ? {}
     : {
-        initial: { opacity: 0, y: 24 },
+        initial: { opacity: 0, y: transformEnabled ? 24 : 0 },
         animate: { opacity: 1, y: 0 },
         transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const },
       };

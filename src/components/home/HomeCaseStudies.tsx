@@ -35,9 +35,8 @@ export function HomeCaseStudies() {
       </div>
 
       <div className="mt-10 grid gap-6 lg:grid-cols-3">
-        {studies.map((study, i) => (
-          <FadeIn key={study.slug} delay={i * 0.06}>
-            <article className="v6-card flex h-full flex-col overflow-hidden">
+        {studies.map((study) => (
+          <article key={study.slug} className="v6-card flex min-w-0 flex-col overflow-hidden">
               <div className="border-b border-[var(--v6-border)] bg-[#f8fafc] px-6 py-5">
                 <span className="text-xs font-medium uppercase tracking-wider text-[var(--v6-text-muted)]">
                   {study.trust.industry}
@@ -88,7 +87,6 @@ export function HomeCaseStudies() {
                 </Link>
               </div>
             </article>
-          </FadeIn>
         ))}
       </div>
 

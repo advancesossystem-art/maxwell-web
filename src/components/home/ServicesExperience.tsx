@@ -24,8 +24,8 @@ export function ServicesExperience() {
           {homepageServices.map((service) => {
             const Icon = getServiceIcon(service.icon);
             return (
-              <StaggerItem key={service.slug}>
-                <Link href={`/services/${service.slug}`} className="v6-card v6-card-accent group block h-full p-6">
+              <StaggerItem key={service.slug} className="h-full min-w-0">
+                <Link href={`/services/${service.slug}`} className="v6-card v6-card-accent group block h-full min-w-0 overflow-hidden p-6">
                   <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#4f46e5]/10 text-[#4f46e5] transition-colors group-hover:bg-[#4f46e5] group-hover:text-white">
                     <Icon />
                   </div>

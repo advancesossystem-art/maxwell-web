@@ -26,20 +26,18 @@ export function RecommendedServicesBlock({
         </p>
       </FadeIn>
       <ul className="mt-6 grid gap-4 sm:grid-cols-2">
-        {services.map((rec, i) => {
+        {services.map((rec) => {
           const svc = getServiceBySlug(rec.slug);
           if (!svc) return null;
           return (
-            <FadeIn key={rec.slug} delay={i * 0.05}>
-              <li>
-                <Link href={`/services/${rec.slug}`} className="v6-card block p-5 hover:border-[#4f46e5]/30">
-                  <p className="font-display font-semibold text-[var(--v6-text)] group-hover:text-[#4f46e5]">
-                    {svc.title}
-                  </p>
-                  <p className="mt-1 text-sm text-[var(--v6-text-secondary)]">{rec.reason}</p>
-                </Link>
-              </li>
-            </FadeIn>
+            <li key={rec.slug}>
+              <Link href={`/services/${rec.slug}`} className="v6-card block min-w-0 overflow-hidden p-5 hover:border-[#4f46e5]/30">
+                <p className="font-display font-semibold text-[var(--v6-text)] group-hover:text-[#4f46e5]">
+                  {svc.title}
+                </p>
+                <p className="mt-1 text-sm text-[var(--v6-text-secondary)]">{rec.reason}</p>
+              </Link>
+            </li>
           );
         })}
       </ul>

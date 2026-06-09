@@ -1,8 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
-import { FadeIn } from "@/components/motion/FadeIn";
+import { FadeIn, MotionReveal } from "@/components/motion/FadeIn";
+import { motion } from "framer-motion";
 import { ServiceCTA } from "@/components/services/ServiceCTA";
 import type { ServicePageData } from "@/lib/services-data";
 
@@ -24,13 +24,11 @@ export function ServiceProblems({ service }: { service: ServicePageData }) {
 
         <div className="mt-12 grid gap-4 sm:grid-cols-2">
           {service.problems.map((problem, i) => (
-            <motion.div
+            <MotionReveal
               key={problem.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="group rounded-2xl border border-border bg-surface-elevated p-6 transition-all hover:border-red-200 hover:shadow-lg hover:shadow-red-500/5"
+              delay={i * 0.08}
+              y={20}
+              className="group min-w-0 overflow-hidden rounded-2xl border border-border bg-surface-elevated p-6 transition-all hover:border-red-200 hover:shadow-lg hover:shadow-red-500/5"
             >
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-red-50 text-red-500">
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -39,7 +37,7 @@ export function ServiceProblems({ service }: { service: ServicePageData }) {
               </div>
               <h3 className="mt-4 font-display font-semibold text-foreground">{problem.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted">{problem.description}</p>
-            </motion.div>
+            </MotionReveal>
           ))}
         </div>
 
@@ -68,14 +66,12 @@ export function ServiceSolutions({ service }: { service: ServicePageData }) {
 
         <div className="mt-14 grid gap-5 lg:grid-cols-2">
           {service.solutions.map((solution, i) => (
-            <motion.div
+            <MotionReveal
               key={solution.title}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.5, delay: i * 0.06 }}
+              delay={i * 0.06}
+              y={24}
               whileHover={{ y: -4 }}
-              className="glass-dark rounded-2xl border border-border bg-surface-elevated p-7 transition-shadow hover:shadow-xl hover:shadow-brand-600/5"
+              className="glass-dark min-w-0 overflow-hidden rounded-2xl border border-border bg-surface-elevated p-7 transition-shadow hover:shadow-xl hover:shadow-brand-600/5"
             >
               <h3 className="font-display text-xl font-semibold">{solution.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted">{solution.description}</p>
@@ -87,7 +83,7 @@ export function ServiceSolutions({ service }: { service: ServicePageData }) {
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </MotionReveal>
           ))}
         </div>
       </Container>
@@ -110,13 +106,12 @@ export function ServiceFeatures({ service }: { service: ServicePageData }) {
 
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {service.features.map((feature, i) => (
-            <motion.div
+            <MotionReveal
               key={feature.title}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05, duration: 0.4 }}
-              className="rounded-2xl border border-border p-6 transition-colors hover:border-brand-600/20 hover:bg-brand-50/30"
+              delay={i * 0.05}
+              y={16}
+              duration={0.4}
+              className="min-w-0 overflow-hidden rounded-2xl border border-border p-6 transition-colors hover:border-brand-600/20 hover:bg-brand-50/30"
             >
               <div
                 className="mb-4 h-1 w-8 rounded-full"
@@ -124,7 +119,7 @@ export function ServiceFeatures({ service }: { service: ServicePageData }) {
               />
               <h3 className="font-display font-semibold">{feature.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted">{feature.description}</p>
-            </motion.div>
+            </MotionReveal>
           ))}
         </div>
       </Container>

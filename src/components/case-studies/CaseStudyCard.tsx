@@ -1,20 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { MotionReveal } from "@/components/motion/FadeIn";
 import { ArrowRight } from "@/components/ui/Icons";
 import type { CaseStudyData } from "@/lib/case-studies-data";
 
 export function CaseStudyCard({ study, index = 0 }: { study: CaseStudyData; index?: number }) {
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.45, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
-      className="group"
-    >
-      <Link href={`/case-studies/${study.slug}`} className="v6-card v6-card-accent block overflow-hidden">
+    <MotionReveal delay={index * 0.05} y={16} duration={0.45} className="group min-w-0">
+      <Link href={`/case-studies/${study.slug}`} className="v6-card v6-card-accent block min-w-0 overflow-hidden">
         <div className="border-b border-[var(--v6-border)] bg-[#f8fafc] px-6 py-7">
           <span className="text-xs font-medium text-[var(--v6-text-muted)]">{study.trust.industry}</span>
           <p className="mt-4 font-display text-2xl font-bold tracking-tight text-[#d97706]">
@@ -35,7 +29,7 @@ export function CaseStudyCard({ study, index = 0 }: { study: CaseStudyData; inde
           </span>
         </div>
       </Link>
-    </motion.article>
+    </MotionReveal>
   );
 }
 

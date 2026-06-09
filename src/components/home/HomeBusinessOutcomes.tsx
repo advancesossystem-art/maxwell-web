@@ -16,14 +16,12 @@ export function HomeBusinessOutcomes() {
         />
       </FadeIn>
       <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {businessOutcomesDelivered.map((item, i) => (
-          <FadeIn key={item.title} delay={i * 0.05}>
-            <li className="v6-card h-full p-6">
-              <p className="font-display text-lg font-semibold text-[var(--v6-text)]">{item.title}</p>
-              <p className="mt-2 text-sm leading-relaxed text-[var(--v6-text-secondary)]">{item.description}</p>
-              <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-[#4f46e5]">{item.metric}</p>
-            </li>
-          </FadeIn>
+        {businessOutcomesDelivered.map((item) => (
+          <li key={item.title} className="v6-card min-w-0 overflow-hidden p-6">
+            <p className="font-display text-lg font-semibold text-[var(--v6-text)]">{item.title}</p>
+            <p className="mt-2 text-sm leading-relaxed text-[var(--v6-text-secondary)]">{item.description}</p>
+            <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-[#4f46e5]">{item.metric}</p>
+          </li>
         ))}
       </ul>
     </HomeSection>

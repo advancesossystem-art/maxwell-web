@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
-import { FadeIn } from "@/components/motion/FadeIn";
 import { LeadContactForm } from "@/components/leads/LeadContactForm";
 import { PageHero } from "@/components/design/PageHero";
 import { PageSection, SectionHeader } from "@/components/design/PageSection";
@@ -62,13 +61,11 @@ export function BookConsultationPageContent() {
           description="A working session with engineers—not a generic sales pitch."
         />
         <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-4">
-          {consultationReasons.map((r, i) => (
-            <FadeIn key={r.title} delay={i * 0.05}>
-              <div className="v6-card h-full p-3.5 sm:p-4">
-                <h3 className="font-display text-sm font-semibold text-[var(--v6-text)]">{r.title}</h3>
-                <p className="mt-1 text-xs leading-snug text-[var(--v6-text-secondary)]">{r.description}</p>
-              </div>
-            </FadeIn>
+          {consultationReasons.map((r) => (
+            <div key={r.title} className="v6-card min-w-0 overflow-hidden p-3.5 sm:p-4">
+              <h3 className="font-display text-sm font-semibold text-[var(--v6-text)]">{r.title}</h3>
+              <p className="mt-1 text-xs leading-snug text-[var(--v6-text-secondary)]">{r.description}</p>
+            </div>
           ))}
         </div>
       </PageSection>
@@ -81,49 +78,43 @@ export function BookConsultationPageContent() {
           description="Documented delivery patterns across regulated and operationally complex sectors."
         />
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {stories.map((s, i) => (
-            <FadeIn key={s.slug} delay={i * 0.05}>
-              <Link href={`/case-studies/${s.slug}`} className="v6-card v6-card-accent group block h-full p-5">
-                <p className="text-xs font-medium text-[#4f46e5]">{s.trust.industry}</p>
-                <h3 className="mt-1.5 font-display text-base font-semibold text-[var(--v6-text)] group-hover:text-[#4f46e5] transition-colors">
-                  {s.title}
-                </h3>
-                <p className="mt-1.5 text-sm text-[var(--v6-text-secondary)]">{s.cardHighlight}</p>
-              </Link>
-            </FadeIn>
-          ))}
-          <FadeIn delay={0.15}>
-            <Link
-              href="/case-studies"
-              className="v6-card flex h-full flex-col justify-center border-dashed p-5 transition-colors hover:border-[#4f46e5]/40"
-            >
-              <p className="font-display text-base font-semibold text-[var(--v6-text)]">All case studies</p>
-              <p className="mt-1.5 text-sm text-[var(--v6-text-secondary)]">
-                Explore measurable outcomes across industries.
-              </p>
-              <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-[#4f46e5]">
-                View portfolio <ArrowRight className="h-3.5 w-3.5" />
-              </span>
+          {stories.map((s) => (
+            <Link key={s.slug} href={`/case-studies/${s.slug}`} className="v6-card v6-card-accent group block min-w-0 overflow-hidden p-5">
+              <p className="text-xs font-medium text-[#4f46e5]">{s.trust.industry}</p>
+              <h3 className="mt-1.5 font-display text-base font-semibold text-[var(--v6-text)] group-hover:text-[#4f46e5] transition-colors">
+                {s.title}
+              </h3>
+              <p className="mt-1.5 text-sm text-[var(--v6-text-secondary)]">{s.cardHighlight}</p>
             </Link>
-          </FadeIn>
+          ))}
+          <Link
+            href="/case-studies"
+            className="v6-card flex min-w-0 flex-col justify-center overflow-hidden border-dashed p-5 transition-colors hover:border-[#4f46e5]/40"
+          >
+            <p className="font-display text-base font-semibold text-[var(--v6-text)]">All case studies</p>
+            <p className="mt-1.5 text-sm text-[var(--v6-text-secondary)]">
+              Explore measurable outcomes across industries.
+            </p>
+            <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-[#4f46e5]">
+              View portfolio <ArrowRight className="h-3.5 w-3.5" />
+            </span>
+          </Link>
         </div>
       </PageSection>
 
       <PageSection compact tone="raised">
         <SectionHeader dense eyebrow="Process" title="What happens after you reach out" />
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {consultationProcess.map((p, i) => (
-            <FadeIn key={p.step} delay={i * 0.05}>
-              <div className="v6-card flex h-full gap-3 p-4 sm:p-5">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#4f46e5]/25 bg-[#4f46e5]/10 font-display text-xs font-bold text-[#4f46e5]">
-                  {p.step}
-                </div>
-                <div className="min-w-0 text-left">
-                  <h3 className="font-display text-sm font-semibold text-[var(--v6-text)]">{p.title}</h3>
-                  <p className="mt-1 text-xs leading-relaxed text-[var(--v6-text-secondary)]">{p.description}</p>
-                </div>
+          {consultationProcess.map((p) => (
+            <div key={p.step} className="v6-card flex min-w-0 gap-3 overflow-hidden p-4 sm:p-5">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#4f46e5]/25 bg-[#4f46e5]/10 font-display text-xs font-bold text-[#4f46e5]">
+                {p.step}
               </div>
-            </FadeIn>
+              <div className="min-w-0 text-left">
+                <h3 className="font-display text-sm font-semibold text-[var(--v6-text)]">{p.title}</h3>
+                <p className="mt-1 text-xs leading-relaxed text-[var(--v6-text-secondary)]">{p.description}</p>
+              </div>
+            </div>
           ))}
         </div>
       </PageSection>

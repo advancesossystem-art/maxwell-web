@@ -291,13 +291,23 @@
   box-shadow: var(--v6-shadow-md);
   transition:
     transform 0.35s var(--v6-ease),
-    box-shadow 0.35s var(--v6-ease);
+    box-shadow 0.35s var(--v6-ease),
+    border-color 0.35s var(--v6-ease);
 }
 
 @media (hover: hover) {
   .v6-card:hover {
     transform: translateY(-4px);
     box-shadow: var(--v6-shadow-lg);
+  }
+}
+
+@media (hover: none) {
+  .v6-card {
+    transform: none;
+    transition:
+      box-shadow 0.35s var(--v6-ease),
+      border-color 0.35s var(--v6-ease);
   }
 }
 
@@ -546,6 +556,20 @@
   padding: 1.5rem;
   box-shadow: var(--v6-shadow-md);
   transition: transform 0.35s var(--v6-ease), box-shadow 0.35s var(--v6-ease);
+}
+
+@media (hover: hover) {
+  .v6-bento-item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--v6-shadow-lg);
+  }
+}
+
+@media (hover: none) {
+  .v6-bento-item {
+    transform: none;
+    transition: box-shadow 0.35s var(--v6-ease), border-color 0.35s var(--v6-ease);
+  }
 }
 
 /* Legacy modifiers — same width as default item */

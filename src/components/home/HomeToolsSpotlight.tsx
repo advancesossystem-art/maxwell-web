@@ -30,30 +30,29 @@ export function HomeToolsSpotlight() {
           description="Interactive calculators and assessment tools—ERP ROI, software cost, project timeline, and CRM payback. Visitors love seeing numbers before vendor calls."
         />
       </FadeIn>
-      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-        {phase4Tools.map((tool, i) => (
-          <FadeIn key={tool.slug} delay={i * 0.03}>
-            <Link
-              href={`/tools/${tool.slug}`}
-              onClick={() => trackCTAClick(tool.name, `/tools/${tool.slug}`, "homepage_tools")}
-              className="group v6-card flex h-full flex-col p-5 transition-colors hover:border-[#4f46e5]/30"
+      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+        {phase4Tools.map((tool) => (
+          <Link
+            key={tool.slug}
+            href={`/tools/${tool.slug}`}
+            onClick={() => trackCTAClick(tool.name, `/tools/${tool.slug}`, "homepage_tools")}
+            className="group v6-card flex min-w-0 flex-col overflow-hidden p-5 transition-colors hover:border-[#4f46e5]/30"
+          >
+            <span
+              className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-lg font-bold text-white"
+              style={{ backgroundColor: tool.accent }}
+              aria-hidden
             >
-              <span
-                className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-lg font-bold text-white"
-                style={{ backgroundColor: tool.accent }}
-                aria-hidden
-              >
-                {tool.slug.includes("roi") || tool.slug.includes("cost") ? "%" : tool.slug.includes("requirement") ? "R" : "✓"}
-              </span>
-              <h3 className="mt-4 font-display text-base font-semibold text-[var(--v6-text)] group-hover:text-[#4f46e5]">
-                {tool.name}
-              </h3>
-              <p className="mt-2 flex-1 text-sm text-[var(--v6-text-secondary)]">{tool.desc}</p>
-              <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[#4f46e5]">
-                Try free <ArrowRight className="h-3.5 w-3.5" />
-              </span>
-            </Link>
-          </FadeIn>
+              {tool.slug.includes("roi") || tool.slug.includes("cost") ? "%" : tool.slug.includes("requirement") ? "R" : "✓"}
+            </span>
+            <h3 className="mt-4 font-display text-base font-semibold leading-snug text-[var(--v6-text)] group-hover:text-[#4f46e5]">
+              {tool.name}
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-[var(--v6-text-secondary)]">{tool.desc}</p>
+            <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[#4f46e5]">
+              Try free <ArrowRight className="h-3.5 w-3.5" />
+            </span>
+          </Link>
         ))}
       </div>
       <FadeIn delay={0.2}>

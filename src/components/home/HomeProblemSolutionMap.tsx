@@ -21,13 +21,12 @@ export function HomeProblemSolutionMap() {
       </FadeIn>
 
       <ul className="mt-12 space-y-4">
-        {problemSolutionMap.map((item, i) => (
-          <FadeIn key={item.problem} delay={i * 0.06}>
-            <li>
-              <Link
-                href={item.href}
-                className="v6-card group grid gap-4 p-6 transition-colors hover:border-[#4f46e5]/30 sm:grid-cols-[1fr_auto_1fr] sm:items-center sm:gap-6"
-              >
+        {problemSolutionMap.map((item) => (
+          <li key={item.problem}>
+            <Link
+              href={item.href}
+              className="v6-card group grid min-w-0 gap-4 overflow-hidden p-6 transition-colors hover:border-[#4f46e5]/30 sm:grid-cols-[1fr_auto_1fr] sm:items-center sm:gap-6"
+            >
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-wider text-[var(--v6-text-muted)]">
                     Problem
@@ -48,8 +47,7 @@ export function HomeProblemSolutionMap() {
                   Explore solution <ArrowRight className="h-3.5 w-3.5" />
                 </span>
               </Link>
-            </li>
-          </FadeIn>
+          </li>
         ))}
       </ul>
     </HomeSection>
