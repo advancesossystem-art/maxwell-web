@@ -42,6 +42,13 @@ const compactInputClass = cn(
   "focus:border-[#4f46e5] focus:outline-none focus:ring-2 focus:ring-[#4f46e5]/20",
 );
 
+type ConsultationStep1Data = {
+  name: string;
+  email: string;
+  phone: string;
+  projectType: string;
+};
+
 function fieldInputClass(hasError?: boolean, compact?: boolean) {
   return cn(
     compact ? compactInputClass : inputClass,
@@ -51,6 +58,15 @@ function fieldInputClass(hasError?: boolean, compact?: boolean) {
 
 function isConsultationSource(source: string) {
   return source === "book-consultation" || source === "discovery-call";
+}
+
+function readFormValues(form: HTMLFormElement) {
+  const raw = Object.fromEntries(new FormData(form).entries()) as Record<string, string>;
+  const phone = composeInternationalPhone(
+    raw.phoneCountry || defaultCountryIso,
+    raw.phoneLocal || raw.phone || "",
+  );
+  return { raw, phone };
 }
 
 function LeadContactFormInner({
@@ -73,29 +89,19 @@ function LeadContactFormInner({
   const [error, setError] = useState("");
   const [fieldErrors, setFieldErrors] = useState<LeadFormFieldErrors>({});
   const [step, setStep] = useState(1);
+  const [step1Data, setStep1Data] = useState<ConsultationStep1Data | null>(null);
   const isTwoStep = isConsultationSource(source);
-  const showStep1 = !isTwoStep || step === 1;
-  const showStep2 = !isTwoStep || step === 2;
 
   function focusFirstInvalid(form: HTMLFormElement) {
     const firstInvalid = form.querySelector<HTMLElement>("[aria-invalid='true']");
     firstInvalid?.focus();
   }
 
-  function handleContinue(e: React.MouseEvent<HTMLButtonElement>) {
-    const form = e.currentTarget.form;
-    if (!form) return;
-
+  function advanceToStep2(form: HTMLFormElement): boolean {
     setError("");
     setFieldErrors({});
 
-    const formData = new FormData(form);
-    const raw = Object.fromEntries(formData.entries()) as Record<string, string>;
-    const phone = composeInternationalPhone(
-      raw.phoneCountry || defaultCountryIso,
-      raw.phoneLocal || raw.phone || "",
-    );
-
+    const { raw, phone } = readFormValues(form);
     const validation = validateConsultationStep1({
       name: raw.name,
       email: raw.email,
@@ -106,13 +112,21 @@ function LeadContactFormInner({
     if (!validation.success) {
       setFieldErrors(validation.errors);
       focusFirstInvalid(form);
-      return;
+      return false;
     }
 
+    setStep1Data(validation.data);
     trackFormStart(source);
     trackFormStep(source, 1, "contact");
     setStep(2);
     trackFormStep(source, 2, "details");
+    return true;
+  }
+
+  function handleContinue(e: React.MouseEvent<HTMLButtonElement>) {
+    e.preventDefault();
+    const form = e.currentTarget.form;
+    if (form) advanceToStep2(form);
   }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -120,26 +134,25 @@ function LeadContactFormInner({
     setError("");
     setFieldErrors({});
 
-    const formData = new FormData(e.currentTarget);
-    const raw = Object.fromEntries(formData.entries()) as Record<string, string>;
+    if (isTwoStep && step === 1) {
+      advanceToStep2(e.currentTarget);
+      return;
+    }
+
+    const { raw, phone } = readFormValues(e.currentTarget);
     if (raw.website_url?.trim()) {
       router.push(`/thank-you?source=${source}`);
       return;
     }
 
-    const phone = composeInternationalPhone(
-      raw.phoneCountry || defaultCountryIso,
-      raw.phoneLocal || raw.phone || "",
-    );
-
     const validation = isTwoStep
       ? validateConsultationFormFields({
-          name: raw.name,
-          email: raw.email,
-          phone,
+          name: step1Data?.name ?? raw.name,
+          email: step1Data?.email ?? raw.email,
+          phone: step1Data?.phone ?? phone,
           company: raw.company,
           message: raw.message,
-          projectType: raw.projectType,
+          projectType: step1Data?.projectType ?? raw.projectType,
           budget: raw.budget,
         })
       : validateLeadFormFields({
@@ -157,11 +170,7 @@ function LeadContactFormInner({
       if (isTwoStep) {
         const step1Keys = ["name", "email", "phone", "projectType"] as const;
         const hasStep1Error = step1Keys.some((key) => validation.errors[key]);
-        if (hasStep1Error) {
-          setStep(1);
-        } else {
-          setStep(2);
-        }
+        setStep(hasStep1Error ? 1 : 2);
       }
       focusFirstInvalid(e.currentTarget);
       return;
@@ -206,7 +215,8 @@ function LeadContactFormInner({
         <input id="website_url" name="website_url" type="text" tabIndex={-1} autoComplete="off" />
       </div>
 
-      <div className={cn(!showStep1 && "hidden")} aria-hidden={!showStep1}>
+      {(!isTwoStep || step === 1) && (
+        <div className="space-y-3.5">
           <div className="grid gap-3.5 sm:grid-cols-2">
             <FormField label="Full Name" htmlFor="name" required error={fieldErrors.name}>
               <input
@@ -217,6 +227,7 @@ function LeadContactFormInner({
                 autoComplete="name"
                 minLength={2}
                 maxLength={80}
+                defaultValue={step1Data?.name}
                 className={ic(fieldErrors.name)}
                 placeholder="Your full name"
               />
@@ -230,6 +241,7 @@ function LeadContactFormInner({
                 autoComplete="email"
                 inputMode="email"
                 maxLength={254}
+                defaultValue={step1Data?.email}
                 className={ic(fieldErrors.email)}
                 placeholder="you@company.com"
               />
@@ -263,7 +275,7 @@ function LeadContactFormInner({
                 name="projectType"
                 required
                 className={ic(fieldErrors.projectType)}
-                defaultValue={defaultService}
+                defaultValue={step1Data?.projectType || defaultService}
               >
                 <option value="">Select a service</option>
                 {serviceOptions.map((s) => (
@@ -286,9 +298,11 @@ function LeadContactFormInner({
               </FormField>
             ) : null}
           </div>
-      </div>
+        </div>
+      )}
 
-      <div className={cn(!showStep2 && "hidden")} aria-hidden={!showStep2}>
+      {(!isTwoStep || step === 2) && (
+        <div className="space-y-3.5">
           {isTwoStep ? (
             <FormField label="Company" htmlFor="company" error={fieldErrors.company} hint="Optional">
               <input
@@ -346,7 +360,8 @@ function LeadContactFormInner({
               }
             />
           </FormField>
-      </div>
+        </div>
+      )}
 
       {error ? (
         <p role="alert" className="rounded-lg bg-red-500/10 px-4 py-3 text-sm text-red-300">
