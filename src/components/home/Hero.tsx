@@ -15,7 +15,11 @@ const trustIcons = ["rocket", "users", "support", "shield"] as const;
 function TrustIcon({ type }: { type: (typeof trustIcons)[number] }) {
   const paths: Record<(typeof trustIcons)[number], React.ReactNode> = {
     rocket: (
-      <path strokeLinecap="round" strokeLinejoin="round" d="M15.59 14.37a6 6 0 0 1-7.02-7.02M18 10l-1.5-7-7L8 4.5" />
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M15.59 14.37a6 6 0 0 1-7.02-7.02M18 10l-1.5 -7 -7 L8 4.5"
+      />
     ),
     users: (
       <path

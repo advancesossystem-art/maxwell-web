@@ -74,6 +74,8 @@ function LeadContactFormInner({
   const [fieldErrors, setFieldErrors] = useState<LeadFormFieldErrors>({});
   const [step, setStep] = useState(1);
   const isTwoStep = isConsultationSource(source);
+  const showStep1 = !isTwoStep || step === 1;
+  const showStep2 = !isTwoStep || step === 2;
 
   function focusFirstInvalid(form: HTMLFormElement) {
     const firstInvalid = form.querySelector<HTMLElement>("[aria-invalid='true']");
@@ -152,8 +154,14 @@ function LeadContactFormInner({
 
     if (!validation.success) {
       setFieldErrors(validation.errors);
-      if (isTwoStep && (validation.errors.budget || validation.errors.message || validation.errors.company)) {
-        setStep(2);
+      if (isTwoStep) {
+        const step1Keys = ["name", "email", "phone", "projectType"] as const;
+        const hasStep1Error = step1Keys.some((key) => validation.errors[key]);
+        if (hasStep1Error) {
+          setStep(1);
+        } else {
+          setStep(2);
+        }
       }
       focusFirstInvalid(e.currentTarget);
       return;
@@ -198,8 +206,7 @@ function LeadContactFormInner({
         <input id="website_url" name="website_url" type="text" tabIndex={-1} autoComplete="off" />
       </div>
 
-      {(!isTwoStep || step === 1) && (
-        <>
+      <div className={cn(!showStep1 && "hidden")} aria-hidden={!showStep1}>
           <div className="grid gap-3.5 sm:grid-cols-2">
             <FormField label="Full Name" htmlFor="name" required error={fieldErrors.name}>
               <input
@@ -279,11 +286,9 @@ function LeadContactFormInner({
               </FormField>
             ) : null}
           </div>
-        </>
-      )}
+      </div>
 
-      {(!isTwoStep || step === 2) && (
-        <>
+      <div className={cn(!showStep2 && "hidden")} aria-hidden={!showStep2}>
           {isTwoStep ? (
             <FormField label="Company" htmlFor="company" error={fieldErrors.company} hint="Optional">
               <input
@@ -341,8 +346,7 @@ function LeadContactFormInner({
               }
             />
           </FormField>
-        </>
-      )}
+      </div>
 
       {error ? (
         <p role="alert" className="rounded-lg bg-red-500/10 px-4 py-3 text-sm text-red-300">
