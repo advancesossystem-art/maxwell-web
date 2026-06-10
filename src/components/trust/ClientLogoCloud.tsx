@@ -40,11 +40,13 @@ export function ClientLogoCloud({
         {clients.map((client) => (
           <div
             key={client.name}
-            className="flex min-w-[8.5rem] flex-col items-center justify-center rounded-xl border border-white/[0.06] bg-white/[0.02] px-5 py-4"
+            className="flex min-w-[8.5rem] flex-col items-center justify-center rounded-xl border border-[var(--v6-border)] bg-[var(--v6-bg-white)] px-5 py-4 shadow-[var(--v6-shadow-sm)]"
           >
-            <span className="font-display text-sm font-semibold text-white/50">{client.name}</span>
+            <span className="font-display text-sm font-semibold text-[var(--v6-text)]">{client.name}</span>
             {client.industry ? (
-              <span className="mt-1 text-[10px] uppercase tracking-wider text-white/30">{client.industry}</span>
+              <span className="mt-1 text-[10px] uppercase tracking-wider text-[var(--v6-text-muted)]">
+                {client.industry}
+              </span>
             ) : null}
           </div>
         ))}
