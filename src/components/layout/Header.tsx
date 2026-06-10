@@ -49,6 +49,8 @@ export function Header() {
   const [resourcesOpen, setResourcesOpen] = useState(false);
   const drawerRef = useRef<HTMLDivElement>(null);
   const resourcesRef = useRef<HTMLDivElement>(null);
+  const resourcesBtnRef = useRef<HTMLButtonElement>(null);
+  const [resourcesMenuStyle, setResourcesMenuStyle] = useState<React.CSSProperties>({});
   const closeMobile = useCallback(() => setMobileOpen(false), []);
 
   useEscapeKey(() => {
@@ -88,6 +90,36 @@ export function Header() {
     return () => document.removeEventListener("mousedown", close);
   }, [resourcesOpen]);
 
+  useEffect(() => {
+    if (!resourcesOpen || !resourcesBtnRef.current) return;
+
+    const updatePosition = () => {
+      const btn = resourcesBtnRef.current;
+      if (!btn) return;
+      const rect = btn.getBoundingClientRect();
+      const menuWidth = 224;
+      const left = Math.min(
+        Math.max(12, rect.right - menuWidth),
+        window.innerWidth - menuWidth - 12,
+      );
+      setResourcesMenuStyle({
+        position: "fixed",
+        top: rect.bottom + 8,
+        left,
+        width: menuWidth,
+        zIndex: 200,
+      });
+    };
+
+    updatePosition();
+    window.addEventListener("resize", updatePosition);
+    window.addEventListener("scroll", updatePosition, true);
+    return () => {
+      window.removeEventListener("resize", updatePosition);
+      window.removeEventListener("scroll", updatePosition, true);
+    };
+  }, [resourcesOpen]);
+
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
 
@@ -113,6 +145,7 @@ export function Header() {
 
           <div className="relative" ref={resourcesRef}>
             <button
+              ref={resourcesBtnRef}
               type="button"
               className={cn(
                 "v6-nav-link inline-flex items-center gap-1",
@@ -127,7 +160,8 @@ export function Header() {
             </button>
             {resourcesOpen ? (
               <ul
-                className="absolute right-0 top-full z-50 mt-2 min-w-[12rem] rounded-2xl border border-[var(--v6-border)] bg-white py-2 shadow-lg"
+                className="max-h-[min(70vh,22rem)] overflow-y-auto overscroll-contain rounded-2xl border border-[var(--v6-border)] bg-white py-2 shadow-xl"
+                style={resourcesMenuStyle}
                 role="menu"
               >
                 {resourceLinks.map((link) => (
@@ -135,7 +169,7 @@ export function Header() {
                     <Link
                       href={link.href}
                       role="menuitem"
-                      className="block px-4 py-2.5 text-sm text-[var(--v6-text-secondary)] transition-colors hover:bg-[#f1f5f9] hover:text-[var(--v6-text)]"
+                      className="block px-4 py-2.5 text-sm font-medium text-[var(--v6-text)] transition-colors hover:bg-[#f1f5f9] hover:text-[#4f46e5]"
                       onClick={() => setResourcesOpen(false)}
                     >
                       {link.label}
