@@ -20,6 +20,16 @@ export const siteConfig = {
   locale: "en_IN",
 } as const;
 
+/** E.164 digits for WhatsApp links (e.g. 919586868538) */
+export function whatsappNumberE164(): string {
+  return siteConfig.phone.replace(/\D/g, "");
+}
+
+export function whatsappHref(message?: string): string {
+  const base = `https://wa.me/${whatsappNumberE164()}`;
+  return message ? `${base}?text=${encodeURIComponent(message)}` : base;
+}
+
 export const companyLinks = [
   { label: "About", href: "/about" },
   { label: "Company", href: "/company" },

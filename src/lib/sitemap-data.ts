@@ -5,13 +5,13 @@ import { projectSlugs } from "./projects-data";
 import { caseStudySlugs } from "./case-studies-data";
 import { getLocationStaticParams } from "./locations-data";
 import { solutionSlugs } from "./solutions-data";
-import { articleSlugs } from "./content/articles";
+import { getIndexableArticleSlugs } from "./content/articles";
 import { guideSlugs } from "./content/guides";
 import { resourceSlugs } from "./content/resources";
 import { reportSlugs } from "./content/reports";
 import { authors } from "./content/authors";
 import { toolSlugs } from "./tools/registry";
-import { compareSlugs, costSlugs, industryServiceParams, cityServiceParams } from "./seo/programmatic/build-pages";
+import { compareSlugs, costSlugs } from "./seo/programmatic/build-pages";
 
 const staticPages = [
   "",
@@ -34,6 +34,9 @@ const staticPages = [
   "/process",
   "/careers",
   "/why-maxwell",
+  "/engagement-models",
+  "/reviews",
+  "/security",
   "/contact",
   "/get-estimate",
   "/project-calculator",
@@ -73,10 +76,6 @@ export function getIndustriesSitemapEntries() {
       url: `${siteConfig.url}/industries/${slug}`,
       priority: 0.85,
     })),
-    ...industryServiceParams.map(({ industry, service }) => ({
-      url: `${siteConfig.url}/industries/${industry}/${service}`,
-      priority: 0.82,
-    })),
   ];
 }
 
@@ -112,13 +111,6 @@ export function getLocationsSitemapEntries() {
     }
   });
 
-  cityServiceParams.forEach(({ country, city, service }) => {
-    entries.push({
-      url: `${siteConfig.url}/locations/${country}/${city}/${service}`,
-      priority: 0.88,
-    });
-  });
-
   return entries;
 }
 
@@ -145,7 +137,7 @@ export function getContentSitemapEntries() {
     { url: `${siteConfig.url}/resources`, priority: 0.84 },
     { url: `${siteConfig.url}/guides`, priority: 0.86 },
     { url: `${siteConfig.url}/reports`, priority: 0.84 },
-    ...articleSlugs.map((slug) => ({ url: `${siteConfig.url}/blog/${slug}`, priority: 0.8 })),
+    ...getIndexableArticleSlugs().map((slug) => ({ url: `${siteConfig.url}/blog/${slug}`, priority: 0.8 })),
     ...guideSlugs.map((slug) => ({ url: `${siteConfig.url}/guides/${slug}`, priority: 0.82 })),
     ...resourceSlugs.map((slug) => ({ url: `${siteConfig.url}/resources/${slug}`, priority: 0.81 })),
     ...reportSlugs.map((slug) => ({ url: `${siteConfig.url}/reports/${slug}`, priority: 0.83 })),
@@ -173,16 +165,3 @@ export function getCostSitemapEntries() {
     })),
   ];
 }
-
-export const sitemapIndexEntries = [
-  { loc: `${siteConfig.url}/sitemap-pages.xml` },
-  { loc: `${siteConfig.url}/sitemap-services.xml` },
-  { loc: `${siteConfig.url}/sitemap-industries.xml` },
-  { loc: `${siteConfig.url}/sitemap-work.xml` },
-  { loc: `${siteConfig.url}/sitemap-locations.xml` },
-  { loc: `${siteConfig.url}/sitemap-solutions.xml` },
-  { loc: `${siteConfig.url}/sitemap-compare.xml` },
-  { loc: `${siteConfig.url}/sitemap-cost.xml` },
-  { loc: `${siteConfig.url}/sitemap-content.xml` },
-  { loc: `${siteConfig.url}/sitemap-tools.xml` },
-];

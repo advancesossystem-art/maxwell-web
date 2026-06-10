@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { siteConfig } from "@/lib/constants";
 import { BrandLogo } from "@/components/layout/BrandLogo";
-import { consultationHref } from "@/lib/conversion-copy";
+import { consultationHref, estimateHref } from "@/lib/conversion-copy";
 
 const columns = [
   {
@@ -27,6 +27,9 @@ const columns = [
     links: [
       { label: "About", href: "/about" },
       { label: "Process", href: "/process" },
+      { label: "Engagement Models", href: "/engagement-models" },
+      { label: "Reviews", href: "/reviews" },
+      { label: "Security", href: "/security" },
       { label: "Work", href: "/work" },
       { label: "Contact", href: "/contact" },
     ],
@@ -36,6 +39,8 @@ const columns = [
     links: [
       { label: "Case Studies", href: "/case-studies" },
       { label: "Blog", href: "/blog" },
+      { label: "Compare", href: "/compare" },
+      { label: "Cost Guides", href: "/cost" },
       { label: "Tools", href: "/tools" },
       { label: "Client Portal", href: "/portal" },
     ],
@@ -65,13 +70,21 @@ export function Footer() {
                 {siteConfig.phone}
               </a>
             </div>
-            <Link
-              href={consultationHref({ source: "footer" })}
-              className="v6-btn v6-btn-primary mt-4 inline-flex !min-h-9 !px-4 !py-2 text-sm"
-            >
-              Book Consultation
-              <span aria-hidden>→</span>
-            </Link>
+            <div className="mt-4 flex flex-wrap gap-2">
+              <Link
+                href={estimateHref({ source: "footer" })}
+                className="v6-btn v6-btn-primary inline-flex !min-h-9 !px-4 !py-2 text-sm"
+              >
+                Get Free Estimate
+                <span aria-hidden>→</span>
+              </Link>
+              <Link
+                href={consultationHref({ source: "footer" })}
+                className="v6-btn v6-btn-secondary inline-flex !min-h-9 !px-4 !py-2 text-sm"
+              >
+                Book Consultation
+              </Link>
+            </div>
           </div>
 
           {columns.map((col) => (

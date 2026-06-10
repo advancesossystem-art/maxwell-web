@@ -1,6 +1,7 @@
 import type { ContentCategorySlug } from "./schema";
 import type { ArticleDef } from "./article-factory";
 import type { IndustryCatalogEntry, ServiceCatalogEntry } from "../seo/programmatic/types";
+import { buildIndustryIntroParagraphs } from "./industry-intro-variants";
 
 function serviceCategory(key: string): ContentCategorySlug {
   switch (key) {
@@ -90,7 +91,6 @@ export function buildDeepIndustryServiceArticle(
   const slug = `${service.key}-for-${industry.slug}-india`;
   const pain1 = industry.painPoints[0];
   const pain2 = industry.painPoints[1] ?? industry.painPoints[0];
-  const pain3 = industry.painPoints[2] ?? industry.painPoints[0];
   const modules = serviceModules(service, industry);
 
   return {
@@ -102,11 +102,7 @@ export function buildDeepIndustryServiceArticle(
     authorId: "maxwell-team",
     tags: [industry.name, service.shortLabel, "India", industry.slug, "implementation", "cost"],
     publishedAt,
-    intro: [
-      `${industry.name} companies in India running ${industry.focus} operations lose margin to ${pain1}, ${pain2}, and ${pain3}. Spreadsheets, WhatsApp approvals, and disconnected Tally entries cannot scale past ₹10–50 crore revenue—yet generic software forces expensive workarounds.`,
-      `${service.label} engineered for ${industry.name} encodes your actual workflows with ${industry.compliance} built in. This guide covers what buyers search for before signing a vendor: build vs buy, realistic ${service.costRangeInr} pricing, module checklist, integration patterns, and a 90-day implementation roadmap you can use in RFPs.`,
-      `Maxwell Electrodeal builds ${service.shortLabel.toLowerCase()} for ${industry.name} nationwide from Vadodara HQ—with on-site discovery for Gujarat plants and remote delivery for Mumbai, Bengaluru, Delhi NCR, and export-focused units.`,
-    ],
+    intro: buildIndustryIntroParagraphs(industry, service),
     sections: [
       {
         heading: `Why ${industry.name} teams search for ${service.shortLabel} in 2026`,

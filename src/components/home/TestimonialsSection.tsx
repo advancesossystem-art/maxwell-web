@@ -31,7 +31,12 @@ export function TestimonialsSection() {
                 <footer className="mt-6 border-t border-border pt-6">
                   <cite className="not-italic">
                     <div className="font-display font-semibold text-foreground">
-                      {formatTestimonialAttribution(t.role, t.industry)}
+                      {formatTestimonialAttribution({
+                        role: t.role,
+                        companyType: t.companyType,
+                        industry: t.industry,
+                        region: t.region,
+                      })}
                     </div>
                   </cite>
                 </footer>

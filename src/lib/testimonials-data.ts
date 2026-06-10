@@ -7,6 +7,10 @@ export type TestimonialRecord = {
   role: string;
   company: string;
   industry: CaseStudyIndustry | "SaaS Startup" | "Logistics" | "Manufacturing" | "Healthcare";
+  /** Honest anonymized descriptor, e.g. "Manufacturing SME" */
+  companyType?: string;
+  /** Region or market, e.g. "Gujarat" */
+  region?: string;
   companySize: string;
   projectType: string;
   outcome: string;
@@ -23,6 +27,8 @@ export const testimonials: TestimonialRecord[] = [
     role: "COO",
     company: "",
     industry: "Manufacturing",
+    companyType: "Manufacturing SME",
+    region: "Gujarat",
     companySize: "450 employees · 3 facilities",
     projectType: "ERP Development",
     outcome: "40% less manual entry · ₹12L annual savings",
@@ -37,6 +43,8 @@ export const testimonials: TestimonialRecord[] = [
     role: "Founder & CEO",
     company: "",
     industry: "SaaS Startup",
+    companyType: "B2B SaaS startup",
+    region: "Bengaluru",
     companySize: "Series A · 12-person team",
     projectType: "SaaS Development",
     outcome: "500 users at launch · seed round closed post-launch",
@@ -51,6 +59,8 @@ export const testimonials: TestimonialRecord[] = [
     role: "Medical Director",
     company: "",
     industry: "Healthcare",
+    companyType: "Multi-clinic healthcare group",
+    region: "Maharashtra",
     companySize: "15 clinics · multi-city network",
     projectType: "Custom Software Development",
     outcome: "10,000+ active patients · 99.9% uptime",
@@ -65,6 +75,8 @@ export const testimonials: TestimonialRecord[] = [
     role: "CTO",
     company: "",
     industry: "Logistics",
+    companyType: "Fleet logistics operator",
+    region: "United States",
     companySize: "200+ fleet vehicles",
     projectType: "Logistics Platform",
     outcome: "25% faster deliveries · 30% fuel cost reduction",
@@ -79,6 +91,8 @@ export const testimonials: TestimonialRecord[] = [
     role: "Head of Digital",
     company: "",
     industry: "Retail",
+    companyType: "Omnichannel retailer",
+    region: "Gujarat",
     companySize: "40 stores · omnichannel",
     projectType: "Custom Software Development",
     outcome: "98% inventory sync · 35% online revenue growth",
@@ -93,6 +107,8 @@ export const testimonials: TestimonialRecord[] = [
     role: "Operations Director",
     company: "",
     industry: "Construction",
+    companyType: "Construction SME",
+    region: "Gujarat",
     companySize: "8 active projects · 150+ field workers",
     projectType: "ERP Development",
     outcome: "Real-time site reporting · improved margin visibility",

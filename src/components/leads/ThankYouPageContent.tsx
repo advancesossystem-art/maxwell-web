@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-import { WHATSAPP_NUMBER } from "@/lib/leads-data";
+import { whatsappHref } from "@/lib/constants";
 import { getLeadMagnetById } from "@/lib/content/lead-magnets";
 import { ArrowRight } from "@/components/ui/Icons";
 import { CalendlyEmbed } from "@/components/leads/CalendlyEmbed";
@@ -19,9 +19,11 @@ function ThankYouInner() {
   const magnet = magnetId ? getLeadMagnetById(magnetId) : undefined;
 
   const calendlyUrl = getCalendlyUrl();
-  const showCalendly =
-    !!calendlyUrl &&
-    (source === "book-consultation" || source === "discovery-call" || source === "get-estimate");
+  const wantsCalendly =
+    source === "book-consultation" || source === "discovery-call" || source === "get-estimate";
+  const showCalendlyEmbed = !!calendlyUrl && wantsCalendly;
+  const showCalendlyFallback = wantsCalendly && !calendlyUrl;
+  const whatsappLink = whatsappHref("Hi, I just submitted a form on your website and would like to schedule a call.");
 
   const isNewsletter =
     source === "newsletter" ||
@@ -58,12 +60,12 @@ function ThankYouInner() {
             ? magnet
               ? `Your download is ready. We've also sent ${magnet.title} details to your inbox.`
               : "You're subscribed to Maxwell engineering insights. Check your inbox to confirm."
-            : showCalendly
+            : showCalendlyEmbed || showCalendlyFallback
               ? `Your ${sourceLabels[source] ?? "inquiry"} is confirmed. Pick a time below — or we'll reach out within one business day.`
               : `Your ${sourceLabels[source] ?? "inquiry"} has been received. Our team will respond within 24 hours.`}
         </p>
 
-        {showCalendly && calendlyUrl ? (
+        {showCalendlyEmbed && calendlyUrl ? (
           <div className="mt-10 text-left">
             <h2 className="font-display text-lg font-bold text-center sm:text-left">
               {source === "get-estimate" ? "Prefer to talk sooner?" : "Book your session now"}
@@ -73,6 +75,29 @@ function ThankYouInner() {
             </p>
             <div className="mt-6">
               <CalendlyEmbed url={calendlyUrl} height={source === "get-estimate" ? 600 : 700} />
+            </div>
+          </div>
+        ) : null}
+
+        {showCalendlyFallback ? (
+          <div className="mt-10 rounded-2xl border border-border bg-surface-elevated p-6 text-left">
+            <h2 className="font-display text-lg font-bold">
+              {source === "get-estimate" ? "Prefer to talk sooner?" : "Book your session now"}
+            </h2>
+            <p className="mt-2 text-sm text-muted">
+              Our scheduling calendar is loading separately — a consultant will email you a booking link within one
+              business day. For a faster response, message us on WhatsApp.
+            </p>
+            <p className="mt-2 text-sm text-muted">
+              {CONVERSION_EXPECTATIONS.consultationLength} · {CONVERSION_EXPECTATIONS.responseTime}
+            </p>
+            <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+              <Button href={whatsappLink} external size="lg" className="w-full sm:w-auto">
+                Chat on WhatsApp
+              </Button>
+              <Button href="/book-consultation" variant="secondary" size="lg" className="w-full sm:w-auto">
+                Book consultation page
+              </Button>
             </div>
           </div>
         ) : null}
@@ -109,12 +134,7 @@ function ThankYouInner() {
         </div>
 
         <div className="mt-10 grid gap-3 sm:grid-cols-3">
-          <Button
-            href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi, I just submitted a form on your website.")}`}
-            external
-            variant="secondary"
-            className="w-full"
-          >
+          <Button href={whatsappLink} external variant="primary" className="w-full">
             WhatsApp Us
           </Button>
           <Button href="/case-studies" variant="secondary" className="w-full">Case Studies</Button>

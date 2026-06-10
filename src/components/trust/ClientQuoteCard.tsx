@@ -5,6 +5,8 @@ type ClientQuoteCardProps = {
   quote: string;
   role: string;
   industry?: string;
+  companyType?: string;
+  region?: string;
   accent?: string;
   subtitle?: string;
   className?: string;
@@ -14,6 +16,8 @@ export function ClientQuoteCard({
   quote,
   role,
   industry,
+  companyType,
+  region,
   accent = "#4f46e5",
   subtitle,
   className,
@@ -55,7 +59,7 @@ export function ClientQuoteCard({
         </div>
         <div>
           <p className="font-display font-semibold text-[var(--v6-text)]">
-            {formatTestimonialAttribution(role, industry)}
+            {formatTestimonialAttribution({ role, companyType, industry, region })}
           </p>
           {subtitle ? <p className="mt-0.5 text-sm text-[var(--v6-text-muted)]">{subtitle}</p> : null}
         </div>

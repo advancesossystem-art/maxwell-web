@@ -27,6 +27,7 @@ export function buildArticleMetadata({
   publishedAt,
   authorName,
   tags = [],
+  noIndex = false,
 }: {
   title: string;
   description: string;
@@ -34,6 +35,7 @@ export function buildArticleMetadata({
   publishedAt: string;
   authorName: string;
   tags?: string[];
+  noIndex?: boolean;
 }): Metadata {
   return buildArticleSeoMetadata({
     title,
@@ -42,6 +44,7 @@ export function buildArticleMetadata({
     publishedAt,
     authorName,
     tags,
+    noIndex,
   });
 }
 

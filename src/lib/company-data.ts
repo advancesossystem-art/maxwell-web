@@ -10,11 +10,11 @@ export { companyStats };
 export const trustMetrics = getTrustMetricsGrid();
 
 export const certifications = [
-  "ISO 27001 Ready Processes",
-  "AWS Partner Network",
-  "Agile & Scrum Certified Teams",
-  "GDPR-Aware Development",
-  "SOC 2 Aligned Practices",
+  "ISO 27001-aligned practices",
+  "AWS deployment practices",
+  "Agile & Scrum delivery practices",
+  "GDPR-aware development",
+  "SOC 2-aligned practices",
 ] as const;
 
 export const companyStory = {
@@ -98,7 +98,7 @@ export interface TeamMember {
   bio: string;
   experience: string;
   skills: string[];
-  linkedin: string;
+  linkedin?: string;
   initials: string;
 }
 
@@ -110,7 +110,6 @@ export const teamMembers: TeamMember[] = [
     bio: "15+ years in enterprise software. Former tech lead at a Fortune 500 manufacturing company.",
     experience: "15+ years",
     skills: ["Strategy", "ERP", "Manufacturing"],
-    linkedin: "#",
     initials: "RM",
   },
   {
@@ -120,7 +119,6 @@ export const teamMembers: TeamMember[] = [
     bio: "Architect of 40+ production systems. Expert in scalable SaaS and cloud-native architecture.",
     experience: "12+ years",
     skills: ["Architecture", "Cloud", "SaaS"],
-    linkedin: "#",
     initials: "PS",
   },
   {
@@ -130,7 +128,6 @@ export const teamMembers: TeamMember[] = [
     bio: "Leads 30+ engineers across full-stack, mobile, and AI teams with Agile delivery excellence.",
     experience: "10+ years",
     skills: ["Engineering Leadership", "Agile", "DevOps"],
-    linkedin: "#",
     initials: "AP",
   },
   {
@@ -140,7 +137,6 @@ export const teamMembers: TeamMember[] = [
     bio: "React, Node.js, and PostgreSQL specialist. Led ERP and healthcare platform builds.",
     experience: "8+ years",
     skills: ["React", "Node.js", "PostgreSQL"],
-    linkedin: "#",
     initials: "SR",
   },
   {
@@ -150,7 +146,6 @@ export const teamMembers: TeamMember[] = [
     bio: "React Native and Flutter expert. Shipped 15+ apps with 4.5+ average store ratings.",
     experience: "7+ years",
     skills: ["React Native", "Flutter", "iOS/Android"],
-    linkedin: "#",
     initials: "VD",
   },
   {
@@ -160,7 +155,6 @@ export const teamMembers: TeamMember[] = [
     bio: "Python, microservices, and API design. Built high-throughput logistics and fintech systems.",
     experience: "9+ years",
     skills: ["Python", "API Design", "Microservices"],
-    linkedin: "#",
     initials: "AI",
   },
   {
@@ -170,7 +164,6 @@ export const teamMembers: TeamMember[] = [
     bio: "Design systems, accessibility, and conversion-focused interfaces for B2B and B2C products.",
     experience: "8+ years",
     skills: ["Figma", "Design Systems", "UX Research"],
-    linkedin: "#",
     initials: "KS",
   },
   {
@@ -180,7 +173,6 @@ export const teamMembers: TeamMember[] = [
     bio: "Mobile-first design for healthcare, education, and SaaS products with WCAG compliance.",
     experience: "6+ years",
     skills: ["Mobile UX", "Prototyping", "Accessibility"],
-    linkedin: "#",
     initials: "MN",
   },
   {
@@ -190,7 +182,6 @@ export const teamMembers: TeamMember[] = [
     bio: "PMP-certified. Managed 25+ enterprise deliveries with 94% on-time milestone completion.",
     experience: "10+ years",
     skills: ["PMP", "Agile", "Stakeholder Mgmt"],
-    linkedin: "#",
     initials: "AK",
   },
   {
@@ -200,7 +191,6 @@ export const teamMembers: TeamMember[] = [
     bio: "Client-facing delivery lead ensuring transparent communication and scope alignment.",
     experience: "7+ years",
     skills: ["Scrum", "Client Relations", "Risk Mgmt"],
-    linkedin: "#",
     initials: "DM",
   },
   {
@@ -210,7 +200,6 @@ export const teamMembers: TeamMember[] = [
     bio: "Computer vision and LLM integration specialist. Built industrial safety AI and chatbot systems.",
     experience: "6+ years",
     skills: ["Python", "YOLO", "LLM APIs"],
-    linkedin: "#",
     initials: "RV",
   },
   {
@@ -220,7 +209,6 @@ export const teamMembers: TeamMember[] = [
     bio: "Designs production AI pipelines with edge deployment and responsible AI practices.",
     experience: "8+ years",
     skills: ["MLOps", "Edge AI", "Data Pipelines"],
-    linkedin: "#",
     initials: "SC",
   },
   {
@@ -230,7 +218,6 @@ export const teamMembers: TeamMember[] = [
     bio: "AWS and Azure certified. Designs scalable, cost-optimized cloud infrastructure.",
     experience: "9+ years",
     skills: ["AWS", "Azure", "Terraform"],
-    linkedin: "#",
     initials: "MA",
   },
   {
@@ -240,7 +227,6 @@ export const teamMembers: TeamMember[] = [
     bio: "CI/CD pipelines, monitoring, and 99.9% uptime infrastructure for production systems.",
     experience: "6+ years",
     skills: ["Docker", "Kubernetes", "Monitoring"],
-    linkedin: "#",
     initials: "LF",
   },
 ];

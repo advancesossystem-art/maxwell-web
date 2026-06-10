@@ -25,6 +25,7 @@ export type ArticleDef = {
   sections: RichSection[];
   faqs?: ContentFAQ[];
   relatedSlugs?: string[];
+  noIndex?: boolean;
 };
 
 function introBlocks(intro: string | string[]): ContentBlock[] {
@@ -82,6 +83,7 @@ export function createArticle(def: ArticleDef): Article {
     featured: def.featured,
     trending: def.trending,
     popular: def.popular,
+    noIndex: def.noIndex,
     relatedSlugs: def.relatedSlugs,
     faqs: def.faqs,
     sections: blocks,

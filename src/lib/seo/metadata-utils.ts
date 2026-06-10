@@ -183,6 +183,7 @@ export function buildArticleSeoMetadata(args: {
   publishedAt: string;
   authorName: string;
   tags?: string[];
+  noIndex?: boolean;
 }): Metadata {
   const pageTitle = formatPageTitle(args.title);
   const alternates = buildLanguageAlternates(args.path);
@@ -201,7 +202,9 @@ export function buildArticleSeoMetadata(args: {
       authors: [args.authorName],
     }),
     twitter: baseTwitter(pageTitle, args.description),
-    robots: { index: true, follow: true },
+    robots: args.noIndex
+      ? { index: false, follow: false }
+      : { index: true, follow: true },
     keywords: mergeKeywords(args.tags ?? []),
     other: { ...geoMetaOther },
   };

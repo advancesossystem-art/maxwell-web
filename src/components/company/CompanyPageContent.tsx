@@ -38,7 +38,7 @@ export function CompanyPageContent() {
       />
 
       <PageSection>
-        <ClientLogoCloud mode="coming-soon" />
+        <ClientLogoCloud mode="placeholder" />
       </PageSection>
 
       <PageSection>

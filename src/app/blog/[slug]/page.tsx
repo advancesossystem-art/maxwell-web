@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BlogArticlePage } from "@/components/content/BlogArticlePage";
 import { buildArticleMetadata } from "@/lib/seo-helpers";
-import { getArticleBySlug, articleSlugs } from "@/lib/content/articles";
+import { getArticleBySlug, getIndexableArticleSlugs } from "@/lib/content/articles";
 import { getAuthorById } from "@/lib/content/authors";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
+export const dynamicParams = true;
+
 export async function generateStaticParams() {
-  return articleSlugs.map((slug) => ({ slug }));
+  return getIndexableArticleSlugs().map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -23,6 +25,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     publishedAt: article.publishedAt,
     authorName: author?.name ?? "Maxwell Team",
     tags: article.tags,
+    noIndex: article.noIndex,
   });
 }
 

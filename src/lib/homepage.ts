@@ -2,10 +2,10 @@
 
 export const homeHero = {
   eyebrow: "Maxwell Electrodeal · Business Technology Partner",
-  headlineLine1: "You Have an Idea.",
-  headlineLine2: "We Build It.",
+  headlineLine1: "Cut manual work.",
+  headlineLine2: "Ship software that pays off.",
   subhead:
-    "Custom ERP, CRM, AI, Automation and Software Solutions designed to help manufacturers, enterprises and growing businesses streamline operations, increase efficiency and accelerate growth.",
+    "Custom ERP, CRM, and AI systems that reduce ops chaos, improve visibility, and deliver ROI within months—not slide decks that never launch.",
   /** Social proof in first viewport — pairs with primary CTA */
   proofOutcome: "10,000+ users on a live healthcare portal · 99.9% uptime since launch",
   proofLink: { label: "See case outcomes", href: "/case-studies" },

@@ -5,9 +5,13 @@ import { motion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { ArrowRight } from "@/components/ui/Icons";
-import type { ProgrammaticPageData } from "@/lib/seo/programmatic/types";
+import type {
+  ComparisonMatrixBlock,
+  LocalStatsBlock,
+  PricingTableBlock,
+  ProgrammaticPageData,
+} from "@/lib/seo/programmatic/types";
 import { TrustNearCTA } from "@/components/conversion/TrustNearCTA";
-import { companyMetricDisplay } from "@/lib/company-metrics";
 import { siteConfig } from "@/lib/constants";
 
 function PageFAQJsonLd({ faqs }: { faqs: { question: string; answer: string }[] }) {
@@ -44,6 +48,96 @@ function Breadcrumb({ items }: { items: ProgrammaticPageData["breadcrumb"] }) {
         ))}
       </ol>
     </nav>
+  );
+}
+
+function PricingTableSection({ table }: { table: PricingTableBlock }) {
+  return (
+    <section className="border-b border-border bg-[#0a0f1a] py-16">
+      <Container>
+        <h2 className="font-display text-2xl font-bold text-white md:text-3xl">{table.title}</h2>
+        <div className="mt-8 overflow-x-auto">
+          <table className="w-full min-w-[640px] border-collapse text-left text-sm">
+            <thead>
+              <tr className="border-b border-white/10 text-xs uppercase tracking-wider text-brand-400">
+                <th className="px-4 py-3 font-semibold">Tier</th>
+                <th className="px-4 py-3 font-semibold">Scope</th>
+                <th className="px-4 py-3 font-semibold">Indicative price</th>
+                <th className="px-4 py-3 font-semibold">Timeline</th>
+                <th className="px-4 py-3 font-semibold">Best for</th>
+              </tr>
+            </thead>
+            <tbody>
+              {table.rows.map((row) => (
+                <tr key={row.tier} className="border-b border-white/[0.06] text-white/80">
+                  <td className="px-4 py-4 font-semibold text-white">{row.tier}</td>
+                  <td className="px-4 py-4 text-muted">{row.scope}</td>
+                  <td className="px-4 py-4 text-brand-400">{row.priceRange}</td>
+                  <td className="px-4 py-4 text-muted">{row.timeline}</td>
+                  <td className="px-4 py-4 text-muted">{row.bestFor}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-6 text-sm text-slate-400">{table.footnote}</p>
+        <div className="mt-6 flex flex-wrap gap-3">
+          <Link href="/get-estimate" className="rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white hover:bg-brand-500">
+            Get pricing estimate
+          </Link>
+          <Link href="/book-consultation" className="rounded-lg border border-white/20 px-4 py-2 text-sm text-white hover:border-brand-500/40">
+            Book consultation
+          </Link>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+function ComparisonMatrixSection({ matrix }: { matrix: ComparisonMatrixBlock }) {
+  return (
+    <section className="border-b border-border bg-[#0a0f1a] py-16">
+      <Container>
+        <h2 className="font-display text-2xl font-bold text-white md:text-3xl">{matrix.title}</h2>
+        <div className="mt-8 overflow-x-auto">
+          <table className="w-full min-w-[560px] border-collapse text-left text-sm">
+            <thead>
+              <tr className="border-b border-white/10 text-xs uppercase tracking-wider text-brand-400">
+                <th className="px-4 py-3 font-semibold">Criterion</th>
+                <th className="px-4 py-3 font-semibold">{matrix.leftLabel}</th>
+                <th className="px-4 py-3 font-semibold">{matrix.rightLabel}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {matrix.rows.map((row) => (
+                <tr key={row.criterion} className="border-b border-white/[0.06]">
+                  <td className="px-4 py-4 font-medium text-white">{row.criterion}</td>
+                  <td className="px-4 py-4 text-muted">{row.left}</td>
+                  <td className="px-4 py-4 text-muted">{row.right}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-6 max-w-3xl leading-relaxed text-slate-300">{matrix.summary}</p>
+      </Container>
+    </section>
+  );
+}
+
+function LocalStatsSection({ block }: { block: LocalStatsBlock }) {
+  return (
+    <section className="border-b border-border bg-[#0a0f1a] py-10">
+      <Container>
+        <p className="text-xs font-semibold uppercase tracking-wider text-brand-400">{block.title}</p>
+        {block.subtitle && <p className="mt-2 max-w-3xl text-sm text-slate-400">{block.subtitle}</p>}
+        <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {block.stats.map((stat) => (
+            <StatCard key={stat.label} value={stat.value} label={stat.label} />
+          ))}
+        </div>
+      </Container>
+    </section>
   );
 }
 
@@ -84,7 +178,7 @@ export function ProgrammaticSeoPage({ page }: { page: ProgrammaticPageData }) {
               <Button href="/get-estimate" size="lg">
                 Get Free Estimate <ArrowRight />
               </Button>
-              <Button href="/contact" size="lg" variant="outline">
+              <Button href="/book-consultation" size="lg" variant="outline">
                 Book Consultation
               </Button>
             </div>
@@ -99,16 +193,9 @@ export function ProgrammaticSeoPage({ page }: { page: ProgrammaticPageData }) {
         </Container>
       </section>
 
-      <section className="border-b border-border bg-[#0a0f1a] py-10">
-        <Container>
-          <p className="text-xs font-semibold uppercase tracking-wider text-brand-400">Industry insight</p>
-          <div className="mt-4 grid gap-4 sm:grid-cols-3">
-            <StatCard value="78%" label="Indian SMEs still run core ops on spreadsheets (2025)" />
-            <StatCard value={companyMetricDisplay.avgRoiTimeline} label="Average ERP payback for our clients" />
-            <StatCard value="40–60%" label="Typical manual work reduction post go-live" />
-          </div>
-        </Container>
-      </section>
+      {page.pricingTable && <PricingTableSection table={page.pricingTable} />}
+      {page.comparisonMatrix && <ComparisonMatrixSection matrix={page.comparisonMatrix} />}
+      {page.localStats && <LocalStatsSection block={page.localStats} />}
 
       <section className="border-b border-border py-8">
         <Container>
@@ -218,8 +305,8 @@ export function ProgrammaticSeoPage({ page }: { page: ProgrammaticPageData }) {
             <Button href="/get-estimate" size="lg">
               Get Free Estimate
             </Button>
-            <Button href="/contact" size="lg" variant="outline">
-              Contact Us
+            <Button href="/book-consultation" size="lg" variant="outline">
+              Book Consultation
             </Button>
           </div>
         </Container>

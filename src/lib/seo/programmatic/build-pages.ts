@@ -6,26 +6,102 @@ import {
   programmaticCountries,
   programmaticIndustries,
   programmaticServices,
+  resolveIndustrySlug,
 } from "./catalog";
-import type { ProgrammaticPageData } from "./types";
+import {
+  buildCityLocalStats,
+  buildComparisonMatrix,
+  buildIndustryLocalStats,
+  buildPricingTable,
+} from "./content-blocks";
+import type { IndustryCatalogEntry, ProgrammaticPageData, ServiceCatalogEntry } from "./types";
 
-function buildInternalLinks(base: { label: string; href: string; description?: string }[]): ProgrammaticPageData["internalLinks"] {
-  return [
-    ...base,
+type InternalLinkCtx = {
+  service?: ServiceCatalogEntry;
+  industry?: IndustryCatalogEntry;
+  industrySlug?: string;
+  citySlug?: string;
+  cityName?: string;
+};
+
+function buildInternalLinks(
+  base: { label: string; href: string; description?: string }[],
+  ctx: InternalLinkCtx = {},
+): ProgrammaticPageData["internalLinks"] {
+  const links: ProgrammaticPageData["internalLinks"] = [...base];
+
+  if (ctx.service) {
+    links.push({
+      label: ctx.service.label,
+      href: `/solutions/${ctx.service.solutionSlug}`,
+      description: `${ctx.service.shortLabel} service pillar`,
+    });
+    links.push({
+      label: `${ctx.service.shortLabel} Services`,
+      href: ctx.service.serviceHref,
+      description: "Detailed service capabilities",
+    });
+  }
+
+  if (ctx.industry && ctx.industrySlug) {
+    links.push({
+      label: `${ctx.industry.name} Industry Hub`,
+      href: `/industries/${ctx.industrySlug}`,
+      description: `Solutions for ${ctx.industry.focus}`,
+    });
+    if (ctx.service) {
+      links.push({
+        label: `${ctx.service.shortLabel} for ${ctx.industry.name}`,
+        href: `/industries/${ctx.industrySlug}/${ctx.service.slug}`,
+        description: "Industry × service page",
+      });
+    }
+  }
+
+  if (ctx.citySlug && ctx.cityName && ctx.service) {
+    links.push({
+      label: `${ctx.service.shortLabel} in ${ctx.cityName}`,
+      href: `/locations/india/${ctx.citySlug}/${ctx.service.slug}`,
+      description: "Local delivery page",
+    });
+    links.push({
+      label: `${ctx.service.shortLabel} Cost — ${ctx.cityName}`,
+      href: `/cost/${ctx.service.slug}-cost-${ctx.citySlug}`,
+      description: "City pricing guide",
+    });
+  }
+
+  const conversion: ProgrammaticPageData["internalLinks"] = [
     { label: "Get Free Estimate", href: "/get-estimate", description: "Ballpark pricing in 24 hours" },
-    { label: "Contact Maxwell", href: "/contact", description: "Talk to our India HQ team" },
-    { label: "Software Cost Calculator", href: "/tools/software-cost-calculator", description: "Self-serve estimate tool" },
+    { label: "Book Free Consultation", href: "/book-consultation", description: "30-min discovery with our team" },
   ];
+
+  const seen = new Set<string>();
+  return [...links, ...conversion].filter((link) => {
+    if (seen.has(link.href)) return false;
+    seen.add(link.href);
+    return true;
+  });
 }
 
 export function buildComparePage(template: (typeof compareTemplates)[number]): ProgrammaticPageData {
   const path = `/compare/${template.slug}`;
+  const categoryLabel =
+    template.category === "erp" ? "ERP" : template.category === "crm" ? "CRM" : template.category;
+  const relatedService =
+    template.category === "crm"
+      ? programmaticServices.find((s) => s.key === "crm")
+      : template.category === "automation"
+        ? programmaticServices.find((s) => s.key === "automation")
+        : programmaticServices.find((s) => s.key === "erp");
+
   return {
     slug: template.slug,
     path,
     pageType: "compare",
-    metaTitle: `${template.title}: Which Is Right for Your Business? | ${siteConfig.name}`,
-    metaDescription: `${template.title} comparison for Indian SMEs and enterprises—pros, cons, and when to choose ${template.left} vs ${template.right}. Expert guide from ${siteConfig.name}.`,
+    metaTitle: `${template.left} vs ${template.right} for Indian ${categoryLabel} Teams (2026) | ${siteConfig.name}`,
+    metaDescription: `${template.title} for India: side-by-side matrix, TCO factors, and when ${template.left} beats ${template.right} for GST-aware SMEs. ${template.verdict.slice(0, 80)}…`,
+    comparisonMatrix: buildComparisonMatrix(template),
     primaryKeyword: template.title,
     secondaryKeywords: [
       `${template.left} vs ${template.right}`,
@@ -74,11 +150,17 @@ export function buildComparePage(template: (typeof compareTemplates)[number]): P
       { question: "How long does a comparison-led project take?", answer: "Discovery and recommendation: 1–2 weeks. Implementation: 8–20 weeks depending on scope and integrations." },
       { question: "Do you serve businesses outside India?", answer: "Yes. We deliver for India, USA, UK, UAE, Canada, and Australia with offshore cost advantages." },
     ],
-    internalLinks: buildInternalLinks([
-      { label: "ERP Development", href: "/solutions/erp-development-company", description: "Custom ERP pillar" },
-      { label: "CRM Development", href: "/solutions/crm-development-company", description: "Custom CRM pillar" },
-      { label: "All Comparisons", href: "/compare", description: "Browse comparison guides" },
-    ]),
+    internalLinks: buildInternalLinks(
+      [
+        { label: "All Comparisons", href: "/compare", description: "Browse comparison guides" },
+        ...(template.category === "erp"
+          ? [{ label: "ERP Development Cost India", href: "/cost/erp-development-cost-india", description: "Pricing benchmarks" }]
+          : template.category === "crm"
+            ? [{ label: "CRM Development Cost India", href: "/cost/crm-development-cost-india", description: "Pricing benchmarks" }]
+            : []),
+      ],
+      { service: relatedService },
+    ),
     accent: "#2563EB",
     breadcrumb: [
       { label: "Home", href: "/" },
@@ -97,8 +179,20 @@ export function buildBestForIndustryCompare(industrySlug: string): ProgrammaticP
     slug,
     path,
     pageType: "compare",
-    metaTitle: `Best ERP for ${industry.name} in India (2026 Guide) | ${siteConfig.name}`,
-    metaDescription: `Best ERP for ${industry.name} in India—compare custom ERP vs SAP, Odoo, and Tally. Workflow fit, GST, compliance, and cost for ${industry.focus}.`,
+    metaTitle: `Best ERP for ${industry.name} India 2026 | ${industry.compliance.split(",")[0]} | ${siteConfig.name}`,
+    metaDescription: `Best ERP for ${industry.name} (${industry.focus}): custom vs SAP/Odoo/Tally, ${industry.painPoints[0]}, GST integration. Compare options for Indian ${industry.name.toLowerCase()} SMEs.`,
+    comparisonMatrix: buildComparisonMatrix({
+      slug: `best-erp-${industrySlug}`,
+      title: `Custom ERP vs Off-the-Shelf for ${industry.name}`,
+      left: "Custom ERP",
+      right: "SAP / Odoo / Tally",
+      category: "erp",
+      verdict: `For ${industry.name}, custom ERP wins when ${industry.painPoints[0]} requires workflow logic off-the-shelf cannot match without heavy customization.`,
+      leftPros: ["Workflow-fit for " + industry.focus, "Tally/GST depth", "No per-user license creep"],
+      rightPros: ["Faster module activation", "Known vendor brands", "Accountant familiarity (Tally)"],
+      chooseLeft: `Choose custom when ${industry.painPoints[1] ?? industry.painPoints[0]} is core to operations.`,
+      chooseRight: "Choose off-the-shelf when processes are standard and users stay under 25.",
+    }),
     primaryKeyword: `Best ERP for ${industry.name}`,
     secondaryKeywords: [
       `${industry.name} ERP software India`,
@@ -140,11 +234,17 @@ export function buildBestForIndustryCompare(industrySlug: string): ProgrammaticP
       { question: `How much does ${industry.name} ERP cost in India?`, answer: `Typical custom ${industry.name} ERP ranges ₹8L–₹45L+ depending on modules, branches, and integrations. See /cost/erp-development-cost-india.` },
       { question: `Does Maxwell have ${industry.name} case studies?`, answer: `We publish relevant case studies on our work page and tailor references during discovery under NDA.` },
     ],
-    internalLinks: buildInternalLinks([
-      { label: `${industry.name} Industry Hub`, href: `/industries/${industrySlug}`, description: "Vertical solutions" },
-      { label: `${industry.name} ERP Development`, href: `/industries/${industrySlug}/erp-development`, description: "Service × industry" },
-      { label: "ERP vs CRM", href: "/compare/erp-vs-crm", description: "Related comparison" },
-    ]),
+    internalLinks: buildInternalLinks(
+      [
+        { label: "ERP vs CRM", href: "/compare/erp-vs-crm", description: "Related comparison" },
+        { label: `${industry.name} ERP Cost`, href: `/cost/erp-development-cost-india`, description: "India pricing guide" },
+      ],
+      {
+        industry,
+        industrySlug,
+        service: programmaticServices.find((s) => s.key === "erp"),
+      },
+    ),
     accent: "#1A4B8C",
     breadcrumb: [
       { label: "Home", href: "/" },
@@ -175,13 +275,22 @@ export function buildCostPage(
     market.type === "city"
       ? `${service.label} cost ${locationLabel}`
       : `${service.label} cost ${locationLabel}`;
+  const locationMeta =
+    market.type === "city"
+      ? `${market.name}, ${market.state}`
+      : `${market.name} (${market.currency})`;
+  const marketModifier =
+    market.type === "city"
+      ? `${market.state} ${market.name} businesses`
+      : `${market.name} buyers sourcing from India`;
 
   return {
     slug,
     path,
     pageType: "cost",
-    metaTitle: `${service.label} Cost in ${locationLabel} (2026 Pricing Guide) | ${siteConfig.name}`,
-    metaDescription: `${service.label} cost in ${locationLabel}: ${costRange}. Factors, timeline, team composition, and how to get an accurate quote from ${siteConfig.name}.`,
+    metaTitle: `${service.shortLabel} Cost in ${locationMeta} 2026 | From ${costRange.split("–")[0].trim()} | ${siteConfig.name}`,
+    metaDescription: `${service.label} pricing for ${marketModifier}: ${costRange}. Tier breakdown, timeline, GST/Tally factors, and milestone quotes from ${siteConfig.name}.`,
+    pricingTable: buildPricingTable(service, locationLabel, costRange),
     primaryKeyword: keyword,
     secondaryKeywords: [
       `${service.shortLabel} development price ${locationLabel}`,
@@ -234,11 +343,27 @@ export function buildCostPage(
       { question: "Do you offer fixed-price contracts?", answer: "Yes. We prefer milestone-based fixed pricing after scope documentation." },
       { question: "Is offshore delivery cheaper?", answer: "India-based delivery typically saves 40–60% vs local US/UK agencies with same senior engineering depth." },
     ],
-    internalLinks: buildInternalLinks([
-      { label: service.label, href: `/solutions/${service.solutionSlug}`, description: "Service pillar" },
-      { label: "Software Cost Calculator", href: "/tools/software-cost-calculator", description: "Instant estimate" },
-      { label: "All Cost Guides", href: "/cost", description: "Browse pricing pages" },
-    ]),
+    internalLinks: buildInternalLinks(
+      [
+        { label: "Software Cost Calculator", href: "/tools/software-cost-calculator", description: "Instant estimate" },
+        { label: "All Cost Guides", href: "/cost", description: "Browse pricing pages" },
+        ...(market.type === "city"
+          ? [
+              {
+                label: `${service.shortLabel} in ${market.name}`,
+                href: `/locations/india/${market.slug}/${service.slug}`,
+                description: "Local company page",
+              },
+            ]
+          : []),
+      ],
+      {
+        service,
+        ...(market.type === "city"
+          ? { citySlug: market.slug, cityName: market.name }
+          : {}),
+      },
+    ),
     accent: "#F59E0B",
     breadcrumb: [
       { label: "Home", href: "/" },
@@ -260,8 +385,10 @@ export function buildIndustryServicePage(industrySlug: string, serviceSlug: stri
     slug,
     path,
     pageType: "industry-service",
-    metaTitle: `${service.label} for ${industry.name} India | ${siteConfig.name}`,
-    metaDescription: `${service.label} for ${industry.name}—${service.description} Compliance: ${industry.compliance}. ${siteConfig.name} India delivery.`,
+    noIndex: true,
+    metaTitle: `${service.shortLabel} for ${industry.name} | ${industry.focus} | ${siteConfig.name}`,
+    metaDescription: `${service.label} for ${industry.name}: fix ${industry.painPoints[0]}. ${industry.compliance}. ${service.costRangeInr} typical range. ${siteConfig.name} India delivery.`,
+    localStats: buildIndustryLocalStats(industry, service),
     primaryKeyword: `${service.shortLabel} for ${industry.name}`,
     secondaryKeywords: [
       `${industry.name} ${service.shortLabel} software India`,
@@ -303,11 +430,13 @@ export function buildIndustryServicePage(industrySlug: string, serviceSlug: stri
       { question: `Do you understand ${industry.name} workflows?`, answer: `Yes—we specialize in ${industry.focus} for Indian businesses with relevant case studies.` },
       { question: "Can you integrate with Tally?", answer: "Yes. Tally sync is standard for Indian ERP and finance modules." },
     ],
-    internalLinks: buildInternalLinks([
-      { label: `${industry.name} Hub`, href: `/industries/${industrySlug}` },
-      { label: service.label, href: `/solutions/${service.solutionSlug}` },
-      { label: `Best ERP for ${industry.name}`, href: `/compare/best-erp-for-${industrySlug}` },
-    ]),
+    internalLinks: buildInternalLinks(
+      [
+        { label: `Best ERP for ${industry.name}`, href: `/compare/best-erp-for-${industrySlug}`, description: "Build vs buy comparison" },
+        { label: `${service.shortLabel} Cost India`, href: `/cost/${service.slug}-cost-india`, description: "Pricing guide" },
+      ],
+      { service, industry, industrySlug },
+    ),
     accent: "#2563EB",
     breadcrumb: [
       { label: "Home", href: "/" },
@@ -330,8 +459,10 @@ export function buildCityServicePage(citySlug: string, serviceSlug: string): Pro
     slug,
     path,
     pageType: "city-service",
-    metaTitle: `${service.label} Company in ${city.name} | ${siteConfig.name}`,
-    metaDescription: `${service.label} company in ${city.name}, ${city.state}. ${city.insight} Free consultation from ${siteConfig.name}.`,
+    noIndex: true,
+    metaTitle: `${service.shortLabel} Company ${city.name}, ${city.state} | ${city.industries[0]} Focus | ${siteConfig.name}`,
+    metaDescription: `${service.label} in ${city.name}, ${city.state}: ${city.insight} Serving ${city.industries.join(", ")}. On-site discovery + Vadodara HQ delivery. Book consultation.`,
+    localStats: buildCityLocalStats(city, service),
     primaryKeyword: `${service.label} company ${city.name}`,
     secondaryKeywords: [
       `${service.shortLabel} development ${city.name}`,
@@ -374,11 +505,24 @@ export function buildCityServicePage(citySlug: string, serviceSlug: string): Pro
       { question: `What industries do you serve in ${city.name}?`, answer: city.industries.join(", ") + ", and more." },
       { question: `How do I get a quote for ${city.name}?`, answer: "Use /get-estimate or /contact with your city—we respond within one business day." },
     ],
-    internalLinks: buildInternalLinks([
-      { label: `${city.name} Location Hub`, href: `/locations/india/${citySlug}` },
-      { label: service.label, href: `/solutions/${service.solutionSlug}` },
-      { label: `${service.shortLabel} Cost ${city.name}`, href: `/cost/${service.slug}-cost-${citySlug}` },
-    ]),
+    internalLinks: buildInternalLinks(
+      [
+        { label: `${city.name} Location Hub`, href: `/locations/india/${citySlug}`, description: "All services in this city" },
+        ...(() => {
+          const industrySlug = resolveIndustrySlug(city.industries[0] ?? "");
+          return industrySlug
+            ? [
+                {
+                  label: `${city.industries[0]} Software`,
+                  href: `/industries/${industrySlug}`,
+                  description: "Industry vertical hub",
+                },
+              ]
+            : [];
+        })(),
+      ],
+      { service, citySlug, cityName: city.name },
+    ),
     accent: "#06B6D4",
     breadcrumb: [
       { label: "Home", href: "/" },

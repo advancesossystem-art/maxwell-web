@@ -6,7 +6,7 @@ import { MobileBodyState } from "@/components/layout/MobileBodyState";
 import { StickyCTA } from "@/components/conversion/StickyCTA";
 import { useStickyBarDismiss } from "@/hooks/useStickyBarDismiss";
 import { isMarketingChromeRoute } from "@/lib/mobile-sticky";
-import { WHATSAPP_NUMBER } from "@/lib/leads-data";
+import { whatsappHref } from "@/lib/constants";
 import { leadTrustBadges } from "@/lib/company-metrics";
 import { trackCTAClick } from "@/lib/conversion-events";
 
@@ -21,7 +21,7 @@ const QuickEstimateWidget = dynamic(
 );
 
 export function WhatsAppFloat() {
-  const href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi Maxwell, I'd like to discuss a software project.")}`;
+  const href = whatsappHref("Hi Maxwell, I'd like to discuss a software project.");
 
   return (
     <a

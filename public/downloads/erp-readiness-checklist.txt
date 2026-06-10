@@ -1,17 +1,50 @@
 ERP READINESS CHECKLIST — Maxwell Electrodeal
-==========================================
+==============================================
+25-point assessment before your custom ERP project starts.
+Download, print, and score each item (0 = not started, 1 = in progress, 2 = done).
 
-Use this checklist before starting a custom ERP project.
+EXECUTIVE & STRATEGY
+□ 1. Executive sponsor named with budget authority
+□ 2. Top 3 business outcomes defined (e.g. reduce stock-outs 30%)
+□ 3. Go-live deadline tied to a business event (not arbitrary)
+□ 4. Build vs buy decision documented with TCO over 3 years
 
-□ Executive sponsor identified
-□ Shop-floor process documented
-□ Inventory accuracy baseline measured
-□ Tally integration requirements defined
-□ GST / e-invoicing scope confirmed
-□ User roles and permissions mapped
-□ Data migration sources inventoried
-□ Change management champions assigned
-□ Budget range approved (₹15L–₹50L typical SME)
-□ Timeline expectations set (MVP 10–14 weeks)
+PROCESS & OPERATIONS
+□ 5. Core shop-floor / warehouse processes mapped end-to-end
+□ 6. Inventory accuracy baseline measured (cycle count %)
+□ 7. Production planning method documented (MRP, kanban, etc.)
+□ 8. Quality rejection and rework workflow defined
+□ 9. Purchase approval hierarchy documented
 
-Contact: maxwellelectrodealsystems@gmail.com | maxwellelectrodeal.com/contact
+FINANCE & COMPLIANCE
+□ 10. Chart of accounts aligned with ERP module structure
+□ 11. GST / e-invoicing scope confirmed with CA
+□ 12. Tally or existing accounting integration requirements listed
+□ 13. Audit trail and user permission requirements defined
+
+DATA & INTEGRATION
+□ 14. Master data sources inventoried (items, customers, vendors)
+□ 15. Data migration volume estimated (records per entity)
+□ 16. Legacy system export format confirmed
+□ 17. Third-party integrations listed (payment, logistics, BI)
+
+PEOPLE & CHANGE
+□ 18. Department champions assigned per module
+□ 19. Training plan drafted (role-based, not one-size-fits-all)
+□ 20. Parallel run period planned (old + new system overlap)
+□ 21. Support SLA expectations set post go-live
+
+TECHNICAL & VENDOR
+□ 22. Hosting preference decided (cloud region, on-prem)
+□ 23. Mobile / offline access requirements documented
+□ 24. Security and NDA requirements shared with vendor
+□ 25. Milestone payment schedule agreed before contract sign
+
+SCORING
+0–15: Not ready — invest 4–8 weeks in discovery first
+16–35: Partially ready — schedule a readiness workshop
+36–50: Ready — proceed to scoped estimate and timeline
+
+Next step: Free project estimate → maxwellelectrodeal.com/get-estimate
+Consultation: maxwellelectrodeal.com/book-consultation
+Contact: maxwellelectrodealsystems@gmail.com | +91 95868 68538

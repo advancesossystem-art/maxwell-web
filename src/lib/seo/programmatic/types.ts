@@ -1,5 +1,39 @@
 export type ProgrammaticPageType = "compare" | "cost" | "industry-service" | "city-service";
 
+export interface PricingTableRow {
+  tier: string;
+  scope: string;
+  priceRange: string;
+  timeline: string;
+  bestFor: string;
+}
+
+export interface PricingTableBlock {
+  title: string;
+  rows: PricingTableRow[];
+  footnote: string;
+}
+
+export interface ComparisonMatrixRow {
+  criterion: string;
+  left: string;
+  right: string;
+}
+
+export interface ComparisonMatrixBlock {
+  title: string;
+  leftLabel: string;
+  rightLabel: string;
+  rows: ComparisonMatrixRow[];
+  summary: string;
+}
+
+export interface LocalStatsBlock {
+  title: string;
+  subtitle?: string;
+  stats: { value: string; label: string }[];
+}
+
 export interface ProgrammaticPageData {
   slug: string;
   path: string;
@@ -18,6 +52,10 @@ export interface ProgrammaticPageData {
   internalLinks: { label: string; href: string; description?: string }[];
   accent: string;
   breadcrumb: { label: string; href?: string }[];
+  noIndex?: boolean;
+  pricingTable?: PricingTableBlock;
+  comparisonMatrix?: ComparisonMatrixBlock;
+  localStats?: LocalStatsBlock;
 }
 
 export interface ServiceCatalogEntry {

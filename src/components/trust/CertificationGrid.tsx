@@ -56,18 +56,18 @@ export const certificationCatalog: CertificationItem[] = [
 ];
 
 const statusLabel: Record<CertificationItem["status"], string> = {
-  aligned: "Process aligned",
-  partner: "Cloud partner practices",
-  placeholder: "On request / in progress",
+  aligned: "Practices aligned with",
+  partner: "Deployment practices",
+  placeholder: "On request",
 };
 
 export function CertificationGrid({ className, compact = false }: { className?: string; compact?: boolean }) {
   return (
     <div className={className}>
       <div className="mx-auto max-w-2xl text-center">
-        <Eyebrow>Standards & cloud readiness</Eyebrow>
+        <Eyebrow>Standards & practices</Eyebrow>
         <Caption className="mx-auto mt-3">
-          Labels reflect delivery practices — not implied third-party certification unless explicitly stated.
+          Practices aligned with common frameworks — not claims of formal third-party certification unless stated in contract.
         </Caption>
       </div>
       <div

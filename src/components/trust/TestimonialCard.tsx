@@ -12,7 +12,12 @@ function roleInitials(role: string) {
 }
 
 export function TestimonialCard({ testimonial, featured = false }: { testimonial: TestimonialRecord; featured?: boolean }) {
-  const attribution = formatTestimonialAttribution(testimonial.role, testimonial.industry);
+  const attribution = formatTestimonialAttribution({
+    role: testimonial.role,
+    companyType: testimonial.companyType,
+    industry: testimonial.industry,
+    region: testimonial.region,
+  });
 
   if (!featured) {
     return (

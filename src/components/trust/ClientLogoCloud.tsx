@@ -6,7 +6,8 @@ export type ClientLogo = {
 };
 
 type ClientLogoCloudProps = {
-  mode?: "placeholder" | "coming-soon" | "named";
+  /** placeholder = industry examples; named = real client logos when available */
+  mode?: "placeholder" | "named";
   clients?: ClientLogo[];
   className?: string;
   title?: string;
@@ -25,14 +26,16 @@ export function ClientLogoCloud({
   mode = "placeholder",
   clients = placeholderClients,
   className,
-  title = "Trusted by Growing Businesses",
+  title = "Industries we serve",
 }: ClientLogoCloudProps) {
+  const showDisclaimer = mode !== "named";
+
   return (
     <div className={cn("text-center", className)}>
       <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.2em] text-brand-500">{title}</p>
-      {mode === "placeholder" ? (
+      {showDisclaimer ? (
         <p className="mx-auto mt-3 max-w-md text-sm text-muted">
-          Industries we serve — illustrative examples, not a client list.
+          Sector examples — not a client logo wall. Named logos appear only with client approval.
         </p>
       ) : null}
 

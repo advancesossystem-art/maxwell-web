@@ -23,9 +23,14 @@ const primaryNav = [
 ] as const;
 
 const resourceLinks = [
+  { label: "Solutions", href: "/solutions" },
+  { label: "Compare", href: "/compare" },
+  { label: "Cost Guides", href: "/cost" },
+  { label: "Blog", href: "/blog" },
   { label: "Work", href: "/work" },
   { label: "Case Studies", href: "/case-studies" },
   { label: "Tools", href: "/tools" },
+  { label: "Engagement Models", href: "/engagement-models" },
   { label: "Client Portal", href: "/portal" },
 ] as const;
 

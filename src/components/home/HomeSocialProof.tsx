@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { successStories, testimonials } from "@/lib/testimonials-data";
+import { formatTestimonialAttribution } from "@/lib/client-attribution";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { HomeSection, HomeSectionIntro } from "@/components/home/HomeSection";
 import { CONVERSION_ROUTES } from "@/lib/conversion-copy";
@@ -27,8 +28,12 @@ export function HomeSocialProof() {
               <p className="text-sm leading-relaxed text-[var(--v6-text-secondary)]">&ldquo;{t.quote}&rdquo;</p>
               <div className="mt-5 border-t border-[var(--v6-border)] pt-4">
                 <p className="text-sm font-semibold text-[var(--v6-text)]">
-                  {t.role}
-                  {t.industry ? ` · ${t.industry}` : ""}
+                  {formatTestimonialAttribution({
+                    role: t.role,
+                    companyType: t.companyType,
+                    industry: t.industry,
+                    region: t.region,
+                  })}
                 </p>
                 <p className="mt-1 text-xs font-medium text-[#4f46e5]">{t.outcome}</p>
               </div>

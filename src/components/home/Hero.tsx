@@ -4,7 +4,7 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { useMotionTransformEnabled } from "@/components/motion/FadeIn";
 import { HeroEcosystemVisual } from "@/components/home/HeroEcosystemVisual";
-import { heroServiceBadges, heroTrustMetrics, homeHero } from "@/lib/homepage";
+import { heroServiceBadges, heroTrustMetrics, homeHero, trustHighlights } from "@/lib/homepage";
 import { CTA_LABELS, CONVERSION_EXPECTATIONS } from "@/lib/conversion-copy";
 import { trackCTAClick } from "@/lib/conversion-events";
 import { PrimaryCTA } from "@/components/conversion/PrimaryCTA";
@@ -101,22 +101,35 @@ export function Hero() {
             </p>
 
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <PrimaryCTA
-                location="homepage_hero"
-                context={{ source: "homepage-hero" }}
-                label={CTA_LABELS.primary}
-                variant="primary"
-              />
               <SecondaryCTA
                 location="homepage_hero"
                 context={{ source: "homepage-hero" }}
                 label={CTA_LABELS.secondary}
+                variant="primary"
+              />
+              <PrimaryCTA
+                location="homepage_hero"
+                context={{ source: "homepage-hero" }}
+                label={CTA_LABELS.primary}
                 variant="outline"
               />
             </div>
             <p className="mt-3 text-sm text-[var(--v6-text-muted)]">
-              {CONVERSION_EXPECTATIONS.consultationLength} · {CONVERSION_EXPECTATIONS.responseTime}
+              {CONVERSION_EXPECTATIONS.estimateTimeline} · {CONVERSION_EXPECTATIONS.responseTime}
             </p>
+
+            <ul className="mt-5 flex flex-wrap gap-2" aria-label="Trust highlights">
+              {trustHighlights.map((item) => (
+                <li
+                  key={item.label}
+                  className="rounded-full border border-[var(--v6-border)] bg-white px-3 py-1.5 text-xs text-[var(--v6-text-secondary)]"
+                >
+                  <span className="font-semibold text-[var(--v6-text)]">{item.label}</span>
+                  <span className="mx-1 text-[var(--v6-text-muted)]">·</span>
+                  {item.desc}
+                </li>
+              ))}
+            </ul>
 
             <ul className="v6-trust-bar grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {heroTrustMetrics.map((stat, i) => (

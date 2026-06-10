@@ -2,13 +2,31 @@
  * Marketing-safe client attribution — no personal or client organization names.
  */
 
-/** Footer line for quotes: role + industry only */
-export function formatTestimonialAttribution(role: string, industry?: string): string {
-  const sector = industry?.trim();
-  if (sector) {
-    return `${role} · ${sector} sector`;
+export type AttributionInput = {
+  role: string;
+  industry?: string;
+  companyType?: string;
+  region?: string;
+};
+
+/** Comma-separated line for quotes, e.g. "Operations Director, Manufacturing SME, Gujarat" */
+export function formatTestimonialAttribution(
+  roleOrInput: string | AttributionInput,
+  industry?: string,
+): string {
+  const input: AttributionInput =
+    typeof roleOrInput === "string" ? { role: roleOrInput, industry } : roleOrInput;
+
+  const parts = [input.role.trim()];
+  if (input.companyType?.trim()) {
+    parts.push(input.companyType.trim());
+  } else if (input.industry?.trim()) {
+    parts.push(input.industry.trim());
   }
-  return role;
+  if (input.region?.trim()) {
+    parts.push(input.region.trim());
+  }
+  return parts.join(", ");
 }
 
 /** Case study / project client descriptor (replaces named accounts) */

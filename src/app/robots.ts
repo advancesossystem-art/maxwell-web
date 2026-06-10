@@ -1,17 +1,6 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/constants";
-
-const sitemaps = [
-  `${siteConfig.url}/sitemap.xml`,
-  `${siteConfig.url}/sitemap-pages.xml`,
-  `${siteConfig.url}/sitemap-services.xml`,
-  `${siteConfig.url}/sitemap-industries.xml`,
-  `${siteConfig.url}/sitemap-work.xml`,
-  `${siteConfig.url}/sitemap-locations.xml`,
-  `${siteConfig.url}/sitemap-solutions.xml`,
-  `${siteConfig.url}/sitemap-content.xml`,
-  `${siteConfig.url}/sitemap-tools.xml`,
-];
+import { robotsSitemapUrls } from "@/lib/sitemap-index";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -112,7 +101,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/admin/", "/portal/", "/thank-you"],
       },
     ],
-    sitemap: sitemaps,
+    sitemap: robotsSitemapUrls,
     host: siteConfig.url,
   };
 }

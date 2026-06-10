@@ -247,3 +247,23 @@ export function getIndustryCatalog(slug: string): IndustryCatalogEntry | undefin
 export function getCityCatalog(slug: string): CityCatalogEntry | undefined {
   return programmaticCities.find((c) => c.slug === slug);
 }
+
+const INDUSTRY_NAME_ALIASES: Record<string, string> = {
+  diamond: "gems-jewelry",
+  saas: "ecommerce",
+  finance: "banking",
+  "food processing": "food-processing",
+  "agro processing": "agro-processing",
+};
+
+/** Resolve a city hub industry label to a programmatic industry slug when possible. */
+export function resolveIndustrySlug(displayName: string): string | undefined {
+  const key = displayName.toLowerCase().trim();
+  if (INDUSTRY_NAME_ALIASES[key]) return INDUSTRY_NAME_ALIASES[key];
+  const exact = programmaticIndustries.find((i) => i.name.toLowerCase() === key);
+  if (exact) return exact.slug;
+  const partial = programmaticIndustries.find(
+    (i) => i.name.toLowerCase().includes(key) || key.includes(i.slug.replace(/-/g, " ")),
+  );
+  return partial?.slug;
+}

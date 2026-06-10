@@ -836,6 +836,10 @@ const articlesList: Article[] = [
 
 export const articleSlugs = articlesList.map((a) => a.slug);
 
+export function getIndexableArticleSlugs(): string[] {
+  return articlesList.filter((a) => !a.noIndex).map((a) => a.slug);
+}
+
 export const articlesMap = Object.fromEntries(articlesList.map((a) => [a.slug, a])) as Record<
   string,
   Article

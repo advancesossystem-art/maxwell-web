@@ -52,6 +52,8 @@ export function HomeTrust() {
                   quote={current.quote}
                   role={current.role}
                   industry={current.industry}
+                  companyType={current.companyType}
+                  region={current.region}
                   subtitle={current.outcome}
                 />
               </motion.div>
