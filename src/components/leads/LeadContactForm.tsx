@@ -129,17 +129,23 @@ function LeadContactFormInner({
     if (form) advanceToStep2(form);
   }
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
+  function handleFormKeyDown(e: React.KeyboardEvent<HTMLFormElement>) {
+    if (e.key !== "Enter" || e.target instanceof HTMLTextAreaElement) return;
+    if (isTwoStep && step === 1) {
+      e.preventDefault();
+      advanceToStep2(e.currentTarget);
+    }
+    if (isTwoStep && step === 2) {
+      // Prevent budget/select fields from implicitly submitting step 2
+      e.preventDefault();
+    }
+  }
+
+  async function completeSubmission(form: HTMLFormElement) {
     setError("");
     setFieldErrors({});
 
-    if (isTwoStep && step === 1) {
-      advanceToStep2(e.currentTarget);
-      return;
-    }
-
-    const { raw, phone } = readFormValues(e.currentTarget);
+    const { raw, phone } = readFormValues(form);
     if (raw.website_url?.trim()) {
       router.push(`/thank-you?source=${source}`);
       return;
@@ -172,7 +178,7 @@ function LeadContactFormInner({
         const hasStep1Error = step1Keys.some((key) => validation.errors[key]);
         setStep(hasStep1Error ? 1 : 2);
       }
-      focusFirstInvalid(e.currentTarget);
+      focusFirstInvalid(form);
       return;
     }
 
@@ -204,10 +210,35 @@ function LeadContactFormInner({
     }
   }
 
+  function handleFinalSubmit(e: React.MouseEvent<HTMLButtonElement>) {
+    e.preventDefault();
+    const form = e.currentTarget.form;
+    if (form) void completeSubmission(form);
+  }
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (isTwoStep && step === 1) {
+      advanceToStep2(e.currentTarget);
+      return;
+    }
+    if (isTwoStep && step === 2) {
+      // Step 2 only submits via the explicit Book Consultation button
+      return;
+    }
+    await completeSubmission(e.currentTarget);
+  }
+
   const ic = (err?: boolean | string) => fieldInputClass(Boolean(err), compact);
 
   return (
-    <form onSubmit={handleSubmit} className={cn(compact ? "space-y-3.5" : "space-y-5")} noValidate>
+    <form
+      onSubmit={handleSubmit}
+      onKeyDown={handleFormKeyDown}
+      autoComplete={isTwoStep ? "off" : undefined}
+      className={cn(compact ? "space-y-3.5" : "space-y-5")}
+      noValidate
+    >
       {isTwoStep ? <ProgressBar current={step} total={2} /> : null}
 
       <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
@@ -324,7 +355,12 @@ function LeadContactFormInner({
               error={fieldErrors.budget}
               hint="Optional — helps us prepare for your call"
             >
-              <select id="budget" name="budget" className={ic(fieldErrors.budget)}>
+              <select
+                id="budget"
+                name="budget"
+                autoComplete="off"
+                className={ic(fieldErrors.budget)}
+              >
                 <option value="">Select budget range (optional)</option>
                 {budgetOptions.map((b) => (
                   <option key={b} value={b}>
@@ -398,6 +434,16 @@ function LeadContactFormInner({
         {isTwoStep && step === 1 ? (
           <Button type="button" size={compact ? "md" : "lg"} onClick={handleContinue} className="w-full sm:w-auto">
             Continue
+          </Button>
+        ) : isTwoStep && step === 2 ? (
+          <Button
+            type="button"
+            size={compact ? "md" : "lg"}
+            disabled={loading}
+            onClick={handleFinalSubmit}
+            className="w-full sm:w-auto"
+          >
+            {loading ? "Sending..." : submitLabel}
           </Button>
         ) : (
           <Button type="submit" size={compact ? "md" : "lg"} disabled={loading} className="w-full sm:w-auto">
