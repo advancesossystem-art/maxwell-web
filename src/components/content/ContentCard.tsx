@@ -36,7 +36,7 @@ export function ContentCard({ doc, variant = "default" }: { doc: SearchDocument;
       </div>
       <H3 className="mt-4 line-clamp-2 group-hover:text-brand-400 transition-colors">{doc.title}</H3>
       <Caption className="mt-2 flex-1 line-clamp-2">{doc.excerpt}</Caption>
-      <div className="mt-4 flex items-center justify-between border-t border-white/[0.08] pt-4">
+      <div className="mt-4 flex items-center justify-between border-t border-[var(--v6-border)] pt-4">
         <Caption>{author?.name ?? "Maxwell Team"}</Caption>
         <Caption>
           {doc.readingTimeMinutes} min · {formatPublishDate(doc.publishedAt)}

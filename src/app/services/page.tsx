@@ -70,7 +70,7 @@ export default function ServicesPage() {
                 </div>
                 <H3 className="mt-5 transition-colors group-hover:text-brand-400">{service.title}</H3>
                 <Caption className="mt-2 line-clamp-2 text-muted">{service.subheadline}</Caption>
-                <div className="mt-5 flex items-center justify-between border-t border-white/[0.06] pt-4">
+                <div className="mt-5 flex items-center justify-between border-t border-[var(--v6-border)] pt-4">
                   <span className="text-xs font-medium text-muted">From {service.startingPrice}</span>
                   <span className="inline-flex items-center gap-1 text-sm font-medium text-brand-500">
                     Explore <ArrowRight className="h-3.5 w-3.5" />

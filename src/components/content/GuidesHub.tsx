@@ -24,7 +24,7 @@ export function GuidesHub() {
         <div className="space-y-4">
           {guides.map((guide, i) => (
             <Card key={guide.slug} href={`/guides/${guide.slug}`} padding="lg" className="flex flex-col gap-4 sm:flex-row sm:items-center">
-              <span className="font-display text-4xl font-bold text-white/10 sm:w-16 shrink-0">
+              <span className="v6-index-num text-4xl sm:w-16 shrink-0">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <div className="flex-1 min-w-0">

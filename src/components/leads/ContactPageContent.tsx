@@ -111,7 +111,7 @@ export function ContactPageContent() {
                 <Caption className="mt-2 block">{siteConfig.address}</Caption>
                 <Caption className="mt-4 block">Response time: within 24 hours</Caption>
               </Card>
-              <div className="mt-6 overflow-hidden rounded-2xl border border-white/[0.08]">
+              <div className="mt-6 overflow-hidden rounded-2xl border border-[var(--v6-border)]">
                 <iframe
                   title="Maxwell Electrodeal office location — Vadodara, Gujarat"
                   src={businessAddress.googleMapsEmbedUrl}

@@ -35,10 +35,7 @@ export function AuthorPageContent({ author }: { author: Author }) {
       >
         <div className="flex flex-wrap gap-2">
           {author.expertise.map((e) => (
-            <span
-              key={e}
-              className="rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 text-xs text-[#CBD5E1]"
-            >
+            <span key={e} className="v6-chip v6-chip--pill">
               {e}
             </span>
           ))}

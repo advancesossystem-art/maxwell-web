@@ -70,16 +70,13 @@ export function SolutionsHub() {
         <div className="mt-6 grid gap-5 sm:grid-cols-2">
           {solutions.map((solution, i) => (
             <Card key={solution.slug} href={`/solutions/${solution.slug}`} padding="lg">
-              <span className="font-display text-3xl font-bold text-white/10">{String(i + 1).padStart(2, "0")}</span>
+              <span className="v6-index-num text-3xl">{String(i + 1).padStart(2, "0")}</span>
               <H3 className="mt-4 group-hover:text-brand-400 transition-colors">{solution.title}</H3>
               <Caption className="mt-2 line-clamp-2">{solution.subheadline}</Caption>
               <p className="mt-3 text-xs font-medium text-brand-500">{solution.primaryKeyword}</p>
               <div className="mt-4 flex flex-wrap gap-1.5">
                 {solution.roiExamples.slice(0, 2).map((r) => (
-                  <span
-                    key={r.label}
-                    className="rounded-md border border-white/[0.08] bg-white/[0.03] px-2 py-1 text-xs text-[#94A3B8]"
-                  >
+                  <span key={r.label} className="v6-chip">
                     {r.metric} {r.label}
                   </span>
                 ))}

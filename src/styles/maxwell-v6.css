@@ -692,41 +692,119 @@
   background: var(--v6-bg-soft);
 }
 
+/* Reusable light-theme chips (replaces legacy border-white/bg-white/[0.03] on light pages) */
+.v6-chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 0.375rem;
+  border: 1px solid var(--v6-border);
+  background: var(--v6-bg-soft);
+  padding: 0.125rem 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1.25;
+  color: var(--v6-text-secondary);
+}
+
+.v6-chip--pill {
+  border-radius: 999px;
+  padding: 0.25rem 0.625rem;
+}
+
+.v6-index-num {
+  font-family: var(--font-space-grotesk), var(--font-inter), system-ui, sans-serif;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--v6-blue) 14%, transparent);
+}
+
+/* Safety net — legacy dark utilities on light hub cards & sections */
+body:not(.portal-shell) .mx-hub-card .v6-index-num,
+body:not(.portal-shell) .mx-hub-card .text-white\/10 {
+  color: color-mix(in srgb, var(--v6-blue) 14%, transparent);
+}
+
+body:not(.portal-shell)
+  :is(.mx-section--base, .mx-section--raised)
+  :is(.mx-hub-card, blockquote, article)
+  [class*="border-white/"],
+body:not(.portal-shell)
+  :is(.mx-section--base, .mx-section--raised)
+  .mx-hub-card
+  [class*="bg-white/"] {
+  border-color: var(--v6-border) !important;
+}
+
+body:not(.portal-shell)
+  :is(.mx-section--base, .mx-section--raised)
+  .mx-hub-card
+  [class*="bg-white/"] {
+  background: var(--v6-bg-soft) !important;
+}
+
+body:not(.portal-shell)
+  :is(.mx-section--base, .mx-section--raised)
+  :is(.mx-hub-card, blockquote, article)
+  :is(.text-\[\#94A3B8\], .text-\[\#CBD5E1\], .text-\[\#A5B4CC\]) {
+  color: var(--v6-text-secondary) !important;
+}
+
+body:not(.portal-shell)
+  :is(.mx-section--base, .mx-section--raised)
+  :is(.mx-hub-card, blockquote, article)
+  :is(p, footer, span).text-white {
+  color: var(--v6-text) !important;
+}
+
+body:not(.portal-shell)
+  :is(.mx-section--base, .mx-section--raised)
+  blockquote[class*="bg-white/"],
+body:not(.portal-shell)
+  :is(.mx-section--base, .mx-section--raised)
+  article[class*="bg-white/"] {
+  background: var(--v6-bg-white) !important;
+  box-shadow: var(--v6-shadow-sm);
+}
+
 /* Legacy dark-theme heroes on light pages — readable type */
-body:not(.portal-shell) .section-hero {
+body:not(.portal-shell) :is(.section-hero, .mx-page-hero) {
   color: var(--v6-text);
 }
 
-body:not(.portal-shell) .section-hero :is(h1, h2, h3, .font-display) {
+body:not(.portal-shell) :is(.section-hero, .mx-page-hero) :is(h1, h2, h3, .font-display) {
   color: var(--v6-text);
 }
 
-body:not(.portal-shell) .section-hero p {
+body:not(.portal-shell) :is(.section-hero, .mx-page-hero) p {
   color: var(--v6-text-secondary);
 }
 
-body:not(.portal-shell) .section-hero [class*="text-white"] {
+body:not(.portal-shell) :is(.section-hero, .mx-page-hero) [class*="text-white"] {
   color: var(--v6-text-secondary);
 }
 
-body:not(.portal-shell) .section-hero h1[class*="text-white"],
-body:not(.portal-shell) .section-hero h2[class*="text-white"],
-body:not(.portal-shell) .section-hero h3[class*="text-white"] {
+body:not(.portal-shell) :is(.section-hero, .mx-page-hero) h1[class*="text-white"],
+body:not(.portal-shell) :is(.section-hero, .mx-page-hero) h2[class*="text-white"],
+body:not(.portal-shell) :is(.section-hero, .mx-page-hero) h3[class*="text-white"] {
   color: var(--v6-text);
 }
 
-body:not(.portal-shell) .section-hero .border-white\/10 {
+body:not(.portal-shell) :is(.section-hero, .mx-page-hero) .border-white\/10,
+body:not(.portal-shell) :is(.section-hero, .mx-page-hero) [class*="border-white/"] {
   border-color: var(--v6-border-strong);
 }
 
-body:not(.portal-shell) .section-hero .bg-white\/5 {
+body:not(.portal-shell) :is(.section-hero, .mx-page-hero) .bg-white\/5,
+body:not(.portal-shell) :is(.section-hero, .mx-page-hero) [class*="bg-white/"] {
   background: var(--v6-bg-soft);
 }
 
-body:not(.portal-shell) .section-hero .glass-dark {
+body:not(.portal-shell) :is(.section-hero, .mx-page-hero) .glass-dark {
   border: 1px solid var(--v6-border);
   background: var(--v6-bg-white);
   box-shadow: var(--v6-shadow-sm);
+}
+
+body:not(.portal-shell) :is(.section-hero, .mx-page-hero) :is(.text-\[\#94A3B8\], .text-\[\#CBD5E1\], .text-\[\#A5B4CC\]) {
+  color: var(--v6-text-secondary);
 }
 
 /* Metric / stat cards — never white-on-white */

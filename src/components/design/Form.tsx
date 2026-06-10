@@ -36,7 +36,7 @@ export function FormField({
         {required ? <span className="sr-only"> (required)</span> : null}
       </label>
       {hint ? (
-        <p id={hintId} className="mb-2 text-xs text-[#94A3B8]">
+        <p id={hintId} className="mb-2 text-xs text-muted">
           {hint}
         </p>
       ) : null}

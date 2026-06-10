@@ -35,10 +35,7 @@ export function AuthorCard({ author, variant = "inline" }: { author: Author; var
           <Caption className="mt-3 leading-relaxed">{author.bio}</Caption>
           <div className="mt-4 flex flex-wrap gap-2">
             {author.expertise.map((e) => (
-              <span
-                key={e}
-                className="rounded-md border border-white/[0.08] bg-white/[0.03] px-2 py-1 text-xs text-[#94A3B8]"
-              >
+              <span key={e} className="v6-chip">
                 {e}
               </span>
             ))}

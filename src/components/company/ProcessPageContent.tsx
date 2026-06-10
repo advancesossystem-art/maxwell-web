@@ -51,7 +51,7 @@ export function ProcessPageContent() {
               <H3 className="text-base">{section.title}</H3>
               <ul className="mt-4 space-y-2">
                 {section.items.map((item) => (
-                  <li key={item} className="flex gap-2 text-sm text-[#94A3B8]">
+                  <li key={item} className="flex gap-2 text-sm text-muted">
                     <span className="shrink-0 text-brand-500">•</span>
                     <span>{item}</span>
                   </li>

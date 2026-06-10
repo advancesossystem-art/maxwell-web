@@ -82,7 +82,7 @@ export function CertificationGrid({ className, compact = false }: { className?: 
               <span className="text-[10px] font-semibold uppercase tracking-wider text-brand-500">
                 {cert.category}
               </span>
-              <span className="rounded-full border border-white/[0.08] px-2 py-0.5 text-[10px] text-[#94A3B8]">
+              <span className="v6-chip rounded-full px-2 py-0.5 text-[10px]">
                 {statusLabel[cert.status]}
               </span>
             </div>

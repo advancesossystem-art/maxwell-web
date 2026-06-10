@@ -64,7 +64,7 @@ export default function IndustriesPage() {
                   <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-600 text-white">
                     {Icon}
                   </div>
-                  <span className="font-display text-3xl font-bold text-white/10">
+                  <span className="v6-index-num text-3xl">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                 </div>
@@ -72,10 +72,7 @@ export default function IndustriesPage() {
                 <Caption className="mt-2 line-clamp-2">{industry.subheadline}</Caption>
                 <div className="mt-4 flex flex-wrap gap-1.5">
                   {industry.impactMetrics.slice(0, 2).map((m) => (
-                    <span
-                      key={m.label}
-                      className="rounded-md border border-white/[0.08] bg-white/[0.03] px-2 py-1 text-xs font-medium text-muted"
-                    >
+                    <span key={m.label} className="v6-chip font-medium">
                       {m.value} {m.label}
                     </span>
                   ))}

@@ -10,7 +10,7 @@ export function MaxwellFrame({ children, className }: MaxwellFrameProps) {
   return (
     <div
       className={cn(
-        "rounded-2xl border border-white/[0.08] bg-white/[0.02]",
+        "rounded-2xl border border-[var(--v6-border)] bg-[var(--v6-bg-white)]",
         className,
       )}
     >

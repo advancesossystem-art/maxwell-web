@@ -59,7 +59,7 @@ export function TeamPageContent() {
               <Text className="mt-2">{dept.summary}</Text>
               <ul className="mt-4 space-y-1.5">
                 {dept.highlights.map((h) => (
-                  <li key={h} className="text-sm text-[#94A3B8]">
+                    <li key={h} className="text-sm text-muted">
                     • {h}
                   </li>
                 ))}
@@ -77,10 +77,7 @@ export function TeamPageContent() {
               <H3 className="text-sm text-brand-500">{cat.category}</H3>
               <div className="mt-3 flex flex-wrap gap-1.5">
                 {cat.items.map((item) => (
-                  <span
-                    key={item}
-                    className="rounded-md border border-white/[0.08] bg-white/[0.03] px-2 py-0.5 text-xs text-[#CBD5E1]"
-                  >
+                  <span key={item} className="v6-chip">
                     {item}
                   </span>
                 ))}

@@ -36,7 +36,7 @@ export function ReportsHub() {
                 <Caption className="font-semibold uppercase">Key findings</Caption>
                 <ul className="mt-3 space-y-2">
                   {report.keyFindings.slice(0, 3).map((f) => (
-                    <li key={f} className="flex gap-2 text-sm text-[#94A3B8]">
+                    <li key={f} className="flex gap-2 text-sm text-muted">
                       <span className="shrink-0 text-brand-500">•</span>
                       <span className="line-clamp-2">{f}</span>
                     </li>
