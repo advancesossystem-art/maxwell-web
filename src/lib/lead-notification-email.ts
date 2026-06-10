@@ -37,14 +37,33 @@ function row(label: string, value?: string | number): string {
   return `<tr><td style="padding:8px 12px;font-weight:600;color:#475569;vertical-align:top">${escapeHtml(label)}</td><td style="padding:8px 12px;color:#0f172a">${escapeHtml(String(value))}</td></tr>`;
 }
 
+function extractCareersPosition(payload: LeadPayload): string | undefined {
+  const match = payload.message?.match(/Career application for:\s*(.+)/i);
+  return match?.[1]?.split("\n")[0]?.trim();
+}
+
 export function buildLeadEmailSubject(payload: LeadPayload): string {
+  if (payload.source === "careers") {
+    const position = extractCareersPosition(payload);
+    return sanitizeEmailHeader(
+      position
+        ? `[Maxwell Careers] ${position} — ${payload.name}`
+        : `[Maxwell Careers] Job application — ${payload.name}`,
+    );
+  }
   return sanitizeEmailHeader(`[Maxwell] ${sourceLabel(payload.source)} — ${payload.name}`);
 }
 
 export function buildLeadEmailText(payload: LeadPayload): string {
+  const careersPosition =
+    payload.source === "careers" ? extractCareersPosition(payload) : undefined;
+
   const lines = [
-    `New lead from ${sourceLabel(payload.source)}`,
+    payload.source === "careers"
+      ? `New job application from ${payload.name}`
+      : `New lead from ${sourceLabel(payload.source)}`,
     "",
+    careersPosition && `Position: ${careersPosition}`,
     `Name: ${payload.name}`,
     `Email: ${payload.email}`,
     payload.phone && `Phone: ${payload.phone}`,
@@ -71,8 +90,12 @@ export function buildLeadEmailHtml(payload: LeadPayload): string {
       ? `₹${payload.estimate.costMin.toLocaleString("en-IN")} – ₹${payload.estimate.costMax.toLocaleString("en-IN")} (${payload.estimate.developmentTime ?? "—"})`
       : undefined;
 
+  const careersPosition =
+    payload.source === "careers" ? extractCareersPosition(payload) : undefined;
+
   const rows = [
     row("Source", sourceLabel(payload.source)),
+    row("Position applied for", careersPosition),
     row("Name", payload.name),
     row("Email", payload.email),
     row("Phone", payload.phone),
@@ -89,9 +112,13 @@ export function buildLeadEmailHtml(payload: LeadPayload): string {
     row("Submitted", new Date(payload.submittedAt).toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })),
   ].join("");
 
+  const headerTitle =
+    payload.source === "careers" ? "New job application" : "New website lead";
+  const headerColor = payload.source === "careers" ? "#0f766e" : "#4f46e5";
+
   return `<!DOCTYPE html><html><body style="font-family:system-ui,sans-serif;background:#f8fafc;padding:24px">
 <table style="max-width:560px;margin:0 auto;background:#fff;border-radius:12px;border:1px solid #e2e8f0;overflow:hidden">
-<tr><td style="padding:20px 24px;background:#4f46e5;color:#fff;font-size:18px;font-weight:700">New website lead</td></tr>
+<tr><td style="padding:20px 24px;background:${headerColor};color:#fff;font-size:18px;font-weight:700">${headerTitle}</td></tr>
 <tr><td style="padding:8px 8px 16px"><table width="100%" cellpadding="0" cellspacing="0">${rows}</table></td></tr>
 </table>
 <p style="max-width:560px;margin:16px auto 0;font-size:12px;color:#64748b">Reply to this email to reach the prospect at ${escapeHtml(payload.email)}.</p>

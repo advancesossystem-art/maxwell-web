@@ -15,15 +15,23 @@ import { CONVERSION_EXPECTATIONS } from "@/lib/conversion-copy";
 function ThankYouInner() {
   const searchParams = useSearchParams();
   const source = searchParams.get("source") ?? "contact";
+  const position = searchParams.get("position");
   const magnetId = searchParams.get("magnet");
   const magnet = magnetId ? getLeadMagnetById(magnetId) : undefined;
 
+  const isCareers = source === "careers";
+
   const calendlyUrl = getCalendlyUrl();
   const wantsCalendly =
-    source === "book-consultation" || source === "discovery-call" || source === "get-estimate";
+    !isCareers &&
+    (source === "book-consultation" || source === "discovery-call" || source === "get-estimate");
   const showCalendlyEmbed = !!calendlyUrl && wantsCalendly;
   const showCalendlyFallback = wantsCalendly && !calendlyUrl;
-  const whatsappLink = whatsappHref("Hi, I just submitted a form on your website and would like to schedule a call.");
+  const whatsappLink = whatsappHref(
+    isCareers
+      ? "Hi, I submitted a job application on your careers page and wanted to follow up."
+      : "Hi, I just submitted a form on your website and would like to schedule a call.",
+  );
 
   const isNewsletter =
     source === "newsletter" ||
@@ -44,6 +52,7 @@ function ThankYouInner() {
     "guide-download": "download request",
     "report-download": "download request",
     "resource-hub": "newsletter subscription",
+    careers: "job application",
   };
 
   return (
@@ -54,15 +63,21 @@ function ThankYouInner() {
             <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
           </svg>
         </div>
-        <h1 className="mt-8 font-display text-3xl font-bold sm:text-4xl">Thank you!</h1>
+        <h1 className="mt-8 font-display text-3xl font-bold sm:text-4xl">
+          {isCareers ? "Application received!" : "Thank you!"}
+        </h1>
         <p className="mt-4 text-lg text-muted">
-          {isNewsletter
-            ? magnet
-              ? `Your download is ready. We've also sent ${magnet.title} details to your inbox.`
-              : "You're subscribed to Maxwell engineering insights. Check your inbox to confirm."
-            : showCalendlyEmbed || showCalendlyFallback
-              ? `Your ${sourceLabels[source] ?? "inquiry"} is confirmed. Pick a time below — or we'll reach out within one business day.`
-              : `Your ${sourceLabels[source] ?? "inquiry"} has been received. Our team will respond within 24 hours.`}
+          {isCareers
+            ? position
+              ? `Thank you for applying for ${position}. Our HR team has your application and will review it shortly.`
+              : "Thank you for applying to Maxwell Electrodeal. Our HR team has your application and will review it shortly."
+            : isNewsletter
+              ? magnet
+                ? `Your download is ready. We've also sent ${magnet.title} details to your inbox.`
+                : "You're subscribed to Maxwell engineering insights. Check your inbox to confirm."
+              : showCalendlyEmbed || showCalendlyFallback
+                ? `Your ${sourceLabels[source] ?? "inquiry"} is confirmed. Pick a time below — or we'll reach out within one business day.`
+                : `Your ${sourceLabels[source] ?? "inquiry"} has been received. Our team will respond within 24 hours.`}
         </p>
 
         {showCalendlyEmbed && calendlyUrl ? (
@@ -109,9 +124,17 @@ function ThankYouInner() {
         )}
 
         <div className="mt-12 rounded-2xl border border-border bg-surface-elevated p-8 text-left">
-          <h2 className="font-display text-lg font-bold">{isNewsletter ? "While you're here" : "What happens next?"}</h2>
+          <h2 className="font-display text-lg font-bold">
+            {isCareers ? "What happens next?" : isNewsletter ? "While you're here" : "What happens next?"}
+          </h2>
           <ol className="mt-4 space-y-4">
-            {(isNewsletter
+            {(isCareers
+              ? [
+                  { time: "Within 3–5 business days", text: "Our HR team reviews your application and portfolio" },
+                  { time: "If shortlisted", text: "We'll email or call you to schedule an interview" },
+                  { time: "Keep an eye on your inbox", text: "Check spam/junk for messages from maxwellelectrodealsystems@gmail.com" },
+                ]
+              : isNewsletter
               ? [
                   { time: "Now", text: "Access your resource using the download button above" },
                   { time: "Weekly", text: "Receive curated articles on ERP, AI, and software strategy" },
@@ -133,12 +156,29 @@ function ThankYouInner() {
           </ol>
         </div>
 
-        <div className="mt-10 grid gap-3 sm:grid-cols-3">
-          <Button href={whatsappLink} external variant="primary" className="w-full">
-            WhatsApp Us
-          </Button>
-          <Button href="/case-studies" variant="secondary" className="w-full">Case Studies</Button>
-          <Button href="/services" variant="secondary" className="w-full">Explore Services</Button>
+        <div className={`mt-10 grid gap-3 ${isCareers ? "sm:grid-cols-2" : "sm:grid-cols-3"}`}>
+          {isCareers ? (
+            <>
+              <Button href="/careers" variant="primary" className="w-full">
+                View open positions
+              </Button>
+              <Button href="/about" variant="secondary" className="w-full">
+                About Maxwell
+              </Button>
+            </>
+          ) : (
+            <>
+              <Button href={whatsappLink} external variant="primary" className="w-full">
+                WhatsApp Us
+              </Button>
+              <Button href="/case-studies" variant="secondary" className="w-full">
+                Case Studies
+              </Button>
+              <Button href="/services" variant="secondary" className="w-full">
+                Explore Services
+              </Button>
+            </>
+          )}
         </div>
 
         <Link href="/" className="mt-8 inline-flex items-center gap-1 text-sm font-semibold text-brand-600">

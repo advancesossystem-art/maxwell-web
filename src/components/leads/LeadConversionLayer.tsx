@@ -58,7 +58,7 @@ export function TrustBadgesRow() {
 
 export function LeadConversionLayer() {
   const pathname = usePathname();
-  const showMarketing = isMarketingChromeRoute(pathname);
+  const showMarketing = isMarketingChromeRoute(pathname) && pathname !== "/thank-you";
   const { dismissed: stickyDismissed, dismiss: dismissStickyBar } = useStickyBarDismiss();
 
   return (

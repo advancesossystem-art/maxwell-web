@@ -49,8 +49,12 @@ export function CareersPageContent() {
       });
       const body = await res.json();
       if (!res.ok) throw new Error(body.error);
-      trackFormComplete("contact", body.leadTier, body.leadScore);
-      router.push("/thank-you?source=careers");
+      trackFormComplete("careers", body.leadTier, body.leadScore);
+      const appliedRole = String(data.role || role || "");
+      const thankYouUrl = appliedRole
+        ? `/thank-you?source=careers&position=${encodeURIComponent(appliedRole)}`
+        : "/thank-you?source=careers";
+      router.push(thankYouUrl);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to submit");
     } finally {
