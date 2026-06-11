@@ -6,7 +6,7 @@ import {
   readJsonBody,
   withApiSecurityHeaders,
 } from "@/lib/api-security";
-import { getClientIp, rateLimit } from "@/lib/rate-limit";
+import { getClientIp, rateLimitAsync } from "@/lib/rate-limit";
 import {
   ADMIN_COOKIE_NAME,
   adminCookieOptions,
@@ -23,7 +23,7 @@ export async function POST(request: Request) {
   const blocked = guardPublicApiPost(request);
   if (blocked) return withApiSecurityHeaders(blocked);
 
-  const limit = rateLimit(`admin-auth:${getClientIp(request)}`, 5);
+  const limit = await rateLimitAsync(`admin-auth:${getClientIp(request)}`, 5);
   if (!limit.ok) {
     return apiJson({ error: "Too many attempts. Try again later." }, { status: 429 });
   }

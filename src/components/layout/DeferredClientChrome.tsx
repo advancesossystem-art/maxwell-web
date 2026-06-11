@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { usePathname } from "next/navigation";
 import { MotionProvider } from "@/components/motion/MotionProvider";
 
 const RecentlyViewedTracker = dynamic(
@@ -32,15 +33,29 @@ const CookieConsent = dynamic(
   { ssr: false },
 );
 
+function isLightChromeRoute(pathname: string | null): boolean {
+  if (!pathname) return false;
+  if (pathname.startsWith("/portal")) return true;
+  if (pathname === "/blog" || pathname.startsWith("/blog/")) return true;
+  return false;
+}
+
 export function DeferredClientChrome({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  const lightChrome = isLightChromeRoute(pathname);
+
+  const content = (
+    <>
+      {!lightChrome ? <LeadConversionLayer /> : null}
+      <RecentlyViewedTracker />
+      {children}
+      <CookieConsent />
+    </>
+  );
+
   return (
     <MotionProvider>
-      <SmoothScrollProvider>
-        <LeadConversionLayer />
-        <RecentlyViewedTracker />
-        {children}
-        <CookieConsent />
-      </SmoothScrollProvider>
+      {lightChrome ? content : <SmoothScrollProvider>{content}</SmoothScrollProvider>}
     </MotionProvider>
   );
 }

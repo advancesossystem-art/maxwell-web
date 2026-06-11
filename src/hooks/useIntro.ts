@@ -6,6 +6,7 @@ import {
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from "react";
 import { dispatchIntroComplete } from "@/lib/intro/events";
@@ -82,6 +83,7 @@ export function useIntro({ enabled }: { enabled: boolean }) {
   const [state, setState] = useState<IntroState>(() =>
     getInitialIntroState(enabled, envMode),
   );
+  const revealTimeoutRef = useRef<number | null>(null);
 
   useEffect(() => {
     setMode(resolveIntroModeClient(envMode));
@@ -94,7 +96,9 @@ export function useIntro({ enabled }: { enabled: boolean }) {
     }
 
     if (shouldForceIntro()) {
-      console.log("INTRO REPLAY");
+      if (process.env.NODE_ENV === "development") {
+        console.log("INTRO REPLAY");
+      }
     }
 
     if (!resolveShouldPlay(mode)) {
@@ -116,6 +120,14 @@ export function useIntro({ enabled }: { enabled: boolean }) {
   }, [enabled, state]);
 
   useEffect(() => {
+    return () => {
+      if (revealTimeoutRef.current !== null) {
+        window.clearTimeout(revealTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
     syncDocumentIntroState(state === "complete" ? "skipped" : state, mode);
     return () => {
       if (state === "playing" || state === "revealing") {
@@ -128,7 +140,9 @@ export function useIntro({ enabled }: { enabled: boolean }) {
 
   const finish = useCallback(() => {
     markIntroSeen();
-    console.log("INTRO COMPLETE");
+    if (process.env.NODE_ENV === "development") {
+      console.log("INTRO COMPLETE");
+    }
     setState("complete");
   }, []);
 
@@ -136,7 +150,13 @@ export function useIntro({ enabled }: { enabled: boolean }) {
     const revealMs = INTRO_TIMING[mode === "minimal" ? "minimal" : "full"].reveal * 1000;
     setState("revealing");
     dispatchIntroComplete();
-    window.setTimeout(finish, revealMs);
+    if (revealTimeoutRef.current !== null) {
+      window.clearTimeout(revealTimeoutRef.current);
+    }
+    revealTimeoutRef.current = window.setTimeout(() => {
+      revealTimeoutRef.current = null;
+      finish();
+    }, revealMs);
   }, [finish, mode]);
 
   const skip = useCallback(() => {

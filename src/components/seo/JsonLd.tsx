@@ -1,115 +1,9 @@
-import { siteConfig, faqs } from "@/lib/constants";
-import { getAllServices } from "@/lib/services-data";
+import { siteConfig } from "@/lib/constants";
 import { seoIds } from "@/lib/seo/config";
 import { homepageFaqs } from "@/lib/homepage";
 import { companyFaqs } from "@/lib/company-data";
 import { getAuthorById } from "@/lib/content/authors";
 import { formatAnonymousClient } from "@/lib/client-attribution";
-
-export function OrganizationJsonLd() {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: siteConfig.legalName,
-    alternateName: siteConfig.name,
-    url: siteConfig.url,
-    logo: `${siteConfig.url}/logo.png`,
-    description: siteConfig.description,
-    email: siteConfig.email,
-    telephone: siteConfig.phone,
-    address: {
-      "@type": "PostalAddress",
-      addressCountry: "IN",
-    },
-    sameAs: [],
-    contactPoint: {
-      "@type": "ContactPoint",
-      telephone: siteConfig.phone,
-      contactType: "sales",
-      email: siteConfig.email,
-      availableLanguage: ["English", "Hindi"],
-    },
-  };
-
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-    />
-  );
-}
-
-export function WebSiteJsonLd() {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: siteConfig.name,
-    url: siteConfig.url,
-    description: siteConfig.description,
-    publisher: {
-      "@type": "Organization",
-      name: siteConfig.legalName,
-    },
-  };
-
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-    />
-  );
-}
-
-export function ServicesJsonLd() {
-  const allServices = getAllServices();
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "@id": seoIds.offerCatalog,
-    name: "Software Development Services",
-    itemListElement: allServices.map((service, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      item: {
-        "@type": "Service",
-        "@id": `${siteConfig.url}/services/${service.slug}#service`,
-        name: service.title,
-        description: service.metaDescription,
-        url: `${siteConfig.url}/services/${service.slug}`,
-        provider: { "@id": seoIds.organization },
-      },
-    })),
-  };
-
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-    />
-  );
-}
-
-export function FAQJsonLd() {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.answer,
-      },
-    })),
-  };
-
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-    />
-  );
-}
 
 export function ServicePageJsonLd({ service }: { service: import("@/lib/services-data").ServicePageData }) {
   const serviceSchema = {
@@ -247,7 +141,9 @@ export function ProjectPageJsonLd({ project }: { project: import("@/lib/projects
       name: `${project.industry} ${project.projectType}`,
     },
     keywords: [...project.technologies, project.industry, project.projectType].join(", "),
-    datePublished: "2025-01-01",
+    ...(project.publishedAt ?? project.date
+      ? { datePublished: project.publishedAt ?? project.date }
+      : {}),
     inLanguage: "en-IN",
   };
 
@@ -343,19 +239,24 @@ export function CompanyPageJsonLd({
   path: string;
   title: string;
 }) {
-  const aboutPageSchema = {
+  const isAboutPage = pageType === "about";
+  const pageSchema = {
     "@context": "https://schema.org",
-    "@type": "AboutPage",
+    "@type": isAboutPage ? "AboutPage" : "WebPage",
     name: title,
     description: siteConfig.description,
     url: `${siteConfig.url}${path}`,
-    mainEntity: {
-      "@type": "Organization",
-      name: siteConfig.legalName,
-      url: siteConfig.url,
-      foundingDate: "2018",
-      numberOfEmployees: { "@type": "QuantitativeValue", value: 50 },
-    },
+    ...(isAboutPage
+      ? {
+          mainEntity: {
+            "@type": "Organization",
+            name: siteConfig.legalName,
+            url: siteConfig.url,
+            foundingDate: "2018",
+            numberOfEmployees: { "@type": "QuantitativeValue", value: 50 },
+          },
+        }
+      : {}),
   };
 
   const organizationSchema = {
@@ -396,7 +297,7 @@ export function CompanyPageJsonLd({
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       {faqSchema && (
@@ -482,24 +383,11 @@ export function CountryPageJsonLd({ country }: { country: import("@/lib/location
     areaServed: country.name,
   };
 
-  const indiaLocalBusiness =
+  const indiaLocalBusinessRef =
     country.slug === "india"
       ? {
           "@context": "https://schema.org",
-          "@type": "LocalBusiness",
           "@id": seoIds.localBusiness,
-          name: `${siteConfig.name} — India`,
-          url,
-          telephone: siteConfig.phone,
-          email: siteConfig.email,
-          address: {
-            "@type": "PostalAddress",
-            addressLocality: "Vadodara",
-            addressRegion: "Gujarat",
-            addressCountry: "IN",
-          },
-          areaServed: { "@type": "Country", name: "India" },
-          parentOrganization: { "@id": seoIds.organization },
         }
       : null;
 
@@ -526,8 +414,8 @@ export function CountryPageJsonLd({ country }: { country: import("@/lib/location
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
-      {indiaLocalBusiness ? (
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(indiaLocalBusiness) }} />
+      {indiaLocalBusinessRef ? (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(indiaLocalBusinessRef) }} />
       ) : null}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />

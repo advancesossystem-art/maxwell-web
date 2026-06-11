@@ -83,7 +83,13 @@ export function NewsletterSignup({
           />
         </div>
         {!isCompact && (
+          <label htmlFor="newsletter-name" className="sr-only">
+            Your name
+          </label>
+        )}
+        {!isCompact && (
           <input
+            id="newsletter-name"
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -91,7 +97,11 @@ export function NewsletterSignup({
             className="rounded-lg border border-border bg-white px-4 py-2.5 text-sm focus:border-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-600/20"
           />
         )}
+        <label htmlFor="newsletter-email" className="sr-only">
+          Work email
+        </label>
         <input
+          id="newsletter-email"
           type="email"
           required
           value={email}

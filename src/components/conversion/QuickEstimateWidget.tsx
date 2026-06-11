@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
+import { useEscapeKey, useFocusTrap } from "@/lib/a11y/dialog";
 import {
   leadBudgets,
   leadIndustries,
@@ -32,6 +33,7 @@ type QuickEstimateData = {
 
 export function QuickEstimateWidget({ stickyBarDismissed = false }: { stickyBarDismissed?: boolean }) {
   const pathname = usePathname();
+  const dialogRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
   const [step, setStep] = useState(0);
   const [data, setData] = useState<QuickEstimateData>({
@@ -46,6 +48,9 @@ export function QuickEstimateWidget({ stickyBarDismissed = false }: { stickyBarD
     setStep(0);
     setOpen(false);
   }, []);
+
+  useEscapeKey(reset, open);
+  useFocusTrap(dialogRef, open);
 
   if (isPortalRoute(pathname) || pathname === "/get-estimate") return null;
 
@@ -98,6 +103,7 @@ export function QuickEstimateWidget({ stickyBarDismissed = false }: { stickyBarD
               onClick={reset}
             />
             <motion.div
+              ref={dialogRef}
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 24 }}

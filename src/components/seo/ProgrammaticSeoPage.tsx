@@ -1,10 +1,6 @@
-"use client";
-
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-import { ArrowRight } from "@/components/ui/Icons";
 import type {
   ComparisonMatrixBlock,
   LocalStatsBlock,
@@ -13,6 +9,7 @@ import type {
 } from "@/lib/seo/programmatic/types";
 import { TrustNearCTA } from "@/components/conversion/TrustNearCTA";
 import { siteConfig } from "@/lib/constants";
+import { ProgrammaticHeroMotion } from "@/components/seo/ProgrammaticMotion";
 
 function PageFAQJsonLd({ faqs }: { faqs: { question: string; answer: string }[] }) {
   if (!faqs.length) return null;
@@ -141,6 +138,15 @@ function LocalStatsSection({ block }: { block: LocalStatsBlock }) {
   );
 }
 
+function StatCard({ value, label }: { value: string; label: string }) {
+  return (
+    <div className="rounded-xl border border-white/[0.08] bg-white/[0.03] p-4">
+      <p className="font-display text-2xl font-bold text-white">{value}</p>
+      <p className="mt-1 text-xs leading-relaxed text-slate-400">{label}</p>
+    </div>
+  );
+}
+
 export function ProgrammaticSeoPage({ page }: { page: ProgrammaticPageData }) {
   return (
     <>
@@ -166,23 +172,12 @@ export function ProgrammaticSeoPage({ page }: { page: ProgrammaticPageData }) {
         />
         <Container className="relative z-10">
           <Breadcrumb items={page.breadcrumb} />
-          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-400">
-              {page.pageType.replace("-", " ")} · {siteConfig.name}
-            </p>
-            <h1 className="mt-4 max-w-4xl font-display text-4xl font-bold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-6xl">
-              {page.headline}
-            </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/55">{page.subheadline}</p>
-            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-              <Button href="/get-estimate" size="lg">
-                Get Free Estimate <ArrowRight />
-              </Button>
-              <Button href="/book-consultation" size="lg" variant="outline">
-                Book Consultation
-              </Button>
-            </div>
-          </motion.div>
+          <ProgrammaticHeroMotion
+            pageType={page.pageType}
+            siteName={siteConfig.name}
+            headline={page.headline}
+            subheadline={page.subheadline}
+          />
         </Container>
       </section>
 
@@ -267,16 +262,22 @@ export function ProgrammaticSeoPage({ page }: { page: ProgrammaticPageData }) {
         <Container>
           <h2 className="font-display text-2xl font-bold text-[var(--v6-text)]">Related pages</h2>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {page.internalLinks.map((link) => (
+            {page.internalLinks.map((link) => {
+              const nofollow =
+                /^\/industries\/[^/]+\/[^/]+$/.test(link.href) ||
+                /^\/locations\/india\/[^/]+\/[^/]+$/.test(link.href);
+              return (
               <Link
                 key={link.href}
                 href={link.href}
+                rel={nofollow ? "nofollow" : undefined}
                 className="group v6-card rounded-xl p-5 transition-colors hover:border-brand-500/40"
               >
                 <p className="font-semibold text-[var(--v6-text)] group-hover:text-brand-600">{link.label}</p>
                 {link.description && <p className="mt-1 text-sm text-muted">{link.description}</p>}
               </Link>
-            ))}
+            );
+            })}
           </div>
         </Container>
       </section>
@@ -312,14 +313,5 @@ export function ProgrammaticSeoPage({ page }: { page: ProgrammaticPageData }) {
         </Container>
       </section>
     </>
-  );
-}
-
-function StatCard({ value, label }: { value: string; label: string }) {
-  return (
-    <div className="rounded-xl border border-white/[0.08] bg-white/[0.03] p-4">
-      <p className="font-display text-2xl font-bold text-white">{value}</p>
-      <p className="mt-1 text-xs leading-relaxed text-slate-400">{label}</p>
-    </div>
   );
 }

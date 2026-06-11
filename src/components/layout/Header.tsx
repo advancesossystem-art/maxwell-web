@@ -147,12 +147,14 @@ export function Header() {
             <button
               ref={resourcesBtnRef}
               type="button"
+              id="resources-menu-button"
               className={cn(
                 "v6-nav-link inline-flex items-center gap-1",
                 resourceLinks.some((l) => isActive(l.href)) && "v6-nav-link--active",
               )}
               aria-expanded={resourcesOpen}
               aria-haspopup="true"
+              aria-controls="resources-menu"
               onClick={() => setResourcesOpen((o) => !o)}
             >
               Resources
@@ -160,9 +162,11 @@ export function Header() {
             </button>
             {resourcesOpen ? (
               <ul
+                id="resources-menu"
                 className="max-h-[min(70vh,22rem)] overflow-y-auto overscroll-contain rounded-2xl border border-[var(--v6-border)] bg-white py-2 shadow-xl"
                 style={resourcesMenuStyle}
                 role="menu"
+                aria-labelledby="resources-menu-button"
               >
                 {resourceLinks.map((link) => (
                   <li key={link.href} role="none">

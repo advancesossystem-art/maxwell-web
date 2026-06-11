@@ -1,13 +1,10 @@
-"use client";
-
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { PrimaryCTA } from "@/components/conversion/PrimaryCTA";
 import { SecondaryCTA } from "@/components/conversion/SecondaryCTA";
 import { CaseStudyConversionBlock } from "@/components/conversion/CaseStudyConversionBlock";
 import { FadeIn } from "@/components/motion/FadeIn";
-import { CheckIcon, ArrowRight } from "@/components/ui/Icons";
+import { CheckIcon } from "@/components/ui/Icons";
 import { CaseStudyROIDashboard } from "@/components/case-studies/CaseStudyROI";
 import {
   CaseStudyTrustBar,
@@ -20,6 +17,7 @@ import {
 import { CaseStudyCardCompact } from "@/components/case-studies/CaseStudyCard";
 import { CaseStudyAuthorityBlock } from "@/components/case-studies/CaseStudyAuthorityBlock";
 import { CaseStudyBreadcrumb, CaseStudyCTA, CaseStudyCTAStrip } from "@/components/case-studies/CaseStudyCTA";
+import { CaseStudyHeroMotion, CaseStudyResultMotion } from "@/components/case-studies/CaseStudyDetailMotion";
 import type { CaseStudyData } from "@/lib/case-studies-data";
 import { formatClientDescriptor } from "@/lib/client-attribution";
 import { getRelatedCaseStudies } from "@/lib/case-studies-data";
@@ -95,7 +93,7 @@ export function CaseStudyDetailPage({ study }: { study: CaseStudyData }) {
         />
         <Container className="relative z-10">
           <CaseStudyBreadcrumb title={study.title} />
-          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+          <CaseStudyHeroMotion>
             <div className="mb-4 flex flex-wrap gap-2">
               <span className="rounded-full border border-[var(--v6-border)] bg-[#4f46e5]/10 px-3 py-1 text-xs font-medium text-[#4f46e5]">
                 {study.trust.industry}
@@ -115,7 +113,7 @@ export function CaseStudyDetailPage({ study }: { study: CaseStudyData }) {
               <PrimaryCTA context={context} location="case_study_hero" />
               <SecondaryCTA context={context} location="case_study_hero" />
             </div>
-          </motion.div>
+          </CaseStudyHeroMotion>
         </Container>
       </section>
 
@@ -312,18 +310,15 @@ export function CaseStudyDetailPage({ study }: { study: CaseStudyData }) {
         <CaseStudyROIDashboard metrics={study.roiMetrics} accent={study.accent} />
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {study.results.map((r, i) => (
-            <motion.div
+            <CaseStudyResultMotion
               key={r.label}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
+              delay={i * 0.08}
               className="rounded-xl border border-white/10 bg-white/5 p-5 text-center backdrop-blur-sm"
             >
               <div className="font-display text-2xl font-bold text-white" style={{ color: study.accent }}>{r.metric}</div>
               <div className="mt-1 text-sm font-medium text-white/80">{r.label}</div>
               <p className="mt-1 text-xs text-white/40">{r.description}</p>
-            </motion.div>
+            </CaseStudyResultMotion>
           ))}
         </div>
       </SectionBlock>

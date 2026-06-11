@@ -59,11 +59,13 @@ export function createProjectMetadata(project: {
   industry: string;
   projectType: string;
   technologies: string[];
+  noIndex?: boolean;
 }): Metadata {
   return buildSeoMetadata({
     title: project.metaTitle,
     description: project.metaDescription,
     path: `/work/${project.slug}`,
+    noIndex: project.noIndex,
     keywords: [
       project.title,
       project.industry,

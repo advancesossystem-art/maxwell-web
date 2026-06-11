@@ -9,7 +9,7 @@ import {
   readJsonBody,
   withApiSecurityHeaders,
 } from "@/lib/api-security";
-import { getClientIp, rateLimit, rateLimits } from "@/lib/rate-limit";
+import { getClientIp, rateLimitAsync, rateLimits } from "@/lib/rate-limit";
 import { safeOutboundFetch } from "@/lib/security/ssrf";
 import { webhookHeaders } from "@/lib/security/webhook-auth";
 
@@ -29,7 +29,7 @@ export async function POST(request: Request) {
     const blocked = guardPublicApiPost(request);
     if (blocked) return withApiSecurityHeaders(blocked);
 
-    const limit = rateLimit(`newsletter:${getClientIp(request)}`, rateLimits.newsletter);
+    const limit = await rateLimitAsync(`newsletter:${getClientIp(request)}`, rateLimits.newsletter);
     if (!limit.ok) {
       return apiJson({ error: "Too many requests." }, { status: 429 });
     }

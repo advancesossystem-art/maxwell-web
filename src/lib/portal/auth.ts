@@ -4,6 +4,10 @@ import { demoUsers } from "./mock-data";
 const SESSION_KEY = "maxwell-portal-session";
 const ONBOARDING_KEY = "maxwell-portal-onboarding";
 
+export function isPortalDemoEnabled(): boolean {
+  return process.env.NEXT_PUBLIC_ENABLE_PORTAL_DEMO === "true" || process.env.ENABLE_PORTAL_DEMO === "true";
+}
+
 export interface PortalSession {
   user: PortalUser;
   loginAt: string;
@@ -11,6 +15,7 @@ export interface PortalSession {
 }
 
 export function loginWithEmail(email: string, password: string): PortalSession | null {
+  if (!isPortalDemoEnabled()) return null;
   const record = demoUsers[email.toLowerCase()];
   if (!record || record.password !== password) return null;
   const { password: _pw, ...user } = record;
@@ -26,7 +31,8 @@ export function loginWithEmail(email: string, password: string): PortalSession |
   return session;
 }
 
-export function loginWithGoogle(email: string, name: string): PortalSession {
+export function loginWithGoogle(email: string, name: string): PortalSession | null {
+  if (!isPortalDemoEnabled()) return null;
   const existing = demoUsers[email.toLowerCase()];
   const user: PortalUser = existing
     ? (() => {
@@ -57,6 +63,7 @@ export function loginWithGoogle(email: string, name: string): PortalSession {
 }
 
 export function loginWithInviteToken(token: string): PortalSession | null {
+  if (!isPortalDemoEnabled()) return null;
   if (token !== "maxwell-invite-demo" && token !== "demo") return null;
   const record = demoUsers["client@demo.com"];
   const { password: _pw, ...user } = record;

@@ -2,20 +2,12 @@ import type { Metadata } from "next";
 import { siteConfig } from "@/lib/constants";
 import {
   buildLanguageAlternates,
-  defaultKeywords,
   geoMetaOther,
-  globalKeywords,
   homeSeo,
-  indiaKeywords,
   primaryLocale,
 } from "@/lib/seo/config";
 
 const defaultOgImage = `${siteConfig.url}/opengraph-image`;
-
-function mergeKeywords(extra: string[] = []): string[] {
-  const merged = [...extra, ...defaultKeywords];
-  return [...new Set(merged)].slice(0, 48);
-}
 
 function baseOpenGraph({
   title,
@@ -23,35 +15,43 @@ function baseOpenGraph({
   url,
   type = "website",
   publishedTime,
+  modifiedTime,
   authors,
+  ogImage,
 }: {
   title: string;
   description: string;
   url: string;
   type?: "website" | "article";
   publishedTime?: string;
+  modifiedTime?: string;
   authors?: string[];
+  ogImage?: string;
 }) {
+  const imageUrl = ogImage ?? defaultOgImage;
   return {
     title,
     description,
     url,
     siteName: siteConfig.name,
     locale: primaryLocale,
-    alternateLocale: ["en_US", "en_GB", "en_AE", "en_CA", "en_AU"],
     type,
     ...(publishedTime ? { publishedTime } : {}),
+    ...(modifiedTime ? { modifiedTime } : {}),
     ...(authors ? { authors } : {}),
-    images: [{ url: defaultOgImage, width: 1200, height: 630, alt: title }],
+    images: [{ url: imageUrl, width: 1200, height: 630, alt: title }],
   };
 }
 
-function baseTwitter(title: string, description: string) {
+function baseTwitter(title: string, description: string, ogImage?: string) {
+  const imageUrl = ogImage ?? defaultOgImage;
   return {
     card: "summary_large_image" as const,
     title,
     description,
-    images: [defaultOgImage],
+    site: "@MaxwellElectrodeal",
+    creator: "@MaxwellElectrodeal",
+    images: [{ url: imageUrl, alt: title }],
   };
 }
 
@@ -71,6 +71,7 @@ export function buildSeoMetadata({
   openGraphType = "website",
   publishedTime,
   authors,
+  ogImage,
 }: {
   title?: string;
   description?: string;
@@ -81,6 +82,7 @@ export function buildSeoMetadata({
   openGraphType?: "website" | "article";
   publishedTime?: string;
   authors?: string[];
+  ogImage?: string;
 }): Metadata {
   const pageTitle = title ? formatPageTitle(title) : `${siteConfig.name} — ${siteConfig.tagline}`;
 
@@ -104,8 +106,9 @@ export function buildSeoMetadata({
       type: openGraphType,
       publishedTime,
       authors,
+      ogImage,
     }),
-    twitter: baseTwitter(pageTitle, pageDescription),
+    twitter: baseTwitter(pageTitle, pageDescription, ogImage),
     robots: noIndex
       ? { index: false, follow: false }
       : {
@@ -119,7 +122,6 @@ export function buildSeoMetadata({
             "max-video-preview": -1,
           },
         },
-    keywords: mergeKeywords(keywords),
     ...(includeIndiaGeo ? { other: { ...geoMetaOther } } : {}),
   };
 }
@@ -150,12 +152,6 @@ export function createHomeMetadata(): Metadata {
         "max-snippet": -1,
       },
     },
-    keywords: mergeKeywords([
-      ...indiaKeywords,
-      ...globalKeywords,
-      "software development company",
-      "offshore software development",
-    ]),
     other: { ...geoMetaOther },
   };
 }
@@ -181,12 +177,19 @@ export function buildArticleSeoMetadata(args: {
   description: string;
   path: string;
   publishedAt: string;
+  updatedAt?: string;
   authorName: string;
   tags?: string[];
   noIndex?: boolean;
+  ogImage?: string;
 }): Metadata {
   const pageTitle = formatPageTitle(args.title);
   const alternates = buildLanguageAlternates(args.path);
+  const ogImageUrl = args.ogImage
+    ? args.ogImage.startsWith("http")
+      ? args.ogImage
+      : `${siteConfig.url}${args.ogImage.startsWith("/") ? "" : "/"}${args.ogImage}`
+    : undefined;
 
   return {
     title: pageTitle,
@@ -199,13 +202,14 @@ export function buildArticleSeoMetadata(args: {
       url: alternates.canonical,
       type: "article",
       publishedTime: args.publishedAt,
+      modifiedTime: args.updatedAt,
       authors: [args.authorName],
+      ogImage: ogImageUrl,
     }),
-    twitter: baseTwitter(pageTitle, args.description),
+    twitter: baseTwitter(pageTitle, args.description, ogImageUrl),
     robots: args.noIndex
       ? { index: false, follow: false }
       : { index: true, follow: true },
-    keywords: mergeKeywords(args.tags ?? []),
     other: { ...geoMetaOther },
   };
 }

@@ -13,7 +13,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const page = getComparePage(slug);
-  if (!page) return {};
+  if (!page) return { robots: { index: false, follow: false } };
   return buildSeoMetadata({
     title: page.metaTitle,
     description: page.metaDescription,

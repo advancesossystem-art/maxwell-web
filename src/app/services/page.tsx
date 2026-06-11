@@ -3,7 +3,6 @@ import { FinalCTA } from "@/components/home/FinalCTA";
 import { getAllServices } from "@/lib/services-data";
 import { serviceIcons, ArrowRight } from "@/components/ui/Icons";
 import { createMetadata } from "@/lib/metadata";
-import { ServicesJsonLd } from "@/components/seo/JsonLd";
 import { PageHero } from "@/components/design/PageHero";
 import { PageSection } from "@/components/design/PageSection";
 import { Card } from "@/components/design/Card";
@@ -23,8 +22,6 @@ export default function ServicesPage() {
 
   return (
     <>
-      <ServicesJsonLd />
-
       <PageHero
         compact
         eyebrow="Services"

@@ -1,17 +1,20 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { PrimaryCTA } from "@/components/conversion/PrimaryCTA";
 import { SecondaryCTA } from "@/components/conversion/SecondaryCTA";
 import { WorkConversionBlock } from "@/components/conversion/WorkConversionBlock";
-import { CTA_LABELS, consultationHref } from "@/lib/conversion-copy";
-import { trackCTAClick } from "@/lib/conversion-events";
+import { consultationHref } from "@/lib/conversion-copy";
 import { Button } from "@/components/ui/Button";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { ProjectMockFrame } from "@/components/work/ProjectMock";
 import { ProjectCardCompact } from "@/components/work/ProjectCard";
 import { WorkBreadcrumb, WorkCTA, WorkCTAStrip } from "@/components/work/WorkCTA";
+import {
+  ProjectGalleryItemMotion,
+  ProjectHeroTextMotion,
+  ProjectHeroVisualMotion,
+  ProjectResultMotion,
+} from "@/components/work/ProjectDetailMotion";
+import { WorkSimilarProjectButton } from "@/components/work/WorkSimilarProjectButton";
 import { CheckIcon, ArrowRight } from "@/components/ui/Icons";
 import type { ProjectData } from "@/lib/projects-data";
 import { formatClientDescriptor } from "@/lib/client-attribution";
@@ -37,7 +40,7 @@ export function ProjectDetailPage({ project }: { project: ProjectData }) {
         <Container className="relative z-10">
           <WorkBreadcrumb title={project.title} />
           <div className="grid items-center gap-12 lg:grid-cols-2">
-            <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+            <ProjectHeroTextMotion>
               <div className="mb-4 flex flex-wrap gap-2">
                 <span className="rounded-full border border-[var(--v6-border)] bg-[#4f46e5]/10 px-3 py-1 text-xs font-medium text-[#4f46e5]">
                   {project.industry}
@@ -56,20 +59,13 @@ export function ProjectDetailPage({ project }: { project: ProjectData }) {
               </div>
               <div className="mt-8 flex flex-wrap gap-3">
                 <PrimaryCTA context={context} location="work_hero" />
-                <Button
-                  href={similarHref}
-                  size="lg"
-                  variant="outline"
-                  onClick={() => trackCTAClick(CTA_LABELS.similarProject, similarHref, "work_hero")}
-                >
-                  {CTA_LABELS.similarProject}
-                </Button>
+                <WorkSimilarProjectButton href={similarHref} location="work_hero" size="lg" variant="outline" />
                 <SecondaryCTA context={context} location="work_hero" size="lg" variant="glass" />
               </div>
-            </motion.div>
-            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.15, duration: 0.8 }}>
+            </ProjectHeroTextMotion>
+            <ProjectHeroVisualMotion>
               <ProjectMockFrame type={project.mockType} accent={project.accent} gradient={project.gradient} className="aspect-[16/10] rounded-2xl shadow-2xl" />
-            </motion.div>
+            </ProjectHeroVisualMotion>
           </div>
         </Container>
       </section>
@@ -183,16 +179,10 @@ export function ProjectDetailPage({ project }: { project: ProjectData }) {
           </FadeIn>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {project.gallery.map((item, i) => (
-              <motion.div
-                key={item.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
+              <ProjectGalleryItemMotion key={item.label} delay={i * 0.1}>
                 <ProjectMockFrame type={item.mockType} accent={project.accent} gradient={project.gradient} className="aspect-[16/10] rounded-xl" />
                 <p className="mt-3 text-sm font-medium text-white/60">{item.label}</p>
-              </motion.div>
+              </ProjectGalleryItemMotion>
             ))}
           </div>
         </Container>
@@ -209,18 +199,15 @@ export function ProjectDetailPage({ project }: { project: ProjectData }) {
           </FadeIn>
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {project.results.map((r, i) => (
-              <motion.div
+              <ProjectResultMotion
                 key={r.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
+                delay={i * 0.08}
                 className="rounded-2xl border border-border p-6 text-center"
               >
                 <div className="font-display text-3xl font-bold" style={{ color: project.accent }}>{r.metric}</div>
                 <div className="mt-2 font-display font-semibold">{r.label}</div>
                 {r.description && <p className="mt-1 text-xs text-muted">{r.description}</p>}
-              </motion.div>
+              </ProjectResultMotion>
             ))}
           </div>
         </Container>
@@ -274,15 +261,13 @@ export function ProjectDetailPage({ project }: { project: ProjectData }) {
                     </span>
                   ))}
                 </div>
-                <Button
+                <WorkSimilarProjectButton
                   href={similarHref}
+                  location="work_testimonial"
                   variant="outline"
                   size="sm"
                   className="mt-6 w-full"
-                  onClick={() => trackCTAClick(CTA_LABELS.similarProject, similarHref, "work_testimonial")}
-                >
-                  {CTA_LABELS.similarProject}
-                </Button>
+                />
               </div>
             </FadeIn>
           </div>

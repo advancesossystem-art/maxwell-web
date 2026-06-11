@@ -17,7 +17,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { country, city: citySlug } = await params;
   const cityData = getCityBySlug(country, citySlug);
-  if (!cityData) return {};
+  if (!cityData) return { robots: { index: false, follow: false } };
 
   return createLocationCityMetadata({
     metaTitle: cityData.metaTitle,

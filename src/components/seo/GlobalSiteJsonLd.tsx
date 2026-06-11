@@ -9,6 +9,18 @@ import {
 } from "@/lib/seo/config";
 import { globalHeadTerms, headTerms } from "@/lib/seo/search-keywords";
 
+const countryNames: Record<(typeof areaServedCountries)[number], string> = {
+  IN: "India",
+  US: "United States",
+  GB: "United Kingdom",
+  AE: "United Arab Emirates",
+  CA: "Canada",
+  AU: "Australia",
+  DE: "Germany",
+  SG: "Singapore",
+  NL: "Netherlands",
+};
+
 /**
  * Site-wide @graph: Organization + ProfessionalService + India HQ + WebSite.
  * Replaces separate Organization/WebSite scripts to avoid duplicate entities.
@@ -48,7 +60,7 @@ export function GlobalSiteJsonLd() {
         },
         areaServed: areaServedCountries.map((code) => ({
           "@type": "Country",
-          name: code,
+          name: countryNames[code],
         })),
         knowsAbout: [
           ...headTerms.slice(0, 8),
@@ -149,14 +161,6 @@ export function GlobalSiteJsonLd() {
         inLanguage: ["en-IN", "en-US", "en-GB"],
         publisher: { "@id": seoIds.organization },
         about: { "@id": seoIds.organization },
-        potentialAction: {
-          "@type": "SearchAction",
-          target: {
-            "@type": "EntryPoint",
-            urlTemplate: `${siteConfig.url}/blog?q={search_term_string}`,
-          },
-          "query-input": "required name=search_term_string",
-        },
       },
     ],
   };

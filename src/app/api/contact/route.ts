@@ -7,7 +7,7 @@ import {
   readJsonBody,
   withApiSecurityHeaders,
 } from "@/lib/api-security";
-import { getClientIp, rateLimit, rateLimits } from "@/lib/rate-limit";
+import { getClientIp, rateLimitAsync, rateLimits } from "@/lib/rate-limit";
 import { submitLead } from "@/lib/submit-lead";
 
 /** @deprecated Prefer POST /api/leads — kept for backward compatibility. */
@@ -15,7 +15,7 @@ export async function POST(request: Request) {
   const blocked = guardPublicApiPost(request);
   if (blocked) return withApiSecurityHeaders(blocked);
 
-  const limit = rateLimit(`contact:${getClientIp(request)}`, rateLimits.leads);
+  const limit = await rateLimitAsync(`contact:${getClientIp(request)}`, rateLimits.leads);
   if (!limit.ok) {
     return apiJson({ error: "Too many requests." }, { status: 429 });
   }

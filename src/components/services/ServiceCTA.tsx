@@ -100,7 +100,7 @@ export function ServiceCTAStrip({ serviceName }: { serviceName: string }) {
 
 export function ServiceBreadcrumb({ title }: { title: string }) {
   return (
-    <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-2 text-sm text-white/40">
+    <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-2 text-sm text-white/60">
       <Link href="/" className="hover:text-white/70 transition-colors">
         Home
       </Link>

@@ -53,6 +53,7 @@ export function ToolsHub() {
         <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center">
           <input
             type="search"
+            aria-label="Search tools"
             placeholder="Search tools…"
             value={query}
             onChange={(e) => setQuery(e.target.value)}

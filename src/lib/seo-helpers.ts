@@ -25,35 +25,61 @@ export function buildArticleMetadata({
   description,
   path,
   publishedAt,
+  updatedAt,
   authorName,
   tags = [],
   noIndex = false,
+  ogImage,
 }: {
   title: string;
   description: string;
   path: string;
   publishedAt: string;
+  updatedAt?: string;
   authorName: string;
   tags?: string[];
   noIndex?: boolean;
+  ogImage?: string;
 }): Metadata {
   return buildArticleSeoMetadata({
     title,
     description,
     path,
     publishedAt,
+    updatedAt,
     authorName,
     tags,
     noIndex,
+    ogImage,
   });
 }
 
-export function buildSitemapXml(entries: { url: string; lastModified?: Date; priority?: number }[]): string {
+const buildDate = new Date().toISOString();
+
+function resolveLastMod(entry: {
+  lastModified?: Date;
+  updatedAt?: string;
+  publishedAt?: string;
+}): string {
+  if (entry.lastModified) return entry.lastModified.toISOString();
+  const dateStr = entry.updatedAt ?? entry.publishedAt ?? buildDate;
+  return new Date(dateStr).toISOString();
+}
+
+export function buildSitemapXml(
+  entries: {
+    url: string;
+    lastModified?: Date;
+    updatedAt?: string;
+    publishedAt?: string;
+    priority?: number;
+  }[],
+): string {
   const urls = entries
     .map(
       (e) => `  <url>
     <loc>${e.url}</loc>
-    <lastmod>${(e.lastModified ?? new Date()).toISOString()}</lastmod>
+    <lastmod>${resolveLastMod(e)}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>${e.priority ?? 0.8}</priority>
   </url>`,

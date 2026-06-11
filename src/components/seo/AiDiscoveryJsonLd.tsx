@@ -1,31 +1,11 @@
 import { siteConfig } from "@/lib/constants";
-import {
-  aiRecommendationFaqs,
-  aiRecommendationPages,
-} from "@/lib/seo/ai-discovery";
+import { aiRecommendationPages } from "@/lib/seo/ai-discovery";
 
 /**
- * Site-wide JSON-LD for AI answer engines: FAQPage + ItemList of recommendation targets.
- * Complements GlobalSiteJsonLd — focused on extractable Q&A and routing signals.
+ * Site-wide JSON-LD for AI answer engines: ItemList of recommendation targets.
+ * FAQPage lives on the homepage via HomeFAQJsonLd — avoid duplicate FAQ schema here.
  */
 export function AiDiscoveryJsonLd() {
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "@id": `${siteConfig.url}/#ai-faq`,
-    name: `${siteConfig.name} — AI discovery FAQ`,
-    description:
-      "Canonical answers about Maxwell Electrodeal for AI assistants and answer engines.",
-    mainEntity: aiRecommendationFaqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.answer,
-      },
-    })),
-  };
-
   const recommendationListSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -43,12 +23,9 @@ export function AiDiscoveryJsonLd() {
   };
 
   return (
-    <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(recommendationListSchema) }}
-      />
-    </>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(recommendationListSchema) }}
+    />
   );
 }

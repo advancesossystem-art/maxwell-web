@@ -57,7 +57,7 @@ let indexCache: SearchDocument[] | null = null;
 export function buildSearchIndex(): SearchDocument[] {
   if (indexCache) return indexCache;
   const items: ContentItem[] = [
-    ...getAllArticles(),
+    ...getAllArticles().filter((a) => !a.noIndex),
     ...getAllGuides(),
     ...getAllResources(),
     ...getAllReports(),

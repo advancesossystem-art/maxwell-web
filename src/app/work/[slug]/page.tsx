@@ -16,7 +16,13 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const project = getProjectBySlug(slug);
-  if (!project) return {};
+  if (!project) return { robots: { index: false, follow: false } };
+  if (project.noIndex) {
+    return {
+      ...createProjectMetadata(project),
+      robots: { index: false, follow: true },
+    };
+  }
   return createProjectMetadata(project);
 }
 

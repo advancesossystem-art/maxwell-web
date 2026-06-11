@@ -31,6 +31,14 @@ const heightClass = {
   header: "h-14 sm:h-16",
 } as const;
 
+const sizesAttr = {
+  footer: "228px",
+  sm: "250px",
+  md: "285px",
+  lg: "356px",
+  header: "(max-width: 640px) 114px, 142px",
+} as const;
+
 export function BrandLogo({
   size = "md",
   className,
@@ -46,7 +54,7 @@ export function BrandLogo({
       width={LOGO_WIDTH}
       height={LOGO_HEIGHT}
       priority={priority}
-      unoptimized
+      sizes={sizesAttr[size]}
       className={cn("w-auto object-contain object-left", heightClass[size], className)}
       style={{ aspectRatio: `${LOGO_WIDTH} / ${LOGO_HEIGHT}`, maxWidth: `${Math.round(height * LOGO_ASPECT)}px` }}
     />

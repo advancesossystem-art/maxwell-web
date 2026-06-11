@@ -26,7 +26,9 @@ export function AuthorPageContent({ author }: { author: Author }) {
               {author.initials}
             </div>
             <div>
-              <H1 className="mt-0">{author.name}</H1>
+              <H1 as="h2" className="mt-0">
+                {author.name}
+              </H1>
               <Caption className="text-brand-500">{author.role}</Caption>
             </div>
           </div>

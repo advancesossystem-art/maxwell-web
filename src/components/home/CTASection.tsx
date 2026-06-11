@@ -5,11 +5,12 @@ import { Button } from "@/components/ui/Button";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { faqs } from "@/lib/constants";
 import { ArrowRight } from "@/components/ui/Icons";
-import { useState } from "react";
+import { useId, useState } from "react";
 import { cn } from "@/lib/utils";
 
 export function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const baseId = useId();
 
   return (
     <section className="py-24 lg:py-32">
@@ -32,13 +33,19 @@ export function FAQSection() {
 
           <FadeIn delay={0.1}>
             <div className="divide-y divide-border rounded-2xl border border-border bg-surface-elevated">
-              {faqs.map((faq, i) => (
+              {faqs.map((faq, i) => {
+                const isOpen = openIndex === i;
+                const panelId = `${baseId}-panel-${i}`;
+                const triggerId = `${baseId}-trigger-${i}`;
+                return (
                 <div key={faq.question}>
                   <button
+                    id={triggerId}
                     type="button"
                     className="flex w-full items-center justify-between px-6 py-5 text-left"
-                    onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                    aria-expanded={openIndex === i}
+                    onClick={() => setOpenIndex(isOpen ? null : i)}
+                    aria-expanded={isOpen}
+                    aria-controls={panelId}
                   >
                     <span className="pr-4 font-display text-sm font-semibold text-foreground">
                       {faq.question}
@@ -46,22 +53,28 @@ export function FAQSection() {
                     <span
                       className={cn(
                         "flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-surface text-muted transition-transform duration-300",
-                        openIndex === i && "rotate-45 bg-brand-50 text-brand-600",
+                        isOpen && "rotate-45 bg-brand-50 text-brand-600",
                       )}
+                      aria-hidden="true"
                     >
                       +
                     </span>
                   </button>
                   <div
+                    id={panelId}
+                    role="region"
+                    aria-labelledby={triggerId}
+                    hidden={!isOpen}
                     className={cn(
                       "overflow-hidden transition-all duration-300",
-                      openIndex === i ? "max-h-48 pb-5" : "max-h-0",
+                      isOpen ? "max-h-48 pb-5" : "max-h-0",
                     )}
                   >
                     <p className="px-6 text-sm leading-relaxed text-muted">{faq.answer}</p>
                   </div>
                 </div>
-              ))}
+              );
+              })}
             </div>
           </FadeIn>
         </div>

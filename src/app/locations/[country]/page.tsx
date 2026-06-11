@@ -17,7 +17,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { country: countrySlug } = await params;
   const country = getCountryBySlug(countrySlug);
-  if (!country) return {};
+  if (!country) return { robots: { index: false, follow: false } };
 
   return createLocationCountryMetadata(country);
 }

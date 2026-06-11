@@ -37,6 +37,7 @@ export interface ContentBase {
   featured?: boolean;
   trending?: boolean;
   popular?: boolean;
+  ogImage?: string;
   noIndex?: boolean;
   relatedSlugs?: string[];
   faqs?: ContentFAQ[];

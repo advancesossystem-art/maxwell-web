@@ -15,7 +15,7 @@ export function GuideDetailPage({ guide }: { guide: Guide }) {
     <>
       <ContentPageJsonLd
         type="guide"
-        title={guide.title}
+        title={guide.metaTitle}
         description={guide.metaDescription}
         path={`/guides/${guide.slug}`}
         publishedAt={guide.publishedAt}

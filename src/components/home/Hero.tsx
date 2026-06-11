@@ -1,12 +1,9 @@
-"use client";
-
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
-import { useMotionTransformEnabled } from "@/components/motion/FadeIn";
 import { HeroEcosystemVisual } from "@/components/home/HeroEcosystemVisual";
+import { HeroMotionColumn, HeroMotionVisual } from "@/components/home/HeroMotion";
+import { HeroProofLink } from "@/components/home/HeroProofLink";
 import { heroServiceBadges, heroTrustMetrics, homeHero, trustHighlights } from "@/lib/homepage";
 import { CTA_LABELS, CONVERSION_EXPECTATIONS } from "@/lib/conversion-copy";
-import { trackCTAClick } from "@/lib/conversion-events";
 import { PrimaryCTA } from "@/components/conversion/PrimaryCTA";
 import { SecondaryCTA } from "@/components/conversion/SecondaryCTA";
 
@@ -52,21 +49,11 @@ function TrustIcon({ type }: { type: (typeof trustIcons)[number] }) {
 }
 
 export function Hero() {
-  const reduce = useReducedMotion();
-  const transformEnabled = useMotionTransformEnabled();
-  const fade = reduce
-    ? {}
-    : {
-        initial: { opacity: 0, y: transformEnabled ? 24 : 0 },
-        animate: { opacity: 1, y: 0 },
-        transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const },
-      };
-
   return (
     <section className="v6-hero v6-section--white overflow-hidden" aria-label="Hero">
       <div className="v6-container">
         <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-10">
-          <motion.div {...fade}>
+          <HeroMotionColumn>
             <p className="v6-eyebrow-line v6-eyebrow">{homeHero.eyebrow}</p>
             <h1 className="v6-hero-title mt-4 text-balance" data-seo-speakable>
               {homeHero.headlineLine1}{" "}
@@ -91,13 +78,7 @@ export function Hero() {
             <p className="mt-4 rounded-xl border border-[#4f46e5]/15 bg-[#f8fafc] px-4 py-3 text-sm text-[var(--v6-text-secondary)]">
               <span className="font-semibold text-[#4f46e5]">Proven delivery:</span>{" "}
               {homeHero.proofOutcome}.{" "}
-              <Link
-                href={homeHero.proofLink.href}
-                className="font-semibold text-[#4f46e5] hover:underline"
-                onClick={() => trackCTAClick("See case outcomes", homeHero.proofLink.href, "homepage_hero_proof")}
-              >
-                {homeHero.proofLink.label} →
-              </Link>
+              <HeroProofLink href={homeHero.proofLink.href} label={homeHero.proofLink.label} />
             </p>
 
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -144,20 +125,11 @@ export function Hero() {
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </HeroMotionColumn>
 
-          <motion.div
-            {...(reduce
-              ? {}
-              : {
-                  initial: { opacity: 0, y: 32 },
-                  animate: { opacity: 1, y: 0 },
-                  transition: { duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] as const },
-                })}
-            className="relative lg:pl-4"
-          >
+          <HeroMotionVisual className="relative lg:pl-4">
             <HeroEcosystemVisual />
-          </motion.div>
+          </HeroMotionVisual>
         </div>
       </div>
     </section>

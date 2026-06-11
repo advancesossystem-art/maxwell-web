@@ -112,21 +112,9 @@ export function buildCanonicalUrl(path: string): string {
   return `${siteConfig.url}${normalized === "/" ? "" : normalized}`;
 }
 
-/** Single English site; hreflang signals India HQ + global English discovery (same canonical). */
+/** Single English site — canonical only, no fake hreflang alternates. */
 export function buildLanguageAlternates(path: string) {
-  const canonical = buildCanonicalUrl(path);
-  return {
-    canonical,
-    languages: {
-      [hreflangDefault]: canonical,
-      "en-US": canonical,
-      "en-GB": canonical,
-      "en-AE": canonical,
-      "en-CA": canonical,
-      "en-AU": canonical,
-      "x-default": canonical,
-    },
-  };
+  return { canonical: buildCanonicalUrl(path) };
 }
 
 export const geoMetaOther = {

@@ -24,7 +24,7 @@ export function PortalLogin() {
     const fd = new FormData(e.currentTarget);
     const session = loginWithEmail(String(fd.get("email")), String(fd.get("password")));
     if (!session) {
-      setError("Invalid email or password. Try client@demo.com / demo123");
+      setError("Invalid credentials");
       return;
     }
     trackPortalEvent("portal_login", { provider: "email" });
@@ -34,6 +34,10 @@ export function PortalLogin() {
 
   function handleGoogle() {
     const session = loginWithGoogle("client@demo.com", "Demo Client");
+    if (!session) {
+      setError("Portal demo login is disabled");
+      return;
+    }
     trackPortalEvent("portal_login", { provider: "google" });
     refreshSession();
     router.push(session.user.onboardingComplete ? "/portal/dashboard" : "/portal/onboarding");

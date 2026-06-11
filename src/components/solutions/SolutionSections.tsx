@@ -1,14 +1,11 @@
-"use client";
-
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { Button } from "@/components/ui/Button";
 import { ArrowRight } from "@/components/ui/Icons";
+import { SolutionChallengeMotion, SolutionHeroMotion } from "@/components/solutions/SolutionSectionsMotion";
 import type { SolutionPageData } from "@/lib/solutions-data";
 import { getCaseStudyBySlug } from "@/lib/case-studies-data";
-import { cn } from "@/lib/utils";
 
 export function SolutionBreadcrumb({ title }: { title: string }) {
   return (
@@ -46,7 +43,7 @@ export function SolutionHero({ solution }: { solution: SolutionPageData }) {
       />
       <Container className="relative z-10">
         <SolutionBreadcrumb title={solution.title} />
-        <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}>
+        <SolutionHeroMotion>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/50">
             {solution.primaryKeyword}
           </p>
@@ -67,7 +64,7 @@ export function SolutionHero({ solution }: { solution: SolutionPageData }) {
               Service Details
             </Button>
           </div>
-        </motion.div>
+        </SolutionHeroMotion>
       </Container>
     </section>
   );
@@ -104,17 +101,14 @@ export function SolutionChallenges({ solution }: { solution: SolutionPageData })
         </FadeIn>
         <div className="mt-12 grid gap-6 md:grid-cols-2">
           {solution.industryChallenges.map((c, i) => (
-            <motion.div
+            <SolutionChallengeMotion
               key={c.title}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
+              delay={i * 0.08}
               className="rounded-2xl border border-border bg-surface-elevated p-8"
             >
               <h3 className="font-display font-semibold">{c.title}</h3>
               <p className="mt-3 text-sm text-muted">{c.description}</p>
-            </motion.div>
+            </SolutionChallengeMotion>
           ))}
         </div>
       </Container>

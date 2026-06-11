@@ -2,29 +2,24 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-
-const STORAGE_KEY = "maxwell-cookie-consent";
+import { useCookieConsent } from "@/hooks/useCookieConsent";
 
 export function CookieConsent() {
+  const { consent, setConsent } = useCookieConsent();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const id = requestAnimationFrame(() => {
-      if (!localStorage.getItem(STORAGE_KEY)) setVisible(true);
-    });
+    if (consent !== null) return;
+    const id = requestAnimationFrame(() => setVisible(true));
     return () => cancelAnimationFrame(id);
-  }, []);
+  }, [consent]);
 
   function setChoice(choice: "accepted" | "declined") {
-    localStorage.setItem(STORAGE_KEY, choice);
+    setConsent(choice);
     setVisible(false);
-    if (typeof window !== "undefined") {
-      window.dataLayer = window.dataLayer ?? [];
-      window.dataLayer.push({ event: "cookie_consent", consent: choice });
-    }
   }
 
-  if (!visible) return null;
+  if (!visible || consent !== null) return null;
 
   return (
     <div

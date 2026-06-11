@@ -15,7 +15,7 @@ export function BlogHub() {
   const articles = buildSearchIndex().filter((d) => d.type === "article");
   const featured = getFeaturedContent().filter((d) => d.type === "article");
   const trending = getTrendingContent().filter((d) => d.type === "article");
-  const totalArticles = getAllArticles().length;
+  const totalArticles = getAllArticles().filter((a) => !a.noIndex).length;
 
   return (
     <>

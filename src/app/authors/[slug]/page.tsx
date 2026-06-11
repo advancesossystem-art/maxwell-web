@@ -13,7 +13,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const author = getAuthorBySlug(slug);
-  if (!author) return {};
+  if (!author) return { robots: { index: false, follow: false } };
   return buildPageMetadata({
     title: `${author.name} — Author`,
     description: author.bio,

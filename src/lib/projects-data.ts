@@ -50,6 +50,7 @@ export interface ProjectData {
   subtitle: string;
   metaTitle: string;
   metaDescription: string;
+  noIndex?: boolean;
   client: string;
   clientOverview: string;
   projectType: ProjectType;
@@ -70,6 +71,8 @@ export interface ProjectData {
   gallery: { mockType: MockType; label: string }[];
   duration: string;
   teamSize: string;
+  publishedAt?: string;
+  date?: string;
 }
 
 export const projectSlugs = [
@@ -90,6 +93,7 @@ export { portfolioStats } from "@/lib/company-metrics";
 export const projectsData: Record<ProjectSlug, ProjectData> = {
   "manufacturing-erp-platform": {
     slug: "manufacturing-erp-platform",
+    noIndex: true,
     title: "a manufacturing client Manufacturing ERP",
     subtitle: "Unified ERP across 3 production facilities with real-time inventory and supplier integration.",
     metaTitle: "Manufacturing ERP Platform Case Study",

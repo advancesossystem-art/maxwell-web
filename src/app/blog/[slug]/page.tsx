@@ -16,16 +16,18 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const article = getArticleBySlug(slug);
-  if (!article) return {};
+  if (!article) return { robots: { index: false, follow: false } };
   const author = getAuthorById(article.authorId);
   return buildArticleMetadata({
     title: article.metaTitle,
     description: article.metaDescription,
     path: `/blog/${article.slug}`,
     publishedAt: article.publishedAt,
+    updatedAt: article.updatedAt,
     authorName: author?.name ?? "Maxwell Team",
     tags: article.tags,
     noIndex: article.noIndex,
+    ogImage: article.ogImage,
   });
 }
 

@@ -14,13 +14,14 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const guide = getGuideBySlug(slug);
-  if (!guide) return {};
+  if (!guide) return { robots: { index: false, follow: false } };
   const author = getAuthorById(guide.authorId);
   return buildArticleMetadata({
     title: guide.metaTitle,
     description: guide.metaDescription,
     path: `/guides/${guide.slug}`,
     publishedAt: guide.publishedAt,
+    updatedAt: guide.updatedAt,
     authorName: author?.name ?? "Maxwell Team",
     tags: guide.tags,
   });

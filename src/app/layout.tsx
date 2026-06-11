@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { Inter, Space_Grotesk } from "next/font/google";
 import { SiteChrome } from "@/components/layout/SiteChrome";
 import { DeferredClientChrome } from "@/components/layout/DeferredClientChrome";
-import { AnalyticsScripts, GTMHeadScript, GTMNoScript } from "@/components/seo/AnalyticsScripts";
-import { AiDiscoveryJsonLd } from "@/components/seo/AiDiscoveryJsonLd";
+import { AnalyticsScripts } from "@/components/seo/AnalyticsScripts";
+import { CookieConsentProvider } from "@/hooks/useCookieConsent";
 import { GlobalSiteJsonLd } from "@/components/seo/GlobalSiteJsonLd";
-import { buildSeoMetadata } from "@/lib/seo/metadata-utils";
 import { buildSiteVerificationMetadata } from "@/lib/seo/site-verification";
+import { siteConfig } from "@/lib/constants";
 import "./globals.css";
 
 const inter = Inter({
@@ -21,14 +22,18 @@ const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-space-grotesk",
   display: "swap",
-  preload: false,
+  preload: true,
   adjustFontFallback: true,
 });
 
 const siteVerification = buildSiteVerificationMetadata();
 
 export const metadata: Metadata = {
-  ...buildSeoMetadata({}),
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: "Maxwell Electrodeal",
+    template: "%s | Maxwell Electrodeal",
+  },
   ...(siteVerification ?? {}),
   icons: {
     icon: [
@@ -40,28 +45,31 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const nonce = (await headers()).get("x-nonce") ?? undefined;
+
   return (
     <html lang="en-IN" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <head>
-        <GTMHeadScript />
-        <link rel="preload" href="/logo.png" as="image" type="image/png" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.clarity.ms" />
+        <link rel="preconnect" href="https://assets.calendly.com" />
         <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM site summary" />
         <link rel="alternate" type="text/plain" href="/ai.txt" title="AI assistant discovery" />
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" title="Maxwell Electrodeal Blog RSS" />
       </head>
       <body className="min-h-screen bg-background font-sans text-foreground antialiased">
-        <GTMNoScript />
-        <GlobalSiteJsonLd />
-        <AiDiscoveryJsonLd />
-        <AnalyticsScripts />
-        <DeferredClientChrome>
-          <SiteChrome>{children}</SiteChrome>
-        </DeferredClientChrome>
+        <CookieConsentProvider>
+          <GlobalSiteJsonLd />
+          <AnalyticsScripts nonce={nonce} />
+          <DeferredClientChrome>
+            <SiteChrome>{children}</SiteChrome>
+          </DeferredClientChrome>
+        </CookieConsentProvider>
       </body>
     </html>
   );

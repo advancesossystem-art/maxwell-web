@@ -1,9 +1,7 @@
-"use client";
-
 import { Container } from "@/components/ui/Container";
 import { FadeIn, MotionReveal } from "@/components/motion/FadeIn";
-import { motion } from "framer-motion";
 import { ServiceCTA } from "@/components/services/ServiceCTA";
+import { ServiceTechStackMotion } from "@/components/services/ServiceSectionsMotion";
 import type { ServicePageData } from "@/lib/services-data";
 
 export function ServiceProblems({ service }: { service: ServicePageData }) {
@@ -137,17 +135,9 @@ export function ServiceTechStack({ service }: { service: ServicePageData }) {
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             {service.techStack.map((tech, i) => (
-              <motion.span
-                key={tech}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.04 }}
-                whileHover={{ scale: 1.05, y: -2 }}
-                className="rounded-xl border border-white/10 bg-white/5 px-5 py-2.5 font-display text-sm font-medium text-white/80 backdrop-blur-sm transition-colors hover:border-brand-500/40 hover:text-white"
-              >
+              <ServiceTechStackMotion key={tech} delay={i * 0.04}>
                 {tech}
-              </motion.span>
+              </ServiceTechStackMotion>
             ))}
           </div>
         </FadeIn>

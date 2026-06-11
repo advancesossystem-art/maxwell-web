@@ -7,7 +7,7 @@ import {
   readJsonBody,
   withApiSecurityHeaders,
 } from "@/lib/api-security";
-import { getClientIp, rateLimit, rateLimits } from "@/lib/rate-limit";
+import { getClientIp, rateLimitAsync, rateLimits } from "@/lib/rate-limit";
 import { submitLead } from "@/lib/submit-lead";
 
 export const runtime = "nodejs";
@@ -19,7 +19,7 @@ export async function POST(request: Request) {
     if (blocked) return withApiSecurityHeaders(blocked);
 
     const ip = getClientIp(request);
-    const limit = rateLimit(`leads:${ip}`, rateLimits.leads);
+    const limit = await rateLimitAsync(`leads:${ip}`, rateLimits.leads);
     if (!limit.ok) {
       return apiJson(
         { error: "Too many requests. Please try again shortly." },

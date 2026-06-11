@@ -24,6 +24,14 @@ type InternalLinkCtx = {
   cityName?: string;
 };
 
+/** Programmatic routes marked noIndex — exclude from hub internal link graphs. */
+function isNoIndexHref(href: string): boolean {
+  return (
+    /^\/industries\/[^/]+\/[^/]+$/.test(href) ||
+    /^\/locations\/india\/[^/]+\/[^/]+$/.test(href)
+  );
+}
+
 function buildInternalLinks(
   base: { label: string; href: string; description?: string }[],
   ctx: InternalLinkCtx = {},
@@ -49,21 +57,9 @@ function buildInternalLinks(
       href: `/industries/${ctx.industrySlug}`,
       description: `Solutions for ${ctx.industry.focus}`,
     });
-    if (ctx.service) {
-      links.push({
-        label: `${ctx.service.shortLabel} for ${ctx.industry.name}`,
-        href: `/industries/${ctx.industrySlug}/${ctx.service.slug}`,
-        description: "Industry × service page",
-      });
-    }
   }
 
   if (ctx.citySlug && ctx.cityName && ctx.service) {
-    links.push({
-      label: `${ctx.service.shortLabel} in ${ctx.cityName}`,
-      href: `/locations/india/${ctx.citySlug}/${ctx.service.slug}`,
-      description: "Local delivery page",
-    });
     links.push({
       label: `${ctx.service.shortLabel} Cost — ${ctx.cityName}`,
       href: `/cost/${ctx.service.slug}-cost-${ctx.citySlug}`,
@@ -78,6 +74,7 @@ function buildInternalLinks(
 
   const seen = new Set<string>();
   return [...links, ...conversion].filter((link) => {
+    if (isNoIndexHref(link.href)) return false;
     if (seen.has(link.href)) return false;
     seen.add(link.href);
     return true;

@@ -1,5 +1,4 @@
 import type { MetadataRoute } from "next";
-import { siteConfig } from "@/lib/constants";
 import { robotsSitemapUrls } from "@/lib/sitemap-index";
 
 export default function robots(): MetadataRoute.Robots {
@@ -102,6 +101,5 @@ export default function robots(): MetadataRoute.Robots {
       },
     ],
     sitemap: robotsSitemapUrls,
-    host: siteConfig.url,
   };
 }

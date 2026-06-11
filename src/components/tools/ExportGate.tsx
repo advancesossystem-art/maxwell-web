@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useEscapeKey, useFocusTrap } from "@/lib/a11y/dialog";
 import { Button } from "@/components/ui/Button";
 import { FormField, inputClass } from "@/components/leads/LeadFormFields";
 import { unlockExport, saveToolResult } from "@/lib/tools/storage";
@@ -24,8 +25,12 @@ export function ExportGate({
   onClose: () => void;
   onUnlocked: () => void;
 }) {
+  const dialogRef = useRef<HTMLDivElement>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
+  useEscapeKey(onClose, open);
+  useFocusTrap(dialogRef, open);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -71,13 +76,19 @@ export function ExportGate({
           onClick={onClose}
         >
           <motion.div
+            ref={dialogRef}
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.95, opacity: 0 }}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="export-gate-title"
             className="w-full max-w-md rounded-2xl border border-white/[0.1] bg-[#030b1f] p-8 shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <h3 className="font-display text-xl font-bold">Unlock export</h3>
+            <h3 id="export-gate-title" className="font-display text-xl font-bold">
+              Unlock export
+            </h3>
             <p className="mt-2 text-sm text-muted">
               Enter your details to print, save, or email your {toolName} results. Maxwell may follow up with relevant insights.
             </p>
