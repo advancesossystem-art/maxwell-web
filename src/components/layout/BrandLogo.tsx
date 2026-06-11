@@ -3,7 +3,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { siteConfig } from "@/lib/constants";
 
-/** Intrinsic size of public/logo.png — update if you replace the file */
+/** Intrinsic size of public/logo.webp — update if you replace the file */
 const LOGO_WIDTH = 1672;
 const LOGO_HEIGHT = 941;
 const LOGO_ASPECT = LOGO_WIDTH / LOGO_HEIGHT;
@@ -49,7 +49,7 @@ export function BrandLogo({
 
   const image = (
     <Image
-      src="/logo.png"
+      src={siteConfig.logoPath}
       alt={siteConfig.name}
       width={LOGO_WIDTH}
       height={LOGO_HEIGHT}

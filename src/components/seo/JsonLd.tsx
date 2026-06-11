@@ -1,7 +1,7 @@
 import { siteConfig } from "@/lib/constants";
 import { seoIds } from "@/lib/seo/config";
-import { homepageFaqs } from "@/lib/homepage";
 import { companyFaqs } from "@/lib/company-data";
+import { FaqPageJsonLd } from "@/components/seo/FaqPageJsonLd";
 import { getAuthorById } from "@/lib/content/authors";
 import { formatAnonymousClient } from "@/lib/client-attribution";
 
@@ -18,19 +18,6 @@ export function ServicePageJsonLd({ service }: { service: import("@/lib/services
       priceCurrency: "INR",
       description: `Starting from ${service.startingPrice}`,
     },
-  };
-
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: service.faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.answer,
-      },
-    })),
   };
 
   const breadcrumbSchema = {
@@ -64,9 +51,9 @@ export function ServicePageJsonLd({ service }: { service: import("@/lib/services
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      <FaqPageJsonLd
+        faqs={service.faqs}
+        id={`${siteConfig.url}/services/${service.slug}#faq`}
       />
       <script
         type="application/ld+json"
@@ -95,16 +82,6 @@ export function IndustryPageJsonLd({ industry }: { industry: import("@/lib/indus
     serviceType: `${industry.title} Software Development`,
   };
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: industry.faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: { "@type": "Answer", text: faq.answer },
-    })),
-  };
-
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -118,7 +95,10 @@ export function IndustryPageJsonLd({ industry }: { industry: import("@/lib/indus
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(industrySchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <FaqPageJsonLd
+        faqs={industry.faqs}
+        id={`${siteConfig.url}/industries/${industry.slug}#faq`}
+      />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
     </>
   );
@@ -184,7 +164,7 @@ export function CaseStudyPageJsonLd({ study }: { study: import("@/lib/case-studi
       url: siteConfig.url,
       logo: {
         "@type": "ImageObject",
-        url: `${siteConfig.url}/logo.png`,
+        url: siteConfig.logoUrl,
       },
     },
     about: {
@@ -265,7 +245,7 @@ export function CompanyPageJsonLd({
     name: siteConfig.legalName,
     alternateName: siteConfig.name,
     url: siteConfig.url,
-    logo: `${siteConfig.url}/logo.png`,
+    logo: siteConfig.logoUrl,
     description: siteConfig.description,
     email: siteConfig.email,
     telephone: siteConfig.phone,
@@ -282,27 +262,18 @@ export function CompanyPageJsonLd({
     ],
   };
 
-  const faqSchema =
-    pageType === "about"
-      ? {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: companyFaqs.map((faq) => ({
-            "@type": "Question",
-            name: faq.question,
-            acceptedAnswer: { "@type": "Answer", text: faq.answer },
-          })),
-        }
-      : null;
-
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      {faqSchema && (
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      )}
+      {pageType === "about" ? (
+        <FaqPageJsonLd
+          faqs={companyFaqs}
+          id={`${siteConfig.url}/about#faq`}
+          name={`${siteConfig.name} — About FAQ`}
+        />
+      ) : null}
     </>
   );
 }
@@ -341,16 +312,6 @@ export function CityPageJsonLd({ city }: { city: import("@/lib/locations-data").
     areaServed: city.name,
   };
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: city.faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: { "@type": "Answer", text: faq.answer },
-    })),
-  };
-
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -366,7 +327,7 @@ export function CityPageJsonLd({ city }: { city: import("@/lib/locations-data").
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusiness) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <FaqPageJsonLd faqs={city.faqs} id={`${url}#faq`} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
     </>
   );
@@ -391,16 +352,6 @@ export function CountryPageJsonLd({ country }: { country: import("@/lib/location
         }
       : null;
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: country.faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: { "@type": "Answer", text: faq.answer },
-    })),
-  };
-
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -417,7 +368,7 @@ export function CountryPageJsonLd({ country }: { country: import("@/lib/location
       {indiaLocalBusinessRef ? (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(indiaLocalBusinessRef) }} />
       ) : null}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <FaqPageJsonLd faqs={country.faqs} id={`${url}#faq`} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
     </>
   );
@@ -444,16 +395,6 @@ export function SolutionPageJsonLd({ solution }: { solution: import("@/lib/solut
     },
   };
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: solution.faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: { "@type": "Answer", text: faq.answer },
-    })),
-  };
-
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -467,7 +408,7 @@ export function SolutionPageJsonLd({ solution }: { solution: import("@/lib/solut
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <FaqPageJsonLd faqs={solution.faqs} id={`${url}#faq`} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
     </>
   );
@@ -498,7 +439,7 @@ export function ArticlePageJsonLd({
     publisher: {
       "@type": "Organization",
       name: siteConfig.legalName,
-      logo: { "@type": "ImageObject", url: `${siteConfig.url}/logo.png` },
+      logo: { "@type": "ImageObject", url: siteConfig.logoUrl },
     },
     keywords: article.tags.join(", "),
     articleSection: article.category,
@@ -514,23 +455,11 @@ export function ArticlePageJsonLd({
     ],
   };
 
-  const faqSchema = article.faqs?.length
-    ? {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        mainEntity: article.faqs.map((faq) => ({
-          "@type": "Question",
-          name: faq.question,
-          acceptedAnswer: { "@type": "Answer", text: faq.answer },
-        })),
-      }
-    : null;
-
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
+      <FaqPageJsonLd faqs={article.faqs ?? []} id={`${url}#faq`} />
     </>
   );
 }
@@ -578,23 +507,11 @@ export function ContentPageJsonLd({
     ],
   };
 
-  const faqSchema = faqs?.length
-    ? {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        mainEntity: faqs.map((faq) => ({
-          "@type": "Question",
-          name: faq.question,
-          acceptedAnswer: { "@type": "Answer", text: faq.answer },
-        })),
-      }
-    : null;
-
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
+      <FaqPageJsonLd faqs={faqs ?? []} id={`${url}#faq`} />
     </>
   );
 }
@@ -631,24 +548,3 @@ export function AuthorPageJsonLd({ author }: { author: import("@/lib/content/aut
   );
 }
 
-export function HomeFAQJsonLd() {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: homepageFaqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.answer,
-      },
-    })),
-  };
-
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-    />
-  );
-}

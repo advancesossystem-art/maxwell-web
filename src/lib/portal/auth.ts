@@ -5,7 +5,14 @@ const SESSION_KEY = "maxwell-portal-session";
 const ONBOARDING_KEY = "maxwell-portal-onboarding";
 
 export function isPortalDemoEnabled(): boolean {
-  return process.env.NEXT_PUBLIC_ENABLE_PORTAL_DEMO === "true" || process.env.ENABLE_PORTAL_DEMO === "true";
+  if (typeof window !== "undefined") {
+    return process.env.NEXT_PUBLIC_ENABLE_PORTAL_DEMO === "true";
+  }
+  return (
+    process.env.NEXT_PUBLIC_ENABLE_PORTAL_DEMO === "true" ||
+    process.env.ENABLE_PORTAL_DEMO === "true" ||
+    process.env.NODE_ENV !== "production"
+  );
 }
 
 export interface PortalSession {

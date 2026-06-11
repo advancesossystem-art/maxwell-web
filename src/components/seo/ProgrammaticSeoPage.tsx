@@ -9,23 +9,8 @@ import type {
 } from "@/lib/seo/programmatic/types";
 import { TrustNearCTA } from "@/components/conversion/TrustNearCTA";
 import { siteConfig } from "@/lib/constants";
+import { FaqPageJsonLd } from "@/components/seo/FaqPageJsonLd";
 import { ProgrammaticHeroMotion } from "@/components/seo/ProgrammaticMotion";
-
-function PageFAQJsonLd({ faqs }: { faqs: { question: string; answer: string }[] }) {
-  if (!faqs.length) return null;
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: { "@type": "Answer", text: faq.answer },
-    })),
-  };
-  return (
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-  );
-}
 
 function Breadcrumb({ items }: { items: ProgrammaticPageData["breadcrumb"] }) {
   return (
@@ -163,7 +148,7 @@ export function ProgrammaticSeoPage({ page }: { page: ProgrammaticPageData }) {
           }),
         }}
       />
-      {page.faqs.length > 0 && <PageFAQJsonLd faqs={page.faqs} />}
+      <FaqPageJsonLd faqs={page.faqs} id={`${siteConfig.url}${page.path}#faq`} />
 
       <section className="relative overflow-hidden bg-background section-hero">
         <div

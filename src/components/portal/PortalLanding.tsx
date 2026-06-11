@@ -33,10 +33,13 @@ export function PortalLanding() {
           <div className="mx-auto mt-10 max-w-xl text-left">
             <DemoDataNotice compact />
           </div>
-          <p className="mt-6 text-sm text-[#94A3B8]">
-            Demo sign-in: client@demo.com / demo123 · Invite:{" "}
-            <code className="text-brand-400">maxwell-invite-demo</code>
-          </p>
+          {(process.env.NODE_ENV !== "production" ||
+            process.env.NEXT_PUBLIC_ENABLE_PORTAL_DEMO === "true") && (
+            <p className="mt-6 text-sm text-[#94A3B8]">
+              Demo sign-in: client@demo.com / demo123 · Invite:{" "}
+              <code className="text-brand-400">maxwell-invite-demo</code>
+            </p>
+          )}
         </div>
         <div className="mt-20 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {[

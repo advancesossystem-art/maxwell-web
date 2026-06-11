@@ -21,6 +21,8 @@ const serverSchema = z.object({
   SMTP_FROM: z.string().min(3).optional(),
   ADMIN_AUDIT_TOKEN: z.string().min(16).optional(),
   ENABLE_PORTAL_DEMO: z.enum(["true", "false"]).optional(),
+  UPSTASH_REDIS_REST_URL: z.string().url().optional(),
+  UPSTASH_REDIS_REST_TOKEN: z.string().min(1).optional(),
 });
 
 const clientSchema = z.object({
@@ -30,6 +32,7 @@ const clientSchema = z.object({
   NEXT_PUBLIC_SITE_URL: z.string().url().optional(),
   NEXT_PUBLIC_CALENDLY_URL: z.string().url().optional(),
   NEXT_PUBLIC_CLARITY_PROJECT_ID: z.string().optional(),
+  NEXT_PUBLIC_ENABLE_PORTAL_DEMO: z.enum(["true", "false"]).optional(),
 });
 
 export type ServerEnv = z.infer<typeof serverSchema>;
@@ -47,6 +50,7 @@ export function getClientEnv(): ClientEnv {
     NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
     NEXT_PUBLIC_CALENDLY_URL: process.env.NEXT_PUBLIC_CALENDLY_URL,
     NEXT_PUBLIC_CLARITY_PROJECT_ID: process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID,
+    NEXT_PUBLIC_ENABLE_PORTAL_DEMO: process.env.NEXT_PUBLIC_ENABLE_PORTAL_DEMO,
   });
 }
 
@@ -55,6 +59,8 @@ export const secretManagementChecklist = [
   "Never commit .env.local — use .env.example as template",
   "Set ADMIN_AUDIT_TOKEN (min 16 chars) before exposing /admin in production",
   "Set ENABLE_PORTAL_DEMO=false in production unless demo is intentional",
+  "Set NEXT_PUBLIC_ENABLE_PORTAL_DEMO=true when portal demo is enabled in production",
+  "Set UPSTASH_REDIS_REST_URL + UPSTASH_REDIS_REST_TOKEN for distributed API rate limits",
   "Optional LEAD_WEBHOOK_SECRET — Bearer token on outbound CRM webhooks",
   "Rotate GMAIL_APP_PASSWORD and API keys if ever exposed in chat or screenshots",
   "Use separate env vars for Preview vs Production on Vercel",

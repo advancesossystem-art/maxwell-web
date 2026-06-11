@@ -39,11 +39,11 @@ export function GlobalSiteJsonLd() {
         url: siteConfig.url,
         logo: {
           "@type": "ImageObject",
-          url: `${siteConfig.url}/logo.png`,
+          url: siteConfig.logoUrl,
           width: 1672,
           height: 941,
         },
-        image: `${siteConfig.url}/logo.png`,
+        image: siteConfig.logoUrl,
         description: siteConfig.description,
         email: siteConfig.email,
         telephone: siteConfig.phone,

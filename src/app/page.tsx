@@ -5,7 +5,10 @@ import { Hero } from "@/components/home/Hero";
 import { HomeSectionSkeleton } from "@/components/home/HomeSectionSkeleton";
 import { AiEntitySummary } from "@/components/seo/AiEntitySummary";
 import { AiDiscoveryJsonLd } from "@/components/seo/AiDiscoveryJsonLd";
-import { HomeFAQJsonLd } from "@/components/seo/JsonLd";
+import { FaqPageJsonLd } from "@/components/seo/FaqPageJsonLd";
+import { HomeLogoPreload } from "@/components/seo/HomeLogoPreload";
+import { homepageFaqs } from "@/lib/homepage";
+import { siteConfig } from "@/lib/constants";
 import { IndiaSeoHomeSection } from "@/components/home/IndiaSeoHomeSection";
 import { GlobalTrustBar } from "@/components/conversion/GlobalTrustBar";
 import { TrustProofStrip } from "@/components/conversion/TrustProofStrip";
@@ -95,7 +98,12 @@ export const metadata: Metadata = createHomeMetadata();
 export default function HomePage() {
   return (
     <>
-      <HomeFAQJsonLd />
+      <HomeLogoPreload />
+      <FaqPageJsonLd
+        faqs={homepageFaqs}
+        id={`${siteConfig.url}/#homepage-faq`}
+        name={`${siteConfig.name} — Homepage FAQ`}
+      />
       <AiDiscoveryJsonLd />
       <AiEntitySummary />
       <Hero />

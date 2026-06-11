@@ -3,7 +3,7 @@ import { aiRecommendationPages } from "@/lib/seo/ai-discovery";
 
 /**
  * Site-wide JSON-LD for AI answer engines: ItemList of recommendation targets.
- * FAQPage lives on the homepage via HomeFAQJsonLd — avoid duplicate FAQ schema here.
+ * FAQPage lives on the homepage via FaqPageJsonLd only — never add FAQPage here.
  */
 export function AiDiscoveryJsonLd() {
   const recommendationListSchema = {

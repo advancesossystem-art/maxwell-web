@@ -8,15 +8,16 @@ const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 const metaPixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID;
 const clarityId = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID;
 
-const consentDefaults = `
+const consentGranted = `
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('consent', 'default', {
-    ad_storage: 'denied',
-    ad_user_data: 'denied',
-    ad_personalization: 'denied',
-    analytics_storage: 'denied',
-    wait_for_update: 500
+  gtag('consent', 'update', {
+    ad_storage: 'granted',
+    ad_user_data: 'granted',
+    ad_personalization: 'granted',
+    analytics_storage: 'granted',
+    functionality_storage: 'granted',
+    personalization_storage: 'granted'
   });
 `;
 
@@ -29,7 +30,7 @@ export function AnalyticsScripts({ nonce }: { nonce?: string }) {
     <>
       {gtmId && (
         <>
-          <Script id="gtm-consent-defaults" strategy="lazyOnload" nonce={nonce}>{consentDefaults}</Script>
+          <Script id="gtm-consent-update" strategy="lazyOnload" nonce={nonce}>{consentGranted}</Script>
           <Script id="gtm" strategy="lazyOnload" nonce={nonce}>{`
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -50,7 +51,7 @@ export function AnalyticsScripts({ nonce }: { nonce?: string }) {
       )}
       {gaId && !gtmId && (
         <>
-          <Script id="ga4-consent-defaults" strategy="lazyOnload" nonce={nonce}>{consentDefaults}</Script>
+          <Script id="ga4-consent-update" strategy="lazyOnload" nonce={nonce}>{consentGranted}</Script>
           <Script
             src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
             strategy="lazyOnload"
@@ -60,12 +61,6 @@ export function AnalyticsScripts({ nonce }: { nonce?: string }) {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('consent', 'update', {
-              ad_storage: 'granted',
-              ad_user_data: 'granted',
-              ad_personalization: 'granted',
-              analytics_storage: 'granted'
-            });
             gtag('config', '${gaId}');
           `}</Script>
         </>

@@ -17,31 +17,36 @@ type UpstashLimiter = {
   limit: (key: string) => Promise<{ success: boolean; remaining: number; reset: number }>;
 };
 
-let upstashLimiter: UpstashLimiter | null | undefined;
+const upstashLimiters = new Map<number, UpstashLimiter>();
+let upstashUnavailable = false;
 
-async function getUpstashLimiter(): Promise<UpstashLimiter | null> {
-  if (upstashLimiter !== undefined) return upstashLimiter;
+async function getUpstashLimiter(maxRequests: number): Promise<UpstashLimiter | null> {
+  if (upstashUnavailable) return null;
 
   if (!process.env.UPSTASH_REDIS_REST_URL || !process.env.UPSTASH_REDIS_REST_TOKEN) {
-    upstashLimiter = null;
     return null;
   }
+
+  const cached = upstashLimiters.get(maxRequests);
+  if (cached) return cached;
 
   try {
     const [{ Ratelimit }, { Redis }] = await Promise.all([
       import("@upstash/ratelimit"),
       import("@upstash/redis"),
     ]);
-    upstashLimiter = new Ratelimit({
+    const limiter = new Ratelimit({
       redis: Redis.fromEnv(),
-      limiter: Ratelimit.slidingWindow(15, "1 m"),
+      limiter: Ratelimit.slidingWindow(maxRequests, "1 m"),
       analytics: false,
+      prefix: `maxwell-rl-${maxRequests}`,
     });
+    upstashLimiters.set(maxRequests, limiter);
+    return limiter;
   } catch {
-    upstashLimiter = null;
+    upstashUnavailable = true;
+    return null;
   }
-
-  return upstashLimiter;
 }
 
 function cleanupBuckets(now: number): void {
@@ -86,7 +91,7 @@ export async function rateLimitAsync(
   key: string,
   maxRequests: number = LIMITS.default,
 ): Promise<{ ok: boolean; remaining: number; resetIn: number }> {
-  const upstash = await getUpstashLimiter();
+  const upstash = await getUpstashLimiter(maxRequests);
   if (upstash) {
     const result = await upstash.limit(key);
     const resetIn = Math.max(0, result.reset - Date.now());

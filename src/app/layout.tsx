@@ -4,6 +4,7 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import { SiteChrome } from "@/components/layout/SiteChrome";
 import { DeferredClientChrome } from "@/components/layout/DeferredClientChrome";
 import { AnalyticsScripts } from "@/components/seo/AnalyticsScripts";
+import { ConsentModeDefaults } from "@/components/seo/ConsentModeDefaults";
 import { CookieConsentProvider } from "@/hooks/useCookieConsent";
 import { GlobalSiteJsonLd } from "@/components/seo/GlobalSiteJsonLd";
 import { buildSiteVerificationMetadata } from "@/lib/seo/site-verification";
@@ -55,6 +56,7 @@ export default async function RootLayout({
   return (
     <html lang="en-IN" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <head>
+        <ConsentModeDefaults nonce={nonce} />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.clarity.ms" />
         <link rel="preconnect" href="https://assets.calendly.com" />

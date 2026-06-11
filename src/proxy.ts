@@ -7,6 +7,7 @@ import {
   isValidAdminToken,
 } from "@/lib/security/admin-auth";
 import { safeEqual } from "@/lib/security/timing-safe";
+import { isPortalDemoEnabledServer } from "@/lib/portal/demo-config";
 
 const isProduction = process.env.NODE_ENV === "production";
 
@@ -115,7 +116,7 @@ export function proxy(request: NextRequest) {
     }
   }
 
-  if (pathname.startsWith("/portal") && isProduction && process.env.ENABLE_PORTAL_DEMO !== "true") {
+  if (pathname.startsWith("/portal") && isProduction && !isPortalDemoEnabledServer()) {
     return NextResponse.rewrite(new URL("/_not-found", request.url));
   }
 
