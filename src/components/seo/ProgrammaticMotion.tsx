@@ -1,8 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { ArrowRight } from "@/components/ui/Icons";
+import { PageEntrance } from "@/components/motion/FadeIn";
 
 export function ProgrammaticHeroMotion({
   pageType,
@@ -16,7 +16,7 @@ export function ProgrammaticHeroMotion({
   subheadline: string;
 }) {
   return (
-    <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+    <PageEntrance>
       <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-400">
         {pageType.replace("-", " ")} · {siteName}
       </p>
@@ -32,6 +32,6 @@ export function ProgrammaticHeroMotion({
           Book Consultation
         </Button>
       </div>
-    </motion.div>
+    </PageEntrance>
   );
 }

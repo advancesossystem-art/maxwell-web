@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { ModalBackdrop, ModalPanel } from "@/components/motion/ModalEnter";
 import { useEscapeKey, useFocusTrap } from "@/lib/a11y/dialog";
 import { Button } from "@/components/ui/Button";
 import { FormField, inputClass } from "@/components/leads/LeadFormFields";
@@ -65,27 +65,23 @@ export function ExportGate({
     }
   }
 
+  if (!open) return null;
+
   return (
-    <AnimatePresence>
-      {open && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm"
-          onClick={onClose}
+    <>
+      <ModalBackdrop
+        className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm"
+        onClick={onClose}
+      />
+      <div className="pointer-events-none fixed inset-0 z-50 flex items-center justify-center p-4">
+        <ModalPanel
+          panelRef={dialogRef}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="export-gate-title"
+          className="pointer-events-auto w-full max-w-md rounded-2xl border border-white/[0.1] bg-[#030b1f] p-8 shadow-2xl"
+          onClick={(e) => e.stopPropagation()}
         >
-          <motion.div
-            ref={dialogRef}
-            initial={{ scale: 0.95, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.95, opacity: 0 }}
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="export-gate-title"
-            className="w-full max-w-md rounded-2xl border border-white/[0.1] bg-[#030b1f] p-8 shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          >
             <h3 id="export-gate-title" className="font-display text-xl font-bold">
               Unlock export
             </h3>
@@ -118,9 +114,8 @@ export function ExportGate({
                 </Button>
               </div>
             </form>
-          </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+        </ModalPanel>
+      </div>
+    </>
   );
 }

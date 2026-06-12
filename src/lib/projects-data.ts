@@ -69,6 +69,8 @@ export interface ProjectData {
   results: { metric: string; label: string; description?: string }[];
   testimonial: { quote: string; author: string; role: string; company: string };
   gallery: { mockType: MockType; label: string }[];
+  /** Real screenshot paths under /public — add when client-approved assets exist. */
+  screenshots?: { label: string; src: string }[];
   duration: string;
   teamSize: string;
   publishedAt?: string;
@@ -87,6 +89,11 @@ export const projectSlugs = [
 ] as const;
 
 export type ProjectSlug = (typeof projectSlugs)[number];
+
+/** Portfolio pages safe for sitemap (excludes noIndex projects). */
+export function getIndexableProjectSlugs(): ProjectSlug[] {
+  return projectSlugs.filter((slug) => !projectsData[slug]?.noIndex);
+}
 
 export { portfolioStats } from "@/lib/company-metrics";
 

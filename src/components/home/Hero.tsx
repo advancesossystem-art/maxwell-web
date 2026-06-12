@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { HeroEcosystemVisual } from "@/components/home/HeroEcosystemVisual";
-import { HeroMotionColumn, HeroMotionVisual } from "@/components/home/HeroMotion";
+import { HeroSequence } from "@/components/home/HeroSequence";
+import { CounterUp } from "@/components/motion/CounterUp";
 import { HeroProofLink } from "@/components/home/HeroProofLink";
 import { heroServiceBadges, heroTrustMetrics, homeHero, trustHighlights } from "@/lib/homepage";
 import { CTA_LABELS, CONVERSION_EXPECTATIONS } from "@/lib/conversion-copy";
@@ -52,14 +53,24 @@ export function Hero() {
   return (
     <section className="v6-hero v6-section--white overflow-hidden" aria-label="Hero">
       <div className="v6-container">
-        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-10">
-          <HeroMotionColumn>
-            <p className="v6-eyebrow-line v6-eyebrow">{homeHero.eyebrow}</p>
-            <h1 className="v6-hero-title mt-4 text-balance" data-seo-speakable>
+        <HeroSequence className="grid items-center gap-8 lg:grid-cols-2 lg:gap-10">
+          <div>
+            <p className="v6-eyebrow-line v6-eyebrow mx-hero-pending" data-hero="eyebrow">
+              {homeHero.eyebrow}
+            </p>
+            <h1
+              className="v6-hero-title mt-4 text-balance mx-hero-pending"
+              data-hero="headline"
+              data-seo-speakable
+            >
               {homeHero.headlineLine1}{" "}
               <span className="v6-gradient-text">{homeHero.headlineLine2}</span>
             </h1>
-            <p className="v6-lead mt-4 max-w-2xl text-balance lg:max-w-none" data-seo-speakable>
+            <p
+              className="v6-lead mt-4 max-w-2xl text-balance lg:max-w-none mx-hero-pending"
+              data-hero="description"
+              data-seo-speakable
+            >
               {homeHero.subhead}
             </p>
 
@@ -81,7 +92,10 @@ export function Hero() {
               <HeroProofLink href={homeHero.proofLink.href} label={homeHero.proofLink.label} />
             </p>
 
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <div
+              className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap mx-hero-pending"
+              data-hero="cta"
+            >
               <SecondaryCTA
                 location="homepage_hero"
                 context={{ source: "homepage-hero" }}
@@ -119,18 +133,20 @@ export function Hero() {
                     <TrustIcon type={trustIcons[i] ?? "shield"} />
                   </span>
                   <div>
-                    <p className="font-display text-lg font-bold text-[#0f172a]">{stat.value}</p>
+                    <p className="font-display text-lg font-bold text-[#0f172a]">
+                      <CounterUp value={stat.value} />
+                    </p>
                     <p className="text-sm text-[#64748b]">{stat.label}</p>
                   </div>
                 </li>
               ))}
             </ul>
-          </HeroMotionColumn>
+          </div>
 
-          <HeroMotionVisual className="relative lg:pl-4">
+          <div className="relative lg:pl-4 mx-hero-pending" data-hero="visual">
             <HeroEcosystemVisual />
-          </HeroMotionVisual>
-        </div>
+          </div>
+        </HeroSequence>
       </div>
     </section>
   );

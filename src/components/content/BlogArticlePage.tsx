@@ -6,21 +6,22 @@ import { AuthorCard } from "@/components/content/AuthorCard";
 import { ContentCard } from "@/components/content/ContentCard";
 import { NewsletterSignup } from "@/components/content/NewsletterSignup";
 import { ArticlePageJsonLd } from "@/components/seo/JsonLd";
-import { getAuthorById } from "@/lib/content/authors";
+import { getContentAuthor } from "@/lib/content/resolve-author";
+import { TrustThisContent } from "@/components/content/TrustThisContent";
 import { getCategoryBySlug } from "@/lib/content/categories";
 import { formatPublishDate } from "@/lib/content/utils";
 import { getRelatedContent } from "@/lib/content/search";
 import type { Article } from "@/lib/content/schema";
 
 export function BlogArticlePage({ article }: { article: Article }) {
-  const author = getAuthorById(article.authorId);
+  const author = getContentAuthor(article.authorId, article.category);
   const category = getCategoryBySlug(article.category);
   const related = getRelatedContent(article.slug, "article", article.relatedSlugs);
 
   return (
     <>
       <ReadingProgressBar />
-      <ArticlePageJsonLd article={article} authorName={author?.name ?? "Maxwell Team"} />
+      <ArticlePageJsonLd article={article} />
       <section className="relative overflow-hidden bg-[#030712] pb-16 pt-28 lg:pt-36">
         <Container className="relative">
           <nav className="mb-6 text-sm text-white/50">
@@ -71,7 +72,8 @@ export function BlogArticlePage({ article }: { article: Article }) {
                 </div>
               </aside>
             )}
-            <article className={article.tableOfContents?.length ? "lg:col-span-9" : "lg:col-span-12 max-w-3xl"}>
+            <article className={`space-y-10 ${article.tableOfContents?.length ? "lg:col-span-9" : "lg:col-span-12 max-w-3xl"}`}>
+              <TrustThisContent category={article.category} authorId={article.authorId} contentType="article" />
               <ContentRenderer blocks={article.sections} />
             </article>
           </div>

@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { ReportDetailPage } from "@/components/content/ReportDetailPage";
 import { buildArticleMetadata } from "@/lib/seo-helpers";
 import { getReportBySlug, reportSlugs } from "@/lib/content/reports";
-import { getAuthorById } from "@/lib/content/authors";
+import { getContentAuthor } from "@/lib/content/resolve-author";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -15,14 +15,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const report = getReportBySlug(slug);
   if (!report) return { robots: { index: false, follow: false } };
-  const author = getAuthorById(report.authorId);
+  const author = getContentAuthor(report.authorId, report.category);
   return buildArticleMetadata({
     title: report.metaTitle,
     description: report.metaDescription,
     path: `/reports/${report.slug}`,
     publishedAt: report.publishedAt,
     updatedAt: report.updatedAt,
-    authorName: author?.name ?? "Maxwell Team",
+    authorName: author.name,
     tags: report.tags,
   });
 }

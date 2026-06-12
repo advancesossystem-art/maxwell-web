@@ -1,7 +1,7 @@
 import { siteConfig } from "./constants";
 import { serviceSlugs } from "./services-data";
 import { industrySlugs } from "./industries-data";
-import { projectSlugs } from "./projects-data";
+import { getIndexableProjectSlugs } from "./projects-data";
 import { caseStudySlugs } from "./case-studies-data";
 import { getLocationStaticParams } from "./locations-data";
 import { solutionSlugs } from "./solutions-data";
@@ -10,27 +10,25 @@ import { guideSlugs } from "./content/guides";
 import { resourceSlugs } from "./content/resources";
 import { reportSlugs } from "./content/reports";
 import { authors } from "./content/authors";
+import { answerSlugs } from "./answers-data";
+import { resourceCenterSlugs } from "./resource-centers-data";
 import { toolSlugs } from "./tools/registry";
 import { compareSlugs, costSlugs } from "./seo/programmatic/build-pages";
 
+/** Hub routes listed in segment sitemaps — omit here to avoid cross-sitemap duplicates. */
 const staticPages = [
   "",
-  "/services",
-  "/industries",
-  "/work",
-  "/case-studies",
-  "/locations",
-  "/solutions",
-  "/compare",
-  "/cost",
-  "/blog",
-  "/resources",
-  "/guides",
-  "/reports",
-  "/tools",
+  "/research",
+  "/knowledge-center",
+  "/answers",
+  "/founder-insights",
+  "/citation-guides",
+  "/project-gallery",
+  "/videos",
   "/about",
   "/company",
   "/team",
+  "/authors",
   "/process",
   "/careers",
   "/why-maxwell",
@@ -82,7 +80,7 @@ export function getIndustriesSitemapEntries() {
 export function getWorkSitemapEntries() {
   return [
     { url: `${siteConfig.url}/work`, priority: 0.8 },
-    ...projectSlugs.map((slug) => ({
+    ...getIndexableProjectSlugs().map((slug) => ({
       url: `${siteConfig.url}/work/${slug}`,
       priority: 0.8,
     })),
@@ -137,10 +135,21 @@ export function getContentSitemapEntries() {
     { url: `${siteConfig.url}/resources`, priority: 0.84 },
     { url: `${siteConfig.url}/guides`, priority: 0.86 },
     { url: `${siteConfig.url}/reports`, priority: 0.84 },
+    { url: `${siteConfig.url}/research`, priority: 0.86 },
+    { url: `${siteConfig.url}/knowledge-center`, priority: 0.9 },
+    { url: `${siteConfig.url}/answers`, priority: 0.88 },
+    { url: `${siteConfig.url}/founder-insights`, priority: 0.82 },
+    { url: `${siteConfig.url}/citation-guides`, priority: 0.85 },
+    { url: `${siteConfig.url}/project-gallery`, priority: 0.8 },
     ...getIndexableArticleSlugs().map((slug) => ({ url: `${siteConfig.url}/blog/${slug}`, priority: 0.8 })),
     ...guideSlugs.map((slug) => ({ url: `${siteConfig.url}/guides/${slug}`, priority: 0.82 })),
     ...resourceSlugs.map((slug) => ({ url: `${siteConfig.url}/resources/${slug}`, priority: 0.81 })),
     ...reportSlugs.map((slug) => ({ url: `${siteConfig.url}/reports/${slug}`, priority: 0.83 })),
+    ...answerSlugs.map((slug) => ({ url: `${siteConfig.url}/answers/${slug}`, priority: 0.87 })),
+    ...resourceCenterSlugs.map((slug) => ({
+      url: `${siteConfig.url}/resource-centers/${slug}`,
+      priority: 0.84,
+    })),
     ...authors.map((a) => ({ url: `${siteConfig.url}/authors/${a.slug}`, priority: 0.75 })),
   ];
   return entries;

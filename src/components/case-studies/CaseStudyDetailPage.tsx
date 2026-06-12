@@ -16,6 +16,7 @@ import {
 } from "@/components/case-studies/CaseStudyVisuals";
 import { CaseStudyCardCompact } from "@/components/case-studies/CaseStudyCard";
 import { CaseStudyAuthorityBlock } from "@/components/case-studies/CaseStudyAuthorityBlock";
+import { CaseStudyGeoSections } from "@/components/case-studies/CaseStudyGeoSections";
 import { CaseStudyBreadcrumb, CaseStudyCTA, CaseStudyCTAStrip } from "@/components/case-studies/CaseStudyCTA";
 import { CaseStudyHeroMotion, CaseStudyResultMotion } from "@/components/case-studies/CaseStudyDetailMotion";
 import type { CaseStudyData } from "@/lib/case-studies-data";
@@ -369,6 +370,8 @@ export function CaseStudyDetailPage({ study }: { study: CaseStudyData }) {
           </div>
         )}
       </SectionBlock>
+
+      <CaseStudyGeoSections study={study} />
 
       <CaseStudyConversionBlock
         studyTitle={study.title}

@@ -57,7 +57,20 @@ export function HomeToolsSpotlight() {
       </div>
       <FadeIn delay={0.2}>
         <p className="mt-8 text-center text-sm text-[var(--v6-text-secondary)]">
-          All tools include PDF export, lead capture, and links to related Maxwell services.{" "}
+          Explore{" "}
+          <Link href="/knowledge-center" className="font-medium text-[#4f46e5] hover:underline">
+            Knowledge Center
+          </Link>
+          ,{" "}
+          <Link href="/answers" className="font-medium text-[#4f46e5] hover:underline">
+            Maxwell Answers
+          </Link>
+          , and{" "}
+          <Link href="/research" className="font-medium text-[#4f46e5] hover:underline">
+            Research
+          </Link>{" "}
+          for in-depth guides beyond calculators. All tools include PDF export, lead capture, and links to related
+          Maxwell services.{" "}
           <Link href="/tools" className="font-semibold text-[#4f46e5] hover:underline" onClick={() => trackCTAClick("View all tools", "/tools", "homepage_tools")}>
             View all {toolsRegistry.length} tools →
           </Link>

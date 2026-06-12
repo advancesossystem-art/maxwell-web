@@ -1,8 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
-import { FadeIn } from "@/components/motion/FadeIn";
+import { FadeIn, MotionReveal } from "@/components/motion/FadeIn";
 import { DevelopmentProcess } from "@/components/home/DevelopmentProcess";
 import { ServiceCTA } from "@/components/services/ServiceCTA";
 import type { ServicePageData } from "@/lib/services-data";
@@ -25,12 +24,10 @@ export function ServiceIndustries({ service }: { service: ServicePageData }) {
 
         <div className="mt-12 grid gap-4 sm:grid-cols-2">
           {service.industries.map((industry, i) => (
-            <motion.div
+            <MotionReveal
               key={industry.name}
-              initial={{ opacity: 0, x: i % 2 === 0 ? -16 : 16 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
+              delay={i * 0.08}
+              duration={0.5}
               className="flex gap-4 rounded-2xl border border-border bg-surface-elevated p-6"
             >
               <div
@@ -43,7 +40,7 @@ export function ServiceIndustries({ service }: { service: ServicePageData }) {
                 <h3 className="font-display font-semibold">{industry.name}</h3>
                 <p className="mt-1 text-sm text-muted">{industry.application}</p>
               </div>
-            </motion.div>
+            </MotionReveal>
           ))}
         </div>
       </Container>
@@ -66,12 +63,11 @@ export function ServiceProjects({ service }: { service: ServicePageData }) {
 
         <div className="mt-12 grid gap-6 lg:grid-cols-2">
           {service.projects.map((project, i) => (
-            <motion.article
+            <MotionReveal
               key={project.title}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
+              delay={i * 0.1}
+              duration={0.6}
+              y={24}
               className="overflow-hidden rounded-2xl border border-border bg-surface-elevated"
             >
               <div
@@ -99,7 +95,7 @@ export function ServiceProjects({ service }: { service: ServicePageData }) {
                   ))}
                 </div>
               </div>
-            </motion.article>
+            </MotionReveal>
           ))}
         </div>
 
@@ -128,12 +124,9 @@ export function ServiceWhy({ service }: { service: ServicePageData }) {
 
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {service.whyMaxwell.map((item, i) => (
-            <motion.div
+            <MotionReveal
               key={item.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
+              delay={i * 0.08}
               className="glass-dark rounded-2xl border border-white/[0.06] p-6"
             >
               <div
@@ -146,7 +139,7 @@ export function ServiceWhy({ service }: { service: ServicePageData }) {
               </div>
               <h3 className="font-display font-semibold text-white">{item.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-white/50">{item.description}</p>
-            </motion.div>
+            </MotionReveal>
           ))}
         </div>
       </Container>
@@ -179,17 +172,17 @@ export function ServiceFAQ({ service }: { service: ServicePageData }) {
               {service.faqs.map((faq) => (
                 <details
                   key={faq.question}
-                  className="group rounded-2xl border border-border bg-surface-elevated open:border-brand-600/20 open:bg-brand-50/20"
+                  className="mx-faq-accordion group rounded-2xl border border-border bg-surface-elevated open:border-brand-600/20 open:bg-brand-50/20"
                 >
                   <summary className="cursor-pointer list-none px-6 py-5 font-display text-sm font-semibold sm:text-base [&::-webkit-details-marker]:hidden">
                     <span className="flex items-center justify-between gap-4">
                       {faq.question}
-                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-surface text-muted transition-transform group-open:rotate-45">
+                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-surface text-muted transition-transform duration-250 group-open:rotate-45">
                         +
                       </span>
                     </span>
                   </summary>
-                  <p className="px-6 pb-5 text-sm leading-relaxed text-muted">{faq.answer}</p>
+                  <p className="mx-faq-answer px-6 pb-5 text-sm leading-relaxed text-muted">{faq.answer}</p>
                 </details>
               ))}
             </div>

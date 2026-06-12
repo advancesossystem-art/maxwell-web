@@ -560,6 +560,114 @@ summary:focus-visible,
   }
 }
 
+/* —— Anime.js motion utilities (transform/opacity only) —— */
+.mx-reveal-pending,
+.mx-hero-pending,
+.mx-nav-pending {
+  opacity: 0;
+  transform: translate3d(0, 40px, 0);
+}
+
+.mx-hero-pending[data-hero="eyebrow"],
+.mx-nav-pending[data-nav="logo"] {
+  transform: translate3d(0, -10px, 0);
+}
+
+.mx-nav-pending[data-nav="cta"] {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mx-reveal-pending,
+  .mx-hero-pending,
+  .mx-nav-pending {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.mx-anime-service-card {
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
+  transform: translateZ(0);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .mx-anime-service-card:hover {
+    transform: translate3d(0, -6px, 0);
+    border-color: rgba(79, 70, 229, 0.45);
+  }
+
+  .mx-anime-industry-card:hover {
+    transform: scale(1.02);
+    box-shadow: var(--v6-shadow-md, 0 8px 24px rgba(15, 23, 42, 0.08));
+  }
+
+  .mx-anime-work-card:hover .mx-anime-work-image {
+    transform: scale(1.03);
+  }
+
+  .mx-anime-work-card:hover .mx-anime-work-title {
+    transform: translate3d(4px, 0, 0);
+  }
+
+  .mx-anime-work-card:hover .mx-anime-work-arrow {
+    transform: translate3d(6px, 0, 0);
+  }
+
+  .mx-anime-cta-btn:hover {
+    transform: translate3d(0, -2px, 0);
+    box-shadow: var(--v6-shadow-md, 0 8px 24px rgba(15, 23, 42, 0.1));
+  }
+}
+
+.mx-anime-industry-card {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  transform: translateZ(0);
+}
+
+.mx-anime-work-image,
+.mx-anime-work-title,
+.mx-anime-work-arrow {
+  transition: transform 0.3s ease;
+}
+
+.mx-anime-work-image {
+  transform: translateZ(0);
+}
+
+.mx-anime-cta-btn {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+  transform: translateZ(0);
+}
+
+.mx-faq-accordion > .mx-faq-answer {
+  opacity: 0;
+  transform: translate3d(0, -4px, 0);
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.mx-faq-accordion[open] > .mx-faq-answer {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mx-faq-accordion > .mx-faq-answer {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 @media print {
   header,
   footer,

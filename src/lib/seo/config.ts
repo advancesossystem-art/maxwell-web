@@ -96,7 +96,7 @@ export const indiaKeywords = [
 /** Live profiles for Knowledge Graph / sameAs signals. */
 export const socialProfiles: string[] = [
   "https://www.linkedin.com/company/maxwell-electrodeal-private-limited",
-  "https://www.maxwellelectrodeal.com",
+  siteConfig.url,
 ];
 
 export const homeSeo = {

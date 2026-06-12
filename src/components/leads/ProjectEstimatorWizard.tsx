@@ -2,7 +2,7 @@
 
 import { useMemo, useState, Suspense } from "react";
 import { useRouter } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import { CrossFade } from "@/components/motion/CrossFade";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { ArrowRight } from "@/components/ui/Icons";
@@ -166,14 +166,7 @@ function ProjectEstimatorInner() {
         <p className="mt-4 text-center text-xs text-muted">{CONVERSION_EXPECTATIONS.privacyNote}</p>
 
         <div className="mt-10 rounded-2xl border border-border bg-surface-elevated p-6 sm:p-10">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={step}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.3 }}
-            >
+          <CrossFade contentKey={String(step)}>
               {step === 1 && (
                 <>
                   <h2 className="font-display text-2xl font-bold">Your industry</h2>
@@ -290,8 +283,7 @@ function ProjectEstimatorInner() {
                   {errors.submit && <p className="mt-4 rounded-lg bg-red-50 px-4 py-3 text-sm text-red-600">{errors.submit}</p>}
                 </>
               )}
-            </motion.div>
-          </AnimatePresence>
+          </CrossFade>
 
           <div className="mt-10 flex items-center justify-between border-t border-border pt-6">
             {step > 1 ? (

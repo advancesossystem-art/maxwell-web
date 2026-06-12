@@ -11,6 +11,12 @@ import { TrustNearCTA } from "@/components/conversion/TrustNearCTA";
 import { siteConfig } from "@/lib/constants";
 import { FaqPageJsonLd } from "@/components/seo/FaqPageJsonLd";
 import { ProgrammaticHeroMotion } from "@/components/seo/ProgrammaticMotion";
+import { GeoQuickAnswer } from "@/components/authority/GeoContentSection";
+import { ExpertCommentary } from "@/components/authority/GeoDefinitionBlock";
+import { StatisticsPanel } from "@/components/authority/StatisticsPanel";
+import { ProofSignalsBar } from "@/components/trust/ProofSignalsBar";
+import { buildProgrammaticGeo } from "@/lib/geo-page-content";
+import { getStatisticsForProgrammatic } from "@/lib/statistics-data";
 
 function Breadcrumb({ items }: { items: ProgrammaticPageData["breadcrumb"] }) {
   return (
@@ -133,6 +139,9 @@ function StatCard({ value, label }: { value: string; label: string }) {
 }
 
 export function ProgrammaticSeoPage({ page }: { page: ProgrammaticPageData }) {
+  const geo = buildProgrammaticGeo(page);
+  const stats = getStatisticsForProgrammatic(page.primaryKeyword);
+
   return (
     <>
       <script
@@ -166,10 +175,26 @@ export function ProgrammaticSeoPage({ page }: { page: ProgrammaticPageData }) {
         </Container>
       </section>
 
+      <GeoQuickAnswer geo={geo} />
+
       <section className="border-b border-border py-16">
         <Container>
           <p className="max-w-3xl text-lg leading-relaxed text-muted">{page.intro}</p>
           <TrustNearCTA compact className="mt-6 justify-start" />
+          <ProofSignalsBar compact />
+          {geo.keyTakeaways.length > 0 && (
+            <div className="mt-8 max-w-3xl">
+              <h2 className="font-display text-lg font-bold">Key takeaways</h2>
+              <ul className="mt-3 space-y-2 text-sm text-muted">
+                {geo.keyTakeaways.map((item) => (
+                  <li key={item} className="flex gap-2">
+                    <span className="text-brand-600">✓</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </Container>
       </section>
 
@@ -264,6 +289,30 @@ export function ProgrammaticSeoPage({ page }: { page: ProgrammaticPageData }) {
             );
             })}
           </div>
+        </Container>
+      </section>
+
+      <StatisticsPanel {...stats} />
+
+      {geo.expertQuote && (
+        <section className="border-b border-border py-12">
+          <Container className="max-w-4xl">
+            <p className="text-xs font-semibold uppercase tracking-wider text-brand-500">Expert insight</p>
+            <div className="mt-4">
+              <ExpertCommentary
+                author={geo.expertQuote.author}
+                role={geo.expertQuote.role}
+                quote={geo.expertQuote.text}
+              />
+            </div>
+          </Container>
+        </section>
+      )}
+
+      <section className="border-b border-border py-12" data-seo-speakable aria-label="Summary">
+        <Container className="max-w-4xl">
+          <h2 className="font-display text-xl font-bold">Summary</h2>
+          <p className="mt-4 leading-relaxed text-muted">{geo.summary}</p>
         </Container>
       </section>
 

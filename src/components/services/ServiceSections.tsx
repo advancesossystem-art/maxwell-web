@@ -68,7 +68,7 @@ export function ServiceSolutions({ service }: { service: ServicePageData }) {
               key={solution.title}
               delay={i * 0.06}
               y={24}
-              whileHover={{ y: -4 }}
+              hoverClassName="mx-anime-service-card"
               className="glass-dark min-w-0 overflow-hidden rounded-2xl border border-border bg-surface-elevated p-7 transition-shadow hover:shadow-xl hover:shadow-brand-600/5"
             >
               <h3 className="font-display text-xl font-semibold">{solution.title}</h3>

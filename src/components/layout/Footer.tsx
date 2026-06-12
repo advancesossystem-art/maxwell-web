@@ -37,8 +37,12 @@ const columns = [
   {
     title: "Resources",
     links: [
+      { label: "Knowledge Center", href: "/knowledge-center" },
+      { label: "Maxwell Answers", href: "/answers" },
       { label: "Case Studies", href: "/case-studies" },
       { label: "Blog", href: "/blog" },
+      { label: "Guides", href: "/guides" },
+      { label: "Research", href: "/research" },
       { label: "Compare", href: "/compare" },
       { label: "Cost Guides", href: "/cost" },
       { label: "Tools", href: "/tools" },

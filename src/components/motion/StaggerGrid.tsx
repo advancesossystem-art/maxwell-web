@@ -1,26 +1,32 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
-import { staggerContainer, staggerItem } from "@/lib/motion";
+import { observeRevealChildren } from "@/lib/animations";
+import { usePrefersReducedMotion } from "@/components/motion/FadeIn";
 
 export function StaggerGrid({
   children,
   className,
+  stagger = 100,
 }: {
   children: React.ReactNode;
   className?: string;
+  stagger?: number;
 }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const reduce = usePrefersReducedMotion();
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || reduce) return;
+    return observeRevealChildren(el, ":scope > *", { stagger });
+  }, [reduce, stagger]);
+
   return (
-    <motion.div
-      className={cn(className)}
-      variants={staggerContainer}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-40px" }}
-    >
+    <div ref={ref} className={cn(className)}>
       {children}
-    </motion.div>
+    </div>
   );
 }
 
@@ -31,9 +37,11 @@ export function StaggerGridItem({
   children: React.ReactNode;
   className?: string;
 }) {
+  const reduce = usePrefersReducedMotion();
+
   return (
-    <motion.div className={className} variants={staggerItem}>
+    <div className={cn(!reduce && "mx-reveal-pending", className)}>
       {children}
-    </motion.div>
+    </div>
   );
 }

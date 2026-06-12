@@ -1,13 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { MotionReveal, PageEntrance } from "@/components/motion/FadeIn";
 
 export function SolutionHeroMotion({ children }: { children: React.ReactNode }) {
-  return (
-    <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}>
-      {children}
-    </motion.div>
-  );
+  return <PageEntrance>{children}</PageEntrance>;
 }
 
 export function SolutionChallengeMotion({
@@ -20,14 +16,8 @@ export function SolutionChallengeMotion({
   className?: string;
 }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay }}
-      className={className}
-    >
+    <MotionReveal delay={delay} y={16} className={className}>
       {children}
-    </motion.div>
+    </MotionReveal>
   );
 }

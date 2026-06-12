@@ -4,10 +4,8 @@ import { useCallback, useEffect, useRef } from "react";
 import { useEscapeKey, useFocusTrap } from "@/lib/a11y/dialog";
 import { MaxwellLogoMark } from "@/components/brand/MaxwellLogoMark";
 import type { IntroMode } from "@/lib/intro/config";
-import { INTRO_TIMING } from "@/lib/intro/config";
 import { INTRO_Z_INDEX } from "@/hooks/useIntro";
-
-const STROKE_LENGTH = 400;
+import { runIntroSequence } from "@/lib/animations/intro";
 
 type Props = {
   mode: IntroMode;
@@ -15,43 +13,24 @@ type Props = {
   onSkip: () => void;
 };
 
-function prefersReducedMotion(): boolean {
-  if (typeof window === "undefined") return false;
-  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-}
-
 export function MaxwellIntro({ mode, onComplete, onSkip }: Props) {
   const overlayRef = useRef<HTMLDivElement>(null);
+  const logoRootRef = useRef<HTMLDivElement>(null);
   const wordmarkRef = useRef<HTMLDivElement>(null);
   const taglineRef = useRef<HTMLDivElement>(null);
   const skipRef = useRef<HTMLButtonElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
   const doneRef = useRef(false);
-  const gsapRef = useRef<typeof import("gsap").default | null>(null);
-
-  const exitDuration = INTRO_TIMING[mode === "minimal" ? "minimal" : "full"].exit;
+  const stopRef = useRef<(() => void) | null>(null);
 
   const exit = useCallback(() => {
     if (doneRef.current) return;
     doneRef.current = true;
-
-    const overlay = overlayRef.current;
-    const gsap = gsapRef.current;
-    if (!overlay || !gsap) {
-      onComplete();
-      return;
-    }
-
-    gsap.to(overlay, {
-      opacity: 0,
-      duration: exitDuration,
-      ease: "power2.inOut",
-      onComplete,
-    });
-  }, [exitDuration, onComplete]);
+    onComplete();
+  }, [onComplete]);
 
   const handleSkip = useCallback(() => {
-    gsapRef.current?.killTweensOf(overlayRef.current);
+    stopRef.current?.();
     onSkip();
   }, [onSkip]);
 
@@ -71,67 +50,32 @@ export function MaxwellIntro({ mode, onComplete, onSkip }: Props) {
     const wordmark = wordmarkRef.current;
     const tagline = taglineRef.current;
     const line = tagline?.querySelector<HTMLElement>("[data-intro-line]");
+    const overlay = overlayRef.current;
+    const logoRoot = logoRootRef.current;
 
-    if (!stroke || !left || !facet || !right || !wordmark || !tagline || !line) {
+    if (!stroke || !left || !facet || !right || !wordmark || !tagline || !line || !overlay || !logoRoot) {
       onComplete();
       return;
     }
 
-    let cancelled = false;
-    let revert: (() => void) | undefined;
-
-    import("gsap").then(({ default: gsap }) => {
-      if (cancelled) return;
-      gsapRef.current = gsap;
-
-      if (prefersReducedMotion()) {
-        gsap.set([stroke, left, facet, right], { opacity: 1, strokeDashoffset: 0 });
-        gsap.set([wordmark, tagline, line], { opacity: 1, y: 0, scaleX: 1 });
-        const t = window.setTimeout(exit, 280);
-        revert = () => window.clearTimeout(t);
-        return;
-      }
-
-      const ctx = gsap.context(() => {
-        if (mode === "minimal") {
-          gsap.set([left, facet, right], { opacity: 0 });
-          gsap.set(stroke, { strokeDashoffset: STROKE_LENGTH });
-          gsap.set(wordmark, { opacity: 0, y: 8 });
-          gsap.set(tagline, { opacity: 0, y: 4 });
-          gsap.set(line, { scaleX: 0, transformOrigin: "center" });
-
-          const tl = gsap.timeline({ onComplete: exit });
-          tl.to(stroke, { strokeDashoffset: 0, duration: 0.55, ease: "power2.out" });
-          tl.to([left, facet, right], { opacity: 1, duration: 0.28, stagger: 0.06, ease: "power2.out" }, "-=0.12");
-          tl.to(wordmark, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, "-=0.08");
-          tl.to(line, { scaleX: 1, duration: 0.28, ease: "power2.inOut" }, "-=0.2");
-          tl.to(tagline, { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" }, "-=0.28");
-          return;
-        }
-
-        gsap.set([left, facet, right], { opacity: 0 });
-        gsap.set(stroke, { strokeDashoffset: STROKE_LENGTH });
-        gsap.set(wordmark, { opacity: 0, y: 10 });
-        gsap.set(tagline, { opacity: 0, y: 6 });
-        gsap.set(line, { scaleX: 0, transformOrigin: "center" });
-
-        const tl = gsap.timeline({ onComplete: exit });
-        tl.to(stroke, { strokeDashoffset: 0, duration: 0.85, ease: "power2.inOut" });
-        tl.to(left, { opacity: 1, duration: 0.22, ease: "power2.out" }, "-=0.1");
-        tl.to(facet, { opacity: 1, duration: 0.18, ease: "power2.out" }, "-=0.14");
-        tl.to(right, { opacity: 1, duration: 0.2, ease: "power2.out" }, "-=0.12");
-        tl.to(wordmark, { opacity: 1, y: 0, duration: 0.42, ease: "power3.out" }, "-=0.05");
-        tl.to(line, { scaleX: 1, duration: 0.32, ease: "power2.inOut" }, "-=0.28");
-        tl.to(tagline, { opacity: 1, y: 0, duration: 0.32, ease: "power2.out" }, "-=0.32");
-      }, overlayRef);
-
-      revert = () => ctx.revert();
-    });
+    stopRef.current = runIntroSequence(
+      {
+        overlay,
+        stroke,
+        left,
+        facet,
+        right,
+        wordmark,
+        tagline,
+        line,
+        logoRoot,
+      },
+      mode,
+      exit,
+    );
 
     return () => {
-      cancelled = true;
-      gsapRef.current?.killTweensOf(overlayRef.current);
-      revert?.();
+      stopRef.current?.();
     };
   }, [exit, mode, onComplete]);
 
@@ -154,7 +98,7 @@ export function MaxwellIntro({ mode, onComplete, onSkip }: Props) {
         Skip <span className="hidden sm:inline text-[#94A3B8]">· Esc</span>
       </button>
 
-      <div className="flex flex-col items-center px-6">
+      <div ref={logoRootRef} className="flex flex-col items-center px-6">
         <MaxwellLogoMark ref={svgRef} className="h-36 w-44 sm:h-44 sm:w-52" />
 
         <div ref={wordmarkRef} className="mt-14 text-center opacity-0">

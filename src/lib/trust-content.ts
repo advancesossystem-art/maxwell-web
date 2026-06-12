@@ -25,6 +25,14 @@ export const reviewPlatforms = [
     status: "Available on request" as const,
     href: undefined,
   },
+  {
+    id: "goodfirms",
+    name: "GoodFirms",
+    description:
+      "B2B research platform for software firms. A GoodFirms profile is planned — no ratings displayed until verified on-platform.",
+    status: "Profile in progress" as const,
+    href: undefined,
+  },
 ] as const;
 
 export const securitySections = [

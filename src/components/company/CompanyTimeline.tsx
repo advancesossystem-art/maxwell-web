@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { companyJourney } from "@/lib/company-data";
+import { MotionReveal } from "@/components/motion/FadeIn";
 
 export function CompanyTimeline() {
   return (
@@ -9,12 +9,11 @@ export function CompanyTimeline() {
       <div className="absolute left-4 top-0 hidden h-full w-0.5 bg-brand-600/20 lg:left-1/2 lg:-ml-px lg:block" />
       <div className="space-y-8">
         {companyJourney.map((item, i) => (
-          <motion.div
+          <MotionReveal
             key={item.year}
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ delay: i * 0.08, duration: 0.5 }}
+            delay={i * 0.08}
+            duration={0.5}
+            y={24}
             className={`relative flex flex-col gap-4 lg:flex-row lg:items-center ${
               i % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
             }`}
@@ -30,7 +29,7 @@ export function CompanyTimeline() {
                 <p className="mt-2 text-sm text-muted">{item.description}</p>
               </div>
             </div>
-          </motion.div>
+          </MotionReveal>
         ))}
       </div>
     </div>
@@ -42,21 +41,17 @@ export function GrowthVisualization() {
   const years = ["2018", "2019", "2020", "2021", "2022", "2023", "2025"];
 
   return (
-    <div className="rounded-2xl border border-border bg-surface-elevated p-6">
+    <div className="rounded-2xl border border-border bg-surface-elevated p-6" data-chart-fade>
       <p className="text-xs font-semibold uppercase tracking-wider text-brand-600">Projects Delivered Over Time</p>
-      <div className="mt-6 flex items-end justify-between gap-2 h-40">
+      <div className="mt-6 flex h-40 items-end justify-between gap-2">
         {data.map((value, i) => (
-          <motion.div
-            key={years[i]}
-            initial={{ height: 0 }}
-            whileInView={{ height: `${(value / 150) * 100}%` }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1, duration: 0.6 }}
-            className="flex flex-1 flex-col items-center gap-2"
-          >
-            <div className="w-full rounded-t-md bg-gradient-to-t from-brand-600 to-brand-500 min-h-[4px]" style={{ height: "100%" }} />
+          <div key={years[i]} className="flex flex-1 flex-col items-center gap-2">
+            <div
+              className="w-full min-h-[4px] rounded-t-md bg-gradient-to-t from-brand-600 to-brand-500"
+              style={{ height: `${(value / 150) * 100}%` }}
+            />
             <span className="text-[10px] text-muted">{years[i]}</span>
-          </motion.div>
+          </div>
         ))}
       </div>
     </div>

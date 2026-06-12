@@ -15,6 +15,11 @@ import {
 } from "@/components/industries/IndustrySections2";
 import { IndustryCTA, IndustryCTAStrip } from "@/components/industries/IndustryCTA";
 import { IndustryPageJsonLd } from "@/components/seo/JsonLd";
+import { GeoContentSection } from "@/components/authority/GeoContentSection";
+import { StatisticsPanel } from "@/components/authority/StatisticsPanel";
+import { ProofSignalsBar } from "@/components/trust/ProofSignalsBar";
+import { buildIndustryGeo } from "@/lib/geo-page-content";
+import { getStatisticsForIndustry } from "@/lib/statistics-data";
 import type { IndustryPageData, IndustrySlug } from "@/lib/industries-data";
 
 const industryCaseStudySlug: Partial<Record<IndustrySlug, string>> = {
@@ -31,10 +36,16 @@ const industryCaseStudySlug: Partial<Record<IndustrySlug, string>> = {
 };
 
 export function IndustryLandingPage({ industry }: { industry: IndustryPageData }) {
+  const geo = buildIndustryGeo(industry);
+  const stats = getStatisticsForIndustry(industry.slug);
+
   return (
     <>
       <IndustryPageJsonLd industry={industry} />
       <IndustryHero industry={industry} />
+      <GeoContentSection geo={geo} />
+      <StatisticsPanel {...stats} />
+      <ProofSignalsBar />
       <IndustryFocusAreas industry={industry} />
       <IndustryWorkflow industry={industry} />
       <IndustryChallenges industry={industry} />

@@ -1,7 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { FadeIn } from "@/components/motion/FadeIn";
+import { FadeIn, MotionReveal } from "@/components/motion/FadeIn";
 import type { CaseStudyData } from "@/lib/case-studies-data";
 import { cn } from "@/lib/utils";
 
@@ -31,12 +30,10 @@ export function ArchitectureDiagram({ layers, accent }: { layers: CaseStudyData[
   return (
     <div className="space-y-3">
       {layers.map((layer, i) => (
-        <motion.div
+        <MotionReveal
           key={layer.name}
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: i * 0.08 }}
+          delay={i * 0.08}
+          y={16}
           className="rounded-xl border border-border bg-surface-elevated p-4"
         >
           <div className="flex items-center gap-3">
@@ -55,7 +52,7 @@ export function ArchitectureDiagram({ layers, accent }: { layers: CaseStudyData[
               </span>
             ))}
           </div>
-        </motion.div>
+        </MotionReveal>
       ))}
     </div>
   );
@@ -65,12 +62,10 @@ export function WorkflowDiagram({ steps, accent }: { steps: CaseStudyData["workf
   return (
     <div className="flex flex-col gap-4 lg:flex-row lg:items-stretch">
       {steps.map((step, i) => (
-        <motion.div
+        <MotionReveal
           key={step.title}
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: i * 0.1 }}
+          delay={i * 0.1}
+          y={16}
           className="relative flex-1 rounded-xl border border-border bg-surface-elevated p-5"
         >
           {i < steps.length - 1 && (
@@ -84,7 +79,7 @@ export function WorkflowDiagram({ steps, accent }: { steps: CaseStudyData["workf
           </div>
           <h4 className="font-display font-semibold">{step.title}</h4>
           <p className="mt-1 text-sm text-muted">{step.description}</p>
-        </motion.div>
+        </MotionReveal>
       ))}
     </div>
   );
@@ -129,12 +124,10 @@ export function ProjectTimeline({ timeline, accent }: { timeline: CaseStudyData[
       <div className="absolute left-4 top-0 hidden h-full w-0.5 bg-border lg:block" />
       <div className="space-y-6">
         {timeline.map((phase, i) => (
-          <motion.div
+          <MotionReveal
             key={phase.phase}
-            initial={{ opacity: 0, x: -16 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.08 }}
+            delay={i * 0.08}
+            y={16}
             className="relative flex gap-6 lg:pl-10"
           >
             <div
@@ -150,7 +143,7 @@ export function ProjectTimeline({ timeline, accent }: { timeline: CaseStudyData[
               </div>
               <p className="mt-2 text-sm text-muted">{phase.description}</p>
             </div>
-          </motion.div>
+          </MotionReveal>
         ))}
       </div>
     </div>
@@ -161,12 +154,10 @@ export function ProjectMilestones({ milestones, accent }: { milestones: CaseStud
   return (
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
       {milestones.map((m, i) => (
-        <motion.div
+        <MotionReveal
           key={m.label}
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: i * 0.08 }}
+          delay={i * 0.08}
+          y={16}
           className={cn("rounded-xl border border-border p-5", i === milestones.length - 1 && "border-brand-600/20 bg-brand-50/30")}
         >
           <div className="text-xs font-semibold uppercase tracking-wider" style={{ color: accent }}>
@@ -174,7 +165,7 @@ export function ProjectMilestones({ milestones, accent }: { milestones: CaseStud
           </div>
           <h4 className="mt-2 font-display font-semibold">{m.label}</h4>
           <p className="mt-1 text-xs text-muted">{m.description}</p>
-        </motion.div>
+        </MotionReveal>
       ))}
     </div>
   );

@@ -6,10 +6,11 @@ import { consultationHref } from "@/lib/conversion-copy";
 import { Button } from "@/components/ui/Button";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { ProjectMockFrame } from "@/components/work/ProjectMock";
+import { ProjectScreenshotSlots } from "@/components/work/ProjectScreenshotSlots";
+import { getProjectScreenshotSlots } from "@/lib/project-screenshots";
 import { ProjectCardCompact } from "@/components/work/ProjectCard";
 import { WorkBreadcrumb, WorkCTA, WorkCTAStrip } from "@/components/work/WorkCTA";
 import {
-  ProjectGalleryItemMotion,
   ProjectHeroTextMotion,
   ProjectHeroVisualMotion,
   ProjectResultMotion,
@@ -170,23 +171,10 @@ export function ProjectDetailPage({ project }: { project: ProjectData }) {
         </Container>
       </section>
 
-      {/* Gallery */}
-      <section className="bg-[#030712] py-20 lg:py-28">
-        <Container>
-          <FadeIn>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-500">Screenshots</p>
-            <h2 className="mt-3 font-display text-2xl font-bold text-white sm:text-3xl">Product showcase</h2>
-          </FadeIn>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {project.gallery.map((item, i) => (
-              <ProjectGalleryItemMotion key={item.label} delay={i * 0.1}>
-                <ProjectMockFrame type={item.mockType} accent={project.accent} gradient={project.gradient} className="aspect-[16/10] rounded-xl" />
-                <p className="mt-3 text-sm font-medium text-white/60">{item.label}</p>
-              </ProjectGalleryItemMotion>
-            ))}
-          </div>
-        </Container>
-      </section>
+      <ProjectScreenshotSlots
+        screenshots={getProjectScreenshotSlots(project)}
+        projectTitle={project.title}
+      />
 
       {/* Results */}
       <section className="py-12 lg:py-16">

@@ -55,15 +55,6 @@ export const staggerItem = {
   },
 };
 
-export const floatYAnimate = {
-  y: [0, -10, 0],
-  transition: {
-    duration: 7,
-    repeat: Infinity,
-    ease: "easeInOut" as const,
-  },
-};
-
 export function usePrefersReducedMotion(): boolean {
   if (typeof window === "undefined") return false;
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;

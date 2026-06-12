@@ -1,18 +1,13 @@
 "use client";
 
-import { motion } from "framer-motion";
 import type { TeamMember } from "@/lib/company-data";
 import { Card } from "@/components/design/Card";
 import { H3, Caption } from "@/components/design/typography";
+import { MotionReveal } from "@/components/motion/FadeIn";
 
 export function TeamCard({ member, index = 0 }: { member: TeamMember; index?: number }) {
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.05 }}
-    >
+    <MotionReveal delay={index * 0.05} className="min-w-0">
       <Card interactive={false} padding="lg">
         <div className="flex items-start gap-4">
           <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-brand-600 font-display text-lg font-bold text-white">
@@ -49,7 +44,7 @@ export function TeamCard({ member, index = 0 }: { member: TeamMember; index?: nu
           </a>
         ) : null}
       </Card>
-    </motion.article>
+    </MotionReveal>
   );
 }
 
@@ -60,7 +55,7 @@ export function HiringBanner() {
       <Caption className="mt-2">Join a team building software that delivers real business impact.</Caption>
       <a
         href="/careers"
-        className="mt-6 inline-flex items-center gap-2 rounded-full bg-brand-600 px-6 py-3 font-display text-sm font-semibold text-white shadow-lg shadow-brand-600/25 transition-colors hover:bg-brand-500"
+        className="mx-anime-cta-btn mt-6 inline-flex items-center gap-2 rounded-full bg-brand-600 px-6 py-3 font-display text-sm font-semibold text-white shadow-lg shadow-brand-600/25 transition-colors hover:bg-brand-500"
       >
         View Open Positions
       </a>

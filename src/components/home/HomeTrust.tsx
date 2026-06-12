@@ -5,11 +5,10 @@ import { trustHighlights } from "@/lib/homepage";
 import { testimonials } from "@/lib/testimonials-data";
 import { ClientQuoteCard } from "@/components/trust/ClientQuoteCard";
 import { FadeIn } from "@/components/motion/FadeIn";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { CrossFade } from "@/components/motion/CrossFade";
 
 export function HomeTrust() {
   const [index, setIndex] = useState(0);
-  const reduce = useReducedMotion();
   const featured = testimonials;
   const current = featured[index] ?? featured[0];
 
@@ -39,25 +38,16 @@ export function HomeTrust() {
         <div className="mt-10 grid gap-8 lg:grid-cols-12 lg:items-start lg:gap-10">
           <div className="lg:col-span-7">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#4f46e5]">Client feedback</p>
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={current.id}
-                className="mt-4"
-                initial={reduce ? false : { opacity: 0, y: 12 }}
-                animate={reduce ? undefined : { opacity: 1, y: 0 }}
-                exit={reduce ? undefined : { opacity: 0, y: -8 }}
-                transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <ClientQuoteCard
-                  quote={current.quote}
-                  role={current.role}
-                  industry={current.industry}
-                  companyType={current.companyType}
-                  region={current.region}
-                  subtitle={current.outcome}
-                />
-              </motion.div>
-            </AnimatePresence>
+            <CrossFade contentKey={current.id} className="mt-4">
+              <ClientQuoteCard
+                quote={current.quote}
+                role={current.role}
+                industry={current.industry}
+                companyType={current.companyType}
+                region={current.region}
+                subtitle={current.outcome}
+              />
+            </CrossFade>
           </div>
 
           <div className="lg:col-span-5">

@@ -12,6 +12,7 @@ import {
   consultationHref,
 } from "@/lib/conversion-copy";
 import { trackCTAClick } from "@/lib/conversion-events";
+import { runNavbarEntrance } from "@/lib/animations";
 
 const primaryNav = [
   { label: "Home", href: "/" },
@@ -52,6 +53,7 @@ export function Header() {
   const resourcesBtnRef = useRef<HTMLButtonElement>(null);
   const [resourcesMenuStyle, setResourcesMenuStyle] = useState<React.CSSProperties>({});
   const closeMobile = useCallback(() => setMobileOpen(false), []);
+  const headerRef = useRef<HTMLElement>(null);
 
   useEscapeKey(() => {
     setResourcesOpen(false);
@@ -59,6 +61,12 @@ export function Header() {
   }, resourcesOpen || mobileOpen);
 
   useFocusTrap(drawerRef, mobileOpen);
+
+  useEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+    return runNavbarEntrance(header);
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -124,9 +132,15 @@ export function Header() {
     href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
 
   return (
-    <header className={cn("v6-nav", scrolled && "v6-nav--scrolled")} id="site-header">
+    <header
+      ref={headerRef}
+      className={cn("v6-nav", scrolled && "v6-nav--scrolled")}
+      id="site-header"
+    >
       <div className="v6-container v6-nav-inner">
-        <BrandLogo size="header" priority href="/" className="shrink-0" />
+        <span data-nav="logo" className="mx-nav-pending inline-flex shrink-0">
+          <BrandLogo size="header" priority href="/" />
+        </span>
 
         <nav
           className="hidden shrink-0 items-center gap-0.5 lg:flex"
@@ -137,7 +151,11 @@ export function Header() {
               key={link.href}
               href={link.href}
               aria-current={isActive(link.href) ? "page" : undefined}
-              className={cn("v6-nav-link", isActive(link.href) && "v6-nav-link--active")}
+              className={cn(
+                "v6-nav-link mx-nav-pending",
+                isActive(link.href) && "v6-nav-link--active",
+              )}
+              data-nav="link"
             >
               {link.label}
             </Link>
@@ -149,9 +167,10 @@ export function Header() {
               type="button"
               id="resources-menu-button"
               className={cn(
-                "v6-nav-link inline-flex items-center gap-1",
+                "v6-nav-link mx-nav-pending inline-flex items-center gap-1",
                 resourceLinks.some((l) => isActive(l.href)) && "v6-nav-link--active",
               )}
+              data-nav="link"
               aria-expanded={resourcesOpen}
               aria-haspopup="true"
               aria-controls="resources-menu"
@@ -188,7 +207,8 @@ export function Header() {
         <div className="flex shrink-0 items-center gap-2">
           <Link
             href={consultationHref({ source: "header" })}
-            className="v6-btn v6-btn-primary hidden sm:inline-flex"
+            className="v6-btn v6-btn-primary mx-nav-pending hidden sm:inline-flex"
+            data-nav="cta"
             onClick={() =>
               trackCTAClick(CTA_LABELS.primary, CONVERSION_ROUTES.consultation, "header")
             }

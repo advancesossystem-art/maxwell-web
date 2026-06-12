@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { FadeIn } from "@/components/motion/FadeIn";
@@ -136,10 +135,7 @@ export function ProjectCalculator() {
           </div>
 
           <div>
-            <motion.div
-              layout
-              className="sticky top-28 rounded-2xl border border-border bg-surface-elevated p-8"
-            >
+            <div className="sticky top-28 rounded-2xl border border-border bg-surface-elevated p-8">
               <p className="text-xs font-semibold uppercase tracking-wider text-brand-600">Estimate Summary</p>
               <div className="mt-6 space-y-6">
                 <div>
@@ -198,7 +194,7 @@ export function ProjectCalculator() {
                   </Button>
                 </div>
               )}
-            </motion.div>
+            </div>
           </div>
         </div>
       </Container>

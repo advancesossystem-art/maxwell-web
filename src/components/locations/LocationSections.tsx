@@ -1,9 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
-import { FadeIn } from "@/components/motion/FadeIn";
+import { FadeIn, MotionReveal, PageEntrance } from "@/components/motion/FadeIn";
 import { Button } from "@/components/ui/Button";
 import { ArrowRight } from "@/components/ui/Icons";
 import type { CityPageData, CountryPageData } from "@/lib/locations-data";
@@ -52,7 +51,7 @@ export function CityHero({ city }: { city: CityPageData }) {
             { label: city.name },
           ]}
         />
-        <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+        <PageEntrance>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-400">
             {city.state}, {city.countryName}
           </p>
@@ -68,7 +67,7 @@ export function CityHero({ city }: { city: CityPageData }) {
               Get Free Estimate
             </Button>
           </div>
-        </motion.div>
+        </PageEntrance>
       </Container>
     </section>
   );
@@ -97,17 +96,14 @@ export function LocalChallenges({ challenges, title }: { challenges: CityPageDat
         </FadeIn>
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {challenges.map((c, i) => (
-            <motion.div
+            <MotionReveal
               key={c.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
+              delay={i * 0.08}
               className="rounded-2xl border border-border bg-surface-elevated p-8"
             >
               <h3 className="font-display font-semibold">{c.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted">{c.description}</p>
-            </motion.div>
+            </MotionReveal>
           ))}
         </div>
       </Container>
@@ -390,13 +386,13 @@ export function CountryHero({ country }: { country: CountryPageData }) {
             { label: country.name },
           ]}
         />
-        <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}>
+        <PageEntrance>
           <h1 className="max-w-4xl font-display text-4xl font-bold text-white sm:text-5xl lg:text-6xl">{country.headline}</h1>
           <p className="mt-6 max-w-2xl text-lg text-white/55">{country.subheadline}</p>
           <Button href="/contact" size="lg" className="mt-10">
             Start Your Project <ArrowRight />
           </Button>
-        </motion.div>
+        </PageEntrance>
       </Container>
     </section>
   );

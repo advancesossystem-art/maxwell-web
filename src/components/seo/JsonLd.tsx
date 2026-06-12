@@ -2,7 +2,9 @@ import { siteConfig } from "@/lib/constants";
 import { seoIds } from "@/lib/seo/config";
 import { companyFaqs } from "@/lib/company-data";
 import { FaqPageJsonLd } from "@/components/seo/FaqPageJsonLd";
-import { getAuthorById } from "@/lib/content/authors";
+import type { Author } from "@/lib/content/authors";
+import { getContentAuthor } from "@/lib/content/resolve-author";
+import type { ContentCategorySlug } from "@/lib/content/schema";
 import { formatAnonymousClient } from "@/lib/client-attribution";
 
 export function ServicePageJsonLd({ service }: { service: import("@/lib/services-data").ServicePageData }) {
@@ -414,18 +416,23 @@ export function SolutionPageJsonLd({ solution }: { solution: import("@/lib/solut
   );
 }
 
-export function ArticlePageJsonLd({
-  article,
-  authorName,
-}: {
-  article: import("@/lib/content/schema").Article;
-  authorName: string;
-}) {
-  const url = `${siteConfig.url}/blog/${article.slug}`;
-  const author = {
-    "@type": "Person",
-    name: authorName,
+function personSchemaFromAuthor(author: Author) {
+  return {
+    "@type": "Person" as const,
+    name: author.name,
+    jobTitle: author.role,
+    description: author.bio,
+    url: `${siteConfig.url}/authors/${author.slug}`,
+    ...(author.linkedin ? { sameAs: [author.linkedin] } : {}),
+    knowsAbout: author.expertise,
+    worksFor: { "@type": "Organization" as const, name: siteConfig.legalName },
   };
+}
+
+export function ArticlePageJsonLd({ article }: { article: import("@/lib/content/schema").Article }) {
+  const url = `${siteConfig.url}/blog/${article.slug}`;
+  const resolved = getContentAuthor(article.authorId, article.category);
+  const author = personSchemaFromAuthor(resolved);
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -471,6 +478,7 @@ export function ContentPageJsonLd({
   path,
   publishedAt,
   authorId,
+  category,
   faqs,
 }: {
   type: "guide" | "resource" | "report";
@@ -479,12 +487,13 @@ export function ContentPageJsonLd({
   path: string;
   publishedAt: string;
   authorId: string;
+  category: ContentCategorySlug;
   faqs?: { question: string; answer: string }[];
 }) {
   const url = `${siteConfig.url}${path}`;
   const hubNames = { guide: "Guides", resource: "Resources", report: "Reports" };
   const hubPaths = { guide: "/guides", resource: "/resources", report: "/reports" };
-  const author = getAuthorById(authorId);
+  const author = getContentAuthor(authorId, category);
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -493,7 +502,7 @@ export function ContentPageJsonLd({
     description,
     url,
     datePublished: publishedAt,
-    author: { "@type": "Person", name: author?.name ?? "Maxwell Team" },
+    author: personSchemaFromAuthor(author),
     publisher: { "@type": "Organization", name: siteConfig.legalName, url: siteConfig.url },
   };
 
@@ -521,13 +530,8 @@ export function AuthorPageJsonLd({ author }: { author: import("@/lib/content/aut
 
   const personSchema = {
     "@context": "https://schema.org",
-    "@type": "Person",
-    name: author.name,
-    jobTitle: author.role,
-    description: author.bio,
+    ...personSchemaFromAuthor(author),
     url,
-    worksFor: { "@type": "Organization", name: siteConfig.legalName },
-    knowsAbout: author.expertise,
   };
 
   const breadcrumbSchema = {

@@ -2,14 +2,15 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { ContentRenderer } from "@/components/content/ContentRenderer";
 import { AuthorCard } from "@/components/content/AuthorCard";
+import { ContentAuthorByline } from "@/components/content/ContentAuthorByline";
+import { TrustThisContent } from "@/components/content/TrustThisContent";
 import { NewsletterSignup } from "@/components/content/NewsletterSignup";
 import { ContentPageJsonLd } from "@/components/seo/JsonLd";
-import { getAuthorById } from "@/lib/content/authors";
-import { formatPublishDate } from "@/lib/content/utils";
+import { getContentAuthor } from "@/lib/content/resolve-author";
 import type { Guide } from "@/lib/content/schema";
 
 export function GuideDetailPage({ guide }: { guide: Guide }) {
-  const author = getAuthorById(guide.authorId);
+  const author = getContentAuthor(guide.authorId, guide.category);
 
   return (
     <>
@@ -20,6 +21,7 @@ export function GuideDetailPage({ guide }: { guide: Guide }) {
         path={`/guides/${guide.slug}`}
         publishedAt={guide.publishedAt}
         authorId={guide.authorId}
+        category={guide.category}
         faqs={guide.faqs}
       />
       <section className="relative overflow-hidden bg-[#030712] pb-16 pt-28 lg:pt-36">
@@ -31,7 +33,15 @@ export function GuideDetailPage({ guide }: { guide: Guide }) {
           </nav>
           <h1 className="max-w-4xl font-display text-4xl font-bold text-white">{guide.title}</h1>
           <p className="mt-4 max-w-2xl text-lg text-white/55">{guide.excerpt}</p>
-          <p className="mt-4 text-sm text-white/50">{guide.readingTimeMinutes} min read · {formatPublishDate(guide.publishedAt)}</p>
+          <div className="mt-4">
+            <ContentAuthorByline
+              authorId={guide.authorId}
+              category={guide.category}
+              publishedAt={guide.publishedAt}
+              readingTimeMinutes={guide.readingTimeMinutes}
+              dark
+            />
+          </div>
         </Container>
       </section>
 
@@ -57,7 +67,8 @@ export function GuideDetailPage({ guide }: { guide: Guide }) {
                 )}
               </div>
             </aside>
-            <article className="lg:col-span-9">
+            <article className="lg:col-span-9 space-y-10">
+              <TrustThisContent category={guide.category} authorId={guide.authorId} contentType="guide" />
               <ContentRenderer blocks={guide.sections} />
             </article>
           </div>

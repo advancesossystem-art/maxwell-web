@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useEscapeKey, useFocusTrap } from "@/lib/a11y/dialog";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { ModalBackdrop, ModalPanel } from "@/components/motion/ModalEnter";
 import { TrustNearCTA } from "@/components/conversion/TrustNearCTA";
 import {
   CTA_LABELS,
@@ -62,27 +62,21 @@ export function ExitIntentModal() {
     };
   }, [handleMouseLeave]);
 
+  if (!open) return null;
+
   return (
-    <AnimatePresence>
-      {open && (
-        <>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] bg-black/40 backdrop-blur-sm"
-            onClick={() => setOpen(false)}
-          />
-          <motion.div
-            ref={dialogRef}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 12 }}
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="exit-intent-title"
-            className="fixed bottom-0 left-0 right-0 z-[61] mx-auto max-w-lg rounded-t-2xl border border-white/[0.1] bg-[#030b1f] p-6 shadow-2xl sm:bottom-auto sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-2xl"
-          >
+    <>
+      <ModalBackdrop
+        className="fixed inset-0 z-[60] bg-black/40 backdrop-blur-sm"
+        onClick={() => setOpen(false)}
+      />
+      <ModalPanel
+        panelRef={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="exit-intent-title"
+        className="fixed bottom-0 left-0 right-0 z-[61] mx-auto max-w-lg rounded-t-2xl border border-white/[0.1] bg-[#030b1f] p-6 shadow-2xl sm:bottom-auto sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-2xl"
+      >
             <button
               type="button"
               onClick={close}
@@ -114,10 +108,8 @@ export function ExitIntentModal() {
                 </li>
               ))}
             </ul>
-            <TrustNearCTA compact className="mt-6" />
-          </motion.div>
-        </>
-      )}
-    </AnimatePresence>
+        <TrustNearCTA compact className="mt-6" />
+      </ModalPanel>
+    </>
   );
 }

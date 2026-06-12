@@ -1,6 +1,6 @@
 import type { SearchDocument } from "@/lib/content/search";
 import { formatPublishDate } from "@/lib/content/utils";
-import { getAuthorById } from "@/lib/content/authors";
+import { getContentAuthor } from "@/lib/content/resolve-author";
 import { Card } from "@/components/design/Card";
 import { H3, Caption } from "@/components/design/typography";
 
@@ -12,7 +12,7 @@ const typeLabels: Record<SearchDocument["type"], string> = {
 };
 
 export function ContentCard({ doc, variant = "default" }: { doc: SearchDocument; variant?: "default" | "compact" }) {
-  const author = getAuthorById(doc.authorId);
+  const author = getContentAuthor(doc.authorId, doc.category);
 
   if (variant === "compact") {
     return (
@@ -37,7 +37,7 @@ export function ContentCard({ doc, variant = "default" }: { doc: SearchDocument;
       <H3 className="mt-4 line-clamp-2 group-hover:text-brand-400 transition-colors">{doc.title}</H3>
       <Caption className="mt-2 flex-1 line-clamp-2">{doc.excerpt}</Caption>
       <div className="mt-4 flex items-center justify-between border-t border-[var(--v6-border)] pt-4">
-        <Caption>{author?.name ?? "Maxwell Team"}</Caption>
+        <Caption>{author.name}</Caption>
         <Caption>
           {doc.readingTimeMinutes} min · {formatPublishDate(doc.publishedAt)}
         </Caption>

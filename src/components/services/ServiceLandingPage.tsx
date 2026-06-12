@@ -16,13 +16,25 @@ import {
 import { ServiceCTA, ServiceCTAStrip } from "@/components/services/ServiceCTA";
 import { RecommendedServicesBlock } from "@/components/engagement/RecommendedServicesBlock";
 import { ServicePageJsonLd } from "@/components/seo/JsonLd";
+import { GeoContentSection } from "@/components/authority/GeoContentSection";
+import { StatisticsPanel } from "@/components/authority/StatisticsPanel";
+import { ProofSignalsBar } from "@/components/trust/ProofSignalsBar";
+import { buildServiceGeo } from "@/lib/geo-page-content";
+import { getStatisticsForService } from "@/lib/statistics-data";
 import type { ServicePageData } from "@/lib/services-data";
+import type { ServiceSlug } from "@/lib/services-data";
 
 export function ServiceLandingPage({ service }: { service: ServicePageData }) {
+  const geo = buildServiceGeo(service);
+  const stats = getStatisticsForService(service.slug as ServiceSlug);
+
   return (
     <>
       <ServicePageJsonLd service={service} />
       <ServiceHero service={service} />
+      <GeoContentSection geo={geo} />
+      <StatisticsPanel {...stats} />
+      <ProofSignalsBar />
       <ServiceProblems service={service} />
       <ServiceSolutions service={service} />
       <ServiceFeatures service={service} />

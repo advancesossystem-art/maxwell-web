@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { siteConfig } from "@/lib/constants";
 import { getClientIp, rateLimit, rateLimits } from "@/lib/rate-limit";
 import {
   ADMIN_COOKIE_NAME,
@@ -94,7 +95,24 @@ function apiEdgeRateLimit(request: NextRequest): NextResponse | null {
   return null;
 }
 
+/** Enforce apex host — canonicals and sitemaps use non-www only. */
+function apexHostRedirect(request: NextRequest): NextResponse | null {
+  const host = request.headers.get("host")?.split(":")[0]?.toLowerCase();
+  const apexHost = new URL(siteConfig.url).hostname.toLowerCase();
+  if (!host || host === apexHost) return null;
+
+  if (host === `www.${apexHost}`) {
+    const destination = new URL(request.nextUrl.pathname + request.nextUrl.search, siteConfig.url);
+    return NextResponse.redirect(destination, 301);
+  }
+
+  return null;
+}
+
 export function proxy(request: NextRequest) {
+  const hostRedirect = apexHostRedirect(request);
+  if (hostRedirect) return hostRedirect;
+
   const { pathname } = request.nextUrl;
 
   if (isBlockedPath(pathname)) {

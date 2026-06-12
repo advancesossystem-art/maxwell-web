@@ -79,7 +79,7 @@ export function buildAuditChecks(): AuditCheck[] {
     { id: "perf-ssg", category: "Performance", label: "Static generation (186+ routes)", status: "pass", detail: "Full SSG build; edge-friendly pages" },
     { id: "perf-fonts", category: "Performance", label: "next/font with display swap", status: "pass", detail: "Inter + DM Sans preloaded" },
     { id: "perf-images", category: "Performance", label: "No unoptimized raster LCP", status: "pass", detail: "CSS/SVG-first UI; dynamic OG image route" },
-    { id: "perf-packages", category: "Performance", label: "Package import optimization", status: "pass", detail: "framer-motion, gsap, lenis tree-shaken; unused three.js removed" },
+    { id: "perf-packages", category: "Performance", label: "Package import optimization", status: "pass", detail: "animejs, lenis tree-shaken; unused three.js removed" },
     { id: "img-og", category: "Images", label: "Open Graph image", status: "pass", detail: "/opengraph-image (auto-generated PNG)" },
     { id: "img-next", category: "Images", label: "next/image pipeline", status: "warn", detail: "Configured; add Image when photos are introduced" },
     { id: "a11y-skip", category: "Accessibility", label: "Skip to main content", status: "pass", detail: "SkipLink + #main-content landmark" },
