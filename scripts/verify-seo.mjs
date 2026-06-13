@@ -39,7 +39,13 @@ const pageClient = files.filter(
   (f) => f.includes(join("app", "")) && f.endsWith("page.tsx") && readFileSync(f, "utf8").includes('"use client"'),
 );
 
-let ok = true;
+const aiDiscovery = readFileSync(join(src, "components", "seo", "AiDiscoveryJsonLd.tsx"), "utf8");
+if (aiDiscovery.includes("FAQPage") || aiDiscovery.includes("ai-faq")) {
+  console.error("FAIL: AiDiscoveryJsonLd must not emit FAQPage (use homepage-faq-schema.ts only)");
+  ok = false;
+} else {
+  console.log("OK: AiDiscoveryJsonLd has no duplicate FAQPage");
+}
 
 if (faqPageTypeDefs > 1) {
   console.error(`FAIL: FAQPage @type found in ${faqPageTypeDefs} files (expect 1: faq-schema.ts)`);

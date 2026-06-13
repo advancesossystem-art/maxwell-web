@@ -8,12 +8,14 @@ export function FaqPageJsonLd({
   faqs,
   id,
   name,
+  description,
 }: {
   faqs: readonly FaqItem[];
   id?: string;
   name?: string;
+  description?: string;
 }) {
-  const schema = buildFaqPageSchema(faqs, { id, name });
+  const schema = buildFaqPageSchema(faqs, { id, name, description });
   if (!schema) return null;
 
   return (

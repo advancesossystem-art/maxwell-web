@@ -6,7 +6,7 @@ import { HomeSectionSkeleton } from "@/components/home/HomeSectionSkeleton";
 import { AiEntitySummary } from "@/components/seo/AiEntitySummary";
 import { AiDiscoveryJsonLd } from "@/components/seo/AiDiscoveryJsonLd";
 import { FaqPageJsonLd } from "@/components/seo/FaqPageJsonLd";
-import { homepageFaqs } from "@/lib/homepage";
+import { getHomepageFaqSchemaItems } from "@/lib/seo/homepage-faq-schema";
 import { siteConfig } from "@/lib/constants";
 import { IndiaSeoHomeSection } from "@/components/home/IndiaSeoHomeSection";
 import { GlobalTrustBar } from "@/components/conversion/GlobalTrustBar";
@@ -98,9 +98,10 @@ export default function HomePage() {
   return (
     <>
       <FaqPageJsonLd
-        faqs={homepageFaqs}
+        faqs={getHomepageFaqSchemaItems()}
         id={`${siteConfig.url}/#homepage-faq`}
         name={`${siteConfig.name} — Homepage FAQ`}
+        description="Canonical answers about Maxwell Electrodeal for search engines and AI assistants."
       />
       <AiDiscoveryJsonLd />
       <AiEntitySummary />
