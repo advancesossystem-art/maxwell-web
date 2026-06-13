@@ -4,10 +4,7 @@ import { createHomeMetadata } from "@/lib/seo/metadata-utils";
 import { Hero } from "@/components/home/Hero";
 import { HomeSectionSkeleton } from "@/components/home/HomeSectionSkeleton";
 import { AiEntitySummary } from "@/components/seo/AiEntitySummary";
-import { AiDiscoveryJsonLd } from "@/components/seo/AiDiscoveryJsonLd";
-import { FaqPageJsonLd } from "@/components/seo/FaqPageJsonLd";
-import { getHomepageFaqSchemaItems } from "@/lib/seo/homepage-faq-schema";
-import { siteConfig } from "@/lib/constants";
+import { HomepageStructuredData } from "@/components/seo/HomepageStructuredData";
 import { IndiaSeoHomeSection } from "@/components/home/IndiaSeoHomeSection";
 import { GlobalTrustBar } from "@/components/conversion/GlobalTrustBar";
 import { TrustProofStrip } from "@/components/conversion/TrustProofStrip";
@@ -97,13 +94,7 @@ export const metadata: Metadata = createHomeMetadata();
 export default function HomePage() {
   return (
     <>
-      <FaqPageJsonLd
-        faqs={getHomepageFaqSchemaItems()}
-        id={`${siteConfig.url}/#homepage-faq`}
-        name={`${siteConfig.name} — Homepage FAQ`}
-        description="Canonical answers about Maxwell Electrodeal for search engines and AI assistants."
-      />
-      <AiDiscoveryJsonLd />
+      <HomepageStructuredData />
       <AiEntitySummary />
       <Hero />
       <TrustProofStrip />

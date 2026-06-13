@@ -25,8 +25,13 @@ let faqPageTypeDefs = 0;
 
 for (const file of files) {
   const text = readFileSync(file, "utf8");
-  if (text.includes('FaqPageJsonLd') || text.includes('buildFaqPageSchema')) {
-    if (!file.includes("FaqPageJsonLd.tsx") && !file.includes("faq-schema.ts")) {
+  if (text.includes("FaqPageJsonLd") || text.includes("buildFaqPageSchema")) {
+    if (
+      !file.includes("FaqPageJsonLd.tsx") &&
+      !file.includes("faq-schema.ts") &&
+      !file.includes("HomepageStructuredData.tsx") &&
+      !file.includes("homepage-faq-schema.ts")
+    ) {
       faqPageEmitters += 1;
     }
   }
@@ -39,12 +44,26 @@ const pageClient = files.filter(
   (f) => f.includes(join("app", "")) && f.endsWith("page.tsx") && readFileSync(f, "utf8").includes('"use client"'),
 );
 
+let ok = true;
+
 const aiDiscovery = readFileSync(join(src, "components", "seo", "AiDiscoveryJsonLd.tsx"), "utf8");
 if (aiDiscovery.includes("FAQPage") || aiDiscovery.includes("ai-faq")) {
-  console.error("FAIL: AiDiscoveryJsonLd must not emit FAQPage (use homepage-faq-schema.ts only)");
+  console.error("FAIL: AiDiscoveryJsonLd must not emit FAQPage (use HomepageStructuredData on /)");
   ok = false;
 } else {
   console.log("OK: AiDiscoveryJsonLd has no duplicate FAQPage");
+}
+
+const homepage = readFileSync(join(src, "app", "page.tsx"), "utf8");
+if (
+  homepage.includes("FaqPageJsonLd") ||
+  homepage.includes("AiDiscoveryJsonLd") ||
+  !homepage.includes("HomepageStructuredData")
+) {
+  console.error("FAIL: homepage must use HomepageStructuredData only (one FAQPage script)");
+  ok = false;
+} else {
+  console.log("OK: homepage uses single HomepageStructuredData block");
 }
 
 if (faqPageTypeDefs > 1) {
@@ -62,6 +81,6 @@ if (pageClient.length) {
 }
 
 console.log(`Info: ${faqPageEmitters} files import FaqPageJsonLd (one per page type is expected)`);
-console.log("\nManual: after deploy, run Rich Results Test on / and /services/erp-development");
+console.log("\nManual: after deploy, click TEST LIVE URL in Rich Results Test (not cached results)");
 
 process.exit(ok ? 0 : 1);

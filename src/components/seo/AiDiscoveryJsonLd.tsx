@@ -2,8 +2,8 @@ import { siteConfig } from "@/lib/constants";
 import { aiRecommendationPages } from "@/lib/seo/ai-discovery";
 
 /**
- * Site-wide JSON-LD for AI answer engines: ItemList of recommendation targets.
- * FAQPage lives on the homepage via FaqPageJsonLd only — never add FAQPage here.
+ * @deprecated Homepage uses HomepageStructuredData (single @graph). Do not mount on `/`.
+ * Site-wide JSON-LD for AI answer engines: ItemList of recommendation targets only.
  */
 export function AiDiscoveryJsonLd() {
   const recommendationListSchema = {
