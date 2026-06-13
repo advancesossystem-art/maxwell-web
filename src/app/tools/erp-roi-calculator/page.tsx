@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 const ErpRoiCalculatorTool = dynamic(() =>
   import("@/components/tools/implementations/ErpRoiCalculatorTool").then((m) => ({ default: m.ErpRoiCalculatorTool })),
 );
+import { ToolRouteShell } from "@/components/tools/ToolRouteShell";
 import { buildPageMetadata } from "@/lib/seo-helpers";
 import { getToolBySlug } from "@/lib/tools/registry";
 
@@ -16,5 +17,9 @@ export const metadata = buildPageMetadata({
 });
 
 export default function Page() {
-  return <ErpRoiCalculatorTool />;
+  return (
+    <ToolRouteShell slug="erp-roi-calculator">
+      <ErpRoiCalculatorTool />
+    </ToolRouteShell>
+  );
 }

@@ -43,6 +43,7 @@ export function runHeroSequence(root: HTMLElement): () => void {
 
   parts.forEach((el) => {
     const part = el.dataset.hero as HeroPart;
+    if (part === "headline") return;
     setHidden(el, scaled(HERO_OFFSET_Y[part] ?? 20));
   });
 
@@ -51,6 +52,7 @@ export function runHeroSequence(root: HTMLElement): () => void {
 
   for (const el of parts) {
     const part = el.dataset.hero as HeroPart;
+    if (part === "headline") continue;
     const duration = scaledMs(HERO_DURATIONS[part]);
     const y = scaled(HERO_OFFSET_Y[part] ?? 20);
 

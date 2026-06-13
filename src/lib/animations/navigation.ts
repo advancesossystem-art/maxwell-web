@@ -25,15 +25,7 @@ export function runNavbarEntrance(header: HTMLElement): () => void {
   const cleanups: Array<() => void> = [];
 
   if (logo) {
-    setHidden(logo, scaled(10));
-    logo.style.transform = "translate3d(0, -10px, 0)";
-    const anim = animate(logo, {
-      opacity: [0, 1],
-      y: [-10, 0],
-      duration: scaledMs(DURATION_MS.base),
-      ease: EASE_OUT_EXPO,
-    });
-    cleanups.push(() => anim.pause());
+    setVisible(logo);
   }
 
   if (links.length) {

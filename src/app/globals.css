@@ -561,15 +561,29 @@ summary:focus-visible,
 }
 
 /* —— Anime.js motion utilities (transform/opacity only) —— */
-.mx-reveal-pending,
-.mx-hero-pending,
-.mx-nav-pending {
+/* Above-the-fold hero headline + nav logo stay visible for LCP (enterprise Web Vitals). */
+.mx-reveal-pending {
   opacity: 0;
   transform: translate3d(0, 40px, 0);
 }
 
-.mx-hero-pending[data-hero="eyebrow"],
+.mx-hero-pending[data-hero="headline"],
 .mx-nav-pending[data-nav="logo"] {
+  opacity: 1;
+  transform: none;
+}
+
+.mx-hero-pending:not([data-hero="headline"]),
+.mx-nav-pending:not([data-nav="logo"]) {
+  opacity: 0;
+}
+
+.mx-hero-pending[data-hero="eyebrow"],
+.mx-nav-pending[data-nav="link"] {
+  transform: translate3d(0, 16px, 0);
+}
+
+.mx-hero-pending[data-hero="eyebrow"] {
   transform: translate3d(0, -10px, 0);
 }
 

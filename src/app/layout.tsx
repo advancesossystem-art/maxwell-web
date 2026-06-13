@@ -1,15 +1,19 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
+import Script from "next/script";
 import { Inter, Space_Grotesk } from "next/font/google";
 import { SiteChrome } from "@/components/layout/SiteChrome";
 import { DeferredClientChrome } from "@/components/layout/DeferredClientChrome";
 import { AnalyticsScripts } from "@/components/seo/AnalyticsScripts";
-import { ConsentModeDefaults } from "@/components/seo/ConsentModeDefaults";
 import { CookieConsentProvider } from "@/hooks/useCookieConsent";
 import { GlobalSiteJsonLd } from "@/components/seo/GlobalSiteJsonLd";
 import { buildSiteVerificationMetadata } from "@/lib/seo/site-verification";
 import { siteConfig } from "@/lib/constants";
 import "./globals.css";
+
+const gtmId = process.env.NEXT_PUBLIC_GTM_ID ?? "";
+const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "";
+const clarityId = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID ?? "";
+const metaPixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -23,8 +27,9 @@ const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-space-grotesk",
   display: "swap",
-  preload: true,
+  preload: false,
   adjustFontFallback: true,
+  weight: ["600", "700"],
 });
 
 const siteVerification = buildSiteVerificationMetadata();
@@ -46,17 +51,23 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const nonce = (await headers()).get("x-nonce") ?? undefined;
-
   return (
-    <html lang="en-IN" className={`${inter.variable} ${spaceGrotesk.variable}`}>
+    <html
+      lang="en-IN"
+      className={`${inter.variable} ${spaceGrotesk.variable}`}
+      data-gtm-id={gtmId || undefined}
+      data-ga-id={gaId || undefined}
+      data-clarity-id={clarityId || undefined}
+      data-meta-pixel-id={metaPixelId || undefined}
+    >
       <head>
-        <ConsentModeDefaults nonce={nonce} />
+        <Script src="/consent-defaults.js" strategy="beforeInteractive" />
+        <Script src="/analytics-loader.js" strategy="afterInteractive" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.clarity.ms" />
         <link rel="preconnect" href="https://assets.calendly.com" />
@@ -67,7 +78,7 @@ export default async function RootLayout({
       <body className="min-h-screen bg-background font-sans text-foreground antialiased">
         <CookieConsentProvider>
           <GlobalSiteJsonLd />
-          <AnalyticsScripts nonce={nonce} />
+          <AnalyticsScripts />
           <DeferredClientChrome>
             <SiteChrome>{children}</SiteChrome>
           </DeferredClientChrome>

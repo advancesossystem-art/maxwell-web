@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 const SoftwareCostCalculatorTool = dynamic(() =>
   import("@/components/tools/implementations/SoftwareCostCalculatorTool").then((m) => ({ default: m.SoftwareCostCalculatorTool })),
 );
+import { ToolRouteShell } from "@/components/tools/ToolRouteShell";
 import { buildPageMetadata } from "@/lib/seo-helpers";
 import { getToolBySlug } from "@/lib/tools/registry";
 
@@ -16,5 +17,9 @@ export const metadata = buildPageMetadata({
 });
 
 export default function Page() {
-  return <SoftwareCostCalculatorTool />;
+  return (
+    <ToolRouteShell slug="software-cost-calculator">
+      <SoftwareCostCalculatorTool />
+    </ToolRouteShell>
+  );
 }

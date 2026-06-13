@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 const ProposalGeneratorTool = dynamic(() =>
   import("@/components/tools/implementations/ProposalGeneratorTool").then((m) => ({ default: m.ProposalGeneratorTool })),
 );
+import { ToolRouteShell } from "@/components/tools/ToolRouteShell";
 import { buildPageMetadata } from "@/lib/seo-helpers";
 import { getToolBySlug } from "@/lib/tools/registry";
 
@@ -16,5 +17,9 @@ export const metadata = buildPageMetadata({
 });
 
 export default function Page() {
-  return <ProposalGeneratorTool />;
+  return (
+    <ToolRouteShell slug="proposal-generator">
+      <ProposalGeneratorTool />
+    </ToolRouteShell>
+  );
 }

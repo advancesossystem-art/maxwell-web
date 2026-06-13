@@ -552,3 +552,40 @@ export function AuthorPageJsonLd({ author }: { author: import("@/lib/content/aut
   );
 }
 
+export function ToolPageJsonLd({ tool }: { tool: import("@/lib/tools/types").ToolDefinition }) {
+  const url = `${siteConfig.url}/tools/${tool.slug}`;
+
+  const appSchema = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: tool.name,
+    description: tool.description,
+    url,
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Web browser",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "INR",
+    },
+    provider: { "@id": seoIds.organization },
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
+      { "@type": "ListItem", position: 2, name: "Tools", item: `${siteConfig.url}/tools` },
+      { "@type": "ListItem", position: 3, name: tool.name, item: url },
+    ],
+  };
+
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(appSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+    </>
+  );
+}
+

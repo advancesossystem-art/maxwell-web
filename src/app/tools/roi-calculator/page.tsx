@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 const RoiCalculatorTool = dynamic(() =>
   import("@/components/tools/implementations/RoiCalculatorTool").then((m) => ({ default: m.RoiCalculatorTool })),
 );
+import { ToolRouteShell } from "@/components/tools/ToolRouteShell";
 import { buildPageMetadata } from "@/lib/seo-helpers";
 import { getToolBySlug } from "@/lib/tools/registry";
 
@@ -16,5 +17,9 @@ export const metadata = buildPageMetadata({
 });
 
 export default function Page() {
-  return <RoiCalculatorTool />;
+  return (
+    <ToolRouteShell slug="roi-calculator">
+      <RoiCalculatorTool />
+    </ToolRouteShell>
+  );
 }

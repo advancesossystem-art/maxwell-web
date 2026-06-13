@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 const TechStackAdvisorTool = dynamic(() =>
   import("@/components/tools/implementations/TechStackAdvisorTool").then((m) => ({ default: m.TechStackAdvisorTool })),
 );
+import { ToolRouteShell } from "@/components/tools/ToolRouteShell";
 import { buildPageMetadata } from "@/lib/seo-helpers";
 import { getToolBySlug } from "@/lib/tools/registry";
 
@@ -16,5 +17,9 @@ export const metadata = buildPageMetadata({
 });
 
 export default function Page() {
-  return <TechStackAdvisorTool />;
+  return (
+    <ToolRouteShell slug="tech-stack-advisor">
+      <TechStackAdvisorTool />
+    </ToolRouteShell>
+  );
 }

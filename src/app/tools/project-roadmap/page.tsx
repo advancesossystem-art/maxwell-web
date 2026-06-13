@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 const ProjectRoadmapTool = dynamic(() =>
   import("@/components/tools/implementations/ProjectRoadmapTool").then((m) => ({ default: m.ProjectRoadmapTool })),
 );
+import { ToolRouteShell } from "@/components/tools/ToolRouteShell";
 import { buildPageMetadata } from "@/lib/seo-helpers";
 import { getToolBySlug } from "@/lib/tools/registry";
 
@@ -16,5 +17,9 @@ export const metadata = buildPageMetadata({
 });
 
 export default function Page() {
-  return <ProjectRoadmapTool />;
+  return (
+    <ToolRouteShell slug="project-roadmap">
+      <ProjectRoadmapTool />
+    </ToolRouteShell>
+  );
 }

@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 const RfpBuilderTool = dynamic(() =>
   import("@/components/tools/implementations/RfpBuilderTool").then((m) => ({ default: m.RfpBuilderTool })),
 );
+import { ToolRouteShell } from "@/components/tools/ToolRouteShell";
 import { buildPageMetadata } from "@/lib/seo-helpers";
 import { getToolBySlug } from "@/lib/tools/registry";
 
@@ -16,5 +17,9 @@ export const metadata = buildPageMetadata({
 });
 
 export default function Page() {
-  return <RfpBuilderTool />;
+  return (
+    <ToolRouteShell slug="rfp-builder">
+      <RfpBuilderTool />
+    </ToolRouteShell>
+  );
 }

@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+import { ToolRouteShell } from "@/components/tools/ToolRouteShell";
 import { buildPageMetadata } from "@/lib/seo-helpers";
 import { getToolBySlug } from "@/lib/tools/registry";
 
@@ -16,5 +17,9 @@ export const metadata = buildPageMetadata({
 });
 
 export default function Page() {
-  return <TeamSizeCalculatorTool />;
+  return (
+    <ToolRouteShell slug="team-size-calculator">
+      <TeamSizeCalculatorTool />
+    </ToolRouteShell>
+  );
 }

@@ -157,6 +157,18 @@ export function proxy(request: NextRequest) {
   response.headers.set("Cross-Origin-Opener-Policy", "same-origin");
   response.headers.set("Cross-Origin-Resource-Policy", "same-site");
 
+  if (
+    request.method === "GET" &&
+    !pathname.startsWith("/api/") &&
+    !pathname.startsWith("/admin") &&
+    !pathname.startsWith("/portal")
+  ) {
+    response.headers.set(
+      "Cache-Control",
+      "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400",
+    );
+  }
+
   if (pathname.startsWith("/api/")) {
     response.headers.set("Cache-Control", "no-store, no-cache, must-revalidate, private");
     response.headers.set("Pragma", "no-cache");
