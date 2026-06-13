@@ -16,7 +16,7 @@ function TrustIcon({ type }: { type: (typeof trustIcons)[number] }) {
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M15.59 14.37a6 6 0 0 1-7.02-7.02M18 10l-1.5 -7 -7 L8 4.5"
+        d="M15.59 14.37a6 6 0 0 1-7.02 7.02M15.59 14.37l-2.121-2.122m0 0L8.25 16.5m5.218-4.252L12 9.75"
       />
     ),
     users: (
