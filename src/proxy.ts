@@ -16,7 +16,7 @@ function buildCsp(nonce: string): string {
   const devEval = isProduction ? "" : " 'unsafe-eval'";
   return [
     "default-src 'self'",
-    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'${devEval} https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net https://www.clarity.ms https://assets.calendly.com`,
+    `script-src 'self' 'nonce-${nonce}'${devEval} https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net https://www.clarity.ms https://assets.calendly.com`,
     `style-src 'self' 'nonce-${nonce}' https://assets.calendly.com`,
     "img-src 'self' data: blob: https:",
     "font-src 'self' data:",
@@ -142,6 +142,8 @@ export function proxy(request: NextRequest) {
   const csp = buildCsp(nonce);
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set("x-nonce", nonce);
+  // Next.js reads nonce from this request header to stamp framework inline scripts.
+  requestHeaders.set("Content-Security-Policy", csp);
 
   const response = NextResponse.next({
     request: { headers: requestHeaders },
