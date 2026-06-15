@@ -10,6 +10,7 @@ export function ConsentModeDefaults({ nonce }: { nonce?: string }) {
         __html: `
 window.dataLayer=window.dataLayer||[];
 function gtag(){dataLayer.push(arguments);}
+window.gtag=gtag;
 gtag('consent','default',{
   ad_storage:'denied',
   ad_user_data:'denied',
@@ -20,6 +21,8 @@ gtag('consent','default',{
   security_storage:'granted',
   wait_for_update:500
 });
+gtag('set','url_passthrough',true);
+gtag('set','ads_data_redaction',true);
 `,
       }}
     />

@@ -1,6 +1,8 @@
 "use client";
 
 import Script from "next/script";
+import { useEffect } from "react";
+import { applyGoogleConsent, readStoredConsent } from "@/lib/analytics/google-consent";
 import { useCookieConsent } from "@/hooks/useCookieConsent";
 
 const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
@@ -8,32 +10,38 @@ const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 const metaPixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID;
 const clarityId = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID;
 
-const consentGranted = `
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('consent', 'update', {
-    ad_storage: 'granted',
-    ad_user_data: 'granted',
-    ad_personalization: 'granted',
-    analytics_storage: 'granted',
-    functionality_storage: 'granted',
-    personalization_storage: 'granted'
-  });
-`;
-
+/**
+ * Always load GTM/GA4 (Consent Mode v2 advanced).
+ * Default consent is denied in ConsentModeDefaults — tags still send cookieless pings.
+ * Consent banner updates storage; we apply granted/denied after tags load.
+ */
 export function AnalyticsScripts({ nonce }: { nonce?: string }) {
   const { consent } = useCookieConsent();
 
-  if (consent !== "accepted") return null;
+  useEffect(() => {
+    if (consent === "accepted") {
+      applyGoogleConsent(true);
+    } else if (consent === "declined") {
+      applyGoogleConsent(false);
+    }
+  }, [consent]);
+
+  function onGoogleTagsReady() {
+    const stored = readStoredConsent();
+    if (stored === "accepted") {
+      applyGoogleConsent(true);
+    }
+  }
+
+  if (!gtmId && !gaId && !clarityId && !metaPixelId) {
+    return null;
+  }
 
   return (
     <>
       {gtmId && (
         <>
-          <Script id="gtm-consent-update" strategy="lazyOnload" nonce={nonce}>
-            {consentGranted}
-          </Script>
-          <Script id="gtm" strategy="lazyOnload" nonce={nonce}>{`
+          <Script id="gtm" strategy="afterInteractive" nonce={nonce} onReady={onGoogleTagsReady}>{`
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
             j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -51,26 +59,27 @@ export function AnalyticsScripts({ nonce }: { nonce?: string }) {
           </noscript>
         </>
       )}
+
       {gaId && !gtmId && (
         <>
-          <Script id="ga4-consent-update" strategy="lazyOnload" nonce={nonce}>
-            {consentGranted}
-          </Script>
           <Script
             src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-            strategy="lazyOnload"
+            strategy="afterInteractive"
             nonce={nonce}
+            onReady={onGoogleTagsReady}
           />
-          <Script id="ga4" strategy="lazyOnload" nonce={nonce}>{`
+          <Script id="ga4" strategy="afterInteractive" nonce={nonce}>{`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
+            window.gtag = gtag;
             gtag('js', new Date());
-            gtag('config', '${gaId}');
+            gtag('config', '${gaId}', { send_page_view: true });
           `}</Script>
         </>
       )}
-      {clarityId && (
-        <Script id="ms-clarity" strategy="lazyOnload" nonce={nonce}>{`
+
+      {clarityId && consent === "accepted" && (
+        <Script id="ms-clarity" strategy="afterInteractive" nonce={nonce}>{`
           (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
             t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
@@ -78,8 +87,9 @@ export function AnalyticsScripts({ nonce }: { nonce?: string }) {
           })(window, document, "clarity", "script", "${clarityId}");
         `}</Script>
       )}
-      {metaPixelId && (
-        <Script id="meta-pixel" strategy="lazyOnload" nonce={nonce}>{`
+
+      {metaPixelId && consent === "accepted" && (
+        <Script id="meta-pixel" strategy="afterInteractive" nonce={nonce}>{`
           !function(f,b,e,v,n,t,s)
           {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
           n.callMethod.apply(n,arguments):n.queue.push(arguments)};

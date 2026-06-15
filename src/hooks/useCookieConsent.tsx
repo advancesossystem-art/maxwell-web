@@ -1,8 +1,10 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
-
-const STORAGE_KEY = "maxwell-cookie-consent";
+import {
+  applyGoogleConsent,
+  COOKIE_CONSENT_STORAGE_KEY,
+} from "@/lib/analytics/google-consent";
 
 export type CookieConsentChoice = "accepted" | "declined" | null;
 
@@ -20,27 +22,17 @@ export function CookieConsentProvider({ children }: { children: ReactNode }) {
   const [consent, setConsentState] = useState<CookieConsentChoice>(null);
 
   useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY);
+    const stored = localStorage.getItem(COOKIE_CONSENT_STORAGE_KEY);
     if (stored === "accepted" || stored === "declined") {
       setConsentState(stored);
+      applyGoogleConsent(stored === "accepted");
     }
   }, []);
 
   function setConsent(choice: "accepted" | "declined") {
-    localStorage.setItem(STORAGE_KEY, choice);
+    localStorage.setItem(COOKIE_CONSENT_STORAGE_KEY, choice);
     setConsentState(choice);
-    if (typeof window !== "undefined") {
-      window.dataLayer = window.dataLayer ?? [];
-      window.dataLayer.push({ event: "cookie_consent", consent: choice });
-      if (typeof window.gtag === "function") {
-        window.gtag("consent", "update", {
-          ad_storage: choice === "accepted" ? "granted" : "denied",
-          ad_user_data: choice === "accepted" ? "granted" : "denied",
-          ad_personalization: choice === "accepted" ? "granted" : "denied",
-          analytics_storage: choice === "accepted" ? "granted" : "denied",
-        });
-      }
-    }
+    applyGoogleConsent(choice === "accepted");
   }
 
   return (
