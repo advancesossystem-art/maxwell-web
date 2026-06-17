@@ -7,9 +7,11 @@ const columns = [
   {
     title: "Services",
     links: [
+      { label: "Website Development", href: "/services/website-development" },
       { label: "Custom Software", href: "/services/custom-software-development" },
       { label: "ERP Development", href: "/services/erp-development" },
       { label: "CRM Development", href: "/services/crm-development" },
+      { label: "AI Solutions", href: "/services/ai-solutions" },
       { label: "Mobile Apps", href: "/services/mobile-app-development" },
     ],
   },
@@ -62,6 +64,11 @@ export function Footer() {
             <BrandLogo size="footer" href="/" />
             <p className="mt-3 max-w-xs text-sm leading-snug text-[var(--v6-text-secondary)]">
               {siteConfig.tagline}. Custom software and accountable delivery for growing businesses.
+            </p>
+            <p className="mt-3 max-w-sm text-sm leading-snug text-[var(--v6-text-secondary)]">
+              {siteConfig.legalName}
+              <br />
+              {siteConfig.address}
             </p>
             <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm text-[var(--v6-text-secondary)]">
               <a href={`mailto:${siteConfig.email}`} className="hover:text-[var(--v6-text)]">

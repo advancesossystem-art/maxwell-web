@@ -24,6 +24,33 @@ const nextConfig: NextConfig = {
         destination: "/services/custom-software-development",
         permanent: true,
       },
+      { source: "/services/web-development", destination: "/services/website-development", permanent: true },
+      { source: "/services/ai-development", destination: "/services/ai-solutions", permanent: true },
+      {
+        source: "/services/software-development-mumbai",
+        destination: "/locations/india/mumbai",
+        permanent: true,
+      },
+      {
+        source: "/services/software-development-delhi",
+        destination: "/locations/india/delhi",
+        permanent: true,
+      },
+      {
+        source: "/services/software-development-bangalore",
+        destination: "/locations/india/bengaluru",
+        permanent: true,
+      },
+      {
+        source: "/services/software-development-hyderabad",
+        destination: "/locations/india/hyderabad",
+        permanent: true,
+      },
+      {
+        source: "/services/software-development-pune",
+        destination: "/locations/india/pune",
+        permanent: true,
+      },
       { source: "/case-studies/crm-implementation", destination: "/case-studies/retail-analytics", permanent: true },
       { source: "/case-studies/textile-management-system", destination: "/case-studies/manufacturing-erp", permanent: true },
       { source: "/case-studies/business-automation", destination: "/case-studies/saas-workforce-management", permanent: true },
