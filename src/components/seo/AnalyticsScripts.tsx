@@ -3,17 +3,21 @@
 import Script from "next/script";
 import { useEffect } from "react";
 import { applyGoogleConsent, readStoredConsent } from "@/lib/analytics/google-consent";
+import {
+  GA_MEASUREMENT_ID,
+  GTM_ID,
+  USE_DIRECT_GA4,
+  USE_GTM,
+} from "@/lib/analytics/config";
 import { useCookieConsent } from "@/hooks/useCookieConsent";
 
-const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
-const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 const metaPixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID;
 const clarityId = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID;
 
 /**
- * Always load GTM/GA4 (Consent Mode v2 advanced).
- * Default consent is denied in ConsentModeDefaults — tags still send cookieless pings.
- * Consent banner updates storage; we apply granted/denied after tags load.
+ * Google Analytics 4 via GTM (preferred) or direct gtag.js.
+ * Consent Mode v2 defaults run in <head> via ConsentModeDefaults.
+ * Tags always load; the banner grants or denies analytics_storage.
  */
 export function AnalyticsScripts({ nonce }: { nonce?: string }) {
   const { consent } = useCookieConsent();
@@ -33,37 +37,26 @@ export function AnalyticsScripts({ nonce }: { nonce?: string }) {
     }
   }
 
-  if (!gtmId && !gaId && !clarityId && !metaPixelId) {
+  if (!USE_GTM && !USE_DIRECT_GA4 && !clarityId && !metaPixelId) {
     return null;
   }
 
   return (
     <>
-      {gtmId && (
-        <>
-          <Script id="gtm" strategy="afterInteractive" nonce={nonce} onReady={onGoogleTagsReady}>{`
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','${gtmId}');
-          `}</Script>
-          <noscript>
-            <iframe
-              title="Google Tag Manager"
-              src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
-              height="0"
-              width="0"
-              style={{ display: "none", visibility: "hidden" }}
-            />
-          </noscript>
-        </>
+      {USE_GTM && (
+        <Script id="gtm" strategy="afterInteractive" nonce={nonce} onReady={onGoogleTagsReady}>{`
+          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','${GTM_ID}');
+        `}</Script>
       )}
 
-      {gaId && !gtmId && (
+      {USE_DIRECT_GA4 && (
         <>
           <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
             strategy="afterInteractive"
             nonce={nonce}
             onReady={onGoogleTagsReady}
@@ -73,7 +66,10 @@ export function AnalyticsScripts({ nonce }: { nonce?: string }) {
             function gtag(){dataLayer.push(arguments);}
             window.gtag = gtag;
             gtag('js', new Date());
-            gtag('config', '${gaId}', { send_page_view: true });
+            gtag('config', '${GA_MEASUREMENT_ID}', {
+              send_page_view: true,
+              anonymize_ip: false
+            });
           `}</Script>
         </>
       )}

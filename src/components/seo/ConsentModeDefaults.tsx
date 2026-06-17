@@ -1,6 +1,6 @@
 /**
- * GTM Consent Mode v2 — default denied state in <head> before any marketing tags.
- * Tags load only after cookie accept via AnalyticsScripts.
+ * GTM Consent Mode v2 — non-essential storage denied until the visitor chooses.
+ * GTM still loads so Google can receive consent-aware / cookieless pings.
  */
 export function ConsentModeDefaults({ nonce }: { nonce?: string }) {
   return (

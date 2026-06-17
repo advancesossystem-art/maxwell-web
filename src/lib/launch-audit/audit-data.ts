@@ -99,7 +99,7 @@ export function buildAuditChecks(): AuditCheck[] {
     { id: "sec-honeypot", category: "Security", label: "Honeypot field", status: "pass", detail: "website_url field rejects bots" },
     { id: "sec-portal", category: "Security", label: "Portal production auth", status: "warn", detail: "Demo sessionStorage — replace before enterprise clients" },
     { id: "legal-pages", category: "Legal", label: "Legal document suite", status: "pass", detail: "5 policies + redirects from legacy URLs" },
-    { id: "legal-cookie", category: "Legal", label: "Cookie consent banner", status: "pass", detail: "Accept/decline with localStorage" },
+    { id: "legal-cookie", category: "Legal", label: "Cookie consent banner", status: "pass", detail: "Accept/reject all — UK/EU GDPR" },
     { id: "analytics-dl", category: "Analytics", label: "dataLayer events", status: "pass", detail: "Leads, tools, portal events wired" },
     { id: "analytics-gtm", category: "Analytics", label: "GTM / GA4 scripts", status: hasGtm || hasGa ? "pass" : "pending", detail: hasGtm || hasGa ? "IDs configured" : "Set NEXT_PUBLIC_GTM_ID or GA_MEASUREMENT_ID" },
     { id: "analytics-meta", category: "Analytics", label: "Meta Pixel", status: process.env.NEXT_PUBLIC_META_PIXEL_ID ? "pass" : "pending", detail: "Optional NEXT_PUBLIC_META_PIXEL_ID" },

@@ -59,11 +59,11 @@ export const cookieSections = [
   },
   {
     title: "Cookies We Use",
-    body: `Essential cookies (session, security), analytics cookies (Google Analytics / GTM when enabled), and preference cookies (cookie consent choice, portal dark mode in local storage).`,
+    body: `Essential cookies (session, security), analytics cookies (Google Analytics / GTM when you accept), and preference cookies (your cookie choice, portal dark mode in local storage).`,
   },
   {
     title: "Managing Cookies",
-    body: `You can accept or decline non-essential cookies via our banner. Browser settings can block cookies; some features may not function.`,
+    body: `Use the cookie banner to accept or reject non-essential cookies. You can also control cookies through your browser settings. UK and EU visitors may withdraw consent at any time by clearing site data or blocking cookies.`,
   },
   {
     title: "Third Parties",

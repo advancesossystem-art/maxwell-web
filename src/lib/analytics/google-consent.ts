@@ -1,4 +1,4 @@
-/** Shared Google Consent Mode v2 helpers — used by banner + AnalyticsScripts */
+/** Google Consent Mode v2 — used by cookie banner + AnalyticsScripts */
 
 export const COOKIE_CONSENT_STORAGE_KEY = "maxwell-cookie-consent";
 

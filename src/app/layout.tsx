@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
+import { Suspense } from "react";
 import { Inter, Space_Grotesk } from "next/font/google";
 import { SiteChrome } from "@/components/layout/SiteChrome";
 import { DeferredClientChrome } from "@/components/layout/DeferredClientChrome";
 import { AnalyticsScripts } from "@/components/seo/AnalyticsScripts";
 import { ConsentModeDefaults } from "@/components/seo/ConsentModeDefaults";
+import { GaRouteTracker } from "@/components/seo/GaRouteTracker";
+import { GtmNoScript } from "@/components/seo/GtmNoScript";
 import { CookieConsentProvider } from "@/hooks/useCookieConsent";
 import { GlobalSiteJsonLd } from "@/components/seo/GlobalSiteJsonLd";
 import { buildSiteVerificationMetadata } from "@/lib/seo/site-verification";
@@ -66,9 +69,13 @@ export default async function RootLayout({
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" title="Maxwell Electrodeal Blog RSS" />
       </head>
       <body className="min-h-screen bg-background font-sans text-foreground antialiased">
+        <GtmNoScript />
         <CookieConsentProvider>
           <GlobalSiteJsonLd />
           <AnalyticsScripts nonce={nonce} />
+          <Suspense fallback={null}>
+            <GaRouteTracker />
+          </Suspense>
           <DeferredClientChrome>
             <SiteChrome>{children}</SiteChrome>
           </DeferredClientChrome>
