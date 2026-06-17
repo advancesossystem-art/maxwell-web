@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "test:email": "node scripts/test-gmail.mjs",
-    "verify:seo": "node scripts/verify-seo.mjs"
+    "verify:seo": "node scripts/verify-seo.mjs",
+    "verify:live": "node scripts/verify-live-seo.mjs"
   },
   "dependencies": {
     "@upstash/ratelimit": "^2.0.8",
