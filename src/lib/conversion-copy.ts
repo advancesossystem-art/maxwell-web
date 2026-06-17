@@ -26,7 +26,7 @@ export const CONVERSION_ROUTES = {
   consultation: "/book-consultation",
   estimate: "/get-estimate",
   caseStudies: "/case-studies",
-  discovery: "/discovery-call",
+  discovery: "/book-consultation",
   contact: "/contact",
   work: "/work",
   services: "/services",

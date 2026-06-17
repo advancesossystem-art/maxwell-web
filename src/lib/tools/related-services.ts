@@ -27,7 +27,7 @@ export const toolRelatedLinks: Record<string, ToolRelatedLink[]> = {
     { href: "/tools/ai-readiness-assessment", label: "AI Readiness Assessment" },
     { href: "/services/custom-software-development", label: "Custom Software Development" },
     { href: "/resources", label: "Resource Center" },
-    { href: "/discovery-call", label: "Discovery Call" },
+    { href: "/book-consultation", label: "Book Consultation" },
   ],
   "roi-calculator": [
     { href: "/services/ai-solutions", label: "AI & Automation Solutions" },

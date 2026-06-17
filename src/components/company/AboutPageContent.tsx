@@ -4,10 +4,9 @@ import { useState } from "react";
 import Link from "next/link";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { CompanyCTA } from "@/components/company/CompanyCTA";
-import { CompanyPageHero } from "@/components/company/CompanyPageHero";
 import { PageSection } from "@/components/design/PageSection";
-import { CompanyStatsBar, TrustMetricsGrid } from "@/components/company/TrustMetrics";
 import { CertificationGrid } from "@/components/trust/CertificationGrid";
+import { TrustMetricsGrid } from "@/components/company/TrustMetrics";
 import { ClientLogoCloud } from "@/components/trust/ClientLogoCloud";
 import { CompanyTimeline, GrowthVisualization } from "@/components/company/CompanyTimeline";
 import { TechEcosystemDiagram, GlobalDeliveryMap } from "@/components/company/CompanyVisuals";
@@ -25,14 +24,6 @@ export function AboutPageContent() {
 
   return (
     <>
-      <CompanyPageHero
-        breadcrumb={[{ label: "About" }]}
-        eyebrow="About Us"
-        title={companyStory.headline}
-        description={`${siteConfig.legalName} — engineering digital power with precision since 2018.`}
-        below={<CompanyStatsBar />}
-      />
-
       <PageSection compact>
         <ClientLogoCloud mode="placeholder" />
       </PageSection>

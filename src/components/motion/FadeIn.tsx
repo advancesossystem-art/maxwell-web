@@ -52,12 +52,18 @@ export function FadeIn({
   duration?: number;
   y?: number;
 }) {
+  const [mounted, setMounted] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const reduce = usePrefersReducedMotion();
   const transformEnabled = useMotionTransformEnabled();
   const offsetY = reduce || !transformEnabled ? 0 : y;
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
     const el = ref.current;
     if (!el || reduce) return;
     return observeReveal(el, {
@@ -65,13 +71,14 @@ export function FadeIn({
       duration: duration * 1000,
       y: offsetY,
     });
-  }, [reduce, delay, duration, offsetY]);
+  }, [mounted, reduce, delay, duration, offsetY]);
+
+  if (!mounted) {
+    return <div className={cn("min-w-0", className)}>{children}</div>;
+  }
 
   return (
-    <div
-      ref={ref}
-      className={cn("min-w-0", !reduce && offsetY > 0 && "mx-reveal-pending", className)}
-    >
+    <div ref={ref} className={cn("min-w-0", className)}>
       {children}
     </div>
   );

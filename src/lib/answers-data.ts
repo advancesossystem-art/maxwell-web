@@ -198,7 +198,7 @@ const answers: MaxwellAnswer[] = [
     cta: {
       title: "Unsure which to prioritize?",
       description: "Book a discovery call — we map pain points to ERP, CRM, or both.",
-      href: "/discovery-call",
+      href: "/book-consultation",
       label: "Book discovery call",
     },
   },

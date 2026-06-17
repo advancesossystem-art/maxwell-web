@@ -3,15 +3,12 @@
 import { useState } from "react";
 import { PageSection, SectionHeader } from "@/components/design/PageSection";
 import { CompanyCTA } from "@/components/company/CompanyCTA";
-import { CompanyPageHero } from "@/components/company/CompanyPageHero";
 import { TeamCard, HiringBanner } from "@/components/company/TeamCard";
 import { teamMembers, teamDepartments, teamDepartmentHighlights } from "@/lib/company-data";
 import type { TeamDepartment } from "@/lib/company-data";
 import { FilterPill } from "@/components/design/FilterPill";
-import { AccentGradient, H3, Text } from "@/components/design/typography";
+import { H3, Text } from "@/components/design/typography";
 import { Card } from "@/components/design/Card";
-import { TrustStrip } from "@/components/trust/TrustStrip";
-import { companyMetricDisplay } from "@/lib/company-metrics";
 import { technologyExpertise } from "@/lib/company-data";
 
 export function TeamPageContent() {
@@ -20,18 +17,6 @@ export function TeamPageContent() {
 
   return (
     <>
-      <CompanyPageHero
-        breadcrumb={[{ label: "About", href: "/about" }, { label: "Team" }]}
-        eyebrow="Our Team"
-        title={
-          <>
-            The people behind <AccentGradient>your delivery</AccentGradient>
-          </>
-        }
-        description={`${companyMetricDisplay.expertEngineers} engineers, designers, and project leaders with documented enterprise delivery experience.`}
-        below={<TrustStrip compact />}
-      />
-
       <PageSection tone="elevated">
         <SectionHeader title="Practice leads" description="Accountability by discipline—not a single generic delivery pool." />
         <div className="grid gap-4 sm:grid-cols-2">

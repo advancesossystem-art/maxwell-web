@@ -1,15 +1,8 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
 import { Suspense } from "react";
 import { Inter, Space_Grotesk } from "next/font/google";
-import { SiteChrome } from "@/components/layout/SiteChrome";
-import { DeferredClientChrome } from "@/components/layout/DeferredClientChrome";
-import { AnalyticsScripts } from "@/components/seo/AnalyticsScripts";
-import { ConsentModeDefaults } from "@/components/seo/ConsentModeDefaults";
-import { GaRouteTracker } from "@/components/seo/GaRouteTracker";
+import { LayoutBody } from "@/components/layout/LayoutBody";
 import { GtmNoScript } from "@/components/seo/GtmNoScript";
-import { CookieConsentProvider } from "@/hooks/useCookieConsent";
-import { GlobalSiteJsonLd } from "@/components/seo/GlobalSiteJsonLd";
 import { buildSiteVerificationMetadata } from "@/lib/seo/site-verification";
 import { siteConfig } from "@/lib/constants";
 import { homeSeo, siteTitleTemplate } from "@/lib/seo/config";
@@ -53,19 +46,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const nonce = (await headers()).get("x-nonce") ?? undefined;
-
   return (
-    <html lang="en-IN" className={`${inter.variable} ${spaceGrotesk.variable}`} nonce={nonce}>
+    <html lang="en-IN" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <head>
-        <ConsentModeDefaults nonce={nonce} />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <script src="/consent-defaults.js" defer />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.clarity.ms" />
         <link rel="preconnect" href="https://assets.calendly.com" />
@@ -75,16 +64,7 @@ export default async function RootLayout({
       </head>
       <body className="min-h-screen bg-background font-sans text-foreground antialiased">
         <GtmNoScript />
-        <CookieConsentProvider>
-          <GlobalSiteJsonLd />
-          <AnalyticsScripts nonce={nonce} />
-          <Suspense fallback={null}>
-            <GaRouteTracker />
-          </Suspense>
-          <DeferredClientChrome>
-            <SiteChrome>{children}</SiteChrome>
-          </DeferredClientChrome>
-        </CookieConsentProvider>
+        <LayoutBody>{children}</LayoutBody>
       </body>
     </html>
   );

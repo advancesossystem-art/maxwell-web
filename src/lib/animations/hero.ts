@@ -5,7 +5,6 @@ import {
   prefersReducedMotion,
   scaled,
   scaledMs,
-  setHidden,
   setVisible,
 } from "./core";
 
@@ -41,12 +40,7 @@ export function runHeroSequence(root: HTMLElement): () => void {
     return () => {};
   }
 
-  parts.forEach((el) => {
-    const part = el.dataset.hero as HeroPart;
-    if (part === "headline") return;
-    setHidden(el, scaled(HERO_OFFSET_Y[part] ?? 20));
-  });
-
+  // Content stays visible for SSR/crawlers; animate as progressive enhancement only.
   const tl = createTimeline({ defaults: { ease: EASE_OUT_EXPO } });
   let cursor = 0;
 
@@ -59,8 +53,7 @@ export function runHeroSequence(root: HTMLElement): () => void {
     tl.add(
       el,
       {
-        opacity: [0, 1],
-        y: [y, 0],
+        y: [y * 0.35, 0],
         duration,
       },
       cursor,

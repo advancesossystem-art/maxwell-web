@@ -1,6 +1,9 @@
 import { AboutPageContent } from "@/components/company/AboutPageContent";
+import { CompanyPageHero } from "@/components/company/CompanyPageHero";
 import { CompanyPageJsonLd } from "@/components/seo/JsonLd";
+import { CompanyStatsBar } from "@/components/company/TrustMetrics";
 import { createMetadata } from "@/lib/metadata";
+import { companyStory } from "@/lib/company-data";
 import { siteConfig } from "@/lib/constants";
 
 export const metadata = createMetadata({
@@ -13,6 +16,13 @@ export default function AboutPage() {
   return (
     <>
       <CompanyPageJsonLd pageType="about" path="/about" title="About Us" />
+      <CompanyPageHero
+        breadcrumb={[{ label: "About" }]}
+        eyebrow="About Us"
+        title={companyStory.headline}
+        description={`${siteConfig.legalName} — engineering digital power with precision since 2018.`}
+        below={<CompanyStatsBar />}
+      />
       <AboutPageContent />
     </>
   );

@@ -1,9 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "@/components/ui/Button";
 import { LeadContactForm } from "@/components/leads/LeadContactForm";
-import { PageHero } from "@/components/design/PageHero";
 import { PageSection } from "@/components/design/PageSection";
 import { Card } from "@/components/design/Card";
 import { AccentGradient, H2, H3, Caption } from "@/components/design/typography";
@@ -18,7 +16,6 @@ import {
   WHATSAPP_NUMBER,
 } from "@/lib/leads-data";
 import { trackCTAClick } from "@/components/leads/LeadAnalytics";
-import { ArrowRight } from "@/components/ui/Icons";
 
 const contactOptions = [
   {
@@ -42,7 +39,7 @@ const contactOptions = [
   {
     title: "Schedule Meeting",
     description: "Book a free discovery call",
-    href: "/discovery-call",
+    href: "/book-consultation",
     external: false,
   },
 ];
@@ -54,24 +51,6 @@ export function ContactPageContent() {
 
   return (
     <>
-      <PageHero
-        eyebrow="Contact"
-        title={
-          <>
-            Start with a <AccentGradient>clear conversation</AccentGradient>
-          </>
-        }
-        description="Tell us what is slowing the business down. We respond within one business day with a practical next step."
-      >
-        <Button href="/book-consultation" size="lg">
-          Book Consultation
-          <ArrowRight />
-        </Button>
-        <Button href="/get-estimate" size="lg" variant="outline">
-          Get Project Estimate
-        </Button>
-      </PageHero>
-
       <PageSection>
         <H2>How would you like to connect?</H2>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

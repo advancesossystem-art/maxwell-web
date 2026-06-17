@@ -55,11 +55,11 @@ export function Hero() {
       <div className="v6-container">
         <HeroSequence className="grid items-center gap-8 lg:grid-cols-2 lg:gap-10">
           <div>
-            <p className="v6-eyebrow-line v6-eyebrow mx-hero-pending" data-hero="eyebrow">
+            <p className="v6-eyebrow-line v6-eyebrow" data-hero="eyebrow">
               {homeHero.eyebrow}
             </p>
             <h1
-              className="v6-hero-title mt-4 text-balance mx-hero-pending"
+              className="v6-hero-title mt-4 text-balance"
               data-hero="headline"
               data-seo-speakable
             >
@@ -67,7 +67,7 @@ export function Hero() {
               <span className="v6-gradient-text">{homeHero.headlineLine2}</span>
             </h1>
             <p
-              className="v6-lead mt-4 max-w-2xl text-balance lg:max-w-none mx-hero-pending"
+              className="v6-lead mt-4 max-w-2xl text-balance lg:max-w-none"
               data-hero="description"
               data-seo-speakable
             >
@@ -93,7 +93,7 @@ export function Hero() {
             </p>
 
             <div
-              className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap mx-hero-pending"
+              className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap"
               data-hero="cta"
             >
               <SecondaryCTA
@@ -143,7 +143,7 @@ export function Hero() {
             </ul>
           </div>
 
-          <div className="relative lg:pl-4 mx-hero-pending" data-hero="visual">
+          <div className="relative lg:pl-4" data-hero="visual">
             <HeroEcosystemVisual />
           </div>
         </HeroSequence>

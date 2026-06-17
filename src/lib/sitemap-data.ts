@@ -18,12 +18,6 @@ import { compareSlugs, costSlugs } from "./seo/programmatic/build-pages";
 /** Hub routes listed in segment sitemaps — omit here to avoid cross-sitemap duplicates. */
 const staticPages = [
   "",
-  "/research",
-  "/knowledge-center",
-  "/answers",
-  "/founder-insights",
-  "/citation-guides",
-  "/project-gallery",
   "/videos",
   "/about",
   "/company",
@@ -38,7 +32,7 @@ const staticPages = [
   "/contact",
   "/get-estimate",
   "/project-calculator",
-  "/discovery-call",
+  "/book-consultation",
   "/book-consultation",
   "/privacy-policy",
   "/terms-of-service",

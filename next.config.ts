@@ -81,6 +81,7 @@ const nextConfig: NextConfig = {
       { source: "/erp-development-company-gujarat", destination: "/solutions/erp-development-company-gujarat", permanent: true },
       { source: "/vadodara", destination: "/locations/india/vadodara", permanent: true },
       { source: "/gujarat", destination: "/locations/india/gujarat", permanent: true },
+      { source: "/discovery-call", destination: "/book-consultation", permanent: true },
     ];
   },
 };
