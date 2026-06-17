@@ -497,4 +497,22 @@ export const homepageFaqs = [
       "Custom software, ERP, CRM, Next.js websites, Flutter/React Native mobile apps, AI and industrial computer vision (including PPE detection), SaaS platforms, cloud migration, digital transformation, and business automation.",
     category: "Services",
   },
+  {
+    question: "Do you develop custom ERP systems in India?",
+    answer:
+      "Yes. Maxwell Electrodeal builds custom ERP for Indian manufacturers and enterprises with GST/Tally integration, inventory, production, finance, and multi-location support. See /services/erp-development and /solutions/erp-development-company-gujarat.",
+    category: "ERP",
+  },
+  {
+    question: "Do you serve clients outside India?",
+    answer:
+      "Yes. We deliver for clients in the United States, United Kingdom, UAE, Canada, Australia, and other markets with English-first communication, milestone billing, and 100% IP ownership.",
+    category: "Global",
+  },
+  {
+    question: "How long does it take to build a custom web application?",
+    answer:
+      "Marketing sites and focused web apps often launch in 6–10 weeks. Larger platforms with integrations typically run 3–6 months with phased releases so you see value early.",
+    category: "Timeline",
+  },
 ] as const;

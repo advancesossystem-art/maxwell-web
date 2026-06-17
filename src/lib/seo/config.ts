@@ -96,25 +96,47 @@ export const indiaKeywords = [
 /** Live profiles for Knowledge Graph / sameAs signals. */
 export const socialProfiles: string[] = [
   "https://www.linkedin.com/company/maxwell-electrodeal-private-limited",
+  "https://www.linkedin.com/company/maxwellelectrodeal",
+  "https://twitter.com/MaxwellElectrodeal",
+  "https://www.facebook.com/maxwellelectrodeal",
   siteConfig.url,
 ];
 
 export const homeSeo = {
   title:
-    "Software Development Company India | Custom ERP, CRM, AI & Web Apps",
+    "Maxwell Electrodeal | Software Development Company India – ERP, CRM & AI",
   description:
-    "Maxwell Electrodeal is an India-based software development company serving Mumbai, Delhi, Bengaluru, Hyderabad, Pune, Chennai & nationwide. Custom ERP, CRM, websites, mobile apps & AI. GST-ready. HQ Vadodara, Gujarat.",
+    "Maxwell Electrodeal builds custom ERP, CRM, AI, web & mobile apps for businesses across India & globally. Based in Vadodara, Gujarat. Get a free quote today.",
+  keywords: [
+    "software development company India",
+    "custom ERP India",
+    "CRM software Vadodara",
+    "AI development India",
+    "web app development Gujarat",
+    "mobile app development India",
+    "IT company Vadodara",
+  ],
   path: "/",
 } as const;
+
+export const siteTitleTemplate = "%s | Maxwell Electrodeal – Software Company India";
 
 export function buildCanonicalUrl(path: string): string {
   const normalized = path.startsWith("/") ? path : `/${path}`;
   return `${siteConfig.url}${normalized === "/" ? "" : normalized}`;
 }
 
-/** Single English site — canonical only, no fake hreflang alternates. */
+/** Canonical + hreflang for India English and global English (same URL). */
 export function buildLanguageAlternates(path: string) {
-  return { canonical: buildCanonicalUrl(path) };
+  const canonical = buildCanonicalUrl(path);
+  return {
+    canonical,
+    languages: {
+      "en-IN": canonical,
+      en: canonical,
+      "x-default": canonical,
+    },
+  };
 }
 
 export const geoMetaOther = {

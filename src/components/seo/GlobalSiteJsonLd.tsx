@@ -2,28 +2,15 @@ import { siteConfig } from "@/lib/constants";
 import { businessAddress } from "@/lib/business-address";
 import { getAllServices } from "@/lib/services-data";
 import {
-  areaServedCountries,
   headquarters,
   seoIds,
   socialProfiles,
 } from "@/lib/seo/config";
 import { globalHeadTerms, headTerms } from "@/lib/seo/search-keywords";
-
-const countryNames: Record<(typeof areaServedCountries)[number], string> = {
-  IN: "India",
-  US: "United States",
-  GB: "United Kingdom",
-  AE: "United Arab Emirates",
-  CA: "Canada",
-  AU: "Australia",
-  DE: "Germany",
-  SG: "Singapore",
-  NL: "Netherlands",
-};
+import { JsonLd } from "@/components/seo/JsonLdScript";
 
 /**
- * Site-wide @graph: Organization + ProfessionalService + India HQ + WebSite.
- * Replaces separate Organization/WebSite scripts to avoid duplicate entities.
+ * Site-wide @graph: Organization + LocalBusiness + WebSite (with SearchAction).
  */
 export function GlobalSiteJsonLd() {
   const services = getAllServices();
@@ -34,7 +21,8 @@ export function GlobalSiteJsonLd() {
       {
         "@type": ["Organization", "ProfessionalService"],
         "@id": seoIds.organization,
-        name: siteConfig.legalName,
+        name: siteConfig.name,
+        legalName: siteConfig.legalName,
         alternateName: siteConfig.name,
         url: siteConfig.url,
         logo: {
@@ -43,8 +31,10 @@ export function GlobalSiteJsonLd() {
           width: 1672,
           height: 941,
         },
-        image: siteConfig.logoUrl,
-        description: siteConfig.description,
+        image: `${siteConfig.url}/opengraph-image`,
+        description:
+          "India-based software development company offering custom ERP, CRM, AI, web and mobile apps",
+        foundingLocation: "Vadodara, Gujarat, India",
         email: siteConfig.email,
         telephone: siteConfig.phone,
         foundingDate: "2018",
@@ -58,10 +48,9 @@ export function GlobalSiteJsonLd() {
           latitude: businessAddress.latitude,
           longitude: businessAddress.longitude,
         },
-        areaServed: areaServedCountries.map((code) => ({
-          "@type": "Country",
-          name: countryNames[code],
-        })),
+        areaServed: ["India", "United States", "United Kingdom", "Canada", "Australia"].map(
+          (name) => ({ "@type": "Country", name }),
+        ),
         knowsAbout: [
           ...headTerms.slice(0, 8),
           ...globalHeadTerms.slice(0, 6),
@@ -70,14 +59,8 @@ export function GlobalSiteJsonLd() {
           "CRM Software Development",
           "SaaS Product Development",
           "Cloud Migration Services",
-          "Offshore Software Development India",
-          "Industrial AI Solutions",
-          "PPE Detection System",
-          "Computer Vision Safety Monitoring",
           "Software Development Company Vadodara",
           "Software Development Company Gujarat",
-          "Digital Transformation Services",
-          "Business Automation Services",
         ],
         speakable: {
           "@type": "SpeakableSpecification",
@@ -94,42 +77,44 @@ export function GlobalSiteJsonLd() {
               "@type": "Service",
               "@id": `${siteConfig.url}/services/${service.slug}#service`,
               name: service.title,
+              serviceType: service.title,
               description: service.metaDescription,
               url: `${siteConfig.url}/services/${service.slug}`,
               provider: { "@id": seoIds.organization },
-              areaServed: areaServedCountries,
-              availableLanguage: ["en", "hi"],
+              areaServed: "India",
             },
           })),
         },
         contactPoint: [
           {
             "@type": "ContactPoint",
+            contactType: "customer support",
             telephone: siteConfig.phone,
             email: siteConfig.email,
-            contactType: "sales",
-            areaServed: ["IN", "US", "GB", "AE"],
-            availableLanguage: ["English", "Hindi"],
+            areaServed: "IN",
+            availableLanguage: ["English", "Hindi", "Gujarati"],
           },
           {
             "@type": "ContactPoint",
-            contactType: "customer support",
+            contactType: "sales",
             telephone: siteConfig.phone,
-            areaServed: "IN",
-            availableLanguage: ["English", "Hindi"],
+            email: siteConfig.email,
+            areaServed: ["IN", "US", "GB", "AE"],
+            availableLanguage: ["English", "Hindi", "Gujarati"],
           },
         ],
       },
       {
         "@type": "LocalBusiness",
         "@id": seoIds.localBusiness,
-        name: `${siteConfig.name} — India`,
+        name: "Maxwell Electrodeal IT Solutions",
+        url: siteConfig.url,
+        image: `${siteConfig.url}/opengraph-image`,
         description:
-          "Headquartered in Vadodara, Gujarat. Enterprise software development for India and global clients.",
-        url: `${siteConfig.url}/locations/india`,
+          "Custom software development company in Vadodara offering ERP, CRM, AI solutions, websites and mobile apps across India",
         telephone: siteConfig.phone,
         email: siteConfig.email,
-        priceRange: "₹₹₹",
+        priceRange: "₹₹",
         currenciesAccepted: "INR, USD, GBP, AED",
         address: {
           "@type": "PostalAddress",
@@ -142,14 +127,12 @@ export function GlobalSiteJsonLd() {
         },
         areaServed: { "@type": "Country", name: "India" },
         hasMap: businessAddress.googleMapsLink,
-        openingHoursSpecification: [
-          {
-            "@type": "OpeningHoursSpecification",
-            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-            opens: "09:00",
-            closes: "19:00",
-          },
-        ],
+        openingHoursSpecification: {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          opens: "09:00",
+          closes: "18:00",
+        },
         parentOrganization: { "@id": seoIds.organization },
       },
       {
@@ -158,17 +141,20 @@ export function GlobalSiteJsonLd() {
         name: siteConfig.name,
         url: siteConfig.url,
         description: siteConfig.description,
-        inLanguage: ["en-IN", "en-US", "en-GB"],
+        inLanguage: ["en-IN", "en"],
         publisher: { "@id": seoIds.organization },
         about: { "@id": seoIds.organization },
+        potentialAction: {
+          "@type": "SearchAction",
+          target: {
+            "@type": "EntryPoint",
+            urlTemplate: `${siteConfig.url}/search?q={search_term_string}`,
+          },
+          "query-input": "required name=search_term_string",
+        },
       },
     ],
   };
 
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }}
-    />
-  );
+  return <JsonLd data={graph} />;
 }

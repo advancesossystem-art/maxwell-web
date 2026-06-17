@@ -1,4 +1,5 @@
 import { ContactPageContent } from "@/components/leads/ContactPageContent";
+import { ContactPageJsonLd } from "@/components/seo/ContactPageJsonLd";
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata = createMetadata({
@@ -9,5 +10,10 @@ export const metadata = createMetadata({
 });
 
 export default function ContactPage() {
-  return <ContactPageContent />;
+  return (
+    <>
+      <ContactPageJsonLd />
+      <ContactPageContent />
+    </>
+  );
 }

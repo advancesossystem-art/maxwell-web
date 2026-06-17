@@ -55,10 +55,12 @@ function baseTwitter(title: string, description: string, ogImage?: string) {
   };
 }
 
+/** Page title segment only — root layout `title.template` appends the brand suffix. */
 function formatPageTitle(title: string): string {
-  if (title.includes(siteConfig.name)) return title;
-  const withBrand = `${title} | ${siteConfig.name}`;
-  return withBrand.length > 68 ? title : withBrand;
+  if (title.includes(siteConfig.name)) {
+    return title.replace(/\s*\|\s*Maxwell Electrodeal.*$/i, "").trim() || title;
+  }
+  return title.length > 70 ? `${title.slice(0, 67)}…` : title;
 }
 
 export function buildSeoMetadata({
@@ -92,6 +94,7 @@ export function buildSeoMetadata({
   return {
     title: pageTitle,
     description: pageDescription,
+    ...(keywords.length > 0 ? { keywords: keywords.join(", ") } : {}),
     metadataBase: new URL(siteConfig.url),
     alternates,
     applicationName: siteConfig.name,
@@ -131,8 +134,9 @@ export function createHomeMetadata(): Metadata {
   const alternates = buildLanguageAlternates(homeSeo.path);
 
   return {
-    title: pageTitle,
+    title: { absolute: pageTitle },
     description: homeSeo.description,
+    keywords: homeSeo.keywords.join(", "),
     metadataBase: new URL(siteConfig.url),
     alternates,
     applicationName: siteConfig.name,

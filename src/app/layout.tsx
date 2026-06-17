@@ -12,6 +12,7 @@ import { CookieConsentProvider } from "@/hooks/useCookieConsent";
 import { GlobalSiteJsonLd } from "@/components/seo/GlobalSiteJsonLd";
 import { buildSiteVerificationMetadata } from "@/lib/seo/site-verification";
 import { siteConfig } from "@/lib/constants";
+import { homeSeo, siteTitleTemplate } from "@/lib/seo/config";
 import "./globals.css";
 
 const inter = Inter({
@@ -35,9 +36,11 @@ const siteVerification = buildSiteVerificationMetadata();
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
+  description: homeSeo.description,
+  keywords: homeSeo.keywords.join(", "),
   title: {
-    default: "Maxwell Electrodeal",
-    template: "%s | Maxwell Electrodeal",
+    default: homeSeo.title,
+    template: siteTitleTemplate,
   },
   ...(siteVerification ?? {}),
   icons: {
@@ -61,6 +64,8 @@ export default async function RootLayout({
     <html lang="en-IN" className={`${inter.variable} ${spaceGrotesk.variable}`} nonce={nonce}>
       <head>
         <ConsentModeDefaults nonce={nonce} />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.clarity.ms" />
         <link rel="preconnect" href="https://assets.calendly.com" />

@@ -11,10 +11,16 @@ export function ServicePageJsonLd({ service }: { service: import("@/lib/services
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
+    serviceType: service.title,
     name: service.title,
     description: service.metaDescription,
-    provider: { "@id": seoIds.organization },
-    areaServed: ["IN", "US", "GB", "AE", "CA", "AU"],
+    url: `${siteConfig.url}/services/${service.slug}`,
+    provider: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      "@id": seoIds.organization,
+    },
+    areaServed: "India",
     offers: {
       "@type": "Offer",
       priceCurrency: "INR",
