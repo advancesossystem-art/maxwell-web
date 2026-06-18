@@ -61,7 +61,7 @@ export const phase8ServicesData: Record<Phase8ServiceSlug, ServicePageData> = {
     title: "AI Consulting",
     headline: "AI Consulting Services India — Strategy to Implementation | Maxwell Electrodeal",
     subheadline: "AI readiness assessments, use-case prioritization, and implementation roadmaps for Indian businesses—from Vadodara manufacturers to pan-India enterprises seeking measurable ROI from artificial intelligence.",
-    metaTitle: "AI Consulting Services India — Strategy to Implementation | Maxwell",
+    metaTitle: "AI Consulting Services India — Strategy to Implementation",
     metaDescription: "AI consulting services India. From AI readiness assessment to custom AI deployment. Maxwell Electrodeal, Vadodara. Free AI audit available.",
     keywords: [
         "AI consulting services India",
@@ -300,7 +300,7 @@ export const phase8ServicesData: Record<Phase8ServiceSlug, ServicePageData> = {
     title: "AI Agent Development",
     headline: "AI Agent Development Company India — Custom AI Agents | Maxwell Electrodeal",
     subheadline: "Custom AI agents for customer service, sales qualification, data analysis, and workflow orchestration—built for Indian businesses that need autonomous systems grounded in your data and policies.",
-    metaTitle: "AI Agent Development Company India — Custom AI Agents | Maxwell",
+    metaTitle: "AI Agent Development Company India — Custom AI Agents",
     metaDescription: "AI agent development company in India. Custom customer service, sales, and workflow agents with LLM orchestration. Maxwell Electrodeal, Vadodara.",
     keywords: [
         "AI agent development India",
@@ -539,7 +539,7 @@ export const phase8ServicesData: Record<Phase8ServiceSlug, ServicePageData> = {
     title: "Generative AI Development",
     headline: "Generative AI Development Company India — Custom GenAI Solutions",
     subheadline: "Custom generative AI solutions—RAG knowledge bases, fine-tuned LLMs, content pipelines, and enterprise chatbots—for Indian organizations that need GenAI beyond generic ChatGPT wrappers.",
-    metaTitle: "Generative AI Development Company India — Custom GenAI | Maxwell",
+    metaTitle: "Generative AI Development Company India — Custom GenAI",
     metaDescription: "Generative AI development company in India. RAG systems, LLM fine-tuning, custom chatbots. From ₹1.5L. Maxwell Electrodeal, Vadodara & pan-India.",
     keywords: [
         "generative AI development India",
@@ -778,7 +778,7 @@ export const phase8ServicesData: Record<Phase8ServiceSlug, ServicePageData> = {
     title: "AI Automation",
     headline: "AI Automation Services India — Business Process Automation | Maxwell Electrodeal",
     subheadline: "Intelligent process automation that combines AI with workflow engines—invoice processing, data entry, reporting, and approval flows—for Indian SMBs and mid-market enterprises tired of manual bottlenecks.",
-    metaTitle: "AI Automation Services India — Business Process Automation | Maxwell",
+    metaTitle: "AI Automation Services India — Business Process Automation",
     metaDescription: "AI automation company India. Invoice processing, intelligent workflows, n8n and Python automation. From ₹75K. Maxwell Electrodeal, Vadodara.",
     keywords: [
         "AI automation company India",
@@ -1017,7 +1017,7 @@ export const phase8ServicesData: Record<Phase8ServiceSlug, ServicePageData> = {
     title: "Enterprise AI Solutions",
     headline: "Enterprise AI Solutions India — AI for Mid-Market & Large Enterprises",
     subheadline: "Governed enterprise AI programs with DPDP compliance, ERP/CRM integration, and production-grade MLOps—for mid-market and large Indian enterprises that need AI at scale without vendor lock-in.",
-    metaTitle: "Enterprise AI Solutions India — Mid-Market & Enterprise | Maxwell",
+    metaTitle: "Enterprise AI Solutions India — Mid-Market & Enterprise",
     metaDescription: "Enterprise AI solutions India. Governance, compliance, ERP integration, and production AI for mid-market enterprises. Maxwell Electrodeal, Vadodara.",
     keywords: [
         "enterprise AI solutions India",
@@ -1256,7 +1256,7 @@ export const phase8ServicesData: Record<Phase8ServiceSlug, ServicePageData> = {
     title: "Cloud Services",
     headline: "Cloud Services Company India — AWS, Azure & Hybrid Cloud | Maxwell Electrodeal",
     subheadline: "Cloud advisory, architecture, and managed services on AWS and Azure for Indian businesses—transparent pricing, India-region deployment, and hybrid cloud strategies from our Vadodara engineering team.",
-    metaTitle: "Cloud Services Company India — AWS, Azure & Hybrid | Maxwell",
+    metaTitle: "Cloud Services Company India — AWS, Azure & Hybrid",
     metaDescription: "Cloud services company in India. AWS, Azure advisory, hybrid cloud, cost optimization. From ₹25K. Maxwell Electrodeal, Vadodara & pan-India.",
     keywords: [
         "cloud services company India",
@@ -1495,7 +1495,7 @@ export const phase8ServicesData: Record<Phase8ServiceSlug, ServicePageData> = {
     title: "Cloud Migration",
     headline: "Cloud Migration Services India — Migrate to AWS or Azure | Maxwell Electrodeal",
     subheadline: "Structured cloud migration to AWS or Azure—lift-and-shift, re-platform, or re-architect—with 4–12 week timelines, minimal downtime, and published pricing for Indian SMBs and mid-market IT teams.",
-    metaTitle: "Cloud Migration Services India — AWS & Azure | Maxwell",
+    metaTitle: "Cloud Migration Services India — AWS & Azure",
     metaDescription: "Cloud migration services India. AWS and Azure migration in 4–12 weeks. From ₹1L. Maxwell Electrodeal, Vadodara & pan-India delivery.",
     keywords: [
         "cloud migration services India",
@@ -1734,7 +1734,7 @@ export const phase8ServicesData: Record<Phase8ServiceSlug, ServicePageData> = {
     title: "Managed Cloud Services",
     headline: "Managed Cloud Services India — 24/7 Cloud Management | Maxwell Electrodeal",
     subheadline: "24/7 managed cloud operations with uptime targets per SLAs—monitoring, patching, incident response, and cost governance for Indian businesses running production workloads on AWS or Azure.",
-    metaTitle: "Managed Cloud Services India — 24/7 Cloud Management | Maxwell",
+    metaTitle: "Managed Cloud Services India — 24/7 Cloud Management",
     metaDescription: "Managed cloud services India. 24/7 monitoring, uptime targets per SLA, AWS & Azure management. Maxwell Electrodeal, Vadodara.",
     keywords: [
         "managed cloud services India",
@@ -1973,7 +1973,7 @@ export const phase8ServicesData: Record<Phase8ServiceSlug, ServicePageData> = {
     title: "Cloud Backup & Disaster Recovery",
     headline: "Cloud Backup & Disaster Recovery India — Business Continuity | Maxwell Electrodeal",
     subheadline: "Cloud backup and disaster recovery with clear RTO/RPO targets—protecting Indian businesses from ransomware, hardware failure, and regional outages with automated failover and tested recovery runbooks.",
-    metaTitle: "Cloud Backup & Disaster Recovery India | Maxwell Electrodeal",
+    metaTitle: "Cloud Backup & Disaster Recovery India",
     metaDescription: "Cloud backup and disaster recovery India. RTO/RPO planning, automated backups, business continuity. From ₹15K/month. Maxwell, Vadodara.",
     keywords: [
         "cloud backup disaster recovery India",
@@ -2212,7 +2212,7 @@ export const phase8ServicesData: Record<Phase8ServiceSlug, ServicePageData> = {
     title: "Digital Transformation",
     headline: "Digital Transformation Company India — End-to-End Digital Solutions | Maxwell Electrodeal",
     subheadline: "End-to-end digital transformation across process, people, technology, and data—for Indian manufacturers, healthcare groups, and growing enterprises in Vadodara, Gujarat, and pan-India markets.",
-    metaTitle: "Digital Transformation Company India — End-to-End | Maxwell",
+    metaTitle: "Digital Transformation Company India — End-to-End",
     metaDescription: "Digital transformation company India. Process, technology, and data modernization. Assessment from ₹75K. Maxwell Electrodeal, Vadodara.",
     keywords: [
         "digital transformation company India",
@@ -2451,7 +2451,7 @@ export const phase8ServicesData: Record<Phase8ServiceSlug, ServicePageData> = {
     title: "Microsoft 365 Migration",
     headline: "Microsoft 365 Migration Services India — M365 Setup & Migration | Maxwell Electrodeal",
     subheadline: "Microsoft 365 migration for Indian businesses—email, Teams, SharePoint, and OneDrive—with 2–4 week SMB timelines, minimal downtime, and transparent pricing from Maxwell Electrodeal in Vadodara.",
-    metaTitle: "Microsoft 365 Migration Services India — M365 Setup | Maxwell",
+    metaTitle: "Microsoft 365 Migration Services India — M365 Setup",
     metaDescription: "Microsoft 365 migration India. Email, Teams, SharePoint migration in 2–4 weeks. From ₹50K. Maxwell Electrodeal, Vadodara & pan-India.",
     keywords: [
         "Microsoft 365 migration India",
@@ -2690,7 +2690,7 @@ export const phase8ServicesData: Record<Phase8ServiceSlug, ServicePageData> = {
     title: "Data Analytics",
     headline: "Data Analytics Services India — Business Intelligence & Power BI | Maxwell Electrodeal",
     subheadline: "Business intelligence and custom analytics dashboards—Power BI, Tableau, and bespoke reporting—for Indian businesses that need real-time visibility into sales, inventory, and financial performance.",
-    metaTitle: "Data Analytics Services India — BI & Power BI | Maxwell",
+    metaTitle: "Data Analytics Services India — BI & Power BI",
     metaDescription: "Data analytics services India. Power BI, custom dashboards, business intelligence. From ₹75K. Maxwell Electrodeal, Vadodara.",
     keywords: [
         "data analytics services India",
@@ -2929,7 +2929,7 @@ export const phase8ServicesData: Record<Phase8ServiceSlug, ServicePageData> = {
     title: "Cybersecurity",
     headline: "Cybersecurity Services India — Protect Your Business from Cyber Threats | Maxwell Electrodeal",
     subheadline: "Cybersecurity services for Indian SMBs and mid-market enterprises—security audits, endpoint protection, network hardening, and DPDP/IT Act compliance from Maxwell Electrodeal in Vadodara, Gujarat.",
-    metaTitle: "Cybersecurity Services India — Protect Your Business | Maxwell",
+    metaTitle: "Cybersecurity Services India — Protect Your Business",
     metaDescription: "Cybersecurity services India. Security audits, endpoint protection, compliance. From ₹25K. Maxwell Electrodeal, Vadodara & pan-India.",
     keywords: [
         "cybersecurity services India",
@@ -3168,7 +3168,7 @@ export const phase8ServicesData: Record<Phase8ServiceSlug, ServicePageData> = {
     title: "Managed IT Services",
     headline: "Managed IT Services India — 24/7 IT Support & Management | Maxwell Electrodeal",
     subheadline: "Fully managed IT for Indian businesses—24/7 monitoring, help desk, patch management, and vendor coordination—with transparent monthly pricing and onsite support across Vadodara and Gujarat.",
-    metaTitle: "Managed IT Services India — 24/7 IT Support | Maxwell",
+    metaTitle: "Managed IT Services India — 24/7 IT Support",
     metaDescription: "Managed IT services India. 24/7 monitoring, help desk, remote support. From ₹15K/month. Maxwell Electrodeal, Vadodara & Gujarat.",
     keywords: [
         "managed IT services India",
@@ -3407,7 +3407,7 @@ export const phase8ServicesData: Record<Phase8ServiceSlug, ServicePageData> = {
     title: "IT Support Services",
     headline: "IT Support Services India — Remote & Onsite IT Support | Maxwell Electrodeal",
     subheadline: "Remote and onsite IT support for Indian businesses—fast response SLAs, break-fix and retainer models, with onsite engineers in Vadodara and Gujarat and remote coverage pan-India.",
-    metaTitle: "IT Support Services India — Remote & Onsite | Maxwell",
+    metaTitle: "IT Support Services India — Remote & Onsite",
     metaDescription: "IT support services India. Remote and onsite help desk, fast SLAs. Per incident or monthly retainer. Maxwell Electrodeal, Vadodara.",
     keywords: [
         "IT support services India",

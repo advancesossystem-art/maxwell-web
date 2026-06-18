@@ -120,7 +120,7 @@ export const homeSeo = {
   path: "/",
 } as const;
 
-export const siteTitleTemplate = "%s | Maxwell Electrodeal – Software Company India";
+export const siteTitleTemplate = "%s | Maxwell Electrodeal";
 
 export function buildCanonicalUrl(path: string): string {
   const normalized = path.startsWith("/") ? path : `/${path}`;

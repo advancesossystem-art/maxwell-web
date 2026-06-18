@@ -5,6 +5,7 @@ import {
   geoMetaOther,
   homeSeo,
   primaryLocale,
+  siteTitleTemplate,
 } from "@/lib/seo/config";
 
 const defaultOgImage = `${siteConfig.url}/opengraph-image`;
@@ -55,12 +56,33 @@ function baseTwitter(title: string, description: string, ogImage?: string) {
   };
 }
 
+/** Strip brand suffixes so layout `title.template` does not duplicate Maxwell. */
+function stripBrandSuffix(title: string): string {
+  let segment = title.trim();
+  let prev = "";
+  while (segment !== prev) {
+    prev = segment;
+    segment = segment
+      .replace(/\s*\|\s*Maxwell Electrodeal(?:\s*[–-]\s*[^|]+)?$/i, "")
+      .replace(/\s*\|\s*Maxwell\s*$/i, "")
+      .replace(/\s*—\s*Maxwell Electrodeal$/i, "")
+      .trim();
+  }
+  return segment || title.trim();
+}
+
 /** Page title segment only — root layout `title.template` appends the brand suffix. */
 function formatPageTitle(title: string): string {
-  if (title.includes(siteConfig.name)) {
-    return title.replace(/\s*\|\s*Maxwell Electrodeal.*$/i, "").trim() || title;
-  }
-  return title.length > 70 ? `${title.slice(0, 67)}…` : title;
+  const segment = stripBrandSuffix(title);
+  // Keep document titles near ~60 chars in SERPs (segment + " | Maxwell Electrodeal").
+  const maxSegment = 38;
+  if (segment.length <= maxSegment) return segment;
+  return `${segment.slice(0, maxSegment - 1).trimEnd()}…`;
+}
+
+/** Full resolved title for Open Graph / Twitter (template is not applied there). */
+function resolveFullTitle(segment: string): string {
+  return siteTitleTemplate.replace("%s", segment);
 }
 
 export function buildSeoMetadata({
@@ -86,13 +108,14 @@ export function buildSeoMetadata({
   authors?: string[];
   ogImage?: string;
 }): Metadata {
-  const pageTitle = title ? formatPageTitle(title) : `${siteConfig.name} — ${siteConfig.tagline}`;
+  const pageTitleSegment = title ? formatPageTitle(title) : `${siteConfig.name} — ${siteConfig.tagline}`;
+  const pageTitleFull = title ? resolveFullTitle(pageTitleSegment) : pageTitleSegment;
 
   const pageDescription = description ?? siteConfig.description;
   const alternates = buildLanguageAlternates(path);
 
   return {
-    title: pageTitle,
+    title: pageTitleSegment,
     description: pageDescription,
     ...(keywords.length > 0 ? { keywords: keywords.join(", ") } : {}),
     metadataBase: new URL(siteConfig.url),
@@ -103,7 +126,7 @@ export function buildSeoMetadata({
     publisher: siteConfig.legalName,
     category: "technology",
     openGraph: baseOpenGraph({
-      title: pageTitle,
+      title: pageTitleFull,
       description: pageDescription,
       url: alternates.canonical,
       type: openGraphType,
@@ -111,7 +134,7 @@ export function buildSeoMetadata({
       authors,
       ogImage,
     }),
-    twitter: baseTwitter(pageTitle, pageDescription, ogImage),
+    twitter: baseTwitter(pageTitleFull, pageDescription, ogImage),
     robots: noIndex
       ? { index: false, follow: false }
       : {
@@ -187,7 +210,8 @@ export function buildArticleSeoMetadata(args: {
   noIndex?: boolean;
   ogImage?: string;
 }): Metadata {
-  const pageTitle = formatPageTitle(args.title);
+  const pageTitleSegment = formatPageTitle(args.title);
+  const pageTitleFull = resolveFullTitle(pageTitleSegment);
   const alternates = buildLanguageAlternates(args.path);
   const ogImageUrl = args.ogImage
     ? args.ogImage.startsWith("http")
@@ -196,12 +220,12 @@ export function buildArticleSeoMetadata(args: {
     : undefined;
 
   return {
-    title: pageTitle,
+    title: pageTitleSegment,
     description: args.description,
     metadataBase: new URL(siteConfig.url),
     alternates,
     openGraph: baseOpenGraph({
-      title: pageTitle,
+      title: pageTitleFull,
       description: args.description,
       url: alternates.canonical,
       type: "article",
@@ -210,7 +234,7 @@ export function buildArticleSeoMetadata(args: {
       authors: [args.authorName],
       ogImage: ogImageUrl,
     }),
-    twitter: baseTwitter(pageTitle, args.description, ogImageUrl),
+    twitter: baseTwitter(pageTitleFull, args.description, ogImageUrl),
     robots: args.noIndex
       ? { index: false, follow: false }
       : { index: true, follow: true },

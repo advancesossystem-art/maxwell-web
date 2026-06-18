@@ -1,6 +1,8 @@
 import { siteConfig } from "./constants";
 import { serviceSlugs } from "./services-data";
 import { industrySlugs } from "./industries-data";
+import { phase8IndustrySlugs } from "./phase8/phase8-industries-data";
+import { phase8ServiceSlugs } from "./phase8/phase8-services-data";
 import { getIndexableProjectSlugs } from "./projects-data";
 import { caseStudySlugs } from "./case-studies-data";
 import { getLocationStaticParams } from "./locations-data";
@@ -13,6 +15,12 @@ import { answerSlugs } from "./answers-data";
 import { resourceCenterSlugs } from "./resource-centers-data";
 import { toolSlugs } from "./tools/registry";
 import { compareSlugs, costSlugs } from "./seo/programmatic/build-pages";
+
+/** Phase 8 launch — use for lastmod on new service/industry URLs to speed discovery. */
+const PHASE8_LAUNCH = new Date("2026-06-18T00:00:00.000Z");
+
+const phase8ServiceSet = new Set<string>(phase8ServiceSlugs);
+const phase8IndustrySet = new Set<string>(phase8IndustrySlugs);
 
 /** Hub routes listed in segment sitemaps — omit here to avoid cross-sitemap duplicates. */
 const staticPages = [
@@ -50,20 +58,24 @@ export function getPagesSitemapEntries() {
 
 export function getServicesSitemapEntries() {
   return [
-    { url: `${siteConfig.url}/services`, priority: 0.85 },
+    { url: `${siteConfig.url}/services`, priority: 0.9, changeFreq: "weekly" as const },
     ...serviceSlugs.map((slug) => ({
       url: `${siteConfig.url}/services/${slug}`,
-      priority: 0.85,
+      priority: phase8ServiceSet.has(slug) ? 0.9 : 0.85,
+      lastModified: phase8ServiceSet.has(slug) ? PHASE8_LAUNCH : undefined,
+      changeFreq: phase8ServiceSet.has(slug) ? ("weekly" as const) : ("monthly" as const),
     })),
   ];
 }
 
 export function getIndustriesSitemapEntries() {
   return [
-    { url: `${siteConfig.url}/industries`, priority: 0.85 },
+    { url: `${siteConfig.url}/industries`, priority: 0.9, changeFreq: "weekly" as const },
     ...industrySlugs.map((slug) => ({
       url: `${siteConfig.url}/industries/${slug}`,
-      priority: 0.85,
+      priority: phase8IndustrySet.has(slug) ? 0.9 : 0.85,
+      lastModified: phase8IndustrySet.has(slug) ? PHASE8_LAUNCH : undefined,
+      changeFreq: phase8IndustrySet.has(slug) ? ("weekly" as const) : ("monthly" as const),
     })),
   ];
 }

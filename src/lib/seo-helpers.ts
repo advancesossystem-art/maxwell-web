@@ -73,6 +73,7 @@ export function buildSitemapXml(
     updatedAt?: string;
     publishedAt?: string;
     priority?: number;
+    changeFreq?: "always" | "hourly" | "daily" | "weekly" | "monthly" | "yearly" | "never";
   }[],
 ): string {
   const urls = entries
@@ -80,7 +81,7 @@ export function buildSitemapXml(
       (e) => `  <url>
     <loc>${e.url}</loc>
     <lastmod>${resolveLastMod(e)}</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>${e.changeFreq ?? "monthly"}</changefreq>
     <priority>${e.priority ?? 0.8}</priority>
   </url>`,
     )

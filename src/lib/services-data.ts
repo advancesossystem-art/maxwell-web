@@ -92,7 +92,7 @@ export const servicesData: Record<ServiceSlug, ServicePageData> = {
     headline: "Website Development Company India — Business & E-Commerce",
     subheadline:
       "Next.js corporate websites, e-commerce storefronts, and conversion-focused landing pages for Indian businesses—engineered for SEO, Core Web Vitals, and measurable lead generation.",
-    metaTitle: "Website Development Company India — Business & E-Commerce | Maxwell",
+    metaTitle: "Website Development Company India — Business & E-Commerce",
     metaDescription:
       "Website development company in India. Next.js business sites, e-commerce, SEO. Pricing from ₹75K. Vadodara & pan-India delivery.",
     keywords: [
@@ -225,7 +225,7 @@ export const servicesData: Record<ServiceSlug, ServicePageData> = {
     headline: "Software Built For How Your Business Actually Works",
     subheadline:
       "Custom business software, enterprise applications, and workflow automation—engineered around your processes, not forced into generic SaaS templates.",
-    metaTitle: "Custom Software Development Services — Maxwell Electrodeal",
+    metaTitle: "Custom Software Development Services",
     metaDescription:
       "Custom software development services — enterprise apps, workflow automation, API integrations, and legacy modernization with full IP ownership. Maxwell Electrodeal, India.",
     keywords: [
@@ -337,7 +337,7 @@ export const servicesData: Record<ServiceSlug, ServicePageData> = {
     headline: "Mobile App Development Company India — iOS & Android",
     subheadline:
       "Flutter and React Native apps for Indian startups and enterprises—offline-first field tools, consumer apps, and B2B portals with App Store and Play Store launch support.",
-    metaTitle: "Mobile App Development Company India — iOS & Android | Maxwell",
+    metaTitle: "Mobile App Development Company India — iOS & Android",
     metaDescription:
       "Mobile app development company in India. Flutter, React Native, iOS & Android. MVP from ₹3L. Timeline 8–16 weeks. Maxwell Electrodeal.",
     keywords: [
@@ -466,7 +466,7 @@ export const servicesData: Record<ServiceSlug, ServicePageData> = {
     headline: "Custom ERP Development Company India — GST-Ready ERP Solutions",
     subheadline:
       "Custom ERP software for manufacturing, trading, and distribution across Vadodara, Gujarat, and India. Inventory, production, GST billing, and Tally integration—built around your workflows, not generic templates.",
-    metaTitle: "Custom ERP Development Company India — GST-Ready ERP | Maxwell",
+    metaTitle: "Custom ERP Development Company India — GST-Ready ERP",
     metaDescription:
       "Custom ERP development company in India — GST-ready manufacturing & trading ERP for Vadodara, Gujarat. Inventory, billing, Tally sync. From ₹2L–₹20L.",
     keywords: [
@@ -643,7 +643,7 @@ export const servicesData: Record<ServiceSlug, ServicePageData> = {
     headline: "Custom CRM Development India — Sales & Customer Management",
     subheadline:
       "Custom CRM software for Indian B2B sales teams—pipeline management, WhatsApp automation, dealer hierarchies, and ERP integration without per-seat Salesforce fees.",
-    metaTitle: "Custom CRM Development India — Sales & Customer Management | Maxwell",
+    metaTitle: "Custom CRM Development India — Sales & Customer Management",
     metaDescription:
       "Custom CRM development company in India. Sales pipelines, lead automation, WhatsApp CRM, manufacturing dealer CRM. ROI-focused builds from ₹5L.",
     keywords: [
@@ -774,7 +774,7 @@ export const servicesData: Record<ServiceSlug, ServicePageData> = {
     headline: "AI Development Company India — Custom AI Solutions",
     subheadline:
       "Practical AI for Indian businesses—computer vision on factory floors, document automation, LLM assistants, and predictive analytics with measurable ROI, not pilot-project theatre.",
-    metaTitle: "AI Development Company India — Custom AI Solutions | Maxwell",
+    metaTitle: "AI Development Company India — Custom AI Solutions",
     metaDescription:
       "AI software development company in India. Computer vision, automation, LLM chatbots, predictive analytics. Production ROI from Maxwell Electrodeal.",
     keywords: [
@@ -901,7 +901,7 @@ export const servicesData: Record<ServiceSlug, ServicePageData> = {
     headline: "From MVP To Scale-Ready SaaS Platform",
     subheadline:
       "Software as a service development with multi-tenant architecture, subscription billing, admin dashboards, and cloud infrastructure—built to acquire and retain subscribers.",
-    metaTitle: "SaaS Development Services — Maxwell Electrodeal",
+    metaTitle: "SaaS Development Services",
     metaDescription:
       "SaaS development services — multi-tenant architecture, subscription billing, admin dashboards, and cloud infrastructure for product teams. Maxwell Electrodeal, India.",
     keywords: [
@@ -1012,7 +1012,7 @@ export const servicesData: Record<ServiceSlug, ServicePageData> = {
     headline: "Cloud Infrastructure That Scales With Your Ambition",
     subheadline:
       "AWS, Azure, and GCP cloud solutions—migration, infrastructure design, security hardening, and 24/7 monitoring for applications that can't afford downtime.",
-    metaTitle: "Cloud Solutions Development Services — Maxwell Electrodeal",
+    metaTitle: "Cloud Solutions Development Services",
     metaDescription:
       "Cloud solutions development services — AWS, Azure, and GCP migration, DevOps, CI/CD, security hardening, and 24/7 monitoring. Maxwell Electrodeal, India.",
     keywords: [
