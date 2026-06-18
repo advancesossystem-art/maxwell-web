@@ -1,4 +1,5 @@
 import type { serviceIcons } from "@/components/ui/Icons";
+import { phase8ServiceSlugs, phase8ServicesData } from "@/lib/phase8/phase8-services-data";
 
 export type ServiceIconKey = keyof typeof serviceIcons;
 
@@ -32,6 +33,9 @@ export interface ServicePageData {
   seoParagraphs?: string[];
   pricingTiers?: { name: string; range: string; description: string }[];
   comparisonTable?: { feature: string; custom: string; sap: string; tally: string; zoho: string }[];
+  /** Override comparison table column headers (default: Custom ERP / SAP / Tally / Zoho) */
+  comparisonColumnLabels?: { custom: string; col2: string; col3: string; col4: string };
+  comparisonTitle?: string;
   processSteps?: { step: string; title: string; description: string }[];
   relatedBlogSlugs?: string[];
   relatedIndustrySlugs?: string[];
@@ -76,6 +80,7 @@ export const serviceSlugs = [
   "ai-solutions",
   "saas-development",
   "cloud-solutions",
+  ...phase8ServiceSlugs,
 ] as const;
 
 export type ServiceSlug = (typeof serviceSlugs)[number];
@@ -1111,6 +1116,7 @@ export const servicesData: Record<ServiceSlug, ServicePageData> = {
       },
     ],
   },
+  ...phase8ServicesData,
 };
 
 import { expandServiceFaqs } from "./service-faq-expansion";

@@ -121,8 +121,50 @@ export const businessOutcomes = [
   },
 ] as const;
 
-/** Business solutions — not technical service labels */
+/** Business solutions — full-service IT positioning */
 export const homepageServices = [
+  {
+    slug: "ai-consulting",
+    title: "AI Consulting",
+    solution: "AI readiness, strategy, and implementation roadmaps with measurable ROI.",
+    impact: "Prioritize use cases before you spend on the wrong tools.",
+    icon: "ai" as const,
+  },
+  {
+    slug: "cloud-services",
+    title: "Cloud Services",
+    solution: "AWS, Azure, and hybrid cloud advisory, migration, and management.",
+    impact: "Scale infrastructure without enterprise-vendor overhead.",
+    icon: "cloud" as const,
+  },
+  {
+    slug: "cybersecurity",
+    title: "Cybersecurity",
+    solution: "Security audits, endpoint protection, and compliance-ready controls.",
+    impact: "Protect operations without slowing down delivery teams.",
+    icon: "code" as const,
+  },
+  {
+    slug: "digital-transformation",
+    title: "Digital Transformation",
+    solution: "Process, people, technology, and data aligned for modern operations.",
+    impact: "End-to-end change—not slide decks that never ship.",
+    icon: "design" as const,
+  },
+  {
+    slug: "managed-it-services",
+    title: "Managed IT",
+    solution: "24/7 monitoring, help desk, and proactive infrastructure management.",
+    impact: "Predictable monthly IT instead of firefighting every week.",
+    icon: "cloud" as const,
+  },
+  {
+    slug: "data-analytics",
+    title: "Data Analytics",
+    solution: "Power BI, custom dashboards, and BI that leadership actually uses.",
+    impact: "Decisions in minutes—not two-week Excel reconstructions.",
+    icon: "code" as const,
+  },
   {
     slug: "custom-software-development",
     title: "Custom platforms",
@@ -147,8 +189,8 @@ export const homepageServices = [
   {
     slug: "website-development",
     title: "Web experiences",
-    solution: "Sites and portals built for leads, customers, and daily use.",
-    impact: "Digital presence that supports sales and service.",
+    solution: "Next.js sites built for leads, SEO, and Core Web Vitals.",
+    impact: "Fast, SEO-ready Next.js sites built for conversion.",
     icon: "globe" as const,
   },
   {
@@ -159,25 +201,11 @@ export const homepageServices = [
     icon: "mobile" as const,
   },
   {
-    slug: "saas-development",
-    title: "SaaS products",
-    solution: "Subscription-ready products with room to grow users and revenue.",
-    impact: "Launch and scale without rebuilding from scratch.",
-    icon: "saas" as const,
-  },
-  {
     slug: "ai-solutions",
     title: "AI & automation",
     solution: "Practical intelligence inside the systems you already run.",
     impact: "Automation where it saves time—not where it creates risk.",
     icon: "ai" as const,
-  },
-  {
-    slug: "cloud-solutions",
-    title: "Cloud & reliability",
-    solution: "Stable releases, secure infrastructure, predictable running costs.",
-    impact: "Systems your team can depend on after go-live.",
-    icon: "cloud" as const,
   },
 ] as const;
 

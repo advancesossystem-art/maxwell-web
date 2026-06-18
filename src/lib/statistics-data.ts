@@ -160,7 +160,7 @@ export const industryStatistics: SourcedStatistic[] = [
   },
 ];
 
-const serviceCategoryMap: Record<ServiceSlug, StatCategory[]> = {
+const serviceCategoryMap: Partial<Record<ServiceSlug, StatCategory[]>> = {
   "erp-development": ["erp", "manufacturing", "digital-transformation"],
   "crm-development": ["crm", "software"],
   "ai-solutions": ["ai", "manufacturing"],
@@ -169,6 +169,21 @@ const serviceCategoryMap: Record<ServiceSlug, StatCategory[]> = {
   "cloud-solutions": ["cloud", "software"],
   "custom-software-development": ["software", "digital-transformation"],
   "website-development": ["web", "software"],
+  "ai-consulting": ["ai", "digital-transformation"],
+  "ai-agent-development": ["ai", "software"],
+  "generative-ai-development": ["ai", "software"],
+  "ai-automation": ["ai", "automation"],
+  "enterprise-ai-solutions": ["ai", "digital-transformation"],
+  "cloud-services": ["cloud", "software"],
+  "cloud-migration": ["cloud", "digital-transformation"],
+  "managed-cloud-services": ["cloud", "software"],
+  "cloud-backup-disaster-recovery": ["cloud", "software"],
+  "digital-transformation": ["digital-transformation", "software"],
+  "microsoft-365-migration": ["cloud", "software"],
+  "data-analytics": ["software", "digital-transformation"],
+  "cybersecurity": ["software", "digital-transformation"],
+  "managed-it-services": ["software", "cloud"],
+  "it-support-services": ["software", "cloud"],
 };
 
 const industryCategoryMap: Record<string, StatCategory[]> = {
@@ -181,6 +196,12 @@ const industryCategoryMap: Record<string, StatCategory[]> = {
   chemical: ["manufacturing", "erp"],
   textile: ["manufacturing", "erp"],
   pharma: ["manufacturing", "software"],
+  "fintech-bfsi": ["software", "digital-transformation"],
+  "legal-compliance": ["software", "digital-transformation"],
+  "energy-utilities": ["software", "manufacturing"],
+  "travel-logistics": ["software", "automation"],
+  "fmcg-retail": ["crm", "software"],
+  "real-estate": ["crm", "software"],
 };
 
 export function getStatisticsByCategory(category: StatCategory): SourcedStatistic[] {

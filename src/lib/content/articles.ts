@@ -2,6 +2,7 @@ import type { Article } from "./schema";
 import { enrichedCreateArticle } from "./article-enrichment";
 import { buildSeoArticlesBatch } from "./seo-articles-batch";
 import { seoBlogPhase3Articles } from "./seo-blog-phase3";
+import { seoBlogPhase8Articles } from "./seo-blog-phase8";
 
 const articlesList: Article[] = [
   enrichedCreateArticle({
@@ -810,6 +811,7 @@ const articlesList: Article[] = [
     relatedSlugs: ["software-development-cost-india-2026", "erp-development-cost-india-2026"],
   }),
   ...seoBlogPhase3Articles,
+  ...seoBlogPhase8Articles,
   ...buildSeoArticlesBatch(),
 ];
 

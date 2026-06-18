@@ -13,10 +13,11 @@ import {
 } from "@/lib/conversion-copy";
 import { trackCTAClick } from "@/lib/conversion-events";
 import { runNavbarEntrance } from "@/lib/animations";
+import { servicesNavGroups } from "@/lib/navigation-services";
+import { ServicesNavMenu } from "@/components/layout/ServicesNavMenu";
 
 const primaryNav = [
   { label: "Home", href: "/" },
-  { label: "Services", href: "/services" },
   { label: "Industries", href: "/industries" },
   { label: "About", href: "/about" },
   { label: "Process", href: "/process" },
@@ -48,17 +49,22 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [resourcesOpen, setResourcesOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
   const drawerRef = useRef<HTMLDivElement>(null);
   const resourcesRef = useRef<HTMLDivElement>(null);
+  const servicesRef = useRef<HTMLDivElement>(null);
   const resourcesBtnRef = useRef<HTMLButtonElement>(null);
+  const servicesBtnRef = useRef<HTMLButtonElement>(null);
   const [resourcesMenuStyle, setResourcesMenuStyle] = useState<React.CSSProperties>({});
+  const [servicesMenuStyle, setServicesMenuStyle] = useState<React.CSSProperties>({});
   const closeMobile = useCallback(() => setMobileOpen(false), []);
   const headerRef = useRef<HTMLElement>(null);
 
   useEscapeKey(() => {
     setResourcesOpen(false);
+    setServicesOpen(false);
     closeMobile();
-  }, resourcesOpen || mobileOpen);
+  }, resourcesOpen || servicesOpen || mobileOpen);
 
   useFocusTrap(drawerRef, mobileOpen);
 
@@ -85,6 +91,7 @@ export function Header() {
   useEffect(() => {
     setMobileOpen(false);
     setResourcesOpen(false);
+    setServicesOpen(false);
   }, [pathname]);
 
   useEffect(() => {
@@ -97,6 +104,17 @@ export function Header() {
     document.addEventListener("mousedown", close);
     return () => document.removeEventListener("mousedown", close);
   }, [resourcesOpen]);
+
+  useEffect(() => {
+    if (!servicesOpen) return;
+    const close = (e: MouseEvent) => {
+      if (servicesRef.current && !servicesRef.current.contains(e.target as Node)) {
+        setServicesOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", close);
+    return () => document.removeEventListener("mousedown", close);
+  }, [servicesOpen]);
 
   useEffect(() => {
     if (!resourcesOpen || !resourcesBtnRef.current) return;
@@ -128,6 +146,33 @@ export function Header() {
     };
   }, [resourcesOpen]);
 
+  useEffect(() => {
+    if (!servicesOpen || !servicesBtnRef.current) return;
+
+    const updatePosition = () => {
+      const btn = servicesBtnRef.current;
+      if (!btn) return;
+      const rect = btn.getBoundingClientRect();
+      const menuWidth = Math.min(720, window.innerWidth - 24);
+      const left = Math.min(Math.max(12, rect.left), window.innerWidth - menuWidth - 12);
+      setServicesMenuStyle({
+        position: "fixed",
+        top: rect.bottom + 8,
+        left,
+        width: menuWidth,
+        zIndex: 200,
+      });
+    };
+
+    updatePosition();
+    window.addEventListener("resize", updatePosition);
+    window.addEventListener("scroll", updatePosition, true);
+    return () => {
+      window.removeEventListener("resize", updatePosition);
+      window.removeEventListener("scroll", updatePosition, true);
+    };
+  }, [servicesOpen]);
+
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
 
@@ -146,20 +191,64 @@ export function Header() {
           className="hidden shrink-0 items-center gap-0.5 lg:flex"
           aria-label="Main navigation"
         >
-          {primaryNav.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              aria-current={isActive(link.href) ? "page" : undefined}
+          <Link
+            href="/"
+            aria-current={pathname === "/" ? "page" : undefined}
+            className={cn("v6-nav-link mx-nav-pending", pathname === "/" && "v6-nav-link--active")}
+            data-nav="link"
+          >
+            Home
+          </Link>
+
+          <div className="relative" ref={servicesRef}>
+            <button
+              ref={servicesBtnRef}
+              type="button"
+              id="services-menu-button"
               className={cn(
-                "v6-nav-link mx-nav-pending",
-                isActive(link.href) && "v6-nav-link--active",
+                "v6-nav-link mx-nav-pending inline-flex items-center gap-1",
+                (isActive("/services") ||
+                  servicesNavGroups.some((g) => g.links.some((l) => isActive(l.href)))) &&
+                  "v6-nav-link--active",
               )}
               data-nav="link"
+              aria-expanded={servicesOpen}
+              aria-haspopup="true"
+              aria-controls="services-menu"
+              onClick={() => {
+                setServicesOpen((o) => !o);
+                setResourcesOpen(false);
+              }}
             >
-              {link.label}
-            </Link>
-          ))}
+              Services
+              <Chevron />
+            </button>
+            {servicesOpen ? (
+              <div id="services-menu" style={servicesMenuStyle}>
+                <ServicesNavMenu
+                  style={{}}
+                  onNavigate={() => setServicesOpen(false)}
+                />
+              </div>
+            ) : null}
+          </div>
+
+          {primaryNav
+            .filter((link) => link.href !== "/")
+            .map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                aria-current={isActive(link.href) ? "page" : undefined}
+                className={cn(
+                  "v6-nav-link mx-nav-pending",
+                  isActive(link.href) && "v6-nav-link--active",
+                )}
+                data-nav="link"
+              >
+                {link.label}
+              </Link>
+            ))}
 
           <div className="relative" ref={resourcesRef}>
             <button
@@ -174,7 +263,10 @@ export function Header() {
               aria-expanded={resourcesOpen}
               aria-haspopup="true"
               aria-controls="resources-menu"
-              onClick={() => setResourcesOpen((o) => !o)}
+              onClick={() => {
+                setResourcesOpen((o) => !o);
+                setServicesOpen(false);
+              }}
             >
               Resources
               <Chevron />
@@ -276,6 +368,33 @@ export function Header() {
               {link.label}
             </Link>
           ))}
+          <p className="mx-4 mt-4 mb-1 text-xs font-semibold uppercase tracking-wider text-[var(--v6-text-muted)]">
+            Services
+          </p>
+          {servicesNavGroups.map((group) => (
+            <div key={group.title} className="mb-3">
+              <p className="mx-4 mb-1 text-[10px] font-semibold uppercase tracking-wider text-[var(--v6-text-muted)]">
+                {group.title}
+              </p>
+              {group.links.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={closeMobile}
+                  className="block rounded-xl px-4 py-2.5 text-sm text-[var(--v6-text-secondary)] hover:bg-[#f1f5f9]"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          ))}
+          <Link
+            href="/services"
+            onClick={closeMobile}
+            className="mx-4 mb-2 block text-sm font-semibold text-[#4f46e5]"
+          >
+            All services →
+          </Link>
           <p className="mx-4 mt-4 mb-1 text-xs font-semibold uppercase tracking-wider text-[var(--v6-text-muted)]">
             Resources
           </p>

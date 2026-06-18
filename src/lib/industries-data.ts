@@ -1,4 +1,9 @@
 import { getExtendedIndustry } from "./industries-extended";
+import {
+  phase8IndustriesData,
+  phase8IndustrySlugs,
+  phase8RealEstateOverride,
+} from "./phase8/phase8-industries-data";
 
 export const industrySlugs = [
   "manufacturing",
@@ -42,6 +47,7 @@ export const industrySlugs = [
   "agro-processing",
   "dairy",
   "paint-coatings",
+  ...phase8IndustrySlugs,
 ] as const;
 
 export type IndustrySlug = (typeof industrySlugs)[number];
@@ -595,6 +601,8 @@ export const industriesData: Partial<Record<IndustrySlug, IndustryPageData>> = {
       { question: "How do digital site inspections work?", answer: "Configurable checklists, mandatory photo capture, GPS tagging, digital signatures, and automatic report generation for compliance." },
     ],
   },
+  ...phase8IndustriesData,
+  "real-estate": phase8RealEstateOverride,
 };
 
 export function getIndustryBySlug(slug: string): IndustryPageData | undefined {

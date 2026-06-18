@@ -47,7 +47,8 @@ export function ServiceSeoSections({ service }: { service: ServicePageData }) {
           <Container>
             <h2 className="v6-section-title">Indicative pricing</h2>
             <p className="v6-lead mt-3 max-w-2xl">
-              Transparent ranges after discovery — milestone billing, no surprise change requests.
+              Indicative ranges after discovery. Final quotes depend on scope, integrations, and
+              timeline — milestone billing, no surprise change requests.
             </p>
             <div className="mt-10 grid gap-5 md:grid-cols-3">
               {service.pricingTiers.map((tier) => (
@@ -68,16 +69,30 @@ export function ServiceSeoSections({ service }: { service: ServicePageData }) {
       {service.comparisonTable?.length ? (
         <section className="py-16">
           <Container>
-            <h2 className="v6-section-title">How custom ERP compares</h2>
+            <h2 className="v6-section-title">
+              {service.comparisonTitle ?? "How our approach compares"}
+            </h2>
+            <p className="v6-lead mt-3 max-w-2xl">
+              Illustrative comparison of delivery models. Figures vary by vendor and project scope;
+              we focus on transparent milestones and outcomes you can verify.
+            </p>
             <div className="mt-8 overflow-x-auto rounded-2xl border border-[var(--v6-border)]">
               <table className="w-full min-w-[640px] text-left text-sm">
                 <thead className="bg-[#f8fafc] text-[var(--v6-text)]">
                   <tr>
                     <th className="px-4 py-3 font-semibold">Capability</th>
-                    <th className="px-4 py-3 font-semibold">Custom ERP</th>
-                    <th className="px-4 py-3 font-semibold">SAP</th>
-                    <th className="px-4 py-3 font-semibold">Tally</th>
-                    <th className="px-4 py-3 font-semibold">Zoho</th>
+                    <th className="px-4 py-3 font-semibold">
+                      {service.comparisonColumnLabels?.custom ?? "Maxwell Electrodeal"}
+                    </th>
+                    <th className="px-4 py-3 font-semibold">
+                      {service.comparisonColumnLabels?.col2 ?? "Typical integrator"}
+                    </th>
+                    <th className="px-4 py-3 font-semibold">
+                      {service.comparisonColumnLabels?.col3 ?? "Template agency"}
+                    </th>
+                    <th className="px-4 py-3 font-semibold">
+                      {service.comparisonColumnLabels?.col4 ?? "DIY / freelancers"}
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -93,6 +108,10 @@ export function ServiceSeoSections({ service }: { service: ServicePageData }) {
                 </tbody>
               </table>
             </div>
+            <p className="mt-4 text-xs text-[var(--v6-text-muted)]">
+              Comparisons are illustrative only and not intended to disparage any company or
+              product. Pricing, timelines, and capabilities vary by scope and vendor.
+            </p>
           </Container>
         </section>
       ) : null}
