@@ -12,18 +12,17 @@ import { isPortalDemoEnabledServer } from "@/lib/portal/demo-config";
 
 const isProduction = process.env.NODE_ENV === "production";
 
-function buildCsp(nonce: string): string {
+function buildCsp(): string {
   const devEval = isProduction ? "" : " 'unsafe-eval'";
   return [
     "default-src 'self'",
-    // strict-dynamic: GTM/GA tags injected by nonce-trusted entry scripts
-    // unsafe-inline: legacy fallback; ignored when nonce matches in modern browsers
-    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic' 'unsafe-inline'${devEval} https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net https://www.clarity.ms https://assets.calendly.com`,
-    // unsafe-inline: required for React style={{}} attributes (nonces only apply to <style> tags)
-    `style-src 'self' 'nonce-${nonce}' 'unsafe-inline' https://assets.calendly.com`,
+    // No nonce in directive — nonce + unsafe-inline causes browsers to ignore unsafe-inline,
+    // which breaks Next.js RSC hydration scripts, React style={{}} attributes, and GTM tags.
+    `script-src 'self' 'unsafe-inline'${devEval} https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net https://www.clarity.ms https://assets.calendly.com`,
+    "style-src 'self' 'unsafe-inline' https://assets.calendly.com",
     "img-src 'self' data: blob: https:",
     "font-src 'self' data:",
-    "connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://region1.google-analytics.com https://www.clarity.ms https://*.clarity.ms",
+    "connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://region1.google-analytics.com https://www.clarity.ms https://*.clarity.ms https://www.facebook.com https://connect.facebook.net",
     "frame-src 'self' https://www.googletagmanager.com https://calendly.com https://*.calendly.com",
     "object-src 'none'",
     "base-uri 'self'",
@@ -142,7 +141,7 @@ export function proxy(request: NextRequest) {
   }
 
   const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
-  const csp = buildCsp(nonce);
+  const csp = buildCsp();
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set("x-nonce", nonce);
   // Next.js reads nonce from this request header to stamp framework inline scripts.
