@@ -18,13 +18,24 @@ export async function submitLeadForm(
     body: JSON.stringify({ website_url: "", ...payload }),
   });
 
-  const body = (await res.json()) as {
+  let body: {
     success?: boolean;
     message?: string;
     leadScore?: number;
     leadTier?: string;
     error?: string;
-  };
+  } = {};
+
+  try {
+    body = (await res.json()) as typeof body;
+  } catch {
+    return {
+      success: false,
+      error: res.ok
+        ? "Unexpected server response. Please check your email — we may have received your message."
+        : "Something went wrong. Please try again.",
+    };
+  }
 
   if (!res.ok) {
     return { success: false, error: body.error || "Something went wrong. Please try again." };

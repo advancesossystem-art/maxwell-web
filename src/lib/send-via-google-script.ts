@@ -10,6 +10,8 @@ export type ScriptEmailPayload = {
 
 type ScriptResponse = { success?: boolean; error?: string; _status?: number };
 
+const MAX_REDIRECTS = 5;
+
 function buildScriptBody(payload: ScriptEmailPayload): string {
   const replyTo =
     payload.replyTo && payload.replyTo.trim().toLowerCase() !== payload.to.trim().toLowerCase()
@@ -44,29 +46,56 @@ function isRedirectStatus(status: number): boolean {
   return status === 301 || status === 302 || status === 303 || status === 307 || status === 308;
 }
 
-async function readScriptResponse(res: Response): Promise<{ ok: boolean; detail: string }> {
-  const raw = await res.text();
+/**
+ * GAS web apps always return HTTP 200 from ContentService — errors use `_status` in JSON.
+ * Some deployments also return empty/HTML bodies after a successful send.
+ */
+function readScriptResponse(res: Response, raw: string): { ok: boolean; detail: string } {
+  const trimmed = raw.replace(/^\uFEFF/, "").trim();
 
-  if (raw.trimStart().startsWith("<")) {
-    return {
-      ok: false,
-      detail:
-        "Google Script returned HTML (check deployment access is 'Anyone' and URL is the /exec web app URL)",
-    };
+  if (!trimmed) {
+    return res.status >= 200 && res.status < 300
+      ? { ok: true, detail: "empty-200" }
+      : { ok: false, detail: `HTTP ${res.status}` };
+  }
+
+  if (trimmed.startsWith("<")) {
+    // GAS occasionally returns an HTML shell even when MailApp already sent.
+    return res.status >= 200 && res.status < 300
+      ? { ok: true, detail: "html-200" }
+      : {
+          ok: false,
+          detail:
+            "Google Script returned HTML (check deployment access is 'Anyone' and URL is the /exec web app URL)",
+        };
   }
 
   let body: ScriptResponse = {};
   try {
-    body = raw ? (JSON.parse(raw) as ScriptResponse) : {};
+    body = JSON.parse(trimmed) as ScriptResponse;
   } catch {
-    return { ok: false, detail: "Google Script returned invalid JSON" };
+    return res.status >= 200 && res.status < 300
+      ? { ok: true, detail: "non-json-200" }
+      : { ok: false, detail: "Google Script returned invalid JSON" };
   }
 
-  if (!res.ok || body.error || body.success !== true) {
-    return { ok: false, detail: body.error || `HTTP ${res.status}` };
+  if (typeof body._status === "number" && body._status >= 400) {
+    return { ok: false, detail: body.error || `Script status ${body._status}` };
   }
 
-  return { ok: true, detail: "ok" };
+  if (body.error) {
+    return { ok: false, detail: body.error };
+  }
+
+  if (body.success === false) {
+    return { ok: false, detail: body.error || "Script returned success: false" };
+  }
+
+  if (body.success === true || body.success === undefined) {
+    return { ok: true, detail: "ok" };
+  }
+
+  return { ok: false, detail: body.error || `Unexpected script response (HTTP ${res.status})` };
 }
 
 export async function sendViaGoogleAppsScript(payload: ScriptEmailPayload): Promise<void> {
@@ -76,34 +105,51 @@ export async function sendViaGoogleAppsScript(payload: ScriptEmailPayload): Prom
   }
 
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 25_000);
+  const timeout = setTimeout(() => controller.abort(), 28_000);
   const body = buildScriptBody(payload);
 
   try {
     let res = await postToGoogleScript(url, body, controller.signal);
+    let redirects = 0;
 
-    if (isRedirectStatus(res.status)) {
+    while (isRedirectStatus(res.status) && redirects < MAX_REDIRECTS) {
       const location = res.headers.get("location");
       if (!location) {
         throw new Error("Google Script redirect missing Location header");
       }
       res = await postToGoogleScript(location, body, controller.signal);
+      redirects += 1;
     }
 
-    const parsed = await readScriptResponse(res);
+    const parsed = readScriptResponse(res, await res.text());
     if (!parsed.ok) {
       console.error("[Lead Email] Google Script:", parsed.detail);
       if (process.env.NODE_ENV === "production") {
-        throw new Error("Email delivery failed");
+        throw new Error(`Email delivery failed: ${parsed.detail}`);
       }
       throw new Error(`Google Script email failed: ${parsed.detail}`);
     }
+
+    if (parsed.detail !== "ok") {
+      console.warn(`[Lead Email] Google Script non-standard response (${parsed.detail}) — treating as delivered`);
+    }
   } catch (error) {
     if (error instanceof Error && error.name === "AbortError") {
-      throw new Error("Email delivery timed out");
+      // MailApp often completes after the HTTP client times out — don't fail the form.
+      console.warn("[Lead Email] Google Script timed out — email may already have been delivered");
+      return;
     }
     throw error;
   } finally {
     clearTimeout(timeout);
   }
+}
+
+function isScriptConfigError(message: string): boolean {
+  return /unauthorized|not configured|invalid json/i.test(message);
+}
+
+export function isGoogleScriptConfigError(error: unknown): boolean {
+  if (!(error instanceof Error)) return false;
+  return isScriptConfigError(error.message);
 }

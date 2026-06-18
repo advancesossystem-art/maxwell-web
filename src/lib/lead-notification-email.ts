@@ -2,7 +2,7 @@ import type { LeadPayload } from "@/lib/crm";
 import { isEmailDeliveryConfigured, sendOutboundEmail } from "@/lib/email-transport";
 import { getGmailFromAddress, getLeadInbox } from "@/lib/gmail-config";
 import { isGoogleScriptConfigured } from "@/lib/gmail-script-config";
-import { sendViaGoogleAppsScript } from "@/lib/send-via-google-script";
+import { isGoogleScriptConfigError, sendViaGoogleAppsScript } from "@/lib/send-via-google-script";
 import { sanitizeEmailHeader } from "@/lib/security/sanitize";
 
 /** Fallback inbox if env vars are missing */
@@ -192,7 +192,8 @@ export async function deliverLeadNotificationEmail(payload: LeadPayload): Promis
       return;
     } catch (scriptError) {
       const detail = scriptError instanceof Error ? scriptError.message : "Google Script failed";
-      if (!isEmailDeliveryConfigured()) {
+      // Only fall back to SMTP for clear config/auth failures — not after a likely successful send.
+      if (!isEmailDeliveryConfigured() || !isGoogleScriptConfigError(scriptError)) {
         throw scriptError;
       }
       console.error(`[Lead Email] Google Script failed (${detail}), trying SMTP fallback`);
