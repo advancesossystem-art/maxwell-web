@@ -10,7 +10,16 @@ import { getAllCaseStudies } from "@/lib/case-studies-data";
 import { ArrowRight } from "@/components/ui/Icons";
 import { AccentGradient } from "@/components/design/typography";
 
-export function BookConsultationPageContent() {
+export function BookConsultationPageContent({
+  defaultService = "",
+  defaultIndustry = "",
+}: {
+  defaultService?: string;
+  defaultIndustry?: string;
+}) {
+  const defaultMessage = defaultIndustry
+    ? `I'm interested in software solutions for the ${defaultIndustry} industry. `
+    : "";
   const stories = getAllCaseStudies().slice(0, 3);
 
   return (
@@ -39,7 +48,14 @@ export function BookConsultationPageContent() {
               </p>
             </div>
             <div className="flex-1 p-5 sm:p-6 sm:pt-4">
-              <LeadContactForm source="book-consultation" submitLabel="Book Consultation" compact />
+              <LeadContactForm
+                source="book-consultation"
+                submitLabel="Book Consultation"
+                compact
+                defaultService={defaultService}
+                defaultIndustry={defaultIndustry}
+                defaultMessage={defaultMessage}
+              />
             </div>
             <div className="shrink-0 flex flex-wrap gap-2 border-t border-[var(--v6-border)] p-5 sm:p-6 sm:pt-4">
               <Button href="/get-estimate" variant="secondary" size="sm">

@@ -481,13 +481,45 @@ function LeadContactFormWithParams({
   );
 }
 
+function ConsultationFormFallback({ compact }: { compact?: boolean }) {
+  const fieldClass = "h-10 w-full rounded-lg bg-[var(--v6-bg-soft,#f1f5f9)] animate-pulse";
+  return (
+    <div className={cn("space-y-3.5", compact ? "" : "space-y-5")} aria-busy="true" aria-label="Loading form">
+      <div className="h-2 w-full rounded-full bg-[var(--v6-bg-soft,#f1f5f9)] animate-pulse" />
+      <div className="grid gap-3.5 sm:grid-cols-2">
+        <div className={fieldClass} />
+        <div className={fieldClass} />
+      </div>
+      <div className="grid gap-3.5 sm:grid-cols-2">
+        <div className={fieldClass} />
+        <div className={fieldClass} />
+      </div>
+      <div className={fieldClass} />
+      <div className={cn("rounded-lg bg-[var(--v6-bg-soft,#f1f5f9)] animate-pulse", compact ? "h-24" : "h-28")} />
+      <div className="h-11 w-36 rounded-full bg-[var(--v6-bg-soft,#f1f5f9)] animate-pulse" />
+    </div>
+  );
+}
+
 export function LeadContactForm(props: {
+  source?: string;
+  submitLabel?: string;
+  compact?: boolean;
+  defaultService?: string;
+  defaultIndustry?: string;
+  defaultMessage?: string;
+}) {
+  return <LeadContactFormInner {...props} />;
+}
+
+/** Use on pages that pre-fill from URL query params (requires Suspense boundary). */
+export function LeadContactFormFromUrl(props: {
   source?: string;
   submitLabel?: string;
   compact?: boolean;
 }) {
   return (
-    <Suspense fallback={<div className="h-96 animate-pulse rounded-2xl bg-surface" />}>
+    <Suspense fallback={<ConsultationFormFallback compact={props.compact} />}>
       <LeadContactFormWithParams {...props} />
     </Suspense>
   );

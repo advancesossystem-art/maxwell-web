@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { LeadContactForm } from "@/components/leads/LeadContactForm";
+import { LeadContactFormFromUrl } from "@/components/leads/LeadContactForm";
 import { PageSection } from "@/components/design/PageSection";
 import { Card } from "@/components/design/Card";
 import { AccentGradient, H2, H3, Caption } from "@/components/design/typography";
@@ -116,7 +116,7 @@ export function ContactPageContent() {
               <H3>Send us a message</H3>
               <Caption className="mt-2 block">Complete the form and we&apos;ll respond within 24 hours.</Caption>
               <div className="mt-8">
-                <LeadContactForm source="contact" />
+                <LeadContactFormFromUrl source="contact" />
               </div>
             </FormCard>
           </div>

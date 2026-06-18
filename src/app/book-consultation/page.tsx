@@ -8,6 +8,16 @@ export const metadata = createMetadata({
   path: "/book-consultation",
 });
 
-export default function BookConsultationPage() {
-  return <BookConsultationPageContent />;
+type PageProps = {
+  searchParams: Promise<{ service?: string; industry?: string }>;
+};
+
+export default async function BookConsultationPage({ searchParams }: PageProps) {
+  const params = await searchParams;
+  return (
+    <BookConsultationPageContent
+      defaultService={typeof params.service === "string" ? params.service : ""}
+      defaultIndustry={typeof params.industry === "string" ? params.industry : ""}
+    />
+  );
 }
