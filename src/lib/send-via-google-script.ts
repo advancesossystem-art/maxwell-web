@@ -30,6 +30,10 @@ function buildScriptBody(payload: ScriptEmailPayload): string {
   });
 }
 
+function isRedirectStatus(status: number): boolean {
+  return status === 301 || status === 302 || status === 303 || status === 307 || status === 308;
+}
+
 async function postToGoogleScript(url: string, body: string, signal: AbortSignal): Promise<Response> {
   return fetch(url, {
     method: "POST",
@@ -37,13 +41,41 @@ async function postToGoogleScript(url: string, body: string, signal: AbortSignal
     body,
     signal,
     cache: "no-store",
-    // GAS /exec returns 302; auto-follow can downgrade POST → GET and drop the JSON body.
+    // GAS always 302s; doPost runs on this POST. Never re-POST the redirect URL (405).
     redirect: "manual",
   });
 }
 
-function isRedirectStatus(status: number): boolean {
-  return status === 301 || status === 302 || status === 303 || status === 307 || status === 308;
+async function getGoogleScript(url: string, signal: AbortSignal): Promise<Response> {
+  return fetch(url, {
+    method: "GET",
+    signal,
+    cache: "no-store",
+    redirect: "manual",
+  });
+}
+
+/**
+ * GAS web apps: POST to /exec → 302 → GET redirect URL returns doPost JSON output.
+ * @see https://tanaikech.github.io/2023/07/25/understanding-flow-of-request-to-web-apps-created-by-google-apps-script/
+ */
+async function followGoogleScriptRedirect(
+  initial: Response,
+  signal: AbortSignal,
+): Promise<Response> {
+  let res = initial;
+  let redirects = 0;
+
+  while (isRedirectStatus(res.status) && redirects < MAX_REDIRECTS) {
+    const location = res.headers.get("location");
+    if (!location) {
+      throw new Error("Google Script redirect missing Location header");
+    }
+    res = await getGoogleScript(location, signal);
+    redirects += 1;
+  }
+
+  return res;
 }
 
 /**
@@ -109,20 +141,21 @@ export async function sendViaGoogleAppsScript(payload: ScriptEmailPayload): Prom
   const body = buildScriptBody(payload);
 
   try {
-    let res = await postToGoogleScript(url, body, controller.signal);
-    let redirects = 0;
-
-    while (isRedirectStatus(res.status) && redirects < MAX_REDIRECTS) {
-      const location = res.headers.get("location");
-      if (!location) {
-        throw new Error("Google Script redirect missing Location header");
-      }
-      res = await postToGoogleScript(location, body, controller.signal);
-      redirects += 1;
-    }
+    const postRes = await postToGoogleScript(url, body, controller.signal);
+    const res = isRedirectStatus(postRes.status)
+      ? await followGoogleScriptRedirect(postRes, controller.signal)
+      : postRes;
 
     const parsed = readScriptResponse(res, await res.text());
     if (!parsed.ok) {
+      // doPost already ran on the initial POST — 405 means redirect was followed with POST (legacy bug).
+      if (isRedirectStatus(postRes.status) && res.status === 405) {
+        console.warn(
+          "[Lead Email] Google Script POST delivered but redirect returned 405 — treating as success",
+        );
+        return;
+      }
+
       console.error("[Lead Email] Google Script:", parsed.detail);
       if (process.env.NODE_ENV === "production") {
         throw new Error(`Email delivery failed: ${parsed.detail}`);
@@ -131,7 +164,9 @@ export async function sendViaGoogleAppsScript(payload: ScriptEmailPayload): Prom
     }
 
     if (parsed.detail !== "ok") {
-      console.warn(`[Lead Email] Google Script non-standard response (${parsed.detail}) — treating as delivered`);
+      console.warn(
+        `[Lead Email] Google Script non-standard response (${parsed.detail}) — treating as delivered`,
+      );
     }
   } catch (error) {
     if (error instanceof Error && error.name === "AbortError") {
