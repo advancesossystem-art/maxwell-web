@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { siteConfig } from "@/lib/constants";
 import { BrandLogo } from "@/components/layout/BrandLogo";
+import { CookieSettingsLink } from "@/components/layout/CookieSettingsLink";
 import { consultationHref, estimateHref } from "@/lib/conversion-copy";
 
 const columns = [
@@ -126,6 +127,10 @@ export function Footer() {
             <Link href="/terms-of-service" className="hover:text-[var(--v6-text)]">
               Terms
             </Link>
+            <Link href="/cookie-policy" className="hover:text-[var(--v6-text)]">
+              Cookies
+            </Link>
+            <CookieSettingsLink />
           </div>
         </div>
       </div>

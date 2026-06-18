@@ -11,11 +11,13 @@ export type CookieConsentChoice = "accepted" | "declined" | null;
 type CookieConsentContextValue = {
   consent: CookieConsentChoice;
   setConsent: (choice: "accepted" | "declined") => void;
+  resetConsent: () => void;
 };
 
 const CookieConsentContext = createContext<CookieConsentContextValue>({
   consent: null,
   setConsent: () => {},
+  resetConsent: () => {},
 });
 
 export function CookieConsentProvider({ children }: { children: ReactNode }) {
@@ -35,8 +37,14 @@ export function CookieConsentProvider({ children }: { children: ReactNode }) {
     applyGoogleConsent(choice === "accepted");
   }
 
+  function resetConsent() {
+    localStorage.removeItem(COOKIE_CONSENT_STORAGE_KEY);
+    setConsentState(null);
+    applyGoogleConsent(false);
+  }
+
   return (
-    <CookieConsentContext.Provider value={{ consent, setConsent }}>
+    <CookieConsentContext.Provider value={{ consent, setConsent, resetConsent }}>
       {children}
     </CookieConsentContext.Provider>
   );

@@ -136,11 +136,41 @@ function resolveFromAddress(): string {
   return getGmailFromAddress();
 }
 
+function leadReplyTo(payload: LeadPayload, inbox: string): string | undefined {
+  const prospect = sanitizeEmailHeader(payload.email);
+  if (!prospect || prospect.toLowerCase() === inbox.trim().toLowerCase()) {
+    return undefined;
+  }
+  return prospect;
+}
+
+async function sendLeadInboxViaSmtp(
+  payload: LeadPayload,
+  to: string,
+  subject: string,
+  text: string,
+  html: string,
+): Promise<void> {
+  const provider = await sendOutboundEmail({
+    to,
+    from: resolveFromAddress(),
+    replyTo: leadReplyTo(payload, to),
+    subject,
+    html,
+    text,
+  });
+
+  if (process.env.NODE_ENV !== "production") {
+    console.log(`[Lead Email] Sent via ${provider} to ${to}`);
+  }
+}
+
 export async function deliverLeadNotificationEmail(payload: LeadPayload): Promise<void> {
   const to = getLeadInbox();
   const subject = buildLeadEmailSubject(payload);
   const text = buildLeadEmailText(payload);
   const html = buildLeadEmailHtml(payload);
+  const replyTo = leadReplyTo(payload, to);
 
   if (!isGoogleScriptConfigured() && !isEmailDeliveryConfigured()) {
     const hint =
@@ -154,31 +184,22 @@ export async function deliverLeadNotificationEmail(payload: LeadPayload): Promis
   }
 
   if (isGoogleScriptConfigured()) {
-    await sendViaGoogleAppsScript({
-      to,
-      subject,
-      html,
-      text,
-      replyTo: sanitizeEmailHeader(payload.email),
-    });
-    if (process.env.NODE_ENV !== "production") {
-      console.log(`[Lead Email] Sent via Google Apps Script to ${to}`);
+    try {
+      await sendViaGoogleAppsScript({ to, subject, html, text, replyTo });
+      if (process.env.NODE_ENV !== "production") {
+        console.log(`[Lead Email] Sent via Google Apps Script to ${to}`);
+      }
+      return;
+    } catch (scriptError) {
+      const detail = scriptError instanceof Error ? scriptError.message : "Google Script failed";
+      if (!isEmailDeliveryConfigured()) {
+        throw scriptError;
+      }
+      console.error(`[Lead Email] Google Script failed (${detail}), trying SMTP fallback`);
     }
-    return;
   }
 
-  const provider = await sendOutboundEmail({
-    to,
-    from: resolveFromAddress(),
-    replyTo: sanitizeEmailHeader(payload.email),
-    subject,
-    html,
-    text,
-  });
-
-  if (process.env.NODE_ENV !== "production") {
-    console.log(`[Lead Email] Sent via ${provider} to ${to}`);
-  }
+  await sendLeadInboxViaSmtp(payload, to, subject, text, html);
 }
 
 function firstName(fullName: string): string {

@@ -55,19 +55,31 @@ export const termsSections = [
 export const cookieSections = [
   {
     title: "What Are Cookies",
-    body: `Cookies are small files stored on your device to remember preferences and measure site usage.`,
+    body: `Cookies and similar technologies (such as local storage and pixels) are small files or identifiers stored on your device. They help websites function, remember preferences, and — only with your consent — measure how a site is used.`,
   },
   {
-    title: "Cookies We Use",
-    body: `Essential cookies (session, security), analytics cookies (Google Analytics / GTM when you accept), and preference cookies (your cookie choice, portal dark mode in local storage).`,
+    title: "Legal Basis",
+    body: `Under the EU/UK GDPR and the ePrivacy Directive (and similar laws such as the UK PECR), we may set strictly necessary cookies without consent because they are required to provide the service you request. Analytics and marketing technologies require your freely given, specific, and informed consent before they are activated. We do not use pre-ticked boxes, and continuing to browse this site without choosing Accept or Reject does not count as consent.`,
   },
   {
-    title: "Managing Cookies",
-    body: `Use the cookie banner to accept or reject non-essential cookies. You can also control cookies through your browser settings. UK and EU visitors may withdraw consent at any time by clearing site data or blocking cookies.`,
+    title: "Cookie Categories",
+    body: `Strictly necessary: security, load balancing, admin session (where applicable), and storing your cookie choice (maxwell-cookie-consent in local storage). Analytics (only if you accept): Google Analytics 4 and/or Google Tag Manager to measure traffic and site performance. Optional marketing (only if you accept and configured): Meta Pixel, Microsoft Clarity session replay. Preference: portal display settings stored locally.`,
   },
   {
-    title: "Third Parties",
-    body: `Analytics and advertising partners may set their own cookies when IDs are configured in environment variables.`,
+    title: "Third-Party Providers",
+    body: `When you accept non-essential cookies, third parties may process data under their own policies: Google (Analytics / Tag Manager), Meta (advertising pixel, if enabled), and Microsoft (Clarity, if enabled). We use Google Consent Mode so analytics tags respect your choice. Data may be processed in the United States or other countries; where required, appropriate safeguards apply.`,
+  },
+  {
+    title: "Retention",
+    body: `Your cookie preference is stored until you change it or clear site data. Analytics cookies typically expire according to each provider's default (often up to 24 months). Session cookies expire when you close your browser.`,
+  },
+  {
+    title: "Managing & Withdrawing Consent",
+    body: `Use Reject all or Accept all on the cookie banner when you first visit. You can change your mind at any time by clicking Cookie settings in the site footer — this re-opens the banner with the same options. You can also block or delete cookies in your browser settings. Withdrawing consent does not affect the lawfulness of processing before withdrawal.`,
+  },
+  {
+    title: "Contact",
+    body: `Questions about cookies or privacy: ${siteConfig.email}. EU/UK residents may also contact their local data protection authority.`,
   },
 ];
 
