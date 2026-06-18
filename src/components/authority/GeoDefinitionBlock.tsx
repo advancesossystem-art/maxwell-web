@@ -19,13 +19,16 @@ export function GeoDefinitionBlock({ term, definition }: GeoDefinitionBlockProps
 }
 
 export function ExpertCommentary({ author, role, quote }: { author: string; role: string; quote: string }) {
+  const showAttribution = author.trim().length > 0 || role.trim().length > 0;
   return (
     <blockquote className="border-l-4 border-brand-500 pl-5">
       <p className="text-sm italic leading-relaxed text-[var(--v6-text-secondary)]">&ldquo;{quote}&rdquo;</p>
-      <footer className="mt-3 text-sm">
-        <cite className="font-medium not-italic text-[var(--v6-text)]">{author}</cite>
-        <span className="text-muted"> — {role}</span>
-      </footer>
+      {showAttribution ? (
+        <footer className="mt-3 text-sm">
+          {author.trim().length > 0 ? <cite className="font-medium not-italic text-[var(--v6-text)]">{author}</cite> : null}
+          {role.trim().length > 0 ? <span className="text-muted"> — {role}</span> : null}
+        </footer>
+      ) : null}
     </blockquote>
   );
 }

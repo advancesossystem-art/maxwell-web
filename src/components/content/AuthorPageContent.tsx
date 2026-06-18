@@ -31,8 +31,8 @@ export function AuthorPageContent({ author }: { author: Author }) {
               <H1 as="h2" className="mt-0">
                 {author.name}
               </H1>
-              <Caption className="text-brand-500">{author.role}</Caption>
-              <Caption className="mt-1">{author.position}</Caption>
+              {author.role ? <Caption className="text-brand-500">{author.role}</Caption> : null}
+              {author.position ? <Caption className="mt-1">{author.position}</Caption> : null}
               <Caption className="mt-2">Experience: {author.experience}</Caption>
             </div>
           </div>

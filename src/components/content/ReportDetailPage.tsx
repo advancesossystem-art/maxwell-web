@@ -3,7 +3,6 @@ import { Container } from "@/components/ui/Container";
 import { ContentRenderer } from "@/components/content/ContentRenderer";
 import { NewsletterSignup } from "@/components/content/NewsletterSignup";
 import { RelatedContentRail } from "@/components/content/RelatedContentRail";
-import { AuthorCard } from "@/components/content/AuthorCard";
 import { ContentAuthorByline } from "@/components/content/ContentAuthorByline";
 import { TrustThisContent } from "@/components/content/TrustThisContent";
 import { ContentPageJsonLd } from "@/components/seo/JsonLd";
@@ -12,12 +11,10 @@ import { StatisticsPanel } from "@/components/authority/StatisticsPanel";
 import { ProofSignalsBar } from "@/components/trust/ProofSignalsBar";
 import { buildReportGeo } from "@/lib/geo-page-content";
 import { getStatisticsForContentCategory } from "@/lib/statistics-data";
-import { getContentAuthor } from "@/lib/content/resolve-author";
 import type { Report } from "@/lib/content/schema";
 import type { ContentCategorySlug } from "@/lib/content/schema";
 
 export function ReportDetailPage({ report }: { report: Report }) {
-  const author = getContentAuthor(report.authorId, report.category);
   const geo = buildReportGeo(report);
   const statCategory = mapReportCategory(report.category);
   const stats = {
@@ -97,11 +94,6 @@ export function ReportDetailPage({ report }: { report: Report }) {
         </Container>
       </section>
 
-      <section className="border-t border-border py-12">
-        <Container className="max-w-3xl">
-          <AuthorCard author={author} variant="full" />
-        </Container>
-      </section>
     </>
   );
 }

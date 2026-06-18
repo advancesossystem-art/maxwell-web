@@ -2,9 +2,7 @@ import Link from "next/link";
 import { ContentSearch } from "@/components/content/ContentSearch";
 import { ContentCard } from "@/components/content/ContentCard";
 import { NewsletterSignup } from "@/components/content/NewsletterSignup";
-import { AuthorCard } from "@/components/content/AuthorCard";
 import { contentCategories } from "@/lib/content/categories";
-import { authors } from "@/lib/content/authors";
 import { buildSearchIndex, getFeaturedContent, getTrendingContent } from "@/lib/content/search";
 import { getAllArticles } from "@/lib/content/articles";
 import { PageHero } from "@/components/design/PageHero";
@@ -62,17 +60,15 @@ export function BlogHub() {
         <div className="grid gap-12 lg:grid-cols-2">
           <div>
             <SectionHeader
-              title="Our authors"
-              description="Practitioners who build ERP, AI, and enterprise platforms."
+              title="Editorial standards"
+              description="Content is published under the Maxwell Electrodeal brand and reviewed for delivery relevance, implementation accuracy, and business clarity."
             />
-            <div className="grid gap-4 sm:grid-cols-2">
-              {authors.slice(0, 4).map((author) => (
-                <AuthorCard key={author.id} author={author} />
-              ))}
+            <div className="rounded-2xl border border-border bg-surface-elevated p-6">
+              <Caption>
+                Maxwell publishes articles, guides, reports, and downloadable resources based on implementation
+                experience across ERP, CRM, AI, cloud, mobile, and custom software delivery.
+              </Caption>
             </div>
-            <Link href="/team" className="mt-6 inline-block text-sm font-medium text-brand-500 hover:text-brand-400">
-              Meet the full team →
-            </Link>
           </div>
           <NewsletterSignup />
         </div>

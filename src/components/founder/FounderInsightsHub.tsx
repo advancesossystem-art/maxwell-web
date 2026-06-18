@@ -24,7 +24,7 @@ export function FounderInsightsHub() {
               <h1 className="v6-section-title mt-2">
                 <AccentGradient>{founder.name}</AccentGradient>
               </h1>
-              <Caption className="text-brand-500">{founder.role}</Caption>
+              {founder.role ? <Caption className="text-brand-500">{founder.role}</Caption> : null}
               <p className="mt-4 max-w-2xl text-[var(--v6-text-secondary)]">{founder.bio}</p>
               <Link href={`/authors/${founder.slug}`} className="mt-4 inline-block text-sm text-brand-600 hover:text-brand-500">
                 Full author profile →

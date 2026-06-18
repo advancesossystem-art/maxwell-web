@@ -9,7 +9,6 @@ import { getIndexableArticleSlugs } from "./content/articles";
 import { guideSlugs } from "./content/guides";
 import { resourceSlugs } from "./content/resources";
 import { reportSlugs } from "./content/reports";
-import { authors } from "./content/authors";
 import { answerSlugs } from "./answers-data";
 import { resourceCenterSlugs } from "./resource-centers-data";
 import { toolSlugs } from "./tools/registry";
@@ -21,8 +20,6 @@ const staticPages = [
   "/videos",
   "/about",
   "/company",
-  "/team",
-  "/authors",
   "/process",
   "/careers",
   "/why-maxwell",
@@ -132,7 +129,6 @@ export function getContentSitemapEntries() {
     { url: `${siteConfig.url}/research`, priority: 0.86 },
     { url: `${siteConfig.url}/knowledge-center`, priority: 0.9 },
     { url: `${siteConfig.url}/answers`, priority: 0.88 },
-    { url: `${siteConfig.url}/founder-insights`, priority: 0.82 },
     { url: `${siteConfig.url}/citation-guides`, priority: 0.85 },
     { url: `${siteConfig.url}/project-gallery`, priority: 0.8 },
     ...getIndexableArticleSlugs().map((slug) => ({ url: `${siteConfig.url}/blog/${slug}`, priority: 0.8 })),
@@ -144,7 +140,6 @@ export function getContentSitemapEntries() {
       url: `${siteConfig.url}/resource-centers/${slug}`,
       priority: 0.84,
     })),
-    ...authors.map((a) => ({ url: `${siteConfig.url}/authors/${a.slug}`, priority: 0.75 })),
   ];
   return entries;
 }

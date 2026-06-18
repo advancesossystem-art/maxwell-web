@@ -200,7 +200,7 @@ export function buildPersonAuthorNode(author: Author) {
   return {
     "@type": "Person" as const,
     name: author.name,
-    jobTitle: author.role,
+    ...(author.role ? { jobTitle: author.role } : {}),
     description: author.bio,
     url: author.isFounder ? `${siteConfig.url}/about` : `${siteConfig.url}/authors/${author.slug}`,
     ...(author.linkedin ? { sameAs: [author.linkedin] } : {}),

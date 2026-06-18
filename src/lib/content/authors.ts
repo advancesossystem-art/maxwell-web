@@ -29,8 +29,6 @@ const authorOverrides: Record<
   Partial<Pick<Author, "role" | "position" | "specialization" | "isFounder">>
 > = {
   "rajesh-mehta": {
-    role: "Founder & CEO",
-    position: "Founder & Chief Executive Officer",
     specialization: "ERP strategy, manufacturing operations, digital transformation",
     isFounder: true,
   },

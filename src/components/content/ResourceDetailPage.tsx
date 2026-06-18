@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { ContentRenderer } from "@/components/content/ContentRenderer";
-import { AuthorCard } from "@/components/content/AuthorCard";
 import { ContentAuthorByline } from "@/components/content/ContentAuthorByline";
 import { TrustThisContent } from "@/components/content/TrustThisContent";
 import { NewsletterSignup } from "@/components/content/NewsletterSignup";
@@ -12,11 +11,9 @@ import { StatisticsPanel } from "@/components/authority/StatisticsPanel";
 import { ProofSignalsBar } from "@/components/trust/ProofSignalsBar";
 import { buildResourceGeo } from "@/lib/geo-page-content";
 import { getStatisticsForContentCategory } from "@/lib/statistics-data";
-import { getContentAuthor } from "@/lib/content/resolve-author";
 import type { Resource } from "@/lib/content/schema";
 
 export function ResourceDetailPage({ resource }: { resource: Resource }) {
-  const author = getContentAuthor(resource.authorId, resource.category);
   const geo = buildResourceGeo(resource);
   const cat =
     resource.category === "erp" || resource.category === "crm" || resource.category === "ai"
@@ -100,11 +97,6 @@ export function ResourceDetailPage({ resource }: { resource: Resource }) {
         </Container>
       </section>
 
-      <section className="border-t border-border py-12">
-        <Container className="max-w-3xl">
-          <AuthorCard author={author} variant="full" />
-        </Container>
-      </section>
     </>
   );
 }

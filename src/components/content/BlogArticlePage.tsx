@@ -2,14 +2,12 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { ReadingProgressBar } from "@/components/content/ReadingProgressBar";
 import { ContentRenderer } from "@/components/content/ContentRenderer";
-import { AuthorCard } from "@/components/content/AuthorCard";
 import { ContentCard } from "@/components/content/ContentCard";
 import { RelatedContent } from "@/components/content/RelatedContent";
 import { NewsletterSignup } from "@/components/content/NewsletterSignup";
 import { ArticlePageJsonLd } from "@/components/seo/JsonLd";
 import { GeoDefinitionBlock } from "@/components/authority/GeoDefinitionBlock";
 import { GeoKeyTakeaways, buildTakeawaysFromFaqs } from "@/components/authority/GeoKeyTakeaways";
-import { getContentAuthor } from "@/lib/content/resolve-author";
 import { TrustThisContent } from "@/components/content/TrustThisContent";
 import { getCategoryBySlug } from "@/lib/content/categories";
 import { formatPublishDate } from "@/lib/content/utils";
@@ -17,7 +15,6 @@ import { getRelatedContent } from "@/lib/content/search";
 import type { Article } from "@/lib/content/schema";
 
 export function BlogArticlePage({ article }: { article: Article }) {
-  const author = getContentAuthor(article.authorId, article.category);
   const category = getCategoryBySlug(article.category);
   const related = getRelatedContent(article.slug, "article", article.relatedSlugs);
   const takeaways = buildTakeawaysFromFaqs(article.faqs, 4);
@@ -39,11 +36,7 @@ export function BlogArticlePage({ article }: { article: Article }) {
           <h1 className="mt-4 max-w-4xl font-display text-3xl font-bold text-white sm:text-4xl lg:text-5xl">{article.title}</h1>
           <p className="mt-4 max-w-2xl text-lg text-white/55">{article.excerpt}</p>
           <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-white/50">
-            {author && (
-              <Link href={`/authors/${author.slug}`} className="hover:text-white transition-colors">
-                {author.name}
-              </Link>
-            )}
+            <span>Maxwell Electrodeal</span>
             <span>{formatPublishDate(article.publishedAt)}</span>
             <span>{article.readingTimeMinutes} min read</span>
           </div>
@@ -98,14 +91,6 @@ export function BlogArticlePage({ article }: { article: Article }) {
                 </details>
               ))}
             </div>
-          </Container>
-        </section>
-      )}
-
-      {author && (
-        <section className="border-t border-border py-12">
-          <Container className="max-w-3xl">
-            <AuthorCard author={author} variant="full" />
           </Container>
         </section>
       )}

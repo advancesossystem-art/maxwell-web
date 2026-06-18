@@ -5,18 +5,18 @@ import type { ServicePageData } from "@/lib/services-data";
 import { siteConfig } from "@/lib/constants";
 
 const serviceExperts: Record<string, { author: string; role: string }> = {
-  "erp-development": { author: "Sneha Reddy", role: "ERP Solutions Lead" },
-  "crm-development": { author: "Ananya Iyer", role: "CRM Consultant" },
-  "ai-solutions": { author: "Rahul Verma", role: "AI Solutions Architect" },
-  "mobile-app-development": { author: "Vikram Desai", role: "Mobile Engineering Lead" },
-  "saas-development": { author: "Priya Sharma", role: "CTO" },
-  "cloud-solutions": { author: "Mohit Agarwal", role: "Cloud Architect" },
-  "custom-software-development": { author: "Amit Patel", role: "VP Engineering" },
-  "website-development": { author: "Amit Patel", role: "VP Engineering" },
+  "erp-development": { author: "", role: "" },
+  "crm-development": { author: "", role: "" },
+  "ai-solutions": { author: "", role: "" },
+  "mobile-app-development": { author: "", role: "" },
+  "saas-development": { author: "", role: "" },
+  "cloud-solutions": { author: "", role: "" },
+  "custom-software-development": { author: "", role: "" },
+  "website-development": { author: "", role: "" },
 };
 
 export function buildServiceGeo(service: ServicePageData): GeoContent {
-  const expert = serviceExperts[service.slug] ?? { author: "Rajesh Mehta", role: "Founder & CEO" };
+  const expert = serviceExperts[service.slug] ?? { author: "", role: "" };
   return {
     quickAnswerQuestion: `What does ${service.title.toLowerCase()} include for Indian businesses?`,
     quickAnswer: `${service.subheadline} Typical engagements start from ${service.startingPrice} with milestone billing, full IP ownership, and delivery aligned to GST, Tally, and operational workflows where relevant.`,
@@ -52,8 +52,8 @@ export function buildIndustryGeo(industry: IndustryPageData): GeoContent {
       text: `Industry-specific platforms for ${industry.title.toLowerCase()} — addressing ${industry.challenges[0]?.title ?? "operational visibility"}, compliance, and integration with finance and field teams.`,
     },
     expertQuote: {
-      author: "Rajesh Mehta",
-      role: "Founder & CEO",
+      author: "",
+      role: "",
       text: `${industry.title} operators need software that matches batch, shop-floor, or patient workflows — not generic modules renamed for your vertical.`,
     },
     summary: `${siteConfig.name} builds for ${industry.title.toLowerCase()} with phased rollouts, measurable ROI, and references from comparable engagements documented in our case studies.`,
@@ -117,8 +117,8 @@ export function buildReportGeo(report: {
     quickAnswer: report.excerpt,
     keyTakeaways: report.keyFindings.slice(0, 5),
     expertQuote: {
-      author: "Rajesh Mehta",
-      role: "Founder & CEO",
+      author: "",
+      role: "",
       text: `This ${report.industry} analysis reflects delivery patterns from Maxwell engagements — use it to benchmark your roadmap, not as generic market hype.`,
     },
     summary: report.keyFindings.join(" "),

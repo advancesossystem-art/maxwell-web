@@ -67,7 +67,7 @@ export const toolRelatedLinks: Record<string, ToolRelatedLink[]> = {
   "team-size-calculator": [
     { href: "/tools/project-timeline-estimator", label: "Project Timeline Estimator" },
     { href: "/tools/software-cost-calculator", label: "Software Cost Calculator" },
-    { href: "/team", label: "Meet Our Team" },
+    { href: "/process", label: "Delivery Process" },
     { href: "/get-estimate", label: "Get Staffing Estimate" },
   ],
 };

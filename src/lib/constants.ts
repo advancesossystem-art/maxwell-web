@@ -44,7 +44,6 @@ export function whatsappHref(message?: string): string {
 export const companyLinks = [
   { label: "About", href: "/about" },
   { label: "Company", href: "/company" },
-  { label: "Team", href: "/team" },
   { label: "Process", href: "/process" },
   { label: "Careers", href: "/careers" },
   { label: "Why Maxwell", href: "/why-maxwell" },

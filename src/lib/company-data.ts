@@ -105,7 +105,7 @@ export interface TeamMember {
 export const teamMembers: TeamMember[] = [
   {
     name: "Rajesh Mehta",
-    role: "CEO & Founder",
+    role: "",
     department: "Leadership",
     bio: "15+ years in enterprise software. Former tech lead at a Fortune 500 manufacturing company.",
     experience: "15+ years",

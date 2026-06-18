@@ -1,17 +1,13 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { ContentRenderer } from "@/components/content/ContentRenderer";
-import { AuthorCard } from "@/components/content/AuthorCard";
 import { ContentAuthorByline } from "@/components/content/ContentAuthorByline";
 import { TrustThisContent } from "@/components/content/TrustThisContent";
 import { NewsletterSignup } from "@/components/content/NewsletterSignup";
 import { ContentPageJsonLd } from "@/components/seo/JsonLd";
-import { getContentAuthor } from "@/lib/content/resolve-author";
 import type { Guide } from "@/lib/content/schema";
 
 export function GuideDetailPage({ guide }: { guide: Guide }) {
-  const author = getContentAuthor(guide.authorId, guide.category);
-
   return (
     <>
       <ContentPageJsonLd
@@ -75,13 +71,6 @@ export function GuideDetailPage({ guide }: { guide: Guide }) {
         </Container>
       </section>
 
-      {author && (
-        <section className="border-t border-border py-12">
-          <Container className="max-w-3xl">
-            <AuthorCard author={author} variant="full" />
-          </Container>
-        </section>
-      )}
     </>
   );
 }

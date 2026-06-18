@@ -19,7 +19,6 @@ import { HomeCaseStudies } from "@/components/home/HomeCaseStudies";
 import { HomeToolsSpotlight } from "@/components/home/HomeToolsSpotlight";
 import { WhyMaxwell } from "@/components/home/WhyMaxwell";
 import { HomeSocialProof } from "@/components/home/HomeSocialProof";
-import { HomeTeamPreview } from "@/components/home/HomeTeamPreview";
 import { HomeTrust } from "@/components/home/HomeTrust";
 import { HomeFAQ } from "@/components/home/HomeFAQ";
 import { FinalCTA } from "@/components/home/FinalCTA";
@@ -47,7 +46,6 @@ export default function HomePage() {
       <HomeToolsSpotlight />
       <WhyMaxwell />
       <HomeSocialProof />
-      <HomeTeamPreview />
       <HomeTrust />
       <HomeFAQ />
       <IndiaSeoHomeSection />

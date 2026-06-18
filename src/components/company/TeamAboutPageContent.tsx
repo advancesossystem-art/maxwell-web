@@ -42,9 +42,10 @@ export function TeamAboutPageContent() {
                   {founder.initials}
                 </div>
                 <div className="min-w-0 flex-1">
-                  <p className="text-xs font-semibold uppercase tracking-wider text-[#4f46e5]">Founder & CEO</p>
-                  <H3 className="mt-2 text-2xl">{founder.name}</H3>
-                  <Text className="mt-1 text-sm text-[var(--v6-text-muted)]">{founder.position}</Text>
+                  <H3 className="text-2xl">{founder.name}</H3>
+                  {founder.position ? (
+                    <Text className="mt-1 text-sm text-[var(--v6-text-muted)]">{founder.position}</Text>
+                  ) : null}
                   <Text className="mt-4 leading-relaxed">{founder.bio}</Text>
                   <Text className="mt-3 text-sm text-[var(--v6-text-secondary)]">
                     <span className="font-semibold text-[var(--v6-text)]">Expertise:</span>{" "}

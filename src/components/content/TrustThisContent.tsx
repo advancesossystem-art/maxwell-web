@@ -1,5 +1,4 @@
 import type { ContentCategorySlug } from "@/lib/content/schema";
-import { getContentAuthor } from "@/lib/content/resolve-author";
 import { companyMetricDisplay } from "@/lib/company-metrics";
 
 const categoryLabels: Record<ContentCategorySlug, string> = {
@@ -21,7 +20,7 @@ interface TrustThisContentProps {
 }
 
 export function TrustThisContent({ category, authorId, contentType = "guide" }: TrustThisContentProps) {
-  const author = getContentAuthor(authorId, category);
+  void authorId;
   const topic = categoryLabels[category];
 
   return (
@@ -49,9 +48,9 @@ export function TrustThisContent({ category, authorId, contentType = "guide" }: 
           theory.
         </li>
         <li>
-          <strong className="text-[var(--v6-text)]">Expert author:</strong>{" "}
-          <span className="text-[var(--v6-text)]">{author.name}</span>, {author.role} ({author.experience}) —
-          specializes in {topic} and {author.specialization.toLowerCase()}.
+          <strong className="text-[var(--v6-text)]">Editorial standard:</strong> This material is published under the
+          Maxwell Electrodeal brand and reflects project delivery patterns, implementation research, and practical
+          guidance in {topic}.
         </li>
       </ul>
     </aside>
