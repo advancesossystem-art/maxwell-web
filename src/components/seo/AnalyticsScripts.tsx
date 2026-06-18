@@ -19,7 +19,7 @@ const clarityId = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID;
  * Consent Mode v2 defaults run in <head> via /consent-defaults.js.
  * Tags always load; the banner grants or denies analytics_storage.
  */
-export function AnalyticsScripts() {
+export function AnalyticsScripts({ nonce }: { nonce?: string }) {
   const { consent } = useCookieConsent();
 
   useEffect(() => {
@@ -46,6 +46,7 @@ export function AnalyticsScripts() {
       {USE_GTM && (
         <Script
           id="gtm"
+          nonce={nonce}
           src={`https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`}
           strategy="lazyOnload"
           onReady={onGoogleTagsReady}
@@ -55,11 +56,12 @@ export function AnalyticsScripts() {
       {USE_DIRECT_GA4 && (
         <>
           <Script
+            nonce={nonce}
             src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
             strategy="lazyOnload"
             onReady={onGoogleTagsReady}
           />
-          <Script id="ga4" strategy="lazyOnload">{`
+          <Script id="ga4" nonce={nonce} strategy="lazyOnload">{`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             window.gtag = gtag;
@@ -73,7 +75,7 @@ export function AnalyticsScripts() {
       )}
 
       {clarityId && consent === "accepted" && (
-        <Script id="ms-clarity" strategy="lazyOnload">{`
+        <Script id="ms-clarity" nonce={nonce} strategy="lazyOnload">{`
           (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
             t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
@@ -83,7 +85,7 @@ export function AnalyticsScripts() {
       )}
 
       {metaPixelId && consent === "accepted" && (
-        <Script id="meta-pixel" strategy="lazyOnload">{`
+        <Script id="meta-pixel" nonce={nonce} strategy="lazyOnload">{`
           !function(f,b,e,v,n,t,s)
           {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
           n.callMethod.apply(n,arguments):n.queue.push(arguments)};

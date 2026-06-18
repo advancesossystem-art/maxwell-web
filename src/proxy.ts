@@ -16,8 +16,11 @@ function buildCsp(nonce: string): string {
   const devEval = isProduction ? "" : " 'unsafe-eval'";
   return [
     "default-src 'self'",
-    `script-src 'self' 'nonce-${nonce}'${devEval} https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net https://www.clarity.ms https://assets.calendly.com`,
-    `style-src 'self' 'nonce-${nonce}' https://assets.calendly.com`,
+    // strict-dynamic: GTM/GA tags injected by nonce-trusted entry scripts
+    // unsafe-inline: legacy fallback; ignored when nonce matches in modern browsers
+    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic' 'unsafe-inline'${devEval} https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net https://www.clarity.ms https://assets.calendly.com`,
+    // unsafe-inline: required for React style={{}} attributes (nonces only apply to <style> tags)
+    `style-src 'self' 'nonce-${nonce}' 'unsafe-inline' https://assets.calendly.com`,
     "img-src 'self' data: blob: https:",
     "font-src 'self' data:",
     "connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://region1.google-analytics.com https://www.clarity.ms https://*.clarity.ms",

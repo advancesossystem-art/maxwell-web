@@ -4,7 +4,6 @@ import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
 import { MotionProvider } from "@/components/motion/MotionProvider";
 import { CookieConsentProvider } from "@/hooks/useCookieConsent";
-import { AnalyticsScripts } from "@/components/seo/AnalyticsScripts";
 import { GaRouteTracker } from "@/components/seo/GaRouteTracker";
 import { Suspense } from "react";
 
@@ -59,7 +58,6 @@ export function LayoutClientExtras() {
 
   return (
     <CookieConsentProvider>
-      <AnalyticsScripts />
       <Suspense fallback={null}>
         <GaRouteTracker />
       </Suspense>

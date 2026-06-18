@@ -24,8 +24,8 @@ export function ProgressBar({ current, total }: { current: number; total: number
         className="h-2 overflow-hidden rounded-full bg-[var(--v6-bg-soft)]"
       >
         <div
-          className="h-full rounded-full bg-brand-600 transition-all duration-500 ease-out"
-          style={{ width: `${pct}%` }}
+          className="h-full rounded-full bg-brand-600 transition-all duration-500 ease-out [width:var(--progress-pct)]"
+          style={{ ["--progress-pct" as string]: `${pct}%` }}
         />
       </div>
     </div>
