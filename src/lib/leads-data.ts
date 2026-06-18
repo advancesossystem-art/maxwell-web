@@ -226,4 +226,4 @@ export const consultationProcess = [
 
 export { leadTrustBadges as trustBadges } from "@/lib/company-metrics";
 
-export { whatsappNumberE164 as WHATSAPP_NUMBER } from "@/lib/constants";
+export { WHATSAPP_NUMBER_E164 as WHATSAPP_NUMBER } from "@/lib/constants";

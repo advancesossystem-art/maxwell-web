@@ -1,21 +1,19 @@
 "use client";
 
-import { siteConfig, whatsappHref } from "@/lib/constants";
+import { siteConfig, WHATSAPP_HREF_FLOATING } from "@/lib/constants";
 import { trackLeadClick } from "@/lib/conversion-events";
 import { cn } from "@/lib/utils";
 
 const telHref = `tel:${siteConfig.phone.replace(/\s/g, "")}`;
 
 export function FloatingCTA() {
-  const waHref = whatsappHref("Hi Maxwell, I'm interested in your software services");
-
   return (
     <div
       className="mobile-fixed-chrome fixed bottom-20 right-4 z-50 flex flex-col gap-2 lg:bottom-8 lg:right-8"
       data-intro-chrome
     >
       <a
-        href={waHref}
+        href={WHATSAPP_HREF_FLOATING}
         target="_blank"
         rel="noopener noreferrer"
         onClick={() => trackLeadClick("whatsapp")}

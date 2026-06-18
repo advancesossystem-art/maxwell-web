@@ -22,13 +22,22 @@ export const siteConfig = {
   locale: "en_IN",
 } as const;
 
-/** E.164 digits for WhatsApp links (e.g. 919586868538) */
+/** E.164 digits for WhatsApp links (+91 95868 68538) */
+export const WHATSAPP_NUMBER_E164 = "919586868538" as const;
+
+export const WHATSAPP_HREF_CONTACT =
+  "https://wa.me/919586868538?text=Hi%20Maxwell%2C%20I'd%20like%20to%20discuss%20a%20project." as const;
+
+export const WHATSAPP_HREF_FLOATING =
+  "https://wa.me/919586868538?text=Hi%20Maxwell%2C%20I'm%20interested%20in%20your%20software%20services" as const;
+
+/** @deprecated Use WHATSAPP_NUMBER_E164 */
 export function whatsappNumberE164(): string {
-  return siteConfig.phone.replace(/\D/g, "");
+  return WHATSAPP_NUMBER_E164;
 }
 
 export function whatsappHref(message?: string): string {
-  const base = `https://wa.me/${whatsappNumberE164()}`;
+  const base = `https://wa.me/${WHATSAPP_NUMBER_E164}`;
   return message ? `${base}?text=${encodeURIComponent(message)}` : base;
 }
 

@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/Button";
 import { ArrowRight } from "@/components/ui/Icons";
 import { H2, Lead } from "@/components/design/typography";
 
-const WHATSAPP = "919586868538";
+import { WHATSAPP_NUMBER_E164 } from "@/lib/constants";
 
 type PortfolioCTAProps = {
   title: string;
@@ -59,7 +59,7 @@ export function PortfolioCTA({
                   Request Proposal
                 </Button>
                 <Button
-                  href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(whatsappMessage)}`}
+                  href={`https://wa.me/${WHATSAPP_NUMBER_E164}?text=${encodeURIComponent(whatsappMessage)}`}
                   size="lg"
                   variant="glass"
                   external

@@ -10,18 +10,15 @@ import { FormCard } from "@/components/design/Form";
 import { MicroConversionCTA } from "@/components/conversion/MicroConversionCTA";
 import { siteConfig } from "@/lib/constants";
 import { businessAddress } from "@/lib/business-address";
-import {
-  contactFaqs,
-  globalServiceAreas,
-  WHATSAPP_NUMBER,
-} from "@/lib/leads-data";
+import { WHATSAPP_HREF_CONTACT } from "@/lib/constants";
+import { contactFaqs, globalServiceAreas } from "@/lib/leads-data";
 import { trackCTAClick } from "@/components/leads/LeadAnalytics";
 
 const contactOptions = [
   {
     title: "WhatsApp",
     description: "Fastest response for urgent inquiries",
-    href: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi Maxwell, I'd like to discuss a project.")}`,
+    href: WHATSAPP_HREF_CONTACT,
     external: true,
   },
   {
