@@ -6,27 +6,18 @@ import type { Author } from "@/lib/content/authors";
 import { getContentAuthor } from "@/lib/content/resolve-author";
 import type { ContentCategorySlug } from "@/lib/content/schema";
 import { formatAnonymousClient } from "@/lib/client-attribution";
+import {
+  buildPersonAuthorNode,
+  buildServiceSchema,
+} from "@/lib/seo/organization-schema";
+import { getAuthorById } from "@/lib/content/authors";
 
 export function ServicePageJsonLd({ service }: { service: import("@/lib/services-data").ServicePageData }) {
-  const serviceSchema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    serviceType: service.title,
-    name: service.title,
-    description: service.metaDescription,
-    url: `${siteConfig.url}/services/${service.slug}`,
-    provider: {
-      "@type": "Organization",
-      name: siteConfig.name,
-      "@id": seoIds.organization,
-    },
-    areaServed: "India",
-    offers: {
-      "@type": "Offer",
-      priceCurrency: "INR",
-      description: `Starting from ${service.startingPrice}`,
-    },
-  };
+  const serviceSchema = buildServiceSchema(service);
+  const founder = getAuthorById("rajesh-mehta");
+  const founderSchema = founder
+    ? { "@context": "https://schema.org", ...buildPersonAuthorNode(founder) }
+    : null;
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -59,6 +50,9 @@ export function ServicePageJsonLd({ service }: { service: import("@/lib/services
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
+      {founderSchema ? (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(founderSchema) }} />
+      ) : null}
       <FaqPageJsonLd
         faqs={service.faqs}
         id={`${siteConfig.url}/services/${service.slug}#faq`}
@@ -423,16 +417,7 @@ export function SolutionPageJsonLd({ solution }: { solution: import("@/lib/solut
 }
 
 function personSchemaFromAuthor(author: Author) {
-  return {
-    "@type": "Person" as const,
-    name: author.name,
-    jobTitle: author.role,
-    description: author.bio,
-    url: `${siteConfig.url}/authors/${author.slug}`,
-    ...(author.linkedin ? { sameAs: [author.linkedin] } : {}),
-    knowsAbout: author.expertise,
-    worksFor: { "@type": "Organization" as const, name: siteConfig.legalName },
-  };
+  return buildPersonAuthorNode(author);
 }
 
 export function ArticlePageJsonLd({ article }: { article: import("@/lib/content/schema").Article }) {
@@ -449,10 +434,10 @@ export function ArticlePageJsonLd({ article }: { article: import("@/lib/content/
     datePublished: article.publishedAt,
     dateModified: article.updatedAt,
     author,
-    publisher: {
-      "@type": "Organization",
-      name: siteConfig.legalName,
-      logo: { "@type": "ImageObject", url: siteConfig.logoUrl },
+    publisher: { "@id": seoIds.organization },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": url,
     },
     keywords: article.tags.join(", "),
     articleSection: article.category,
@@ -468,9 +453,15 @@ export function ArticlePageJsonLd({ article }: { article: import("@/lib/content/
     ],
   };
 
+  const authorSchema = {
+    "@context": "https://schema.org",
+    ...author,
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(authorSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <FaqPageJsonLd faqs={article.faqs ?? []} id={`${url}#faq`} />
     </>

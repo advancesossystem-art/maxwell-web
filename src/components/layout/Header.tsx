@@ -252,7 +252,7 @@ export function Header() {
         role="dialog"
         aria-modal={mobileOpen}
         aria-label="Mobile navigation"
-        aria-hidden={!mobileOpen}
+        {...(!mobileOpen ? { inert: true as const } : {})}
       >
         <div className="flex items-center justify-between border-b border-[var(--v6-border)] px-5 py-4">
           <BrandLogo size="sm" href="/" />

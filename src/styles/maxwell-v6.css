@@ -8,7 +8,7 @@
   --v6-bg-soft: #f1f5f9;
   --v6-text: #0f172a;
   --v6-text-secondary: #475569;
-  --v6-text-muted: #64748b;
+  --v6-text-muted: #5c6778;
   --v6-border: rgba(15, 23, 42, 0.08);
   --v6-border-strong: rgba(15, 23, 42, 0.12);
   --v6-blue: #4f46e5;
@@ -521,6 +521,18 @@
   height: 100%;
   border-radius: 999px;
   background: linear-gradient(90deg, #4f46e5, #7c3aed);
+}
+
+.v6-eco-portal__phase-fill--full {
+  width: 100%;
+}
+
+.v6-eco-portal__phase-fill--68 {
+  width: 68%;
+}
+
+.v6-eco-portal__phase-fill--empty {
+  width: 0%;
 }
 
 .v6-eco-portal__milestone {

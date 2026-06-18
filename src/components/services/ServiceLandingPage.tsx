@@ -14,6 +14,8 @@ import {
   ServiceFAQ,
 } from "@/components/services/ServiceSections2";
 import { ServiceCTA, ServiceCTAStrip } from "@/components/services/ServiceCTA";
+import { ServiceLeadForm } from "@/components/leads/ServiceLeadForm";
+import { ServiceSeoSections } from "@/components/services/ServiceSeoSections";
 import { RecommendedServicesBlock } from "@/components/engagement/RecommendedServicesBlock";
 import { ServicePageJsonLd } from "@/components/seo/JsonLd";
 import { GeoContentSection } from "@/components/authority/GeoContentSection";
@@ -44,6 +46,8 @@ export function ServiceLandingPage({ service }: { service: ServicePageData }) {
       <ServiceProjects service={service} />
       <ServiceWhy service={service} />
       <ServiceFAQ service={service} />
+      <ServiceSeoSections service={service} />
+      <ServiceLeadForm serviceName={service.title} serviceSlug={service.slug} />
       <Container>
         <RecommendedServicesBlock serviceSlug={service.slug} />
         <ServiceCTA serviceName={service.title} serviceSlug={service.slug} />

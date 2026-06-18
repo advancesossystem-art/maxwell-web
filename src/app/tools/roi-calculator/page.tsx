@@ -10,10 +10,17 @@ import { getToolBySlug } from "@/lib/tools/registry";
 const tool = getToolBySlug("roi-calculator")!;
 
 export const metadata = buildPageMetadata({
-  title: tool.name,
-  description: tool.description,
+  title: "Software ROI Calculator India | Maxwell Electrodeal",
+  description:
+    "Free software ROI calculator for Indian businesses. Estimate annual savings, payback period, and Year 1 ROI from automating manual processes with custom ERP, CRM, and software.",
   path: `/tools/${tool.slug}`,
-  keywords: tool.tags,
+  keywords: [
+    ...tool.tags,
+    "software ROI calculator India",
+    "custom software ROI",
+    "ERP ROI calculator",
+    "automation savings calculator",
+  ],
 });
 
 export default function Page() {

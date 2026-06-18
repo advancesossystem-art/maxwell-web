@@ -12,6 +12,7 @@ import { HomeProblemSolutionMap } from "@/components/home/HomeProblemSolutionMap
 import { HomeSolution } from "@/components/home/HomeSolution";
 import { HomeBusinessOutcomes } from "@/components/home/HomeBusinessOutcomes";
 import { ServicesExperience } from "@/components/home/ServicesExperience";
+import { HomepageAssessment } from "@/components/leads/HomepageAssessment";
 import { IndustriesShowcase } from "@/components/home/IndustriesShowcase";
 import { DevelopmentProcess } from "@/components/home/DevelopmentProcess";
 import { HomeCaseStudies } from "@/components/home/HomeCaseStudies";
@@ -39,6 +40,7 @@ export default function HomePage() {
       <HomeSolution />
       <HomeBusinessOutcomes />
       <ServicesExperience />
+      <HomepageAssessment />
       <IndustriesShowcase />
       <DevelopmentProcess />
       <HomeCaseStudies />

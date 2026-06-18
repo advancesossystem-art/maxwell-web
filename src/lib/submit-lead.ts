@@ -8,6 +8,7 @@ import {
 import { calculateLeadScore, type LeadSource } from "@/lib/lead-scoring";
 import { calculateProjectEstimate } from "@/lib/project-estimator";
 import { dispatchLeadToCRM, sendLeadNotificationEmail, type LeadPayload } from "@/lib/crm";
+import { sendLeadAutoReplyEmail } from "@/lib/lead-notification-email";
 import { logLeadReceived } from "@/lib/safe-log";
 
 const PHONE_REQUIRED_SOURCES = new Set([
@@ -15,11 +16,18 @@ const PHONE_REQUIRED_SOURCES = new Set([
   "book-consultation",
   "discovery-call",
   "get-estimate",
+  "homepage-assessment",
 ]);
 
 const MESSAGE_REQUIRED_SOURCES = new Set(["contact", "get-estimate"]);
 
-const CONSULTATION_SOURCES = new Set(["book-consultation", "discovery-call"]);
+function isServiceSource(source: string): boolean {
+  return /^service-[a-z0-9-]+$/.test(source);
+}
+
+function isIndustrySource(source: string): boolean {
+  return /^industry-[a-z0-9-]+$/.test(source);
+}
 
 export const leadSchema = z
   .object({
@@ -31,8 +39,12 @@ export const leadSchema = z
         "book-consultation",
         "discovery-call",
         "careers",
+        "exit-intent",
+        "homepage-assessment",
       ]),
       z.string().regex(/^tool-[a-z0-9-]+$/),
+      z.string().regex(/^service-[a-z0-9-]+$/),
+      z.string().regex(/^industry-[a-z0-9-]+$/),
     ]),
     name: z
       .string()
@@ -47,6 +59,8 @@ export const leadSchema = z
     phone: z.string().trim().max(25).optional(),
     company: z.string().trim().max(120).optional(),
     message: z.string().trim().max(8000).optional(),
+    businessType: z.string().trim().max(80).optional(),
+    services: z.array(z.string().trim().max(80)).max(12).optional(),
     projectType: z.string().trim().max(120).optional(),
     industry: z.string().trim().max(80).optional(),
     scope: z.string().trim().max(80).optional(),
@@ -66,8 +80,12 @@ export const leadSchema = z
   })
   .superRefine((data, ctx) => {
     const phone = data.phone?.trim() ?? "";
+    const phoneRequired =
+      PHONE_REQUIRED_SOURCES.has(data.source) ||
+      isServiceSource(data.source) ||
+      isIndustrySource(data.source);
 
-    if (PHONE_REQUIRED_SOURCES.has(data.source)) {
+    if (phoneRequired) {
       if (!phone) {
         ctx.addIssue({
           code: "custom",
@@ -89,7 +107,12 @@ export const leadSchema = z
       });
     }
 
-    if (MESSAGE_REQUIRED_SOURCES.has(data.source) && (!data.message || data.message.trim().length < 20)) {
+    if (
+      (MESSAGE_REQUIRED_SOURCES.has(data.source) ||
+        isServiceSource(data.source) ||
+        isIndustrySource(data.source)) &&
+      (!data.message || data.message.trim().length < 20)
+    ) {
       ctx.addIssue({
         code: "custom",
         message: "Please describe your project in at least 20 characters",
@@ -97,6 +120,8 @@ export const leadSchema = z
       });
     }
   });
+
+const CONSULTATION_SOURCES = new Set(["book-consultation", "discovery-call"]);
 
 export type SubmitLeadResult =
   | { ok: true; leadScore: number; leadTier: string }
@@ -107,7 +132,11 @@ export async function submitLead(raw: Record<string, unknown>): Promise<SubmitLe
 
   const message =
     data.message?.trim() ||
-    (CONSULTATION_SOURCES.has(data.source)
+    (data.source === "homepage-assessment"
+      ? `Assessment request. Business: ${data.businessType ?? data.industry ?? "—"}. Services: ${data.services?.join(", ") || data.features?.join(", ") || "—"}.`
+      : data.source === "exit-intent"
+        ? "Exit-intent popup — free software audit request."
+        : CONSULTATION_SOURCES.has(data.source)
       ? "Consultation request — details to be discussed on the call."
       : data.source === "get-estimate"
         ? `Estimate request: ${data.projectType}, ${data.industry}, scope ${data.scope}, budget ${data.budget}, timeline ${data.timeline}. Features: ${data.features?.join(", ") || "none"}.`
@@ -157,9 +186,9 @@ export async function submitLead(raw: Record<string, unknown>): Promise<SubmitLe
     company: data.company,
     message,
     projectType: data.projectType,
-    industry: data.industry,
+    industry: data.industry ?? data.businessType,
     scope: data.scope,
-    features: data.features,
+    features: data.features ?? data.services,
     timeline: data.timeline,
     budget: data.budget,
     companySize: data.companySize,
@@ -180,6 +209,9 @@ export async function submitLead(raw: Record<string, unknown>): Promise<SubmitLe
 
   try {
     await sendLeadNotificationEmail(payload);
+    void sendLeadAutoReplyEmail(payload).catch((err) => {
+      console.error("[Lead Auto-Reply]", err instanceof Error ? err.message : "Auto-reply failed");
+    });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Email send failed";
     console.error("[Lead Email]", message);

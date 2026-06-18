@@ -65,11 +65,17 @@ export function IndiaSeoHomeSection() {
             </ul>
             <p className="mt-6 text-sm text-slate-400">
               HQ: {businessAddress.formatted} ·{" "}
-              <a href={`mailto:${siteConfig.email}`} className="text-brand-400 hover:underline">
+              <a
+                href={`mailto:${siteConfig.email}`}
+                className="font-medium text-brand-300 underline decoration-brand-400/70 underline-offset-2 hover:text-brand-200"
+              >
                 {siteConfig.email}
               </a>{" "}
               ·{" "}
-              <a href={`tel:${siteConfig.phone.replace(/\s/g, "")}`} className="text-brand-400 hover:underline">
+              <a
+                href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}
+                className="font-medium text-brand-300 underline decoration-brand-400/70 underline-offset-2 hover:text-brand-200"
+              >
                 {siteConfig.phone}
               </a>
             </p>

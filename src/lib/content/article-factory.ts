@@ -61,9 +61,9 @@ export function createArticle(def: ArticleDef): Article {
     {
       type: "cta",
       title: "Need expert help?",
-      description: "Maxwell Electrodeal delivers enterprise software with measurable ROI. Book a free discovery call.",
-      href: "/contact",
-      label: "Book Consultation",
+      description: "Maxwell Electrodeal delivers enterprise software with measurable ROI. Get a free project estimate or book a consultation.",
+      href: "/get-estimate",
+      label: "Get Free Estimate",
     },
   ];
 

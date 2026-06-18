@@ -4,8 +4,11 @@ import { ReadingProgressBar } from "@/components/content/ReadingProgressBar";
 import { ContentRenderer } from "@/components/content/ContentRenderer";
 import { AuthorCard } from "@/components/content/AuthorCard";
 import { ContentCard } from "@/components/content/ContentCard";
+import { RelatedContent } from "@/components/content/RelatedContent";
 import { NewsletterSignup } from "@/components/content/NewsletterSignup";
 import { ArticlePageJsonLd } from "@/components/seo/JsonLd";
+import { GeoDefinitionBlock } from "@/components/authority/GeoDefinitionBlock";
+import { GeoKeyTakeaways, buildTakeawaysFromFaqs } from "@/components/authority/GeoKeyTakeaways";
 import { getContentAuthor } from "@/lib/content/resolve-author";
 import { TrustThisContent } from "@/components/content/TrustThisContent";
 import { getCategoryBySlug } from "@/lib/content/categories";
@@ -17,6 +20,7 @@ export function BlogArticlePage({ article }: { article: Article }) {
   const author = getContentAuthor(article.authorId, article.category);
   const category = getCategoryBySlug(article.category);
   const related = getRelatedContent(article.slug, "article", article.relatedSlugs);
+  const takeaways = buildTakeawaysFromFaqs(article.faqs, 4);
 
   return (
     <>
@@ -74,6 +78,8 @@ export function BlogArticlePage({ article }: { article: Article }) {
             )}
             <article className={`space-y-10 ${article.tableOfContents?.length ? "lg:col-span-9" : "lg:col-span-12 max-w-3xl"}`}>
               <TrustThisContent category={article.category} authorId={article.authorId} contentType="article" />
+              <GeoDefinitionBlock term={`What is ${article.title.replace(/\?$/, "")}?`} definition={article.excerpt} />
+              {takeaways.length > 0 ? <GeoKeyTakeaways items={takeaways} /> : null}
               <ContentRenderer blocks={article.sections} />
             </article>
           </div>
@@ -107,12 +113,11 @@ export function BlogArticlePage({ article }: { article: Article }) {
       {related.length > 0 && (
         <section className="py-16">
           <Container>
-            <h2 className="font-display text-2xl font-bold">Related reading</h2>
-            <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {related.map((doc) => (
-                <ContentCard key={doc.slug} doc={doc} variant="compact" />
-              ))}
-            </div>
+            <RelatedContent
+              slug={article.slug}
+              type="article"
+              relatedSlugs={article.relatedSlugs}
+            />
           </Container>
         </section>
       )}

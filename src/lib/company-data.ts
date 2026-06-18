@@ -111,6 +111,7 @@ export const teamMembers: TeamMember[] = [
     experience: "15+ years",
     skills: ["Strategy", "ERP", "Manufacturing"],
     initials: "RM",
+    linkedin: "https://www.linkedin.com/company/maxwellelectrodeal",
   },
   {
     name: "Priya Sharma",

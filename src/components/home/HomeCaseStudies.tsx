@@ -56,17 +56,15 @@ export function HomeCaseStudies() {
                       {study.solutionArchitecture.overview}
                     </dd>
                   </div>
-                  <div className="grid grid-cols-2 gap-3">
-                    <div>
-                      <dt className="font-semibold text-[var(--v6-text-muted)]">Technology</dt>
-                      <dd className="mt-0.5 text-[var(--v6-text-secondary)]">
-                        {study.technologyStack.slice(0, 3).join(", ")}
-                      </dd>
-                    </div>
-                    <div>
-                      <dt className="font-semibold text-[var(--v6-text-muted)]">Timeline</dt>
-                      <dd className="mt-0.5 text-[var(--v6-text-secondary)]">{study.trust.timeline}</dd>
-                    </div>
+                  <div>
+                    <dt className="font-semibold text-[var(--v6-text-muted)]">Technology</dt>
+                    <dd className="mt-0.5 text-[var(--v6-text-secondary)]">
+                      {study.technologyStack.slice(0, 3).join(", ")}
+                    </dd>
+                  </div>
+                  <div>
+                    <dt className="font-semibold text-[var(--v6-text-muted)]">Timeline</dt>
+                    <dd className="mt-0.5 text-[var(--v6-text-secondary)]">{study.trust.timeline}</dd>
                   </div>
                   <div>
                     <dt className="font-semibold text-[var(--v6-text-muted)]">Result</dt>

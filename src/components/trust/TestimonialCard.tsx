@@ -11,6 +11,18 @@ function roleInitials(role: string) {
     .toUpperCase();
 }
 
+function StarRating({ rating = 5 }: { rating?: number }) {
+  return (
+    <div className="flex gap-0.5" aria-label={`${rating} out of 5 stars`}>
+      {Array.from({ length: 5 }).map((_, i) => (
+        <span key={i} className={i < rating ? "text-amber-500" : "text-[var(--v6-border)]"} aria-hidden>
+          ★
+        </span>
+      ))}
+    </div>
+  );
+}
+
 export function TestimonialCard({ testimonial, featured = false }: { testimonial: TestimonialRecord; featured?: boolean }) {
   const attribution = formatTestimonialAttribution({
     role: testimonial.role,
@@ -18,12 +30,24 @@ export function TestimonialCard({ testimonial, featured = false }: { testimonial
     industry: testimonial.industry,
     region: testimonial.region,
   });
+  const displayName = testimonial.author?.trim() || testimonial.role;
+  const companyLabel =
+    testimonial.company?.trim() ||
+    testimonial.companyType ||
+    testimonial.industry ||
+    "Verified client";
+  const rating = testimonial.verified === false ? 4 : 5;
 
   if (!featured) {
     return (
       <blockquote className="v6-card p-6">
-        <p className="text-sm text-[var(--v6-text-secondary)]">&ldquo;{testimonial.quote}&rdquo;</p>
-        <footer className="mt-4 text-sm font-semibold text-[var(--v6-text)]">{attribution}</footer>
+        <StarRating rating={rating} />
+        <p className="mt-3 text-sm text-[var(--v6-text-secondary)]">&ldquo;{testimonial.quote}&rdquo;</p>
+        <footer className="mt-4 border-t border-[var(--v6-border)] pt-4">
+          <p className="text-sm font-semibold text-[var(--v6-text)]">{displayName}</p>
+          <p className="text-xs text-[var(--v6-text-muted)]">{companyLabel}</p>
+          <p className="mt-1 text-xs text-[var(--v6-text-secondary)]">{attribution}</p>
+        </footer>
       </blockquote>
     );
   }
@@ -37,12 +61,15 @@ export function TestimonialCard({ testimonial, featured = false }: { testimonial
         >
           {roleInitials(testimonial.role)}
         </div>
-        <div className="min-w-0 flex-1">
-          <p className="font-display text-xl font-medium leading-relaxed text-[var(--v6-text)] sm:text-2xl sm:leading-snug">
+          <div className="min-w-0 flex-1">
+            <StarRating rating={rating} />
+            <p className="mt-4 font-display text-xl font-medium leading-relaxed text-[var(--v6-text)] sm:text-2xl sm:leading-snug">
             &ldquo;{testimonial.quote}&rdquo;
           </p>
           <footer className="mt-8 border-t border-[var(--v6-border)] pt-6">
-            <p className="font-display text-base font-semibold text-[var(--v6-text)]">{attribution}</p>
+            <p className="font-display text-base font-semibold text-[var(--v6-text)]">{displayName}</p>
+            <p className="mt-1 text-sm text-[var(--v6-text-muted)]">{companyLabel}</p>
+            <p className="mt-1 text-xs text-[var(--v6-text-secondary)]">{attribution}</p>
             <p className="mt-2 text-xs font-medium text-amber-600">{testimonial.outcome}</p>
           </footer>
         </div>

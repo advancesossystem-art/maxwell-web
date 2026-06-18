@@ -13,7 +13,7 @@ import { businessAddress } from "@/lib/business-address";
 export const seoIds = {
   organization: `${siteConfig.url}/#organization`,
   website: `${siteConfig.url}/#website`,
-  localBusiness: `${siteConfig.url}/#localbusiness-india`,
+  localBusiness: `${siteConfig.url}/#business`,
   offerCatalog: `${siteConfig.url}/#services`,
 } as const;
 
@@ -95,11 +95,10 @@ export const indiaKeywords = [
 
 /** Live profiles for Knowledge Graph / sameAs signals. */
 export const socialProfiles: string[] = [
-  "https://www.linkedin.com/company/maxwell-electrodeal-private-limited",
   "https://www.linkedin.com/company/maxwellelectrodeal",
   "https://twitter.com/MaxwellElectrodeal",
   "https://www.facebook.com/maxwellelectrodeal",
-  siteConfig.url,
+  "https://techbehemoths.com/company/maxwellelectrodeal",
 ];
 
 export const homeSeo = {

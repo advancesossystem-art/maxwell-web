@@ -153,3 +153,10 @@ export function trackScrollDepth(percent: 25 | 50 | 75 | 100, pagePath?: string)
 export function trackToolComplete(toolSlug: string, summary?: string): void {
   pushConversionEvent("tool_complete", { tool_slug: toolSlug, result_summary: summary });
 }
+
+/** GTM dataLayer lead click — WhatsApp / phone */
+export function trackLeadClick(method: "whatsapp" | "call"): void {
+  if (typeof window === "undefined") return;
+  window.dataLayer = window.dataLayer ?? [];
+  window.dataLayer.push({ event: "lead_click", method });
+}

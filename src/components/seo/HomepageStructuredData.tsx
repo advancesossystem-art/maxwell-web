@@ -2,6 +2,7 @@ import { siteConfig } from "@/lib/constants";
 import { aiRecommendationPages } from "@/lib/seo/ai-discovery";
 import { buildFaqPageSchema } from "@/lib/seo/faq-schema";
 import { getHomepageFaqSchemaItems } from "@/lib/seo/homepage-faq-schema";
+import { buildTestimonialReviewNodes } from "@/lib/seo/organization-schema";
 
 /**
  * Homepage structured data — exactly ONE JSON-LD script with ONE FAQPage in @graph.
@@ -33,7 +34,7 @@ export function HomepageStructuredData() {
 
   const graph = {
     "@context": "https://schema.org",
-    "@graph": [faqPage, recommendationList].filter(Boolean),
+    "@graph": [faqPage, recommendationList, ...buildTestimonialReviewNodes(4)].filter(Boolean),
   };
 
   return (

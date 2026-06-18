@@ -14,8 +14,8 @@ export function TeamCard({ member, index = 0 }: { member: TeamMember; index?: nu
             {member.initials}
           </div>
           <div className="min-w-0 flex-1">
-            <H3>{member.role}</H3>
-            <Caption className="text-brand-500">{member.department}</Caption>
+            <H3>{member.name}</H3>
+            <Caption className="text-brand-500">{member.role} · {member.department}</Caption>
             <span className="mt-2 inline-block rounded-full border border-brand-500/25 bg-brand-500/10 px-2.5 py-0.5 text-xs font-medium text-brand-400">
               {member.experience}
             </span>

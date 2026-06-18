@@ -47,7 +47,7 @@ export function AnalyticsScripts() {
         <Script
           id="gtm"
           src={`https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`}
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           onReady={onGoogleTagsReady}
         />
       )}
@@ -56,10 +56,10 @@ export function AnalyticsScripts() {
         <>
           <Script
             src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-            strategy="afterInteractive"
+            strategy="lazyOnload"
             onReady={onGoogleTagsReady}
           />
-          <Script id="ga4" strategy="afterInteractive">{`
+          <Script id="ga4" strategy="lazyOnload">{`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             window.gtag = gtag;
@@ -73,7 +73,7 @@ export function AnalyticsScripts() {
       )}
 
       {clarityId && consent === "accepted" && (
-        <Script id="ms-clarity" strategy="afterInteractive">{`
+        <Script id="ms-clarity" strategy="lazyOnload">{`
           (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
             t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
@@ -83,7 +83,7 @@ export function AnalyticsScripts() {
       )}
 
       {metaPixelId && consent === "accepted" && (
-        <Script id="meta-pixel" strategy="afterInteractive">{`
+        <Script id="meta-pixel" strategy="lazyOnload">{`
           !function(f,b,e,v,n,t,s)
           {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
           n.callMethod.apply(n,arguments):n.queue.push(arguments)};

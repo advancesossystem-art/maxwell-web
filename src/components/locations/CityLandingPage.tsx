@@ -34,6 +34,22 @@ export function CityLandingPage({ city }: { city: CityPageData }) {
       />
       <ProgrammaticSeoBlock cityName={city.name} />
       <LocationCTA locationName={city.name} />
+      {city.mapEmbedUrl ? (
+        <section className="border-t border-[var(--v6-border)] py-12" aria-label="Office location map">
+          <div className="mx-auto max-w-5xl px-4">
+            <h2 className="font-display text-xl font-bold text-[var(--v6-text)]">Visit us in {city.name}</h2>
+            <div className="mt-6 overflow-hidden rounded-2xl border border-[var(--v6-border)]">
+              <iframe
+                title={`${city.name} office map`}
+                src={city.mapEmbedUrl}
+                className="h-80 w-full"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          </div>
+        </section>
+      ) : null}
     </>
   );
 }

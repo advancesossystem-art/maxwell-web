@@ -73,8 +73,8 @@ export function HomeFAQ() {
                     aria-labelledby={triggerId}
                     hidden={!isOpen}
                     className={cn(
-                      "grid transition-[grid-template-rows,opacity] duration-300 ease-out",
-                      isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0",
+                      "grid transition-[grid-template-rows] duration-300 ease-out",
+                      isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
                     )}
                   >
                     <p className="overflow-hidden px-6 pb-5 text-sm leading-relaxed text-[var(--v6-text-secondary)]" data-seo-speakable>

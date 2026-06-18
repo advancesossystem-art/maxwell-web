@@ -20,6 +20,7 @@ import { StatisticsPanel } from "@/components/authority/StatisticsPanel";
 import { ProofSignalsBar } from "@/components/trust/ProofSignalsBar";
 import { buildIndustryGeo } from "@/lib/geo-page-content";
 import { getStatisticsForIndustry } from "@/lib/statistics-data";
+import { IndustryLeadForm } from "@/components/leads/IndustryLeadForm";
 import type { IndustryPageData, IndustrySlug } from "@/lib/industries-data";
 
 const industryCaseStudySlug: Partial<Record<IndustrySlug, string>> = {
@@ -56,6 +57,7 @@ export function IndustryLandingPage({ industry }: { industry: IndustryPageData }
       <IndustryCaseStudy industry={industry} />
       <IndustryWhy industry={industry} />
       <IndustryFAQ industry={industry} />
+      <IndustryLeadForm industryName={industry.title} industrySlug={industry.slug} />
       <Container>
         <IndustryCTA
           industryName={industry.title}

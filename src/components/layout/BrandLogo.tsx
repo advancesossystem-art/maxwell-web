@@ -6,7 +6,6 @@ import { siteConfig } from "@/lib/constants";
 /** Intrinsic size of public/logo.webp — update if you replace the file */
 const LOGO_WIDTH = 1672;
 const LOGO_HEIGHT = 941;
-const LOGO_ASPECT = LOGO_WIDTH / LOGO_HEIGHT;
 
 type BrandLogoProps = {
   size?: "sm" | "md" | "lg" | "header" | "footer";
@@ -14,14 +13,6 @@ type BrandLogoProps = {
   href?: string;
   priority?: boolean;
 };
-
-const heightPx = {
-  footer: 128,
-  sm: 140,
-  md: 160,
-  lg: 200,
-  header: 64,
-} as const;
 
 const heightClass = {
   footer: "h-32",
@@ -39,14 +30,20 @@ const sizesAttr = {
   header: "(max-width: 640px) 114px, 142px",
 } as const;
 
+const maxWidthClass = {
+  footer: "max-w-[228px]",
+  sm: "max-w-[250px]",
+  md: "max-w-[285px]",
+  lg: "max-w-[356px]",
+  header: "max-w-[114px] sm:max-w-[142px]",
+} as const;
+
 export function BrandLogo({
   size = "md",
   className,
   href = "/",
   priority = false,
 }: BrandLogoProps) {
-  const height = heightPx[size];
-
   const image = (
     <Image
       src={siteConfig.logoPath}
@@ -55,8 +52,12 @@ export function BrandLogo({
       height={LOGO_HEIGHT}
       priority={priority}
       sizes={sizesAttr[size]}
-      className={cn("w-auto object-contain object-left", heightClass[size], className)}
-      style={{ aspectRatio: `${LOGO_WIDTH} / ${LOGO_HEIGHT}`, maxWidth: `${Math.round(height * LOGO_ASPECT)}px` }}
+      className={cn(
+        "w-auto object-contain object-left aspect-[1672/941]",
+        heightClass[size],
+        maxWidthClass[size],
+        className,
+      )}
     />
   );
 

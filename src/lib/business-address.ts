@@ -1,12 +1,12 @@
 /** Canonical NAP — keep identical across site, schema, llms.txt, and Google Business Profile. */
 export const businessAddress = {
-  streetAddress: "419, Lalita Tower, Jetalpur Road, Alkapuri",
+  streetAddress: "419, Lalita Tower, Near Hotel Rajpath, Jetalpur Road",
   addressLocality: "Vadodara",
   addressRegion: "Gujarat",
   postalCode: "390007",
   addressCountry: "IN",
   /** Human-readable single line for UI */
-  formatted: "419, Lalita Tower, Jetalpur Road, Alkapuri, Vadodara, Gujarat 390007, India",
+  formatted: "419, Lalita Tower, Near Hotel Rajpath, Jetalpur Road, Vadodara, Gujarat 390007, India",
   latitude: 22.3114,
   longitude: 73.1666,
   googleMapsEmbedUrl:

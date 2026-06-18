@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { robotsSitemapUrls } from "@/lib/sitemap-index";
+import { siteConfig } from "@/lib/constants";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -100,6 +100,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/admin/", "/portal/", "/thank-you"],
       },
     ],
-    sitemap: robotsSitemapUrls,
+    sitemap: `${siteConfig.url}/sitemap.xml`,
   };
 }

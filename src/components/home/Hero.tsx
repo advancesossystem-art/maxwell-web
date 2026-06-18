@@ -136,7 +136,7 @@ export function Hero() {
                     <p className="font-display text-lg font-bold text-[#0f172a]">
                       <CounterUp value={stat.value} />
                     </p>
-                    <p className="text-sm text-[#64748b]">{stat.label}</p>
+                    <p className="text-sm text-[var(--v6-text-muted)]">{stat.label}</p>
                   </div>
                 </li>
               ))}

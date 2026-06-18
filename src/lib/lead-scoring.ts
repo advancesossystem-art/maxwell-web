@@ -10,7 +10,11 @@ export type LeadSource =
   | "discovery-call"
   | "newsletter"
   | "careers"
-  | `tool-${string}`;
+  | "exit-intent"
+  | "homepage-assessment"
+  | `tool-${string}`
+  | `service-${string}`
+  | `industry-${string}`;
 
 export interface LeadScoringInput {
   budget?: string;

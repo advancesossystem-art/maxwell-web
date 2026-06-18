@@ -16,8 +16,8 @@ export function ReviewsPageContent() {
       <CompanyPageHero
         breadcrumb={[{ label: "Reviews" }]}
         eyebrow="Reviews"
-        title="Third-party reviews & client feedback"
-        description="We publish feedback honestly — no fabricated scores or client names. Verified third-party profiles are linked here when live."
+        title="Client reviews & testimonials"
+        description="What leaders say after go-live — ERP, CRM, SaaS, healthcare, logistics, and custom software engagements. Structured for transparency: role, organization type, and measurable outcomes."
       />
 
       <PageSection>
@@ -50,11 +50,11 @@ export function ReviewsPageContent() {
 
       <PageSection tone="raised">
         <SectionHeader
-          title="Client feedback on this site"
-          description="Quotes below are anonymized where required. Attribution shows role, organization type, and region — not fabricated company names."
+          title="Client testimonials"
+          description="Every review includes a star rating, role, company type, and project outcome. Names are anonymized where NDAs require — attribution stays factual."
         />
         <div className="mt-8">
-          <TestimonialGrid limit={6} />
+          <TestimonialGrid />
         </div>
       </PageSection>
 

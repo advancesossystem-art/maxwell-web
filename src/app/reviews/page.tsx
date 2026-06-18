@@ -1,18 +1,18 @@
 import { ReviewsPageContent } from "@/components/trust/ReviewsPageContent";
-import { CompanyPageJsonLd } from "@/components/seo/JsonLd";
+import { ReviewsPageJsonLd } from "@/components/seo/ReviewsPageJsonLd";
 import { createMetadata } from "@/lib/metadata";
 import { siteConfig } from "@/lib/constants";
 
 export const metadata = createMetadata({
-  title: "Reviews & Client Feedback",
-  description: `Honest client feedback and third-party review links for ${siteConfig.name}. No fabricated ratings — Clutch, G2, and Google profiles when available.`,
+  title: "Client Reviews & Testimonials",
+  description: `Read client reviews and testimonials for ${siteConfig.name} — custom ERP, CRM, AI, and software development projects across India and globally. Honest feedback from manufacturing, healthcare, SaaS, and logistics clients.`,
   path: "/reviews",
 });
 
 export default function ReviewsPage() {
   return (
     <>
-      <CompanyPageJsonLd pageType="reviews" path="/reviews" title="Reviews" />
+      <ReviewsPageJsonLd />
       <ReviewsPageContent />
     </>
   );

@@ -1,4 +1,5 @@
 import { siteConfig } from "./constants";
+import { applyCityContentOverrides } from "./locations-city-overrides";
 import { extendedCitySlugs, getExtendedCity } from "./locations-extended";
 
 export interface LocationChallenge {
@@ -28,6 +29,9 @@ export interface CityPageData {
   faqs: { question: string; answer: string }[];
   serviceSlugs: string[];
   technologies: string[];
+  localIntro?: string[];
+  servingSince?: string;
+  mapEmbedUrl?: string;
 }
 
 export interface CountryPageData {
@@ -127,7 +131,7 @@ function buildCityPage(config: CityConfig): CityPageData {
   };
 }
 
-export const indiaCities: CityPageData[] = indiaCityConfigs.map(buildCityPage);
+export const indiaCities: CityPageData[] = indiaCityConfigs.map(buildCityPage).map(applyCityContentOverrides);
 
 // Fix industry href mapping - use proper slugs
 const industrySlugMap: Record<string, string> = {

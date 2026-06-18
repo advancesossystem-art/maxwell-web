@@ -28,6 +28,13 @@ export interface ServicePageData {
   }[];
   whyMaxwell: { title: string; description: string }[];
   faqs: { question: string; answer: string }[];
+  /** Extra SSR paragraphs for SEO depth (Vadodara, GST, pricing, etc.) */
+  seoParagraphs?: string[];
+  pricingTiers?: { name: string; range: string; description: string }[];
+  comparisonTable?: { feature: string; custom: string; sap: string; tally: string; zoho: string }[];
+  processSteps?: { step: string; title: string; description: string }[];
+  relatedBlogSlugs?: string[];
+  relatedIndustrySlugs?: string[];
 }
 
 const sharedWhyMaxwell = [
@@ -77,12 +84,12 @@ export const servicesData: Record<ServiceSlug, ServicePageData> = {
   "website-development": {
     slug: "website-development",
     title: "Website Development",
-    headline: "Websites That Convert Visitors Into Clients",
+    headline: "Website Development Company India — Business & E-Commerce",
     subheadline:
-      "Corporate websites, business platforms, and landing pages engineered for performance, SEO, and measurable lead generation—not template WordPress sites.",
-    metaTitle: "Website Development Services — Maxwell Electrodeal",
+      "Next.js corporate websites, e-commerce storefronts, and conversion-focused landing pages for Indian businesses—engineered for SEO, Core Web Vitals, and measurable lead generation.",
+    metaTitle: "Website Development Company India — Business & E-Commerce | Maxwell",
     metaDescription:
-      "Custom website development services — Next.js, React, SEO, Core Web Vitals, and conversion-focused design. Enterprise and SMB web apps from Maxwell Electrodeal, India.",
+      "Website development company in India. Next.js business sites, e-commerce, SEO. Pricing from ₹75K. Vadodara & pan-India delivery.",
     keywords: [
       "website development company India",
       "web development company India",
@@ -176,6 +183,17 @@ export const servicesData: Record<ServiceSlug, ServicePageData> = {
       },
     ],
     whyMaxwell: [...sharedWhyMaxwell],
+    seoParagraphs: [
+      "A professional website is your highest-leverage sales asset in India—yet most businesses still run slow WordPress themes that fail Core Web Vitals and leak leads. Maxwell Electrodeal builds Next.js sites that rank, load in under 2 seconds, and convert visitors into qualified enquiries.",
+      "We serve B2B manufacturers, healthcare groups, and funded startups across Vadodara, Mumbai, Delhi, and international markets. Every project includes technical SEO, schema markup, analytics, and conversion architecture—not just pretty mockups.",
+    ],
+    pricingTiers: [
+      { name: "Startup site", range: "₹75K – ₹2L", description: "5–10 pages, CMS, contact forms, SEO foundation, mobile-first design." },
+      { name: "Corporate site", range: "₹2L – ₹5L", description: "15–25 pages, multi-language, blog, integrations, advanced analytics." },
+      { name: "E-commerce / portal", range: "₹5L – ₹15L", description: "Catalog, payments, customer accounts, ERP/CRM integrations." },
+    ],
+    relatedBlogSlugs: ["how-much-does-website-cost-india-2026", "nextjs-enterprise-website-architecture", "b2b-website-conversion-patterns"],
+    relatedIndustrySlugs: ["retail", "healthcare", "education"],
     faqs: [
       {
         question: "How much does a professional website cost?",
@@ -311,12 +329,12 @@ export const servicesData: Record<ServiceSlug, ServicePageData> = {
   "mobile-app-development": {
     slug: "mobile-app-development",
     title: "Mobile App Development",
-    headline: "Mobile Apps Users Love. Businesses Trust.",
+    headline: "Mobile App Development Company India — iOS & Android",
     subheadline:
-      "Native-quality Android and iOS applications, Flutter cross-platform apps, and enterprise mobile solutions built for performance, security, and scale.",
-    metaTitle: "Mobile App Development Services — Maxwell Electrodeal",
+      "Flutter and React Native apps for Indian startups and enterprises—offline-first field tools, consumer apps, and B2B portals with App Store and Play Store launch support.",
+    metaTitle: "Mobile App Development Company India — iOS & Android | Maxwell",
     metaDescription:
-      "Mobile app development services — iOS, Android, Flutter, and React Native with offline-first architecture and enterprise security. Maxwell Electrodeal, India.",
+      "Mobile app development company in India. Flutter, React Native, iOS & Android. MVP from ₹3L. Timeline 8–16 weeks. Maxwell Electrodeal.",
     keywords: [
       "mobile app development company India",
       "app development company India",
@@ -400,6 +418,23 @@ export const servicesData: Record<ServiceSlug, ServicePageData> = {
       },
     ],
     whyMaxwell: [...sharedWhyMaxwell],
+    seoParagraphs: [
+      "Indian businesses choose mobile apps when field teams, consumer loyalty, or offline workflows demand native experiences. Maxwell Electrodeal delivers Flutter and React Native apps that ship on both iOS and Android from a single codebase—cutting time-to-market by 35–45% versus dual native builds.",
+      "Typical timelines: MVP in 8–12 weeks, enterprise apps in 12–20 weeks with weekly demos. We handle Play Store and App Store submission, push notifications, analytics, and backend APIs.",
+    ],
+    pricingTiers: [
+      { name: "MVP app", range: "₹3L – ₹6L", description: "Core flows, auth, API, one platform or cross-platform." },
+      { name: "Growth app", range: "₹6L – ₹12L", description: "Offline sync, payments, admin panel, analytics." },
+      { name: "Enterprise app", range: "₹12L – ₹20L+", description: "Multi-role, ERP integration, compliance, MDM support." },
+    ],
+    processSteps: [
+      { step: "01", title: "Discovery", description: "User journeys, platform choice (Flutter vs native), and success metrics." },
+      { step: "02", title: "UX design", description: "Wireframes and interactive prototypes for stakeholder sign-off." },
+      { step: "03", title: "Sprint build", description: "Agile development with TestFlight/Play internal testing." },
+      { step: "04", title: "Launch", description: "Store submission, monitoring, and post-launch iteration roadmap." },
+    ],
+    relatedBlogSlugs: ["mobile-app-development-cost-india-2026", "flutter-vs-react-native-2026", "web-app-vs-mobile-app-business"],
+    relatedIndustrySlugs: ["logistics", "retail", "healthcare"],
     faqs: [
       {
         question: "Flutter or native—which should we choose?",
@@ -423,18 +458,20 @@ export const servicesData: Record<ServiceSlug, ServicePageData> = {
   "erp-development": {
     slug: "erp-development",
     title: "ERP Development",
-    headline: "ERP That Fits Your Operations—Not The Other Way Around",
+    headline: "Custom ERP Development Company India — GST-Ready ERP Solutions",
     subheadline:
-      "Custom ERP software for manufacturing, distribution, and growing enterprises. Inventory, production, finance, and HR unified in one platform built around your workflows.",
-    metaTitle: "ERP Development Services — Maxwell Electrodeal",
+      "Custom ERP software for manufacturing, trading, and distribution across Vadodara, Gujarat, and India. Inventory, production, GST billing, and Tally integration—built around your workflows, not generic templates.",
+    metaTitle: "Custom ERP Development Company India — GST-Ready ERP | Maxwell",
     metaDescription:
-      "ERP development services — custom inventory, production, finance, and HR modules with GST/Tally integration for manufacturing and distribution. Maxwell Electrodeal, India.",
+      "Custom ERP development company in India — GST-ready manufacturing & trading ERP for Vadodara, Gujarat. Inventory, billing, Tally sync. From ₹2L–₹20L.",
     keywords: [
       "ERP software development company",
       "ERP development company India",
       "custom ERP software development",
       "manufacturing ERP development",
       "GST ERP software India",
+      "ERP software cost india",
+      "ERP development Vadodara",
     ],
     icon: "erp",
     gradient: "from-amber-950 via-orange-900 to-slate-950",
@@ -522,6 +559,47 @@ export const servicesData: Record<ServiceSlug, ServicePageData> = {
       },
     ],
     whyMaxwell: [...sharedWhyMaxwell],
+    seoParagraphs: [
+      "Maxwell Electrodeal builds GST-ready ERP systems for Indian manufacturers, traders, and distributors from our headquarters in Vadodara, Gujarat. We map shop-floor reality—batch tracking, job-work (ITC-04), weighbridge entries, multi-GSTIN billing—before writing a single module.",
+      "Whether you outgrew Tally spreadsheets, failed a generic SAP rollout, or need inventory visibility across warehouses and production lines, our ERP connects operations to finance without forcing your team into foreign workflows.",
+      "Clients across Gujarat and pan-India use our platforms for purchase-to-pay, order-to-cash, production scheduling, and statutory reporting. Every deployment includes Tally sync options, role-based dashboards, and mobile access for warehouse and field teams.",
+    ],
+    pricingTiers: [
+      {
+        name: "Starter ERP",
+        range: "₹2L – ₹5L",
+        description: "Single-location inventory, purchase, sales, GST billing, and basic reporting for trading SMEs.",
+      },
+      {
+        name: "Manufacturing ERP",
+        range: "₹8L – ₹15L",
+        description: "BOM, work orders, WIP tracking, quality checks, and Tally integration for one plant.",
+      },
+      {
+        name: "Enterprise ERP",
+        range: "₹15L – ₹20L+",
+        description: "Multi-plant, multi-GSTIN, dealer portals, advanced analytics, and custom integrations.",
+      },
+    ],
+    comparisonTable: [
+      { feature: "Workflow fit", custom: "Built around your process", sap: "Heavy configuration", tally: "Accounting-first", zoho: "Generic modules" },
+      { feature: "Manufacturing MRP", custom: "Native BOM & WIP", sap: "Strong but costly", tally: "Not designed for MRP", zoho: "Limited" },
+      { feature: "GST & e-invoice", custom: "Tailored to your billing", sap: "Yes, complex setup", tally: "Strong statutory", zoho: "Basic" },
+      { feature: "5-year TCO (SME)", custom: "Flat build + support", sap: "High license + SI fees", tally: "Low if finance-only", zoho: "Per-user adds up" },
+      { feature: "Adoption", custom: "UI matches shop floor", sap: "Often poor without SI", tally: "High for accounts", zoho: "Mixed" },
+    ],
+    processSteps: [
+      { step: "01", title: "Discovery", description: "On-site workshops in Vadodara or remote for pan-India clients—map inventory, production, and billing flows." },
+      { step: "02", title: "Process design", description: "Document to-be workflows, GST touchpoints, and Tally integration requirements." },
+      { step: "03", title: "Architecture", description: "Database, API, and security design with phased module roadmap." },
+      { step: "04", title: "UI/UX", description: "Role-based screens for stores, production, sales, and finance teams." },
+      { step: "05", title: "Core build", description: "Inventory, purchase, and sales modules with weekly demos." },
+      { step: "06", title: "Integrations", description: "Tally, e-invoice, weighbridge, WhatsApp alerts, biometric attendance." },
+      { step: "07", title: "UAT & training", description: "Real transaction testing with your team before go-live." },
+      { step: "08", title: "Go-live & support", description: "Phased rollout, hypercare, and SLA-backed post-launch support." },
+    ],
+    relatedBlogSlugs: ["erp-software-cost-india-2026", "erp-vs-tally-india", "erp-development-cost-india-2026"],
+    relatedIndustrySlugs: ["manufacturing", "logistics", "retail"],
     faqs: [
       {
         question: "Custom ERP vs SAP/Tally—which is better?",
@@ -539,18 +617,30 @@ export const servicesData: Record<ServiceSlug, ServicePageData> = {
         question: "What's the ROI timeline for custom ERP?",
         answer: "Most clients see measurable ROI within 6–12 months through reduced manual work, fewer errors, and better inventory control.",
       },
+      {
+        question: "Do you build GST-compliant billing and e-invoice?",
+        answer: "Yes. We implement GSTIN masters, HSN/SAC mapping, e-invoice/e-way bill flows, and credit-note approvals aligned to your dispatch process.",
+      },
+      {
+        question: "Can ERP work with Tally for statutory books?",
+        answer: "Yes. Many clients keep Tally for compliance while custom modules handle production and inventory—we build bi-directional sync with reconciliation dashboards.",
+      },
+      {
+        question: "What is included in ERP development cost?",
+        answer: "Discovery, UI/UX, core modules, integrations, data migration, training, deployment, and a hypercare period. Source code and IP transfer on completion.",
+      },
     ],
   },
 
   "crm-development": {
     slug: "crm-development",
     title: "CRM Development",
-    headline: "CRM Built For How You Sell—Not How Salesforce Sells",
+    headline: "Custom CRM Development India — Sales & Customer Management",
     subheadline:
-      "Custom customer relationship management software with sales pipelines, lead automation, support ticketing, and analytics—designed for your sales process.",
-    metaTitle: "CRM Development Services — Maxwell Electrodeal",
+      "Custom CRM software for Indian B2B sales teams—pipeline management, WhatsApp automation, dealer hierarchies, and ERP integration without per-seat Salesforce fees.",
+    metaTitle: "Custom CRM Development India — Sales & Customer Management | Maxwell",
     metaDescription:
-      "CRM development services — custom sales pipelines, lead automation, customer portals, and analytics built for your B2B sales process. Maxwell Electrodeal, India.",
+      "Custom CRM development company in India. Sales pipelines, lead automation, WhatsApp CRM, manufacturing dealer CRM. ROI-focused builds from ₹5L.",
     keywords: [
       "CRM development company India",
       "CRM software development services",
@@ -633,6 +723,18 @@ export const servicesData: Record<ServiceSlug, ServicePageData> = {
       },
     ],
     whyMaxwell: [...sharedWhyMaxwell],
+    seoParagraphs: [
+      "Indian B2B sales rarely follow a linear Salesforce pipeline. Distributor tiers, scheme approvals, sample requests, and WhatsApp-first follow-up need CRM software built for how your team actually sells—not how a US SaaS vendor imagines selling.",
+      "Maxwell Electrodeal delivers custom CRM platforms with flat infrastructure cost, vernacular mobile UX, and integrations to Tally, ERP, and telephony. Manufacturing clients use our CRM for dealer beat planning; services firms use it for proposal tracking and account health scores.",
+      "Clients typically see 25–35% improvement in follow-up discipline within the first quarter after go-live, with payback versus per-seat SaaS often before 25 active users.",
+    ],
+    pricingTiers: [
+      { name: "Sales CRM MVP", range: "₹5L – ₹8L", description: "Pipeline, leads, tasks, mobile app, and email/WhatsApp logging." },
+      { name: "Growth CRM", range: "₹10L – ₹15L", description: "Dealer hierarchy, approvals, quotes, dashboards, and ERP hooks." },
+      { name: "Enterprise CRM", range: "₹15L – ₹25L", description: "Multi-branch, advanced analytics, customer portal, and custom workflows." },
+    ],
+    relatedBlogSlugs: ["crm-software-manufacturing-india", "crm-development-cost-india", "custom-crm-vs-salesforce"],
+    relatedIndustrySlugs: ["manufacturing", "retail", "real-estate"],
     faqs: [
       {
         question: "Custom CRM vs Salesforce/HubSpot?",
@@ -650,18 +752,26 @@ export const servicesData: Record<ServiceSlug, ServicePageData> = {
         question: "Is training included?",
         answer: "Yes. We provide admin training, user onboarding, documentation, and optional ongoing support retainers.",
       },
+      {
+        question: "What ROI can we expect from custom CRM?",
+        answer: "Clients report 25–35% better follow-up rates and faster deal velocity within 6 months; distributor CRM projects often recover build cost within 12 months versus per-seat licensing.",
+      },
+      {
+        question: "Do you build CRM for manufacturing distributors?",
+        answer: "Yes. Beat planning, scheme management, secondary sales visibility, and ERP order sync are common modules for Gujarat and pan-India manufacturers.",
+      },
     ],
   },
 
   "ai-solutions": {
     slug: "ai-solutions",
     title: "AI Solutions",
-    headline: "AI That Delivers ROI—Not Just Demos",
+    headline: "AI Development Company India — Custom AI Solutions",
     subheadline:
-      "Practical artificial intelligence solutions—computer vision, intelligent automation, AI chatbots, and predictive analytics built for real business outcomes.",
-    metaTitle: "AI Development Services — Maxwell Electrodeal",
+      "Practical AI for Indian businesses—computer vision on factory floors, document automation, LLM assistants, and predictive analytics with measurable ROI, not pilot-project theatre.",
+    metaTitle: "AI Development Company India — Custom AI Solutions | Maxwell",
     metaDescription:
-      "AI development services — LLM chatbots, computer vision, process automation, and predictive analytics engineered for production ROI. Maxwell Electrodeal, India.",
+      "AI software development company in India. Computer vision, automation, LLM chatbots, predictive analytics. Production ROI from Maxwell Electrodeal.",
     keywords: [
       "AI development company India",
       "artificial intelligence development company",
@@ -749,6 +859,17 @@ export const servicesData: Record<ServiceSlug, ServicePageData> = {
       },
     ],
     whyMaxwell: [...sharedWhyMaxwell],
+    seoParagraphs: [
+      "AI software development in India should start with a process that bleeds time—not with a chatbot for its own sake. Maxwell Electrodeal implements computer vision for PPE and quality checks, intelligent document processing for finance teams, and LLM assistants grounded in your knowledge base.",
+      "Use cases we ship: manufacturing safety monitoring, invoice/receipt OCR, support ticket deflection, demand forecasting, and predictive maintenance on IoT sensor data. Projects typically range ₹3.5L–₹25L depending on data readiness and deployment environment (cloud vs edge).",
+    ],
+    pricingTiers: [
+      { name: "AI pilot", range: "₹3.5L – ₹8L", description: "Single use case, proof of ROI, limited integration." },
+      { name: "Production AI", range: "₹8L – ₹18L", description: "Multi-model workflow, monitoring, human-in-the-loop." },
+      { name: "Enterprise AI", range: "₹18L – ₹25L+", description: "Edge deployment, compliance, ERP/MES integration." },
+    ],
+    relatedBlogSlugs: ["ai-software-development-india-2026", "computer-vision-manufacturing", "ai-roi-measurement"],
+    relatedIndustrySlugs: ["manufacturing", "healthcare", "logistics"],
     faqs: [
       {
         question: "Do we need massive amounts of data for AI?",

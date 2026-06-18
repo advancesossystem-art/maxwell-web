@@ -16,11 +16,11 @@ export function HeroEcosystemVisual() {
             <span className="h-6 w-6 rounded-md bg-[#e2e8f0]" />
           </div>
           <div className="min-w-0 flex-1">
-            <p className="text-xs font-semibold text-[#64748b]">Overview</p>
+            <p className="text-xs font-semibold text-[var(--v6-text-muted)]">Overview</p>
             <p className="mt-3 text-sm font-semibold text-[#0f172a]">Active Projects</p>
             <div className="mt-1 flex items-baseline gap-2">
               <span className="font-display text-3xl font-bold text-[#0f172a]">24</span>
-              <span className="rounded-full bg-[#10b981]/15 px-2 py-0.5 text-xs font-semibold text-[#10b981]">
+              <span className="rounded-full bg-[#10b981]/15 px-2 py-0.5 text-xs font-semibold text-[#047857]">
                 +20%
               </span>
             </div>
@@ -48,11 +48,11 @@ export function HeroEcosystemVisual() {
             </div>
             <div className="mt-3 grid grid-cols-2 gap-2">
               <div className="rounded-lg border border-[#e2e8f0] bg-[#f8fafc] p-2">
-                <p className="text-[10px] text-[#64748b]">Tasks Completed</p>
+                <p className="text-[10px] text-[var(--v6-text-muted)]">Tasks Completed</p>
                 <p className="font-semibold text-[#0f172a]">1,248</p>
               </div>
               <div className="rounded-lg border border-[#e2e8f0] bg-[#f8fafc] p-2">
-                <p className="text-[10px] text-[#64748b]">Client Satisfaction</p>
+                <p className="text-[10px] text-[var(--v6-text-muted)]">Client Satisfaction</p>
                 <p className="font-semibold text-[#0f172a]">4.9/5</p>
                 <div className="mt-1 h-1.5 overflow-hidden rounded-full bg-[#e2e8f0]">
                   <div className="h-full w-[92%] rounded-full bg-[#f59e0b]" />
@@ -94,16 +94,16 @@ export function HeroEcosystemVisual() {
           </div>
           <div className="v6-eco-portal__phase-track">
             <div className="v6-eco-portal__phase-seg">
-              <div className="v6-eco-portal__phase-fill" style={{ width: "100%" }} />
+              <div className="v6-eco-portal__phase-fill v6-eco-portal__phase-fill--full" />
             </div>
             <div className="v6-eco-portal__phase-seg">
-              <div className="v6-eco-portal__phase-fill" style={{ width: "100%" }} />
+              <div className="v6-eco-portal__phase-fill v6-eco-portal__phase-fill--full" />
             </div>
             <div className="v6-eco-portal__phase-seg">
-              <div className="v6-eco-portal__phase-fill" style={{ width: "68%" }} />
+              <div className="v6-eco-portal__phase-fill v6-eco-portal__phase-fill--68" />
             </div>
             <div className="v6-eco-portal__phase-seg">
-              <div className="v6-eco-portal__phase-fill" style={{ width: "0%" }} />
+              <div className="v6-eco-portal__phase-fill v6-eco-portal__phase-fill--empty" />
             </div>
           </div>
         </div>
@@ -121,13 +121,12 @@ export function HeroEcosystemVisual() {
       </div>
 
       <div className="absolute right-[2%] top-[8%] z-[4] rounded-2xl border border-[#e2e8f0] bg-white p-3 shadow-lg">
-        <p className="text-[10px] font-medium text-[#64748b]">Team Activity</p>
+        <p className="text-[10px] font-medium text-[var(--v6-text-muted)]">Team Activity</p>
         <div className="mt-2 flex -space-x-2">
-          {["#818cf8", "#a78bfa", "#f59e0b"].map((c) => (
+          {["bg-indigo-400", "bg-violet-400", "bg-amber-500"].map((colorClass) => (
             <span
-              key={c}
-              className="inline-flex h-8 w-8 items-center justify-center rounded-full border-2 border-white text-[10px] font-bold text-white"
-              style={{ backgroundColor: c }}
+              key={colorClass}
+              className={`inline-flex h-8 w-8 items-center justify-center rounded-full border-2 border-white text-[10px] font-bold text-white ${colorClass}`}
             >
               +
             </span>

@@ -1,6 +1,7 @@
 import type { Article } from "./schema";
 import { enrichedCreateArticle } from "./article-enrichment";
 import { buildSeoArticlesBatch } from "./seo-articles-batch";
+import { seoBlogPhase3Articles } from "./seo-blog-phase3";
 
 const articlesList: Article[] = [
   enrichedCreateArticle({
@@ -619,29 +620,6 @@ const articlesList: Article[] = [
   }),
 
   enrichedCreateArticle({
-    slug: "mobile-app-development-cost-india-2026",
-    title: "Mobile App Development Cost in India 2026",
-    excerpt: "Flutter and React Native pricing for MVPs and enterprise apps—realistic ₹ ranges.",
-    metaDescription:
-      "Mobile app development cost in India 2026: MVP ₹3L–₹10L, enterprise ₹8L–₹20L+. Flutter, React Native, iOS Android.",
-    category: "mobile-apps",
-    authorId: "maxwell-team",
-    tags: ["Mobile", "India", "Cost"],
-    publishedAt: "2026-04-10",
-    trending: true,
-    intro:
-      "Mobile app development in India costs ₹3L–₹10L for startup MVPs and ₹8L–₹20L for enterprise apps with offline sync, multi-role auth, and backend integrations. Cross-platform (Flutter/React Native) saves 35–45% versus dual native builds.",
-    sections: [
-      {
-        heading: "Cost ranges",
-        list: ["Simple MVP: ₹3L–₹6L", "Consumer app with backend: ₹6L–₹12L", "Enterprise field app: ₹10L–₹20L+"],
-        paragraphs: ["App Store submission, push notifications, and analytics are standard in Maxwell MVPs."],
-      },
-    ],
-    relatedSlugs: ["flutter-vs-react-native-2026", "software-development-cost-india-2026"],
-  }),
-
-  enrichedCreateArticle({
     slug: "erp-vs-crm-business-systems",
     title: "ERP vs CRM — Which System Does Your Business Need First?",
     excerpt: "Operations backbone vs sales engine—a decision guide for Indian SMEs scaling past spreadsheets.",
@@ -831,6 +809,7 @@ const articlesList: Article[] = [
     ],
     relatedSlugs: ["software-development-cost-india-2026", "erp-development-cost-india-2026"],
   }),
+  ...seoBlogPhase3Articles,
   ...buildSeoArticlesBatch(),
 ];
 

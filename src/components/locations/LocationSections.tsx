@@ -59,6 +59,14 @@ export function CityHero({ city }: { city: CityPageData }) {
             {city.headline}
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/55">{city.subheadline}</p>
+          {city.servingSince ? (
+            <p className="mt-3 text-sm text-white/45">
+              Serving {city.name} businesses since {city.servingSince}
+            </p>
+          ) : null}
+          {city.servingSince ? (
+            <p className="mt-3 text-sm text-white/45">Serving {city.name} businesses since {city.servingSince}</p>
+          ) : null}
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
             <Button href={`/contact${query}`} size="lg">
               Book Consultation <ArrowRight />
@@ -80,6 +88,13 @@ export function LocalInsights({ city }: { city: CityPageData }) {
         <FadeIn>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-600">Local Market Insights</p>
           <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted">{city.localInsights}</p>
+          {city.localIntro?.length ? (
+            <div className="mt-6 max-w-3xl space-y-4 text-muted leading-relaxed">
+              {city.localIntro.map((p) => (
+                <p key={p.slice(0, 40)}>{p}</p>
+              ))}
+            </div>
+          ) : null}
         </FadeIn>
       </Container>
     </section>

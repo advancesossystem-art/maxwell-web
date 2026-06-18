@@ -16,11 +16,15 @@ const SOURCE_LABELS: Record<string, string> = {
   "project-calculator": "Project calculator",
   careers: "Careers application",
   newsletter: "Newsletter signup",
+  "exit-intent": "Exit intent popup",
+  "homepage-assessment": "Homepage assessment",
 };
 
 function sourceLabel(source: string): string {
   if (SOURCE_LABELS[source]) return SOURCE_LABELS[source];
   if (source.startsWith("tool-")) return `Tool lead (${source.replace(/^tool-/, "")})`;
+  if (source.startsWith("service-")) return `Service page (${source.replace(/^service-/, "")})`;
+  if (source.startsWith("industry-")) return `Industry page (${source.replace(/^industry-/, "")})`;
   return source;
 }
 
@@ -175,4 +179,81 @@ export async function deliverLeadNotificationEmail(payload: LeadPayload): Promis
   if (process.env.NODE_ENV !== "production") {
     console.log(`[Lead Email] Sent via ${provider} to ${to}`);
   }
+}
+
+function firstName(fullName: string): string {
+  return fullName.trim().split(/\s+/)[0] || fullName;
+}
+
+export function buildLeadAutoReplySubject(payload: LeadPayload): string {
+  return sanitizeEmailHeader(`Thanks ${firstName(payload.name)} — We'll be in touch within 4 hours`);
+}
+
+export function buildLeadAutoReplyHtml(payload: LeadPayload): string {
+  const name = escapeHtml(firstName(payload.name));
+  return `<!DOCTYPE html><html><body style="font-family:system-ui,sans-serif;background:#f8fafc;padding:24px">
+<table style="max-width:560px;margin:0 auto;background:#fff;border-radius:12px;border:1px solid #e2e8f0;overflow:hidden">
+<tr><td style="padding:24px">
+<p style="margin:0 0 12px;font-size:16px;color:#0f172a">Hi ${name},</p>
+<p style="margin:0 0 12px;font-size:15px;line-height:1.6;color:#334155">Thank you for reaching out to Maxwell Electrodeal. We received your request and a solutions consultant will respond within <strong>4 business hours</strong>.</p>
+<p style="margin:0 0 12px;font-size:15px;line-height:1.6;color:#334155"><strong>What happens next:</strong></p>
+<ul style="margin:0 0 16px;padding-left:20px;font-size:14px;line-height:1.7;color:#475569">
+<li>We review your requirements and current processes</li>
+<li>A consultant calls or emails with tailored recommendations</li>
+<li>You receive a clear scope, timeline, and investment range — no obligation</li>
+</ul>
+<p style="margin:0;font-size:14px;color:#64748b">Need to speak sooner? Reply to this email or call us at +91 95868 68538.</p>
+</td></tr>
+</table>
+</body></html>`;
+}
+
+export function buildLeadAutoReplyText(payload: LeadPayload): string {
+  const name = firstName(payload.name);
+  return [
+    `Hi ${name},`,
+    "",
+    "Thank you for reaching out to Maxwell Electrodeal. We received your request and will respond within 4 business hours.",
+    "",
+    "What happens next:",
+    "- We review your requirements",
+    "- A consultant follows up with tailored recommendations",
+    "- You receive scope, timeline, and investment range — no obligation",
+    "",
+    "Questions? Reply to this email or call +91 95868 68538.",
+  ].join("\n");
+}
+
+export async function sendLeadAutoReplyEmail(payload: LeadPayload): Promise<void> {
+  if (payload.source === "newsletter" || payload.source === "careers") return;
+
+  const subject = buildLeadAutoReplySubject(payload);
+  const text = buildLeadAutoReplyText(payload);
+  const html = buildLeadAutoReplyHtml(payload);
+
+  if (!isGoogleScriptConfigured() && !isEmailDeliveryConfigured()) {
+    if (process.env.NODE_ENV !== "production") {
+      console.log("[Lead Auto-Reply preview]", { to: payload.email, subject });
+    }
+    return;
+  }
+
+  if (isGoogleScriptConfigured()) {
+    await sendViaGoogleAppsScript({
+      to: payload.email,
+      subject,
+      html,
+      text,
+    });
+    return;
+  }
+
+  await sendOutboundEmail({
+    to: payload.email,
+    from: resolveFromAddress(),
+    replyTo: getLeadInbox(),
+    subject,
+    html,
+    text,
+  });
 }
