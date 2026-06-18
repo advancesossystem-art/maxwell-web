@@ -20,13 +20,21 @@ export async function sendViaGoogleAppsScript(payload: ScriptEmailPayload): Prom
   try {
     const res = await fetch(url, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        ...(process.env.GMAIL_APPS_SCRIPT_SECRET
+          ? { "X-Maxwell-Relay-Secret": process.env.GMAIL_APPS_SCRIPT_SECRET }
+          : {}),
+      },
       body: JSON.stringify({
         to: payload.to,
         subject: payload.subject,
         html: payload.html,
         text: payload.text,
         replyTo: payload.replyTo,
+        ...(process.env.GMAIL_APPS_SCRIPT_SECRET
+          ? { secret: process.env.GMAIL_APPS_SCRIPT_SECRET }
+          : {}),
       }),
       signal: controller.signal,
       cache: "no-store",

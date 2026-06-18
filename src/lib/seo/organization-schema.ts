@@ -1,7 +1,6 @@
 import { siteConfig } from "@/lib/constants";
 import { businessAddress } from "@/lib/business-address";
 import { companyMetrics } from "@/lib/company-metrics";
-import { formatTestimonialAttribution } from "@/lib/client-attribution";
 import { testimonials } from "@/lib/testimonials-data";
 import type { Author } from "@/lib/content/authors";
 import type { ServicePageData } from "@/lib/services-data";
@@ -22,7 +21,6 @@ const CORE_OFFER_SERVICES = [
 /** Structured data constants — aligned with Knowledge Graph / GBP signals. */
 const SCHEMA_FOUNDING_DATE = "2006";
 const SCHEMA_EMPLOYEE_COUNT = 15;
-const SCHEMA_AGGREGATE_REVIEW_COUNT = 23;
 
 const OPENING_HOURS = {
   "@type": "OpeningHoursSpecification" as const,
@@ -137,8 +135,11 @@ export function buildOrganizationNode() {
   };
 }
 
+/** Aggregate rating only when a verifiable third-party review count is configured. */
+const VERIFIABLE_REVIEW_COUNT = process.env.GOOGLE_BUSINESS_REVIEW_COUNT?.trim();
+
 export function buildLocalBusinessNode(options?: { pageUrl?: string }) {
-  return {
+  const node: Record<string, unknown> = {
     "@type": "LocalBusiness" as const,
     "@id": seoIds.localBusiness,
     name: siteConfig.name,
@@ -160,13 +161,18 @@ export function buildLocalBusinessNode(options?: { pageUrl?: string }) {
     hasMap: businessAddress.googleMapsLink,
     openingHoursSpecification: [OPENING_HOURS],
     parentOrganization: { "@id": seoIds.organization },
-    aggregateRating: {
+  };
+
+  if (VERIFIABLE_REVIEW_COUNT) {
+    node.aggregateRating = {
       "@type": "AggregateRating" as const,
       ratingValue: String(companyMetrics.satisfactionScore),
-      reviewCount: String(SCHEMA_AGGREGATE_REVIEW_COUNT),
+      reviewCount: VERIFIABLE_REVIEW_COUNT,
       bestRating: String(companyMetrics.satisfactionScale),
-    },
-  };
+    };
+  }
+
+  return node;
 }
 
 export function buildWebsiteNode() {
@@ -234,23 +240,21 @@ export function buildServiceSchema(service: ServicePageData) {
 }
 
 export function buildTestimonialReviewNodes(limit = 4) {
-  return testimonials.slice(0, limit).map((testimonial) => ({
-    "@type": "Review" as const,
-    reviewRating: {
-      "@type": "Rating" as const,
-      ratingValue: "5",
-      bestRating: "5",
-    },
-    author: {
-      "@type": "Person" as const,
-      name: formatTestimonialAttribution({
-        role: testimonial.role,
-        companyType: testimonial.companyType,
-        industry: testimonial.industry,
-        region: testimonial.region,
-      }),
-    },
-    reviewBody: testimonial.quote,
-    itemReviewed: { "@id": seoIds.localBusiness },
-  }));
+  return testimonials
+    .filter((testimonial) => testimonial.author.trim().length > 0)
+    .slice(0, limit)
+    .map((testimonial) => ({
+      "@type": "Review" as const,
+      reviewRating: {
+        "@type": "Rating" as const,
+        ratingValue: "5",
+        bestRating: "5",
+      },
+      author: {
+        "@type": "Person" as const,
+        name: testimonial.author.trim(),
+      },
+      reviewBody: testimonial.quote,
+      itemReviewed: { "@id": seoIds.localBusiness },
+    }));
 }

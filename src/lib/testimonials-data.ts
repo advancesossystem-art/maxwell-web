@@ -33,7 +33,7 @@ export const testimonials: TestimonialRecord[] = [
     projectType: "ERP Development",
     outcome: "40% less manual entry · ₹12L annual savings",
     projectValue: "₹18L",
-    verified: true,
+    verified: false,
   },
   {
     id: "flowmetrics",
@@ -49,7 +49,7 @@ export const testimonials: TestimonialRecord[] = [
     projectType: "SaaS Development",
     outcome: "500 users at launch · seed round closed post-launch",
     projectValue: "₹12L",
-    verified: true,
+    verified: false,
   },
   {
     id: "carefirst",
@@ -65,7 +65,7 @@ export const testimonials: TestimonialRecord[] = [
     projectType: "Custom Software Development",
     outcome: "10,000+ active patients · 99.9% uptime",
     projectValue: "₹22L",
-    verified: true,
+    verified: false,
   },
   {
     id: "logistream",
@@ -81,7 +81,7 @@ export const testimonials: TestimonialRecord[] = [
     projectType: "Logistics Platform",
     outcome: "25% faster deliveries · 30% fuel cost reduction",
     projectValue: "$45K",
-    verified: true,
+    verified: false,
   },
   {
     id: "stylemart",
@@ -97,7 +97,7 @@ export const testimonials: TestimonialRecord[] = [
     projectType: "Custom Software Development",
     outcome: "98% inventory sync · 35% online revenue growth",
     projectValue: "₹16L",
-    verified: true,
+    verified: false,
   },
   {
     id: "buildright",
@@ -113,7 +113,7 @@ export const testimonials: TestimonialRecord[] = [
     projectType: "ERP Development",
     outcome: "Real-time site reporting · improved margin visibility",
     projectValue: "₹24L",
-    verified: true,
+    verified: false,
   },
 ];
 

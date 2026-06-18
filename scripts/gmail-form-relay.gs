@@ -14,6 +14,8 @@
 
 var INBOX = "maxwellelectrodealsystems@gmail.com";
 var MAX_BODY_BYTES = 65536;
+/** Set in Script Properties: RELAY_SECRET = same value as GMAIL_APPS_SCRIPT_SECRET on Vercel */
+var RELAY_SECRET = PropertiesService.getScriptProperties().getProperty("RELAY_SECRET");
 
 function doPost(e) {
   try {
@@ -26,6 +28,17 @@ function doPost(e) {
     }
 
     var data = JSON.parse(e.postData.contents);
+
+    if (RELAY_SECRET) {
+      var headerSecret = e.parameter && e.parameter.secret;
+      if (e.headers && e.headers["X-Maxwell-Relay-Secret"]) {
+        headerSecret = e.headers["X-Maxwell-Relay-Secret"];
+      }
+      var bodySecret = data.secret;
+      if (bodySecret !== RELAY_SECRET && headerSecret !== RELAY_SECRET) {
+        return jsonResponse({ error: "Unauthorized" }, 401);
+      }
+    }
 
     // Honeypot — bots only
     if (data.website_url) {

@@ -76,7 +76,7 @@ export function CertificationGrid({ className, compact = false }: { className?: 
           compact ? "sm:grid-cols-2 lg:grid-cols-3" : "sm:grid-cols-2 lg:grid-cols-3",
         )}
       >
-        {certificationCatalog.map((cert) => (
+        {certificationCatalog.filter((cert) => cert.status !== "placeholder").map((cert) => (
           <Card key={cert.id} interactive={false} padding="md">
             <div className="flex items-start justify-between gap-2">
               <span className="text-[10px] font-semibold uppercase tracking-wider text-brand-500">

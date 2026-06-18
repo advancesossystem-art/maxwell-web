@@ -35,8 +35,8 @@ export function TestimonialCard({ testimonial, featured = false }: { testimonial
     testimonial.company?.trim() ||
     testimonial.companyType ||
     testimonial.industry ||
-    "Verified client";
-  const rating = testimonial.verified === false ? 4 : 5;
+    "Anonymized client";
+  const rating = testimonial.verified ? 5 : 4;
 
   if (!featured) {
     return (
