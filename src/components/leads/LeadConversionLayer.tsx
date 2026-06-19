@@ -3,18 +3,26 @@
 import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
 import { MobileBodyState } from "@/components/layout/MobileBodyState";
-import { StickyCTA } from "@/components/conversion/StickyCTA";
 import { useStickyBarDismiss } from "@/hooks/useStickyBarDismiss";
 import { isMarketingChromeRoute } from "@/lib/mobile-sticky";
-import { FloatingCTA } from "@/components/leads/FloatingCTA";
-import { StickyCtaBar } from "@/components/leads/StickyCtaBar";
 import { leadTrustBadges } from "@/lib/company-metrics";
 
+const StickyCTA = dynamic(
+  () => import("@/components/conversion/StickyCTA").then((m) => ({ default: m.StickyCTA })),
+  { ssr: false },
+);
+const FloatingCTA = dynamic(
+  () => import("@/components/leads/FloatingCTA").then((m) => ({ default: m.FloatingCTA })),
+  { ssr: false },
+);
+const StickyCtaBar = dynamic(
+  () => import("@/components/leads/StickyCtaBar").then((m) => ({ default: m.StickyCtaBar })),
+  { ssr: false },
+);
 const ExitIntentPopup = dynamic(
   () => import("@/components/leads/ExitIntentPopup").then((m) => ({ default: m.ExitIntentPopup })),
   { ssr: false },
 );
-
 const QuickEstimateWidget = dynamic(
   () => import("@/components/conversion/QuickEstimateWidget").then((m) => ({ default: m.QuickEstimateWidget })),
   { ssr: false },

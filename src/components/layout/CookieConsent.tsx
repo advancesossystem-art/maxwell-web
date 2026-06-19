@@ -5,24 +5,34 @@ import Link from "next/link";
 import { useCookieConsent } from "@/hooks/useCookieConsent";
 
 const choiceButtonClass =
-  "min-h-11 flex-1 rounded-lg px-4 py-2.5 text-sm font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4f46e5]";
+  "min-h-9 flex-1 rounded-lg px-3 py-2 text-xs font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4f46e5]";
+
+/** Delay before showing banner so hero H1 paints first (LCP). */
+const BANNER_MOUNT_DELAY_MS = 800;
 
 export function CookieConsent() {
   const { consent, setConsent } = useCookieConsent();
+  const [shouldRender, setShouldRender] = useState(false);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     if (consent !== null) return;
+    const timer = window.setTimeout(() => setShouldRender(true), BANNER_MOUNT_DELAY_MS);
+    return () => window.clearTimeout(timer);
+  }, [consent]);
+
+  useEffect(() => {
+    if (!shouldRender || consent !== null) return;
     const id = requestAnimationFrame(() => setVisible(true));
     return () => cancelAnimationFrame(id);
-  }, [consent]);
+  }, [shouldRender, consent]);
 
   function setChoice(choice: "accepted" | "declined") {
     setConsent(choice);
     setVisible(false);
   }
 
-  if (!visible || consent !== null) return null;
+  if (!shouldRender || !visible || consent !== null) return null;
 
   return (
     <div
@@ -31,16 +41,15 @@ export function CookieConsent() {
       aria-labelledby="cookie-consent-title"
       aria-describedby="cookie-consent-desc"
       data-intro-chrome
-      className="mobile-fixed-chrome fixed left-4 right-4 z-[90] sm:left-auto sm:right-6 sm:max-w-md"
+      className="mobile-fixed-chrome fixed bottom-3 left-3 z-[90] sm:bottom-4 sm:left-auto sm:right-4 sm:max-w-xs"
+      style={{ contentVisibility: "auto", containIntrinsicSize: "0 80px" }}
     >
-      <div className="rounded-2xl border border-slate-200 bg-white px-4 py-4 shadow-2xl">
-        <p id="cookie-consent-title" className="text-sm font-semibold text-slate-900">
+      <div className="rounded-xl border border-slate-200 bg-white px-3 py-3 shadow-lg">
+        <p id="cookie-consent-title" className="text-xs font-semibold text-slate-900">
           Cookie preferences
         </p>
-        <p id="cookie-consent-desc" className="mt-2 text-sm leading-relaxed text-slate-600">
-          We use essential cookies to run this site. With your permission, we also use analytics
-          cookies (Google Analytics / Tag Manager) to understand how visitors use our website. You
-          can accept or reject non-essential cookies — your choice is stored on this device. See our{" "}
+        <p id="cookie-consent-desc" className="mt-1 text-xs leading-snug text-slate-600">
+          Essential cookies always run. Analytics cookies are optional.{" "}
           <Link
             href="/cookie-policy"
             className="font-medium text-[#4f46e5] underline decoration-[#4f46e5]/30 underline-offset-2 hover:text-[#4338ca]"
@@ -49,20 +58,20 @@ export function CookieConsent() {
           </Link>
           .
         </p>
-        <div className="mt-4 flex flex-col gap-2 sm:flex-row">
+        <div className="mt-3 flex gap-2">
           <button
             type="button"
             onClick={() => setChoice("declined")}
             className={`${choiceButtonClass} border border-slate-300 bg-slate-50 text-slate-900 hover:bg-slate-100`}
           >
-            Reject all
+            Reject
           </button>
           <button
             type="button"
             onClick={() => setChoice("accepted")}
             className={`${choiceButtonClass} border border-[#4f46e5] bg-[#4f46e5] text-white hover:bg-[#4338ca]`}
           >
-            Accept all
+            Accept
           </button>
         </div>
       </div>

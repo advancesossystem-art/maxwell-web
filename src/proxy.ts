@@ -169,7 +169,7 @@ export function proxy(request: NextRequest) {
   ) {
     response.headers.set(
       "Cache-Control",
-      "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400",
+      "public, s-maxage=3600, stale-while-revalidate=86400",
     );
   }
 

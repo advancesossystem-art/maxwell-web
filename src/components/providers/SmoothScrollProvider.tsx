@@ -34,6 +34,13 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
 
     if (!enabled) return;
 
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (isMobile || prefersReducedMotion) {
+      return;
+    }
+
     let cancelled = false;
 
     async function init() {

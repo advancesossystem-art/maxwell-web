@@ -4,6 +4,7 @@ export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim
 
 /** GTM takes precedence; GA4 direct gtag loads only when GTM is not configured. */
 export const USE_GTM = Boolean(GTM_ID);
+/** Never load gtag.js from the app when GTM is active — GA4 must run via GTM dataLayer only. */
 export const USE_DIRECT_GA4 = Boolean(GA_MEASUREMENT_ID) && !USE_GTM;
 
 export const hasGoogleAnalytics = USE_GTM || USE_DIRECT_GA4;
