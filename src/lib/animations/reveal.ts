@@ -87,6 +87,11 @@ export function observeReveal(
   }
 
   const y = scaled(options.y ?? REVEAL.y);
+  if (y === 0) {
+    setVisible(el);
+    return () => {};
+  }
+
   setHidden(el, y);
 
   return observeOnce(
@@ -101,22 +106,25 @@ export function observeRevealChildren(
   childSelector = ":scope > *",
   options: RevealOptions = {},
 ): () => void {
+  const children = Array.from(container.querySelectorAll<HTMLElement>(childSelector));
+  if (!children.length) return () => {};
+
   if (prefersReducedMotion()) {
-    container.querySelectorAll<HTMLElement>(childSelector).forEach(setVisible);
+    children.forEach(setVisible);
     return () => {};
   }
 
-  const children = Array.from(container.querySelectorAll<HTMLElement>(childSelector));
-  children.forEach((child) => {
-    const y = scaled(options.y ?? REVEAL.y);
-    setHidden(child, y);
-  });
-
-  return observeOnce(
-    container,
-    () => revealElements(children, options),
-    VIEWPORT_ONCE,
+  // Observe each child — not the parent. A 23-card grid parent is too tall to
+  // ever satisfy a 20% intersection threshold, which left entire pages blank.
+  const staggerMs = scaledStagger(options.stagger ?? REVEAL.stagger);
+  const cleanups = children.map((child, index) =>
+    observeReveal(child, {
+      ...options,
+      delay: (options.delay ?? 0) + staggerMs * index,
+    }),
   );
+
+  return () => cleanups.forEach((cleanup) => cleanup());
 }
 
 export function mountEntrance(

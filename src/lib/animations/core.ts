@@ -82,15 +82,34 @@ export function observeOnce(
     return () => {};
   }
 
+  let done = false;
+  const enter = () => {
+    if (done) return;
+    done = true;
+    onEnter();
+  };
+
   const observer = new IntersectionObserver((entries) => {
     for (const entry of entries) {
       if (entry.isIntersecting) {
         observer.unobserve(entry.target);
-        onEnter();
+        enter();
       }
     }
   }, options);
 
   observer.observe(target);
+
+  // Tall grids (e.g. 23 service cards) never hit 20% visibility on the parent —
+  // check immediately so above-the-fold rows are not left at opacity: 0.
+  requestAnimationFrame(() => {
+    if (done) return;
+    const rect = target.getBoundingClientRect();
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    if (rect.top < vh && rect.bottom > 0) {
+      enter();
+    }
+  });
+
   return () => observer.disconnect();
 }
