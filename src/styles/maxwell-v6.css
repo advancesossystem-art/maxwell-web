@@ -79,13 +79,14 @@
 .v6-hero-title {
   font-family: var(--font-space-grotesk), var(--font-inter), system-ui, sans-serif;
   font-size: clamp(2.125rem, 4.5vw, 3.5rem);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.08;
   letter-spacing: -0.035em;
   color: var(--v6-text);
 }
 
 .v6-gradient-text {
+  color: #4f46e5;
   background: var(--v6-gradient-text);
   -webkit-background-clip: text;
   background-clip: text;

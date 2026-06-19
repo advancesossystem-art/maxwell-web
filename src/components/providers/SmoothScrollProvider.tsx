@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 
 /** Lenis smooth scroll on marketing routes — performance-conscious */
+const LENIS_INIT_DELAY_MS = 2000;
 function isMarketingRoute(pathname: string | null): boolean {
   if (!pathname) return false;
   if (pathname === "/") return true;
@@ -42,6 +43,8 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
     }
 
     let cancelled = false;
+    let delayTimer = 0;
+    let idleId: number | undefined;
 
     async function init() {
       const [{ default: Lenis }] = await Promise.all([import("lenis")]);
@@ -67,19 +70,22 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
       };
     }
 
-    if (typeof window.requestIdleCallback === "function") {
-      const idleId = window.requestIdleCallback(() => init(), { timeout: 1500 });
-      return () => {
-        cancelled = true;
-        window.cancelIdleCallback(idleId);
-        teardownRef.current?.();
-      };
-    }
+    delayTimer = window.setTimeout(() => {
+      if (typeof window.requestIdleCallback === "function") {
+        idleId = window.requestIdleCallback(() => {
+          void init();
+        }, { timeout: 1500 });
+        return;
+      }
+      void init();
+    }, LENIS_INIT_DELAY_MS);
 
-    const timeoutId = window.setTimeout(init, 1);
     return () => {
       cancelled = true;
-      window.clearTimeout(timeoutId);
+      window.clearTimeout(delayTimer);
+      if (idleId !== undefined) {
+        window.cancelIdleCallback(idleId);
+      }
       teardownRef.current?.();
     };
   }, [enabled]);

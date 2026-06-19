@@ -76,8 +76,8 @@ export default function HomePage() {
   return (
     <>
       <HomepageStructuredData />
-      <AiEntitySummary />
       <Hero />
+      <AiEntitySummary />
       <TrustProofStrip />
       <GlobalTrustBar />
       <RiskReductionBar />

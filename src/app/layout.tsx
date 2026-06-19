@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import { LayoutBody } from "@/components/layout/LayoutBody";
 import { GtmNoScript } from "@/components/seo/GtmNoScript";
-import { ConsentModeDefaults } from "@/components/seo/ConsentModeDefaults";
 import { buildSiteVerificationMetadata } from "@/lib/seo/site-verification";
 import { siteConfig } from "@/lib/constants";
 import { homeSeo, siteTitleTemplate } from "@/lib/seo/config";
@@ -12,7 +11,7 @@ const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
-  preload: true,
+  preload: false,
   adjustFontFallback: true,
 });
 
@@ -54,7 +53,7 @@ export default function RootLayout({
   return (
     <html lang="en-IN" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <head>
-        <ConsentModeDefaults />
+        <script src="/consent-defaults.js" defer />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.clarity.ms" />
         <link rel="preconnect" href="https://assets.calendly.com" />

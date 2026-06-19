@@ -1,12 +1,16 @@
 import Link from "next/link";
 import { HeroEcosystemVisual } from "@/components/home/HeroEcosystemVisual";
 import { HeroSequence } from "@/components/home/HeroSequence";
-import { CounterUp } from "@/components/motion/CounterUp";
-import { HeroProofLink } from "@/components/home/HeroProofLink";
+import { Button } from "@/components/ui/Button";
 import { heroServiceBadges, heroTrustMetrics, homeHero, trustHighlights } from "@/lib/homepage";
-import { CTA_LABELS, CONVERSION_EXPECTATIONS } from "@/lib/conversion-copy";
-import { PrimaryCTA } from "@/components/conversion/PrimaryCTA";
-import { SecondaryCTA } from "@/components/conversion/SecondaryCTA";
+import {
+  CTA_LABELS,
+  CONVERSION_EXPECTATIONS,
+  consultationHref,
+  estimateHref,
+} from "@/lib/conversion-copy";
+
+const heroContext = { source: "homepage-hero" } as const;
 
 const trustIcons = ["rocket", "users", "support", "shield"] as const;
 
@@ -53,24 +57,14 @@ export function Hero() {
   return (
     <section className="v6-hero v6-section--white overflow-hidden" aria-label="Hero">
       <div className="v6-container">
-        <HeroSequence className="grid items-center gap-8 lg:grid-cols-2 lg:gap-10">
+        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-10">
           <div>
-            <p className="v6-eyebrow-line v6-eyebrow" data-hero="eyebrow">
-              {homeHero.eyebrow}
-            </p>
-            <h1
-              className="v6-hero-title mt-4 text-balance"
-              data-hero="headline"
-              data-seo-speakable
-            >
+            <p className="v6-eyebrow-line v6-eyebrow">{homeHero.eyebrow}</p>
+            <h1 className="v6-hero-title mt-4 text-balance" data-seo-speakable>
               {homeHero.headlineLine1}{" "}
               <span className="v6-gradient-text">{homeHero.headlineLine2}</span>
             </h1>
-            <p
-              className="v6-lead mt-4 max-w-2xl text-balance lg:max-w-none"
-              data-hero="description"
-              data-seo-speakable
-            >
+            <p className="v6-lead mt-4 max-w-2xl text-balance lg:max-w-none" data-seo-speakable>
               {homeHero.subhead}
             </p>
 
@@ -89,25 +83,21 @@ export function Hero() {
             <p className="mt-4 rounded-xl border border-[#4f46e5]/15 bg-[#f8fafc] px-4 py-3 text-sm text-[var(--v6-text-secondary)]">
               <span className="font-semibold text-[#4f46e5]">Proven delivery:</span>{" "}
               {homeHero.proofOutcome}.{" "}
-              <HeroProofLink href={homeHero.proofLink.href} label={homeHero.proofLink.label} />
+              <Link
+                href={homeHero.proofLink.href}
+                className="font-semibold text-[#4f46e5] hover:underline"
+              >
+                {homeHero.proofLink.label} →
+              </Link>
             </p>
 
-            <div
-              className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap"
-              data-hero="cta"
-            >
-              <SecondaryCTA
-                location="homepage_hero"
-                context={{ source: "homepage-hero" }}
-                label={CTA_LABELS.secondary}
-                variant="primary"
-              />
-              <PrimaryCTA
-                location="homepage_hero"
-                context={{ source: "homepage-hero" }}
-                label={CTA_LABELS.primary}
-                variant="outline"
-              />
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <Button href={estimateHref(heroContext)} size="lg" variant="primary">
+                {CTA_LABELS.secondary}
+              </Button>
+              <Button href={consultationHref(heroContext)} size="lg" variant="outline">
+                {CTA_LABELS.primary}
+              </Button>
             </div>
             <p className="mt-3 text-sm text-[var(--v6-text-muted)]">
               {CONVERSION_EXPECTATIONS.estimateTimeline} · {CONVERSION_EXPECTATIONS.responseTime}
@@ -133,9 +123,7 @@ export function Hero() {
                     <TrustIcon type={trustIcons[i] ?? "shield"} />
                   </span>
                   <div>
-                    <p className="font-display text-lg font-bold text-[#0f172a]">
-                      <CounterUp value={stat.value} />
-                    </p>
+                    <p className="font-display text-lg font-bold text-[#0f172a]">{stat.value}</p>
                     <p className="text-sm text-[var(--v6-text-muted)]">{stat.label}</p>
                   </div>
                 </li>
@@ -143,10 +131,10 @@ export function Hero() {
             </ul>
           </div>
 
-          <div className="relative lg:pl-4" data-hero="visual">
+          <HeroSequence className="relative lg:pl-4">
             <HeroEcosystemVisual />
-          </div>
-        </HeroSequence>
+          </HeroSequence>
+        </div>
       </div>
     </section>
   );
