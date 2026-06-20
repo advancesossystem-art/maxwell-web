@@ -40,9 +40,10 @@ export function buildServiceGeo(service: ServicePageData): GeoContent {
 }
 
 export function buildIndustryGeo(industry: IndustryPageData): GeoContent {
+  const priceNote = industry.startingPrice ? ` Typical engagements start from ${industry.startingPrice}.` : "";
   return {
     quickAnswerQuestion: `What software do ${industry.title.toLowerCase()} companies need?`,
-    quickAnswer: `${industry.subheadline} ${industry.challenges[0]?.description ?? industry.solutions[0]?.description ?? ""}`.trim(),
+    quickAnswer: `${industry.subheadline}${priceNote}`.trim(),
     keyTakeaways: [
       ...industry.impactMetrics.slice(0, 2).map((m) => `${m.value} ${m.label}`),
       ...industry.solutions.slice(0, 2).map((s) => s.title),

@@ -4,6 +4,7 @@ import {
   phase8IndustrySlugs,
   phase8RealEstateOverride,
 } from "./phase8/phase8-industries-data";
+import { gscIndustriesData, gscIndustrySlugs } from "./gsc-industries-data";
 
 export const industrySlugs = [
   "manufacturing",
@@ -47,6 +48,7 @@ export const industrySlugs = [
   "agro-processing",
   "dairy",
   "paint-coatings",
+  ...gscIndustrySlugs,
   ...phase8IndustrySlugs,
 ] as const;
 
@@ -80,6 +82,10 @@ export interface IndustryPageData {
   workflowSteps: { step: string; title: string; description: string }[];
   whyMaxwell: { title: string; description: string }[];
   faqs: { question: string; answer: string }[];
+  /** Shown in schema and geo blocks — e.g. "₹2,50,000" */
+  startingPrice?: string;
+  leadFormTitle?: string;
+  leadFormSubmitLabel?: string;
 }
 
 const sharedWhyMaxwell = [
@@ -603,6 +609,7 @@ export const industriesData: Partial<Record<IndustrySlug, IndustryPageData>> = {
   },
   ...phase8IndustriesData,
   "real-estate": phase8RealEstateOverride,
+  ...gscIndustriesData,
 };
 
 export function getIndustryBySlug(slug: string): IndustryPageData | undefined {

@@ -4,6 +4,7 @@ import { companyMetrics } from "@/lib/company-metrics";
 import { testimonials } from "@/lib/testimonials-data";
 import type { Author } from "@/lib/content/authors";
 import type { ServicePageData } from "@/lib/services-data";
+import type { IndustryPageData } from "@/lib/industries-data";
 import { headquarters, seoIds, socialProfiles } from "@/lib/seo/config";
 import { globalHeadTerms, headTerms } from "@/lib/seo/search-keywords";
 
@@ -236,6 +237,46 @@ export function buildServiceSchema(service: ServicePageData) {
         priceCurrency: "INR",
       },
     },
+  };
+}
+
+function parseIndianRupeePrice(value: string): number | undefined {
+  const digits = value.replace(/[^\d]/g, "");
+  if (!digits) return undefined;
+  const parsed = Number.parseInt(digits, 10);
+  return Number.isFinite(parsed) ? parsed : undefined;
+}
+
+export function buildIndustryServiceSchema(industry: IndustryPageData) {
+  const url = `${siteConfig.url}/industries/${industry.slug}`;
+  const minPrice = industry.startingPrice ? parseIndianRupeePrice(industry.startingPrice) : undefined;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${url}#service`,
+    serviceType: industry.title,
+    name: industry.headline,
+    description: industry.metaDescription,
+    provider: {
+      "@type": "Organization",
+      "@id": seoIds.organization,
+    },
+    areaServed: { "@type": "Country", name: "India" },
+    url,
+    ...(minPrice
+      ? {
+          offers: {
+            "@type": "Offer",
+            priceCurrency: "INR",
+            priceSpecification: {
+              "@type": "PriceSpecification",
+              minPrice,
+              priceCurrency: "INR",
+            },
+          },
+        }
+      : {}),
   };
 }
 

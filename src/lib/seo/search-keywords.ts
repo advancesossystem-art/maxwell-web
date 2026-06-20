@@ -235,6 +235,27 @@ export const industrySearchKeywords: Record<string, readonly string[]> = {
     "school ERP software",
     "online education platform development",
   ],
+  "education-data-privacy": [
+    "student data privacy software",
+    "education data privacy India",
+    "DPDP Act education software",
+    "school management software privacy",
+    "EdTech data protection India",
+  ],
+  "chemical-manufacturing": [
+    "CRM software for chemical industry",
+    "chemical manufacturing CRM",
+    "chemical industry ERP India",
+    "batch tracking software chemical",
+    "MSDS management software India",
+  ],
+  "cement-construction-materials": [
+    "cement plant software",
+    "cement ERP India",
+    "construction material software",
+    "dealer management cement",
+    "building materials ERP India",
+  ],
   logistics: [
     "logistics software development company",
     "logistics software development",

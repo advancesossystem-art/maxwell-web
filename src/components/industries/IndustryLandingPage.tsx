@@ -30,10 +30,14 @@ const industryCaseStudySlug: Partial<Record<IndustrySlug, string>> = {
   logistics: "logistics-platform",
   retail: "retail-analytics",
   construction: "construction-platform",
-  chemical: "manufacturing-erp",
+  chemical: "chemical-industry-erp",
+  "chemical-manufacturing": "chemical-industry-erp",
   pharma: "healthcare-management",
   textile: "manufacturing-erp",
   automotive: "manufacturing-erp",
+  cement: "construction-platform",
+  "cement-construction-materials": "construction-platform",
+  "education-data-privacy": "educational-portal",
 };
 
 export function IndustryLandingPage({ industry }: { industry: IndustryPageData }) {
@@ -57,7 +61,12 @@ export function IndustryLandingPage({ industry }: { industry: IndustryPageData }
       <IndustryCaseStudy industry={industry} />
       <IndustryWhy industry={industry} />
       <IndustryFAQ industry={industry} />
-      <IndustryLeadForm industryName={industry.title} industrySlug={industry.slug} />
+      <IndustryLeadForm
+        industryName={industry.title}
+        industrySlug={industry.slug}
+        formTitle={industry.leadFormTitle}
+        submitLabel={industry.leadFormSubmitLabel}
+      />
       <Container>
         <IndustryCTA
           industryName={industry.title}

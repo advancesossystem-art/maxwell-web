@@ -12,10 +12,14 @@ export function ServiceLeadForm({
   serviceName,
   serviceSlug,
   source,
+  formTitle,
+  submitLabel,
 }: {
   serviceName: string;
   serviceSlug: string;
   source?: string;
+  formTitle?: string;
+  submitLabel?: string;
 }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -55,7 +59,7 @@ export function ServiceLeadForm({
       <Container>
         <div className="mx-auto max-w-2xl rounded-2xl border border-[var(--v6-border)] bg-white p-6 shadow-sm sm:p-8">
           <h2 className="font-display text-2xl font-bold text-[var(--v6-text)] sm:text-3xl">
-            Ready to Build Your {serviceName}?
+            {formTitle ?? `Ready to Build Your ${serviceName}?`}
           </h2>
           <p className="mt-3 text-[var(--v6-text-secondary)]">
             Tell us about your project and get a free quote within 4 business hours.
@@ -94,7 +98,7 @@ export function ServiceLeadForm({
               </FormField>
               {error ? <p className="text-sm text-red-600">{error}</p> : null}
               <Button type="submit" size="lg" disabled={loading}>
-                {loading ? "Sending…" : "Get Free Quote →"}
+                {loading ? "Sending…" : submitLabel ?? "Get Free Quote →"}
               </Button>
             </form>
           )}

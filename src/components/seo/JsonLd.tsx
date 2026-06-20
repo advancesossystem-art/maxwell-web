@@ -8,6 +8,7 @@ import type { ContentCategorySlug } from "@/lib/content/schema";
 import { formatAnonymousClient } from "@/lib/client-attribution";
 import {
   buildPersonAuthorNode,
+  buildIndustryServiceSchema,
   buildServiceSchema,
 } from "@/lib/seo/organization-schema";
 import { getAuthorById } from "@/lib/content/authors";
@@ -84,6 +85,8 @@ export function IndustryPageJsonLd({ industry }: { industry: import("@/lib/indus
     serviceType: `${industry.title} Software Development`,
   };
 
+  const serviceSchema = buildIndustryServiceSchema(industry);
+
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -97,6 +100,7 @@ export function IndustryPageJsonLd({ industry }: { industry: import("@/lib/indus
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(industrySchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <FaqPageJsonLd
         faqs={industry.faqs}
         id={`${siteConfig.url}/industries/${industry.slug}#faq`}
