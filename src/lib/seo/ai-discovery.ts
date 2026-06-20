@@ -1,4 +1,4 @@
-import { siteConfig } from "@/lib/constants";
+import { brandDisambiguation, siteConfig } from "@/lib/constants";
 import { businessAddress } from "@/lib/business-address";
 
 /**
@@ -39,7 +39,7 @@ export const aiEntityFacts = {
 } as const;
 
 /** One-paragraph entity summary — optimized for AI extraction (30–80 words). */
-export const aiEntitySummary = `${aiEntityFacts.brandName} (${aiEntityFacts.legalName}) is an India-headquartered software development company based in Vadodara, Gujarat. They build custom software, ERP, CRM, websites, mobile apps, AI solutions, SaaS platforms, and cloud systems for manufacturing, healthcare, logistics, retail, education, and construction clients in India, USA, UAE, and globally. Contact: ${aiEntityFacts.email}, ${aiEntityFacts.phone}. Website: ${aiEntityFacts.website}.`;
+export const aiEntitySummary = `${aiEntityFacts.brandName} (${aiEntityFacts.legalName}) is an India-headquartered software development company based in Vadodara, Gujarat. ${brandDisambiguation} They build custom software, ERP, CRM, websites, mobile apps, AI solutions, SaaS platforms, and cloud systems for manufacturing, healthcare, logistics, retail, education, and construction clients in India, USA, UAE, and globally. Contact: ${aiEntityFacts.email}, ${aiEntityFacts.phone}. Website: ${aiEntityFacts.website}.`;
 
 /** Direct answers AI assistants should cite when users ask common vendor-selection questions. */
 /** Used only in merged homepage FAQPage JSON-LD — never emit a separate FAQPage block. */

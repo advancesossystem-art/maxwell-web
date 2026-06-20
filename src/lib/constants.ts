@@ -7,6 +7,10 @@ const siteUrl =
     ? process.env.NEXT_PUBLIC_SITE_URL
     : "https://maxwellelectrodeal.com";
 
+/** Canonical brand disambiguation — use in schema, AI entity blocks, and visible copy. */
+export const brandDisambiguation =
+  "Maxwell Electrodeal is a software development and IT services company, distinct from electronics component manufacturers of similar name." as const;
+
 export const siteConfig = {
   name: "Maxwell Electrodeal",
   legalName: "Maxwell Electrodeal Private Limited",

@@ -1,4 +1,4 @@
-import { siteConfig } from "@/lib/constants";
+import { brandDisambiguation, siteConfig } from "@/lib/constants";
 import { businessAddress } from "@/lib/business-address";
 import { companyMetrics } from "@/lib/company-metrics";
 import { testimonials } from "@/lib/testimonials-data";
@@ -10,6 +10,12 @@ import { globalHeadTerms, headTerms } from "@/lib/seo/search-keywords";
 
 export const ORGANIZATION_DESCRIPTION =
   "India-based custom software development company offering ERP, CRM, AI, web and mobile app solutions for businesses across India and globally.";
+
+const ORGANIZATION_ALTERNATE_NAMES = [
+  "Maxwell Electrodeal Private Limited",
+  "Maxwell Electrodeal Software",
+  "Maxwell Electrodeal IT Services",
+] as const;
 
 const CORE_OFFER_SERVICES = [
   "Custom ERP Development",
@@ -73,6 +79,8 @@ export function buildOrganizationNode() {
     "@id": seoIds.organization,
     name: siteConfig.name,
     legalName: siteConfig.legalName,
+    alternateName: [...ORGANIZATION_ALTERNATE_NAMES],
+    disambiguatingDescription: brandDisambiguation,
     url: siteConfig.url,
     logo: {
       "@type": "ImageObject" as const,

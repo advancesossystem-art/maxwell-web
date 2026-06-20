@@ -120,7 +120,7 @@ export function buildReportGeo(report: {
     expertQuote: {
       author: "",
       role: "",
-      text: `This ${report.industry} analysis reflects delivery patterns from Maxwell engagements — use it to benchmark your roadmap, not as generic market hype.`,
+      text: `This ${report.industry} analysis reflects delivery patterns from Maxwell Electrodeal engagements — use it to benchmark your roadmap, not as generic market hype.`,
     },
     summary: report.keyFindings.join(" "),
   };

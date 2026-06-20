@@ -163,7 +163,7 @@ function ThankYouInner() {
                 View open positions
               </Button>
               <Button href="/about" variant="secondary" className="w-full">
-                About Maxwell
+                About Maxwell Electrodeal
               </Button>
             </>
           ) : (

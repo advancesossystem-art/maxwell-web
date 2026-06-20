@@ -2,6 +2,7 @@ import Link from "next/link";
 import { HeroEcosystemVisual } from "@/components/home/HeroEcosystemVisual";
 import { HeroSequence } from "@/components/home/HeroSequence";
 import { Button } from "@/components/ui/Button";
+import { brandDisambiguation } from "@/lib/constants";
 import { heroServiceBadges, heroTrustMetrics, homeHero, trustHighlights } from "@/lib/homepage";
 import {
   CTA_LABELS,
@@ -66,6 +67,9 @@ export function Hero() {
             </h1>
             <p className="v6-lead mt-4 max-w-2xl text-balance lg:max-w-none" data-seo-speakable>
               {homeHero.subhead}
+            </p>
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[var(--v6-text-secondary)] lg:max-w-none" data-seo-speakable>
+              {brandDisambiguation}
             </p>
 
             <div className="mt-5 flex flex-wrap gap-2">

@@ -16,7 +16,7 @@ import {
   companyFaqs,
 } from "@/lib/company-data";
 import { getAllIndustries } from "@/lib/industries-data";
-import { siteConfig } from "@/lib/constants";
+import { brandDisambiguation, siteConfig } from "@/lib/constants";
 
 export function AboutPageContent() {
   const industries = getAllIndustries();
@@ -32,6 +32,7 @@ export function AboutPageContent() {
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-10">
           <FadeIn>
             <h2 className="font-display text-2xl font-bold">Our story</h2>
+            <p className="mt-4 leading-relaxed text-muted">{brandDisambiguation}</p>
             <div className="mt-4 space-y-3">
               {companyStory.paragraphs.map((p) => (
                 <p key={p.slice(0, 40)} className="leading-relaxed text-muted">
