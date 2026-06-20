@@ -7,9 +7,9 @@ import { ArrowRight } from "@/components/ui/Icons";
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata = createMetadata({
-  title: "Contact Software Development Company India",
+  title: "Contact Us — Free Quote, 24hrs",
   description:
-    "Contact Maxwell Electrodeal — India-based software development company (Vadodara, Gujarat). Free consultation for website, ERP, mobile app, AI & SaaS. Email, phone & meeting booking.",
+    "Talk to Maxwell Electrodeal in Vadodara, India. Free ERP, CRM, web or mobile app quote within 24 hours. Call, email, or book online — 50+ projects shipped.",
   path: "/contact",
 });
 

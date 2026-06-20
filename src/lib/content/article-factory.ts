@@ -26,6 +26,8 @@ export type ArticleDef = {
   faqs?: ContentFAQ[];
   relatedSlugs?: string[];
   noIndex?: boolean;
+  /** SEO title segment only — H1 may differ when set */
+  metaTitle?: string;
 };
 
 function introBlocks(intro: string | string[]): ContentBlock[] {
@@ -72,7 +74,7 @@ export function createArticle(def: ArticleDef): Article {
     slug: def.slug,
     title: def.title,
     excerpt: def.excerpt,
-    metaTitle: def.title,
+    metaTitle: def.metaTitle ?? def.title,
     metaDescription: def.metaDescription,
     publishedAt: def.publishedAt,
     updatedAt: def.publishedAt,

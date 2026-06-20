@@ -454,9 +454,9 @@ export const industriesData: Partial<Record<IndustrySlug, IndustryPageData>> = {
     headline: "Omnichannel Commerce. Unified Inventory. Loyal Customers.",
     subheadline:
       "E-commerce platforms, retail ERP, POS integrations, and customer loyalty systems—built for retailers competing on experience, not just price.",
-    metaTitle: "Retail Software Development Company India",
+    metaTitle: "Retail ERP India — From ₹2,50,000",
     metaDescription:
-      "Retail software development company in India — omnichannel commerce, POS integration, inventory & loyalty systems for modern retailers.",
+      "Custom retail ERP for Indian stores: POS sync, inventory tracking, loyalty and omnichannel commerce. 50+ projects. From ₹2,50,000. Free quote in 24 hours.",
     keywords: [
       "retail software development company",
       "ecommerce software development India",

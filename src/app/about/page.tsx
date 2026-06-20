@@ -7,8 +7,9 @@ import { companyStory } from "@/lib/company-data";
 import { siteConfig } from "@/lib/constants";
 
 export const metadata = createMetadata({
-  title: "About Us — Our Story, Mission & Team",
-  description: `Learn about ${siteConfig.name} — our mission, values, journey, and documented enterprise software delivery.`,
+  title: "About Maxwell — 50+ Projects, Vadodara",
+  description:
+    "Vadodara IT company since 2018, based in Gujarat. 50+ ERP, CRM and web projects across India. Process, team, and free consultation — reply within 24 hours.",
   path: "/about",
 });
 

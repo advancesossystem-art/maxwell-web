@@ -82,6 +82,15 @@ function serviceModules(service: ServiceCatalogEntry, industry: IndustryCatalogE
   return base[service.key] ?? base.software;
 }
 
+/** Targeted SERP meta overrides — slug-specific only; shared template unchanged. */
+const ARTICLE_SEO_OVERRIDES: Record<string, { metaTitle: string; metaDescription: string }> = {
+  "software-for-education-india": {
+    metaTitle: "Education Software India — ₹6L+",
+    metaDescription:
+      "School and college software in India: LMS, fee collection, exams and parent apps. From ₹6,00,000. DPDP tips and build-vs-buy guide. Free estimate in 24 hours.",
+  },
+};
+
 /** Long-form SEO article tuned to search intent: cost, build vs buy, implementation, compliance. */
 export function buildDeepIndustryServiceArticle(
   industry: IndustryCatalogEntry,
@@ -93,7 +102,7 @@ export function buildDeepIndustryServiceArticle(
   const pain2 = industry.painPoints[1] ?? industry.painPoints[0];
   const modules = serviceModules(service, industry);
 
-  return {
+  const article: ArticleDef = {
     slug,
     title: `${service.label} for ${industry.name} in India: Cost, Build vs Buy & Implementation Guide (2026)`,
     excerpt: `Complete ${service.shortLabel} guide for ${industry.name} in India—${pain1}, ${service.costRangeInr} cost range, GST/compliance (${industry.compliance}), and 90-day roadmap.`,
@@ -291,4 +300,10 @@ export function buildDeepIndustryServiceArticle(
       "how-to-choose-software-development-company",
     ].filter(Boolean),
   };
+
+  const override = ARTICLE_SEO_OVERRIDES[slug];
+  if (override) {
+    return { ...article, metaTitle: override.metaTitle, metaDescription: override.metaDescription };
+  }
+  return article;
 }
