@@ -18,45 +18,40 @@ import { CaseStudyCardCompact } from "@/components/case-studies/CaseStudyCard";
 import { CaseStudyAuthorityBlock } from "@/components/case-studies/CaseStudyAuthorityBlock";
 import { CaseStudyGeoSections } from "@/components/case-studies/CaseStudyGeoSections";
 import { CaseStudyBreadcrumb, CaseStudyCTA, CaseStudyCTAStrip } from "@/components/case-studies/CaseStudyCTA";
-import { CaseStudyHeroMotion, CaseStudyResultMotion } from "@/components/case-studies/CaseStudyDetailMotion";
+import { CaseStudyHeroMotion } from "@/components/case-studies/CaseStudyDetailMotion";
 import type { CaseStudyData } from "@/lib/case-studies-data";
 import { formatClientDescriptor } from "@/lib/client-attribution";
 import { getRelatedCaseStudies } from "@/lib/case-studies-data";
 import { cn } from "@/lib/utils";
+import {
+  csDarkEyebrow,
+  csDarkLead,
+  csDarkSection,
+  csDarkTitle,
+} from "@/components/case-studies/case-study-theme";
 
 function SectionBlock({
   badge,
   title,
+  description,
   children,
   dark = false,
 }: {
   badge?: string;
   title: string;
+  description?: string;
   children: React.ReactNode;
   dark?: boolean;
 }) {
   return (
-    <section className={cn(dark ? "bg-[#030712] py-20 lg:py-28" : "section-py-compact")}>
+    <section className={cn(dark ? csDarkSection : "section-py-compact")}>
       <Container>
         <FadeIn>
-          {badge && (
-            <p
-              className={cn(
-                "text-xs font-semibold uppercase tracking-[0.2em]",
-                dark ? "text-brand-500" : "text-[#4f46e5]",
-              )}
-            >
-              {badge}
-            </p>
-          )}
-          <h2
-            className={cn(
-              "mt-3 font-display text-2xl font-bold sm:text-3xl",
-              dark ? "text-white" : "text-[var(--v6-text)]",
-            )}
-          >
+          {badge && <p className={cn(dark ? csDarkEyebrow : "text-xs font-semibold uppercase tracking-[0.2em] text-[#4f46e5]")}>{badge}</p>}
+          <h2 className={cn("mt-3", dark ? csDarkTitle : "font-display text-2xl font-bold text-[var(--v6-text)] sm:text-3xl")}>
             {title}
           </h2>
+          {description ? <p className={cn("mt-4 max-w-2xl", dark ? csDarkLead : "text-[var(--v6-text-secondary)]")}>{description}</p> : null}
         </FadeIn>
         <div className="mt-8">{children}</div>
       </Container>
@@ -84,32 +79,32 @@ export function CaseStudyDetailPage({ study }: { study: CaseStudyData }) {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden bg-background section-hero">
+      <section className="relative overflow-hidden bg-[#030712] pb-16 pt-28 lg:pb-20 lg:pt-32">
         <div
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 75% 55% at 50% -15%, rgba(37, 99, 235, 0.14), transparent 62%)",
+              "radial-gradient(ellipse 75% 55% at 50% -15%, rgba(79, 70, 229, 0.22), transparent 62%)",
           }}
         />
         <Container className="relative z-10">
           <CaseStudyBreadcrumb title={study.title} />
           <CaseStudyHeroMotion>
             <div className="mb-4 flex flex-wrap gap-2">
-              <span className="rounded-full border border-[var(--v6-border)] bg-[#4f46e5]/10 px-3 py-1 text-xs font-medium text-[#4f46e5]">
+              <span className="rounded-full border border-white/15 bg-[#4f46e5]/20 px-3 py-1 text-xs font-medium text-[#a5b4fc]">
                 {study.trust.industry}
               </span>
-              <span className="rounded-full border border-[var(--v6-border)] bg-[#f1f5f9] px-3 py-1 text-xs font-medium text-[var(--v6-text-secondary)]">
+              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-white/70">
                 {study.trust.projectValue}
               </span>
-              <span className="rounded-full border border-[var(--v6-border)] bg-[#f1f5f9] px-3 py-1 text-xs font-medium text-[var(--v6-text-secondary)]">
+              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-white/70">
                 {study.filters.businessOutcome}
               </span>
             </div>
-            <h1 className="max-w-4xl font-display text-3xl font-bold leading-tight text-[var(--v6-text)] sm:text-4xl lg:text-5xl">
+            <h1 className="max-w-4xl font-display text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
               {study.title}
             </h1>
-            <p className="mt-4 max-w-2xl text-lg text-[var(--v6-text-secondary)]">{study.subtitle}</p>
+            <p className="mt-4 max-w-2xl text-lg text-white/55">{study.subtitle}</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <PrimaryCTA context={context} location="case_study_hero" />
               <SecondaryCTA context={context} location="case_study_hero" />
@@ -119,9 +114,11 @@ export function CaseStudyDetailPage({ study }: { study: CaseStudyData }) {
       </section>
 
       {/* Trust Layer */}
-      <Container>
-        <CaseStudyTrustBar trust={study.trust} />
-      </Container>
+      <section className="border-t border-white/[0.06] bg-[#030712] py-10 lg:py-12">
+        <Container>
+          <CaseStudyTrustBar trust={study.trust} dark />
+        </Container>
+      </section>
 
       {/* Executive Summary */}
       <SectionBlock badge="Overview" title="Executive Summary">
@@ -166,29 +163,38 @@ export function CaseStudyDetailPage({ study }: { study: CaseStudyData }) {
       </section>
 
       {/* Challenges + Goals */}
-      <SectionBlock badge="Strategy" title="Challenges & Project Goals">
-        <div className="grid gap-12 lg:grid-cols-2">
+      <SectionBlock
+        badge="Strategy"
+        title="Challenges & Project Goals"
+        description="What blocked progress before delivery — and what leadership signed off to achieve."
+        dark
+      >
+        <div className="grid gap-6 lg:grid-cols-2">
           <FadeIn>
-            <h3 className="font-display text-lg font-semibold">Key challenges</h3>
-            <ul className="mt-4 space-y-3">
-              {study.challenges.map((c) => (
-                <li key={c} className="flex items-start gap-2 text-sm text-muted">
-                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-red-400" />
-                  {c}
-                </li>
-              ))}
-            </ul>
+            <div className="glass-dark rounded-2xl border border-white/[0.06] p-6">
+              <h3 className="font-display text-lg font-semibold text-white">Key challenges</h3>
+              <ul className="mt-4 space-y-3">
+                {study.challenges.map((c) => (
+                  <li key={c} className="flex items-start gap-2 text-sm text-white/60">
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-red-400" />
+                    {c}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <h3 className="font-display text-lg font-semibold">Project goals</h3>
-            <ul className="mt-4 space-y-3">
-              {study.projectGoals.map((g) => (
-                <li key={g} className="flex items-start gap-2 text-sm text-muted">
-                  <CheckIcon className="mt-0.5 shrink-0 text-brand-600" />
-                  {g}
-                </li>
-              ))}
-            </ul>
+            <div className="rounded-2xl bg-white p-6 shadow-lg shadow-black/20">
+              <h3 className="font-display text-lg font-semibold text-[var(--v6-text)]">Project goals</h3>
+              <ul className="mt-4 space-y-3">
+                {study.projectGoals.map((g) => (
+                  <li key={g} className="flex items-start gap-2 text-sm text-[var(--v6-text-secondary)]">
+                    <CheckIcon className="mt-0.5 shrink-0 text-[#4f46e5]" />
+                    {g}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </FadeIn>
         </div>
       </SectionBlock>
@@ -223,8 +229,8 @@ export function CaseStudyDetailPage({ study }: { study: CaseStudyData }) {
       </section>
 
       {/* Workflow */}
-      <SectionBlock badge="Process" title="End-to-end workflow">
-        <WorkflowDiagram steps={study.workflowSteps} accent={study.accent} />
+      <SectionBlock badge="Process" title="End-to-end workflow" dark>
+        <WorkflowDiagram steps={study.workflowSteps} accent={study.accent} dark />
       </SectionBlock>
 
       {/* Design + Development */}
@@ -283,45 +289,33 @@ export function CaseStudyDetailPage({ study }: { study: CaseStudyData }) {
       </SectionBlock>
 
       {/* Timeline + Milestones */}
-      <section className="bg-surface py-20 lg:py-28">
+      <section className={csDarkSection}>
         <Container>
           <FadeIn>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-600">Timeline</p>
-            <h2 className="mt-3 font-display text-2xl font-bold sm:text-3xl">Project timeline</h2>
+            <p className={csDarkEyebrow}>Timeline</p>
+            <h2 className={cn("mt-3", csDarkTitle)}>Project timeline</h2>
+            <p className={cn("mt-4 max-w-2xl", csDarkLead)}>Phased delivery from discovery through rollout and hypercare.</p>
           </FadeIn>
           <div className="mt-10">
-            <ProjectTimeline timeline={study.timeline} accent={study.accent} />
+            <ProjectTimeline timeline={study.timeline} accent={study.accent} dark />
           </div>
           <div className="mt-16">
-            <h3 className="font-display text-xl font-bold">Key milestones</h3>
+            <h3 className="font-display text-xl font-bold text-white">Key milestones</h3>
             <div className="mt-6">
-              <ProjectMilestones milestones={study.milestones} accent={study.accent} />
+              <ProjectMilestones milestones={study.milestones} accent={study.accent} dark />
             </div>
           </div>
         </Container>
       </section>
 
       {/* ROI Dashboard */}
-      <SectionBlock badge="ROI" title="Results & ROI" dark>
-        <FadeIn>
-          <p className="mb-10 max-w-2xl text-white/50">
-            Measurable business impact delivered within the agreed timeline.
-          </p>
-        </FadeIn>
-        <CaseStudyROIDashboard metrics={study.roiMetrics} accent={study.accent} />
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {study.results.map((r, i) => (
-            <CaseStudyResultMotion
-              key={r.label}
-              delay={i * 0.08}
-              className="rounded-xl border border-white/10 bg-white/5 p-5 text-center backdrop-blur-sm"
-            >
-              <div className="font-display text-2xl font-bold text-white" style={{ color: study.accent }}>{r.metric}</div>
-              <div className="mt-1 text-sm font-medium text-white/80">{r.label}</div>
-              <p className="mt-1 text-xs text-white/40">{r.description}</p>
-            </CaseStudyResultMotion>
-          ))}
-        </div>
+      <SectionBlock
+        badge="ROI"
+        title="Results & ROI"
+        description="Measurable business impact delivered within the agreed timeline."
+        dark
+      >
+        <CaseStudyROIDashboard metrics={study.roiMetrics} results={study.results} accent={study.accent} />
       </SectionBlock>
 
       <CaseStudyAuthorityBlock study={study} />

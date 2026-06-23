@@ -16,9 +16,10 @@ import { ArrowRight } from "@/components/ui/Icons";
 import { AccentGradient } from "@/components/design/typography";
 import { PageHero } from "@/components/design/PageHero";
 import { PageSection, SectionHeader } from "@/components/design/PageSection";
-import { HubMetrics } from "@/components/design/HubMetrics";
 import { FilterCategoryTabs, FilterPill } from "@/components/design/FilterPill";
 import { ClientLogoCloud } from "@/components/trust/ClientLogoCloud";
+import { csDarkEyebrow, csDarkSection } from "@/components/case-studies/case-study-theme";
+import { Container } from "@/components/ui/Container";
 
 type FilterCategory = "industry" | "service" | "value" | "technology" | "outcome";
 
@@ -69,22 +70,39 @@ export function CaseStudiesHub() {
           </>
         }
         description="How Maxwell Electrodeal helps operators improve efficiency, automate operations, and accelerate growth — with outcomes leadership teams can audit."
-        below={
-          <HubMetrics
-            className="gap-3"
-            stats={[
-              { value: `${caseStudyStats.totalProjects}+`, label: "Documented Case Studies" },
-              { value: caseStudyStats.averageRoi, label: "Average ROI" },
-              { value: `${caseStudyStats.industriesServed}+`, label: "Industries Served" },
-              { value: caseStudyStats.revenueImpact, label: "Revenue Impact" },
-            ]}
-          />
-        }
       >
         <Button href="/contact" size="lg">
           Book Strategy Call <ArrowRight />
         </Button>
       </PageHero>
+
+      <section className={`${csDarkSection} border-t border-white/[0.06]`}>
+        <Container>
+          <p className={csDarkEyebrow}>Portfolio impact</p>
+          <div className="mt-6 grid grid-cols-2 gap-4 lg:grid-cols-4">
+            {[
+              { value: `${caseStudyStats.totalProjects}+`, label: "Documented Case Studies" },
+              { value: caseStudyStats.averageRoi, label: "Average ROI" },
+              { value: `${caseStudyStats.industriesServed}+`, label: "Industries Served" },
+              { value: caseStudyStats.revenueImpact, label: "Revenue Impact" },
+            ].map((stat, i) => (
+              <div
+                key={stat.label}
+                className={
+                  i % 2 === 0
+                    ? "rounded-2xl bg-white p-5 shadow-lg shadow-black/20"
+                    : "glass-dark rounded-2xl border border-white/[0.06] p-5"
+                }
+              >
+                <p className="font-display text-2xl font-bold text-[#4f46e5] sm:text-3xl">{stat.value}</p>
+                <p className={`mt-1 text-sm font-medium ${i % 2 === 0 ? "text-[var(--v6-text)]" : "text-white"}`}>
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
 
       <PageSection tone="elevated">
         <ClientLogoCloud mode="placeholder" />

@@ -9,9 +9,9 @@ export function CaseStudyCard({ study, index = 0 }: { study: CaseStudyData; inde
   return (
     <MotionReveal delay={index * 0.05} y={16} duration={0.45} className="group min-w-0">
       <Link href={`/case-studies/${study.slug}`} className="v6-card v6-card-accent block min-w-0 overflow-hidden">
-        <div className="border-b border-[var(--v6-border)] bg-[#f8fafc] px-6 py-7">
-          <span className="text-xs font-medium text-[var(--v6-text-muted)]">{study.trust.industry}</span>
-          <p className="mt-4 font-display text-2xl font-bold tracking-tight text-[#d97706]">
+        <div className="border-b border-[var(--v6-border)] bg-[#030712] px-6 py-7">
+          <span className="text-xs font-medium text-[#818cf8]">{study.trust.industry}</span>
+          <p className="mt-4 font-display text-2xl font-bold tracking-tight text-[#818cf8]">
             {study.cardHighlight}
           </p>
         </div>
@@ -39,7 +39,7 @@ export function CaseStudyCardCompact({ study }: { study: CaseStudyData }) {
       href={`/case-studies/${study.slug}`}
       className="v6-card v6-card-accent group flex h-full gap-4 p-5 transition-colors"
     >
-      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#f59e0b]/15 font-display text-sm font-bold text-[#d97706]">
+      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#4f46e5]/15 font-display text-sm font-bold text-[#4f46e5]">
         {study.cardHighlight.replace(/[^0-9%₹$]/g, "").slice(0, 3) || "—"}
       </div>
       <div className="min-w-0 flex-1">
