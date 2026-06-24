@@ -78,27 +78,54 @@ export function PortfolioCTA({
 export function BreadcrumbNav({
   items,
   className,
+  variant = "default",
 }: {
   items: { label: string; href?: string }[];
   className?: string;
+  /** Use on dark hero backgrounds — avoids dark --v6-text tokens on #030712 sections */
+  variant?: "default" | "on-dark";
 }) {
+  const isOnDark = variant === "on-dark";
+
   return (
     <nav
       aria-label="Breadcrumb"
-      className={className ?? "mb-6 flex flex-wrap items-center gap-2 text-sm text-[var(--v6-text-muted,#94A3B8)]"}
+      className={
+        className ??
+        (isOnDark
+          ? "mb-6 flex flex-wrap items-center gap-2 text-sm text-white/60"
+          : "mb-6 flex flex-wrap items-center gap-2 text-sm text-[var(--v6-text-muted,#94A3B8)]")
+      }
     >
-      <Link href="/" className="transition-colors hover:text-[var(--v6-text,#fff)]">
+      <Link
+        href="/"
+        className={
+          isOnDark ? "transition-colors hover:text-white" : "transition-colors hover:text-[var(--v6-text,#fff)]"
+        }
+      >
         Home
       </Link>
       {items.map((item) => (
         <span key={item.label} className="flex items-center gap-2">
-          <span className="text-[var(--v6-border-strong,rgba(255,255,255,0.25))]">/</span>
+          <span className={isOnDark ? "text-white/30" : "text-[var(--v6-border-strong,rgba(255,255,255,0.25))]"}>
+            /
+          </span>
           {item.href ? (
-            <Link href={item.href} className="transition-colors hover:text-[var(--v6-text,#fff)]">
+            <Link
+              href={item.href}
+              className={
+                isOnDark ? "transition-colors hover:text-white" : "transition-colors hover:text-[var(--v6-text,#fff)]"
+              }
+            >
               {item.label}
             </Link>
           ) : (
-            <span className="text-[var(--v6-text,#CBD5E1)]">{item.label}</span>
+            <span
+              className={isOnDark ? "font-medium text-white/90" : "text-[var(--v6-text,#CBD5E1)]"}
+              aria-current="page"
+            >
+              {item.label}
+            </span>
           )}
         </span>
       ))}

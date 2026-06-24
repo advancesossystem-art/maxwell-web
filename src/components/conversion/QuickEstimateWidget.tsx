@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useRef } from "react";
+import { useCookieBannerVisible, useIsMobile } from "@/hooks/useMediaQuery";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ModalBackdrop, ModalPanel } from "@/components/motion/ModalEnter";
@@ -33,6 +34,8 @@ type QuickEstimateData = {
 
 export function QuickEstimateWidget({ stickyBarDismissed = false }: { stickyBarDismissed?: boolean }) {
   const pathname = usePathname();
+  const isMobile = useIsMobile();
+  const cookieVisible = useCookieBannerVisible();
   const dialogRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
   const [step, setStep] = useState(0);
@@ -52,7 +55,7 @@ export function QuickEstimateWidget({ stickyBarDismissed = false }: { stickyBarD
   useEscapeKey(reset, open);
   useFocusTrap(dialogRef, open);
 
-  if (isPortalRoute(pathname) || pathname === "/get-estimate") return null;
+  if (isPortalRoute(pathname) || pathname === "/get-estimate" || isMobile || cookieVisible) return null;
 
   const estimateUrl = estimateHref({
     source: "quick-estimate-widget",
@@ -108,7 +111,7 @@ export function QuickEstimateWidget({ stickyBarDismissed = false }: { stickyBarD
               <button
                 type="button"
                 onClick={reset}
-                className="absolute right-4 top-4 text-muted hover:text-white"
+                className="absolute right-4 top-4 flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg text-muted hover:bg-white/10 hover:text-white"
                 aria-label="Close"
               >
                 ✕

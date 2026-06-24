@@ -175,9 +175,12 @@ export function ServiceFAQ({ service }: { service: ServicePageData }) {
                   className="mx-faq-accordion group rounded-2xl border border-border bg-surface-elevated open:border-brand-600/20 open:bg-brand-50/20"
                 >
                   <summary className="cursor-pointer list-none px-6 py-5 font-display text-sm font-semibold sm:text-base [&::-webkit-details-marker]:hidden">
-                    <span className="flex items-center justify-between gap-4">
+                    <span className="flex min-h-[44px] items-center justify-between gap-4">
                       {faq.question}
-                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-surface text-muted transition-transform duration-250 group-open:rotate-45">
+                      <span
+                        className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-surface text-muted transition-transform duration-250 group-open:rotate-45"
+                        aria-hidden
+                      >
                         +
                       </span>
                     </span>

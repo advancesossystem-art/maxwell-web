@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 
 export interface ProjectScreenshot {
@@ -27,8 +28,10 @@ export function ProjectScreenshotSlots({ screenshots, projectTitle }: ProjectScr
         <div className="v6-container">
           <h2 className="font-display text-xl font-bold">Project screenshots</h2>
           <p className="mt-2 text-sm text-muted">
-            Screenshot slots are configured for {projectTitle}. Assets publish when client-approved captures are
-            available — sensitive data is redacted per engagement policy.
+            Client screens shown under NDA.{" "}
+            <Link href="/book-consultation?source=work-screenshots" className="font-medium text-brand-600 hover:underline">
+              Request a full demo walkthrough →
+            </Link>
           </p>
           <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {screenshots.map((slot) => (
@@ -38,7 +41,7 @@ export function ProjectScreenshotSlots({ screenshots, projectTitle }: ProjectScr
               >
                 <span className="v6-chip capitalize">{slot.category}</span>
                 <p className="mt-3 text-sm font-medium text-[var(--v6-text)]">{slot.caption}</p>
-                <p className="mt-1 text-xs text-muted">Awaiting approved asset</p>
+                <p className="mt-1 text-xs text-muted">Available on consultation</p>
               </li>
             ))}
           </ul>

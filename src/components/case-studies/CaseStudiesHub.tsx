@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { CaseStudyCard } from "@/components/case-studies/CaseStudyCard";
 import {
-  getAllCaseStudies,
+  getFeaturedCaseStudies,
   caseStudyStats,
   caseStudyIndustries,
   caseStudyServices,
@@ -19,6 +19,7 @@ import { PageSection, SectionHeader } from "@/components/design/PageSection";
 import { FilterCategoryTabs, FilterPill } from "@/components/design/FilterPill";
 import { ClientLogoCloud } from "@/components/trust/ClientLogoCloud";
 import { csDarkEyebrow, csDarkSection } from "@/components/case-studies/case-study-theme";
+import { CaseStudyBehindTheWork } from "@/components/case-studies/CaseStudyBehindTheWork";
 import { Container } from "@/components/ui/Container";
 
 type FilterCategory = "industry" | "service" | "value" | "technology" | "outcome";
@@ -32,7 +33,7 @@ const categoryLabels: Record<FilterCategory, string> = {
 };
 
 export function CaseStudiesHub() {
-  const allStudies = getAllCaseStudies();
+  const allStudies = getFeaturedCaseStudies();
   const [activeCategory, setActiveCategory] = useState<FilterCategory>("industry");
   const [activeFilter, setActiveFilter] = useState<string>("All");
 
@@ -63,13 +64,13 @@ export function CaseStudiesHub() {
   return (
     <>
       <PageHero
-        eyebrow="Trust Layer"
+        eyebrow="Outcomes & Business Impact"
         title={
           <>
-            Case studies with <AccentGradient>verified business impact</AccentGradient>
+            Business outcomes from <AccentGradient>real client projects</AccentGradient>
           </>
         }
-        description="How Maxwell Electrodeal helps operators improve efficiency, automate operations, and accelerate growth — with outcomes leadership teams can audit."
+        description="Documented results from 8 end-to-end projects across manufacturing, healthcare, logistics, and more — with measurable ROI, timelines, and delivery context."
       >
         <Button href="/contact" size="lg">
           Book Strategy Call <ArrowRight />
@@ -81,10 +82,10 @@ export function CaseStudiesHub() {
           <p className={csDarkEyebrow}>Portfolio impact</p>
           <div className="mt-6 grid grid-cols-2 gap-4 lg:grid-cols-4">
             {[
-              { value: `${caseStudyStats.totalProjects}+`, label: "Documented Case Studies" },
-              { value: caseStudyStats.averageRoi, label: "Average ROI" },
-              { value: `${caseStudyStats.industriesServed}+`, label: "Industries Served" },
-              { value: caseStudyStats.revenueImpact, label: "Revenue Impact" },
+              { value: `${caseStudyStats.documentedOutcomes}`, label: "Documented Project Outcomes" },
+              { value: caseStudyStats.averageRoi, label: "Average ROI Timeline" },
+              { value: `${caseStudyStats.industriesRepresented}`, label: "Industries Represented" },
+              { value: `${caseStudyStats.featuredStudies}`, label: "Featured Case Studies" },
             ].map((stat, i) => (
               <div
                 key={stat.label}
@@ -138,6 +139,8 @@ export function CaseStudiesHub() {
           <p className="mt-12 text-center text-body">No case studies match this filter. Try another category.</p>
         )}
       </PageSection>
+
+      <CaseStudyBehindTheWork />
     </>
   );
 }

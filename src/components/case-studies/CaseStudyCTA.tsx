@@ -20,7 +20,10 @@ export function CaseStudyCTA({ studyTitle }: { studyTitle?: string }) {
 
 export function CaseStudyBreadcrumb({ title }: { title: string }) {
   return (
-    <BreadcrumbNav items={[{ label: "Case Studies", href: "/case-studies" }, { label: title }]} />
+    <BreadcrumbNav
+      variant="on-dark"
+      items={[{ label: "Case Studies", href: "/case-studies" }, { label: title }]}
+    />
   );
 }
 

@@ -28,8 +28,8 @@ export function CaseStudyAuthorityBlock({ study }: { study: CaseStudyData }) {
         <p className={csDarkEyebrow}>Engagement summary</p>
         <h2 className={`${csDarkTitle} mt-3 max-w-3xl`}>Delivery at a glance</h2>
         <p className={`${csDarkLead} mt-3 max-w-4xl`}>
-          Documented delivery parameters for a {formatClientDescriptor(study.trust.industry)} — verified in case study
-          review.
+          Documented delivery parameters for a {formatClientDescriptor(study.trust.industry)} — documented in
+          case study review.
         </p>
 
         <div className="mt-8 grid gap-6 lg:grid-cols-2">
@@ -94,6 +94,8 @@ export function CaseStudyAuthorityBlock({ study }: { study: CaseStudyData }) {
             <p className={`${csDarkEyebrow} mb-4`}>Client feedback</p>
             <ClientQuoteCard
               quote={study.testimonial.quote}
+              author={study.testimonial.author}
+              company={study.testimonial.company}
               role={study.testimonial.role}
               industry={study.trust.industry}
               accent={study.accent}

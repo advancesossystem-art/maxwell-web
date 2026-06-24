@@ -16,6 +16,7 @@ export const projectIndustries = [
   "Logistics",
   "Retail",
   "Construction",
+  "HR Tech",
 ] as const;
 
 export const projectTechnologies = [
@@ -101,14 +102,14 @@ export const projectsData: Record<ProjectSlug, ProjectData> = {
   "manufacturing-erp-platform": {
     slug: "manufacturing-erp-platform",
     noIndex: true,
-    title: "a manufacturing client Manufacturing ERP",
+    title: "Custom ERP for a Gujarat Manufacturer",
     subtitle: "Unified ERP across 3 production facilities with real-time inventory and supplier integration.",
     metaTitle: "Manufacturing ERP Platform Case Study",
     metaDescription:
       "How Maxwell Electrodeal built a custom manufacturing ERP reducing manual data entry by 40% and saving ₹12L annually for A precision manufacturing group.",
     client: "Leading manufacturing organization",
     clientOverview:
-      "a manufacturing client is a mid-size precision manufacturing company operating 3 production facilities across Gujarat, producing 200+ SKUs for automotive and industrial clients.",
+      "A mid-size precision manufacturing company operating 3 production facilities across Gujarat, producing 200+ SKUs for automotive and industrial clients.",
     projectType: "ERP",
     industry: "Manufacturing",
     technologies: ["React", "Node.js", "PostgreSQL", "AWS"],
@@ -118,7 +119,7 @@ export const projectsData: Record<ProjectSlug, ProjectData> = {
     heroResult: "40% reduction in manual data entry",
     cardResult: "₹12L annual savings",
     businessChallenge:
-      "a manufacturing client ran operations on Excel spreadsheets and a legacy Tally setup disconnected from the shop floor. Inventory counts across 3 facilities were manual, production scheduling happened via WhatsApp, and month-end reconciliation took 2 weeks. Errors caused material shortages, delayed orders, and ₹15L+ in annual waste.",
+      "Operations ran on Excel spreadsheets and a legacy Tally setup disconnected from the shop floor. Inventory counts across 3 facilities were manual, production scheduling happened via WhatsApp, and month-end reconciliation took 2 weeks. Errors caused material shortages, delayed orders, and ₹15L+ in annual waste.",
     solutionStrategy:
       "We designed a modular ERP around their actual workflow—GRN → production → QC → dispatch—rather than forcing SAP-style processes. Phase 1 delivered inventory and production modules. Phase 2 added finance integration with Tally and a supplier portal.",
     designProcess: [
@@ -361,7 +362,7 @@ export const projectsData: Record<ProjectSlug, ProjectData> = {
 
   "retail-analytics-dashboard": {
     slug: "retail-analytics-dashboard",
-    title: "a retail group Intelligence",
+    title: "Retail Analytics & Intelligence Platform",
     subtitle: "Omnichannel analytics, inventory sync, and loyalty platform for 12 retail locations.",
     metaTitle: "Retail Analytics Dashboard Case Study",
     metaDescription:
@@ -556,16 +557,16 @@ export const projectsData: Record<ProjectSlug, ProjectData> = {
 
   "saas-workforce-management": {
     slug: "saas-workforce-management",
-    title: "a workforce SaaS company Workforce SaaS",
+    title: "Multi-Tenant Workforce Management SaaS",
     subtitle: "Multi-tenant workforce management platform with scheduling, attendance, and payroll integration.",
     metaTitle: "SaaS Workforce Management Case Study",
     metaDescription:
-      "a workforce SaaS company SaaS: 500+ active tenants, ₹2Cr ARR in 18 months. Multi-tenant workforce management platform built by Maxwell Electrodeal.",
-    client: "a workforce SaaS company (Startup)",
+      "Multi-tenant workforce SaaS: 500+ active tenants, ₹2Cr ARR in 18 months. Workforce management platform built by Maxwell Electrodeal.",
+    client: "HR Tech Startup",
     clientOverview:
       "A workforce SaaS company targeting staffing agencies and mid-size employers, providing workforce scheduling, attendance tracking, and payroll integration.",
     projectType: "SaaS",
-    industry: "Retail",
+    industry: "HR Tech",
     technologies: ["Next.js", "Node.js", "PostgreSQL", "AWS", "Stripe"],
     accent: "#06B6D4",
     gradient: "from-cyan-950 via-blue-900 to-slate-950",

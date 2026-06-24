@@ -10,6 +10,7 @@ import {
   type ConversionContext,
 } from "@/lib/conversion-copy";
 import { trackCTAClick } from "@/lib/conversion-events";
+import { useCookieBannerVisible, useIsMobile } from "@/hooks/useMediaQuery";
 import { cn } from "@/lib/utils";
 import { hasContextMobileSticky, isPortalRoute } from "@/lib/mobile-sticky";
 
@@ -25,16 +26,20 @@ const HIDE_ON = ["/contact", "/get-estimate", "/book-consultation", "/discovery-
 
 export function StickyCTA({ context, location = "sticky_bar", className, dismissed, onDismiss }: StickyCTAProps) {
   const pathname = usePathname();
+  const isMobile = useIsMobile();
+  const cookieVisible = useCookieBannerVisible();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > 480);
+    const onScroll = () => setVisible(window.scrollY > 500);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   if (
+    isMobile ||
+    cookieVisible ||
     dismissed ||
     !visible ||
     isPortalRoute(pathname) ||
@@ -78,7 +83,7 @@ export function StickyCTA({ context, location = "sticky_bar", className, dismiss
           <button
             type="button"
             onClick={onDismiss}
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[var(--v6-border)] text-[var(--v6-text-muted)] transition-colors hover:border-[#4f46e5]/30 hover:bg-[#f8fafc] hover:text-[var(--v6-text)]"
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-[var(--v6-border)] text-[var(--v6-text-muted)] transition-colors hover:border-[#4f46e5]/30 hover:bg-[#f8fafc] hover:text-[var(--v6-text)]"
             aria-label="Close quick actions bar"
           >
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden>

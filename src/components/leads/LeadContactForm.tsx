@@ -37,7 +37,7 @@ const serviceOptions = [
 ];
 
 const compactInputClass = cn(
-  "w-full min-h-10 rounded-lg border border-[var(--v6-border)] bg-[#f8fafc] px-3 py-2 text-sm text-[var(--v6-text)]",
+  "w-full min-h-10 rounded-lg border border-[var(--v6-border)] bg-[#f8fafc] px-3 py-2 text-base text-[var(--v6-text)] md:text-sm",
   "placeholder:text-[var(--v6-text-muted)] transition-colors",
   "focus:border-[#4f46e5] focus:outline-none focus:ring-2 focus:ring-[#4f46e5]/20",
 );

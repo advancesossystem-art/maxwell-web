@@ -7,6 +7,7 @@ export const metadata = buildPageMetadata({
     "Maxwell project gallery: ERP dashboards, CRM systems, mobile apps, web platforms, and automation — with problem, solution, technology, timeline, and business outcomes.",
   path: "/project-gallery",
   keywords: ["ERP dashboard", "CRM dashboard", "mobile app portfolio", "software development projects"],
+  noIndex: true,
 });
 
 export default function ProjectGalleryRoute() {

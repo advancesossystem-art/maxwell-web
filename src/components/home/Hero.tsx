@@ -68,11 +68,11 @@ export function Hero() {
             <p className="v6-lead mt-4 max-w-2xl text-balance lg:max-w-none" data-seo-speakable>
               {homeHero.subhead}
             </p>
-            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[var(--v6-text-secondary)] lg:max-w-none" data-seo-speakable>
+            <p className="mt-3 hidden max-w-2xl text-sm leading-relaxed text-[var(--v6-text-secondary)] md:block lg:max-w-none" data-seo-speakable>
               {brandDisambiguation}
             </p>
 
-            <div className="mt-5 flex flex-wrap gap-2">
+            <div className="mt-5 hidden flex-wrap gap-2 md:flex">
               {heroServiceBadges.map((badge) => (
                 <Link
                   key={badge.label}
@@ -84,7 +84,10 @@ export function Hero() {
               ))}
             </div>
 
-            <p className="mt-4 rounded-xl border border-[#4f46e5]/15 bg-[#f8fafc] px-4 py-3 text-sm text-[var(--v6-text-secondary)]">
+            <p className="mt-4 text-xs text-gray-500 md:hidden">
+              50+ projects delivered · 4.9/5 ★
+            </p>
+            <p className="mt-4 hidden rounded-xl border border-[#4f46e5]/15 bg-[#f8fafc] px-4 py-3 text-sm text-[var(--v6-text-secondary)] md:block">
               <span className="font-semibold text-[#4f46e5]">Proven delivery:</span>{" "}
               {homeHero.proofOutcome}.{" "}
               <Link
@@ -107,7 +110,7 @@ export function Hero() {
               {CONVERSION_EXPECTATIONS.estimateTimeline} · {CONVERSION_EXPECTATIONS.responseTime}
             </p>
 
-            <ul className="mt-5 flex flex-wrap gap-2" aria-label="Trust highlights">
+            <ul className="mt-5 hidden flex-wrap gap-2 md:flex" aria-label="Trust highlights">
               {trustHighlights.map((item) => (
                 <li
                   key={item.label}

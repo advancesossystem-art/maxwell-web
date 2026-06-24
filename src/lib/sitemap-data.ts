@@ -142,7 +142,6 @@ export function getContentSitemapEntries() {
     { url: `${siteConfig.url}/knowledge-center`, priority: 0.9 },
     { url: `${siteConfig.url}/answers`, priority: 0.88 },
     { url: `${siteConfig.url}/citation-guides`, priority: 0.85 },
-    { url: `${siteConfig.url}/project-gallery`, priority: 0.8 },
     ...getIndexableArticleSlugs().map((slug) => ({ url: `${siteConfig.url}/blog/${slug}`, priority: 0.8 })),
     ...guideSlugs.map((slug) => ({ url: `${siteConfig.url}/guides/${slug}`, priority: 0.82 })),
     ...resourceSlugs.map((slug) => ({ url: `${siteConfig.url}/resources/${slug}`, priority: 0.81 })),

@@ -48,7 +48,7 @@ export function FilterPill({
       type="button"
       onClick={onClick}
       className={cn(
-        "rounded-full px-4 py-2 text-sm font-medium transition-all duration-200",
+        "min-h-[44px] rounded-full px-4 py-2.5 text-sm font-medium transition-all duration-200",
         active
           ? "bg-brand-600 text-white shadow-md shadow-brand-600/25"
           : "border border-[var(--v6-border)] bg-white text-[var(--v6-text-secondary)] hover:border-[#c7d2fe] hover:text-[var(--v6-text)]",

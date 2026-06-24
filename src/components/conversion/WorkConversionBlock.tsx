@@ -6,7 +6,7 @@ import { TertiaryCTA } from "@/components/conversion/TertiaryCTA";
 import { CTA_LABELS, CONVERSION_ROUTES } from "@/lib/conversion-copy";
 import type { ProjectData, ProjectIndustry, ProjectType } from "@/lib/projects-data";
 
-const industryToSlug: Record<ProjectIndustry, string> = {
+const industryToSlug: Record<Exclude<ProjectIndustry, "HR Tech">, string> = {
   Manufacturing: "manufacturing",
   Healthcare: "healthcare",
   Education: "education",
@@ -14,6 +14,11 @@ const industryToSlug: Record<ProjectIndustry, string> = {
   Retail: "retail",
   Construction: "construction",
 };
+
+function getIndustryHref(industry: ProjectIndustry): string {
+  if (industry === "HR Tech") return "/services/saas-development";
+  return `/industries/${industryToSlug[industry]}`;
+}
 
 const projectTypeToServiceSlug: Record<ProjectType, string> = {
   Website: "website-development",
@@ -45,7 +50,7 @@ type WorkConversionBlockProps = {
 export function WorkConversionBlock({ project, relatedCaseStudySlug }: WorkConversionBlockProps) {
   const context = { service: project.title, source: `work-${project.slug}` };
   const caseSlug = relatedCaseStudySlug ?? projectToCaseStudy[project.slug];
-  const industrySlug = industryToSlug[project.industry];
+  const industryHref = getIndustryHref(project.industry);
   const serviceSlug = projectTypeToServiceSlug[project.projectType];
 
   return (
@@ -71,7 +76,7 @@ export function WorkConversionBlock({ project, relatedCaseStudySlug }: WorkConve
           <div>
             <Caption className="font-semibold uppercase text-brand-500">Industry</Caption>
             <Link
-              href={`/industries/${industrySlug}`}
+              href={industryHref}
               className="v6-inline-cta__title mt-2 block hover:text-brand-600"
             >
               {project.industry}

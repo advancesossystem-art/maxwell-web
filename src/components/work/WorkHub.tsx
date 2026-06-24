@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { ProjectCard } from "@/components/work/ProjectCard";
@@ -53,13 +54,13 @@ export function WorkHub() {
   return (
     <>
       <PageHero
-        eyebrow="Delivery"
+        eyebrow="Technical Portfolio"
         title={
           <>
-            How we approach <AccentGradient>complex builds</AccentGradient>
+            Technical portfolio — <AccentGradient>how we build</AccentGradient>
           </>
         }
-        description="Representative solution patterns and delivery frameworks — discuss your scope on a consultation."
+        description="Architecture decisions, technology choices, and build processes from 8 production systems — for technical evaluators and engineering leaders."
         below={
           <HubMetrics
             className="gap-3"
@@ -106,6 +107,13 @@ export function WorkHub() {
         {filteredProjects.length === 0 && (
           <p className="mt-12 text-center text-body">No projects match this filter. Try another category.</p>
         )}
+
+        <p className="mt-12 text-center text-sm text-[var(--v6-text-secondary)]">
+          Looking for business outcomes?{" "}
+          <Link href="/case-studies" className="font-medium text-[#4f46e5] hover:underline">
+            See the case studies →
+          </Link>
+        </p>
       </PageSection>
     </>
   );

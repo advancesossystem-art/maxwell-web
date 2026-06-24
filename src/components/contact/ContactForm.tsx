@@ -52,7 +52,7 @@ function ContactFormInner() {
   const [fieldErrors, setFieldErrors] = useState<LeadFormFieldErrors>({});
 
   const inputClass = cn(
-    "w-full rounded-xl border border-border bg-surface px-4 py-3 text-sm text-foreground",
+    "w-full rounded-xl border border-border bg-surface px-4 py-3 text-base text-foreground md:text-sm",
     "placeholder:text-muted/60 transition-colors",
     "focus:border-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-600/20",
   );

@@ -22,6 +22,7 @@ type CompactCaseStudy = {
   results: { metric: string; label: string; description: string }[];
   before: string[];
   after: string[];
+  testimonial: { quote: string; author: string; role: string; company: string };
 };
 
 function buildStudy(c: CompactCaseStudy): CaseStudyData {
@@ -29,6 +30,7 @@ function buildStudy(c: CompactCaseStudy): CaseStudyData {
     slug: c.slug,
     title: c.title,
     subtitle: c.subtitle,
+    featured: false,
     metaTitle: `${c.title} — Case Study | Maxwell Electrodeal`,
     metaDescription: `${c.subtitle} Custom ${c.service.toLowerCase()} with measurable ROI.`,
     executiveSummary: c.solution,
@@ -56,12 +58,7 @@ function buildStudy(c: CompactCaseStudy): CaseStudyData {
     deploymentStrategy: ["Pilot go-live", "Training program", "30-day hypercare"],
     roiMetrics: c.roi,
     results: c.results,
-    testimonial: {
-      quote: c.results[0]?.description ?? "Measurable improvement within the first quarter.",
-      author: "",
-      role: "Operations Head",
-      company: "",
-    },
+    testimonial: c.testimonial,
     lessonsLearned: ["Shop-floor discovery is non-negotiable", "Phased rollout beats big-bang"],
     similarSolutions: [
       { title: "ERP Development", href: "/services/erp-development", description: "Custom ERP solutions" },
@@ -141,6 +138,12 @@ export const phase2CaseStudies: Record<Phase2CaseStudySlug, CaseStudyData> = {
     ],
     before: ["Spreadsheet batch logs", "Manual MSDS filing", "Phone-based reactor scheduling"],
     after: ["Digital batch genealogy", "Linked MSDS per batch", "Visual reactor calendar"],
+    testimonial: {
+      quote: "Batch traceability and audit prep time dropped dramatically once we moved off spreadsheets.",
+      author: "Operations Head",
+      role: "Operations Head",
+      company: "Chemical Manufacturer, Gujarat",
+    },
   }),
   "textile-industry-erp": buildStudy({
     slug: "textile-industry-erp",
@@ -165,6 +168,12 @@ export const phase2CaseStudies: Record<Phase2CaseStudySlug, CaseStudyData> = {
     ],
     before: ["Excel fabric registers", "WhatsApp job-work updates", "Manual export docs"],
     after: ["Roll barcode scanning", "Job-work portal", "Auto export packing lists"],
+    testimonial: {
+      quote: "Roll-level inventory ended the daily stock disputes with our job-work contractors.",
+      author: "Factory Manager",
+      role: "Factory Manager",
+      company: "Textile Unit, Surat",
+    },
   }),
   "manufacturing-crm": buildStudy({
     slug: "manufacturing-crm",
@@ -189,6 +198,12 @@ export const phase2CaseStudies: Record<Phase2CaseStudySlug, CaseStudyData> = {
     ],
     before: ["Email-based pipeline", "No field visit proof", "Lost distributor leads"],
     after: ["Stage-based CRM", "GPS visit logging", "Distributor hierarchy views"],
+    testimonial: {
+      quote: "Structured pipeline stages and field visit logging gave us visibility we never had in email.",
+      author: "Sales Director",
+      role: "Sales Director",
+      company: "Manufacturing Company, India",
+    },
   }),
   "inventory-automation": buildStudy({
     slug: "inventory-automation",
@@ -213,6 +228,12 @@ export const phase2CaseStudies: Record<Phase2CaseStudySlug, CaseStudyData> = {
     ],
     before: ["Manual GRN entry", "No transfer tracking", "10-day month-end close"],
     after: ["Barcode GRN", "Transfer workflows", "3-day month-end close"],
+    testimonial: {
+      quote: "Barcode-driven stock capture cut our month-end close from ten days to three.",
+      author: "Warehouse Manager",
+      role: "Warehouse Manager",
+      company: "Distribution Company, India",
+    },
   }),
   "business-process-automation": buildStudy({
     slug: "business-process-automation",
@@ -237,5 +258,11 @@ export const phase2CaseStudies: Record<Phase2CaseStudySlug, CaseStudyData> = {
     ],
     before: ["Email approval chains", "No SLA tracking", "Lost audit history"],
     after: ["Digital workflows", "SLA dashboards", "Full audit log export"],
+    testimonial: {
+      quote: "Approval cycles halved once routing and reminders were automated—we finally have an audit trail.",
+      author: "Head of Administration",
+      role: "Head of Administration",
+      company: "Manufacturing Enterprise, India",
+    },
   }),
 };

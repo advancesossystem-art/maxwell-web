@@ -6,10 +6,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { BrandLogo } from "@/components/layout/BrandLogo";
+import { siteConfig } from "@/lib/constants";
 import {
   CTA_LABELS,
   CONVERSION_ROUTES,
   consultationHref,
+  estimateHref,
 } from "@/lib/conversion-copy";
 import { trackCTAClick } from "@/lib/conversion-events";
 import { runNavbarEntrance } from "@/lib/animations";
@@ -36,6 +38,21 @@ const resourceLinks = [
   { label: "Client Portal", href: "/portal" },
 ] as const;
 
+function ChevronDownIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden>
+      <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+    </svg>
+  );
+}
+
+const mobileServiceShortcuts = [
+  { label: "🔥 Custom ERP", href: "/services/erp-development" },
+  { label: "⚡ AI Consulting", href: "/services/ai-consulting" },
+] as const;
+
+const telHref = `tel:${siteConfig.phone.replace(/\s/g, "")}`;
+
 function Chevron() {
   return (
     <svg className="h-3.5 w-3.5 opacity-60" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -48,6 +65,7 @@ export function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [openServiceGroup, setOpenServiceGroup] = useState<string | null>(null);
   const [resourcesOpen, setResourcesOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const drawerRef = useRef<HTMLDivElement>(null);
@@ -348,8 +366,15 @@ export function Header() {
       >
         <div className="flex items-center justify-between border-b border-[var(--v6-border)] px-5 py-4">
           <BrandLogo size="sm" href="/" />
-          <button type="button" onClick={closeMobile} className="text-sm text-[var(--v6-text-muted)]">
-            Close
+          <button
+            type="button"
+            onClick={closeMobile}
+            className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-100"
+            aria-label="Close navigation menu"
+          >
+            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
           </button>
         </div>
         <nav className="flex flex-1 flex-col gap-0.5 overflow-y-auto px-3 py-4" aria-label="Mobile navigation">
@@ -368,33 +393,60 @@ export function Header() {
               {link.label}
             </Link>
           ))}
+          {mobileServiceShortcuts.map((shortcut) => (
+            <Link
+              key={shortcut.href}
+              href={shortcut.href}
+              onClick={closeMobile}
+              className="rounded-xl px-4 py-3 text-sm font-semibold text-[#4f46e5] hover:bg-[#4f46e5]/5"
+            >
+              {shortcut.label}
+            </Link>
+          ))}
           <p className="mx-4 mt-4 mb-1 text-xs font-semibold uppercase tracking-wider text-[var(--v6-text-muted)]">
             Services
           </p>
           {servicesNavGroups.map((group) => (
-            <div key={group.title} className="mb-3">
-              <p className="mx-4 mb-1 text-[10px] font-semibold uppercase tracking-wider text-[var(--v6-text-muted)]">
-                {group.title}
-              </p>
-              {group.links.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={closeMobile}
-                  className="block rounded-xl px-4 py-2.5 text-sm text-[var(--v6-text-secondary)] hover:bg-[#f1f5f9]"
-                >
-                  {link.label}
-                </Link>
-              ))}
+            <div key={group.title}>
+              <button
+                type="button"
+                className="flex min-h-[44px] w-full items-center justify-between px-4 py-3 text-xs font-semibold uppercase tracking-wider text-gray-600"
+                onClick={() =>
+                  setOpenServiceGroup((current) => (current === group.title ? null : group.title))
+                }
+                aria-expanded={openServiceGroup === group.title}
+              >
+                <span>{group.title}</span>
+                <ChevronDownIcon
+                  className={cn(
+                    "h-4 w-4 transition-transform",
+                    openServiceGroup === group.title && "rotate-180",
+                  )}
+                />
+              </button>
+              {openServiceGroup === group.title ? (
+                <div className="pb-2 pl-4">
+                  {group.links.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={closeMobile}
+                      className="flex min-h-[44px] items-center gap-2 px-2 py-3 text-sm text-gray-700 hover:text-purple-600"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                  <Link
+                    href="/services"
+                    onClick={closeMobile}
+                    className="block px-2 py-2 text-xs font-medium text-purple-600"
+                  >
+                    All {group.title} →
+                  </Link>
+                </div>
+              ) : null}
             </div>
           ))}
-          <Link
-            href="/services"
-            onClick={closeMobile}
-            className="mx-4 mb-2 block text-sm font-semibold text-[#4f46e5]"
-          >
-            All services →
-          </Link>
           <p className="mx-4 mt-4 mb-1 text-xs font-semibold uppercase tracking-wider text-[var(--v6-text-muted)]">
             Resources
           </p>
@@ -409,17 +461,33 @@ export function Header() {
             </Link>
           ))}
         </nav>
-        <div className="border-t border-[var(--v6-border)] p-5">
+        <div className="space-y-3 border-t border-gray-100 p-4">
           <Link
-            href={consultationHref({ source: "header-mobile" })}
-            className="v6-btn v6-btn-primary v6-btn-lg w-full"
+            href={estimateHref({ source: "mobile-nav" })}
+            className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-xl bg-purple-600 py-3.5 text-base font-semibold text-white"
+            onClick={() => {
+              trackCTAClick(CTA_LABELS.secondary, CONVERSION_ROUTES.estimate, "header_mobile");
+              closeMobile();
+            }}
+          >
+            Get Free Project Estimate →
+          </Link>
+          <Link
+            href={consultationHref({ source: "mobile-nav" })}
+            className="flex min-h-[44px] w-full items-center justify-center gap-2 rounded-xl border-2 border-purple-600 py-3 text-sm font-semibold text-purple-600"
             onClick={() => {
               trackCTAClick(CTA_LABELS.primary, CONVERSION_ROUTES.consultation, "header_mobile");
               closeMobile();
             }}
           >
-            {CTA_LABELS.primary}
+            Book Strategy Call
           </Link>
+          <a
+            href={telHref}
+            className="flex min-h-[44px] w-full items-center justify-center gap-2 py-2 text-sm text-gray-600"
+          >
+            📞 {siteConfig.phone}
+          </a>
         </div>
       </div>
     </header>

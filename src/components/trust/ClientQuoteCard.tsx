@@ -4,6 +4,8 @@ import { cn } from "@/lib/utils";
 type ClientQuoteCardProps = {
   quote: string;
   role: string;
+  author?: string;
+  company?: string;
   industry?: string;
   companyType?: string;
   region?: string;
@@ -15,6 +17,8 @@ type ClientQuoteCardProps = {
 export function ClientQuoteCard({
   quote,
   role,
+  author,
+  company,
   industry,
   companyType,
   region,
@@ -22,7 +26,15 @@ export function ClientQuoteCard({
   subtitle,
   className,
 }: ClientQuoteCardProps) {
-  const initial = (industry ?? role).charAt(0).toUpperCase();
+  const initial = (author ?? industry ?? role).charAt(0).toUpperCase();
+  const attribution =
+    author && company
+      ? `${author}, ${company}`
+      : author
+        ? author
+        : role
+          ? formatTestimonialAttribution({ role, companyType, industry, region })
+          : null;
 
   return (
     <blockquote
@@ -49,21 +61,21 @@ export function ClientQuoteCard({
         ))}
       </div>
       <p className="text-lg font-medium leading-relaxed text-[var(--v6-text)] lg:text-xl">&ldquo;{quote}&rdquo;</p>
-      <footer className="mt-6 flex flex-wrap items-center gap-3 border-t border-[var(--v6-border)] pt-5">
-        <div
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full font-display text-sm font-bold text-white"
-          style={{ backgroundColor: accent }}
-          aria-hidden
-        >
-          {initial}
-        </div>
-        <div>
-          <p className="font-display font-semibold text-[var(--v6-text)]">
-            {formatTestimonialAttribution({ role, companyType, industry, region })}
-          </p>
-          {subtitle ? <p className="mt-0.5 text-sm text-[var(--v6-text-muted)]">{subtitle}</p> : null}
-        </div>
-      </footer>
+      {attribution ? (
+        <footer className="mt-6 flex flex-wrap items-center gap-3 border-t border-[var(--v6-border)] pt-5">
+          <div
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full font-display text-sm font-bold text-white"
+            style={{ backgroundColor: accent }}
+            aria-hidden
+          >
+            {initial}
+          </div>
+          <div>
+            <p className="font-display font-semibold text-[var(--v6-text)]">{attribution}</p>
+            {subtitle ? <p className="mt-0.5 text-sm text-[var(--v6-text-muted)]">{subtitle}</p> : null}
+          </div>
+        </footer>
+      ) : null}
     </blockquote>
   );
 }

@@ -90,24 +90,52 @@ export function CaseStudyDetailPage({ study }: { study: CaseStudyData }) {
         <Container className="relative z-10">
           <CaseStudyBreadcrumb title={study.title} />
           <CaseStudyHeroMotion>
-            <div className="mb-4 flex flex-wrap gap-2">
-              <span className="rounded-full border border-white/15 bg-[#4f46e5]/20 px-3 py-1 text-xs font-medium text-[#a5b4fc]">
-                {study.trust.industry}
-              </span>
-              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-white/70">
-                {study.trust.projectValue}
-              </span>
-              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-white/70">
-                {study.filters.businessOutcome}
-              </span>
-            </div>
-            <h1 className="max-w-4xl font-display text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
-              {study.title}
-            </h1>
-            <p className="mt-4 max-w-2xl text-lg text-white/55">{study.subtitle}</p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <PrimaryCTA context={context} location="case_study_hero" />
-              <SecondaryCTA context={context} location="case_study_hero" />
+            <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-12">
+              <div>
+                <div className="mb-4 flex flex-wrap gap-2">
+                  <span className="rounded-full border border-white/15 bg-[#4f46e5]/20 px-3 py-1 text-xs font-medium text-[#a5b4fc]">
+                    {study.trust.industry}
+                  </span>
+                  <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-white/70">
+                    {study.trust.timeline}
+                  </span>
+                  <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-white/70">
+                    {study.trust.teamSize}
+                  </span>
+                </div>
+                {study.heroResult ? (
+                  <p className="font-display text-2xl font-bold leading-snug text-[#a5b4fc] sm:text-3xl lg:text-4xl">
+                    {study.heroResult}
+                  </p>
+                ) : null}
+                <h1
+                  className={cn(
+                    "max-w-4xl font-display font-bold leading-tight text-white",
+                    study.heroResult
+                      ? "mt-4 text-xl sm:text-2xl lg:text-3xl"
+                      : "text-3xl sm:text-4xl lg:text-5xl",
+                  )}
+                >
+                  {study.title}
+                </h1>
+                <p className="mt-4 max-w-2xl text-lg text-white/75">{study.subtitle}</p>
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <PrimaryCTA context={context} location="case_study_hero" />
+                  <SecondaryCTA context={context} location="case_study_hero" />
+                </div>
+              </div>
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-5">
+                <p className={csDarkEyebrow}>System architecture</p>
+                <p className="mt-2 text-sm text-white/50">Modules and integrations delivered for this engagement.</p>
+                <div className="mt-4 max-h-[420px] overflow-y-auto pr-1">
+                  <ArchitectureDiagram
+                    layers={study.solutionArchitecture.layers}
+                    accent={study.accent}
+                    compact
+                    dark
+                  />
+                </div>
+              </div>
             </div>
           </CaseStudyHeroMotion>
         </Container>

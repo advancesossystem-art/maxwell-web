@@ -4,9 +4,9 @@ import { CaseStudyCTA } from "@/components/case-studies/CaseStudyCTA";
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata = createMetadata({
-  title: "Case Studies — Enterprise Software Success Stories",
+  title: "Case Studies — Business Outcomes & ROI",
   description:
-    "Real business problems, measurable results. Explore how Maxwell Electrodeal delivers ERP, healthcare, logistics, AI, and SaaS projects with proven ROI.",
+    "Documented business outcomes from 8 end-to-end client projects. ERP, healthcare, logistics, AI, and SaaS delivery with measurable ROI and timelines.",
   path: "/case-studies",
 });
 

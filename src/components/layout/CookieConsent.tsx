@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useCookieConsent } from "@/hooks/useCookieConsent";
 
 const choiceButtonClass =
-  "min-h-9 flex-1 rounded-lg px-3 py-2 text-xs font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4f46e5]";
+  "min-h-[44px] flex-1 rounded-lg px-3 py-2 text-xs font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4f46e5]";
 
 /** Delay before showing banner so hero H1 paints first (LCP). */
 const BANNER_MOUNT_DELAY_MS = 800;
@@ -27,9 +27,20 @@ export function CookieConsent() {
     return () => cancelAnimationFrame(id);
   }, [shouldRender, consent]);
 
+  useEffect(() => {
+    if (visible && consent === null) {
+      document.body.setAttribute("data-cookie-visible", "true");
+      return () => {
+        document.body.removeAttribute("data-cookie-visible");
+      };
+    }
+    document.body.removeAttribute("data-cookie-visible");
+  }, [visible, consent]);
+
   function setChoice(choice: "accepted" | "declined") {
     setConsent(choice);
     setVisible(false);
+    document.body.removeAttribute("data-cookie-visible");
   }
 
   if (!shouldRender || !visible || consent !== null) return null;
@@ -41,6 +52,7 @@ export function CookieConsent() {
       aria-labelledby="cookie-consent-title"
       aria-describedby="cookie-consent-desc"
       data-intro-chrome
+      data-cookie-banner
       className="mobile-fixed-chrome fixed bottom-3 left-3 z-[90] sm:bottom-4 sm:left-auto sm:right-4 sm:max-w-xs"
       style={{ contentVisibility: "auto", containIntrinsicSize: "0 80px" }}
     >

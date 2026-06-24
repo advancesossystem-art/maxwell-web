@@ -63,28 +63,52 @@ export function CaseStudyTrustBar({
   );
 }
 
-export function ArchitectureDiagram({ layers, accent }: { layers: CaseStudyData["solutionArchitecture"]["layers"]; accent: string }) {
+export function ArchitectureDiagram({
+  layers,
+  accent,
+  compact = false,
+  dark = false,
+}: {
+  layers: CaseStudyData["solutionArchitecture"]["layers"];
+  accent: string;
+  compact?: boolean;
+  dark?: boolean;
+}) {
   return (
-    <div className="space-y-3">
+    <div className={compact ? "space-y-2" : "space-y-3"}>
       {layers.map((layer, i) => (
         <MotionReveal
           key={layer.name}
           delay={i * 0.08}
           y={16}
-          className="rounded-xl border border-border bg-surface-elevated p-4"
+          className={cn(
+            compact ? "rounded-lg p-3" : "rounded-xl p-4",
+            dark
+              ? "border border-white/10 bg-white/5"
+              : "rounded-xl border border-border bg-surface-elevated",
+          )}
         >
           <div className="flex items-center gap-3">
             <div
-              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-xs font-bold text-white"
+              className={cn(
+                "flex shrink-0 items-center justify-center rounded-lg text-xs font-bold text-white",
+                compact ? "h-6 w-6" : "h-8 w-8",
+              )}
               style={{ backgroundColor: accent }}
             >
               {i + 1}
             </div>
-            <div className="font-display font-semibold">{layer.name}</div>
+            <div className={cn("font-display font-semibold", dark ? "text-sm text-white" : "")}>{layer.name}</div>
           </div>
-          <div className="mt-3 flex flex-wrap gap-2">
+          <div className={cn("flex flex-wrap gap-2", compact ? "mt-2" : "mt-3")}>
             {layer.items.map((item) => (
-              <span key={item} className="rounded-md border border-border bg-surface px-2.5 py-1 text-xs text-muted">
+              <span
+                key={item}
+                className={cn(
+                  "rounded-md border px-2.5 py-1 text-xs",
+                  dark ? "border-white/10 bg-white/5 text-white/70" : "border-border bg-surface text-muted",
+                )}
+              >
                 {item}
               </span>
             ))}
