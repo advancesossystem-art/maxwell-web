@@ -200,15 +200,43 @@ export function Header() {
       className={cn("v6-nav", scrolled && "v6-nav--scrolled")}
       id="site-header"
     >
-      <div className="v6-container v6-nav-inner">
+      {/* Mobile header — logo + hamburger only (no CTA) */}
+      <div className="flex h-16 w-full items-center justify-between px-4 lg:hidden">
         <span data-nav="logo" className="mx-nav-pending inline-flex shrink-0">
-          <BrandLogo size="header" priority href="/" />
+          <BrandLogo size="sm" priority href="/" className="!h-8 w-auto max-w-[140px]" />
         </span>
-
-        <nav
-          className="hidden shrink-0 items-center gap-0.5 lg:flex"
-          aria-label="Main navigation"
+        <button
+          type="button"
+          className="flex h-11 w-11 min-h-[44px] min-w-[44px] shrink-0 items-center justify-center rounded-lg text-[var(--v6-text)] hover:bg-gray-100"
+          onClick={() => setMobileOpen(true)}
+          aria-label="Open navigation menu"
+          aria-expanded={mobileOpen}
+          aria-controls="mobile-nav-drawer"
         >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            aria-hidden="true"
+          >
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+        </button>
+      </div>
+
+      {/* Desktop header — full nav + CTA (no hamburger) */}
+      <div className="hidden w-full lg:block">
+        <div className="v6-container v6-nav-inner">
+          <span data-nav="logo" className="mx-nav-pending inline-flex shrink-0">
+            <BrandLogo size="header" priority href="/" />
+          </span>
+
+          <nav className="flex shrink-0 items-center gap-0.5" aria-label="Main navigation">
           <Link
             href="/"
             aria-current={pathname === "/" ? "page" : undefined}
@@ -312,39 +340,21 @@ export function Header() {
               </ul>
             ) : null}
           </div>
-        </nav>
+          </nav>
 
-        <div className="flex shrink-0 items-center gap-2">
-          <Link
-            href={consultationHref({ source: "header" })}
-            className="v6-btn v6-btn-primary mx-nav-pending hidden sm:inline-flex"
-            data-nav="cta"
-            onClick={() =>
-              trackCTAClick(CTA_LABELS.primary, CONVERSION_ROUTES.consultation, "header")
-            }
-          >
-            {CTA_LABELS.primary}
-            <span aria-hidden>→</span>
-          </Link>
-          <button
-            type="button"
-            className="flex h-11 w-11 items-center justify-center rounded-xl border border-[var(--v6-border)] text-[var(--v6-text)] lg:hidden"
-            onClick={() => setMobileOpen((o) => !o)}
-            aria-label={mobileOpen ? "Close menu" : "Open menu"}
-            aria-expanded={mobileOpen}
-            aria-controls="mobile-nav-drawer"
-          >
-            <span className="sr-only">{mobileOpen ? "Close" : "Menu"}</span>
-            <div className="flex w-5 flex-col gap-1.5">
-              <span
-                className={cn("block h-0.5 w-full bg-[#0f172a] transition-all", mobileOpen && "translate-y-2 rotate-45")}
-              />
-              <span className={cn("block h-0.5 w-full bg-[#0f172a] transition-all", mobileOpen && "opacity-0")} />
-              <span
-                className={cn("block h-0.5 w-full bg-[#0f172a] transition-all", mobileOpen && "-translate-y-2 -rotate-45")}
-              />
-            </div>
-          </button>
+          <div className="flex shrink-0 items-center gap-2">
+            <Link
+              href={consultationHref({ source: "header" })}
+              className="v6-btn v6-btn-primary mx-nav-pending inline-flex"
+              data-nav="cta"
+              onClick={() =>
+                trackCTAClick(CTA_LABELS.primary, CONVERSION_ROUTES.consultation, "header")
+              }
+            >
+              {CTA_LABELS.primary}
+              <span aria-hidden>→</span>
+            </Link>
+          </div>
         </div>
       </div>
 

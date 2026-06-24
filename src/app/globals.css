@@ -401,8 +401,16 @@ html[data-intro="revealing"] [data-intro-chrome] {
 }
 
 @media (max-width: 1023px) {
+  #main-content {
+    padding-right: 0;
+  }
+
   #main-content.mobile-main-pad {
     padding-bottom: calc(5rem + var(--safe-bottom));
+  }
+
+  .mobile-content-safe {
+    padding-right: 5.5rem;
   }
 }
 

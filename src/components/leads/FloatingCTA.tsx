@@ -3,7 +3,6 @@
 import { siteConfig, WHATSAPP_HREF_FLOATING } from "@/lib/constants";
 import { trackLeadClick } from "@/lib/conversion-events";
 import { useCookieBannerVisible } from "@/hooks/useMediaQuery";
-import { cn } from "@/lib/utils";
 
 const telHref = `tel:${siteConfig.phone.replace(/\s/g, "")}`;
 
@@ -14,10 +13,7 @@ export function FloatingCTA() {
 
   return (
     <div
-      className={cn(
-        "mobile-fixed-chrome fixed bottom-4 right-4 z-50 flex flex-col gap-2",
-        "lg:bottom-8 lg:right-8",
-      )}
+      className="mobile-fixed-chrome fixed bottom-6 right-4 z-50 flex flex-col gap-2 lg:bottom-8 lg:right-6"
       data-intro-chrome
     >
       <a
@@ -25,10 +21,7 @@ export function FloatingCTA() {
         target="_blank"
         rel="noopener noreferrer"
         onClick={() => trackLeadClick("whatsapp")}
-        className={cn(
-          "flex min-h-11 items-center gap-2 rounded-full border border-[#25D366]/30 bg-[#25D366] px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#25D366]/25 transition-transform hover:scale-[1.02] active:scale-[0.98]",
-          "sm:min-h-[44px]",
-        )}
+        className="flex min-h-[44px] items-center gap-2 rounded-full bg-[#25D366] px-3 py-2.5 text-sm font-medium text-white shadow-lg transition-transform hover:scale-[1.02] active:scale-[0.98]"
         aria-label="Chat on WhatsApp"
       >
         <svg className="h-5 w-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden>
@@ -40,10 +33,7 @@ export function FloatingCTA() {
       <a
         href={telHref}
         onClick={() => trackLeadClick("call")}
-        className={cn(
-          "flex min-h-11 items-center gap-2 rounded-full border border-[#4f46e5]/30 bg-[#4f46e5] px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#4f46e5]/25 transition-transform hover:scale-[1.02] active:scale-[0.98]",
-          "sm:min-h-[44px]",
-        )}
+        className="flex min-h-[44px] items-center gap-2 rounded-full bg-[#6366f1] px-3 py-2.5 text-sm font-medium text-white shadow-lg transition-transform hover:scale-[1.02] active:scale-[0.98]"
         aria-label={`Call Now ${siteConfig.phone}`}
       >
         <svg className="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden>
