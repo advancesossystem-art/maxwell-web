@@ -21,7 +21,7 @@ export default function GetEstimatePage() {
               Get your free project estimate
             </h1>
             <p className="mt-4 max-w-xl text-white/55">
-              7 quick steps. Personalized estimate within 24 hours. No obligation.
+              8 guided steps · industry-specific scoping · personalized estimate within 24 hours. No obligation.
             </p>
           </FadeIn>
         </Container>

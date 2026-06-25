@@ -65,10 +65,12 @@ export function FeatureChip({
   label,
   selected,
   onClick,
+  variant = "dark",
 }: {
   label: string;
   selected: boolean;
   onClick: () => void;
+  variant?: "light" | "dark";
 }) {
   return (
     <button
@@ -77,9 +79,13 @@ export function FeatureChip({
       aria-pressed={selected}
       className={cn(
         "min-h-11 rounded-full px-4 py-2 text-sm font-medium transition-all",
-        selected
-          ? "bg-brand-600 text-white"
-          : "border border-white/[0.1] bg-white/[0.03] text-muted hover:border-brand-500/30 hover:text-white",
+        variant === "light"
+          ? selected
+            ? "bg-brand-600 text-white shadow-md shadow-brand-600/20"
+            : "border border-[var(--v6-border)] bg-white text-[var(--v6-text-secondary)] hover:border-brand-500/40 hover:text-[var(--v6-text)]"
+          : selected
+            ? "bg-brand-600 text-white"
+            : "border border-white/[0.1] bg-white/[0.03] text-muted hover:border-brand-500/30 hover:text-white",
       )}
     >
       {label}
