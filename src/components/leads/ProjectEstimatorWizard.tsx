@@ -280,8 +280,8 @@ function ProjectEstimatorInner() {
           <DraftSavedIndicator visible={draftFlash} />
         </div>
 
-        <div className="mt-8 overflow-hidden rounded-3xl border border-[var(--v6-border)] bg-white shadow-xl shadow-[#4f46e5]/5">
-          <div className="grid lg:grid-cols-[240px_1fr]">
+        <div className="mt-8 overflow-hidden rounded-3xl border border-[var(--v6-border)] bg-white shadow-xl shadow-[#4f46e5]/5 lg:max-h-[min(720px,calc(100dvh-10rem))]">
+          <div className="grid h-full lg:grid-cols-[240px_1fr]">
             <aside className="hidden border-r border-[var(--v6-border)] bg-[#fafbff] p-6 lg:block">
               <p className="text-xs font-semibold uppercase tracking-wider text-[var(--v6-text-muted)]">
                 Your estimate path
@@ -297,10 +297,10 @@ function ProjectEstimatorInner() {
               </div>
             </aside>
 
-            <div className="p-6 sm:p-8 lg:p-10">
+            <div className="flex min-h-0 flex-col p-6 sm:p-8 lg:h-full lg:max-h-[min(720px,calc(100dvh-10rem))] lg:p-10">
               <WizardStepHeader title={stepMeta.title} subtitle={stepMeta.subtitle} />
 
-              <div className="mt-8">
+              <div className="mt-4 min-h-0 flex-1 overflow-y-auto overscroll-contain pr-0.5 lg:pr-1">
                 <CrossFade contentKey={String(step)}>
                   {step === 1 && (
                     <>
@@ -324,6 +324,7 @@ function ProjectEstimatorInner() {
                       )}
                       {selectedIndustryMeta && data.industry && (
                         <SelectionInsightPanel
+                          compact
                           title={data.industry}
                           lines={[
                             selectedIndustryMeta.compliance,
@@ -337,7 +338,7 @@ function ProjectEstimatorInner() {
 
                   {step === 2 && (
                     <>
-                      <WizardOptionGrid stepKey="project-type">
+                      <WizardOptionGrid stepKey="project-type" columns={3}>
                         {leadProjectTypes.map((t) => (
                           <WizardOptionItem key={t}>
                             <RichOptionCard
@@ -352,6 +353,7 @@ function ProjectEstimatorInner() {
                         ))}
                       </WizardOptionGrid>
                       <SelectionInsightPanel
+                        compact
                         title={data.projectType}
                         lines={[
                           `Typical delivery: ${projectTypeWizardMeta[data.projectType as LeadProjectType].typicalTimeline}`,
@@ -503,7 +505,8 @@ function ProjectEstimatorInner() {
                 </CrossFade>
               </div>
 
-              <div className="mt-10 flex flex-col-reverse gap-3 border-t border-[var(--v6-border)] pt-6 sm:flex-row sm:items-center sm:justify-between">
+              <div className="sticky bottom-0 z-10 -mx-6 mt-4 shrink-0 border-t border-[var(--v6-border)] bg-white/95 px-6 py-4 backdrop-blur-sm shadow-[0_-6px_20px_rgba(15,23,42,0.06)] sm:-mx-8 sm:px-8 lg:relative lg:bottom-auto lg:mx-0 lg:bg-white lg:px-0 lg:shadow-none lg:backdrop-blur-none">
+                <div className="flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
                 {step > 1 ? (
                   <Button type="button" variant="secondary" onClick={back} className="min-h-11">
                     Back
@@ -526,6 +529,7 @@ function ProjectEstimatorInner() {
                       Press Enter to continue
                     </p>
                   )}
+                </div>
                 </div>
               </div>
             </div>

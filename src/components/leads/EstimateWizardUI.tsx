@@ -101,11 +101,11 @@ export function WizardStepNav({
 
 export function WizardStepHeader({ title, subtitle }: { title: string; subtitle: string }) {
   return (
-    <header className="border-b border-[var(--v6-border)] pb-6">
-      <h2 className="font-display text-2xl font-bold tracking-tight text-[var(--v6-text)] sm:text-[1.65rem]">
+    <header className="shrink-0 border-b border-[var(--v6-border)] pb-4">
+      <h2 className="font-display text-xl font-bold tracking-tight text-[var(--v6-text)] sm:text-2xl">
         {title}
       </h2>
-      <p className="mt-2 max-w-xl text-sm leading-relaxed text-[var(--v6-text-secondary)]">{subtitle}</p>
+      <p className="mt-1.5 max-w-xl text-sm leading-snug text-[var(--v6-text-secondary)]">{subtitle}</p>
     </header>
   );
 }
@@ -195,10 +195,12 @@ export function SelectionInsightPanel({
   title,
   lines,
   tags,
+  compact = false,
 }: {
   title: string;
   lines: string[];
   tags?: string[];
+  compact?: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const reduce = usePrefersReducedMotion();
@@ -215,6 +217,34 @@ export function SelectionInsightPanel({
       anim.pause();
     };
   }, [title, reduce]);
+
+  if (compact) {
+    return (
+      <div
+        ref={ref}
+        className="mt-4 rounded-xl border border-[#4f46e5]/15 bg-[#f8fafc] px-3.5 py-2.5"
+        role="status"
+      >
+        <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+          <span className="text-[10px] font-semibold uppercase tracking-wider text-[#4f46e5]">Scoped</span>
+          <span className="font-display text-sm font-semibold text-[var(--v6-text)]">{title}</span>
+          <span className="text-xs text-[var(--v6-text-secondary)]">· {lines.join(" · ")}</span>
+        </div>
+        {tags?.length ? (
+          <div className="mt-2 flex flex-wrap gap-1.5">
+            {tags.map((tag) => (
+              <span
+                key={tag}
+                className="rounded-md border border-[#4f46e5]/10 bg-white px-2 py-0.5 text-[10px] font-medium text-[#4338ca]"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        ) : null}
+      </div>
+    );
+  }
 
   return (
     <div
@@ -251,9 +281,11 @@ export function SelectionInsightPanel({
 export function WizardOptionGrid({
   stepKey,
   children,
+  columns = 2,
 }: {
   stepKey: string;
   children: React.ReactNode;
+  columns?: 2 | 3;
 }) {
   const gridRef = useRef<HTMLDivElement>(null);
   const reduce = usePrefersReducedMotion();
@@ -276,7 +308,13 @@ export function WizardOptionGrid({
   }, [stepKey, reduce]);
 
   return (
-    <div ref={gridRef} className="mt-6 grid gap-3 sm:grid-cols-2">
+    <div
+      ref={gridRef}
+      className={cn(
+        "mt-4 grid gap-2.5",
+        columns === 3 ? "sm:grid-cols-2 lg:grid-cols-3" : "sm:grid-cols-2",
+      )}
+    >
       {children}
     </div>
   );
