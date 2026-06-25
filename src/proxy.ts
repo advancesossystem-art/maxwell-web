@@ -167,10 +167,9 @@ export function proxy(request: NextRequest) {
     !pathname.startsWith("/admin") &&
     !pathname.startsWith("/portal")
   ) {
-    response.headers.set(
-      "Cache-Control",
-      "public, s-maxage=3600, stale-while-revalidate=86400",
-    );
+    // Must revalidate HTML on every request — cached HTML after deploy references
+    // deleted /_next/static/chunks/* hashes and breaks the site (404 + MIME errors).
+    response.headers.set("Cache-Control", "public, max-age=0, must-revalidate");
   }
 
   if (pathname.startsWith("/api/")) {

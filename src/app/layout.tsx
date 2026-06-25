@@ -53,6 +53,11 @@ export default function RootLayout({
   return (
     <html lang="en-IN" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var k="mw-chunk-reload";window.addEventListener("error",function(e){var t=e.target;if(!t||t.tagName!=="SCRIPT"||!t.src||t.src.indexOf("/_next/static/chunks/")===-1)return;if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,"1");location.reload();},true);})();`,
+          }}
+        />
         <script src="/consent-defaults.js" defer />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.clarity.ms" />
