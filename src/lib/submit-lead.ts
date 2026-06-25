@@ -19,7 +19,7 @@ const PHONE_REQUIRED_SOURCES = new Set([
   "homepage-assessment",
 ]);
 
-const MESSAGE_REQUIRED_SOURCES = new Set(["contact", "get-estimate"]);
+const MESSAGE_REQUIRED_SOURCES = new Set(["contact"]);
 
 function isServiceSource(source: string): boolean {
   return /^service-[a-z0-9-]+$/.test(source);
