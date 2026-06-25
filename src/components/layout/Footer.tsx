@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { siteConfig } from "@/lib/constants";
+import { footerBrandNote, siteConfig } from "@/lib/constants";
 import { BrandLogo } from "@/components/layout/BrandLogo";
 import { CookieSettingsLink } from "@/components/layout/CookieSettingsLink";
 import { consultationHref, estimateHref } from "@/lib/conversion-copy";
@@ -65,6 +65,9 @@ export function Footer() {
             <BrandLogo size="footer" href="/" />
             <p className="mt-3 max-w-xs text-sm leading-snug text-[var(--v6-text-secondary)]">
               {siteConfig.tagline}. Custom software and accountable delivery for growing businesses.
+            </p>
+            <p className="mt-2 max-w-sm text-xs leading-relaxed text-[var(--v6-text-muted)]">
+              {footerBrandNote}
             </p>
             <p className="mt-3 max-w-sm text-sm leading-snug text-[var(--v6-text-secondary)]">
               {siteConfig.legalName}

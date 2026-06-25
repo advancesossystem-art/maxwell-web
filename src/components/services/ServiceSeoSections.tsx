@@ -1,35 +1,21 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { RelatedContent } from "@/components/content/RelatedContent";
-import { GeoDefinitionBlock } from "@/components/authority/GeoDefinitionBlock";
-import { GeoKeyTakeaways, buildTakeawaysFromFaqs } from "@/components/authority/GeoKeyTakeaways";
 import type { ServicePageData } from "@/lib/services-data";
 
 export function ServiceSeoSections({ service }: { service: ServicePageData }) {
-  const takeaways = buildTakeawaysFromFaqs(service.faqs, 4);
   const hasSeo =
     service.seoParagraphs?.length ||
     service.pricingTiers?.length ||
     service.comparisonTable?.length ||
-    service.processSteps?.length ||
-    takeaways.length > 0;
+    service.processSteps?.length;
 
-  if (!hasSeo) return null;
+  if (!hasSeo && !service.relatedIndustrySlugs?.length && !service.relatedBlogSlugs?.length) {
+    return null;
+  }
 
   return (
     <>
-      <section className="border-t border-[var(--v6-border)] bg-white py-12" data-seo-speakable>
-        <Container>
-          <div className="mx-auto max-w-3xl space-y-8">
-            <GeoDefinitionBlock
-              term={`What is ${service.title}?`}
-              definition={service.metaDescription}
-            />
-            {takeaways.length > 0 ? <GeoKeyTakeaways items={takeaways} /> : null}
-          </div>
-        </Container>
-      </section>
-
       {service.seoParagraphs?.length ? (
         <section className="border-t border-[var(--v6-border)] bg-white py-16">
           <Container>

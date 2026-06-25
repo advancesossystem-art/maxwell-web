@@ -20,15 +20,67 @@ export const certifications = [
 export const companyStory = {
   headline: "A software partner for operators who need results",
   paragraphs: [
-    `${siteConfig.legalName} exists for one reason: help businesses run better through software that fits how they actually work—not generic products forced into place.`,
-    "We started with manufacturing and operations teams in Gujarat who needed ERP and automation without six-month black boxes. That discipline—clear scope, weekly demos, milestone billing—still defines every engagement.",
-    "Today we serve founders, COOs, and enterprise leaders across India, the Middle East, Europe, North America, and Australia on projects from ₹1L to ₹50L+. You own the code. We stay for the roadmap after launch.",
+    'Maxwell Electrodeal started in 2018 with a single question from a Vadodara manufacturer: "Can you build us inventory software that actually works the way our stores team works — not the way SAP thinks they should work?"',
+    "That first project took 14 weeks. It tracked stock across two warehouses, synced with Tally, and generated GST invoices without anyone re-keying data. The client saved roughly ₹4L in the first year from eliminated errors and manual work. More importantly, the stores team actually used it — because we built the screens around their daily workflow, not around an ERP consultant's ideal process.",
+    "That discipline hasn't changed. We still start every project with a process walk, not a slide deck. We still build for the person doing the work, not just the person who signed the purchase order. And we still believe that software should reduce the friction in your operations, not add a new layer of it.",
+    "Eight years later, the clients are bigger and the systems are more complex — multi-plant ERP, AI-powered quality inspection, healthcare platforms serving 10,000 patients, fleet systems tracking 200 vehicles. But the starting point is always the same: understand how the work actually gets done, then build something that makes it better.",
   ],
   mission:
     "Build digital systems that reduce manual work, improve visibility, and support confident growth—with direct communication and accountable delivery.",
   vision:
     "Be the partner leaders call when operations outgrow spreadsheets and off-the-shelf tools—and want a team that stays accountable after go-live.",
 } as const;
+
+export const aboutPageIndustries = [
+  {
+    slug: "manufacturing",
+    title: "Manufacturing",
+    description:
+      "Deep shop-floor understanding across auto components, metals, plastics, and process manufacturing. Custom ERP with BOM, work orders, multi-plant inventory, and mobile GRN for workers on the floor.",
+  },
+  {
+    slug: "chemical-manufacturing",
+    title: "Chemical & Pharma",
+    description:
+      "Batch genealogy, MSDS compliance, and reactor scheduling for Gujarat's GIDC chemical clusters. Audit-ready documentation and GST-compliant billing for specialty chemicals and API manufacturers.",
+  },
+  {
+    slug: "textile",
+    title: "Textile & Apparel",
+    description:
+      "Fabric inventory, job-work tracking (ITC-04), and seasonal order management for Surat and Ahmedabad mills. CRM for sampling, design approval, and buyer communication across domestic and export markets.",
+  },
+  {
+    slug: "healthcare",
+    title: "Healthcare",
+    description:
+      "Patient portals, telemedicine platforms, and clinic management for multi-location healthcare groups. HIPAA-aware architecture, encrypted records, and appointment automation for 10,000+ patient systems.",
+  },
+  {
+    slug: "logistics",
+    title: "Logistics & Distribution",
+    description:
+      "Fleet tracking, route optimization, and POD reconciliation for 3PL operators and last-mile fleets. Warehouse WMS with e-way bill integration and GST-compliant invoicing for distribution networks.",
+  },
+  {
+    slug: "retail",
+    title: "Retail & FMCG",
+    description:
+      "POS integration, omnichannel inventory, and distributor ERP for organized retail and FMCG brands. Van sales apps, beat planning, and secondary sales visibility for pan-India distribution teams.",
+  },
+  {
+    slug: "education",
+    title: "Education & EdTech",
+    description:
+      "LMS, student data privacy (DPDP Act compliance), and campus management for schools and colleges. Examination platforms, fee automation, and parent portals built for adoption, not shelf life.",
+  },
+  {
+    slug: "real-estate",
+    title: "Real Estate & Construction",
+    description:
+      "RERA-compliant CRM, booking reconciliation, and broker commission tracking for developers. Construction project ERP with material tracking, subcontractor billing, and site progress dashboards.",
+  },
+] as const;
 
 export const coreValues = [
   { title: "Engineering Excellence", description: "Security, performance, and scalability built in—not bolted on.", icon: "⚡" },

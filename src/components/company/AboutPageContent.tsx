@@ -15,11 +15,9 @@ import {
   coreValues,
   companyFaqs,
 } from "@/lib/company-data";
-import { getAllIndustries } from "@/lib/industries-data";
-import { brandDisambiguation, siteConfig } from "@/lib/constants";
+import { aboutPageIndustries } from "@/lib/company-data";
 
 export function AboutPageContent() {
-  const industries = getAllIndustries();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
@@ -32,7 +30,6 @@ export function AboutPageContent() {
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-10">
           <FadeIn>
             <h2 className="font-display text-2xl font-bold">Our story</h2>
-            <p className="mt-4 leading-relaxed text-muted">{brandDisambiguation}</p>
             <div className="mt-4 space-y-3">
               {companyStory.paragraphs.map((p) => (
                 <p key={p.slice(0, 40)} className="leading-relaxed text-muted">
@@ -95,20 +92,25 @@ export function AboutPageContent() {
         <FadeIn>
           <h2 className="font-display text-2xl font-bold">Industries we serve</h2>
         </FadeIn>
-        <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {industries.map((ind) => (
+        <div className="mt-6 grid gap-4 sm:grid-cols-2">
+          {aboutPageIndustries.map((ind) => (
             <Link
               key={ind.slug}
               href={`/industries/${ind.slug}`}
-              className="group rounded-xl border border-border p-4 transition-all hover:border-brand-600/25 hover:bg-surface"
+              className="group rounded-xl border border-border p-5 transition-all hover:border-brand-600/25 hover:bg-surface"
             >
               <h3 className="font-display font-semibold transition-colors group-hover:text-brand-700">
                 {ind.title}
               </h3>
-              <p className="mt-1 line-clamp-2 text-sm text-muted">{ind.subheadline}</p>
+              <p className="mt-2 text-sm leading-relaxed text-muted">{ind.description}</p>
             </Link>
           ))}
         </div>
+        <p className="mt-6 text-sm text-muted">
+          <Link href="/industries" className="font-medium text-brand-600 hover:underline">
+            View all industries →
+          </Link>
+        </p>
       </PageSection>
 
       <PageSection compact tone="raised">

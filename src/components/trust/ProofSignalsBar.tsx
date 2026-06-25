@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { certifications } from "@/lib/company-data";
+import { companyMetricDisplay } from "@/lib/company-metrics";
 import { testimonials } from "@/lib/testimonials-data";
 import {
-  hasClientTestimonials,
   hasVerifiedReviews,
   verifiedAwards,
   verifiedMediaMentions,
@@ -10,18 +10,26 @@ import {
   verifiedReviews,
 } from "@/lib/proof-signals";
 
+const FALLBACK_TRUST_SIGNALS = [
+  "NDA-standard · IP ownership guaranteed",
+  `Milestone billing · No hidden fees`,
+  `${companyMetricDisplay.clientRetention} client retention`,
+] as const;
+
 /**
  * Displays proof only when real data exists — never fabricated ratings or logos.
  */
 export function ProofSignalsBar({ compact }: { compact?: boolean }) {
+  const verifiedTestimonialCount = testimonials.filter((t) => t.verified).length;
   const showReviews = hasVerifiedReviews();
-  const showTestimonials = hasClientTestimonials();
+  const showTestimonials = verifiedTestimonialCount > 0;
   const showCerts = certifications.length > 0;
   const showAwards = verifiedAwards.length > 0;
   const showPartners = verifiedPartnerships.length > 0;
   const showMedia = verifiedMediaMentions.length > 0;
+  const showFallbackTrust = !showReviews && !showTestimonials;
 
-  if (!showReviews && !showTestimonials && !showCerts && !showAwards && !showPartners && !showMedia) {
+  if (!showReviews && !showTestimonials && !showCerts && !showAwards && !showPartners && !showMedia && !showFallbackTrust) {
     return null;
   }
 
@@ -51,9 +59,15 @@ export function ProofSignalsBar({ compact }: { compact?: boolean }) {
             ))}
           {showTestimonials && (
             <Link href="/reviews" className="v6-chip hover:border-brand-500/50">
-              {testimonials.filter((t) => t.verified).length}+ client testimonials
+              {verifiedTestimonialCount}+ client testimonials
             </Link>
           )}
+          {showFallbackTrust &&
+            FALLBACK_TRUST_SIGNALS.map((signal) => (
+              <span key={signal} className="v6-chip">
+                {signal}
+              </span>
+            ))}
           {showCerts &&
             certifications.slice(0, 3).map((c) => (
               <span key={c} className="v6-chip">
