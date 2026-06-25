@@ -7,7 +7,7 @@ import type { IndustryPageData } from "@/lib/industries-data";
 
 export function IndustryUseCases({ industry }: { industry: IndustryPageData }) {
   return (
-    <section className="py-20 lg:py-28" aria-label="Use cases">
+    <section className="v6-lp-section" aria-label="Use cases">
       <Container>
         <FadeIn>
           <div className="max-w-2xl">
@@ -45,7 +45,7 @@ export function IndustryUseCases({ industry }: { industry: IndustryPageData }) {
 export function IndustryCaseStudy({ industry }: { industry: IndustryPageData }) {
   const cs = industry.caseStudy;
   return (
-    <section className="bg-surface py-20 lg:py-28" aria-label="Case study">
+    <section className="bg-surface v6-lp-section" aria-label="Case study">
       <Container>
         <FadeIn>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-600">Case Study</p>
@@ -99,7 +99,7 @@ export function IndustryCaseStudy({ industry }: { industry: IndustryPageData }) 
 
 export function IndustryWhy({ industry }: { industry: IndustryPageData }) {
   return (
-    <section className="py-20 lg:py-28" aria-label="Why Maxwell">
+    <section className="v6-lp-section" aria-label="Why Maxwell">
       <Container>
         <FadeIn>
           <div className="mx-auto max-w-2xl text-center">
@@ -135,7 +135,7 @@ export function IndustryWhy({ industry }: { industry: IndustryPageData }) {
 
 export function IndustryFAQ({ industry }: { industry: IndustryPageData }) {
   return (
-    <section className="bg-surface py-20 lg:py-28" aria-label="FAQ">
+    <section className="bg-surface v6-lp-section--tail" aria-label="FAQ">
       <Container>
         <div className="grid gap-12 lg:grid-cols-5 lg:gap-16">
           <FadeIn className="lg:col-span-2">

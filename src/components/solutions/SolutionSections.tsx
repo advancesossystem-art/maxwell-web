@@ -91,7 +91,7 @@ export function SolutionMarketInsights({ solution }: { solution: SolutionPageDat
 
 export function SolutionChallenges({ solution }: { solution: SolutionPageData }) {
   return (
-    <section className="py-20 lg:py-28" aria-label="Industry challenges">
+    <section className="v6-lp-section--lead" aria-label="Industry challenges">
       <Container>
         <FadeIn>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-600">Challenges</p>
@@ -118,7 +118,7 @@ export function SolutionChallenges({ solution }: { solution: SolutionPageData })
 
 export function SolutionApproach({ solution }: { solution: SolutionPageData }) {
   return (
-    <section className="bg-surface py-20 lg:py-28" aria-label="Recommended approach">
+    <section className="bg-surface v6-lp-section" aria-label="Recommended approach">
       <Container>
         <FadeIn>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-600">Approach</p>
@@ -156,7 +156,7 @@ export function SolutionApproach({ solution }: { solution: SolutionPageData }) {
 
 export function SolutionROI({ solution }: { solution: SolutionPageData }) {
   return (
-    <section className="py-20 lg:py-28" aria-label="ROI examples">
+    <section className="v6-lp-section" aria-label="ROI examples">
       <Container>
         <FadeIn>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-600">ROI</p>
@@ -186,7 +186,7 @@ export function SolutionCaseStudies({ solution }: { solution: SolutionPageData }
   if (studies.length === 0) return null;
 
   return (
-    <section className="bg-surface py-20 lg:py-28" aria-label="Case studies">
+    <section className="bg-surface v6-lp-section" aria-label="Case studies">
       <Container>
         <FadeIn>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-600">Case Studies</p>
@@ -213,7 +213,7 @@ export function SolutionCaseStudies({ solution }: { solution: SolutionPageData }
 
 export function SolutionIndustries({ solution }: { solution: SolutionPageData }) {
   return (
-    <section className="py-20 lg:py-28" aria-label="Industries">
+    <section className="v6-lp-section" aria-label="Industries">
       <Container>
         <FadeIn>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-600">Industries</p>
@@ -275,7 +275,7 @@ export function SolutionFAQ({ solution }: { solution: SolutionPageData }) {
   const query = `?service=${encodeURIComponent(solution.title)}`;
 
   return (
-    <section className="bg-surface py-20 lg:py-28" aria-label="FAQ">
+    <section className="bg-surface v6-lp-section--tail" aria-label="FAQ">
       <Container>
         <div className="grid gap-12 lg:grid-cols-5">
           <FadeIn className="lg:col-span-2">
@@ -320,7 +320,7 @@ export function SolutionCTA({ solution }: { solution: SolutionPageData }) {
 
   return (
     <section
-      className="relative overflow-hidden py-20 lg:py-28"
+      className="relative overflow-hidden py-16 lg:py-20"
       style={{ background: `linear-gradient(135deg, ${solution.accent}22, #030712)` }}
     >
       <Container className="text-center">

@@ -8,7 +8,7 @@ import { Card } from "@/components/design/Card";
 
 export function TrustSection() {
   return (
-    <Section className="py-20 lg:py-28" aria-label="Trust indicators">
+    <Section className="v6-lp-section" aria-label="Trust indicators">
       <FadeIn>
         <MaxwellSectionHeader
           eyebrow="Trusted engineering"

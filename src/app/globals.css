@@ -188,6 +188,43 @@ body {
   }
 }
 
+/* Stacked landing sections — avoids double py-20 gaps between siblings */
+.v6-lp-section {
+  padding-top: 2.5rem;
+  padding-bottom: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .v6-lp-section {
+    padding-top: 3rem;
+    padding-bottom: 2.5rem;
+  }
+}
+
+.v6-lp-section--lead {
+  padding-top: 3.5rem;
+  padding-bottom: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .v6-lp-section--lead {
+    padding-top: 4rem;
+    padding-bottom: 2.5rem;
+  }
+}
+
+.v6-lp-section--tail {
+  padding-top: 2.5rem;
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 1024px) {
+  .v6-lp-section--tail {
+    padding-top: 3rem;
+    padding-bottom: 5rem;
+  }
+}
+
 ::selection {
   background: rgba(37, 99, 235, 0.35);
   color: #ffffff;

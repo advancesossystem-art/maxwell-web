@@ -75,7 +75,7 @@ export function CareersPageContent() {
         description="Join engineers, designers, and leaders shipping enterprise software across India and globally."
       />
 
-      <section className="py-20 lg:py-28">
+      <section className="v6-lp-section--lead">
         <Container>
           <FadeIn><h2 className="font-display text-2xl font-bold">Life at Maxwell</h2></FadeIn>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -89,7 +89,7 @@ export function CareersPageContent() {
         </Container>
       </section>
 
-      <section className="bg-surface py-20 lg:py-28">
+      <section className="bg-surface v6-lp-section">
         <Container>
           <FadeIn><h2 className="font-display text-2xl font-bold">Benefits & perks</h2></FadeIn>
           <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -102,7 +102,7 @@ export function CareersPageContent() {
         </Container>
       </section>
 
-      <section className="py-20 lg:py-28">
+      <section className="v6-lp-section">
         <Container>
           <FadeIn><h2 className="font-display text-2xl font-bold">Growth paths</h2></FadeIn>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -116,7 +116,7 @@ export function CareersPageContent() {
         </Container>
       </section>
 
-      <section className="bg-surface py-20 lg:py-28">
+      <section className="bg-surface v6-lp-section">
         <Container>
           <FadeIn><h2 className="font-display text-2xl font-bold">Open positions</h2></FadeIn>
           <div className="mt-8 space-y-4">
@@ -136,7 +136,7 @@ export function CareersPageContent() {
         </Container>
       </section>
 
-      <section id="apply" className="py-20 lg:py-28">
+      <section id="apply" className="v6-lp-section--tail">
         <Container className="max-w-2xl">
           <FadeIn><h2 className="font-display text-2xl font-bold text-center">Apply now</h2></FadeIn>
           <form onSubmit={handleSubmit} className="mt-10 space-y-5 rounded-2xl border border-border bg-surface-elevated p-8">

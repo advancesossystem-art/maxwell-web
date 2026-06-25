@@ -103,7 +103,7 @@ export function LocalInsights({ city }: { city: CityPageData }) {
 
 export function LocalChallenges({ challenges, title }: { challenges: CityPageData["localChallenges"]; title: string }) {
   return (
-    <section className="py-20 lg:py-28" aria-label="Local business challenges">
+    <section className="v6-lp-section--lead" aria-label="Local business challenges">
       <Container>
         <FadeIn>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-600">Challenges</p>
@@ -128,7 +128,7 @@ export function LocalChallenges({ challenges, title }: { challenges: CityPageDat
 
 export function CityServices({ city }: { city: CityPageData }) {
   return (
-    <section className="bg-surface py-20 lg:py-28" aria-label="Services offered">
+    <section className="bg-surface v6-lp-section" aria-label="Services offered">
       <Container>
         <FadeIn>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-600">Services</p>
@@ -173,7 +173,7 @@ export function CityServices({ city }: { city: CityPageData }) {
 
 export function CityIndustries({ city }: { city: CityPageData }) {
   return (
-    <section className="py-20 lg:py-28" aria-label="Industry expertise">
+    <section className="v6-lp-section" aria-label="Industry expertise">
       <Container>
         <FadeIn>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-600">Industries</p>
@@ -203,7 +203,7 @@ export function CityCaseStudies({ city }: { city: CityPageData }) {
   if (studies.length === 0) return null;
 
   return (
-    <section className="bg-surface py-20 lg:py-28" aria-label="Case studies">
+    <section className="bg-surface v6-lp-section" aria-label="Case studies">
       <Container>
         <FadeIn>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-600">Case Studies</p>
@@ -241,7 +241,7 @@ export function CityCaseStudies({ city }: { city: CityPageData }) {
 
 export function CityWhyMaxwell({ city }: { city: CityPageData }) {
   return (
-    <section className="py-20 lg:py-28" aria-label="Why Maxwell">
+    <section className="v6-lp-section" aria-label="Why Maxwell">
       <Container>
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
           <FadeIn>
@@ -318,7 +318,7 @@ export function LocationFAQ({
   const query = `?location=${encodeURIComponent(locationName)}`;
 
   return (
-    <section className="bg-surface py-20 lg:py-28" aria-label="FAQ">
+    <section className="bg-surface v6-lp-section--tail" aria-label="FAQ">
       <Container>
         <div className="grid gap-12 lg:grid-cols-5">
           <FadeIn className="lg:col-span-2">

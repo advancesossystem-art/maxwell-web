@@ -11,7 +11,7 @@ import type { IndustryPageData } from "@/lib/industries-data";
 
 export function IndustryChallenges({ industry }: { industry: IndustryPageData }) {
   return (
-    <section className="py-20 lg:py-28" aria-label="Industry challenges">
+    <section className="v6-lp-section--lead" aria-label="Industry challenges">
       <Container>
         <FadeIn>
           <div className="max-w-2xl">
@@ -53,7 +53,7 @@ export function IndustryChallenges({ industry }: { industry: IndustryPageData })
 
 export function IndustrySolutions({ industry }: { industry: IndustryPageData }) {
   return (
-    <section className="bg-surface py-20 lg:py-28" aria-label="Solutions">
+    <section className="bg-surface v6-lp-section" aria-label="Solutions">
       <Container>
         <FadeIn>
           <div className="mx-auto max-w-2xl text-center">
@@ -93,7 +93,7 @@ export function IndustrySolutions({ industry }: { industry: IndustryPageData }) 
 
 export function IndustrySoftwareStack({ industry }: { industry: IndustryPageData }) {
   return (
-    <section className="py-20 lg:py-28" aria-label="Recommended software stack">
+    <section className="v6-lp-section" aria-label="Recommended software stack">
       <Container>
         <FadeIn>
           <div className="max-w-2xl">
@@ -127,7 +127,7 @@ export function IndustrySoftwareStack({ industry }: { industry: IndustryPageData
 
 export function IndustryImpactMetrics({ industry }: { industry: IndustryPageData }) {
   return (
-    <section className="bg-[#030712] py-20 lg:py-28" aria-label="Business impact">
+    <section className="bg-[#030712] v6-lp-section" aria-label="Business impact">
       <Container>
         <FadeIn>
           <div className="mx-auto max-w-2xl text-center">

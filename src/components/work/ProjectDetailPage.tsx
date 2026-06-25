@@ -97,7 +97,7 @@ export function ProjectDetailPage({ project }: { project: ProjectData }) {
       </section>
 
       {/* Challenge + Strategy */}
-      <section className="py-20 lg:py-28">
+      <section className="v6-lp-section--lead">
         <Container>
           <div className="grid gap-12 lg:grid-cols-2">
             <FadeIn>
@@ -115,7 +115,7 @@ export function ProjectDetailPage({ project }: { project: ProjectData }) {
       </section>
 
       {/* Design + Development Process */}
-      <section className="bg-surface py-20 lg:py-28">
+      <section className="bg-surface v6-lp-section">
         <Container>
           <div className="grid gap-12 lg:grid-cols-2">
             <FadeIn>
@@ -145,7 +145,7 @@ export function ProjectDetailPage({ project }: { project: ProjectData }) {
       </section>
 
       {/* Tech Stack + Features */}
-      <section className="py-20 lg:py-28">
+      <section className="v6-lp-section">
         <Container>
           <div className="grid gap-12 lg:grid-cols-2">
             <FadeIn>

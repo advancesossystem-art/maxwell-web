@@ -27,7 +27,7 @@ export function CountryLandingPage({ country }: { country: CountryPageData }) {
       />
 
       {cities.length > 0 && (
-        <section className="py-20 lg:py-28" aria-label="Cities">
+        <section className="v6-lp-section" aria-label="Cities">
           <Container>
             <FadeIn>
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-600">Cities</p>

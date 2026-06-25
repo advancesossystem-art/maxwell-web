@@ -6,7 +6,7 @@ import type { ServicePageData } from "@/lib/services-data";
 
 export function ServiceProblems({ service }: { service: ServicePageData }) {
   return (
-    <section className="py-20 lg:py-28" aria-label="Business problems">
+    <section className="v6-lp-section--lead" aria-label="Business problems">
       <Container>
         <FadeIn>
           <div className="max-w-2xl">
@@ -51,7 +51,7 @@ export function ServiceProblems({ service }: { service: ServicePageData }) {
 
 export function ServiceSolutions({ service }: { service: ServicePageData }) {
   return (
-    <section className="bg-surface py-20 lg:py-28" aria-label="Solutions">
+    <section className="bg-surface v6-lp-section" aria-label="Solutions">
       <Container>
         <FadeIn>
           <div className="mx-auto max-w-2xl text-center">
@@ -91,7 +91,7 @@ export function ServiceSolutions({ service }: { service: ServicePageData }) {
 
 export function ServiceFeatures({ service }: { service: ServicePageData }) {
   return (
-    <section className="py-20 lg:py-28" aria-label="Features">
+    <section className="v6-lp-section" aria-label="Features">
       <Container>
         <FadeIn>
           <div className="max-w-2xl">

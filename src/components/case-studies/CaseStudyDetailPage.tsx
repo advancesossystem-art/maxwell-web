@@ -158,7 +158,7 @@ export function CaseStudyDetailPage({ study }: { study: CaseStudyData }) {
       </SectionBlock>
 
       {/* Client + Initial Situation */}
-      <section className="bg-surface py-20 lg:py-28">
+      <section className="bg-surface v6-lp-section">
         <Container>
           <div className="grid gap-12 lg:grid-cols-2">
             <FadeIn>
@@ -228,7 +228,7 @@ export function CaseStudyDetailPage({ study }: { study: CaseStudyData }) {
       </SectionBlock>
 
       {/* Discovery + Architecture */}
-      <section className="bg-surface py-20 lg:py-28">
+      <section className="bg-surface v6-lp-section">
         <Container>
           <FadeIn>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-600">Discovery & Planning</p>
@@ -262,7 +262,7 @@ export function CaseStudyDetailPage({ study }: { study: CaseStudyData }) {
       </SectionBlock>
 
       {/* Design + Development */}
-      <section className="bg-surface py-20 lg:py-28">
+      <section className="bg-surface v6-lp-section">
         <Container>
           <div className="grid gap-12 lg:grid-cols-2">
             <FadeIn>

@@ -35,7 +35,7 @@ export function DiscoveryCallPageContent() {
         </Container>
       </section>
 
-      <section className="py-16 lg:py-24">
+      <section className="v6-lp-section--lead">
         <Container>
           <div className="grid gap-12 lg:grid-cols-2">
             <FadeIn>
@@ -78,7 +78,7 @@ export function DiscoveryCallPageContent() {
         </Container>
       </section>
 
-      <section className="bg-surface py-16 lg:py-24">
+      <section className="bg-surface v6-lp-section">
         <Container>
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="font-display text-2xl font-bold">Schedule your call</h2>
@@ -105,7 +105,7 @@ export function DiscoveryCallPageContent() {
         </Container>
       </section>
 
-      <section className="py-16 lg:py-24">
+      <section className="v6-lp-section--tail">
         <Container className="max-w-2xl">
           <h2 className="font-display text-2xl font-bold text-center">Or send a message</h2>
           <div className="mt-8 rounded-2xl border border-border bg-surface-elevated p-8">

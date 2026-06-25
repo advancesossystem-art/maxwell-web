@@ -8,7 +8,7 @@ import type { ServicePageData } from "@/lib/services-data";
 
 export function ServiceIndustries({ service }: { service: ServicePageData }) {
   return (
-    <section className="bg-surface py-20 lg:py-28" aria-label="Industry applications">
+    <section className="bg-surface v6-lp-section" aria-label="Industry applications">
       <Container>
         <FadeIn>
           <div className="max-w-2xl">
@@ -50,7 +50,7 @@ export function ServiceIndustries({ service }: { service: ServicePageData }) {
 
 export function ServiceProjects({ service }: { service: ServicePageData }) {
   return (
-    <section className="py-20 lg:py-28" aria-label="Project examples">
+    <section className="v6-lp-section" aria-label="Project examples">
       <Container>
         <FadeIn>
           <div className="max-w-2xl">
@@ -111,7 +111,7 @@ export function ServiceProjects({ service }: { service: ServicePageData }) {
 
 export function ServiceWhy({ service }: { service: ServicePageData }) {
   return (
-    <section className="bg-[#030712] py-20 lg:py-28" aria-label="Why Maxwell">
+    <section className="bg-[#030712] v6-lp-section" aria-label="Why Maxwell">
       <Container>
         <FadeIn>
           <div className="mx-auto max-w-2xl text-center">
@@ -153,7 +153,7 @@ export function ServiceProcessWrapper() {
 
 export function ServiceFAQ({ service }: { service: ServicePageData }) {
   return (
-    <section className="py-20 lg:py-28" aria-label="FAQ">
+    <section className="v6-lp-section--tail" aria-label="FAQ">
       <Container>
         <div className="grid gap-12 lg:grid-cols-5 lg:gap-16">
           <FadeIn className="lg:col-span-2">
