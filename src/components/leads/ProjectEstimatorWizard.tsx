@@ -75,15 +75,20 @@ const initialData: WizardFormData = {
   phone: "",
 };
 
-function getInitialData(): WizardFormData {
-  if (typeof window === "undefined") return initialData;
+function loadDraftFromStorage(): WizardFormData | null {
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) return { ...initialData, ...JSON.parse(saved) };
+    if (!saved) return null;
+    const parsed = JSON.parse(saved) as Partial<WizardFormData>;
+    const userCount = parsed.userCount ?? initialData.userCount;
+    return {
+      ...initialData,
+      ...parsed,
+      scope: scopeFromUsers(userCount),
+    };
   } catch {
-    /* ignore */
+    return null;
   }
-  return initialData;
 }
 
 function IndustryIcon({ industry }: { industry: LeadIndustry }) {
@@ -143,11 +148,16 @@ function ProjectTypeIcon({ type }: { type: LeadProjectType }) {
 function ProjectEstimatorInner() {
   const router = useRouter();
   const [step, setStep] = useState(1);
-  const [data, setData] = useState(getInitialData);
+  const [data, setData] = useState<WizardFormData>(initialData);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(false);
   const [started, setStarted] = useState(false);
   const [draftFlash, setDraftFlash] = useState(false);
+
+  useEffect(() => {
+    const draft = loadDraftFromStorage();
+    if (draft) setData(draft);
+  }, []);
 
   const stepMeta = WIZARD_STEPS[step - 1];
 
