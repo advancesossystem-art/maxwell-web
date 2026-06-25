@@ -19,9 +19,7 @@ export function buildSeoArticlesBatch(): Article[] {
     for (const service of services) {
       const slug = `${service.key}-for-${industry.slug}-india`;
       if (slug.length > 80) continue;
-      articles.push(
-        createArticle({ ...buildDeepIndustryServiceArticle(industry, service, date), noIndex: true }),
-      );
+      articles.push(createArticle(buildDeepIndustryServiceArticle(industry, service, date)));
     }
   }
 

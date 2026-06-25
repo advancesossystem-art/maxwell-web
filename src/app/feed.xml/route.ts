@@ -12,7 +12,7 @@ function escapeXml(value: string): string {
 
 export async function GET() {
   const articles = getAllArticles()
-    .filter((a) => a.publishedAt)
+    .filter((a) => a.publishedAt && !a.noIndex)
     .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
     .slice(0, 50);
 
