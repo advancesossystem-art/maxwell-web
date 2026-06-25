@@ -16,6 +16,30 @@ import {
 } from "./content-blocks";
 import type { IndustryCatalogEntry, ProgrammaticPageData, ServiceCatalogEntry } from "./types";
 
+/** Per-route SERP overrides for high-priority city × service pages (indexable). */
+const CITY_SERVICE_SEO_OVERRIDES: Record<string, { metaTitle: string; metaDescription: string }> = {
+  "surat-custom-software-development": {
+    metaTitle: "Custom Software Company Surat — Textile & Diamond",
+    metaDescription:
+      "ERP, inventory & dealer systems for Surat textile and diamond businesses. On-site discovery + Vadodara delivery. Get a Surat project estimate.",
+  },
+  "halol-ai-development": {
+    metaTitle: "AI for Manufacturers in Halol — GIDC Specialists",
+    metaDescription:
+      "Computer vision, predictive maintenance & process automation for Halol GIDC plants. India HQ, on-site discovery. Book a free AI feasibility call.",
+  },
+};
+
+function isIndexableCityServiceSlug(slug: string): boolean {
+  return slug in CITY_SERVICE_SEO_OVERRIDES;
+}
+
+function cityServiceHrefToSlug(href: string): string | null {
+  const match = href.match(/^\/locations\/india\/([^/]+)\/([^/]+)$/);
+  if (!match) return null;
+  return `${match[1]}-${match[2]}`;
+}
+
 type InternalLinkCtx = {
   service?: ServiceCatalogEntry;
   industry?: IndustryCatalogEntry;
@@ -26,10 +50,10 @@ type InternalLinkCtx = {
 
 /** Programmatic routes marked noIndex — exclude from hub internal link graphs. */
 function isNoIndexHref(href: string): boolean {
-  return (
-    /^\/industries\/[^/]+\/[^/]+$/.test(href) ||
-    /^\/locations\/india\/[^/]+\/[^/]+$/.test(href)
-  );
+  if (/^\/industries\/[^/]+\/[^/]+$/.test(href)) return true;
+  const cityServiceSlug = cityServiceHrefToSlug(href);
+  if (cityServiceSlug) return !isIndexableCityServiceSlug(cityServiceSlug);
+  return false;
 }
 
 function buildInternalLinks(
@@ -444,20 +468,6 @@ export function buildIndustryServicePage(industrySlug: string, serviceSlug: stri
   };
 }
 
-/** Per-route SERP overrides for high-priority city × service pages. */
-const CITY_SERVICE_SEO_OVERRIDES: Record<string, { metaTitle: string; metaDescription: string }> = {
-  "surat-custom-software-development": {
-    metaTitle: "Custom Software Company Surat — Textile & Diamond",
-    metaDescription:
-      "ERP, inventory & dealer systems for Surat textile and diamond businesses. On-site discovery + Vadodara delivery. Get a Surat project estimate.",
-  },
-  "halol-ai-development": {
-    metaTitle: "AI for Manufacturers in Halol — GIDC Specialists",
-    metaDescription:
-      "Computer vision, predictive maintenance & process automation for Halol GIDC plants. India HQ, on-site discovery. Book a free AI feasibility call.",
-  },
-};
-
 export function buildCityServicePage(citySlug: string, serviceSlug: string): ProgrammaticPageData | null {
   const city = programmaticCities.find((c) => c.slug === citySlug);
   const service = programmaticServices.find((s) => s.slug === serviceSlug);
@@ -471,7 +481,7 @@ export function buildCityServicePage(citySlug: string, serviceSlug: string): Pro
     slug,
     path,
     pageType: "city-service",
-    noIndex: true,
+    noIndex: !isIndexableCityServiceSlug(slug),
     metaTitle:
       seoOverride?.metaTitle ??
       `${service.shortLabel} Company ${city.name}, ${city.state} | ${city.industries[0]} Focus | ${siteConfig.name}`,
@@ -615,6 +625,10 @@ export function getIndustryServicePage(industry: string, service: string): Progr
 export function getCityServicePage(country: string, city: string, service: string): ProgrammaticPageData | undefined {
   if (country !== "india") return undefined;
   return cityServiceMap.get(`${country}/${city}/${service}`);
+}
+
+export function getIndexableCityServicePages(): ProgrammaticPageData[] {
+  return [...cityServiceMap.values()].filter((page) => !page.noIndex);
 }
 
 export function getAllComparePages(): ProgrammaticPageData[] {

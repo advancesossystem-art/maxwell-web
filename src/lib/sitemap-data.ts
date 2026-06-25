@@ -14,7 +14,7 @@ import { reportSlugs } from "./content/reports";
 import { answerSlugs } from "./answers-data";
 import { resourceCenterSlugs } from "./resource-centers-data";
 import { toolSlugs } from "./tools/registry";
-import { compareSlugs, costSlugs } from "./seo/programmatic/build-pages";
+import { compareSlugs, costSlugs, getIndexableCityServicePages } from "./seo/programmatic/build-pages";
 
 /** Phase 8 launch — use for lastmod on new service/industry URLs to speed discovery. */
 const PHASE8_LAUNCH = new Date("2026-06-18T00:00:00.000Z");
@@ -110,6 +110,13 @@ export function getLocationsSitemapEntries() {
         priority: p.country === "india" ? 0.95 : 0.84,
       });
     }
+  });
+
+  getIndexableCityServicePages().forEach((page) => {
+    entries.push({
+      url: `${siteConfig.url}${page.path}`,
+      priority: 0.85,
+    });
   });
 
   return entries;

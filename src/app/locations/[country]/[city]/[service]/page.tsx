@@ -2,15 +2,18 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ProgrammaticSeoPage } from "@/components/seo/ProgrammaticSeoPage";
 import { buildSeoMetadata } from "@/lib/seo/metadata-utils";
-import { getCityServicePage } from "@/lib/seo/programmatic/build-pages";
+import { getCityServicePage, cityServiceParams } from "@/lib/seo/programmatic/build-pages";
 
 type PageProps = { params: Promise<{ country: string; city: string; service: string }> };
 
-/** Thin noindex pages — on-demand only to keep builds fast */
+/** Thin noindex pages — on-demand only to keep builds fast; indexable overrides are prebuilt. */
 export const dynamicParams = true;
 
 export async function generateStaticParams() {
-  return [];
+  return cityServiceParams.filter(({ country, city, service }) => {
+    const page = getCityServicePage(country, city, service);
+    return page && !page.noIndex;
+  });
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
