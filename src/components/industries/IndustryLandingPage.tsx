@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { IndustryHero, IndustryWorkflow } from "@/components/industries/IndustryHero";
 import {
@@ -43,6 +44,9 @@ const industryCaseStudySlug: Partial<Record<IndustrySlug, string>> = {
 export function IndustryLandingPage({ industry }: { industry: IndustryPageData }) {
   const geo = buildIndustryGeo(industry);
   const stats = getStatisticsForIndustry(industry.slug);
+  const showErpRoiLink = [...stats.industry, ...stats.market, ...stats.benchmark].some(
+    (s) => s.category === "erp",
+  );
 
   return (
     <>
@@ -50,6 +54,16 @@ export function IndustryLandingPage({ industry }: { industry: IndustryPageData }
       <IndustryHero industry={industry} />
       <GeoContentSection geo={geo} />
       <StatisticsPanel {...stats} />
+      {showErpRoiLink ? (
+        <Container className="border-b border-border pb-10">
+          <Link
+            href="/tools/erp-roi-calculator"
+            className="inline-flex items-center gap-1 text-sm font-semibold text-brand-600 hover:text-brand-500"
+          >
+            Free ERP ROI Calculator — estimate 5-year payback →
+          </Link>
+        </Container>
+      ) : null}
       <ProofSignalsBar />
       <IndustryFocusAreas industry={industry} />
       <IndustryWorkflow industry={industry} />

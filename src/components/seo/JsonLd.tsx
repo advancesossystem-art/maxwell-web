@@ -240,6 +240,7 @@ export function CompanyPageJsonLd({
             url: siteConfig.url,
             foundingDate: "2018",
             numberOfEmployees: { "@type": "QuantitativeValue", value: 50 },
+            areaServed: { "@type": "Country", name: "India" },
           },
         }
       : {}),
@@ -257,6 +258,7 @@ export function CompanyPageJsonLd({
     telephone: siteConfig.phone,
     foundingDate: "2018",
     address: { "@type": "PostalAddress", addressCountry: "IN" },
+    ...(isAboutPage ? { areaServed: { "@type": "Country", name: "India" } } : {}),
   };
 
   const breadcrumbSchema = {
@@ -341,14 +343,29 @@ export function CityPageJsonLd({ city }: { city: import("@/lib/locations-data").
 
 export function CountryPageJsonLd({ country }: { country: import("@/lib/locations-data").CountryPageData }) {
   const url = `${siteConfig.url}/locations/${country.slug}`;
+  const isSingapore = country.slug === "singapore";
 
-  const orgSchema = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: siteConfig.legalName,
-    url: siteConfig.url,
-    areaServed: country.name,
-  };
+  const orgSchema = isSingapore
+    ? {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        name: `${siteConfig.name} — ${country.name}`,
+        description: country.metaDescription,
+        url,
+        provider: {
+          "@type": "Organization",
+          name: siteConfig.legalName,
+          url: siteConfig.url,
+        },
+        areaServed: { "@type": "Country", name: "SG" },
+      }
+    : {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        name: siteConfig.legalName,
+        url: siteConfig.url,
+        areaServed: country.name,
+      };
 
   const indiaLocalBusinessRef =
     country.slug === "india"
@@ -558,7 +575,7 @@ export function ToolPageJsonLd({ tool }: { tool: import("@/lib/tools/types").Too
 
   const appSchema = {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
+    "@type": tool.slug === "erp-roi-calculator" ? "WebApplication" : "SoftwareApplication",
     name: tool.name,
     description: tool.description,
     url,
@@ -571,6 +588,33 @@ export function ToolPageJsonLd({ tool }: { tool: import("@/lib/tools/types").Too
     },
     provider: { "@id": seoIds.organization },
   };
+
+  const howToSchema =
+    tool.slug === "erp-roi-calculator"
+      ? {
+          "@context": "https://schema.org",
+          "@type": "HowTo",
+          name: "Calculate ERP ROI for your manufacturing business",
+          description: tool.description,
+          step: [
+            {
+              "@type": "HowToStep",
+              name: "Enter company size and manual hours",
+              text: "Input employee count and weekly hours spent on manual data entry and reconciliation.",
+            },
+            {
+              "@type": "HowToStep",
+              name: "Set inventory and error assumptions",
+              text: "Adjust inventory write-off rate and order error percentage to match your operations.",
+            },
+            {
+              "@type": "HowToStep",
+              name: "Review 5-year payback projection",
+              text: "See estimated ERP payback period, annual savings, and five-year ROI instantly.",
+            },
+          ],
+        }
+      : null;
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -585,6 +629,9 @@ export function ToolPageJsonLd({ tool }: { tool: import("@/lib/tools/types").Too
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(appSchema) }} />
+      {howToSchema ? (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      ) : null}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
     </>
   );

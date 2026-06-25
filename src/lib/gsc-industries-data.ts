@@ -462,9 +462,9 @@ export const gscIndustriesData: Record<(typeof gscIndustrySlugs)[number], Indust
     headline: "Student Data Privacy Software & Education Management Systems India",
     subheadline:
       "Maxwell builds student data privacy software and education management systems aligned with India's Digital Personal Data Protection (DPDP) Act — consent management, role-based access, encryption, audit trails, and parent-facing portals for schools, colleges, and EdTech platforms serving Indian learners.",
-    metaTitle: "Student Data Privacy Software India | DPDP-Aligned EdTech Systems",
+    metaTitle: "Student Data Privacy Software India — DPDP Ready",
     metaDescription:
-      "Student data privacy software & education management systems for India — DPDP Act compliance, consent logs, access controls, LMS & campus admin. Built by Maxwell Electrodeal.",
+      "Protect student PII with consent logs, role-based access & audit trails for schools and EdTech. DPDP-aligned builds from Vadodara. Request a privacy assessment.",
     keywords: [
       "student data privacy software",
       "education data privacy India",

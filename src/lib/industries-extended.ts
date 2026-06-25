@@ -10,19 +10,34 @@ const sharedWhyMaxwell = [
 
 const coreSlugs = new Set(["manufacturing", "healthcare", "education", "logistics", "retail", "construction"]);
 
+const EXTENDED_INDUSTRY_SEO: Partial<
+  Record<string, Pick<IndustryPageData, "metaTitle" | "metaDescription" | "startingPrice">>
+> = {
+  cement: {
+    metaTitle: "Cement Plant Software India — Dispatch & Dealer ERP",
+    metaDescription:
+      "Production tracking, weighbridge dispatch & dealer portals for cement plants and RMC units. GST-ready ERP from ₹5L. Get a cement software quote.",
+    startingPrice: "₹5,00,000",
+  },
+};
+
 export function buildExtendedIndustry(slug: string): IndustryPageData | undefined {
   if (coreSlugs.has(slug)) return undefined;
   const entry = getIndustryCatalog(slug);
   if (!entry) return undefined;
 
   const name = entry.name;
+  const seo = EXTENDED_INDUSTRY_SEO[slug];
   return {
     slug: entry.slug as IndustryPageData["slug"],
     title: name,
     headline: `Software for ${name}. Built for How You Operate.`,
     subheadline: `Custom ERP, CRM, mobile apps, and AI for ${entry.focus}—GST-ready, Tally-integrated, engineered by ${name} domain specialists.`,
-    metaTitle: `${name} Software Development Company India | ERP, CRM & AI`,
-    metaDescription: `${name} software development in India—custom ERP, CRM, mobile apps & AI for ${entry.focus}. Compliance: ${entry.compliance}. Maxwell Electrodeal.`,
+    metaTitle: seo?.metaTitle ?? `${name} Software Development Company India | ERP, CRM & AI`,
+    metaDescription:
+      seo?.metaDescription ??
+      `${name} software development in India—custom ERP, CRM, mobile apps & AI for ${entry.focus}. Compliance: ${entry.compliance}. Maxwell Electrodeal.`,
+    ...(seo?.startingPrice ? { startingPrice: seo.startingPrice } : {}),
     keywords: [
       `${name.toLowerCase()} software development company`,
       `${name.toLowerCase()} ERP development India`,

@@ -643,9 +643,9 @@ export const servicesData: Record<ServiceSlug, ServicePageData> = {
     headline: "Custom CRM Development India — Sales & Customer Management",
     subheadline:
       "Custom CRM software for Indian B2B sales teams—pipeline management, WhatsApp automation, dealer hierarchies, and ERP integration without per-seat Salesforce fees.",
-    metaTitle: "Custom CRM Development India — Sales & Customer Management",
+    metaTitle: "Custom CRM India — No Per-Seat Fees | From ₹5L",
     metaDescription:
-      "Custom CRM development company in India. Sales pipelines, lead automation, WhatsApp CRM, manufacturing dealer CRM. ROI-focused builds from ₹5L.",
+      "CRM for Indian B2B sales: pipelines, dealer hierarchies, WhatsApp follow-ups & ERP sync. Skip Salesforce seat tax. Get a free CRM scope call.",
     keywords: [
       "CRM development company India",
       "CRM software development services",

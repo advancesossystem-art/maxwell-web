@@ -85,9 +85,34 @@ function serviceModules(service: ServiceCatalogEntry, industry: IndustryCatalogE
 /** Targeted SERP meta overrides — slug-specific only; shared template unchanged. */
 const ARTICLE_SEO_OVERRIDES: Record<string, { metaTitle: string; metaDescription: string }> = {
   "software-for-education-india": {
-    metaTitle: "Education Software India — ₹6L+",
+    metaTitle: "Education Software India — Cost & Build Guide 2026",
     metaDescription:
-      "School and college software in India: LMS, fee collection, exams and parent apps. From ₹6,00,000. DPDP tips and build-vs-buy guide. Free estimate in 24 hours.",
+      "LMS, fees, exams & parent apps for Indian schools — real ₹6L+ pricing, build vs buy, and DPDP checklist. Read the guide — get a free estimate.",
+  },
+  "ai-for-chemical-india": {
+    metaTitle: "AI for Chemical Plants India — Cost & ROI Guide",
+    metaDescription:
+      "Batch traceability, reactor scheduling & MSDS workflows — AI use cases, ₹ pricing and 90-day roadmap for chemical manufacturers. Read now.",
+  },
+  "ai-for-warehouse-india": {
+    metaTitle: "AI for Warehouses India — Pick, Shrink & 3PL Guide",
+    metaDescription:
+      "Cut pick-path waste and inventory shrinkage with AI for Indian warehouses. Costs, build vs buy & GST workflows explained. Get a free estimate.",
+  },
+  "software-for-warehouse-india": {
+    metaTitle: "Warehouse Software India — WMS Cost Guide 2026",
+    metaDescription:
+      "WMS features Indian 3PLs need: e-way bill, pick paths, billing disputes & Tally sync. Real pricing and build vs buy. Explore the full guide.",
+  },
+  "mobile-for-import-export-india": {
+    metaTitle: "Import Export App India — LC & Shipping Docs",
+    metaDescription:
+      "Mobile apps for Indian traders: shipping docs, LC reconciliation & multi-currency invoicing on the go. Cost guide + stack advice. Read more.",
+  },
+  "ai-for-renewable-energy-india": {
+    metaTitle: "AI for Solar & Wind EPC India — O&M Guide 2026",
+    metaDescription:
+      "Commissioning checklists, O&M ticket triage & spares tracking for solar/wind EPCs in India. AI costs, use cases & ROI. See the implementation guide.",
   },
 };
 
@@ -291,7 +316,7 @@ export function buildDeepIndustryServiceArticle(
       },
       {
         question: `What ROI should ${industry.name} expect from ${service.shortLabel}?`,
-        answer: `Target measurable outcomes in 90 days: reduced re-keying hours, improved inventory accuracy %, faster lead response, or shorter month-end close. Use /tools/roi-calculator to model payback before signing.`,
+        answer: `Target measurable outcomes in 90 days: reduced re-keying hours, improved inventory accuracy %, faster lead response, or shorter month-end close. Use /tools/erp-roi-calculator to model payback before signing.`,
       },
     ],
     relatedSlugs: [

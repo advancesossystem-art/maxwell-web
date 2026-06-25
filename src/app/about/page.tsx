@@ -7,9 +7,9 @@ import { companyStory } from "@/lib/company-data";
 import { brandDisambiguation, siteConfig } from "@/lib/constants";
 
 export const metadata = createMetadata({
-  title: "About Maxwell Electrodeal — 50+ Projects, Vadodara",
+  title: "Custom ERP Team in Vadodara — 50+ Projects",
   description:
-    "Vadodara IT company since 2018, based in Gujarat. 50+ ERP, CRM and web projects across India. Process, team, and free consultation — reply within 24 hours.",
+    "Engineering team behind 50+ ERP & CRM builds for Indian manufacturers. Vadodara HQ since 2018. See our process — book a free strategy call.",
   path: "/about",
 });
 

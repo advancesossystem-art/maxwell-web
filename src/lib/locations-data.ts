@@ -261,8 +261,9 @@ export const internationalCountries: CountryPageData[] = [
     slug: "singapore",
     name: "Singapore",
     region: "international",
-    metaTitle: "Software Development Company Singapore",
-    metaDescription: "Singapore software development. APAC hub for fintech, logistics, SaaS. Maxwell Electrodeal enterprise delivery.",
+    metaTitle: "ERP & Custom Software for Singapore — India HQ",
+    metaDescription:
+      "APAC delivery from India HQ: custom ERP, fintech & logistics platforms with SGT overlap and milestone billing. Book a Singapore discovery call.",
     headline: "Software Development for Singapore & APAC",
     subheadline: "APAC-focused delivery for fintech, logistics, and enterprise platforms.",
     overview: "Singapore serves as APAC headquarters for many firms. We support regional rollouts with multi-currency, compliance-aware architecture.",

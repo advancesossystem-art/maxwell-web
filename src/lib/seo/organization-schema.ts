@@ -221,6 +221,7 @@ export function buildPersonAuthorNode(author: Author) {
 export function buildServiceSchema(service: ServicePageData) {
   const url = `${siteConfig.url}/services/${service.slug}`;
   const { minPrice, maxPrice } = getServiceOfferPrices(service);
+  const reviewCount = process.env.GOOGLE_BUSINESS_REVIEW_COUNT?.trim();
 
   return {
     "@context": "https://schema.org",
@@ -245,6 +246,16 @@ export function buildServiceSchema(service: ServicePageData) {
         priceCurrency: "INR",
       },
     },
+    ...(reviewCount
+      ? {
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: String(companyMetrics.satisfactionScore),
+            reviewCount,
+            bestRating: String(companyMetrics.satisfactionScale),
+          },
+        }
+      : {}),
   };
 }
 

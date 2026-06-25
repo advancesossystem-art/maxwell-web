@@ -43,7 +43,7 @@ export const industryStatistics: SourcedStatistic[] = [
     label: "Average ERP ROI payback",
     context: "Mid-market manufacturers with custom ERP and Tally integration.",
     source: "Maxwell Electrodeal — ERP Adoption in Manufacturing Report",
-    sourceUrl: "/reports/erp-adoption-manufacturing",
+    sourceUrl: "/tools/erp-roi-calculator",
     publishedDate: "2026-03-01",
     category: "erp",
     section: "benchmark",
