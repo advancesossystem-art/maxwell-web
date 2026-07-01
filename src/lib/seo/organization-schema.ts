@@ -6,10 +6,9 @@ import type { Author } from "@/lib/content/authors";
 import type { ServicePageData } from "@/lib/services-data";
 import type { IndustryPageData } from "@/lib/industries-data";
 import { headquarters, seoIds, socialProfiles } from "@/lib/seo/config";
-import { globalHeadTerms, headTerms } from "@/lib/seo/search-keywords";
 
 export const ORGANIZATION_DESCRIPTION =
-  "India-based custom software development company offering ERP, CRM, AI, web and mobile app solutions for businesses across India and globally.";
+  "Maxwell Electrodeal builds custom websites, ERP, CRM, AI, and mobile software for manufacturers and businesses in India. Based in Vadodara, Gujarat.";
 
 const ORGANIZATION_ALTERNATE_NAMES = [
   "Maxwell Electrodeal Private Limited",
@@ -124,12 +123,13 @@ export function buildOrganizationNode() {
     ],
     sameAs: socialProfiles,
     knowsAbout: [
-      ...headTerms.slice(0, 8),
-      ...globalHeadTerms.slice(0, 6),
-      "Website Development Company India",
-      "ERP Software Development",
-      "CRM Software Development",
-      "SaaS Product Development",
+      "Website Development",
+      "Manufacturer Website Development India",
+      "Custom Software Development",
+      "ERP Software India",
+      "CRM Software India",
+      "Web Development Vadodara",
+      "Next.js Development India",
     ],
     speakable: {
       "@type": "SpeakableSpecification" as const,

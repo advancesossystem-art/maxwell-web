@@ -102,20 +102,20 @@ export const socialProfiles: string[] = [
 ];
 
 export const homeSeo = {
-  title:
-    "Maxwell Electrodeal | Full-Service IT Company India — ERP, CRM, AI & Cloud",
+  title: "Website Development & Custom Software Company India | Maxwell Electrodeal",
   description:
-    "Maxwell Electrodeal — India's full-service IT company. Custom ERP, CRM, AI, Cloud, Cybersecurity & Digital Transformation. Vadodara, Gujarat. Serving India & globally.",
+    "Maxwell Electrodeal — custom websites, ERP, CRM & software for Indian manufacturers and businesses. Based in Vadodara, Gujarat. Free estimate. GST invoice. 100% code ownership.",
   keywords: [
-    "software development company India",
-    "IT company Vadodara",
-    "AI consulting services India",
-    "cloud services company India",
-    "cybersecurity services India",
-    "digital transformation company India",
-    "managed IT services India",
-    "custom ERP India",
+    "website development company India",
+    "custom software company Vadodara",
+    "website development Vadodara",
+    "manufacturer website India",
+    "ERP software India",
     "CRM software Vadodara",
+    "web development company Gujarat",
+    "software company Vadodara",
+    "IT company India",
+    "custom website development India",
   ],
   path: "/",
 } as const;

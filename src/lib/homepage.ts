@@ -2,32 +2,44 @@
 
 export const homeHero = {
   eyebrow: "Maxwell Electrodeal · Business Technology Partner",
-  headlineLine1: "Cut manual work.",
-  headlineLine2: "Ship software that pays off.",
+  headlineLine1: "Websites and software that grow your business.",
+  headlineLine2: "Built in Vadodara. Delivered across India.",
   subhead:
-    "Custom ERP, CRM, and AI systems that reduce ops chaos, improve visibility, and deliver ROI within months—not slide decks that never launch.",
+    "Custom websites for manufacturers and businesses — plus ERP, CRM, and AI systems that cut manual work and deliver measurable ROI. From ₹75,000.",
   /** Social proof in first viewport — pairs with primary CTA */
-  proofOutcome: "10,000+ users on a live healthcare portal · 99.9% uptime since launch",
-  proofLink: { label: "See case outcomes", href: "/case-studies" },
+  proofOutcome:
+    "263-page manufacturer website live in 6 weeks · 10,000+ users on a healthcare portal · 99.9% uptime",
+  proofLink: { label: "See case studies", href: "/case-studies" },
 } as const;
 
 export const heroServiceBadges = [
+  { label: "Websites", href: "/services/website-development" },
   { label: "ERP", href: "/services/erp-development" },
   { label: "CRM", href: "/services/crm-development" },
   { label: "AI", href: "/services/ai-solutions" },
-  { label: "Automation", href: "/services/custom-software-development" },
   { label: "Mobile Apps", href: "/services/mobile-app-development" },
   { label: "Custom Software", href: "/services/custom-software-development" },
 ] as const;
 
 export const heroTrustMetrics = [
   { value: "50+", label: "Projects delivered" },
+  { value: "₹75K", label: "Starting price for websites" },
   { value: "15+", label: "Industries served" },
   { value: "95%", label: "Client satisfaction" },
   { value: "<4hr", label: "Response time" },
 ] as const;
 
 export const businessProblems = [
+  {
+    title: "No website or outdated one",
+    description:
+      "Your buyers Google you — and either find nothing, or find a 10-year-old page that looks worse than your competitor's.",
+  },
+  {
+    title: "100% dependent on IndiaMART or TradeIndia",
+    description:
+      "You pay ₹1.5–3L/year for leads you don't own, next to 20 competitors, on someone else's platform.",
+  },
   {
     title: "Manual operations",
     description: "Critical work still depends on phone calls, paper forms, and people re-keying the same data.",
@@ -60,6 +72,13 @@ export const businessProblems = [
 
 export const problemSolutionMap = [
   {
+    problem: "No website or IndiaMART-only presence",
+    solution: "Manufacturer Website",
+    description:
+      "Build a product catalog website that generates direct Google inquiries — without paying platform fees forever.",
+    href: "/services/website-development-for-manufacturers",
+  },
+  {
     problem: "Inventory errors & stock chaos",
     solution: "ERP Solution",
     description: "Real-time inventory, production planning, and Tally/GST integration.",
@@ -89,10 +108,10 @@ export const transformationStory = {
   beforeLabel: "Before",
   afterLabel: "After Maxwell",
   before: [
-    "Scattered spreadsheets",
-    "Manual handoffs between teams",
-    "Decisions made without live data",
-    "Software that fights your process",
+    "No website — buyers can't find you on Google",
+    "Paying IndiaMART ₹2L/year for leads you don't own",
+    "Scattered spreadsheets and manual handoffs",
+    "Software that fights your process instead of helping it",
   ],
   after: [
     "One connected operational flow",

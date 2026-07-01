@@ -56,6 +56,18 @@ export function getPagesSitemapEntries() {
   });
 }
 
+/** Manufacturer website pages launched July 2026 */
+const MANUFACTURER_LAUNCH = new Date("2026-07-01T00:00:00.000Z");
+
+const manufacturerServicePages = [
+  "/services/website-development-for-manufacturers",
+  "/services/website-development/chemical-manufacturer",
+  "/services/website-development/pharmaceutical-company",
+  "/services/website-development/engineering-company",
+  "/services/website-development/textile-manufacturer",
+  "/services/website-development/ceramic-manufacturer",
+];
+
 export function getServicesSitemapEntries() {
   return [
     { url: `${siteConfig.url}/services`, priority: 0.9, changeFreq: "weekly" as const },
@@ -64,6 +76,12 @@ export function getServicesSitemapEntries() {
       priority: phase8ServiceSet.has(slug) ? 0.9 : 0.85,
       lastModified: phase8ServiceSet.has(slug) ? PHASE8_LAUNCH : undefined,
       changeFreq: phase8ServiceSet.has(slug) ? ("weekly" as const) : ("monthly" as const),
+    })),
+    ...manufacturerServicePages.map((path) => ({
+      url: `${siteConfig.url}${path}`,
+      priority: 0.92,
+      lastModified: MANUFACTURER_LAUNCH,
+      changeFreq: "monthly" as const,
     })),
   ];
 }
@@ -92,6 +110,12 @@ export function getWorkSitemapEntries() {
       url: `${siteConfig.url}/case-studies/${slug}`,
       priority: 0.85,
     })),
+    {
+      url: `${siteConfig.url}/case-studies/drashti-chemicals`,
+      priority: 0.9,
+      lastModified: MANUFACTURER_LAUNCH,
+      changeFreq: "monthly" as const,
+    },
   ];
 }
 
@@ -100,9 +124,13 @@ export function getLocationsSitemapEntries() {
 
   getLocationStaticParams().forEach((p) => {
     if (p.city) {
+      const isVadodara = p.country === "india" && p.city === "vadodara";
       entries.push({
         url: `${siteConfig.url}/locations/${p.country}/${p.city}`,
-        priority: p.country === "india" ? 0.91 : 0.82,
+        priority: isVadodara ? 0.95 : p.country === "india" ? 0.91 : 0.82,
+        ...(isVadodara
+          ? { lastModified: MANUFACTURER_LAUNCH, changeFreq: "monthly" as const }
+          : {}),
       });
     } else {
       entries.push({

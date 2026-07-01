@@ -7,6 +7,7 @@ import { HomepageStructuredData } from "@/components/seo/HomepageStructuredData"
 import { GlobalTrustBar } from "@/components/conversion/GlobalTrustBar";
 import { TrustProofStrip } from "@/components/conversion/TrustProofStrip";
 import { RiskReductionBar } from "@/components/conversion/RiskReductionBar";
+import { HomeWhatWeBuild } from "@/components/home/HomeWhatWeBuild";
 import { HomeProblem } from "@/components/home/HomeProblem";
 
 const HomeProblemSolutionMap = dynamic(
@@ -81,6 +82,7 @@ export default function HomePage() {
       <TrustProofStrip />
       <GlobalTrustBar />
       <RiskReductionBar />
+      <HomeWhatWeBuild />
       <HomeProblem />
       <HomeProblemSolutionMap />
       <HomeSolution />

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { LeadContactFormFromUrl } from "@/components/leads/LeadContactForm";
 import { PageSection } from "@/components/design/PageSection";
 import { Card } from "@/components/design/Card";
@@ -85,6 +86,12 @@ export function ContactPageContent() {
               <Card className="mt-6" interactive={false}>
                 <p className="font-display font-semibold text-[var(--v6-text)]">{siteConfig.legalName}</p>
                 <Caption className="mt-2 block">{siteConfig.address}</Caption>
+                <Link
+                  href="/locations/india/vadodara"
+                  className="mt-3 inline-block text-sm font-medium text-brand-600 hover:underline"
+                >
+                  View our Vadodara service page →
+                </Link>
                 <Caption className="mt-4 block">Response time: within 24 hours</Caption>
               </Card>
               <div className="mt-6 overflow-hidden rounded-2xl border border-[var(--v6-border)]">

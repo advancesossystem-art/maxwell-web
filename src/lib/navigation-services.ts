@@ -44,11 +44,12 @@ export const servicesNavGroups: NavServiceGroup[] = [
   {
     title: "Software Development",
     links: [
-      { label: "Custom ERP", href: "/services/erp-development" },
+      { label: "🌐 Website Development", href: "/services/website-development" },
+      { label: "🏭 Manufacturer Websites", href: "/services/website-development-for-manufacturers" },
+      { label: "🔥 Custom ERP", href: "/services/erp-development" },
       { label: "CRM Development", href: "/services/crm-development" },
-      { label: "Web Development", href: "/services/website-development" },
-      { label: "Mobile Apps", href: "/services/mobile-app-development" },
       { label: "Custom Software", href: "/services/custom-software-development" },
+      { label: "Mobile Apps", href: "/services/mobile-app-development" },
       { label: "SaaS Development", href: "/services/saas-development" },
     ],
   },

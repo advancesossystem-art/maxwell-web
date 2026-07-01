@@ -13,13 +13,27 @@ export function createMetadata({
   description,
   path = "",
   noIndex = false,
+  keywords,
+  openGraphType = "website",
+  publishedTime,
 }: {
   title?: string;
   description?: string;
   path?: string;
   noIndex?: boolean;
+  keywords?: string[];
+  openGraphType?: "website" | "article";
+  publishedTime?: string;
 }): Metadata {
-  return buildSeoMetadata({ title, description, path, noIndex });
+  return buildSeoMetadata({
+    title,
+    description,
+    path,
+    noIndex,
+    keywords,
+    openGraphType,
+    publishedTime,
+  });
 }
 
 export function createServiceMetadata(service: {

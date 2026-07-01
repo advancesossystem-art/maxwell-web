@@ -119,7 +119,7 @@ export function Hero() {
               ))}
             </ul>
 
-            <ul className="v6-trust-bar mobile-content-safe grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <ul className="v6-trust-bar mobile-content-safe grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
               {heroTrustMetrics.map((stat, i) => (
                 <li key={stat.label} className="v6-trust-item">
                   <span className="v6-trust-icon">
