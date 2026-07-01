@@ -1,3 +1,4 @@
+import { EarlyClientSetup } from "@/components/seo/EarlyClientSetup";
 import { GlobalSiteJsonLd } from "@/components/seo/GlobalSiteJsonLd";
 import { AnalyticsScripts } from "@/components/seo/AnalyticsScripts";
 import { LayoutClientExtras } from "@/components/layout/LayoutClientExtras";
@@ -12,6 +13,7 @@ export function LayoutBody({
 }) {
   return (
     <>
+      <EarlyClientSetup />
       <GlobalSiteJsonLd />
       <SiteChromeClient>{children}</SiteChromeClient>
       <AnalyticsScripts nonce={nonce} />

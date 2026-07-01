@@ -9,6 +9,7 @@ import { TrustProofStrip } from "@/components/conversion/TrustProofStrip";
 import { RiskReductionBar } from "@/components/conversion/RiskReductionBar";
 import { HomeWhatWeBuild } from "@/components/home/HomeWhatWeBuild";
 import { HomeProblem } from "@/components/home/HomeProblem";
+import { HomepageAssessment } from "@/components/leads/HomepageAssessment";
 
 const HomeProblemSolutionMap = dynamic(
   () => import("@/components/home/HomeProblemSolutionMap").then((m) => ({ default: m.HomeProblemSolutionMap })),
@@ -24,10 +25,6 @@ const HomeBusinessOutcomes = dynamic(
 );
 const ServicesExperience = dynamic(
   () => import("@/components/home/ServicesExperience").then((m) => ({ default: m.ServicesExperience })),
-  { ssr: true },
-);
-const HomepageAssessment = dynamic(
-  () => import("@/components/leads/HomepageAssessment").then((m) => ({ default: m.HomepageAssessment })),
   { ssr: true },
 );
 const IndustriesShowcase = dynamic(
