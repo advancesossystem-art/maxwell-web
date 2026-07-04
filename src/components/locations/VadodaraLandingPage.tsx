@@ -20,7 +20,7 @@ const services = [
   {
     title: "Manufacturer Websites",
     description:
-      "Standalone websites that generate direct buyer inquiries — replacing IndiaMART dependency for chemical, pharma, and engineering companies in Gujarat.",
+      "Standalone websites that generate direct buyer inquiries — replacing paid directory dependency for chemical, pharma, and engineering companies in Gujarat.",
     href: "/services/website-development-for-manufacturers",
   },
   {
@@ -290,7 +290,7 @@ export function VadodaraLandingPage() {
             </h3>
             <p className="mt-4 max-w-2xl text-sm leading-relaxed text-slate-300">
               263-page product website with 154 chemicals across 47 categories. Built on Next.js
-              14. Desktop PageSpeed: 94. Replacing IndiaMART traffic with direct Google inquiries.
+              14. Desktop PageSpeed: 94. Replacing paid directory traffic with direct Google inquiries.
             </p>
             <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4 max-w-xl">
               {[
