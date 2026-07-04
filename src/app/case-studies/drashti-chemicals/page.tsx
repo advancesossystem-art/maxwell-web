@@ -90,7 +90,7 @@ export default function DrashtiChemicalsCaseStudy() {
           </h1>
           <p className="mt-4 text-lg text-slate-300 max-w-2xl">
             How Maxwell Electrodeal built a 263-page Next.js product catalog for an industrial
-            chemical supplier in Vadodara — replacing IndiaMART dependency with direct Google leads.
+            chemical supplier in Vadodara — replacing paid directory dependency with direct Google leads.
           </p>
           <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4 max-w-2xl">
             {metrics.map((m) => (
@@ -112,7 +112,7 @@ export default function DrashtiChemicalsCaseStudy() {
             </h2>
             <p className="text-[var(--v6-text-secondary,#475569)] leading-relaxed">
               Drashti Chemicals, a Vadodara-based industrial chemical supplier, had no standalone
-              web presence. All buyer inquiries came through IndiaMART and TradeIndia listings —
+              web presence. All buyer inquiries came through paid B2B directory listings —
               costing ₹2L+ per year with no ownership of the leads or data.
             </p>
             <p className="mt-4 text-[var(--v6-text-secondary,#475569)] leading-relaxed">
@@ -206,7 +206,7 @@ export default function DrashtiChemicalsCaseStudy() {
               Is Your Business in a Similar Situation?
             </h2>
             <p className="text-slate-300 mb-8">
-              Talk to us about replacing your IndiaMART dependency with a website that generates
+              Talk to us about replacing your paid directory dependency with a website that generates
               direct buyer inquiries from Google.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -226,7 +226,7 @@ export default function DrashtiChemicalsCaseStudy() {
                 href="/blog/indiamart-alternative-website-manufacturer"
                 className="inline-flex items-center justify-center rounded-lg border border-white/20 px-6 py-3 text-base font-semibold text-white hover:bg-white/10 transition"
               >
-                Why Manufacturers Are Moving Beyond IndiaMART →
+                Why Manufacturers Are Moving Beyond Paid Directories →
               </Link>
             </div>
           </div>

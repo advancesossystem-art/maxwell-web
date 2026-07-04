@@ -131,12 +131,12 @@ const pricingTiers = [
 
 const faqs = [
   {
-    q: "How is your website better than my IndiaMART listing?",
-    a: "Your IndiaMART listing puts you next to 20 competitors. Your own website shows only you — and Google sends buyers directly to your catalog, WhatsApp, or phone number. You own the leads.",
+    q: "How is your website better than a B2B directory listing?",
+    a: "A paid directory listing puts you next to 20 competitors. Your own website shows only you — and Google sends buyers directly to your catalog, WhatsApp, or phone number. You own the leads.",
   },
   {
     q: "Will buyers actually find my website on Google?",
-    a: "Yes, if it's built correctly. We optimize every product category page for the search terms your buyers use. For example, if someone searches 'industrial defoamer supplier India', your product page should appear — not IndiaMART's listing.",
+    a: "Yes, if it's built correctly. We optimize every product category page for the search terms your buyers use. For example, if someone searches 'industrial defoamer supplier India', your product page should appear — not a marketplace listing.",
   },
   {
     q: "How long does it take to build?",
@@ -147,7 +147,7 @@ const faqs = [
     a: "No. We build a simple content management system so your team can update product details and prices without touching code. We also offer maintenance packages.",
   },
   {
-    q: "Can you migrate our existing IndiaMART product listings to the website?",
+    q: "Can you migrate our existing product listings to the website?",
     a: "Yes. We scrape and restructure your existing catalog as part of the project — you don't need to re-enter product data manually.",
   },
   {
@@ -231,7 +231,7 @@ export default function ManufacturerWebsitePage() {
               Website Development for Manufacturers India
             </h1>
             <p className="mt-6 text-lg text-slate-300 max-w-2xl">
-              Stop depending on IndiaMART. Get a professional website that generates direct buyer
+              Stop depending on paid B2B directories. Get a professional website that generates direct buyer
               inquiries from Google — built for MSME manufacturers, exporters, and industrial
               suppliers across Gujarat and India.{" "}
               <Link href="/locations/india/vadodara" className="text-indigo-400 hover:text-indigo-300 underline">
@@ -275,7 +275,7 @@ export default function ManufacturerWebsitePage() {
       <section className="py-16 bg-slate-50 border-b border-slate-200">
         <Container>
           <h2 className="font-display text-3xl font-bold text-center text-slate-900 mb-3">
-            Why IndiaMART is a Trap
+            Why Paid Directory Platforms Are a Trap
           </h2>
           <p className="text-center text-slate-500 mb-10 max-w-2xl mx-auto">
             Every year, thousands of manufacturers pay platforms to get leads that should be coming
@@ -291,12 +291,12 @@ export default function ManufacturerWebsitePage() {
               {
                 icon: "🏪",
                 title: "Buyers See Your Competitors",
-                body: "On every IndiaMART listing, buyers see your competitors right next to you — often at lower prices.",
+                body: "On every paid directory listing, buyers see your competitors right next to you — often at lower prices.",
               },
               {
                 icon: "🔒",
                 title: "Zero Control Over Your Brand",
-                body: "You have zero control over your own brand, data, or leads. IndiaMART owns the relationship.",
+                body: "You have zero control over your own brand, data, or leads. The platform owns the buyer relationship.",
               },
             ].map((item) => (
               <div
@@ -405,7 +405,7 @@ export default function ManufacturerWebsitePage() {
             <div className="space-y-3 text-sm text-slate-300 leading-relaxed max-w-2xl mb-6">
               <p>
                 Drashti Chemicals is an industrial chemical supplier in Vadodara with 154 products
-                across 47 categories. They were entirely dependent on IndiaMART and TradeIndia for
+                across 47 categories. They were entirely dependent on paid B2B directory platforms for
                 buyer inquiries.
               </p>
               <p>
@@ -532,13 +532,34 @@ export default function ManufacturerWebsitePage() {
         </Container>
       </section>
 
+      {/* We Know Your Region */}
+      <section className="py-12 border-t border-slate-100">
+        <Container>
+          <h2 className="font-display text-xl font-bold text-[var(--v6-text,#0f172a)] mb-2">We Know Your Region</h2>
+          <p className="text-sm text-slate-500 mb-6">Specialist pages for Gujarat&apos;s key industrial corridors</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {[
+              { label: "Bharuch-Ankleshwar Chemical Corridor →", href: "/services/website-development/bharuch-ankleshwar-chemical" },
+              { label: "Surat Textile Manufacturers →", href: "/services/website-development/surat-textile-manufacturer" },
+              { label: "Rajkot Engineering Companies →", href: "/services/website-development/rajkot-engineering-company" },
+              { label: "Morbi Ceramic Manufacturers →", href: "/services/website-development/morbi-ceramic-website" },
+              { label: "MSME Website India →", href: "/services/website-development/msme-india" },
+            ].map(({ label, href }) => (
+              <Link key={href} href={href} className="flex items-center gap-2 text-sm text-indigo-600 hover:text-indigo-800 hover:underline font-medium">
+                {label}
+              </Link>
+            ))}
+          </div>
+        </Container>
+      </section>
+
       {/* Bottom CTA */}
       <section className="py-10 border-t border-slate-100 bg-[#f8fafc]">
         <Container>
           <h2 className="font-display text-xl font-bold text-[var(--v6-text,#0f172a)] mb-4">Related resources</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {[
-              { label: "Why Manufacturers Are Moving Beyond IndiaMART", href: "/blog/indiamart-alternative-website-manufacturer" },
+              { label: "Why Manufacturers Are Moving Beyond Paid Directories", href: "/blog/indiamart-alternative-website-manufacturer" },
               { label: "Drashti Chemicals — 263-Page Product Website Case Study", href: "/case-studies/drashti-chemicals" },
               { label: "CRM & ERP for Chemical Manufacturers", href: "/industries/chemical-manufacturing" },
               { label: "ERP Development for Manufacturers", href: "/services/erp-development" },

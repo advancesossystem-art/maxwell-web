@@ -16,7 +16,7 @@ export default function CeramicWebsitePage() {
       industry="Ceramic Manufacturer"
       location="Morbi, Gujarat — World's Largest Ceramic Hub"
       h1="Website Development for Ceramic Manufacturers Morbi Gujarat"
-      description="Morbi is the world's largest ceramic hub — 800+ manufacturers, but most rely only on trade fairs and IndiaMART. We build websites that generate direct international buyer inquiries from the US, Europe, and Middle East."
+      description="Morbi is the world's largest ceramic hub — 800+ manufacturers, but most rely only on trade fairs and paid B2B directories. We build websites that generate direct international buyer inquiries from the US, Europe, and Middle East."
       canonicalPath={ceramicSeo.path}
       serviceName="Website Development for Ceramic Manufacturers"
       specificFeatures={[

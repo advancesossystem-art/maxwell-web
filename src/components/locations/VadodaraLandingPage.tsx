@@ -386,6 +386,8 @@ export function VadodaraLandingPage() {
               { label: "ERP Development for Manufacturers", href: "/services/erp-development" },
               { label: "CRM & ERP for Chemical Manufacturers", href: "/industries/chemical-manufacturing" },
               { label: "Drashti Chemicals — Vadodara Case Study", href: "/case-studies/drashti-chemicals" },
+              { label: "Bharuch-Ankleshwar Chemical Corridor →", href: "/services/website-development/bharuch-ankleshwar-chemical" },
+              { label: "Morbi Ceramic Manufacturer Website →", href: "/services/website-development/morbi-ceramic-website" },
               { label: "Ahmedabad Software Development", href: "/locations/india/ahmedabad" },
             ].map(({ label, href }) => (
               <Link key={href} href={href} className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-800 hover:underline">

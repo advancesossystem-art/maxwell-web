@@ -11,6 +11,7 @@ import { RiskReductionBar } from "@/components/conversion/RiskReductionBar";
 import { HomeWhatWeBuild } from "@/components/home/HomeWhatWeBuild";
 import { HomeProblem } from "@/components/home/HomeProblem";
 import { HomepageAssessment } from "@/components/leads/HomepageAssessment";
+import WebsiteEstimateBanner from "@/components/home/WebsiteEstimateBanner";
 
 const HomeProblemSolutionMap = dynamic(
   () => import("@/components/home/HomeProblemSolutionMap").then((m) => ({ default: m.HomeProblemSolutionMap })),
@@ -98,6 +99,7 @@ export default function HomePage() {
       <HomeFAQ />
       <IndiaSeoHomeSection />
       <FinalCTA />
+      <WebsiteEstimateBanner />
     </>
   );
 }

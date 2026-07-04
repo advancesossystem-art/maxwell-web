@@ -192,7 +192,7 @@ function ThankYouInner() {
               </li>
               <li>
                 <Link href="/blog/indiamart-alternative-website-manufacturer" className="text-brand-600 hover:underline font-medium">
-                  Why manufacturers are moving beyond IndiaMART →
+                  Why manufacturers are moving beyond paid directories →
                 </Link>
               </li>
               <li>

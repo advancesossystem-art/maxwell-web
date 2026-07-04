@@ -102,20 +102,22 @@ export const socialProfiles: string[] = [
 ];
 
 export const homeSeo = {
-  title: "Website Development & Custom Software Company India | Maxwell Electrodeal",
+  title: "Manufacturer Website Development India | Maxwell Electrodeal",
   description:
-    "Maxwell Electrodeal — custom websites, ERP, CRM & software for Indian manufacturers and businesses. Based in Vadodara, Gujarat. Free estimate. GST invoice. 100% code ownership.",
+    "Maxwell Electrodeal builds product catalog websites for Indian manufacturers — chemical, pharma, engineering, textile, ceramic. Get direct buyer inquiries from Google. From ₹75,000. Based in Vadodara, Gujarat.",
   keywords: [
+    "manufacturer website development India",
+    "website for manufacturer India",
+    "product catalog website India",
+    "website development company Vadodara",
+    "industrial website development India",
+    "chemical manufacturer website India",
+    "B2B website for manufacturer India",
+    "website development Gujarat",
+    "custom website for exporter India",
     "website development company India",
     "custom software company Vadodara",
-    "website development Vadodara",
-    "manufacturer website India",
-    "ERP software India",
-    "CRM software Vadodara",
-    "web development company Gujarat",
-    "software company Vadodara",
-    "IT company India",
-    "custom website development India",
+    "manufacturer website Gujarat",
   ],
   path: "/",
 } as const;

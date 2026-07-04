@@ -255,7 +255,7 @@ export const gscIndustriesData: Record<(typeof gscIndustrySlugs)[number], Indust
       { label: "Best ERP for Chemical Manufacturing India", href: "/compare/best-erp-for-chemical-manufacturing" },
       { label: "Manufacturer Website Development", href: "/services/website-development-for-manufacturers" },
       { label: "Drashti Chemicals — Website Case Study", href: "/case-studies/drashti-chemicals" },
-      { label: "Why Manufacturers Are Moving Beyond IndiaMART", href: "/blog/indiamart-alternative-website-manufacturer" },
+      { label: "Why Manufacturers Are Moving Beyond Paid Directories", href: "/blog/indiamart-alternative-website-manufacturer" },
     ],
   },
 

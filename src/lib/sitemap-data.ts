@@ -58,6 +58,7 @@ export function getPagesSitemapEntries() {
 
 /** Manufacturer website pages launched July 2026 */
 const MANUFACTURER_LAUNCH = new Date("2026-07-01T00:00:00.000Z");
+const PHASE3_LAUNCH = new Date("2026-07-04T00:00:00.000Z");
 
 const manufacturerServicePages = [
   "/services/website-development-for-manufacturers",
@@ -66,6 +67,22 @@ const manufacturerServicePages = [
   "/services/website-development/engineering-company",
   "/services/website-development/textile-manufacturer",
   "/services/website-development/ceramic-manufacturer",
+];
+
+const phase3IndustryPages = [
+  "/services/website-development/food-processing-company",
+  "/services/website-development/auto-parts-manufacturer",
+  "/services/website-development/paint-coating-company",
+  "/services/website-development/plastic-manufacturer",
+  "/services/website-development/exporter-india",
+];
+
+const phase3LocationPages = [
+  "/services/website-development/bharuch-ankleshwar-chemical",
+  "/services/website-development/surat-textile-manufacturer",
+  "/services/website-development/rajkot-engineering-company",
+  "/services/website-development/morbi-ceramic-website",
+  "/services/website-development/msme-india",
 ];
 
 export function getServicesSitemapEntries() {
@@ -81,6 +98,18 @@ export function getServicesSitemapEntries() {
       url: `${siteConfig.url}${path}`,
       priority: 0.92,
       lastModified: MANUFACTURER_LAUNCH,
+      changeFreq: "monthly" as const,
+    })),
+    ...phase3IndustryPages.map((path) => ({
+      url: `${siteConfig.url}${path}`,
+      priority: 0.92,
+      lastModified: PHASE3_LAUNCH,
+      changeFreq: "monthly" as const,
+    })),
+    ...phase3LocationPages.map((path) => ({
+      url: `${siteConfig.url}${path}`,
+      priority: 0.90,
+      lastModified: PHASE3_LAUNCH,
       changeFreq: "monthly" as const,
     })),
   ];

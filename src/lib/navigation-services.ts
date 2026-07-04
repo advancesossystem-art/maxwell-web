@@ -46,6 +46,11 @@ export const servicesNavGroups: NavServiceGroup[] = [
     links: [
       { label: "🌐 Website Development", href: "/services/website-development", description: "Websites for manufacturers and businesses" },
       { label: "🏭 Manufacturer Websites", href: "/services/website-development-for-manufacturers", description: "Product catalog sites starting from ₹75K" },
+      { label: "⚗️ Chemical Manufacturer Website", href: "/services/website-development/chemical-manufacturer", description: "Vadodara-Bharuch chemical corridor specialist" },
+      { label: "🏺 Ceramic Manufacturer (Morbi)", href: "/services/website-development/morbi-ceramic-website", description: "Tile catalog websites for Morbi exporters" },
+      { label: "🧵 Textile Manufacturer (Surat)", href: "/services/website-development/surat-textile-manufacturer", description: "Fabric catalog websites for Surat cluster" },
+      { label: "⚙️ Engineering Company (Rajkot)", href: "/services/website-development/rajkot-engineering-company", description: "RFQ-first websites for Rajkot engineering firms" },
+      { label: "💊 Pharmaceutical Website", href: "/services/website-development/pharmaceutical-company", description: "WHO-GMP and API catalog websites" },
       { label: "🔥 Custom ERP", href: "/services/erp-development", description: "Custom ERP for Indian manufacturers" },
       { label: "CRM Development", href: "/services/crm-development", description: "CRM for chemical, pharma & manufacturing companies" },
       { label: "Custom Software", href: "/services/custom-software-development" },

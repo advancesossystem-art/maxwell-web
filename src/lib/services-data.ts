@@ -203,7 +203,7 @@ export const servicesData: Record<ServiceSlug, ServicePageData> = {
     relatedIndustrySlugs: ["retail", "healthcare", "education", "chemical-manufacturing"],
     resourceLinks: [
       { label: "Manufacturer-Specific Website Development", href: "/services/website-development-for-manufacturers" },
-      { label: "Why Manufacturers Are Moving Beyond IndiaMART", href: "/blog/indiamart-alternative-website-manufacturer" },
+      { label: "Why Manufacturers Are Moving Beyond Paid Directories", href: "/blog/indiamart-alternative-website-manufacturer" },
       { label: "Drashti Chemicals — 263-Page Product Website Case Study", href: "/case-studies/drashti-chemicals" },
     ],
     faqs: [

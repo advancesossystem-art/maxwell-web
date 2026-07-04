@@ -5,20 +5,20 @@ export const homeHero = {
   headlineLine1: "Websites and software that grow your business.",
   headlineLine2: "Built in Vadodara. Delivered across India.",
   subhead:
-    "Custom websites for manufacturers and businesses — plus ERP, CRM, and AI systems that cut manual work and deliver measurable ROI. From ₹75,000.",
+    "We build product catalog websites for Indian manufacturers that generate direct buyer inquiries from Google — without paid directory listings, without platform fees forever. Starting from ₹75,000.",
   /** Social proof in first viewport — pairs with primary CTA */
   proofOutcome:
-    "263-page manufacturer website live in 6 weeks · 10,000+ users on a healthcare portal · 99.9% uptime",
-  proofLink: { label: "See case studies", href: "/case-studies" },
+    "Latest: 263-page chemical supplier website live in 6 weeks · 94 PageSpeed · Direct Google inquiries replacing paid directory traffic",
+  proofLink: { label: "See case study", href: "/case-studies/drashti-chemicals" },
 } as const;
 
 export const heroServiceBadges = [
-  { label: "Websites", href: "/services/website-development" },
+  { label: "Product Catalog Websites", href: "/services/website-development-for-manufacturers" },
+  { label: "Manufacturer Websites", href: "/services/website-development-for-manufacturers" },
   { label: "ERP", href: "/services/erp-development" },
   { label: "CRM", href: "/services/crm-development" },
   { label: "AI", href: "/services/ai-solutions" },
   { label: "Mobile Apps", href: "/services/mobile-app-development" },
-  { label: "Custom Software", href: "/services/custom-software-development" },
 ] as const;
 
 export const heroTrustMetrics = [
@@ -36,7 +36,7 @@ export const businessProblems = [
       "Your buyers Google you — and either find nothing, or find a 10-year-old page that looks worse than your competitor's.",
   },
   {
-    title: "100% dependent on IndiaMART or TradeIndia",
+    title: "100% dependent on B2B directory platforms",
     description:
       "You pay ₹1.5–3L/year for leads you don't own, next to 20 competitors, on someone else's platform.",
   },
@@ -72,7 +72,7 @@ export const businessProblems = [
 
 export const problemSolutionMap = [
   {
-    problem: "No website or IndiaMART-only presence",
+    problem: "No website or directory-only presence",
     solution: "Manufacturer Website",
     description:
       "Build a product catalog website that generates direct Google inquiries — without paying platform fees forever.",
@@ -109,7 +109,7 @@ export const transformationStory = {
   afterLabel: "After Maxwell",
   before: [
     "No website — buyers can't find you on Google",
-    "Paying IndiaMART ₹2L/year for leads you don't own",
+    "Paying B2B directory platforms ₹2L/year for leads you don't own",
     "Scattered spreadsheets and manual handoffs",
     "Software that fights your process instead of helping it",
   ],
