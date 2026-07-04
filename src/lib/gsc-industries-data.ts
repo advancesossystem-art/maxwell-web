@@ -38,10 +38,13 @@ export const gscIndustriesData: Record<(typeof gscIndustrySlugs)[number], Indust
     keywords: [
       "CRM software for chemical industry",
       "chemical manufacturing CRM",
+      "CRM software for chemical industry India",
       "chemical industry ERP India",
       "batch tracking software chemical",
       "MSDS management software India",
+      "CRM for chemical distributors Gujarat",
       "hazmat inventory software",
+      "best ERP for chemical manufacturing",
     ],
     icon: "factory",
     gradient: "from-emerald-950 via-teal-900 to-slate-950",
@@ -238,6 +241,21 @@ export const gscIndustriesData: Record<(typeof gscIndustrySlugs)[number], Indust
         answer:
           "A phased CRM or warehouse module can go live in 8–12 weeks. Full ERP with production and compliance modules typically runs 14–20 weeks depending on data migration and plant locations.",
       },
+    ],
+    seoParagraphs: [
+      "Chemical manufacturers across India face a unique CRM challenge: sales cycles run 3 to 18 months, each inquiry involves multiple decision-makers (purchase manager, plant head, MD), and every quote must carry technical specifications, SDS references, and grade-specific pricing. Generic CRM tools — built for SaaS or retail — break down here. Maxwell Electrodeal builds CRM software for chemical industry India, purpose-built for these workflows.",
+      "Our chemical manufacturing CRM tracks product inquiries by grade and specification, maintains customer-wise pricing agreements with version history, sequences follow-ups for distributor networks, and manages dealer and agent commission structures. Integration covers Tally, WhatsApp Business API for bulk follow-ups, and GST invoice workflows — so the sales team and dispatch team always work from the same data.",
+      "The Bharuch-Ankleshwar chemical corridor and Vadodara pharma cluster are our primary delivery zones in Gujarat, though we serve chemical companies pan-India. Specialty chemical distributors, industrial chemical suppliers, paint and coating companies, and API pharma manufacturers are our core client types for CRM software for chemical industry projects.",
+      "A typical chemical CRM project runs 12 to 20 weeks and costs between ₹3L and ₹12L depending on the number of users, integration depth, and whether a dealer or distributor portal is included. Our custom ERP development services for chemical manufacturers in Vadodara and Bharuch also include batch management, SDS compliance, and Tally integration.",
+    ],
+    resourceLinks: [
+      { label: "Custom ERP Development Services — Vadodara", href: "/solutions/erp-development-company-vadodara" },
+      { label: "ERP Development Services for Manufacturers", href: "/services/erp-development" },
+      { label: "CRM Development Services India", href: "/services/crm-development" },
+      { label: "Best ERP for Chemical Manufacturing India", href: "/compare/best-erp-for-chemical-manufacturing" },
+      { label: "Manufacturer Website Development", href: "/services/website-development-for-manufacturers" },
+      { label: "Drashti Chemicals — Website Case Study", href: "/case-studies/drashti-chemicals" },
+      { label: "Why Manufacturers Are Moving Beyond IndiaMART", href: "/blog/indiamart-alternative-website-manufacturer" },
     ],
   },
 

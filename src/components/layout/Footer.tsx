@@ -9,7 +9,8 @@ const columns = [
     title: "Services",
     links: [
       { label: "Website Development", href: "/services/website-development" },
-      { label: "Custom Software", href: "/services/custom-software-development" },
+      { label: "Manufacturer Websites India", href: "/services/website-development-for-manufacturers" },
+      { label: "ERP Development Vadodara", href: "/solutions/erp-development-company-vadodara" },
       { label: "ERP Development", href: "/services/erp-development" },
       { label: "CRM Development", href: "/services/crm-development" },
       { label: "AI Solutions", href: "/services/ai-solutions" },
@@ -19,6 +20,7 @@ const columns = [
   {
     title: "Industries",
     links: [
+      { label: "Chemical Manufacturing", href: "/industries/chemical-manufacturing" },
       { label: "Manufacturing", href: "/industries/manufacturing" },
       { label: "Healthcare", href: "/industries/healthcare" },
       { label: "Logistics", href: "/industries/logistics" },
@@ -29,10 +31,10 @@ const columns = [
     title: "Company",
     links: [
       { label: "About", href: "/about" },
+      { label: "Vadodara Office", href: "/locations/india/vadodara" },
       { label: "Process", href: "/process" },
       { label: "Engagement Models", href: "/engagement-models" },
       { label: "Reviews", href: "/reviews" },
-      { label: "Security", href: "/security" },
       { label: "Work", href: "/work" },
       { label: "Contact", href: "/contact" },
     ],
@@ -40,16 +42,13 @@ const columns = [
   {
     title: "Resources",
     links: [
+      { label: "Case Study: Drashti Chemicals", href: "/case-studies/drashti-chemicals" },
       { label: "Knowledge Center", href: "/knowledge-center" },
       { label: "Maxwell Answers", href: "/answers" },
-      { label: "Case Studies", href: "/case-studies" },
       { label: "Blog", href: "/blog" },
-      { label: "Guides", href: "/guides" },
-      { label: "Research", href: "/research" },
       { label: "Compare", href: "/compare" },
       { label: "Cost Guides", href: "/cost" },
       { label: "Tools", href: "/tools" },
-      { label: "Client Portal", href: "/portal" },
     ],
   },
 ] as const;

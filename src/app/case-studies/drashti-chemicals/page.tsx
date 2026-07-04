@@ -222,6 +222,12 @@ export default function DrashtiChemicalsCaseStudy() {
               >
                 See Manufacturer Website Packages
               </Link>
+              <Link
+                href="/blog/indiamart-alternative-website-manufacturer"
+                className="inline-flex items-center justify-center rounded-lg border border-white/20 px-6 py-3 text-base font-semibold text-white hover:bg-white/10 transition"
+              >
+                Why Manufacturers Are Moving Beyond IndiaMART →
+              </Link>
             </div>
           </div>
         </Container>

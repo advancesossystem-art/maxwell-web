@@ -36,6 +36,11 @@ export function ServicesNavMenu({ style, onNavigate }: ServicesNavMenuProps) {
                     )}
                   >
                     {link.label}
+                    {link.description ? (
+                      <span className="block text-xs font-normal text-[var(--v6-text-muted)] mt-0.5">
+                        {link.description}
+                      </span>
+                    ) : null}
                   </Link>
                 </li>
               ))}

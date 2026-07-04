@@ -1,6 +1,6 @@
 /** Main nav Services mega-menu — mirrors full-service IT positioning */
 
-export type NavServiceLink = { label: string; href: string };
+export type NavServiceLink = { label: string; href: string; description?: string };
 export type NavServiceGroup = { title: string; links: NavServiceLink[] };
 
 export const servicesNavGroups: NavServiceGroup[] = [
@@ -44,10 +44,10 @@ export const servicesNavGroups: NavServiceGroup[] = [
   {
     title: "Software Development",
     links: [
-      { label: "🌐 Website Development", href: "/services/website-development" },
-      { label: "🏭 Manufacturer Websites", href: "/services/website-development-for-manufacturers" },
-      { label: "🔥 Custom ERP", href: "/services/erp-development" },
-      { label: "CRM Development", href: "/services/crm-development" },
+      { label: "🌐 Website Development", href: "/services/website-development", description: "Websites for manufacturers and businesses" },
+      { label: "🏭 Manufacturer Websites", href: "/services/website-development-for-manufacturers", description: "Product catalog sites starting from ₹75K" },
+      { label: "🔥 Custom ERP", href: "/services/erp-development", description: "Custom ERP for Indian manufacturers" },
+      { label: "CRM Development", href: "/services/crm-development", description: "CRM for chemical, pharma & manufacturing companies" },
       { label: "Custom Software", href: "/services/custom-software-development" },
       { label: "Mobile Apps", href: "/services/mobile-app-development" },
       { label: "SaaS Development", href: "/services/saas-development" },

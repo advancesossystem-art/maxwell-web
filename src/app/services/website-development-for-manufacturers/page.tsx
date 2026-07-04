@@ -533,6 +533,25 @@ export default function ManufacturerWebsitePage() {
       </section>
 
       {/* Bottom CTA */}
+      <section className="py-10 border-t border-slate-100 bg-[#f8fafc]">
+        <Container>
+          <h2 className="font-display text-xl font-bold text-[var(--v6-text,#0f172a)] mb-4">Related resources</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {[
+              { label: "Why Manufacturers Are Moving Beyond IndiaMART", href: "/blog/indiamart-alternative-website-manufacturer" },
+              { label: "Drashti Chemicals — 263-Page Product Website Case Study", href: "/case-studies/drashti-chemicals" },
+              { label: "CRM & ERP for Chemical Manufacturers", href: "/industries/chemical-manufacturing" },
+              { label: "ERP Development for Manufacturers", href: "/services/erp-development" },
+            ].map(({ label, href }) => (
+              <Link key={href} href={href} className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-800 hover:underline">
+                <span aria-hidden>→</span> {label}
+              </Link>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* Bottom CTA */}
       <section className="py-16 bg-[#030b1f] text-white">
         <Container>
           <div className="text-center max-w-2xl mx-auto">

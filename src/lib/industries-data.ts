@@ -86,6 +86,10 @@ export interface IndustryPageData {
   startingPrice?: string;
   leadFormTitle?: string;
   leadFormSubmitLabel?: string;
+  /** Extra SEO depth paragraphs rendered after the main content sections */
+  seoParagraphs?: string[];
+  /** Cross-cluster resource links rendered as a "Related resources" grid */
+  resourceLinks?: { label: string; href: string }[];
 }
 
 const sharedWhyMaxwell = [

@@ -572,17 +572,67 @@ for (const ind of programmaticIndustries) {
 }
 
 // Slug-specific meta overrides for compare pages with high impressions but zero clicks
-const compareMetaOverrides: Record<string, { metaTitle: string; metaDescription: string }> = {
+const compareMetaOverrides: Record<string, {
+  metaTitle: string;
+  metaDescription: string;
+  extraSections?: { title: string; content: string; bullets?: string[] }[];
+}> = {
   "best-erp-for-fmcg": {
     metaTitle: "Best ERP for FMCG India 2026 — Compare SAP, Odoo & Custom ERP",
     metaDescription:
       "Best ERP for FMCG companies in India 2026: compare SAP B1 (₹12L+), Odoo (₹6L+), and custom ERP (₹8L–₹25L) for route sales, distributor claims, and scheme management. Free estimate.",
+    extraSections: [
+      {
+        title: "FMCG ERP Software in India 2026 — What to Look For",
+        content:
+          "FMCG companies in India operate in a high-velocity distribution environment where generic ERP fails. The right FMCG ERP must handle van sales and secondary sales tracking (route-to-market), distributor management with scheme and debit/credit note automation, beat planning for field sales teams, and FIFO inventory for perishable goods. Production planning for seasonal demand peaks, GST and e-way bill integration, real-time sales MIS dashboards, and distributor claim settlement are non-negotiable for mid-market FMCG companies.\n\nPackaged foods, beverages, personal care, and FMCD (fast-moving consumer durables) companies all share this architecture. SAP Business One starts at ₹50L+ and is sized for large enterprises. Odoo needs an implementation partner and 4–8 months to configure distribution logic properly. Maxwell Electrodeal builds custom FMCG ERP from ₹10L–₹30L that includes the van sales module, distributor portal, and scheme management out of the box — without per-user license creep.",
+        bullets: [
+          "Van sales and route-to-market tracking",
+          "Distributor scheme management and debit/credit notes",
+          "Beat planning for field sales teams",
+          "FIFO inventory for perishables",
+          "GST e-invoice and e-way bill integration",
+          "Real-time MIS dashboards for sales and production",
+          "Custom FMCG ERP from ₹10L–₹30L",
+        ],
+      },
+    ],
+  },
+  "best-erp-for-chemical-manufacturing": {
+    metaTitle: "Best ERP for Chemical Manufacturing India 2026 — Batch, SDS & Compliance",
+    metaDescription:
+      "Best ERP for chemical manufacturers in India 2026: batch traceability, SDS management, CPCB compliance, and hazmat inventory. Compare SAP B1 (₹25L+), Odoo, and custom ERP (₹8L–₹25L). Free estimate.",
+    extraSections: [
+      {
+        title: "What Makes Chemical Manufacturing ERP Different from Generic ERP?",
+        content:
+          "Chemical manufacturers in India require ERP capabilities that standard SAP or Tally modules simply do not support out of the box. Batch and lot tracking — mandatory for specialty chemical, API pharma, and industrial chemical sectors — must be forward and backward traceable from raw material receipt to customer dispatch. Material Safety Data Sheet (MSDS/SDS) management requires a version-controlled vault linked to SKUs and batches, with automatic expiry alerts.\n\nBeyond batch traceability, chemical ERP in India must handle: BIS, BIS-CML, and CPCB compliance documentation; chemical inventory tracked simultaneously in weight AND volume units; hazardous goods transport documentation (Form 9, CPCB consent forms); Certificate of Analysis (COA) generation per batch; raw material quality testing integration; and export documentation (SDF, ARE-1 form) for chemical exporters in the Bharuch–Ankleshwar and Vadodara–Halol corridors.\n\nSAP Business One covers many of these requirements but costs ₹25L+ for initial implementation — beyond the budget of most Indian chemical SMEs. Odoo has the architecture but requires 12–18 months of heavy customization to match chemical-specific workflows. Maxwell Electrodeal builds custom chemical ERP from ₹8L–₹25L, with all the above features included as part of the standard build — not expensive bolt-on modules.",
+        bullets: [
+          "Batch and lot traceability — forward and backward",
+          "SDS/MSDS version-controlled vault linked to batches",
+          "BIS, BIS-CML, CPCB compliance documentation",
+          "Chemical inventory in weight AND volume units",
+          "Hazardous goods transport documentation",
+          "COA generation per batch",
+          "Export documentation (SDF, ARE-1) for chemical exporters",
+          "Custom ERP from ₹8L–₹25L — no per-module add-ons",
+        ],
+      },
+    ],
   },
 };
 for (const [slug, override] of Object.entries(compareMetaOverrides)) {
   const existing = comparePagesMap.get(slug);
   if (existing) {
-    comparePagesMap.set(slug, { ...existing, ...override });
+    const updatedSections = override.extraSections
+      ? [...override.extraSections, ...existing.sections]
+      : existing.sections;
+    comparePagesMap.set(slug, {
+      ...existing,
+      metaTitle: override.metaTitle,
+      metaDescription: override.metaDescription,
+      sections: updatedSections,
+    });
   }
 }
 

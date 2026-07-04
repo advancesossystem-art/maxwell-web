@@ -76,6 +76,33 @@ export function IndustryLandingPage({ industry }: { industry: IndustryPageData }
       <IndustryCaseStudy industry={industry} />
       <IndustryWhy industry={industry} />
       <IndustryFAQ industry={industry} />
+      {industry.seoParagraphs?.length ? (
+        <section className="border-t border-border bg-white py-14">
+          <Container>
+            <div className="mx-auto max-w-3xl space-y-5 text-[var(--v6-text-secondary)] leading-relaxed">
+              {industry.seoParagraphs.map((p) => (
+                <p key={p.slice(0, 48)}>{p}</p>
+              ))}
+            </div>
+          </Container>
+        </section>
+      ) : null}
+      {industry.resourceLinks?.length ? (
+        <section id="crm-for-chemical" className="border-t border-border bg-[#f8fafc] py-12">
+          <Container>
+            <h2 className="font-display text-xl font-bold text-[var(--v6-text)] mb-4">
+              Related software solutions
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {industry.resourceLinks.map(({ href, label }) => (
+                <Link key={href} href={href} className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-800 hover:underline">
+                  <span aria-hidden>→</span> {label}
+                </Link>
+              ))}
+            </div>
+          </Container>
+        </section>
+      ) : null}
       <IndustryLeadForm
         industryName={industry.title}
         industrySlug={industry.slug}

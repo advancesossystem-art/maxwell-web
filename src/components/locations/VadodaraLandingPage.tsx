@@ -372,6 +372,29 @@ export function VadodaraLandingPage() {
         title="Software development in Vadodara"
         locationName="Vadodara"
       />
+
+      {/* Cluster links — Vadodara local SEO */}
+      <section className="border-t border-border bg-[#f8fafc] py-12">
+        <Container>
+          <h2 className="font-display text-xl font-bold text-[var(--v6-text)] mb-4">
+            Services we deliver in Vadodara
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {[
+              { label: "Manufacturer Website Development", href: "/services/website-development-for-manufacturers" },
+              { label: "Custom ERP Development Company Vadodara", href: "/solutions/erp-development-company-vadodara" },
+              { label: "ERP Development for Manufacturers", href: "/services/erp-development" },
+              { label: "CRM & ERP for Chemical Manufacturers", href: "/industries/chemical-manufacturing" },
+              { label: "Drashti Chemicals — Vadodara Case Study", href: "/case-studies/drashti-chemicals" },
+              { label: "Ahmedabad Software Development", href: "/locations/india/ahmedabad" },
+            ].map(({ label, href }) => (
+              <Link key={href} href={href} className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-800 hover:underline">
+                <span aria-hidden>→</span> {label}
+              </Link>
+            ))}
+          </div>
+        </Container>
+      </section>
     </>
   );
 }

@@ -153,6 +153,27 @@ export function ServiceSeoSections({ service }: { service: ServicePageData }) {
           </Container>
         </section>
       ) : null}
+
+      {service.resourceLinks?.length ? (
+        <section className="border-t border-[var(--v6-border)] bg-[#f8fafc] py-12">
+          <Container>
+            <h2 className="font-display text-xl font-bold text-[var(--v6-text)] mb-4">
+              Related resources
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {service.resourceLinks.map(({ href, label }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-800 hover:underline"
+                >
+                  <span aria-hidden>→</span> {label}
+                </Link>
+              ))}
+            </div>
+          </Container>
+        </section>
+      ) : null}
     </>
   );
 }

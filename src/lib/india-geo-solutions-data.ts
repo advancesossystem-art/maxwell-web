@@ -368,41 +368,66 @@ export const indiaGeoSolutionsData: Record<IndiaGeoSolutionSlug, SolutionPageDat
   "erp-development-company-vadodara": buildIndiaGeo("erp", {
     slug: "erp-development-company-vadodara",
     title: "ERP Development Company Vadodara",
-    headline: "ERP Development Company in Vadodara",
-    subheadline: "Local Vadodara ERP team for manufacturing, distribution, and retail—on-site discovery, Tally sync, shop-floor mobile apps.",
-    metaTitle: "ERP Development Company in Vadodara | Custom ERP Software",
+    headline: "Custom ERP Development Company in Vadodara",
+    subheadline:
+      "Maxwell Electrodeal is a custom ERP development company based in Vadodara, Gujarat — serving manufacturers across the Vadodara–Bharuch–Ankleshwar corridor. On-site discovery at GIDC estates, Makarpura, Savli, and Baroda city. ERP software development Vadodara teams meet you where production happens.",
+    metaTitle: "Custom ERP Development Company Vadodara — ERP Software for Manufacturers",
     metaDescription:
-      "ERP development company in Vadodara. Custom manufacturing ERP, inventory, Tally/GST. Local HQ team. Maxwell Electrodeal — free discovery call.",
-    primaryKeyword: "ERP Development Company in Vadodara",
+      "Custom ERP development company in Vadodara, Gujarat. ERP for manufacturers — inventory, production, GST e-invoicing, Tally sync, multi-plant. Local HQ team. From ₹8L. Free discovery call.",
+    primaryKeyword: "Custom ERP Development Company Vadodara",
     secondaryKeywords: [
-      "ERP software Vadodara",
+      "ERP software development Vadodara",
+      "custom ERP software development company Vadodara",
+      "ERP for manufacturers Gujarat",
       "manufacturing ERP Vadodara",
-      "custom ERP development Vadodara",
       "ERP company Gujarat",
     ],
-    relatedSearches: ["ERP development cost India", "best ERP company Vadodara", "Tally integration ERP"],
+    relatedSearches: ["ERP development cost India", "best ERP company Vadodara", "Tally integration ERP", "ERP for chemical manufacturers Gujarat"],
     marketInsights:
-      "Vadodara's manufacturing corridor demands ERP systems that mirror shop-floor reality—batch tracking, job-work, and supplier lead times. Local ERP development in Vadodara enables weekly on-site reviews during rollout.",
+      "Vadodara is Gujarat's industrial capital — home to over 2,000 manufacturing units across chemical, pharma, engineering, and FMCG sectors. Maxwell Electrodeal, headquartered in Vadodara since 2018, is a custom ERP development company that builds ERP software specifically for manufacturers in the Vadodara–Bharuch–Ankleshwar industrial corridor.\n\nWe build ERP for manufacturers Gujarat-wide, covering: inventory and multi-location warehouse management, production planning with BOM and job-work (ITC-04), GST e-invoicing and e-way bill automation, Tally sync with bi-directional reconciliation, shop-floor mobile apps for Android, and multi-plant operations. Our ERP is built on modern React + Node.js + PostgreSQL — not outdated legacy frameworks like FoxPro or older Delphi-based systems still common in the region.\n\nMilestone-based billing ensures you pay for delivered results: 30% on project start, 40% on delivery of core modules, 30% on go-live. Typical Vadodara manufacturer ERP project timelines range from 16 to 24 weeks for mid-complexity rollouts, with costs from ₹8L to ₹30L depending on scope, number of modules, and integrations.\n\nWe work on-site with clients at GIDC Makarpura, GIDC Savli, Halol GIDC, and Baroda city offices — providing the face-to-face shop-floor discovery that remote-only vendors cannot offer. Our primary client types in Vadodara include chemical companies, pharma API manufacturers, engineering fabrication units, and FMCG distributors.",
     industryChallenges: [
-      { title: "Production Visibility", description: "Plant managers lack real-time WIP status across Vadodara facilities." },
-      { title: "GST Compliance Gaps", description: "Manual invoicing creates audit risk without integrated e-invoice flows." },
+      { title: "Production Visibility", description: "Plant managers lack real-time WIP status across Vadodara facilities — Excel-based production logs arrive 24 hours late." },
+      { title: "GST Compliance Gaps", description: "Manual invoicing and Excel-based e-way bill generation create audit risk without integrated e-invoice flows." },
+      { title: "Tally Not Enough", description: "Tally handles accounts but cannot manage production BOM, job-work challans, or shop-floor QC — leaving critical operations in spreadsheets." },
     ],
-    recommendedApproach: ["Vadodara on-site workshops", "Inventory → production → finance phases", "Shop-floor Android apps", "Tally sync"],
+    recommendedApproach: [
+      "On-site Vadodara discovery workshops at your GIDC facility",
+      "Inventory → production → finance phased rollout",
+      "Shop-floor Android apps for real-time WIP",
+      "Tally sync + GST e-invoice automation",
+      "Milestone-based billing: 30–40–30%",
+    ],
     roiExamples: [
-      { metric: "40%", label: "Less Manual Entry", description: "Shop-floor clients" },
-      { metric: "10–14 wk", label: "First Module Live", description: "Phased ERP" },
-      { metric: "Local", label: "Vadodara Support", description: "Same-city team" },
+      { metric: "40%", label: "Less Manual Entry", description: "Shop-floor clients on production ERP" },
+      { metric: "16–24 wk", label: "First Full Module Live", description: "Phased ERP rollout timeline" },
+      { metric: "₹8L+", label: "Starting Cost", description: "Single-plant manufacturer ERP" },
     ],
     internalLinks: [
-      { label: "Vadodara", href: "/locations/india/vadodara", description: "City hub" },
-      { label: "Manufacturing ERP", href: "/industries/manufacturing", description: "Industry" },
+      { label: "Vadodara office", href: "/locations/india/vadodara", description: "City hub" },
+      { label: "chemical manufacturers", href: "/industries/chemical-manufacturing", description: "Chemical vertical" },
+      { label: "ERP development services", href: "/services/erp-development", description: "Service page" },
       { label: "Gujarat ERP", href: "/solutions/erp-development-company-gujarat", description: "State page" },
       { label: "Get Estimate", href: "/get-estimate", description: "Quote" },
     ],
     faqs: [
       {
+        question: "Are you a custom ERP development company in Vadodara?",
+        answer:
+          "Yes. Maxwell Electrodeal is headquartered in Vadodara, Gujarat — we build custom ERP software for manufacturers in Vadodara, Bharuch, Ankleshwar, Savli, and across Gujarat. We offer on-site discovery workshops at your factory or GIDC unit.",
+      },
+      {
         question: "Can you visit our Vadodara factory for ERP discovery?",
-        answer: "Yes—we conduct on-site discovery workshops across Vadodara industrial areas as part of ERP scoping.",
+        answer: "Yes — we conduct on-site discovery workshops across Vadodara industrial areas as part of ERP scoping. This includes GIDC Makarpura, GIDC Savli, Halol GIDC, and city-side offices.",
+      },
+      {
+        question: "What is the cost of ERP development in Vadodara?",
+        answer:
+          "ERP software development in Vadodara typically starts from ₹8L for a focused single-plant inventory and billing system. Mid-complexity manufacturing ERP with production planning, job-work, and Tally sync costs ₹12L–₹20L. Multi-plant or compliance-heavy systems (chemical, pharma) range from ₹20L–₹30L. We quote fixed-price milestones after a paid discovery sprint.",
+      },
+      {
+        question: "Which industries do your Vadodara ERP clients belong to?",
+        answer:
+          "Our Vadodara ERP clients span chemical manufacturers, pharma API suppliers, engineering fabrication units, FMCG distributors, and textile traders. ERP for manufacturers Gujarat-wide is our core strength.",
       },
     ],
   }),

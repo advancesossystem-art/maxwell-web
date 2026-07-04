@@ -39,6 +39,8 @@ export interface ServicePageData {
   processSteps?: { step: string; title: string; description: string }[];
   relatedBlogSlugs?: string[];
   relatedIndustrySlugs?: string[];
+  /** Cross-cluster resource links rendered as a "Related resources" grid */
+  resourceLinks?: { label: string; href: string }[];
 }
 
 const sharedWhyMaxwell = [
@@ -197,8 +199,13 @@ export const servicesData: Record<ServiceSlug, ServicePageData> = {
       { name: "Corporate site", range: "₹2L – ₹5L", description: "15–25 pages, multi-language, blog, integrations, advanced analytics." },
       { name: "E-commerce / portal", range: "₹5L – ₹15L", description: "Catalog, payments, customer accounts, ERP/CRM integrations." },
     ],
-    relatedBlogSlugs: ["how-much-does-website-cost-india-2026", "nextjs-enterprise-website-architecture", "b2b-website-conversion-patterns"],
-    relatedIndustrySlugs: ["retail", "healthcare", "education"],
+    relatedBlogSlugs: ["how-much-does-website-cost-india-2026", "nextjs-enterprise-website-architecture", "b2b-website-conversion-patterns", "indiamart-alternative-website-manufacturer"],
+    relatedIndustrySlugs: ["retail", "healthcare", "education", "chemical-manufacturing"],
+    resourceLinks: [
+      { label: "Manufacturer-Specific Website Development", href: "/services/website-development-for-manufacturers" },
+      { label: "Why Manufacturers Are Moving Beyond IndiaMART", href: "/blog/indiamart-alternative-website-manufacturer" },
+      { label: "Drashti Chemicals — 263-Page Product Website Case Study", href: "/case-studies/drashti-chemicals" },
+    ],
     faqs: [
       {
         question: "How much does a professional website cost?",
@@ -603,8 +610,18 @@ export const servicesData: Record<ServiceSlug, ServicePageData> = {
       { step: "07", title: "UAT & training", description: "Real transaction testing with your team before go-live." },
       { step: "08", title: "Go-live & support", description: "Phased rollout, hypercare, and SLA-backed post-launch support." },
     ],
-    relatedBlogSlugs: ["erp-software-cost-india-2026", "erp-vs-tally-india", "erp-development-cost-india-2026"],
-    relatedIndustrySlugs: ["manufacturing", "logistics", "retail"],
+    relatedBlogSlugs: ["erp-software-cost-india-2026", "erp-vs-tally-india", "erp-development-cost-india-2026", "erp-for-chemical-india", "erp-for-pharma-india"],
+    relatedIndustrySlugs: ["manufacturing", "logistics", "retail", "chemical-manufacturing"],
+    resourceLinks: [
+      { label: "Best ERP for Chemical Manufacturing India", href: "/compare/best-erp-for-chemical-manufacturing" },
+      { label: "Best ERP for FMCG India 2026", href: "/compare/best-erp-for-fmcg" },
+      { label: "Best ERP for Pharma Companies India", href: "/compare/best-erp-for-pharma" },
+      { label: "Best ERP for Textile Manufacturers", href: "/compare/best-erp-for-textile" },
+      { label: "ERP for Chemical Industry India — Guide", href: "/blog/erp-for-chemical-india" },
+      { label: "ERP for Pharma Companies India", href: "/blog/erp-for-pharma-india" },
+      { label: "CRM & ERP for Chemical Manufacturers", href: "/industries/chemical-manufacturing" },
+      { label: "Custom ERP Company in Vadodara", href: "/solutions/erp-development-company-vadodara" },
+    ],
     faqs: [
       {
         question: "Custom ERP vs SAP/Tally—which is better?",
@@ -739,7 +756,11 @@ export const servicesData: Record<ServiceSlug, ServicePageData> = {
       { name: "Enterprise CRM", range: "₹15L – ₹25L", description: "Multi-branch, advanced analytics, customer portal, and custom workflows." },
     ],
     relatedBlogSlugs: ["crm-software-manufacturing-india", "crm-development-cost-india", "custom-crm-vs-salesforce"],
-    relatedIndustrySlugs: ["manufacturing", "retail", "real-estate"],
+    relatedIndustrySlugs: ["manufacturing", "retail", "real-estate", "chemical-manufacturing"],
+    resourceLinks: [
+      { label: "CRM & ERP for Chemical Manufacturers India", href: "/industries/chemical-manufacturing#crm-for-chemical" },
+      { label: "CRM for Paint & Coatings Companies India", href: "/blog/crm-for-paint-coatings-india" },
+    ],
     faqs: [
       {
         question: "Custom CRM vs Salesforce/HubSpot?",
