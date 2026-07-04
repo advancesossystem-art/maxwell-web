@@ -17,7 +17,7 @@ export function scheduleAnalyticsLoad(load: AnalyticsLoader): () => void {
     cleanup();
   };
 
-  const events = ["scroll", "pointerdown", "keydown", "touchstart"] as const;
+  const events = ["pointerdown", "keydown", "touchstart"] as const;
   const opts: AddEventListenerOptions = { once: true, passive: true };
 
   function cleanup() {
@@ -30,10 +30,10 @@ export function scheduleAnalyticsLoad(load: AnalyticsLoader): () => void {
 
   let idleId: number | undefined;
   if ("requestIdleCallback" in window) {
-    idleId = window.requestIdleCallback(run, { timeout: 8000 });
+    idleId = window.requestIdleCallback(run, { timeout: 15000 });
   }
 
-  const fallbackId = window.setTimeout(run, 8000);
+  const fallbackId = window.setTimeout(run, 15000);
 
   return cleanup;
 }

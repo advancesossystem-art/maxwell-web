@@ -18,8 +18,8 @@ export function HeroEcosystemVisual() {
           <div className="min-w-0 flex-1">
             <p className="text-xs font-semibold text-[var(--v6-text-muted)]">Overview</p>
             <p className="mt-3 text-sm font-semibold text-[#0f172a]">Active Projects</p>
-            <div className="mt-1 flex items-baseline gap-2">
-              <span className="font-display text-3xl font-bold text-[#0f172a]">24</span>
+            <div className="mt-1 flex min-h-[2.25rem] items-baseline gap-2">
+              <span className="text-3xl font-bold tabular-nums leading-none text-[#0f172a]">24</span>
               <span className="rounded-full bg-[#10b981]/15 px-2 py-0.5 text-xs font-semibold text-[#047857]">
                 +20%
               </span>

@@ -399,10 +399,27 @@
 }
 
 /* Hero ecosystem visual */
+[data-hero="visual"] {
+  min-height: 400px;
+}
+
+@media (min-width: 1024px) {
+  [data-hero="visual"] {
+    min-height: 440px;
+  }
+}
+
 .v6-eco {
   position: relative;
-  min-height: 360px;
+  min-height: 400px;
+  contain: layout;
   overflow: visible;
+}
+
+@media (min-width: 1024px) {
+  .v6-eco {
+    min-height: 440px;
+  }
 }
 
 .v6-eco__blob {
@@ -444,11 +461,17 @@
 .v6-eco-dashboard {
   position: relative;
   z-index: 2;
+  min-height: 17.5rem;
   border-radius: var(--v6-radius-lg);
   border: 1px solid var(--v6-border);
   background: var(--v6-bg-white);
   box-shadow: var(--v6-shadow-xl);
   padding: 1rem 1.25rem 7.5rem;
+}
+
+#free-audit {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 520px;
 }
 
 .v6-eco-portal {

@@ -10,8 +10,8 @@ import "./globals.css";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
-  display: "swap",
-  preload: false,
+  display: "optional",
+  preload: true,
   adjustFontFallback: true,
 });
 

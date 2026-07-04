@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { FormField } from "@/components/leads/LeadFormFields";
 import {
   countryPhoneCodes,
@@ -26,7 +26,18 @@ export function PhoneCountryFields({
   required = true,
 }: PhoneCountryFieldsProps) {
   const [countryIso, setCountryIso] = useState(defaultCountryIso);
+  const [showAllCountries, setShowAllCountries] = useState(false);
   const selected = countryPhoneCodes.find((c) => c.iso === countryIso);
+
+  const countriesToRender = useMemo(() => {
+    if (showAllCountries) return countryPhoneCodes;
+    const current = countryPhoneCodes.find((c) => c.iso === countryIso) ?? countryPhoneCodes[0];
+    return current ? [current] : countryPhoneCodes.slice(0, 1);
+  }, [countryIso, showAllCountries]);
+
+  function expandCountries() {
+    setShowAllCountries(true);
+  }
 
   return (
     <div className={cn("grid gap-3.5", compact ? "sm:grid-cols-1" : "sm:grid-cols-2")}>
@@ -36,9 +47,12 @@ export function PhoneCountryFields({
           name="phoneCountry"
           className={countryInputClassName}
           value={countryIso}
+          onFocus={expandCountries}
+          onMouseDown={expandCountries}
+          onTouchStart={expandCountries}
           onChange={(e) => setCountryIso(e.target.value)}
         >
-          {countryPhoneCodes.map((country) => (
+          {countriesToRender.map((country) => (
             <option key={country.iso} value={country.iso}>
               {countrySelectLabel(country)}
             </option>

@@ -56,7 +56,7 @@ export function Hero() {
   return (
     <section className="v6-hero v6-section--white overflow-hidden" aria-label="Hero">
       <div className="v6-container">
-        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-10">
+        <div className="grid items-start gap-8 lg:grid-cols-2 lg:gap-10">
           <div>
             <p className="v6-eyebrow-line v6-eyebrow">{homeHero.eyebrow}</p>
             <h1 className="v6-hero-title mt-4 text-balance" data-seo-speakable>
