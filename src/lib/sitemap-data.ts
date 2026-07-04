@@ -59,6 +59,7 @@ export function getPagesSitemapEntries() {
 /** Manufacturer website pages launched July 2026 */
 const MANUFACTURER_LAUNCH = new Date("2026-07-01T00:00:00.000Z");
 const PHASE3_LAUNCH = new Date("2026-07-04T00:00:00.000Z");
+const PHASE4_LAUNCH = new Date("2026-07-04T00:00:00.000Z");
 
 const manufacturerServicePages = [
   "/services/website-development-for-manufacturers",
@@ -85,6 +86,8 @@ const phase3LocationPages = [
   "/services/website-development/msme-india",
 ];
 
+const phase4ServicePages = ["/services/website-development/manufacturer-export-website"];
+
 export function getServicesSitemapEntries() {
   return [
     { url: `${siteConfig.url}/services`, priority: 0.9, changeFreq: "weekly" as const },
@@ -110,6 +113,12 @@ export function getServicesSitemapEntries() {
       url: `${siteConfig.url}${path}`,
       priority: 0.90,
       lastModified: PHASE3_LAUNCH,
+      changeFreq: "monthly" as const,
+    })),
+    ...phase4ServicePages.map((path) => ({
+      url: `${siteConfig.url}${path}`,
+      priority: 0.9,
+      lastModified: PHASE4_LAUNCH,
       changeFreq: "monthly" as const,
     })),
   ];
@@ -180,11 +189,25 @@ export function getLocationsSitemapEntries() {
 }
 
 export function getSolutionsSitemapEntries() {
+  const phase4SolutionEntries = [
+    { path: "/solutions/web-development-company-india-international", priority: 0.92 },
+    { path: "/solutions/web-development-company-india-usa", priority: 0.88 },
+    { path: "/solutions/web-development-company-india-uae", priority: 0.88 },
+    { path: "/solutions/web-development-company-india-uk", priority: 0.88 },
+    { path: "/solutions/web-development-company-india-turkey", priority: 0.85 },
+  ] as const;
+
   return [
     { url: `${siteConfig.url}/solutions`, priority: 0.88 },
     ...solutionSlugs.map((slug) => ({
       url: `${siteConfig.url}/solutions/${slug}`,
       priority: 0.88,
+    })),
+    ...phase4SolutionEntries.map((entry) => ({
+      url: `${siteConfig.url}${entry.path}`,
+      priority: entry.priority,
+      lastModified: PHASE4_LAUNCH,
+      changeFreq: "monthly" as const,
     })),
   ];
 }

@@ -32,6 +32,7 @@ const columns = [
     links: [
       { label: "About", href: "/about" },
       { label: "Vadodara Office", href: "/locations/india/vadodara" },
+      { label: "International Clients", href: "/solutions/web-development-company-india-international" },
       { label: "Process", href: "/process" },
       { label: "Engagement Models", href: "/engagement-models" },
       { label: "Reviews", href: "/reviews" },

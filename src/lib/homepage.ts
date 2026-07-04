@@ -5,7 +5,7 @@ export const homeHero = {
   headlineLine1: "Websites and software that grow your business.",
   headlineLine2: "Built in Vadodara. Delivered across India.",
   subhead:
-    "We build product catalog websites for Indian manufacturers that generate direct buyer inquiries from Google — without paid directory listings, without platform fees forever. Starting from ₹75,000.",
+    "We build product catalog websites for Indian manufacturers that generate direct buyer inquiries from Google — without paid directory listings, without platform fees forever. Starting from $900 / ₹75,000.",
   /** Social proof in first viewport — pairs with primary CTA */
   proofOutcome:
     "Latest: 263-page chemical supplier website live in 6 weeks · 94 PageSpeed · Direct Google inquiries replacing paid directory traffic",
@@ -23,7 +23,7 @@ export const heroServiceBadges = [
 
 export const heroTrustMetrics = [
   { value: "50+", label: "Projects delivered" },
-  { value: "₹75K", label: "Starting price for websites" },
+  { value: "$900 / ₹75K", label: "Starting price for websites" },
   { value: "15+", label: "Industries served" },
   { value: "95%", label: "Client satisfaction" },
   { value: "<4hr", label: "Response time" },
@@ -415,10 +415,14 @@ export const partnerComparison = [
 ] as const;
 
 export const trustHighlights = [
-  { label: "Milestone billing", desc: "Pay as value is delivered" },
-  { label: "Weekly demos", desc: "See progress every week" },
-  { label: "Full IP transfer", desc: "You own the codebase" },
-  { label: "Global delivery", desc: "India · ME · EU · US · AU" },
+  { label: "Milestone billing", desc: "Pay as value is delivered", href: "/engagement-models" },
+  { label: "Weekly demos", desc: "See progress every week", href: "/process" },
+  { label: "Full IP transfer", desc: "You own the codebase", href: "/contact" },
+  {
+    label: "🌍 International clients welcome",
+    desc: "US · UK · UAE · Turkey · Germany",
+    href: "/solutions/web-development-company-india-international",
+  },
 ] as const;
 
 export const homeFinalCta = {

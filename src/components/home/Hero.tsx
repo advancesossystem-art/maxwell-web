@@ -111,9 +111,11 @@ export function Hero() {
                   key={item.label}
                   className="rounded-full border border-[var(--v6-border)] bg-white px-3 py-1.5 text-xs text-[var(--v6-text-secondary)]"
                 >
-                  <span className="font-semibold text-[var(--v6-text)]">{item.label}</span>
-                  <span className="mx-1 text-[var(--v6-text-muted)]">·</span>
-                  {item.desc}
+                  <Link href={item.href} className="hover:text-[#4f46e5]">
+                    <span className="font-semibold text-[var(--v6-text)]">{item.label}</span>
+                    <span className="mx-1 text-[var(--v6-text-muted)]">·</span>
+                    {item.desc}
+                  </Link>
                 </li>
               ))}
             </ul>

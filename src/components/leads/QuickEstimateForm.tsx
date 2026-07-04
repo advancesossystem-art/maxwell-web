@@ -24,6 +24,19 @@ const BUDGETS = [
   "Not sure yet",
 ] as const;
 
+const COUNTRIES = [
+  "India",
+  "United States",
+  "United Kingdom",
+  "UAE / Middle East",
+  "Turkey",
+  "Germany",
+  "Canada",
+  "Australia",
+  "Singapore",
+  "Other",
+] as const;
+
 const inputCls =
   "w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm text-gray-800 placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition";
 
@@ -48,12 +61,17 @@ export function QuickEstimateForm({ prefillService = "", prefillSource = "" }: {
     setError("");
 
     const fd = new FormData(e.currentTarget);
+    const country = String(fd.get("country") || "").trim();
+    const description = String(fd.get("description") || "");
+    const messageWithCountry = country
+      ? `Country: ${country}\n${description}`
+      : description;
     const result = await submitLeadForm({
       source: prefillSource || "get-estimate-quick",
       name: fd.get("name"),
       phone: String(fd.get("whatsapp") || ""),
       service: fd.get("service"),
-      message: fd.get("description"),
+      message: messageWithCountry,
       budget: fd.get("budget"),
     });
 
@@ -88,16 +106,41 @@ export function QuickEstimateForm({ prefillService = "", prefillSource = "" }: {
 
       <div>
         <label htmlFor="qe-whatsapp" className="block text-sm font-medium text-gray-700 mb-1">
-          WhatsApp Number <span className="text-red-500">*</span>
+          Phone / WhatsApp <span className="text-red-500">*</span>
         </label>
         <input
           id="qe-whatsapp"
           name="whatsapp"
           type="tel"
           required
-          placeholder="+91 98765 43210"
+          placeholder="e.g. +1 555 123 4567 or +91 98765 43210"
           className={inputCls}
         />
+        <p className="mt-1 text-xs text-gray-500">
+          WhatsApp preferred for India/UAE/UK. Phone or email fine for US clients.
+        </p>
+      </div>
+
+      <div>
+        <label htmlFor="qe-country" className="block text-sm font-medium text-gray-700 mb-1">
+          Your Country <span className="text-red-500">*</span>
+        </label>
+        <select
+          id="qe-country"
+          name="country"
+          required
+          defaultValue=""
+          className={cn(inputCls, "appearance-none")}
+        >
+          <option value="" disabled>
+            Select your country
+          </option>
+          {COUNTRIES.map((country) => (
+            <option key={country} value={country}>
+              {country}
+            </option>
+          ))}
+        </select>
       </div>
 
       <div>
@@ -159,12 +202,13 @@ export function QuickEstimateForm({ prefillService = "", prefillSource = "" }: {
       </div>
 
       {/* Trust signals */}
-      <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-gray-500 pt-1">
+      <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-gray-500 pt-1 mb-4">
         {[
           "No obligation",
-          "Response within 24 hours",
-          "GST invoice included",
-          "50+ projects delivered",
+          "USD / GBP / AED pricing available",
+          "NDA on request",
+          "Response within 4 hours",
+          "Full IP ownership",
         ].map((sig) => (
           <span key={sig} className="flex items-center gap-1.5">
             {CHECK_ICON}
@@ -189,7 +233,9 @@ export function QuickEstimateForm({ prefillService = "", prefillSource = "" }: {
         ) : (
           <>
             Get My Free Estimate →
-            <span className="text-sm font-normal opacity-80">Response in 24 hours</span>
+            <span className="text-sm font-normal opacity-80">
+              We work with clients globally
+            </span>
           </>
         )}
       </button>

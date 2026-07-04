@@ -58,6 +58,36 @@ export const servicesNavGroups: NavServiceGroup[] = [
       { label: "SaaS Development", href: "/services/saas-development" },
     ],
   },
+  {
+    title: "Global Clients",
+    links: [
+      {
+        label: "🌍 International Clients",
+        href: "/solutions/web-development-company-india-international",
+        description: "US, UK, UAE, Turkey, Germany and more",
+      },
+      {
+        label: "🇺🇸 US Clients",
+        href: "/solutions/web-development-company-india-usa",
+        description: "USD pricing with IST/EST overlap",
+      },
+      {
+        label: "🇦🇪 UAE Clients",
+        href: "/solutions/web-development-company-india-uae",
+        description: "Middle East delivery with Gulf timezone overlap",
+      },
+      {
+        label: "🇬🇧 UK Clients",
+        href: "/solutions/web-development-company-india-uk",
+        description: "GDPR-aware builds with UK overlap hours",
+      },
+      {
+        label: "🌐 Export Websites",
+        href: "/services/website-development/manufacturer-export-website",
+        description: "International buyer acquisition for Indian manufacturers",
+      },
+    ],
+  },
 ];
 
 export const servicesNavFlatLinks: NavServiceLink[] = servicesNavGroups.flatMap((g) => g.links);
