@@ -85,9 +85,29 @@ function serviceModules(service: ServiceCatalogEntry, industry: IndustryCatalogE
 /** Targeted SERP meta overrides — slug-specific only; shared template unchanged. */
 const ARTICLE_SEO_OVERRIDES: Record<string, { metaTitle: string; metaDescription: string }> = {
   "software-for-education-india": {
-    metaTitle: "Education Software India — Cost & Build Guide 2026",
+    metaTitle: "School & Education Software India 2026 — ERP, LMS & Management Systems",
     metaDescription:
-      "LMS, fees, exams & parent apps for Indian schools — real ₹6L+ pricing, build vs buy, and DPDP checklist. Read the guide — get a free estimate.",
+      "Complete guide to education software in India: ERP for schools, LMS platforms, student data management, and fee collection systems. Compare options and costs. Custom builds from ₹75,000.",
+  },
+  "ai-for-textile-india": {
+    metaTitle: "AI for Textile Manufacturers India 2026 — Defect Detection, Forecasting & Automation",
+    metaDescription:
+      "How textile manufacturers in Surat, Ahmedabad & Bhilwara are using AI for fabric defect detection, demand forecasting, dye optimization, and production automation. Use cases, ROI, and costs in India.",
+  },
+  "crm-for-paint-coatings-india": {
+    metaTitle: "CRM for Paint & Coatings Manufacturers India 2026 — Dealer & Sales Pipeline",
+    metaDescription:
+      "CRM for Indian paint and coatings manufacturers — dealer network management, distributor pipelines, sample tracking, and field-force automation. Pricing ₹5L–₹20L. Build vs buy guide.",
+  },
+  "ai-for-renewable-energy-india": {
+    metaTitle: "AI for Solar & Wind EPC India 2026 — O&M, Forecasting & Commissioning",
+    metaDescription:
+      "AI for Indian solar and wind EPC companies — O&M ticket triage, energy yield forecasting, commissioning checklists, and spares tracking. Costs, use cases & ROI. Implementation guide.",
+  },
+  "erp-for-renewable-energy-india": {
+    metaTitle: "ERP for Renewable Energy Companies India 2026 — Solar & Wind O&M",
+    metaDescription:
+      "ERP for Indian solar and wind companies — project tracking, O&M management, spares inventory, subcontractor billing, and GST compliance. Pricing ₹8L–₹30L. Compare options.",
   },
   "ai-for-chemical-india": {
     metaTitle: "AI for Chemical Plants India — Cost & ROI Guide",
@@ -109,10 +129,10 @@ const ARTICLE_SEO_OVERRIDES: Record<string, { metaTitle: string; metaDescription
     metaDescription:
       "Mobile apps for Indian traders: shipping docs, LC reconciliation & multi-currency invoicing on the go. Cost guide + stack advice. Read more.",
   },
-  "ai-for-renewable-energy-india": {
-    metaTitle: "AI for Solar & Wind EPC India — O&M Guide 2026",
+  "cloud-migration-cost-india-2026": {
+    metaTitle: "Cloud Migration Cost India 2026 — AWS, Azure & GCP Pricing Guide",
     metaDescription:
-      "Commissioning checklists, O&M ticket triage & spares tracking for solar/wind EPCs in India. AI costs, use cases & ROI. See the implementation guide.",
+      "Cloud migration cost in India 2026: ₹2L–₹25L for SMEs and manufacturers. AWS vs Azure vs GCP, hidden costs, phased migration strategy, and ROI. By Maxwell Electrodeal.",
   },
 };
 

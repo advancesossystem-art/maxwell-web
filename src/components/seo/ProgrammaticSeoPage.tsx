@@ -17,6 +17,7 @@ import { StatisticsPanel } from "@/components/authority/StatisticsPanel";
 import { ProofSignalsBar } from "@/components/trust/ProofSignalsBar";
 import { buildProgrammaticGeo } from "@/lib/geo-page-content";
 import { getStatisticsForProgrammatic } from "@/lib/statistics-data";
+import { StickyEstimateCTA } from "@/components/common/StickyEstimateCTA";
 
 function Breadcrumb({ items }: { items: ProgrammaticPageData["breadcrumb"] }) {
   return (
@@ -346,6 +347,7 @@ export function ProgrammaticSeoPage({ page }: { page: ProgrammaticPageData }) {
           </div>
         </Container>
       </section>
+      <StickyEstimateCTA source="compare" />
     </>
   );
 }

@@ -12,6 +12,7 @@ import { TrustThisContent } from "@/components/content/TrustThisContent";
 import { getCategoryBySlug } from "@/lib/content/categories";
 import { formatPublishDate } from "@/lib/content/utils";
 import { getRelatedContent } from "@/lib/content/search";
+import { StickyEstimateCTA } from "@/components/common/StickyEstimateCTA";
 import type { Article } from "@/lib/content/schema";
 
 export function BlogArticlePage({ article }: { article: Article }) {
@@ -112,6 +113,7 @@ export function BlogArticlePage({ article }: { article: Article }) {
           <NewsletterSignup />
         </Container>
       </section>
+      <StickyEstimateCTA source="blog" />
     </>
   );
 }

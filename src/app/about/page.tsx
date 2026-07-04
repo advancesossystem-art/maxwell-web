@@ -8,10 +8,18 @@ import { companyStory } from "@/lib/company-data";
 import { siteConfig } from "@/lib/constants";
 
 export const metadata = createMetadata({
-  title: "Custom ERP Team in Vadodara — 50+ Projects",
+  title: "About Maxwell Electrodeal — Software & Website Company, Vadodara",
   description:
-    "Engineering team behind 50+ ERP & CRM builds for Indian manufacturers. Vadodara HQ since 2018. See our process — book a free strategy call.",
+    "Maxwell Electrodeal builds custom websites, ERP, CRM & AI software for manufacturers and businesses in Vadodara, Gujarat. GST-registered. 50+ projects. Free consultation.",
   path: "/about",
+  keywords: [
+    "about Maxwell Electrodeal",
+    "software company Vadodara",
+    "website development company Vadodara",
+    "IT company Vadodara Gujarat",
+    "custom software development company India",
+    "ERP company Vadodara",
+  ],
 });
 
 export default function AboutPage() {

@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { submitLeadForm } from "@/lib/submit-lead-form";
 import { composeInternationalPhone, defaultCountryIso } from "@/lib/country-phone-codes";
 import { cn } from "@/lib/utils";
+import { trackFormComplete } from "@/lib/conversion-events";
 
 const BUSINESS_TYPES = [
   "Manufacturing",
@@ -61,6 +62,7 @@ export function HomepageAssessmentForm() {
       setError(result.error || "Could not submit. Please try again.");
       return;
     }
+    trackFormComplete("homepage-assessment");
     setDone(true);
     e.currentTarget.reset();
     setSelectedServices([]);

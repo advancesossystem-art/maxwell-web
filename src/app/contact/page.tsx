@@ -7,9 +7,9 @@ import { ArrowRight } from "@/components/ui/Icons";
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata = createMetadata({
-  title: "Get ERP Quote in 24 Hours — Vadodara, India",
+  title: "Contact Maxwell Electrodeal — Free Project Estimate | Vadodara",
   description:
-    "Request a free ERP, CRM or custom software quote from Maxwell Electrodeal. Vadodara team — reply within 24 hours. Call, email or book online.",
+    "Talk to Maxwell Electrodeal's team in Vadodara about your website, ERP, CRM, or software project. Response within 4 hours. WhatsApp, phone, or form — your choice.",
   path: "/contact",
 });
 

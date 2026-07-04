@@ -571,6 +571,21 @@ for (const ind of programmaticIndustries) {
   if (page) comparePagesMap.set(page.slug, page);
 }
 
+// Slug-specific meta overrides for compare pages with high impressions but zero clicks
+const compareMetaOverrides: Record<string, { metaTitle: string; metaDescription: string }> = {
+  "best-erp-for-fmcg": {
+    metaTitle: "Best ERP for FMCG India 2026 — Compare SAP, Odoo & Custom ERP",
+    metaDescription:
+      "Best ERP for FMCG companies in India 2026: compare SAP B1 (₹12L+), Odoo (₹6L+), and custom ERP (₹8L–₹25L) for route sales, distributor claims, and scheme management. Free estimate.",
+  },
+};
+for (const [slug, override] of Object.entries(compareMetaOverrides)) {
+  const existing = comparePagesMap.get(slug);
+  if (existing) {
+    comparePagesMap.set(slug, { ...existing, ...override });
+  }
+}
+
 const costPagesMap = new Map<string, ProgrammaticPageData>();
 for (const service of programmaticServices) {
   for (const country of programmaticCountries) {

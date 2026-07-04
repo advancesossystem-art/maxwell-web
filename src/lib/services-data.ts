@@ -466,9 +466,9 @@ export const servicesData: Record<ServiceSlug, ServicePageData> = {
     headline: "Custom ERP Development Company India — GST-Ready ERP Solutions",
     subheadline:
       "Custom ERP software for manufacturing, trading, and distribution across Vadodara, Gujarat, and India. Inventory, production, GST billing, and Tally integration—built around your workflows, not generic templates.",
-    metaTitle: "Custom ERP Development Company India — GST-Ready ERP",
+    metaTitle: "Custom ERP Development Company India — Vadodara ERP for Manufacturers",
     metaDescription:
-      "Custom ERP development company in India — GST-ready manufacturing & trading ERP for Vadodara, Gujarat. Inventory, billing, Tally sync. From ₹2L–₹20L.",
+      "Custom ERP development company in India — manufacturing, trading & distribution ERP for Gujarat manufacturers. Inventory, production, GST billing, Tally sync. From ₹8L. Free estimate in 24 hrs.",
     keywords: [
       "ERP software development company",
       "ERP development company India",

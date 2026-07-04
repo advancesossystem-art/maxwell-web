@@ -32,9 +32,9 @@ export const gscIndustriesData: Record<(typeof gscIndustrySlugs)[number], Indust
     headline: "CRM & ERP Software for Chemical Manufacturing Companies India",
     subheadline:
       "Maxwell Electrodeal builds CRM and ERP platforms for chemical manufacturers, distributors, and specialty chemical traders — with batch genealogy, Safety Data Sheet (SDS) management, hazmat inventory controls, and GST-ready reporting. Projects typically start from ₹2,50,000 with phased rollout across sales, warehouse, and production teams.",
-    metaTitle: "CRM Software for Chemical Industry India | Chemical Manufacturing CRM",
+    metaTitle: "CRM & ERP Software for Chemical Manufacturers India — Batch, SDS & Compliance",
     metaDescription:
-      "CRM & ERP software for chemical manufacturing companies in India — batch tracking, SDS compliance, hazmat inventory, regulatory reporting & distributor CRM. From ₹2,50,000. Gujarat & pan-India delivery.",
+      "Custom CRM and ERP for Indian chemical manufacturers — batch traceability, SDS compliance, hazmat inventory, GST billing, and distributor CRM. Gujarat & pan-India. From ₹2,50,000. Free estimate.",
     keywords: [
       "CRM software for chemical industry",
       "chemical manufacturing CRM",

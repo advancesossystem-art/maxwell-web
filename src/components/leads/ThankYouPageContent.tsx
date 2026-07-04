@@ -181,6 +181,29 @@ function ThankYouInner() {
           )}
         </div>
 
+        {!isCareers && !isNewsletter && (
+          <div className="mt-8 rounded-2xl border border-border bg-surface-elevated p-6 text-left">
+            <h2 className="font-display text-base font-bold">While you wait — see how we've helped similar businesses:</h2>
+            <ul className="mt-4 space-y-2 text-sm">
+              <li>
+                <Link href="/case-studies/drashti-chemicals" className="text-brand-600 hover:underline font-medium">
+                  How we built a 263-page manufacturer website in 6 weeks →
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog/indiamart-alternative-website-manufacturer" className="text-brand-600 hover:underline font-medium">
+                  Why manufacturers are moving beyond IndiaMART →
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog/erp-software-cost-india-2026" className="text-brand-600 hover:underline font-medium">
+                  ERP software cost in India 2026 — complete guide →
+                </Link>
+              </li>
+            </ul>
+          </div>
+        )}
+
         <Link href="/" className="mt-8 inline-flex items-center gap-1 text-sm font-semibold text-brand-600">
           Back to homepage <ArrowRight className="h-3.5 w-3.5" />
         </Link>
