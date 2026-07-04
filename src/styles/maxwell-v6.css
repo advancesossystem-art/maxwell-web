@@ -857,6 +857,11 @@ body:not(.portal-shell)
   color: var(--v6-text);
 }
 
+/* Intentional dark panels nested inside light sections (e.g. homepage assessment) */
+body:not(.portal-shell) .v6-dark-panel :is(h1, h2, h3, h4, dt)[class*="text-white"] {
+  color: #fff;
+}
+
 /* Numbered step badges */
 .v6-step-num {
   display: flex;

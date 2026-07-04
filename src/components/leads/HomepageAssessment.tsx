@@ -13,7 +13,7 @@ export function HomepageAssessment() {
     <section id="free-audit" className="v6-section v6-section--soft" aria-label="Free software assessment">
       <div className="v6-container">
         <div className="mx-auto grid max-w-6xl overflow-hidden rounded-[2rem] border border-[var(--v6-border)] bg-white shadow-sm lg:grid-cols-[0.86fr_1.14fr]">
-          <div className="relative bg-[#0f172a] p-6 text-white sm:p-8 lg:p-10">
+          <div className="v6-dark-panel relative bg-[#0f172a] p-6 text-white sm:p-8 lg:p-10">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(79,70,229,0.28),transparent_38%),radial-gradient(circle_at_bottom_right,rgba(14,165,233,0.18),transparent_34%)]" />
             <div className="relative">
               <p className="v6-eyebrow-line v6-eyebrow text-white/80 before:bg-white/25">Free assessment</p>
