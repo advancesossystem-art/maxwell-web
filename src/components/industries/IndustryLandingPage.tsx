@@ -22,6 +22,7 @@ import { ProofSignalsBar } from "@/components/trust/ProofSignalsBar";
 import { buildIndustryGeo } from "@/lib/geo-page-content";
 import { getStatisticsForIndustry } from "@/lib/statistics-data";
 import { IndustryLeadForm } from "@/components/leads/IndustryLeadForm";
+import { StickyEstimateCTA } from "@/components/common/StickyEstimateCTA";
 import type { IndustryPageData, IndustrySlug } from "@/lib/industries-data";
 
 const industryCaseStudySlug: Partial<Record<IndustrySlug, string>> = {
@@ -88,6 +89,7 @@ export function IndustryLandingPage({ industry }: { industry: IndustryPageData }
         />
       </Container>
       <IndustryCTAStrip industryName={industry.title} />
+      <StickyEstimateCTA service={industry.title} source={`industry-${industry.slug}`} />
     </>
   );
 }

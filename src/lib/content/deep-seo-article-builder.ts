@@ -83,16 +83,18 @@ function serviceModules(service: ServiceCatalogEntry, industry: IndustryCatalogE
 }
 
 /** Targeted SERP meta overrides — slug-specific only; shared template unchanged. */
-const ARTICLE_SEO_OVERRIDES: Record<string, { metaTitle: string; metaDescription: string }> = {
+const ARTICLE_SEO_OVERRIDES: Record<string, { metaTitle: string; metaDescription: string; title?: string }> = {
   "software-for-education-india": {
     metaTitle: "School & Education Software India 2026 — ERP, LMS & Management Systems",
     metaDescription:
       "Complete guide to education software in India: ERP for schools, LMS platforms, student data management, and fee collection systems. Compare options and costs. Custom builds from ₹75,000.",
+    title: "School & Education Software in India: ERP, LMS & Management Systems Guide (2026)",
   },
   "ai-for-textile-india": {
     metaTitle: "AI for Textile Manufacturers India 2026 — Defect Detection, Forecasting & Automation",
     metaDescription:
       "How textile manufacturers in Surat, Ahmedabad & Bhilwara are using AI for fabric defect detection, demand forecasting, dye optimization, and production automation. Use cases, ROI, and costs in India.",
+    title: "AI for Textile Manufacturers in India: Use Cases, ROI & Implementation Guide (2026)",
   },
   "crm-for-paint-coatings-india": {
     metaTitle: "CRM for Paint & Coatings Manufacturers India 2026 — Dealer & Sales Pipeline",
@@ -348,7 +350,12 @@ export function buildDeepIndustryServiceArticle(
 
   const override = ARTICLE_SEO_OVERRIDES[slug];
   if (override) {
-    return { ...article, metaTitle: override.metaTitle, metaDescription: override.metaDescription };
+    return {
+      ...article,
+      ...(override.title ? { title: override.title } : {}),
+      metaTitle: override.metaTitle,
+      metaDescription: override.metaDescription,
+    };
   }
   return article;
 }

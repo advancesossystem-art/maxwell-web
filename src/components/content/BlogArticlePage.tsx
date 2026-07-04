@@ -9,6 +9,7 @@ import { ArticlePageJsonLd } from "@/components/seo/JsonLd";
 import { GeoDefinitionBlock } from "@/components/authority/GeoDefinitionBlock";
 import { GeoKeyTakeaways, buildTakeawaysFromFaqs } from "@/components/authority/GeoKeyTakeaways";
 import { TrustThisContent } from "@/components/content/TrustThisContent";
+import { BlogPostCTA } from "@/components/content/BlogPostCTA";
 import { getCategoryBySlug } from "@/lib/content/categories";
 import { formatPublishDate } from "@/lib/content/utils";
 import { getRelatedContent } from "@/lib/content/search";
@@ -75,6 +76,7 @@ export function BlogArticlePage({ article }: { article: Article }) {
               <GeoDefinitionBlock term={`What is ${article.title.replace(/\?$/, "")}?`} definition={article.excerpt} />
               {takeaways.length > 0 ? <GeoKeyTakeaways items={takeaways} /> : null}
               <ContentRenderer blocks={article.sections} />
+              <BlogPostCTA category={article.category} slug={article.slug} />
             </article>
           </div>
         </Container>

@@ -23,6 +23,7 @@ import { StatisticsPanel } from "@/components/authority/StatisticsPanel";
 import { ProofSignalsBar } from "@/components/trust/ProofSignalsBar";
 import { buildServiceGeo } from "@/lib/geo-page-content";
 import { getStatisticsForService } from "@/lib/statistics-data";
+import { StickyEstimateCTA } from "@/components/common/StickyEstimateCTA";
 import type { ServicePageData } from "@/lib/services-data";
 import type { ServiceSlug } from "@/lib/services-data";
 
@@ -53,6 +54,7 @@ export function ServiceLandingPage({ service }: { service: ServicePageData }) {
         <ServiceCTA serviceName={service.title} serviceSlug={service.slug} />
       </Container>
       <ServiceCTAStrip serviceName={service.title} />
+      <StickyEstimateCTA service={service.title} source={`service-${service.slug}`} />
     </>
   );
 }
