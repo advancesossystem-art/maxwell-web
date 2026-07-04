@@ -18,10 +18,10 @@ const inter = Inter({
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-space-grotesk",
-  display: "swap",
+  display: "optional",
   preload: true,
   adjustFontFallback: true,
-  weight: ["600", "700"],
+  weight: ["700"],
 });
 
 const siteVerification = buildSiteVerificationMetadata();
@@ -53,9 +53,6 @@ export default function RootLayout({
   return (
     <html lang="en-IN" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <head>
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href="https://www.clarity.ms" />
-        <link rel="preconnect" href="https://assets.calendly.com" />
         <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM site summary" />
         <link rel="alternate" type="text/plain" href="/ai.txt" title="AI assistant discovery" />
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" title="Maxwell Electrodeal Blog RSS" />

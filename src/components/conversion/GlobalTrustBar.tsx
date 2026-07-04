@@ -1,5 +1,3 @@
-"use client";
-
 import { getTrustStripItems } from "@/lib/company-metrics";
 
 /** Full-width trust metrics — projects, industries, satisfaction, delivery */

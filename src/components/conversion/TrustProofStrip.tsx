@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import { trustProofItems } from "@/lib/homepage";
 import { CONVERSION_ROUTES } from "@/lib/conversion-copy";

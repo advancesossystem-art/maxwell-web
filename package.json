@@ -11,6 +11,12 @@
     "verify:seo": "node scripts/verify-seo.mjs",
     "verify:live": "node scripts/verify-live-seo.mjs"
   },
+  "browserslist": [
+    "chrome >= 111",
+    "edge >= 111",
+    "firefox >= 111",
+    "safari >= 16.4"
+  ],
   "dependencies": {
     "@upstash/ratelimit": "^2.0.8",
     "@upstash/redis": "^1.38.0",

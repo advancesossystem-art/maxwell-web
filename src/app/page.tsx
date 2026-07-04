@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { createHomeMetadata } from "@/lib/seo/metadata-utils";
 import { Hero } from "@/components/home/Hero";
+import { HeroMotionEnhancer } from "@/components/home/HeroMotionEnhancer";
 import { AiEntitySummary } from "@/components/seo/AiEntitySummary";
 import { HomepageStructuredData } from "@/components/seo/HomepageStructuredData";
 import { GlobalTrustBar } from "@/components/conversion/GlobalTrustBar";
@@ -75,6 +76,7 @@ export default function HomePage() {
     <>
       <HomepageStructuredData />
       <Hero />
+      <HeroMotionEnhancer />
       <AiEntitySummary />
       <TrustProofStrip />
       <GlobalTrustBar />

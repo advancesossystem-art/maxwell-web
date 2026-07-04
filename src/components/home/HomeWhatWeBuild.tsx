@@ -1,7 +1,4 @@
-"use client";
-
 import Link from "next/link";
-import { FadeIn } from "@/components/motion/FadeIn";
 import { HomeSection } from "@/components/home/HomeSection";
 import { IconAI, IconERP, IconGlobe, ArrowRight } from "@/components/ui/Icons";
 
@@ -12,7 +9,7 @@ const cards = [
     body: "Product catalog websites, B2B landing pages, and corporate sites built on Next.js — optimized for Google and mobile. Starting from ₹75,000.",
     tag: "Most popular for manufacturers",
     tagClass: "bg-emerald-50 text-emerald-700 border-emerald-200",
-    linkLabel: "See website projects →",
+    linkLabel: "See website projects",
     href: "/services/website-development",
   },
   {
@@ -21,7 +18,7 @@ const cards = [
     body: "Bespoke software built around your workflows — inventory, production, GST, CRM pipelines, and everything in between.",
     tag: "Popular for manufacturers & logistics",
     tagClass: "bg-[#4f46e5]/10 text-[#4f46e5] border-[#4f46e5]/20",
-    linkLabel: "Explore software services →",
+    linkLabel: "Explore software services",
     href: "/services/custom-software-development",
   },
   {
@@ -30,7 +27,7 @@ const cards = [
     body: "Document AI, computer vision for shop floors, demand forecasting, and workflow automation that removes the work your team dreads.",
     tag: "Growing demand in 2026",
     tagClass: "bg-amber-50 text-amber-800 border-amber-200",
-    linkLabel: "See AI services →",
+    linkLabel: "See AI services",
     href: "/services/ai-solutions",
   },
 ] as const;
@@ -38,13 +35,11 @@ const cards = [
 export function HomeWhatWeBuild() {
   return (
     <HomeSection tone="white" aria-label="What we build">
-      <FadeIn>
-        <h2 className="v6-section-title v6-section-title--wide text-balance">What We Build</h2>
-        <p className="v6-lead mt-4 max-w-3xl">
-          From a ₹75,000 manufacturer website to a ₹50L enterprise ERP — we build exactly what your
-          business needs, nothing more.
-        </p>
-      </FadeIn>
+      <h2 className="v6-section-title v6-section-title--wide text-balance">What We Build</h2>
+      <p className="v6-lead mt-4 max-w-3xl">
+        From a ₹75,000 manufacturer website to a ₹50L enterprise ERP — we build exactly what your business needs,
+        nothing more.
+      </p>
 
       <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {cards.map((card) => {
@@ -62,17 +57,14 @@ export function HomeWhatWeBuild() {
               >
                 {card.tag}
               </span>
-              <h3 className="mt-4 font-display text-lg font-semibold text-[var(--v6-text)]">
-                {card.heading}
-              </h3>
-              <p className="mt-2 flex-1 text-sm leading-relaxed text-[var(--v6-text-secondary)]">
-                {card.body}
-              </p>
+              <h3 className="mt-4 font-display text-lg font-semibold text-[var(--v6-text)]">{card.heading}</h3>
+              <p className="mt-2 flex-1 text-sm leading-relaxed text-[var(--v6-text-secondary)]">{card.body}</p>
               <Link
                 href={card.href}
+                aria-label={`${card.linkLabel} — ${card.heading}`}
                 className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-[#4f46e5] hover:underline"
               >
-                {card.linkLabel}
+                {card.linkLabel} →
                 <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             </div>

@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { HeroEcosystemVisual } from "@/components/home/HeroEcosystemVisual";
-import { HeroSequence } from "@/components/home/HeroSequence";
 import { Button } from "@/components/ui/Button";
 import { heroServiceBadges, heroTrustMetrics, homeHero, trustHighlights } from "@/lib/homepage";
 import {
@@ -80,7 +79,7 @@ export function Hero() {
               ))}
             </div>
 
-            <p className="mt-4 text-xs text-gray-500 md:hidden">
+            <p className="mt-4 text-xs text-[var(--v6-text-muted)] md:hidden">
               50+ projects delivered · 4.9/5 ★
             </p>
             <p className="mt-4 hidden rounded-xl border border-[#4f46e5]/15 bg-[#f8fafc] px-4 py-3 text-sm text-[var(--v6-text-secondary)] md:block">
@@ -134,9 +133,9 @@ export function Hero() {
             </ul>
           </div>
 
-          <HeroSequence className="relative lg:pl-4">
+          <div className="relative lg:pl-4" data-hero="visual">
             <HeroEcosystemVisual />
-          </HeroSequence>
+          </div>
         </div>
       </div>
     </section>

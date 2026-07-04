@@ -16,18 +16,18 @@ export function HomepageAssessment() {
           <div className="relative bg-[#0f172a] p-6 text-white sm:p-8 lg:p-10">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(79,70,229,0.28),transparent_38%),radial-gradient(circle_at_bottom_right,rgba(14,165,233,0.18),transparent_34%)]" />
             <div className="relative">
-              <p className="v6-eyebrow-line v6-eyebrow text-white/70 before:bg-white/20">Free assessment</p>
+              <p className="v6-eyebrow-line v6-eyebrow text-white/80 before:bg-white/25">Free assessment</p>
               <h2 className="mt-5 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
                 Get a Free Software Needs Assessment
               </h2>
-              <p className="mt-4 text-base leading-relaxed text-white/72">
+              <p className="mt-4 text-base leading-relaxed text-white/85">
                 Tell us about your business and we&apos;ll map what will help first: a website, ERP, CRM, AI, or mobile
                 app. No obligation.
               </p>
 
               <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.06] p-5">
-                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-white/55">What you get</p>
-                <ul className="mt-4 space-y-3 text-sm text-white/80">
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-white/75">What you get</p>
+                <ul className="mt-4 space-y-3 text-sm text-white/90">
                   <li className="flex gap-2">
                     <span className="text-[#a5b4fc]" aria-hidden>
                       ✓
@@ -49,7 +49,7 @@ export function HomepageAssessment() {
                 </ul>
               </div>
 
-              <ul className="mt-6 grid gap-3 text-sm text-white/72 sm:grid-cols-2 lg:grid-cols-1">
+              <ul className="mt-6 grid gap-3 text-sm text-white/85 sm:grid-cols-2 lg:grid-cols-1">
                 {TRUST_SIGNALS.map((signal) => (
                   <li key={signal} className="flex items-center gap-2">
                     <span className="h-1.5 w-1.5 rounded-full bg-[#a5b4fc]" aria-hidden />

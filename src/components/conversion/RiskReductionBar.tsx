@@ -1,33 +1,30 @@
-"use client";
-
 import Link from "next/link";
 import { CTA_LABELS, CONVERSION_ROUTES } from "@/lib/conversion-copy";
-import { trackCTAClick } from "@/lib/conversion-events";
 
 const offers = [
   {
     label: "Free Consultation",
     href: CONVERSION_ROUTES.consultation,
     desc: "30-min strategy session",
-    track: CTA_LABELS.primary,
+    ariaLabel: CTA_LABELS.primary,
   },
   {
     label: "Free Project Estimate",
     href: CONVERSION_ROUTES.estimate,
     desc: "Phased quote in 24–48 hrs",
-    track: CTA_LABELS.secondary,
+    ariaLabel: CTA_LABELS.secondary,
   },
   {
     label: "Free ERP Assessment",
     href: "/tools/erp-roi-calculator",
     desc: "ROI & readiness check",
-    track: CTA_LABELS.freeErpAssessment,
+    ariaLabel: CTA_LABELS.freeErpAssessment,
   },
   {
     label: "Free Custom Roadmap",
     href: "/tools/project-roadmap",
     desc: "Phased delivery plan",
-    track: CTA_LABELS.customRoadmap,
+    ariaLabel: CTA_LABELS.customRoadmap,
   },
 ] as const;
 
@@ -46,7 +43,7 @@ export function RiskReductionBar({ className }: { className?: string }) {
             <li key={o.label}>
               <Link
                 href={o.href}
-                onClick={() => trackCTAClick(o.track, o.href, "risk_reduction_bar")}
+                aria-label={o.ariaLabel}
                 className="group block rounded-xl border border-[var(--v6-border)] bg-[#f8fafc] p-4 transition-colors hover:border-[#4f46e5]/30 hover:bg-white"
               >
                 <span className="font-display text-sm font-semibold text-[var(--v6-text)] group-hover:text-[#4f46e5]">
