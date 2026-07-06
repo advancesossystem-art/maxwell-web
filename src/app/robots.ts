@@ -1,18 +1,43 @@
 import type { MetadataRoute } from "next";
-import { siteConfig } from "@/lib/constants";
+import { robotsSitemapUrls } from "@/lib/sitemap-index";
+
+/**
+ * Crawl-budget hygiene: block thin noindex programmatic matrices so Googlebot
+ * stops fetching pages it will only drop, freeing budget for real pages.
+ * Google honors more-specific Allow rules, so the two indexable city×service
+ * pages are explicitly re-allowed.
+ */
+const crawlWasteDisallow = [
+  "/api/",
+  "/admin/",
+  "/portal/",
+  "/thank-you",
+  // Industry × service matrix — all noindex
+  "/industries/*/*/",
+  "/industries/*/*",
+  // City × service matrix — noindex except explicit allows below
+  "/locations/india/*/*/",
+  "/locations/india/*/*",
+];
+
+const crawlWasteAllow = [
+  "/",
+  "/locations/india/surat/custom-software-development",
+  "/locations/india/halol/ai-development",
+];
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
         userAgent: "*",
-        allow: "/",
-        disallow: ["/api/", "/admin/", "/portal/", "/thank-you"],
+        allow: crawlWasteAllow,
+        disallow: crawlWasteDisallow,
       },
       {
         userAgent: "Googlebot",
-        allow: "/",
-        disallow: ["/api/", "/admin/", "/portal/", "/thank-you"],
+        allow: crawlWasteAllow,
+        disallow: crawlWasteDisallow,
       },
       {
         userAgent: "GPTBot",
@@ -100,6 +125,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/admin/", "/portal/", "/thank-you"],
       },
     ],
-    sitemap: `${siteConfig.url}/sitemap.xml`,
+    sitemap: robotsSitemapUrls,
   };
 }

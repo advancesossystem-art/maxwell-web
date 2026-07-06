@@ -10,6 +10,34 @@ import { Card } from "@/components/design/Card";
 import { AccentGradient, H3, Caption } from "@/components/design/typography";
 import { TrustStrip } from "@/components/trust/TrustStrip";
 
+const internationalWebPages = [
+  {
+    href: "/solutions/web-development-company-india-international",
+    title: "India Web Development — International",
+    keyword: "Web development company India for international clients",
+  },
+  {
+    href: "/solutions/web-development-company-india-usa",
+    title: "India Web Development — USA",
+    keyword: "Indian web development agency for US clients",
+  },
+  {
+    href: "/solutions/web-development-company-india-uk",
+    title: "India Web Development — UK",
+    keyword: "Indian web development company for UK clients",
+  },
+  {
+    href: "/solutions/web-development-company-india-uae",
+    title: "India Web Development — UAE",
+    keyword: "Web development company India for UAE clients",
+  },
+  {
+    href: "/solutions/web-development-company-india-turkey",
+    title: "India Web Development — Turkey",
+    keyword: "Web development company India for Turkey clients",
+  },
+] as const;
+
 export function SolutionsHub() {
   const all = getAllSolutions();
   const isIntlGeo = (slug: string) => slug.endsWith("-usa") || slug.endsWith("-uae");
@@ -60,6 +88,21 @@ export function SolutionsHub() {
             <Card key={solution.slug} href={`/solutions/${solution.slug}`} padding="md">
               <H3 className="text-base group-hover:text-brand-400 transition-colors">{solution.title}</H3>
               <Caption className="mt-1 line-clamp-2 text-xs">{solution.primaryKeyword}</Caption>
+            </Card>
+          ))}
+        </div>
+      </PageSection>
+
+      <PageSection tone="elevated" compact>
+        <h2 className="font-display text-xl font-bold">Web development for international clients</h2>
+        <p className="mt-2 max-w-2xl text-sm text-muted">
+          Dedicated pages for US, UK, UAE, and Turkey clients hiring an Indian web development team — USD pricing and milestone delivery.
+        </p>
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {internationalWebPages.map((page) => (
+            <Card key={page.href} href={page.href} padding="md">
+              <H3 className="text-base group-hover:text-brand-400 transition-colors">{page.title}</H3>
+              <Caption className="mt-1 line-clamp-2 text-xs">{page.keyword}</Caption>
             </Card>
           ))}
         </div>

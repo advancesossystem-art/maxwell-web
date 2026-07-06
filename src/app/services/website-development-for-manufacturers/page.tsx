@@ -73,6 +73,12 @@ const industries = [
     desc: "International buyer acquisition pages with country-specific inquiry forms.",
     href: "/services/website-development/exporter-india",
   },
+  {
+    emoji: "🚢",
+    name: "Manufacturer Export Websites",
+    desc: "Export-ready websites with multi-currency, buyer inquiry, and country-targeted landing pages.",
+    href: "/services/website-development/manufacturer-export-website",
+  },
 ];
 
 const features = [

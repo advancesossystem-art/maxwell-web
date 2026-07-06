@@ -158,6 +158,21 @@ export function ProgrammaticSeoPage({ page }: { page: ProgrammaticPageData }) {
           }),
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: page.breadcrumb.map((item, i) => ({
+              "@type": "ListItem",
+              position: i + 1,
+              name: item.label,
+              ...(item.href ? { item: `${siteConfig.url}${item.href}` } : {}),
+            })),
+          }),
+        }}
+      />
       <FaqPageJsonLd faqs={page.faqs} id={`${siteConfig.url}${page.path}#faq`} />
 
       <section className="relative overflow-hidden bg-background section-hero">
