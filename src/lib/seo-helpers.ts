@@ -10,14 +10,16 @@ export function buildPageMetadata({
   path,
   keywords = [],
   noIndex = false,
+  absoluteTitle = false,
 }: {
   title: string;
   description: string;
   path: string;
   keywords?: string[];
   noIndex?: boolean;
+  absoluteTitle?: boolean;
 }): Metadata {
-  return buildPageSeoMetadata({ title, description, path, keywords, noIndex });
+  return buildPageSeoMetadata({ title, description, path, keywords, noIndex, absoluteTitle });
 }
 
 export function buildArticleMetadata({

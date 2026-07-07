@@ -120,8 +120,8 @@ export function buildComparePage(template: (typeof compareTemplates)[number]): P
     slug: template.slug,
     path,
     pageType: "compare",
-    metaTitle: `${template.left} vs ${template.right} for Indian ${categoryLabel} Teams (2026) | ${siteConfig.name}`,
-    metaDescription: `${template.title} for India: side-by-side matrix, TCO factors, and when ${template.left} beats ${template.right} for GST-aware SMEs. ${template.verdict.slice(0, 80)}…`,
+    metaTitle: `${template.left} vs ${template.right} (2026) — Which Wins for India?`,
+    metaDescription: `${template.left} vs ${template.right} for Indian ${categoryLabel} teams: side-by-side comparison, real costs, and which to pick for GST-ready SMEs. See the verdict + free advice.`,
     comparisonMatrix: buildComparisonMatrix(template),
     primaryKeyword: template.title,
     secondaryKeywords: [
@@ -200,8 +200,8 @@ export function buildBestForIndustryCompare(industrySlug: string): ProgrammaticP
     slug,
     path,
     pageType: "compare",
-    metaTitle: `Best ERP for ${industry.name} India 2026 | ${industry.compliance.split(",")[0]} | ${siteConfig.name}`,
-    metaDescription: `Best ERP for ${industry.name} (${industry.focus}): custom vs SAP/Odoo/Tally, ${industry.painPoints[0]}, GST integration. Compare options for Indian ${industry.name.toLowerCase()} SMEs.`,
+    metaTitle: `Best ERP for ${industry.name} India 2026 — SAP vs Custom`,
+    metaDescription: `Best ERP for ${industry.name} (${industry.focus}): compare SAP, Odoo, Tally vs custom ERP for ${industry.painPoints[0].toLowerCase()}. Pricing from ₹8L. Free estimate in 24 hours.`,
     comparisonMatrix: buildComparisonMatrix({
       slug: `best-erp-${industrySlug}`,
       title: `Custom ERP vs Off-the-Shelf for ${industry.name}`,
@@ -309,8 +309,8 @@ export function buildCostPage(
     slug,
     path,
     pageType: "cost",
-    metaTitle: `${service.shortLabel} Cost in ${locationMeta} 2026 | From ${costRange.split("–")[0].trim()} | ${siteConfig.name}`,
-    metaDescription: `${service.label} pricing for ${marketModifier}: ${costRange}. Tier breakdown, timeline, GST/Tally factors, and milestone quotes from ${siteConfig.name}.`,
+    metaTitle: `${service.shortLabel} Cost in ${locationMeta} 2026 — From ${costRange.split("–")[0].trim()}`,
+    metaDescription: `How much does ${service.label.toLowerCase()} cost for ${marketModifier}? Real 2026 pricing: ${costRange}. Tier breakdown, timeline & GST factors. Get a free milestone quote.`,
     pricingTable: buildPricingTable(service, locationLabel, costRange),
     primaryKeyword: keyword,
     secondaryKeywords: [
@@ -616,6 +616,66 @@ const compareMetaOverrides: Record<string, {
           "COA generation per batch",
           "Export documentation (SDF, ARE-1) for chemical exporters",
           "Custom ERP from ₹8L–₹25L — no per-module add-ons",
+        ],
+      },
+    ],
+  },
+  "best-erp-for-textile": {
+    metaTitle: "Best ERP for Textile India 2026 — Surat, Job-Work & Fabric Stock",
+    metaDescription:
+      "Best ERP for textile manufacturers in India 2026: fabric inventory, job-work tracking, dyeing batches & export docs. Compare SAP (₹25L+), Odoo & custom ERP (₹8L–₹25L). Free quote in 24h.",
+    extraSections: [
+      {
+        title: "Textile ERP in India — Why Generic Software Fails Spinning & Garment Units",
+        content:
+          "Textile units in Surat, Ahmedabad, Tiruppur, and Coimbatore run on job-work chains, shade lots, and seasonal order spikes that standard ERP cannot model without months of customization. The right textile ERP tracks grey fabric, processed fabric, and finished goods separately; links dyeing and finishing job-work to inward challans; handles width, GSM, and shade matching records; and supports export documentation for garment and fabric exporters.\n\nTally handles GST but not production. SAP Business One costs ₹25L+ and still needs a textile implementation partner. Maxwell Electrodeal builds custom textile ERP from ₹8L–₹25L with fabric inventory, job-work tracking, and dealer scheme modules included — sized for mid-market spinning, weaving, dyeing, and garment SMEs.",
+        bullets: [
+          "Grey, processed & finished fabric inventory",
+          "Job-work inward/outward and challan tracking",
+          "Shade matching and batch dyeing records",
+          "Seasonal order spike planning",
+          "Export documentation for fabric & garment",
+          "Custom textile ERP from ₹8L–₹25L",
+        ],
+      },
+    ],
+  },
+  "best-erp-for-pharma": {
+    metaTitle: "Best ERP for Pharma India 2026 — GMP Batches, Expiry & Audit Trails",
+    metaDescription:
+      "Best ERP for pharma & API manufacturers in India 2026: GMP batch records, expiry tracking, Schedule M alignment. Compare SAP (₹30L+), Odoo & custom ERP (₹10L–₹30L). Free estimate.",
+    extraSections: [
+      {
+        title: "Pharma ERP in India — GMP Requirements Off-the-Shelf ERP Misses",
+        content:
+          "Pharma formulations and API units need batch manufacturing records, expiry and quarantine stock segregation, and audit trails that satisfy WHO-GMP and Schedule M inspections. Generic ERP treats batches as optional; pharma ERP must make them mandatory with electronic signatures, deviation logging, and COA linkage per batch.\n\nSAP is enterprise-priced. Odoo needs a validated implementation partner. Maxwell Electrodeal builds custom pharma ERP from ₹10L–₹30L with GMP batch records, expiry alerts, and regulatory document vaults — without per-user license creep that punishes growing QA teams.",
+        bullets: [
+          "GMP batch manufacturing records (BMR)",
+          "Expiry, quarantine & released stock segregation",
+          "WHO-GMP and Schedule M audit trail",
+          "COA and stability study linkage",
+          "Deviation and CAPA logging",
+          "Custom pharma ERP from ₹10L–₹30L",
+        ],
+      },
+    ],
+  },
+  "best-erp-for-paint-coatings": {
+    metaTitle: "Best ERP for Paint & Coatings India 2026 — Formula & Shade Control",
+    metaDescription:
+      "Best ERP for paint & coatings manufacturers in India 2026: formula batch control, shade matching, MSDS & dealer schemes. Compare SAP, Odoo & custom ERP (₹8L–₹25L). Free quote.",
+    extraSections: [
+      {
+        title: "Paint & Coatings ERP — Formula Control Generic ERP Cannot Handle",
+        content:
+          "Paint manufacturers manage tint bases, shade formulas, and batch adjustments that change viscosity and coverage. ERP must version-control formulas, link raw material lots to finished shade batches, maintain MSDS per SKU, and track dealer scheme claims — capabilities Tally and basic Odoo lack without heavy customization.\n\nMaxwell Electrodeal builds custom paint ERP from ₹8L–₹25L with formula management, shade matching records, and hazmat inventory — sized for decorative paint, industrial coatings, and specialty chemical blenders in Gujarat and Maharashtra.",
+        bullets: [
+          "Formula versioning and batch adjustment logs",
+          "Shade matching and tint base tracking",
+          "MSDS vault linked to SKUs and batches",
+          "Dealer scheme and claim settlement",
+          "Hazmat and solvent inventory control",
+          "Custom paint ERP from ₹8L–₹25L",
         ],
       },
     ],

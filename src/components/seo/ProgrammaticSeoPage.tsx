@@ -18,6 +18,7 @@ import { ProofSignalsBar } from "@/components/trust/ProofSignalsBar";
 import { buildProgrammaticGeo } from "@/lib/geo-page-content";
 import { getStatisticsForProgrammatic } from "@/lib/statistics-data";
 import { StickyEstimateCTA } from "@/components/common/StickyEstimateCTA";
+import { CTA_LABELS, CONVERSION_EXPECTATIONS } from "@/lib/conversion-copy";
 
 function Breadcrumb({ items }: { items: ProgrammaticPageData["breadcrumb"] }) {
   return (
@@ -354,12 +355,16 @@ export function ProgrammaticSeoPage({ page }: { page: ProgrammaticPageData }) {
           </p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
             <Button href="/get-estimate" size="lg">
-              Get Free Estimate
+              {CTA_LABELS.secondary}
             </Button>
             <Button href="/book-consultation" size="lg" variant="outline">
-              Book Consultation
+              {CTA_LABELS.primary}
             </Button>
           </div>
+          <TrustNearCTA compact variant="dark" className="mt-6 justify-center" />
+          <p className="mx-auto mt-4 max-w-lg text-sm text-white/45">
+            {CONVERSION_EXPECTATIONS.estimateTimeline} · No obligation · NDA on request
+          </p>
         </Container>
       </section>
       <StickyEstimateCTA source="compare" />

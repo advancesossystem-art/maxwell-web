@@ -12,11 +12,12 @@ import { getToolBySlug } from "@/lib/tools/registry";
 const tool = getToolBySlug("erp-roi-calculator")!;
 
 export const metadata = buildPageMetadata({
-  title: "Free ERP ROI Calculator India — See If ERP Pays Off for Your Business",
+  title: "ERP ROI Calculator India 2026 — Free, No Signup | 4 Min",
   description:
-    "Calculate ERP payback period, inventory savings & 5-year ROI for Indian manufacturers and businesses. Free calculator — no signup required. Get your numbers in 4 minutes.",
+    "Free ERP ROI calculator for Indian manufacturers: payback period, inventory savings & 5-year ROI. See if ERP pays off before you buy. Get numbers in 4 minutes — no signup.",
   path: `/tools/${tool.slug}`,
   keywords: [...tool.tags, "erp roi calculator india", "erp return on investment india", "erp payback period", "is erp worth it india"],
+  absoluteTitle: true,
 });
 
 export default function Page() {

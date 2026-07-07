@@ -19,6 +19,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description: page.metaDescription,
     path: page.path,
     keywords: [page.primaryKeyword, ...page.secondaryKeywords],
+    absoluteTitle: true,
   });
 }
 

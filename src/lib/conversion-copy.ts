@@ -4,8 +4,8 @@
  */
 
 export const CTA_LABELS = {
-  primary: "Book Strategy Consultation",
-  secondary: "Get Free Project Estimate",
+  primary: "Book Free 30-Min Strategy Call",
+  secondary: "Get My Free Quote — Reply in 24h",
   tertiary: "Explore Services",
   exploreProcess: "Our Process",
   howWeWork: "How We Work",

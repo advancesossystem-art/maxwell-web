@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/Button";
 import { ArrowRight } from "@/components/ui/Icons";
 import { PageEntrance } from "@/components/motion/FadeIn";
+import { CTA_LABELS, CONVERSION_EXPECTATIONS } from "@/lib/conversion-copy";
 
 export function ProgrammaticHeroMotion({
   pageType,
@@ -26,12 +27,15 @@ export function ProgrammaticHeroMotion({
       <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/55">{subheadline}</p>
       <div className="mt-10 flex flex-col gap-3 sm:flex-row">
         <Button href="/get-estimate" size="lg">
-          Get Free Estimate <ArrowRight />
+          {CTA_LABELS.secondary} <ArrowRight />
         </Button>
         <Button href="/book-consultation" size="lg" variant="outline">
-          Book Consultation
+          {CTA_LABELS.primary}
         </Button>
       </div>
+      <p className="mt-3 text-sm text-white/45">
+        {CONVERSION_EXPECTATIONS.estimateTimeline} · No obligation · NDA on request
+      </p>
     </PageEntrance>
   );
 }

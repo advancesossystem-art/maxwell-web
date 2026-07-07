@@ -80,6 +80,14 @@ function formatPageTitle(title: string): string {
   return `${segment.slice(0, maxSegment - 1).trimEnd()}…`;
 }
 
+/** Full SERP title when the segment would be chopped mid-phrase (compare/cost pages). */
+function formatAbsoluteTitle(title: string): string {
+  const segment = stripBrandSuffix(title);
+  const maxLength = 60;
+  if (segment.length <= maxLength) return segment;
+  return `${segment.slice(0, maxLength - 1).trimEnd()}…`;
+}
+
 /** Full resolved title for Open Graph / Twitter (template is not applied there). */
 function resolveFullTitle(segment: string): string {
   return siteTitleTemplate.replace("%s", segment);
@@ -96,6 +104,7 @@ export function buildSeoMetadata({
   publishedTime,
   authors,
   ogImage,
+  absoluteTitle = false,
 }: {
   title?: string;
   description?: string;
@@ -107,9 +116,22 @@ export function buildSeoMetadata({
   publishedTime?: string;
   authors?: string[];
   ogImage?: string;
+  /** Use full crafted title in SERPs (avoids 38-char segment truncation). */
+  absoluteTitle?: boolean;
 }): Metadata {
-  const pageTitleSegment = title ? formatPageTitle(title) : `${siteConfig.name} — ${siteConfig.tagline}`;
-  const pageTitleFull = title ? resolveFullTitle(pageTitleSegment) : pageTitleSegment;
+  const pageTitleSegment = title
+    ? absoluteTitle
+      ? { absolute: formatAbsoluteTitle(title) }
+      : formatPageTitle(title)
+    : `${siteConfig.name} — ${siteConfig.tagline}`;
+  const pageTitleFull =
+    title && absoluteTitle
+      ? formatAbsoluteTitle(title)
+      : title && typeof pageTitleSegment === "string"
+        ? resolveFullTitle(pageTitleSegment)
+        : typeof pageTitleSegment === "string"
+          ? pageTitleSegment
+          : `${siteConfig.name} — ${siteConfig.tagline}`;
 
   const pageDescription = description ?? siteConfig.description;
   const alternates = buildLanguageAlternates(path);
@@ -189,6 +211,7 @@ export function buildPageSeoMetadata(args: {
   path: string;
   keywords?: string[];
   noIndex?: boolean;
+  absoluteTitle?: boolean;
 }): Metadata {
   return buildSeoMetadata({
     title: args.title,
@@ -196,6 +219,7 @@ export function buildPageSeoMetadata(args: {
     path: args.path,
     keywords: args.keywords,
     noIndex: args.noIndex,
+    absoluteTitle: args.absoluteTitle,
   });
 }
 

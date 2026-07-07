@@ -8,9 +8,9 @@ import { companyStory } from "@/lib/company-data";
 import { siteConfig } from "@/lib/constants";
 
 export const metadata = createMetadata({
-  title: "About Maxwell Electrodeal — Software & Website Company, Vadodara",
+  title: "About Maxwell — ERP & Web Dev, Vadodara",
   description:
-    "Maxwell Electrodeal builds custom websites, ERP, CRM & AI software for manufacturers and businesses in Vadodara, Gujarat. GST-registered. 50+ projects. Free consultation.",
+    "Who is Maxwell Electrodeal? Vadodara team building custom ERP, websites & AI for manufacturers. GST-registered · 50+ projects · 4.9★ rating. Free consultation — reply in 4 hours.",
   path: "/about",
   keywords: [
     "about Maxwell Electrodeal",
