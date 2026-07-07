@@ -37,20 +37,35 @@ export function CompanyTimeline() {
 }
 
 export function GrowthVisualization() {
-  const data = [20, 35, 50, 75, 100, 130, 150];
-  const years = ["2018", "2019", "2020", "2021", "2022", "2023", "2025"];
+  const chartData = [
+    { year: "2018", value: 20 },
+    { year: "2019", value: 35 },
+    { year: "2020", value: 50 },
+    { year: "2021", value: 75 },
+    { year: "2022", value: 100 },
+    { year: "2023", value: 130 },
+    { year: "2024", value: 140 },
+    { year: "2025", value: 150 },
+  ] as const;
+  const maxValue = Math.max(...chartData.map((d) => d.value));
+  /** h-40 = 160px; reserve space for year labels below bars */
+  const barAreaPx = 128;
 
   return (
     <div className="rounded-2xl border border-border bg-surface-elevated p-6" data-chart-fade>
       <p className="text-xs font-semibold uppercase tracking-wider text-brand-600">Projects Delivered Over Time</p>
-      <div className="mt-6 flex h-40 items-end justify-between gap-2">
-        {data.map((value, i) => (
-          <div key={years[i]} className="flex flex-1 flex-col items-center gap-2">
+      <div
+        className="mt-6 flex h-40 items-end justify-between gap-2"
+        role="img"
+        aria-label="Cumulative projects delivered from 2018 to 2025"
+      >
+        {chartData.map(({ year, value }) => (
+          <div key={year} className="flex h-full min-w-0 flex-1 flex-col items-center justify-end gap-2">
             <div
-              className="w-full min-h-[4px] rounded-t-md bg-gradient-to-t from-brand-600 to-brand-500"
-              style={{ height: `${(value / 150) * 100}%` }}
+              className="w-full min-w-[6px] rounded-t-md bg-gradient-to-t from-brand-600 to-brand-500"
+              style={{ height: `${Math.max(6, (value / maxValue) * barAreaPx)}px` }}
             />
-            <span className="text-[10px] text-muted">{years[i]}</span>
+            <span className="text-[10px] text-muted">{year}</span>
           </div>
         ))}
       </div>
