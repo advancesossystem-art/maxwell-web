@@ -8,6 +8,9 @@ const columns = [
   {
     title: "Services",
     links: [
+      { label: "Website Development India", href: "/solutions/web-development-company-india" },
+      { label: "Website Development Gujarat", href: "/solutions/web-development-company-gujarat" },
+      { label: "Website Developer Vadodara", href: "/solutions/web-development-company-vadodara" },
       { label: "Website Development", href: "/services/website-development" },
       { label: "Manufacturer Websites India", href: "/services/website-development-for-manufacturers" },
       { label: "ERP Development Vadodara", href: "/solutions/erp-development-company-vadodara" },

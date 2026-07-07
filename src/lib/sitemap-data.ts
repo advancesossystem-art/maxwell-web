@@ -191,9 +191,13 @@ export function getLocationsSitemapEntries() {
 export function getSolutionsSitemapEntries() {
   const phase4SolutionEntries = [
     { path: "/solutions/web-development-company-india-international", priority: 0.92 },
+    { path: "/solutions/web-development-company-india", priority: 0.9 },
+    { path: "/solutions/web-development-company-gujarat", priority: 0.9 },
+    { path: "/solutions/web-development-company-vadodara", priority: 0.92 },
     { path: "/solutions/web-development-company-india-usa", priority: 0.88 },
     { path: "/solutions/web-development-company-india-uae", priority: 0.88 },
     { path: "/solutions/web-development-company-india-uk", priority: 0.88 },
+    { path: "/solutions/web-development-company-india-germany", priority: 0.87 },
     { path: "/solutions/web-development-company-india-turkey", priority: 0.85 },
   ] as const;
 

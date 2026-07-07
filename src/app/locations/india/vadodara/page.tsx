@@ -3,8 +3,11 @@ import { VadodaraLandingPage } from "@/components/locations/VadodaraLandingPage"
 import { createMetadata } from "@/lib/metadata";
 
 const vadodaraKeywords = [
-  "software company Vadodara",
+  "website developer in Vadodara",
+  "website development in Vadodara",
   "website development company Vadodara",
+  "software company Vadodara",
+  "web development company Vadodara",
   "IT company Vadodara",
   "ERP software Vadodara",
   "custom software development Vadodara",
@@ -15,9 +18,9 @@ const vadodaraKeywords = [
   "IT services Vadodara Gujarat",
 ];
 
-const pageTitle = "Software & Website Development Company in Vadodara | Maxwell Electrodeal";
+const pageTitle = "Website Developer in Vadodara — Software & Web Dev Company";
 const pageDescription =
-  "Maxwell Electrodeal — Vadodara's custom software, website, ERP & CRM development company. GST-registered, ISO-aligned. Serving manufacturers, pharma, engineering & MSME across Gujarat. Free consultation.";
+  "Website developer in Vadodara, Gujarat: Next.js business sites, manufacturer catalogs, ERP & CRM. Local team at Lalita Tower · 50+ projects · From ₹75K. Free quote in 24h.";
 
 export const metadata: Metadata = createMetadata({
   title: pageTitle,

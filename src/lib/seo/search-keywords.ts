@@ -355,7 +355,27 @@ export const solutionSearchKeywords: Record<string, readonly string[]> = {
   ],
   "erp-development-company-gujarat": ["ERP development company in Gujarat", "ERP development India"],
   "erp-development-company-vadodara": ["ERP development company in Vadodara", "ERP software Vadodara"],
-  "web-development-company-vadodara": ["web development company in Vadodara", "website development company Vadodara"],
+  "web-development-company-vadodara": [
+    "website developer in Vadodara",
+    "website development in Vadodara",
+    "website development company Vadodara",
+    "web development company in Vadodara",
+  ],
+  "web-development-company-gujarat": [
+    "website development company Gujarat",
+    "website development in Gujarat",
+    "web development company Gujarat",
+  ],
+  "web-development-company-india": [
+    "website development company India",
+    "website development in India",
+    "web development company India",
+  ],
+  "web-development-company-india-germany": [
+    "web development company India for Germany",
+    "Indian web development agency Germany",
+    "outsource web development India Germany",
+  ],
   "mobile-app-development-company-vadodara": [
     "mobile app development company in Vadodara",
     "app development company Vadodara",

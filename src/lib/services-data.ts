@@ -96,10 +96,13 @@ export const servicesData: Record<ServiceSlug, ServicePageData> = {
       "Next.js corporate websites, e-commerce storefronts, and conversion-focused landing pages for Indian businesses—engineered for SEO, Core Web Vitals, and measurable lead generation.",
     metaTitle: "Website Development Company India — Business & E-Commerce",
     metaDescription:
-      "Website development company in India. Next.js business sites, e-commerce, SEO. Pricing from ₹75K. Vadodara & pan-India delivery.",
+      "Website development company in India. Next.js business sites, e-commerce, SEO. From ₹75K. Vadodara HQ · Gujarat & pan-India delivery. Free quote in 24h.",
     keywords: [
       "website development company India",
+      "website development in India",
       "web development company India",
+      "website development company Gujarat",
+      "website development company Vadodara",
       "web application development company",
       "corporate website development",
       "business website development company",
@@ -202,6 +205,10 @@ export const servicesData: Record<ServiceSlug, ServicePageData> = {
     relatedBlogSlugs: ["how-much-does-website-cost-india-2026", "nextjs-enterprise-website-architecture", "b2b-website-conversion-patterns", "indiamart-alternative-website-manufacturer"],
     relatedIndustrySlugs: ["retail", "healthcare", "education", "chemical-manufacturing"],
     resourceLinks: [
+      { label: "Website Development — India", href: "/solutions/web-development-company-india" },
+      { label: "Website Development — Gujarat", href: "/solutions/web-development-company-gujarat" },
+      { label: "Website Developer — Vadodara", href: "/solutions/web-development-company-vadodara" },
+      { label: "International Web Clients", href: "/solutions/web-development-company-india-international" },
       { label: "Manufacturer-Specific Website Development", href: "/services/website-development-for-manufacturers" },
       { label: "Why Manufacturers Are Moving Beyond Paid Directories", href: "/blog/indiamart-alternative-website-manufacturer" },
       { label: "Drashti Chemicals — 263-Page Product Website Case Study", href: "/case-studies/drashti-chemicals" },

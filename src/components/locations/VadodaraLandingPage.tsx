@@ -12,7 +12,13 @@ import { socialProfiles } from "@/lib/seo/config";
 
 const services = [
   {
-    title: "Website Development",
+    title: "Website Developer Vadodara",
+    description:
+      "Next.js corporate sites, manufacturer catalogs, and SEO-ready business websites — local team, free quote in 24h.",
+    href: "/solutions/web-development-company-vadodara",
+  },
+  {
+    title: "Website Development Services",
     description:
       "Product catalog websites, B2B landing pages, and corporate sites for Vadodara manufacturers and industrial companies.",
     href: "/services/website-development",
@@ -77,6 +83,16 @@ const whyVadodara = [
 ];
 
 const vadodaraFaqs = [
+  {
+    question: "Who is the best website developer in Vadodara?",
+    answer:
+      "Choose a GST-registered company with published case studies, Core Web Vitals above 90, and an office you can visit. Maxwell Electrodeal has delivered 50+ projects from our Vadodara office — including a 263-page chemical supplier website.",
+  },
+  {
+    question: "How much does website development cost in Vadodara?",
+    answer:
+      "Business websites from ₹75K; corporate sites ₹1L–₹5L; manufacturer catalogs ₹3L–₹12L. See our Vadodara website development page for detailed pricing.",
+  },
   {
     question: "Is Maxwell Electrodeal based in Vadodara?",
     answer: `Yes. Our office is at ${businessAddress.formatted}. We meet clients on-site across Gujarat and deliver pan-India and internationally.`,
@@ -187,14 +203,14 @@ export function VadodaraLandingPage() {
             Gujarat, India
           </p>
           <h1 className="mt-4 max-w-4xl font-display text-4xl font-bold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-6xl">
-            Software & Website Development Company in Vadodara, Gujarat
+            Website Developer in Vadodara — Software & Web Development
           </h1>
           <p className="mt-6 max-w-3xl text-lg leading-relaxed text-white/55">
-            Maxwell Electrodeal is headquartered in Vadodara — Gujarat&apos;s industrial and
-            pharmaceutical capital. We build custom websites, ERP systems, CRM software, and AI
+            Maxwell Electrodeal is your local website developer in Vadodara — headquartered at Lalita
+            Tower, Jetalpur Road. We build custom websites, ERP systems, CRM software, and AI
             solutions for manufacturers, chemical companies, pharma firms, and MSMEs across
-            Vadodara, Bharuch, Ankleshwar, Surat, and the rest of Gujarat. Free consultation. GST
-            invoice. 100% code ownership.
+            Vadodara, Bharuch, Ankleshwar, Surat, and Gujarat. Free consultation. GST invoice. 100%
+            code ownership.
           </p>
           <p className="mt-3 text-sm text-white/45">Serving Vadodara businesses since 2018</p>
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">

@@ -105,6 +105,7 @@ function buildCityPage(config: CityConfig): CityPageData {
       { title: "Compliance & Integration", description: "GST, industry regulations, and third-party integrations (Tally, payment gateways, logistics APIs) require experienced engineering." },
     ],
     recommendedSolutions: [
+      { title: "Website Development", description: "SEO-ready Next.js sites, product catalogs, and corporate websites.", href: config.slug === "vadodara" ? "/solutions/web-development-company-vadodara" : config.slug === "gujarat" ? "/solutions/web-development-company-gujarat" : "/solutions/web-development-company-india" },
       { title: "Custom Software Development", description: `Bespoke platforms aligned to ${city} business workflows.`, href: config.slug === "vadodara" ? "/solutions/software-development-company-vadodara" : config.slug === "gujarat" ? "/solutions/software-development-company-gujarat" : "/solutions/custom-software-development-company" },
       { title: "ERP & Operations Systems", description: "Unify inventory, production, and finance for manufacturing and distribution.", href: config.slug === "vadodara" ? "/solutions/erp-development-company-vadodara" : config.slug === "gujarat" ? "/solutions/erp-development-company-gujarat" : "/solutions/erp-development-company" },
       { title: "Mobile Apps", description: "Customer and field-team apps for Android and iOS.", href: config.slug === "vadodara" ? "/solutions/mobile-app-development-company-vadodara" : "/solutions/mobile-app-development-company" },

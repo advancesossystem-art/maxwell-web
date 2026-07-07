@@ -99,6 +99,8 @@ export const indiaGeoSolutionSlugs = [
   "software-development-company-vadodara",
   "erp-development-company-gujarat",
   "erp-development-company-vadodara",
+  "web-development-company-india",
+  "web-development-company-gujarat",
   "web-development-company-vadodara",
   "mobile-app-development-company-vadodara",
   "crm-development-company-india",
@@ -432,54 +434,199 @@ export const indiaGeoSolutionsData: Record<IndiaGeoSolutionSlug, SolutionPageDat
     ],
   }),
 
-  "web-development-company-vadodara": buildIndiaGeo("web", {
-    slug: "web-development-company-vadodara",
-    title: "Web Development Company Vadodara",
-    headline: "Web Development Company in Vadodara",
-    subheadline: "Next.js websites that rank on Google—Core Web Vitals 95+, SEO schema, and conversion-focused design for Vadodara businesses.",
-    metaTitle: "Web Development Company in Vadodara | Next.js & React",
+  "web-development-company-india": buildIndiaGeo("web", {
+    slug: "web-development-company-india",
+    title: "Website Development Company India",
+    headline: "Website Development Company in India",
+    subheadline:
+      "Next.js business websites, e-commerce, and B2B product catalogs for Indian SMEs and exporters — SEO-first, Core Web Vitals 95+, milestone pricing from ₹75K. HQ in Vadodara, Gujarat.",
+    metaTitle: "Website Development Company India 2026 — Next.js & SEO Sites",
     metaDescription:
-      "Website development company in Vadodara. Next.js, React, SEO-optimized corporate sites. Maxwell Electrodeal — local team, free consultation.",
-    primaryKeyword: "Web Development Company in Vadodara",
+      "Website development company in India: Next.js corporate sites, e-commerce, manufacturer catalogs. From ₹75K. Vadodara HQ, pan-India delivery. Free quote in 24h.",
+    primaryKeyword: "Website Development Company India",
     secondaryKeywords: [
-      "website development company Vadodara",
-      "Next.js development company",
-      "React development company",
-      "corporate website design Vadodara",
-      "responsive website design",
-      "business website development",
+      "website development company in India",
+      "web development company India",
+      "business website development India",
+      "professional website development services India",
+      "Next.js website development India",
+      "website development services India",
     ],
     relatedSearches: [
-      "website development cost Vadodara",
-      "best web development company Gujarat",
-      "professional website development",
+      "website development cost India",
+      "best website development company India",
+      "corporate website development India",
+      "website development company Gujarat",
+      "website development company Vadodara",
     ],
     marketInsights:
-      "73% of B2B buyers research online before contacting vendors. Vadodara businesses with slow WordPress sites lose leads to competitors with fast, SEO-ready Next.js architecture.",
+      "India's B2B buyers now research vendors on Google before calling — yet most MSMEs still rely on paid directory listings with no owned website. A fast, SEO-ready Next.js site from an India-based website development company captures direct inquiries at 10–20× lower cost than perpetual marketplace fees.\n\nMaxwell Electrodeal builds websites for manufacturers, exporters, pharma, chemical, textile, and service businesses across India — with GST invoicing, milestone billing, and 100% code ownership. We also serve international clients from the US, UK, UAE, Germany, and Turkey.",
     industryChallenges: [
-      { title: "Poor Google Rankings", description: "Template sites fail Core Web Vitals and schema requirements for 2026 SEO." },
-      { title: "No Lead Capture", description: "Brochure websites without CTA architecture and analytics integration." },
+      { title: "Directory Dependency", description: "Paid B2B platforms charge renewal fees but you never own the traffic or buyer data." },
+      { title: "Slow Template Sites", description: "WordPress themes fail Core Web Vitals — hurting Google rankings and mobile conversions." },
+      { title: "No Lead Architecture", description: "Brochure sites without RFQ forms, product catalogs, and analytics cannot convert search traffic." },
     ],
-    recommendedApproach: ["SEO-first IA", "Next.js SSG/SSR", "JSON-LD schema", "Conversion CTAs + GA4"],
+    recommendedApproach: [
+      "SEO-first information architecture",
+      "Next.js SSG/SSR for speed and crawlability",
+      "JSON-LD schema (Organization, Product, FAQ)",
+      "Conversion CTAs + GA4 event tracking",
+      "Milestone billing: 40–40–20",
+    ],
     roiExamples: [
       { metric: "95+", label: "Lighthouse Score", description: "Performance target" },
-      { metric: "3×", label: "Organic Traffic", description: "SEO clients" },
-      { metric: "₹1L–₹5L", label: "Typical Site Cost", description: "Corporate SMB" },
+      { metric: "3×", label: "Organic Traffic", description: "SEO-ready clients" },
+      { metric: "₹75K+", label: "Starting Price", description: "Business website" },
     ],
     internalLinks: [
+      { label: "Gujarat", href: "/solutions/web-development-company-gujarat", description: "State page" },
+      { label: "Vadodara", href: "/solutions/web-development-company-vadodara", description: "HQ city" },
+      { label: "International Clients", href: "/solutions/web-development-company-india-international", description: "USD pricing" },
       { label: "Website Service", href: "/services/website-development", description: "Full capabilities" },
-      { label: "Vadodara", href: "/locations/india/vadodara", description: "Local hub" },
-      { label: "Software Company", href: "/solutions/software-development-company-vadodara", description: "Full services" },
-      { label: "Book Consultation", href: "/book-consultation", description: "Strategy call" },
+      { label: "Get Estimate", href: "/get-estimate", description: "Free scoped quote" },
     ],
     faqs: [
       {
+        question: "How much does website development cost in India?",
+        answer: "Business websites from ₹75K; corporate sites ₹2L–₹5L; e-commerce and product catalogs ₹5L–₹15L+. We quote after a free discovery call with milestone pricing.",
+      },
+      {
+        question: "Do you serve clients outside Vadodara and Gujarat?",
+        answer: "Yes. We deliver website development across India — Mumbai, Bengaluru, Delhi, Chennai, Hyderabad, and tier-2 cities — with remote discovery and on-site workshops when needed.",
+      },
+      {
+        question: "Will my website rank on Google?",
+        answer: "We build technical SEO foundations: fast Core Web Vitals, semantic HTML, schema markup, and mobile-first design. Content strategy recommendations are included.",
+      },
+    ],
+  }),
+
+  "web-development-company-gujarat": buildIndiaGeo("web", {
+    slug: "web-development-company-gujarat",
+    title: "Website Development Company Gujarat",
+    headline: "Website Development Company in Gujarat",
+    subheadline:
+      "Next.js websites for Gujarat manufacturers, exporters, and MSMEs — product catalogs, corporate sites, and B2B portals for Vadodara, Ahmedabad, Surat, Rajkot, and Morbi.",
+    metaTitle: "Website Development Company Gujarat 2026 — Next.js & SEO",
+    metaDescription:
+      "Website development company in Gujarat: manufacturer catalogs, corporate sites, export websites. Vadodara HQ. From ₹75K. Free quote for Ahmedabad, Surat, Rajkot.",
+    primaryKeyword: "Website Development Company Gujarat",
+    secondaryKeywords: [
+      "website development company in Gujarat",
+      "web development company Gujarat",
+      "website development Vadodara Gujarat",
+      "business website development Gujarat",
+      "manufacturer website Gujarat",
+      "website development Ahmedabad Surat Rajkot",
+    ],
+    relatedSearches: [
+      "website development cost Gujarat",
+      "best web development company Vadodara",
+      "manufacturer website Morbi ceramic",
+      "chemical company website Ankleshwar",
+    ],
+    marketInsights:
+      "Gujarat is India's manufacturing export hub — chemicals in Ankleshwar, ceramics in Morbi, textiles in Surat, engineering in Rajkot, pharma in Vadodara. Yet most Gujarat MSMEs have no website optimized for how buyers search: 'chemical manufacturer Gujarat', 'ceramic exporter Morbi', 'textile supplier Surat'.\n\nMaxwell Electrodeal is headquartered in Vadodara and builds website development projects for Gujarat businesses that need product catalogs, RFQ forms, GST-compliant lead capture, and English content for international buyers — not generic brochure templates.",
+    industryChallenges: [
+      { title: "No Owned Digital Presence", description: "Gujarat manufacturers depend on IndiaMART and trade fairs but lose buyers who search Google first." },
+      { title: "Export-Ready Content Gap", description: "International buyers need spec sheets, COA requests, and container inquiry forms — not Gujarati brochure PDFs." },
+      { title: "Local Agency Quality Variance", description: "Freelancers deliver slow WordPress sites; enterprises need Next.js performance and documented delivery." },
+    ],
+    recommendedApproach: [
+      "Industry-specific product catalog IA",
+      "Next.js for speed and SEO crawlability",
+      "Export inquiry forms (container, sample, RFQ)",
+      "Schema markup for products and organization",
+      "On-site discovery in Vadodara GIDC corridors",
+    ],
+    roiExamples: [
+      { metric: "263", label: "Product Pages", description: "Drashti Chemicals site" },
+      { metric: "94", label: "PageSpeed Score", description: "Export catalog client" },
+      { metric: "₹1L–₹5L", label: "Gujarat SMB Sites", description: "Typical corporate" },
+    ],
+    internalLinks: [
+      { label: "Vadodara", href: "/solutions/web-development-company-vadodara", description: "HQ city page" },
+      { label: "India Nationwide", href: "/solutions/web-development-company-india", description: "Pan-India" },
+      { label: "Manufacturer Websites", href: "/services/website-development-for-manufacturers", description: "Industrial focus" },
+      { label: "Gujarat Location", href: "/locations/india/gujarat", description: "State hub" },
+      { label: "Book Consultation", href: "/book-consultation", description: "Free call" },
+    ],
+    faqs: [
+      {
+        question: "How much does website development cost in Gujarat?",
+        answer: "Corporate SMB sites typically ₹1L–₹5L; manufacturer product catalogs ₹3L–₹12L depending on SKU count, languages, and integrations. Milestone quotes after discovery.",
+      },
+      {
+        question: "Do you visit factories in Gujarat for discovery?",
+        answer: "Yes. We meet clients on-site across Vadodara GIDC, Bharuch-Ankleshwar chemical belt, Morbi ceramic cluster, and Surat textile hubs.",
+      },
+      {
+        question: "Can you build export-ready websites for Gujarat manufacturers?",
+        answer: "Yes. We build English-language product catalogs with spec sheets, certification badges, container inquiry forms, and SEO targeting international buyer search terms.",
+      },
+    ],
+  }),
+
+  "web-development-company-vadodara": buildIndiaGeo("web", {
+    slug: "web-development-company-vadodara",
+    title: "Website Developer Vadodara",
+    headline: "Website Developer in Vadodara",
+    subheadline:
+      "Local website development team in Vadodara — Next.js corporate sites, manufacturer catalogs, and SEO-ready business websites. Office at Lalita Tower, Jetalpur Road. Free quote in 24 hours.",
+    metaTitle: "Website Developer in Vadodara 2026 — Next.js & SEO Sites",
+    metaDescription:
+      "Website developer in Vadodara: Next.js business sites, manufacturer catalogs, corporate websites. Local team · 50+ projects · From ₹75K. Free quote in 24h.",
+    primaryKeyword: "website developer in Vadodara",
+    secondaryKeywords: [
+      "website development in Vadodara",
+      "website development company Vadodara",
+      "web development company in Vadodara",
+      "website developer Vadodara Gujarat",
+      "best website developer Vadodara",
+      "corporate website design Vadodara",
+    ],
+    relatedSearches: [
+      "website development cost Vadodara",
+      "website development company Gujarat",
+      "website development company India",
+      "professional website development Vadodara",
+    ],
+    marketInsights:
+      "Vadodara businesses searching for a website developer need more than a freelancer with WordPress templates — they need a registered company that understands Gujarat's industrial buyers, delivers GST invoices, and builds sites that rank on Google.\n\nMaxwell Electrodeal is headquartered at 419 Lalita Tower, Jetalpur Road, Vadodara. We meet clients in-person across Makarpura GIDC, Savli, Halol, and Bharuch corridor. Our Vadodara website development clients include chemical suppliers, pharma API manufacturers, engineering firms, and MSMEs replacing paid directory dependency with owned Google traffic.",
+    industryChallenges: [
+      { title: "Poor Google Rankings", description: "Template WordPress sites fail Core Web Vitals and schema requirements for 2026 SEO." },
+      { title: "No Lead Capture", description: "Brochure websites without RFQ forms, WhatsApp CTAs, and analytics cannot convert search traffic." },
+      { title: "Remote-Only Vendors", description: "Vadodara manufacturers need on-site discovery for product catalogs and ERP integrations." },
+    ],
+    recommendedApproach: ["SEO-first IA", "Next.js SSG/SSR", "JSON-LD schema", "Conversion CTAs + GA4", "On-site Vadodara discovery"],
+    roiExamples: [
+      { metric: "95+", label: "Lighthouse Score", description: "Performance target" },
+      { metric: "4 hr", label: "Response Time", description: "Local team" },
+      { metric: "₹75K+", label: "Starting Price", description: "Business website" },
+    ],
+    internalLinks: [
+      { label: "Vadodara Office", href: "/locations/india/vadodara", description: "Local hub" },
+      { label: "Gujarat", href: "/solutions/web-development-company-gujarat", description: "State page" },
+      { label: "India", href: "/solutions/web-development-company-india", description: "Nationwide" },
+      { label: "Website Service", href: "/services/website-development", description: "Full capabilities" },
+      { label: "Book Consultation", href: "/book-consultation", description: "Free 30-min call" },
+    ],
+    faqs: [
+      {
+        question: "Who is the best website developer in Vadodara?",
+        answer: "Look for a GST-registered company with published case studies, Core Web Vitals scores above 90, and on-site discovery capability. Maxwell Electrodeal has delivered 50+ projects from our Vadodara office since 2018 — including a 263-page chemical supplier catalog.",
+      },
+      {
         question: "How much does website development cost in Vadodara?",
-        answer: "Corporate SMB sites typically ₹1L–₹5L; complex web apps ₹5L–₹15L+ depending on integrations and design depth.",
+        answer: "Business websites from ₹75K; corporate sites ₹1L–₹5L; manufacturer product catalogs ₹3L–₹12L. We provide milestone quotes after a free discovery call.",
+      },
+      {
+        question: "Do you have an office in Vadodara?",
+        answer: "Yes. Our office is at 419 Lalita Tower, Near Hotel Rajpath, Jetalpur Road, Vadodara, Gujarat 390007. We welcome in-person meetings by appointment.",
       },
       {
         question: "Why Next.js for business websites?",
-        answer: "Next.js delivers server-rendered SEO, fast LCP scores, and scalable architecture—critical for Google and AI search visibility in 2026.",
+        answer: "Next.js delivers server-rendered SEO, fast LCP scores, and scalable architecture — critical for Google and AI search visibility in 2026.",
       },
     ],
   }),

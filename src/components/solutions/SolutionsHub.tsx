@@ -32,9 +32,32 @@ const internationalWebPages = [
     keyword: "Web development company India for UAE clients",
   },
   {
+    href: "/solutions/web-development-company-india-germany",
+    title: "India Web Development — Germany",
+    keyword: "Web development company India for German clients",
+  },
+  {
     href: "/solutions/web-development-company-india-turkey",
     title: "India Web Development — Turkey",
     keyword: "Web development company India for Turkey clients",
+  },
+] as const;
+
+const indiaWebPages = [
+  {
+    href: "/solutions/web-development-company-india",
+    title: "Website Development — India",
+    keyword: "Website development company India",
+  },
+  {
+    href: "/solutions/web-development-company-gujarat",
+    title: "Website Development — Gujarat",
+    keyword: "Website development company Gujarat",
+  },
+  {
+    href: "/solutions/web-development-company-vadodara",
+    title: "Website Developer — Vadodara",
+    keyword: "Website developer in Vadodara",
   },
 ] as const;
 
@@ -62,6 +85,21 @@ export function SolutionsHub() {
         <PrimaryCTA location="solutions_hub" context={{ source: "solutions-hub" }} />
         <SecondaryCTA location="solutions_hub" variant="outline" />
       </PageHero>
+
+      <PageSection tone="elevated" compact>
+        <h2 className="font-display text-xl font-bold">Website development — India, Gujarat & Vadodara</h2>
+        <p className="mt-2 max-w-2xl text-sm text-muted">
+          Dedicated pages for buyers searching website development in Vadodara, Gujarat, or nationwide — local HQ team with pan-India delivery.
+        </p>
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {indiaWebPages.map((page) => (
+            <Card key={page.href} href={page.href} padding="md">
+              <H3 className="text-base group-hover:text-brand-400 transition-colors">{page.title}</H3>
+              <Caption className="mt-1 line-clamp-2 text-xs">{page.keyword}</Caption>
+            </Card>
+          ))}
+        </div>
+      </PageSection>
 
       <PageSection tone="elevated" compact>
         <h2 className="font-display text-xl font-bold">India — Vadodara, Gujarat & nationwide</h2>
@@ -96,7 +134,7 @@ export function SolutionsHub() {
       <PageSection tone="elevated" compact>
         <h2 className="font-display text-xl font-bold">Web development for international clients</h2>
         <p className="mt-2 max-w-2xl text-sm text-muted">
-          Dedicated pages for US, UK, UAE, and Turkey clients hiring an Indian web development team — USD pricing and milestone delivery.
+          Dedicated pages for US, UK, UAE, Germany, and Turkey clients hiring an Indian web development team — USD pricing and milestone delivery.
         </p>
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {internationalWebPages.map((page) => (
