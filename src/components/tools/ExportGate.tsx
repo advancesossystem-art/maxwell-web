@@ -79,16 +79,19 @@ export function ExportGate({
           role="dialog"
           aria-modal="true"
           aria-labelledby="export-gate-title"
-          className="pointer-events-auto w-full max-w-md rounded-2xl border border-white/[0.1] bg-[#030b1f] p-8 shadow-2xl"
+          className="pointer-events-auto w-full max-w-md rounded-2xl border border-white/10 bg-[#030b1f] p-8 text-white shadow-2xl"
           onClick={(e) => e.stopPropagation()}
         >
-            <h3 id="export-gate-title" className="font-display text-xl font-bold">
+            <h3 id="export-gate-title" className="font-display text-xl font-bold text-white">
               Unlock export
             </h3>
-            <p className="mt-2 text-sm text-muted">
+            <p className="mt-2 text-sm text-white/70">
               Enter your details to print, save, or email your {toolName} results. Maxwell may follow up with relevant insights.
             </p>
-            <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+            <form
+              onSubmit={handleSubmit}
+              className="mt-6 space-y-4 [--v6-text:rgba(255,255,255,0.92)] [--v6-text-muted:rgba(255,255,255,0.55)]"
+            >
               <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
                 <input name="website_url" type="text" tabIndex={-1} autoComplete="off" />
               </div>
@@ -104,7 +107,7 @@ export function ExportGate({
               <FormField label="Phone" htmlFor="gate-phone">
                 <input id="gate-phone" name="phone" type="tel" className={inputClass} />
               </FormField>
-              {error && <p className="text-sm text-red-600">{error}</p>}
+              {error && <p className="text-sm text-red-400">{error}</p>}
               <div className="flex gap-3 pt-2">
                 <Button type="button" variant="secondary" onClick={onClose} className="flex-1">
                   Cancel
