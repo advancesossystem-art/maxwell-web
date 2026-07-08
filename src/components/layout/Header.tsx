@@ -231,7 +231,7 @@ export function Header() {
       {/* Mobile header — logo + hamburger only (no CTA) */}
       <div className="flex h-16 w-full items-center justify-between px-4 lg:hidden">
         <span data-nav="logo" className="mx-nav-pending inline-flex shrink-0">
-          <BrandLogo size="sm" priority href="/" className="!h-8 w-auto max-w-[140px]" />
+          <BrandLogo size="sm" href="/" className="!h-8 w-auto max-w-[140px]" />
         </span>
         <button
           type="button"
@@ -261,7 +261,7 @@ export function Header() {
       <div className="hidden w-full lg:block">
         <div className="v6-container v6-nav-inner">
           <span data-nav="logo" className="mx-nav-pending inline-flex shrink-0">
-            <BrandLogo size="header" priority href="/" />
+            <BrandLogo size="header" href="/" />
           </span>
 
           <nav className="flex shrink-0 items-center gap-0.5" aria-label="Main navigation">

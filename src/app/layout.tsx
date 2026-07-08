@@ -10,7 +10,7 @@ import "./globals.css";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
-  display: "optional",
+  display: "swap",
   preload: true,
   adjustFontFallback: true,
 });
@@ -18,8 +18,8 @@ const inter = Inter({
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-space-grotesk",
-  display: "optional",
-  preload: true,
+  display: "swap",
+  preload: false,
   adjustFontFallback: true,
   weight: ["700"],
 });
