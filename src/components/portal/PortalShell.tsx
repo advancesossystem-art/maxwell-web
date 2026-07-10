@@ -7,7 +7,6 @@ import { usePortal } from "@/components/portal/PortalProvider";
 import { PortalSidebar } from "@/components/portal/PortalSidebar";
 import { PortalTopBar } from "@/components/portal/PortalTopBar";
 import { PortalNavContent } from "@/components/portal/PortalNavContent";
-import { DemoEnvironmentBadge } from "@/components/portal/PortalDemo";
 import { cn } from "@/lib/utils";
 
 export function PortalShell({
@@ -94,12 +93,6 @@ export function PortalShell({
           aria-label="Portal workspace"
           className="flex-1 overflow-y-auto px-4 py-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] sm:px-6 sm:py-6 lg:px-8 lg:py-8"
         >
-          <div className="mb-5 flex flex-wrap items-center gap-2 sm:mb-6 sm:gap-3">
-            <DemoEnvironmentBadge />
-            <p className="text-xs text-[var(--portal-muted)]">
-              Sample workspace · actions are simulated for demonstration
-            </p>
-          </div>
           {children}
         </main>
       </div>

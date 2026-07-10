@@ -97,6 +97,14 @@ export function getSession(): PortalSession | null {
   }
 }
 
+/** Auto-establish the default demo client session when no login is required. */
+export function ensureDemoSession(): PortalSession | null {
+  if (!isPortalDemoEnabled()) return null;
+  const existing = getSession();
+  if (existing) return existing;
+  return loginWithEmail("client@demo.com", "demo123");
+}
+
 export function logout(): void {
   if (typeof window !== "undefined") {
     sessionStorage.removeItem(SESSION_KEY);

@@ -4,7 +4,6 @@ import { useMemo } from "react";
 import Link from "next/link";
 import { PortalShell } from "@/components/portal/PortalShell";
 import { PortalCard, HealthScore, ProgressBar, StatusBadge } from "@/components/portal/PortalUI";
-import { DemoDataNotice } from "@/components/portal/PortalDemo";
 import { PortalSection, QuickAction, ActivityTimeline, MetricTile } from "@/components/portal/PortalLayout";
 import { usePortal } from "@/components/portal/PortalProvider";
 import {
@@ -115,9 +114,7 @@ export function PortalDashboard() {
       title={`Good morning, ${user?.name.split(" ")[0]}`}
       subtitle={`${user?.company} · Client command center`}
     >
-      <DemoDataNotice compact />
-
-      <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <MetricTile label="Proposals pending" value={pendingProposals.length} hint="Action may be required" href="/portal/proposals" />
         {canProjects && (
           <MetricTile label="Active projects" value={activeProjects.length} hint={`Portfolio health ${avgHealth}`} href="/portal/projects" />

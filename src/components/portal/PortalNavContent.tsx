@@ -36,9 +36,13 @@ export function PortalNavContent({ onNavigate }: { onNavigate?: () => void }) {
 
   return (
     <>
-      <div className="flex h-16 flex-col justify-center border-b border-[var(--portal-border)] px-5 py-3">
-        <BrandLogo size="sm" href="/portal/dashboard" className="rounded-md bg-white px-1.5 py-1" />
-        <p className="mt-1 text-xs text-[var(--portal-muted)]">Client Portal</p>
+      <div className="flex h-16 items-center gap-3 border-b border-[var(--portal-border)] px-5">
+        <BrandLogo
+          size="header"
+          href="/portal/dashboard"
+          className="!h-9 w-auto max-w-[108px] rounded bg-white/95 px-1.5 py-0.5"
+        />
+        <p className="text-xs font-medium uppercase tracking-wider text-[var(--portal-muted)]">Client Portal</p>
       </div>
       <nav className="flex-1 space-y-1 overflow-y-auto p-3" aria-label="Portal navigation">
         {items.map((item) => {
@@ -80,7 +84,7 @@ export function PortalNavContent({ onNavigate }: { onNavigate?: () => void }) {
           }}
           className="mt-3 min-h-11 w-full rounded-lg px-3 text-left text-sm text-[var(--portal-muted)] hover:bg-[var(--portal-hover)] hover:text-brand-600"
         >
-          Sign out
+          Back to website
         </button>
       </div>
     </>

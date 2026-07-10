@@ -4,7 +4,7 @@ import { createContext, useContext, useEffect, useState, useCallback, type React
 import { useRouter, usePathname } from "next/navigation";
 import type { PortalUser, PortalNotification } from "@/lib/portal/types";
 import type { PortalSession } from "@/lib/portal/auth";
-import { getSession, logout as authLogout } from "@/lib/portal/auth";
+import { ensureDemoSession, getSession, isPortalDemoEnabled, logout as authLogout } from "@/lib/portal/auth";
 import { mockNotifications } from "@/lib/portal/mock-data";
 import { trackPortalEvent } from "@/lib/portal/analytics";
 
@@ -33,7 +33,8 @@ export function PortalProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   const refreshSession = useCallback(() => {
-    setSession(getSession());
+    const next = getSession() ?? ensureDemoSession();
+    setSession(next);
     setLoading(false);
   }, []);
 
@@ -44,13 +45,26 @@ export function PortalProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (loading) return;
-    const publicPaths = ["/portal", "/portal/login"];
-    const isPublic = publicPaths.includes(pathname ?? "");
-    if (!session && !isPublic) {
-      router.replace("/portal/login");
+
+    if (pathname === "/portal" || pathname === "/portal/login") {
+      router.replace("/portal/dashboard");
+      return;
     }
-    if (session && !session.user.onboardingComplete && pathname !== "/portal/onboarding") {
-      const allowed = ["/portal/login", "/portal/onboarding", "/portal/settings"];
+
+    if (!session) {
+      if (isPortalDemoEnabled()) {
+        const next = ensureDemoSession();
+        if (next) {
+          setSession(next);
+          return;
+        }
+      }
+      router.replace("/");
+      return;
+    }
+
+    if (!session.user.onboardingComplete && pathname !== "/portal/onboarding") {
+      const allowed = ["/portal/onboarding", "/portal/settings"];
       if (!allowed.some((p) => pathname?.startsWith(p))) {
         router.replace("/portal/onboarding");
       }
@@ -61,7 +75,7 @@ export function PortalProvider({ children }: { children: ReactNode }) {
     trackPortalEvent("portal_logout");
     authLogout();
     setSession(null);
-    router.push("/portal/login");
+    router.push("/");
   };
 
   const markNotificationRead = (id: string) => {
