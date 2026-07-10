@@ -873,14 +873,18 @@ body:not(.portal-shell)
   color: var(--v6-blue);
 }
 
-/* Light page sections — legacy dark-theme headings */
+/* Light page sections — legacy dark-theme headings (skip intentional dark panels) */
 body:not(.portal-shell)
   section:not(.section-hero):not([class*="bg-[#0"]):not([class*="bg-[#03"]):not([class*="bg-[#030"])
-  :is(h1, h2, h3, h4, dt).text-white {
+  :is(h1, h2, h3, h4, dt).text-white:not(:where(.v6-dark-panel *)) {
   color: var(--v6-text);
 }
 
 /* Intentional dark panels nested inside light sections (e.g. homepage assessment) */
+body:not(.portal-shell)
+  section:not(.section-hero):not([class*="bg-[#0"]):not([class*="bg-[#03"]):not([class*="bg-[#030"])
+  .v6-dark-panel
+  :is(h1, h2, h3, h4, dt)[class*="text-white"],
 body:not(.portal-shell) .v6-dark-panel :is(h1, h2, h3, h4, dt)[class*="text-white"] {
   color: #fff;
 }
