@@ -4,9 +4,11 @@ import { siteConfig } from "@/lib/constants";
 import { BrandLogo } from "@/components/layout/BrandLogo";
 import { Card } from "@/components/design/Card";
 import { DemoEnvironmentBadge, DemoDataNotice } from "@/components/portal/PortalDemo";
+import { isPortalDemoEnabled } from "@/lib/portal/auth";
 import { Eyebrow, H1, Lead, H3 } from "@/components/design/typography";
 
 export function PortalLanding() {
+  const showDemoCredentials = isPortalDemoEnabled();
   return (
     <div className="min-h-screen bg-[#030712]">
       <Container className="relative py-24 lg:py-32">
@@ -33,8 +35,7 @@ export function PortalLanding() {
           <div className="mx-auto mt-10 max-w-xl text-left">
             <DemoDataNotice compact />
           </div>
-          {(process.env.NODE_ENV !== "production" ||
-            process.env.NEXT_PUBLIC_ENABLE_PORTAL_DEMO === "true") && (
+          {showDemoCredentials && (
             <p className="mt-6 text-sm text-[#94A3B8]">
               Demo sign-in: client@demo.com / demo123 · Invite:{" "}
               <code className="text-brand-400">maxwell-invite-demo</code>
