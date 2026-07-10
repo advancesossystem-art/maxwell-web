@@ -32,7 +32,7 @@ export function RecentlyViewedTracker() {
   const pathname = usePathname();
 
   useEffect(() => {
-    if (!pathname || pathname.startsWith("/portal") || pathname.startsWith("/admin")) return;
+    if (!pathname || pathname.startsWith("/admin")) return;
     const title = document.title.replace(/\s*[|–-]\s*Maxwell.*$/i, "").trim() || pathname;
     const href = pathname;
     const existing = readRecent().filter((i) => i.href !== href);

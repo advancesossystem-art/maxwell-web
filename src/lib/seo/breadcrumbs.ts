@@ -21,7 +21,6 @@ const SEGMENT_LABELS: Record<string, string> = {
   team: "Team",
   process: "Process",
   careers: "Careers",
-  portal: "Portal",
   videos: "Videos",
   reviews: "Reviews",
   security: "Security",

@@ -35,7 +35,6 @@ const CookieConsent = dynamic(
 
 function isLightChromeRoute(pathname: string | null): boolean {
   if (!pathname) return false;
-  if (pathname.startsWith("/portal")) return true;
   if (pathname === "/blog" || pathname.startsWith("/blog/")) return true;
   return false;
 }

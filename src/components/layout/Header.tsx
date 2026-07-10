@@ -34,7 +34,6 @@ const resourceLinks = [
   { label: "Case Studies", href: "/case-studies" },
   { label: "Tools", href: "/tools" },
   { label: "Engagement Models", href: "/engagement-models" },
-  { label: "Client Portal", href: "/portal" },
 ] as const;
 
 function ChevronDownIcon({ className }: { className?: string }) {

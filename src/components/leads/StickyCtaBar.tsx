@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 import { trackCTAClick } from "@/lib/conversion-events";
 import { useCookieBannerVisible, useIsMobile } from "@/hooks/useMediaQuery";
 import { cn } from "@/lib/utils";
-import { isPortalRoute } from "@/lib/mobile-sticky";
 
 const DISMISS_KEY = "sticky-cta-bar-dismissed";
 const HREF = "/get-estimate";
@@ -43,7 +42,6 @@ export function StickyCtaBar() {
     cookieVisible ||
     dismissed ||
     !inRange ||
-    isPortalRoute(pathname) ||
     HIDE_ON.some((p) => pathname === p)
   ) {
     return null;

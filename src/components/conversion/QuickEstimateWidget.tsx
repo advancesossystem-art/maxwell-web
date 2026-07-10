@@ -19,7 +19,6 @@ import {
 } from "@/lib/leads-data";
 import { estimateHref, CTA_LABELS } from "@/lib/conversion-copy";
 import { trackCTAClick, trackFormStart, trackFormStep } from "@/lib/conversion-events";
-import { isPortalRoute } from "@/lib/mobile-sticky";
 import { cn } from "@/lib/utils";
 
 const STEPS = ["Industry", "Project", "Team", "Budget", "Timeline"] as const;
@@ -55,7 +54,7 @@ export function QuickEstimateWidget({ stickyBarDismissed = false }: { stickyBarD
   useEscapeKey(reset, open);
   useFocusTrap(dialogRef, open);
 
-  if (isPortalRoute(pathname) || pathname === "/get-estimate" || isMobile || cookieVisible) return null;
+  if (pathname === "/get-estimate" || isMobile || cookieVisible) return null;
 
   const estimateUrl = estimateHref({
     source: "quick-estimate-widget",

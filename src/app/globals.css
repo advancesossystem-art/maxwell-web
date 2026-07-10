@@ -469,11 +469,6 @@ body[data-cookie-visible="true"] .mobile-fixed-chrome:not([data-cookie-banner]) 
   display: none;
 }
 
-body[data-portal-route="true"] .mobile-fixed-chrome,
-body[data-portal-route="true"] [data-mobile-sticky-bar] {
-  display: none !important;
-}
-
 .trust-strip-scroll {
   display: flex;
   gap: 0.75rem;

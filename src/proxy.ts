@@ -8,7 +8,6 @@ import {
   isValidAdminToken,
 } from "@/lib/security/admin-auth";
 import { safeEqual } from "@/lib/security/timing-safe";
-import { isPortalDemoEnabledServer } from "@/lib/portal/demo-config";
 
 const isProduction = process.env.NODE_ENV === "production";
 
@@ -136,10 +135,6 @@ export function proxy(request: NextRequest) {
     }
   }
 
-  if (pathname.startsWith("/portal") && isProduction && !isPortalDemoEnabledServer()) {
-    return NextResponse.rewrite(new URL("/_not-found", request.url));
-  }
-
   const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
   const csp = buildCsp();
   const requestHeaders = new Headers(request.headers);
@@ -161,12 +156,7 @@ export function proxy(request: NextRequest) {
   response.headers.set("Cross-Origin-Opener-Policy", "same-origin");
   response.headers.set("Cross-Origin-Resource-Policy", "same-site");
 
-  if (
-    request.method === "GET" &&
-    !pathname.startsWith("/api/") &&
-    !pathname.startsWith("/admin") &&
-    !pathname.startsWith("/portal")
-  ) {
+  if (request.method === "GET" && !pathname.startsWith("/api/") && !pathname.startsWith("/admin")) {
     // Must revalidate HTML on every request — cached HTML after deploy references
     // deleted /_next/static/chunks/* hashes and breaks the site (404 + MIME errors).
     response.headers.set("Cache-Control", "public, max-age=0, must-revalidate");

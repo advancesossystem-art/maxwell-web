@@ -12,7 +12,6 @@ import { caseStudySlugs } from "@/lib/case-studies-data";
 import { solutionSlugs } from "@/lib/solutions-data";
 import { getLocationStaticParams } from "@/lib/locations-data";
 import { authors } from "@/lib/content/authors";
-import { mockProposals, mockProjects } from "@/lib/portal/mock-data";
 
 export type AuditStatus = "pass" | "warn" | "fail" | "pending";
 
@@ -28,7 +27,7 @@ function countStaticPages(): number {
   const locations = getLocationStaticParams().length;
   return (
     1 + // home
-    25 + // static marketing + legal + portal public
+    20 + // static marketing + legal
     serviceSlugs.length +
     industrySlugs.length +
     projectSlugs.length +
@@ -40,10 +39,7 @@ function countStaticPages(): number {
     resourceSlugs.length +
     reportSlugs.length +
     authors.length +
-    toolSlugs.length +
-    mockProposals.length +
-    mockProjects.length +
-    12 // portal app routes approx
+    toolSlugs.length
   );
 }
 
@@ -83,7 +79,7 @@ export function buildAuditChecks(): AuditCheck[] {
     { id: "img-og", category: "Images", label: "Open Graph image", status: "pass", detail: "/opengraph-image (auto-generated PNG)" },
     { id: "img-next", category: "Images", label: "next/image pipeline", status: "warn", detail: "Configured; add Image when photos are introduced" },
     { id: "a11y-skip", category: "Accessibility", label: "Skip to main content", status: "pass", detail: "SkipLink + #main-content landmark" },
-    { id: "a11y-forms", category: "Accessibility", label: "Form labels", status: "pass", detail: "FormField with htmlFor across leads/portal" },
+    { id: "a11y-forms", category: "Accessibility", label: "Form labels", status: "pass", detail: "FormField with htmlFor across lead forms" },
     { id: "a11y-focus", category: "Accessibility", label: "Focus states", status: "pass", detail: "focus-visible rings on Button" },
     { id: "a11y-aria", category: "Accessibility", label: "ARIA on nav/FAQ", status: "pass", detail: "Header, FAQ, breadcrumbs labeled" },
     { id: "a11y-motion", category: "Accessibility", label: "Reduced motion", status: "warn", detail: "Hero particles respect prefers-reduced-motion; audit GSAP sections" },
@@ -92,15 +88,13 @@ export function buildAuditChecks(): AuditCheck[] {
     { id: "seo-schema", category: "SEO", label: "JSON-LD schema", status: "pass", detail: "Organization, Service, FAQ, Article, LocalBusiness" },
     { id: "seo-sitemap", category: "SEO", label: "Segmented sitemaps (8)", status: "pass", detail: "pages, services, industries, work, locations, solutions, content, tools" },
     { id: "seo-og", category: "SEO", label: "Open Graph + Twitter", status: "pass", detail: "OG tags + opengraph-image" },
-    { id: "seo-portal-noindex", category: "SEO", label: "Portal auth pages noindex", status: "pass", detail: "Dashboard and inner portal noIndex" },
     { id: "sec-headers", category: "Security", label: "Security headers", status: "pass", detail: "CSP, HSTS, X-Frame-Options via proxy" },
     { id: "sec-rate", category: "Security", label: "API rate limiting", status: "pass", detail: "20 req/min per IP on /api/leads" },
     { id: "sec-zod", category: "Security", label: "Input validation (Zod)", status: "pass", detail: "Leads + newsletter APIs" },
     { id: "sec-honeypot", category: "Security", label: "Honeypot field", status: "pass", detail: "website_url field rejects bots" },
-    { id: "sec-portal", category: "Security", label: "Portal production auth", status: "warn", detail: "Demo sessionStorage — replace before enterprise clients" },
     { id: "legal-pages", category: "Legal", label: "Legal document suite", status: "pass", detail: "5 policies + redirects from legacy URLs" },
     { id: "legal-cookie", category: "Legal", label: "Cookie consent banner", status: "pass", detail: "Accept/reject all — UK/EU GDPR" },
-    { id: "analytics-dl", category: "Analytics", label: "dataLayer events", status: "pass", detail: "Leads, tools, portal events wired" },
+    { id: "analytics-dl", category: "Analytics", label: "dataLayer events", status: "pass", detail: "Leads and tools events wired" },
     { id: "analytics-gtm", category: "Analytics", label: "GTM / GA4 scripts", status: hasGtm || hasGa ? "pass" : "pending", detail: hasGtm || hasGa ? "IDs configured" : "Set NEXT_PUBLIC_GTM_ID or GA_MEASUREMENT_ID" },
     { id: "analytics-meta", category: "Analytics", label: "Meta Pixel", status: process.env.NEXT_PUBLIC_META_PIXEL_ID ? "pass" : "pending", detail: "Optional NEXT_PUBLIC_META_PIXEL_ID" },
     { id: "crm-webhooks", category: "CRM", label: "CRM webhooks", status: hasCrm ? "pass" : "pending", detail: hasCrm ? "Webhook URL configured" : "Configure HUBSPOT/ZOHO/SALESFORCE/LEAD_WEBHOOK_URL" },
@@ -120,14 +114,12 @@ export function calculateLaunchScore(checks: AuditCheck[]): number {
 export const priorityIssues = [
   { priority: "P1", issue: "Configure GTM/GA4 env vars before launch campaigns", area: "Analytics" },
   { priority: "P1", issue: "Connect CRM webhook (HubSpot/Zoho/generic) for lead routing", area: "CRM" },
-  { priority: "P2", issue: "Replace portal demo auth with server-side sessions (NextAuth/Clerk)", area: "Security" },
   { priority: "P2", issue: "Integrate transactional email (Resend) for lead notifications", area: "CRM" },
   { priority: "P3", issue: "Run production Lighthouse audit post-deploy and log baseline", area: "Performance" },
 ] as const;
 
 export const conversionRecommendations = [
   "Add mid-page CTA bands on top 5 service pages linking to /get-estimate",
-  "Surface client portal link in post-submit thank-you flow",
   "Add trust strip (ISO-ready, NDA, SLA) on industry landing pages",
   "Enable Meta Pixel for retargeting estimate abandoners",
   "A/B test homepage hero CTA: Book consultation vs Get estimate",
@@ -139,7 +131,6 @@ export const crmIntegrationChecklist = [
   "Env: HUBSPOT_WEBHOOK_URL | ZOHO_WEBHOOK_URL | SALESFORCE_WEBHOOK_URL | LEAD_WEBHOOK_URL",
   "Env: LEAD_NOTIFICATION_EMAIL for ops alerts",
   "dataLayer: form_complete, lead_score, cta_click for GTM conversion tags",
-  "Portal onboarding → store in CRM as custom object (future API)",
 ] as const;
 
 export const deploymentChecklist = [

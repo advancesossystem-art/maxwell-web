@@ -12,7 +12,7 @@ import {
 import { trackCTAClick } from "@/lib/conversion-events";
 import { useCookieBannerVisible, useIsMobile } from "@/hooks/useMediaQuery";
 import { cn } from "@/lib/utils";
-import { hasContextMobileSticky, isPortalRoute } from "@/lib/mobile-sticky";
+import { hasContextMobileSticky } from "@/lib/mobile-sticky";
 
 type StickyCTAProps = {
   context?: ConversionContext;
@@ -42,7 +42,6 @@ export function StickyCTA({ context, location = "sticky_bar", className, dismiss
     cookieVisible ||
     dismissed ||
     !visible ||
-    isPortalRoute(pathname) ||
     HIDE_ON.some((p) => pathname === p) ||
     hasContextMobileSticky(pathname)
   ) {

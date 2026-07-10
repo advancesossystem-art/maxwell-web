@@ -8,11 +8,3 @@ export function hasContextMobileSticky(pathname: string | null): boolean {
     /^\/case-studies\/[^/]+$/.test(pathname)
   );
 }
-
-export function isPortalRoute(pathname: string | null): boolean {
-  return pathname?.startsWith("/portal") ?? false;
-}
-
-export function isMarketingChromeRoute(pathname: string | null): boolean {
-  return !isPortalRoute(pathname);
-}

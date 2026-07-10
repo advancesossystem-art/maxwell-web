@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import { MobileBodyState } from "@/components/layout/MobileBodyState";
 import { useIsDesktop } from "@/hooks/useMediaQuery";
 import { useStickyBarDismiss } from "@/hooks/useStickyBarDismiss";
-import { isMarketingChromeRoute } from "@/lib/mobile-sticky";
 import { leadTrustBadges } from "@/lib/company-metrics";
 
 const StickyCTA = dynamic(
@@ -48,7 +47,7 @@ export function TrustBadgesRow() {
 export function LeadConversionLayer() {
   const pathname = usePathname();
   const isDesktop = useIsDesktop();
-  const showMarketing = isMarketingChromeRoute(pathname) && pathname !== "/thank-you";
+  const showMarketing = pathname !== "/thank-you";
   const { dismissed: stickyDismissed, dismiss: dismissStickyBar } = useStickyBarDismiss();
 
   return (
