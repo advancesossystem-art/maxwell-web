@@ -15,6 +15,7 @@ import { GeoQuickAnswer } from "@/components/authority/GeoContentSection";
 import { ExpertCommentary } from "@/components/authority/GeoDefinitionBlock";
 import { StatisticsPanel } from "@/components/authority/StatisticsPanel";
 import { ProofSignalsBar } from "@/components/trust/ProofSignalsBar";
+import { CompareIntentRedirect } from "@/components/seo/CompareIntentRedirect";
 import { buildProgrammaticGeo } from "@/lib/geo-page-content";
 import { getStatisticsForProgrammatic } from "@/lib/statistics-data";
 import { StickyEstimateCTA } from "@/components/common/StickyEstimateCTA";
@@ -191,6 +192,8 @@ export function ProgrammaticSeoPage({ page }: { page: ProgrammaticPageData }) {
           />
         </Container>
       </section>
+
+      {page.intentRedirect ? <CompareIntentRedirect block={page.intentRedirect} /> : null}
 
       <GeoQuickAnswer geo={geo} />
 

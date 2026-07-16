@@ -1,15 +1,19 @@
 /** Maxwell 2026 — homepage narrative (single source of truth) */
 
 export const homeHero = {
-  eyebrow: "Maxwell Electrodeal · Business Technology Partner",
-  headlineLine1: "Websites and software that grow your business.",
-  headlineLine2: "Built in Vadodara. Delivered across India.",
+  eyebrow: "Maxwell Electrodeal · Vadodara",
+  headlineLine1: "Your buyers are searching Google right now.",
+  headlineLine2: "They're finding your competitor.",
   subhead:
-    "We build product catalog websites for Indian manufacturers that generate direct buyer inquiries from Google — without paid directory listings, without platform fees forever. Starting from $900 / ₹75,000.",
+    "We build product catalog websites for Gujarat manufacturers that show up on Google and send inquiries straight to your WhatsApp. Starting from ₹45,000.",
   /** Social proof in first viewport — pairs with primary CTA */
   proofOutcome:
-    "Latest: 263-page chemical supplier website live in 6 weeks · 94 PageSpeed · Direct Google inquiries replacing paid directory traffic",
+    "Last build: 263 pages · 154 products · 94/100 Google Speed · Live in 6 weeks",
   proofLink: { label: "See case study", href: "/case-studies/drashti-chemicals" },
+  proofExternalUrl: "https://drashtichemical.com",
+  proofExternalLabel: "See it live → drashtichemical.com",
+  primaryCta: { label: "See What Your Website Would Cost", href: "/pricing" },
+  secondaryCta: { label: "WhatsApp Us — reply in 2 hrs", href: "/contact" },
 } as const;
 
 export const heroServiceBadges = [
@@ -23,11 +27,26 @@ export const heroServiceBadges = [
 
 export const heroTrustMetrics = [
   { value: "50+", label: "Projects delivered" },
-  { value: "$900 / ₹75K", label: "Starting price for websites" },
+  { value: "₹45K", label: "Starting price for websites" },
   { value: "15+", label: "Industries served" },
-  { value: "95%", label: "Client satisfaction" },
+  { value: "21 days", label: "Starter site delivery" },
   { value: "<4hr", label: "Response time" },
 ] as const;
+
+/** Named, verifiable case study featured on homepage */
+export const drashtiFeaturedCaseStudy = {
+  client: "Drashti Chemicals",
+  location: "Vadodara",
+  highlight: "263 pages · 94 PageSpeed",
+  title: "Industrial chemical supplier — direct Google inquiries replacing paid directory traffic",
+  href: "/case-studies/drashti-chemicals",
+  liveUrl: "https://drashtichemical.com",
+  metrics: [
+    { value: "263", label: "Pages built" },
+    { value: "154", label: "Products" },
+    { value: "94", label: "PageSpeed" },
+  ],
+} as const;
 
 export const businessProblems = [
   {
@@ -434,7 +453,6 @@ export const homeFinalCta = {
 /** Featured case studies on homepage — slugs from case-studies-data */
 export const homepageCaseStudySlugs = [
   "manufacturing-erp",
-  "healthcare-management",
   "logistics-platform",
 ] as const;
 

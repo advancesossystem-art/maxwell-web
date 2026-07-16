@@ -34,6 +34,11 @@ export interface LocalStatsBlock {
   stats: { value: string; label: string }[];
 }
 
+export interface IntentRedirectBlock {
+  message: string;
+  links: { label: string; href: string }[];
+}
+
 export interface ProgrammaticPageData {
   slug: string;
   path: string;
@@ -56,6 +61,7 @@ export interface ProgrammaticPageData {
   pricingTable?: PricingTableBlock;
   comparisonMatrix?: ComparisonMatrixBlock;
   localStats?: LocalStatsBlock;
+  intentRedirect?: IntentRedirectBlock;
 }
 
 export interface ServiceCatalogEntry {

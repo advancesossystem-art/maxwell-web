@@ -1,17 +1,13 @@
 import Link from "next/link";
 import { HeroEcosystemVisual } from "@/components/home/HeroEcosystemVisual";
 import { Button } from "@/components/ui/Button";
+import { HeroTrustHighlights, VerifiedReviewBadge } from "@/components/conversion/VerifiedReviewBadge";
 import { heroServiceBadges, heroTrustMetrics, homeHero, trustHighlights } from "@/lib/homepage";
-import {
-  CTA_LABELS,
-  CONVERSION_EXPECTATIONS,
-  consultationHref,
-  estimateHref,
-} from "@/lib/conversion-copy";
+import { WHATSAPP_HREF_CONTACT } from "@/lib/constants";
+import { CONVERSION_EXPECTATIONS } from "@/lib/conversion-copy";
+import { companyMetricDisplay } from "@/lib/company-metrics";
 
-const heroContext = { source: "homepage-hero" } as const;
-
-const trustIcons = ["rocket", "users", "support", "shield"] as const;
+const trustIcons = ["rocket", "users", "support", "shield", "shield"] as const;
 
 function TrustIcon({ type }: { type: (typeof trustIcons)[number] }) {
   const paths: Record<(typeof trustIcons)[number], React.ReactNode> = {
@@ -67,6 +63,10 @@ export function Hero() {
               {homeHero.subhead}
             </p>
 
+            <div className="mt-4">
+              <VerifiedReviewBadge compact />
+            </div>
+
             <div className="mt-5 hidden flex-wrap gap-2 md:flex">
               {heroServiceBadges.map((badge) => (
                 <Link
@@ -80,33 +80,39 @@ export function Hero() {
             </div>
 
             <p className="mt-4 text-xs text-[var(--v6-text-muted)] md:hidden">
-              50+ projects delivered · 4.9/5 ★
+              {companyMetricDisplay.projectsCompleted} projects delivered · Vadodara
             </p>
-            <p className="mt-4 hidden rounded-xl border border-[#4f46e5]/15 bg-[#f8fafc] px-4 py-3 text-sm text-[var(--v6-text-secondary)] md:block">
-              <span className="font-semibold text-[#4f46e5]">Proven delivery:</span>{" "}
-              {homeHero.proofOutcome}.{" "}
-              <Link
-                href={homeHero.proofLink.href}
+            <p className="mt-4 rounded-xl border border-[#4f46e5]/15 bg-[#f8fafc] px-4 py-3 text-sm text-[var(--v6-text-secondary)]">
+              <span className="font-semibold text-[#4f46e5]">Proven delivery:</span> {homeHero.proofOutcome}.{" "}
+              <Link href={homeHero.proofLink.href} className="font-semibold text-[#4f46e5] hover:underline">
+                {homeHero.proofLink.label} →
+              </Link>{" "}
+              ·{" "}
+              <a
+                href={homeHero.proofExternalUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="font-semibold text-[#4f46e5] hover:underline"
               >
-                {homeHero.proofLink.label} →
-              </Link>
+                {homeHero.proofExternalLabel}
+              </a>
             </p>
 
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <Button href={estimateHref(heroContext)} size="lg" variant="primary">
-                {CTA_LABELS.secondary}
+              <Button href={homeHero.primaryCta.href} size="lg" variant="primary">
+                {homeHero.primaryCta.label}
               </Button>
-              <Button href={consultationHref(heroContext)} size="lg" variant="outline">
-                {CTA_LABELS.primary}
+              <Button href={WHATSAPP_HREF_CONTACT} size="lg" variant="outline" external>
+                {homeHero.secondaryCta.label}
               </Button>
             </div>
             <p className="mt-3 text-sm text-[var(--v6-text-muted)]">
-              {CONVERSION_EXPECTATIONS.estimateTimeline} · {CONVERSION_EXPECTATIONS.responseTime} · No
-              obligation
+              {CONVERSION_EXPECTATIONS.estimateTimeline} · {CONVERSION_EXPECTATIONS.responseTime} · No obligation
             </p>
 
-            <ul className="mt-5 hidden flex-wrap gap-2 md:flex" aria-label="Trust highlights">
+            <HeroTrustHighlights className="mt-5 hidden md:flex" />
+
+            <ul className="mt-5 hidden flex-wrap gap-2 md:flex" aria-label="Delivery highlights">
               {trustHighlights.map((item) => (
                 <li
                   key={item.label}

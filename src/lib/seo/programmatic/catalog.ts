@@ -1,3 +1,7 @@
+/**
+ * Programmatic SEO catalog — services, industries, cities, compare templates.
+ * CONTENT FREEZE (July 2026): Do not add industries/cities without approval — see docs/CONTENT_FREEZE.md
+ */
 import type {
   CityCatalogEntry,
   CompareTemplate,

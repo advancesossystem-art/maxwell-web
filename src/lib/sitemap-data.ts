@@ -36,6 +36,7 @@ const staticPages = [
   "/security",
   "/contact",
   "/get-estimate",
+  "/pricing",
   "/project-calculator",
   "/book-consultation",
   "/book-consultation",
@@ -51,6 +52,7 @@ export function getPagesSitemapEntries() {
     let priority = 0.8;
     if (route === "") priority = 1;
     else if (route === "/contact" || route === "/get-estimate") priority = 0.95;
+    else if (route === "/pricing") priority = 0.94;
     else if (route === "/locations" || route === "/services") priority = 0.92;
     return { url: `${siteConfig.url}${route}`, priority };
   });
@@ -151,6 +153,12 @@ export function getWorkSitemapEntries() {
     {
       url: `${siteConfig.url}/case-studies/drashti-chemicals`,
       priority: 0.9,
+      lastModified: MANUFACTURER_LAUNCH,
+      changeFreq: "monthly" as const,
+    },
+    {
+      url: `${siteConfig.url}/case-studies/maxwell-website-rebuild`,
+      priority: 0.88,
       lastModified: MANUFACTURER_LAUNCH,
       changeFreq: "monthly" as const,
     },

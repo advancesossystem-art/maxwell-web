@@ -144,8 +144,10 @@ export function buildOrganizationNode() {
   };
 }
 
+import { getGoogleBusinessReview } from "@/lib/verified-reviews";
+
 /** Aggregate rating only when a verifiable third-party review count is configured. */
-const VERIFIABLE_REVIEW_COUNT = process.env.GOOGLE_BUSINESS_REVIEW_COUNT?.trim();
+const GOOGLE_REVIEW = getGoogleBusinessReview();
 
 export function buildLocalBusinessNode(options?: { pageUrl?: string }) {
   const node: Record<string, unknown> = {
@@ -172,12 +174,12 @@ export function buildLocalBusinessNode(options?: { pageUrl?: string }) {
     parentOrganization: { "@id": seoIds.organization },
   };
 
-  if (VERIFIABLE_REVIEW_COUNT) {
+  if (GOOGLE_REVIEW) {
     node.aggregateRating = {
       "@type": "AggregateRating" as const,
-      ratingValue: String(companyMetrics.satisfactionScore),
-      reviewCount: VERIFIABLE_REVIEW_COUNT,
-      bestRating: String(companyMetrics.satisfactionScale),
+      ratingValue: String(GOOGLE_REVIEW.rating),
+      reviewCount: String(GOOGLE_REVIEW.reviewCount),
+      bestRating: "5",
     };
   }
 
@@ -221,7 +223,7 @@ export function buildPersonAuthorNode(author: Author) {
 export function buildServiceSchema(service: ServicePageData) {
   const url = `${siteConfig.url}/services/${service.slug}`;
   const { minPrice, maxPrice } = getServiceOfferPrices(service);
-  const reviewCount = process.env.GOOGLE_BUSINESS_REVIEW_COUNT?.trim();
+  const googleReview = getGoogleBusinessReview();
 
   return {
     "@context": "https://schema.org",
@@ -246,13 +248,13 @@ export function buildServiceSchema(service: ServicePageData) {
         priceCurrency: "INR",
       },
     },
-    ...(reviewCount
+    ...(googleReview
       ? {
           aggregateRating: {
             "@type": "AggregateRating",
-            ratingValue: String(companyMetrics.satisfactionScore),
-            reviewCount,
-            bestRating: String(companyMetrics.satisfactionScale),
+            ratingValue: String(googleReview.rating),
+            reviewCount: String(googleReview.reviewCount),
+            bestRating: "5",
           },
         }
       : {}),

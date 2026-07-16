@@ -2,7 +2,9 @@ import { Suspense } from "react";
 import { Container } from "@/components/ui/Container";
 import { QuickEstimateForm } from "@/components/leads/QuickEstimateForm";
 import { ProjectEstimatorWizard } from "@/components/leads/ProjectEstimatorWizard";
+import { StraightAnswers } from "@/components/conversion/StraightAnswers";
 import { createMetadata } from "@/lib/metadata";
+import { companyMetricDisplay } from "@/lib/company-metrics";
 
 export const metadata = createMetadata({
   title: "Get Free Project Estimate — Website, ERP, CRM & Software | Maxwell Electrodeal",
@@ -50,8 +52,8 @@ export default function GetEstimatePage() {
                     "Based in Vadodara — on-site available for Gujarat",
                     "GST-registered · GST invoice on every project",
                     "100% code ownership — no lock-in",
-                    "50+ projects across India & globally",
-                    "4.9 / 5 client satisfaction",
+                    `${companyMetricDisplay.projectsCompleted} projects across India & globally`,
+                    "Published pricing at /pricing — no quote games",
                   ].map((item) => (
                     <li key={item} className="flex gap-2">
                       <span className="text-blue-600 font-bold flex-shrink-0">✓</span>
@@ -93,6 +95,8 @@ export default function GetEstimatePage() {
         </Container>
         <ProjectEstimatorWizard />
       </section>
+
+      <StraightAnswers />
     </>
   );
 }

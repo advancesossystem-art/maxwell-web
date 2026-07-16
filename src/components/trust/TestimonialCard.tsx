@@ -36,12 +36,12 @@ export function TestimonialCard({ testimonial, featured = false }: { testimonial
     testimonial.companyType ||
     testimonial.industry ||
     "Anonymized client";
-  const rating = testimonial.verified ? 5 : 4;
+  const rating = testimonial.verified ? 5 : undefined;
 
   if (!featured) {
     return (
       <blockquote className="v6-card p-6">
-        <StarRating rating={rating} />
+        {rating != null ? <StarRating rating={rating} /> : null}
         <p className="mt-3 text-sm text-[var(--v6-text-secondary)]">&ldquo;{testimonial.quote}&rdquo;</p>
         <footer className="mt-4 border-t border-[var(--v6-border)] pt-4">
           <p className="text-sm font-semibold text-[var(--v6-text)]">{displayName}</p>
@@ -62,7 +62,7 @@ export function TestimonialCard({ testimonial, featured = false }: { testimonial
           {roleInitials(testimonial.role)}
         </div>
           <div className="min-w-0 flex-1">
-            <StarRating rating={rating} />
+            {rating != null ? <StarRating rating={rating} /> : null}
             <p className="mt-4 font-display text-xl font-medium leading-relaxed text-[var(--v6-text)] sm:text-2xl sm:leading-snug">
             &ldquo;{testimonial.quote}&rdquo;
           </p>

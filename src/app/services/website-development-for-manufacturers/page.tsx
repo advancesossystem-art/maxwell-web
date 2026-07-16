@@ -4,6 +4,11 @@ import { createMetadata } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
 import { siteConfig, WHATSAPP_HREF_CONTACT } from "@/lib/constants";
 import { manufacturerHubSeo } from "@/lib/manufacturer-website-seo";
+import { websitePricingTiers, pricingTerms } from "@/lib/pricing-data";
+import { StraightAnswers } from "@/components/conversion/StraightAnswers";
+import { WhoWeAreNotFor } from "@/components/conversion/WhoWeAreNotFor";
+import { ServiceConversionNarrativeSection } from "@/components/services/ServiceConversionNarrative";
+import { serviceConversionNarratives } from "@/lib/service-conversion-data";
 
 export const metadata: Metadata = createMetadata({
   title: manufacturerHubSeo.title,
@@ -90,50 +95,16 @@ const features = [
   "Optional: multi-language support for export markets (Hindi, Arabic, French)",
 ];
 
-const pricingTiers = [
-  {
-    name: "Starter",
-    price: "₹75,000",
-    highlight: false,
-    features: [
-      "Up to 15 pages",
-      "Product listing (up to 50 products)",
-      "Contact + WhatsApp inquiry form",
-      "Basic on-page SEO",
-      "Mobile responsive",
-      "1 month support",
-    ],
-    bestFor: "Small manufacturers, single product category",
-  },
-  {
-    name: "Professional",
-    price: "₹1,50,000",
-    highlight: true,
-    features: [
-      "Up to 60 pages",
-      "Full product catalog (up to 200 products) with search + filter",
-      "Category pages optimized for Google",
-      "GST quote request forms",
-      "Google Analytics + Search Console setup",
-      "3 months support",
-    ],
-    bestFor: "Mid-size manufacturers with multiple product lines",
-  },
-  {
-    name: "Enterprise",
-    price: "₹3,00,000+",
-    highlight: false,
-    features: [
-      "Unlimited pages (programmatic generation)",
-      "200+ products with dynamic filtering",
-      "Multi-language support",
-      "ERP/CRM integration",
-      "Monthly SEO reporting",
-      "12 months support",
-    ],
-    bestFor: "Large manufacturers targeting international export markets",
-  },
-];
+const pricingTiers = websitePricingTiers.map((tier) => ({
+  name: tier.name,
+  price: tier.price,
+  highlight: tier.highlight ?? false,
+  features: tier.features,
+  bestFor: tier.bestFor,
+  timeline: tier.timeline,
+}));
+
+const conversionNarrative = serviceConversionNarratives["website-development-for-manufacturers"];
 
 const faqs = [
   {
@@ -172,7 +143,7 @@ const serviceJsonLd = {
     url: siteConfig.url,
   },
   areaServed: ["India", "Gujarat", "Vadodara"],
-  priceRange: "₹75,000 - ₹3,00,000+",
+  priceRange: "₹45,000 - ₹1,50,000",
   description: manufacturerHubSeo.description,
   url: `${siteConfig.url}${manufacturerHubSeo.path}`,
   offers: {
@@ -182,23 +153,23 @@ const serviceJsonLd = {
       {
         "@type": "Offer",
         name: "Starter",
-        price: "75000",
+        price: "45000",
         priceCurrency: "INR",
-        description: "Up to 15 pages, 50 products, basic SEO",
+        description: "5–8 pages, 21-day delivery",
       },
       {
         "@type": "Offer",
         name: "Professional",
-        price: "150000",
+        price: "75000",
         priceCurrency: "INR",
-        description: "Up to 60 pages, 200 products, full catalog SEO",
+        description: "15–25 pages, 30-day delivery",
       },
       {
         "@type": "Offer",
-        name: "Enterprise",
-        price: "300000",
+        name: "Growth",
+        price: "150000",
         priceCurrency: "INR",
-        description: "Unlimited pages, multi-language, ERP integration",
+        description: "40+ pages, 6–8 week delivery",
       },
     ],
   },
@@ -246,10 +217,10 @@ export default function ManufacturerWebsitePage() {
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
               <Link
-                href="/get-estimate?service=Manufacturer+Website&source=mfr-hero"
+                href="/pricing"
                 className="inline-flex items-center justify-center rounded-lg bg-indigo-600 px-6 py-3 text-base font-semibold text-white hover:bg-indigo-500 transition"
               >
-                Get Free Project Estimate
+                See What Your Website Would Cost
               </Link>
               <Link
                 href="/case-studies/drashti-chemicals"
@@ -260,8 +231,8 @@ export default function ManufacturerWebsitePage() {
             </div>
             <div className="mt-10 flex flex-wrap gap-4">
               {[
-                "₹75,000 Starting Price",
-                "Delivered in 6–8 Weeks",
+                "₹45,000 Starting Price",
+                "21-Day Starter Delivery",
                 "100% Code Ownership",
                 "GST Invoice Included",
               ].map((badge) => (
@@ -276,6 +247,8 @@ export default function ManufacturerWebsitePage() {
           </div>
         </Container>
       </section>
+
+      {conversionNarrative ? <ServiceConversionNarrativeSection narrative={conversionNarrative} /> : null}
 
       {/* Problem Section */}
       <section className="py-16 bg-slate-50 border-b border-slate-200">
@@ -319,7 +292,7 @@ export default function ManufacturerWebsitePage() {
           </div>
           <p className="mt-8 text-center text-base font-medium text-slate-700">
             Your own website costs{" "}
-            <span className="text-indigo-600 font-bold">₹75K once</span>. Runs forever. Every
+            <span className="text-indigo-600 font-bold">₹45K once</span>. Runs forever. Every
             inquiry comes to <span className="font-bold">YOU</span>, not a marketplace.
           </p>
         </Container>
@@ -441,6 +414,9 @@ export default function ManufacturerWebsitePage() {
           <h2 className="font-display text-3xl font-bold text-center text-slate-900 mb-3">
             Transparent Pricing for Manufacturer Websites
           </h2>
+          <p className="text-center text-slate-500 mb-4 max-w-2xl mx-auto">
+            {pricingTerms.noGames}
+          </p>
           <p className="text-center text-slate-500 mb-10 max-w-2xl mx-auto">
             No hidden fees. Milestone-based billing so you pay as work gets done.
           </p>
@@ -468,6 +444,11 @@ export default function ManufacturerWebsitePage() {
                   className={`mt-2 text-3xl font-extrabold ${tier.highlight ? "text-white" : "text-indigo-600"}`}
                 >
                   {tier.price}
+                </p>
+                <p
+                  className={`mt-2 text-sm ${tier.highlight ? "text-indigo-200" : "text-slate-500"}`}
+                >
+                  {tier.timeline}
                 </p>
                 <ul className="mt-4 space-y-2 flex-1">
                   {tier.features.map((f) => (
@@ -508,11 +489,18 @@ export default function ManufacturerWebsitePage() {
             ))}
           </div>
           <p className="mt-6 text-center text-sm text-slate-500">
-            All prices include GST invoice. Milestone-based billing — 40% on start, 40% on
-            staging, 20% on go-live. Full IP and source code ownership.
+            {pricingTerms.gst}. Payment: {pricingTerms.payment}. {pricingTerms.ownership}
+          </p>
+          <p className="mt-4 text-center">
+            <Link href="/pricing" className="text-sm font-semibold text-indigo-600 hover:underline">
+              Full pricing details →
+            </Link>
           </p>
         </Container>
       </section>
+
+      <StraightAnswers />
+      <WhoWeAreNotFor />
 
       {/* FAQ */}
       <section className="py-16">

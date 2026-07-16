@@ -1,6 +1,7 @@
 import { reviewPlatforms } from "@/lib/trust-content";
 import { certifications } from "@/lib/company-data";
 import { testimonials } from "@/lib/testimonials-data";
+import { getAllVerifiedReviews } from "@/lib/verified-reviews";
 
 export interface VerifiedReview {
   platform: string;
@@ -30,8 +31,18 @@ export interface MediaMention {
   date?: string;
 }
 
-/** Only entries with real URLs/scores are listed — no fabricated proof. */
-export const verifiedReviews: VerifiedReview[] = [];
+function buildVerifiedReviewsFromEnv(): VerifiedReview[] {
+  return getAllVerifiedReviews().map((r) => ({
+    platform: r.platform,
+    rating: r.rating,
+    reviewCount: r.reviewCount,
+    href: r.href,
+    label: r.label,
+  }));
+}
+
+/** Only entries with real URLs/scores — populated from env when configured. */
+export const verifiedReviews: VerifiedReview[] = buildVerifiedReviewsFromEnv();
 
 /** Call when a platform profile goes live with a verified URL. */
 export function registerVerifiedReview(entry: VerifiedReview): void {
@@ -58,13 +69,7 @@ export function hasCertifications(): boolean {
   return certifications.length > 0;
 }
 
-export function hasAnyProofSignal(): boolean {
-  return (
-    hasVerifiedReviews() ||
-    hasClientTestimonials() ||
-    hasCertifications() ||
-    verifiedAwards.length > 0 ||
-    verifiedPartnerships.length > 0 ||
-    verifiedMediaMentions.length > 0
-  );
+/** Platforms with live profile URLs only */
+export function getLiveReviewPlatforms() {
+  return reviewPlatforms.filter((p) => p.href != null && p.href.length > 0);
 }

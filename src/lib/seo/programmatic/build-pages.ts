@@ -191,6 +191,22 @@ export function buildComparePage(template: (typeof compareTemplates)[number]): P
   };
 }
 
+/** Redirect block for best-erp-for-* pages — convert ERP research traffic to website leads */
+const BEST_ERP_INTENT_REDIRECT: ProgrammaticPageData["intentRedirect"] = {
+  message:
+    "Most manufacturers who land here don't actually need an ERP yet. They need buyers to find them on Google first.",
+  links: [
+    {
+      label: "See how we did it for a Vadodara chemical supplier",
+      href: "/case-studies/drashti-chemicals",
+    },
+    {
+      label: "Manufacturer website development",
+      href: "/services/website-development-for-manufacturers",
+    },
+  ],
+};
+
 export function buildBestForIndustryCompare(industrySlug: string): ProgrammaticPageData | null {
   const industry = getIndustryCatalog(industrySlug);
   if (!industry) return null;
@@ -200,6 +216,7 @@ export function buildBestForIndustryCompare(industrySlug: string): ProgrammaticP
     slug,
     path,
     pageType: "compare",
+    intentRedirect: BEST_ERP_INTENT_REDIRECT,
     metaTitle: `Best ERP for ${industry.name} India 2026 — SAP vs Custom`,
     metaDescription: `Best ERP for ${industry.name} (${industry.focus}): compare SAP, Odoo, Tally vs custom ERP for ${industry.painPoints[0].toLowerCase()}. Pricing from ₹8L. Free estimate in 24 hours.`,
     comparisonMatrix: buildComparisonMatrix({

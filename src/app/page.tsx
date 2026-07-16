@@ -53,6 +53,14 @@ const HomeSocialProof = dynamic(
   () => import("@/components/home/HomeSocialProof").then((m) => ({ default: m.HomeSocialProof })),
   { ssr: true },
 );
+const StraightAnswers = dynamic(
+  () => import("@/components/conversion/StraightAnswers").then((m) => ({ default: m.StraightAnswers })),
+  { ssr: true },
+);
+const WhoWeAreNotFor = dynamic(
+  () => import("@/components/conversion/WhoWeAreNotFor").then((m) => ({ default: m.WhoWeAreNotFor })),
+  { ssr: true },
+);
 const HomeTrust = dynamic(
   () => import("@/components/home/HomeTrust").then((m) => ({ default: m.HomeTrust })),
   { ssr: true },
@@ -88,14 +96,16 @@ export default function HomePage() {
       <HomeSolution />
       <HomeBusinessOutcomes />
       <ServicesExperience />
+      <HomeCaseStudies />
+      <HomeSocialProof />
       <HomepageAssessment />
       <IndustriesShowcase />
       <DevelopmentProcess />
-      <HomeCaseStudies />
       <HomeToolsSpotlight />
       <WhyMaxwell />
-      <HomeSocialProof />
       <HomeTrust />
+      <StraightAnswers />
+      <WhoWeAreNotFor />
       <HomeFAQ />
       <IndiaSeoHomeSection />
       <FinalCTA />

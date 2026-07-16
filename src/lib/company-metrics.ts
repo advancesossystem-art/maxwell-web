@@ -3,6 +3,8 @@
  * All pages must reference this module (not hardcoded counts).
  */
 
+import { hasAnyVerifiedReview } from "@/lib/verified-reviews";
+
 export const companyMetrics = {
   projectsCompleted: 50,
   industriesServed: 15,
@@ -48,7 +50,7 @@ export type TrustStripItem = {
 
 /** Default trust strip — instant trust below hero */
 export function getTrustStripItems(): TrustStripItem[] {
-  return [
+  const items: TrustStripItem[] = [
     {
       value: companyMetricDisplay.projectsCompleted,
       label: "Projects Delivered",
@@ -64,11 +66,24 @@ export function getTrustStripItems(): TrustStripItem[] {
       label: "Years of Experience",
       description: "Enterprise delivery since 2018",
     },
-    {
+  ];
+
+  // Only show satisfaction score when backed by verified third-party reviews
+  if (hasAnyVerifiedReview()) {
+    items.push({
       value: companyMetricDisplay.satisfactionPercent,
       label: "Client Satisfaction",
-      description: `Post-delivery surveys (${companyMetricDisplay.satisfaction})`,
-    },
+      description: `Verified reviews (${companyMetricDisplay.satisfaction})`,
+    });
+  } else {
+    items.push({
+      value: "100%",
+      label: "Code Ownership",
+      description: "Domain, hosting & source in your name",
+    });
+  }
+
+  items.push(
     {
       value: companyMetricDisplay.technologiesUsed,
       label: "Technologies Used",
@@ -79,7 +94,9 @@ export function getTrustStripItems(): TrustStripItem[] {
       label: "Response Time",
       description: `Avg. business-hours reply · ${companyMetricDisplay.supportCoverage} support`,
     },
-  ];
+  );
+
+  return items;
 }
 
 /** Hero stat row (homepage) */

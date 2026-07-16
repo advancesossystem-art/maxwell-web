@@ -1,39 +1,61 @@
 import { siteConfig } from "./constants";
 
+export type ReviewPlatformStatus = "Live" | "Profile in progress" | "Coming soon" | "Available on request";
+
 export const reviewPlatforms = [
+  {
+    id: "google",
+    name: "Google Business",
+    description: "Local reviews from clients who share feedback publicly on Google.",
+    status: "Available on request" as const,
+    href: undefined as string | undefined,
+  },
   {
     id: "clutch",
     name: "Clutch",
-    description:
-      "Independent B2B reviews for software development firms. We are building our public Clutch profile — no scores are shown here until verified reviews are published.",
+    description: "Independent B2B reviews for software development firms.",
     status: "Profile in progress" as const,
-    href: undefined,
+    href: undefined as string | undefined,
   },
   {
     id: "g2",
     name: "G2",
-    description:
-      "Peer reviews for business software and services. A G2 presence is planned; we do not display ratings we have not earned on-platform.",
+    description: "Peer reviews for business software and services.",
     status: "Coming soon" as const,
-    href: undefined,
-  },
-  {
-    id: "google",
-    name: "Google Business",
-    description:
-      "Local reviews from clients who choose to share feedback publicly. Ask us for a direct review link after project completion.",
-    status: "Available on request" as const,
-    href: undefined,
+    href: undefined as string | undefined,
   },
   {
     id: "goodfirms",
     name: "GoodFirms",
-    description:
-      "B2B research platform for software firms. A GoodFirms profile is planned — no ratings displayed until verified on-platform.",
+    description: "B2B research platform for software firms.",
     status: "Profile in progress" as const,
-    href: undefined,
+    href: undefined as string | undefined,
   },
 ] as const;
+
+/** Verifiable work shown when third-party reviews are not yet live */
+export const verifiableWorkFallback = {
+  title: "Verifiable work while we collect public reviews",
+  description:
+    "We're building our first public review profiles. In the meantime, here's work you can verify yourself — live sites, named clients, and measurable outcomes.",
+  items: [
+    {
+      label: "Drashti Chemicals — 263-page product catalog",
+      href: "/case-studies/drashti-chemicals",
+      external: false,
+    },
+    {
+      label: "See it live: drashtichemical.com",
+      href: "https://drashtichemical.com",
+      external: true,
+    },
+    {
+      label: "How we rebuilt our own site (0 → 80 Google clicks in 28 days)",
+      href: "/case-studies/maxwell-website-rebuild",
+      external: false,
+    },
+  ],
+} as const;
 
 export const securitySections = [
   {

@@ -24,17 +24,22 @@ import { ProofSignalsBar } from "@/components/trust/ProofSignalsBar";
 import { buildServiceGeo } from "@/lib/geo-page-content";
 import { getStatisticsForService } from "@/lib/statistics-data";
 import { StickyEstimateCTA } from "@/components/common/StickyEstimateCTA";
+import { StraightAnswers } from "@/components/conversion/StraightAnswers";
+import { ServiceConversionNarrativeSection } from "@/components/services/ServiceConversionNarrative";
+import { serviceConversionNarratives } from "@/lib/service-conversion-data";
 import type { ServicePageData } from "@/lib/services-data";
 import type { ServiceSlug } from "@/lib/services-data";
 
 export function ServiceLandingPage({ service }: { service: ServicePageData }) {
   const geo = buildServiceGeo(service);
   const stats = getStatisticsForService(service.slug as ServiceSlug);
+  const conversionNarrative = serviceConversionNarratives[service.slug];
 
   return (
     <>
       <ServicePageJsonLd service={service} />
       <ServiceHero service={service} />
+      {conversionNarrative ? <ServiceConversionNarrativeSection narrative={conversionNarrative} /> : null}
       <GeoContentSection geo={geo} />
       <StatisticsPanel {...stats} />
       <ProofSignalsBar />
@@ -46,6 +51,7 @@ export function ServiceLandingPage({ service }: { service: ServicePageData }) {
       <ServiceIndustries service={service} />
       <ServiceProjects service={service} />
       <ServiceWhy service={service} />
+      <StraightAnswers />
       <ServiceFAQ service={service} />
       <ServiceSeoSections service={service} />
       <ServiceLeadForm serviceName={service.title} serviceSlug={service.slug} />

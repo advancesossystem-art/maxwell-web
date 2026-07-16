@@ -26,6 +26,7 @@ const primaryNav = [
 ] as const;
 
 const resourceLinks = [
+  { label: "Pricing", href: "/pricing" },
   { label: "Solutions", href: "/solutions" },
   { label: "Compare", href: "/compare" },
   { label: "Cost Guides", href: "/cost" },
