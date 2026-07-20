@@ -27,7 +27,14 @@ export function FounderInsightsHub() {
               </h1>
               {founder.role ? <Caption className="text-brand-500">{founder.role}</Caption> : null}
               <p className="mt-4 max-w-2xl text-[var(--v6-text-secondary)]">{founder.bio}</p>
-              <blockquote className="mt-5 max-w-2xl border-l-2 border-brand-600/50 pl-4 text-sm leading-relaxed text-[var(--v6-text-secondary)] md:text-base">
+              <div className="mt-5 max-w-2xl space-y-3">
+                {founderProfile.journey.map((paragraph) => (
+                  <p key={paragraph.slice(0, 48)} className="text-sm leading-relaxed text-[var(--v6-text-secondary)]">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+              <blockquote className="mt-5 max-w-2xl rounded-xl border border-[var(--v6-border)] bg-[var(--v6-bg-soft)] p-4 text-sm leading-relaxed text-[var(--v6-text-secondary)]">
                 &ldquo;{founderProfile.message}&rdquo;
               </blockquote>
               <Link href={`/authors/${founder.slug}`} className="mt-4 inline-block text-sm text-brand-600 hover:text-brand-500">
