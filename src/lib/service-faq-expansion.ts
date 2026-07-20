@@ -1,6 +1,10 @@
-/** Expanded FAQs for service pages — Phase K (15–20 per service) */
+/** Expanded FAQs for service pages — slug-specific pools; universal block only on website cluster. */
+
+import { websiteClusterServiceSlugs } from "@/lib/website-cluster-services";
 
 type Faq = { question: string; answer: string };
+
+const WEBSITE_FAQ_SLUGS = new Set([...websiteClusterServiceSlugs, "website-development"]);
 
 const universalFaqs: Faq[] = [
   {
@@ -155,6 +159,37 @@ const expansionBySlug: Record<string, Faq[]> = {
       question: "Headless CMS for content updates?",
       answer: "Sanity, Strapi, or similar CMS integrations let marketing update content without developer involvement.",
     },
+    {
+      question: "Can I get a website under ₹20,000?",
+      answer:
+        "That budget typically buys a template site — not a B2B catalog. Maxwell Starter is ₹45,000 (published on /pricing) with milestone billing and IP ownership.",
+    },
+    {
+      question: "Website vs IndiaMART — do I need both?",
+      answer:
+        "Layer both: marketplace for RFQ volume, owned site for exclusive product-specific Google traffic. See /services/website-development-for-manufacturers.",
+    },
+    {
+      question: "What is included in website maintenance?",
+      answer:
+        "Security patches, uptime monitoring, CMS updates, and minor content support — scoped in AMC after go-live. Not bundled in Starter tier by default.",
+    },
+  ],
+  "website-redesign": [
+    {
+      question: "When is redesign worth it vs a new build?",
+      answer: "If URL structure, catalog data, and CMS are salvageable — redesign. If PageSpeed, schema, and catalog IA are broken — rebuild on Next.js is often faster long-term.",
+    },
+    {
+      question: "Will redesign hurt existing Google rankings?",
+      answer: "We plan 301 redirects, preserve high-traffic URLs, and stage before cutover — ranking dips are minimized with a migration checklist.",
+    },
+  ],
+  "website-maintenance": [
+    {
+      question: "What breaks if I skip website maintenance?",
+      answer: "Expired SSL, outdated plugins, form spam, and Core Web Vitals regression — common on unmaintained WordPress sites.",
+    },
   ],
   "custom-software-development": [
     {
@@ -182,8 +217,9 @@ const expansionBySlug: Record<string, Faq[]> = {
 
 export function expandServiceFaqs(slug: string, baseFaqs: Faq[]): Faq[] {
   const extra = expansionBySlug[slug] ?? [];
+  const universal = WEBSITE_FAQ_SLUGS.has(slug) ? universalFaqs : [];
   const merged = [...baseFaqs];
-  for (const faq of [...extra, ...universalFaqs]) {
+  for (const faq of [...extra, ...universal]) {
     if (!merged.some((f) => f.question === faq.question)) {
       merged.push(faq);
     }

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { footerBrandNote, siteConfig } from "@/lib/constants";
+import { companyAuthorityFacts } from "@/lib/trust/company-authority";
 import { BrandLogo } from "@/components/layout/BrandLogo";
 import { CookieSettingsLink } from "@/components/layout/CookieSettingsLink";
 import { consultationHref, estimateHref } from "@/lib/conversion-copy";
@@ -8,11 +9,11 @@ const columns = [
   {
     title: "Services",
     links: [
-      { label: "Website Development India", href: "/solutions/web-development-company-india" },
-      { label: "Website Development Gujarat", href: "/solutions/web-development-company-gujarat" },
-      { label: "Website Developer Vadodara", href: "/solutions/web-development-company-vadodara" },
       { label: "Website Development", href: "/services/website-development" },
-      { label: "Manufacturer Websites India", href: "/services/website-development-for-manufacturers" },
+      { label: "Manufacturer Websites", href: "/services/website-development-for-manufacturers" },
+      { label: "Website Cost Guide", href: "/cost/web-development-cost-india" },
+      { label: "Vadodara Website Developer", href: "/solutions/web-development-company-vadodara" },
+      { label: "Gujarat Web Development", href: "/solutions/web-development-company-gujarat" },
       { label: "ERP Development Vadodara", href: "/solutions/erp-development-company-vadodara" },
       { label: "ERP Development", href: "/services/erp-development" },
       { label: "CRM Development", href: "/services/crm-development" },
@@ -34,6 +35,8 @@ const columns = [
     title: "Company",
     links: [
       { label: "About", href: "/about" },
+      { label: "Founder Insights", href: "/founder-insights" },
+      { label: "Company", href: "/company" },
       { label: "Vadodara Office", href: "/locations/india/vadodara" },
       { label: "International Clients", href: "/solutions/web-development-company-india-international" },
       { label: "Process", href: "/process" },
@@ -76,6 +79,9 @@ export function Footer() {
               {siteConfig.legalName}
               <br />
               {siteConfig.address}
+            </p>
+            <p className="mt-2 max-w-sm text-xs text-[var(--v6-text-muted)]">
+              {companyAuthorityFacts.businessHours} · {companyAuthorityFacts.responseExpectation}
             </p>
             <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm text-[var(--v6-text-secondary)]">
               <a href={`mailto:${siteConfig.email}`} className="hover:text-[var(--v6-text)]">

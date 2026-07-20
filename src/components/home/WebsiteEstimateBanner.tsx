@@ -1,40 +1,61 @@
-"use client"
-import { useState, useEffect } from "react"
-import Link from "next/link"
+"use client";
+
+import { useState, useEffect } from "react";
+import Link from "next/link";
 
 export default function WebsiteEstimateBanner() {
-  const [visible, setVisible] = useState(false)
-  const [dismissed, setDismissed] = useState(false)
+  const [visible, setVisible] = useState(false);
+  const [dismissed, setDismissed] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (!dismissed) setVisible(true)
-    }, 30000)
+      if (!dismissed) setVisible(true);
+    }, 30000);
 
     const handleScroll = () => {
-      const scrolled = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)
-      if (scrolled > 0.6 && !dismissed) setVisible(true)
-    }
+      const scrolled = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+      if (scrolled > 0.6 && !dismissed) setVisible(true);
+    };
 
-    window.addEventListener("scroll", handleScroll, { passive: true })
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => {
-      clearTimeout(timer)
-      window.removeEventListener("scroll", handleScroll)
-    }
-  }, [dismissed])
+      clearTimeout(timer);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [dismissed]);
 
-  if (!visible || dismissed) return null
+  useEffect(() => {
+    const show = visible && !dismissed;
+    if (show) {
+      document.body.setAttribute("data-website-estimate-popup", "true");
+    } else {
+      document.body.removeAttribute("data-website-estimate-popup");
+    }
+    return () => document.body.removeAttribute("data-website-estimate-popup");
+  }, [visible, dismissed]);
+
+  function dismiss() {
+    setVisible(false);
+    setDismissed(true);
+  }
+
+  if (!visible || dismissed) return null;
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 max-w-sm bg-white border border-gray-200 rounded-xl shadow-xl p-5">
+    <div
+      className="mobile-fixed-chrome fixed bottom-[calc(7.25rem+var(--safe-bottom,0px))] right-4 z-[56] w-[calc(100%-2rem)] max-w-sm rounded-xl border border-gray-200 bg-white p-5 pr-12 shadow-xl sm:right-6 lg:bottom-8"
+      role="dialog"
+      aria-labelledby="website-estimate-popup-title"
+    >
       <button
-        onClick={() => { setVisible(false); setDismissed(true) }}
-        className="absolute top-3 right-3 text-gray-400 hover:text-gray-600 text-lg leading-none"
+        type="button"
+        onClick={dismiss}
+        className="absolute right-2 top-2 z-10 flex h-11 w-11 items-center justify-center rounded-lg text-xl leading-none text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-700"
         aria-label="Dismiss"
       >
         ×
       </button>
-      <p className="text-sm font-semibold text-gray-900 mb-1">
+      <p id="website-estimate-popup-title" className="text-sm font-semibold text-gray-900 mb-1">
         Need a website for your business?
       </p>
       <p className="text-xs text-gray-500 mb-3">

@@ -16,7 +16,7 @@ export function CaseStudiesPreview() {
         <SectionHeading
           badge="Case Studies"
           title="Results that speak louder than promises"
-          description="Real projects, measurable outcomes. See how we've helped businesses transform with custom software."
+          description="Real projects, measurable outcomes. See how we've helped businesses grow with websites, web apps, and supporting software."
         />
 
         <StaggerContainer className="mt-16 grid gap-6 lg:grid-cols-2">

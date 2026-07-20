@@ -469,6 +469,12 @@ body[data-cookie-visible="true"] .mobile-fixed-chrome:not([data-cookie-banner]) 
   display: none;
 }
 
+body[data-website-estimate-popup="true"] [data-floating-cta] {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
 .trust-strip-scroll {
   display: flex;
   gap: 0.75rem;

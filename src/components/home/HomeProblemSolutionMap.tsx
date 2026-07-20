@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { problemSolutionMap } from "@/lib/homepage";
+import { problemSolutionMap, problemSolutionSection } from "@/lib/homepage";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { HomeSection, HomeSectionIntro } from "@/components/home/HomeSection";
 import { ArrowRight } from "@/components/ui/Icons";
@@ -14,9 +14,9 @@ export function HomeProblemSolutionMap() {
         <HomeSectionIntro
           align="left"
           wideTitle
-          eyebrow="Your challenge → our solution"
-          title="Every problem has a software answer"
-          description="When visitors recognize their pain, the next step should be obvious. Here is how Maxwell maps operational challenges to proven solutions."
+          eyebrow={problemSolutionSection.eyebrow}
+          title={problemSolutionSection.title}
+          description={problemSolutionSection.description}
         />
       </FadeIn>
 

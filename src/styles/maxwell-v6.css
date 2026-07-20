@@ -398,13 +398,13 @@
   color: var(--v6-blue);
 }
 
-/* Hero ecosystem visual */
-[data-hero="visual"] {
+/* Hero right column — min-height only for legacy ecosystem visual */
+[data-hero="visual"]:has(.v6-eco) {
   min-height: 400px;
 }
 
 @media (min-width: 1024px) {
-  [data-hero="visual"] {
+  [data-hero="visual"]:has(.v6-eco) {
     min-height: 440px;
   }
 }

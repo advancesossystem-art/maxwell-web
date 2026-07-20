@@ -1,11 +1,11 @@
 /** Maxwell 2026 — homepage narrative (single source of truth) */
 
 export const homeHero = {
-  eyebrow: "Maxwell Electrodeal · Vadodara",
+  eyebrow: "Maxwell Electrodeal · Website Engineering for Businesses",
   headlineLine1: "Your buyers are searching Google right now.",
   headlineLine2: "They're finding your competitor.",
   subhead:
-    "We build product catalog websites for Gujarat manufacturers that show up on Google and send inquiries straight to your WhatsApp. Starting from ₹45,000.",
+    "We are the website engineering company for businesses — product catalog and corporate sites that show up on Google and send inquiries to WhatsApp. Starting from ₹45,000.",
   /** Social proof in first viewport — pairs with primary CTA */
   proofOutcome:
     "Last build: 263 pages · 154 products · 94/100 Google Speed · Live in 6 weeks",
@@ -17,12 +17,12 @@ export const homeHero = {
 } as const;
 
 export const heroServiceBadges = [
-  { label: "Product Catalog Websites", href: "/services/website-development-for-manufacturers" },
+  { label: "Website Development", href: "/services/website-development" },
   { label: "Manufacturer Websites", href: "/services/website-development-for-manufacturers" },
-  { label: "ERP", href: "/services/erp-development" },
-  { label: "CRM", href: "/services/crm-development" },
-  { label: "AI", href: "/services/ai-solutions" },
-  { label: "Mobile Apps", href: "/services/mobile-app-development" },
+  { label: "Business Websites", href: "/services/website-development" },
+  { label: "Web Apps", href: "/services/web-application-development" },
+  { label: "Custom Software", href: "/services/custom-software-development" },
+  { label: "AI Automation", href: "/services/ai-automation" },
 ] as const;
 
 export const heroTrustMetrics = [
@@ -32,6 +32,41 @@ export const heroTrustMetrics = [
   { value: "21 days", label: "Starter site delivery" },
   { value: "<4hr", label: "Response time" },
 ] as const;
+
+/** Right-column hero panel — website outcomes (not case study). */
+export const heroSidePanel = {
+  eyebrow: "Built for how buyers search",
+  title: "A website that earns inquiries — not just looks good",
+  intro:
+    "Most business sites are brochure PDFs online. We engineer product catalogs, corporate sites, and B2B pages that show up on Google, load fast on mobile, and send qualified leads to WhatsApp.",
+  outcomes: [
+    {
+      label: "Google-ready structure",
+      detail: "Product pages, categories, and technical SEO so buyers find you — not only your competitor.",
+    },
+    {
+      label: "Speed that ranks",
+      detail: "Core Web Vitals 90+ targets with Next.js — mobile buyers stay instead of bouncing.",
+    },
+    {
+      label: "Inquiry paths that convert",
+      detail: "WhatsApp, RFQ forms, and catalog CTAs on every page — leads you own, not platform rentals.",
+    },
+    {
+      label: "Room to scale",
+      detail: "From 10 pages to 500+ product SKUs without rebuilding from scratch every year.",
+    },
+  ],
+  websiteTypes: [
+    { label: "Manufacturer catalogs", href: "/services/website-development-for-manufacturers" },
+    { label: "Corporate & industrial", href: "/services/website-development" },
+    { label: "Export & B2B sites", href: "/services/website-development/exporter-india" },
+    { label: "Website redesign", href: "/services/website-redesign" },
+  ],
+  priceNote: "Websites from ₹45,000 · Starter delivery in 21 days",
+  primaryLink: { label: "See website pricing", href: "/pricing" },
+  secondaryLink: { label: "All website services", href: "/services/website-development" },
+} as const;
 
 /** Named, verifiable case study featured on homepage */
 export const drashtiFeaturedCaseStudy = {
@@ -88,6 +123,13 @@ export const businessProblems = [
     description: "Reports take days to compile—by then the window to act has already closed.",
   },
 ] as const;
+
+export const problemSolutionSection = {
+  eyebrow: "Your challenge → our solution",
+  title: "Every growth problem has a website or systems answer",
+  description:
+    "When visitors recognize their pain, the next step should be obvious. Here is how Maxwell maps operational challenges to proven solutions.",
+} as const;
 
 export const problemSolutionMap = [
   {
@@ -159,14 +201,14 @@ export const businessOutcomes = [
   },
 ] as const;
 
-/** Business solutions — full-service IT positioning */
+/** Business solutions — website engineering first, supporting services second */
 export const homepageServices = [
   {
-    slug: "ai-consulting",
-    title: "AI Consulting",
-    solution: "AI readiness, strategy, and implementation roadmaps with measurable ROI.",
-    impact: "Prioritize use cases before you spend on the wrong tools.",
-    icon: "ai" as const,
+    slug: "website-development",
+    title: "Web experiences",
+    solution: "Next.js sites built for leads, SEO, and Core Web Vitals.",
+    impact: "Fast, SEO-ready Next.js sites built for conversion.",
+    icon: "globe" as const,
   },
   {
     slug: "cloud-services",
@@ -225,13 +267,6 @@ export const homepageServices = [
     icon: "crm" as const,
   },
   {
-    slug: "website-development",
-    title: "Web experiences",
-    solution: "Next.js sites built for leads, SEO, and Core Web Vitals.",
-    impact: "Fast, SEO-ready Next.js sites built for conversion.",
-    icon: "globe" as const,
-  },
-  {
     slug: "mobile-app-development",
     title: "Mobile for teams & customers",
     solution: "Field updates and customer access that work away from the desk.",
@@ -258,29 +293,29 @@ export const homepageIndustries = [
   {
     slug: "chemical",
     title: "Chemical",
-    outcome: "Batch traceability, MSDS compliance, and reactor scheduling in one system.",
-    href: "/blog/erp-for-chemical-india",
+    outcome: "Product catalog websites, MSDS pages, and inquiry paths for chemical exporters.",
+    href: "/services/website-development/chemical-manufacturer",
     icon: "factory",
   },
   {
     slug: "textile",
     title: "Textile",
-    outcome: "Fabric inventory, job-work tracking, and seasonal order management.",
-    href: "/blog/erp-for-textile-india",
+    outcome: "Catalog websites and B2B inquiry flows for textile and garment manufacturers.",
+    href: "/services/website-development/textile-manufacturer",
     icon: "factory",
   },
   {
     slug: "pharma",
     title: "Pharma",
-    outcome: "GMP batch records, expiry tracking, and audit-ready documentation.",
-    href: "/blog/erp-for-pharma-india",
+    outcome: "Corporate and API company websites with compliance-ready product presentation.",
+    href: "/services/website-development/pharmaceutical-company",
     icon: "health",
   },
   {
     slug: "fmcg",
     title: "Distribution",
-    outcome: "Route sales, distributor claims, and multi-location inventory control.",
-    href: "/blog/erp-for-fmcg-india",
+    outcome: "Brand websites and distributor inquiry systems for FMCG and distribution.",
+    href: "/industries/retail",
     icon: "retail",
   },
   {
@@ -300,53 +335,53 @@ export const homepageIndustries = [
   {
     slug: "automotive",
     title: "Engineering",
-    outcome: "OEM delivery schedules, tool tracking, and supplier quality audits.",
-    href: "/blog/erp-for-automotive-india",
+    outcome: "Corporate websites and product catalogs for engineering and fabrication firms.",
+    href: "/services/website-development/engineering-company",
     icon: "factory",
   },
 ] as const;
 
 export const whyMaxwellPillars = [
   {
-    title: "Industry-first approach",
-    description: "We start with shop-floor visits, field ride-alongs, and process mapping—not wireframes.",
-    benefit: "Software that matches how your team actually works, so adoption sticks.",
+    title: "Website engineering, not brochure templates",
+    description: "Architecture, SEO, performance, and inquiry paths designed for how B2B buyers actually search and buy.",
+    benefit: "Sites that rank, load fast, and send qualified leads — not just look pretty.",
   },
   {
-    title: "Business understanding before development",
-    description: "Discovery quantifies pain in hours saved, error rates, and cash leakage before a line of code.",
-    benefit: "Fixed-scope quotes tied to measurable ROI—not hourly billing surprises.",
+    title: "Industry-first discovery",
+    description: "We start with how your buyers find you — catalogs, RFQs, exports, compliance — not generic wireframes.",
+    benefit: "Websites that match manufacturing, corporate, and industrial buying journeys.",
   },
   {
-    title: "ERP, CRM & AI expertise",
-    description: "Dedicated practice areas for operations, sales, and practical AI—not generalist freelancers.",
-    benefit: "Faster go-live with Tally/GST integration, pipeline automation, and production-ready AI.",
+    title: "Web apps and AI as supporting systems",
+    description: "Custom portals, automation, and AI integrations extend your website when the business is ready — they don't compete with it.",
+    benefit: "One coherent digital stack with the website as the growth engine.",
   },
   {
-    title: "Scalable architecture",
-    description: "API-first systems on React, Node.js, PostgreSQL, and AWS—built for multi-plant growth.",
-    benefit: "Add users, locations, and modules without rebuilding from scratch.",
+    title: "Performance-first stack",
+    description: "Next.js, React, and Core Web Vitals 95+ targets — the same stack used by high-growth product companies.",
+    benefit: "Faster pages, stronger SEO, and a site buyers trust on mobile.",
   },
   {
-    title: "Dedicated support",
-    description: "Named post-go-live SLA, hypercare, and monitoring—not a ticket black hole.",
-    benefit: "Issues resolved in hours, not weeks—critical when operations depend on your system.",
+    title: "Dedicated post-launch support",
+    description: "Named maintenance, security updates, and content help — not a ticket black hole.",
+    benefit: "Your website stays secure, fast, and conversion-ready after go-live.",
   },
   {
     title: "Long-term technology partnership",
     description: "98% client retention. We maintain, scale, and roadmap what we build—you own 100% of the code.",
-    benefit: "One partner from MVP through enterprise scale instead of vendor churn.",
+    benefit: "One partner from first website through web apps and automation instead of vendor churn.",
   },
 ] as const;
 
 export const trustProofItems = [
   {
-    label: "Manufacturing, Chemical, Textile & Pharma expertise",
-    href: "/industries/manufacturing",
+    label: "Manufacturer & industrial website engineering",
+    href: "/services/website-development-for-manufacturers",
   },
-  { label: "Custom ERP, CRM & AI solutions", href: "/services/erp-development" },
-  { label: "End-to-end development partner", href: "/process" },
-  { label: "Free project assessment", href: "/get-estimate" },
+  { label: "Corporate & business websites from ₹45,000", href: "/services/website-development" },
+  { label: "Web apps, software, ERP & CRM (supporting)", href: "/services" },
+  { label: "Free website & project assessment", href: "/get-estimate" },
 ] as const;
 
 export const developmentProcess = [
@@ -445,15 +480,37 @@ export const trustHighlights = [
 ] as const;
 
 export const homeFinalCta = {
-  title: "Turn your idea into ERP, CRM, AI, or custom software—with a partner you can trust.",
+  title: "Turn your business into a website that earns inquiries—with a partner you can trust.",
   description:
-    "Free consultation, free project estimate, and free assessment tools. Low risk, high value—we respond within one business day with a clear next step.",
+    "Free consultation, free website estimate, and free assessment tools. Low risk, high value—we respond within one business day with a clear next step.",
 } as const;
 
-/** Featured case studies on homepage — slugs from case-studies-data */
-export const homepageCaseStudySlugs = [
-  "manufacturing-erp",
-  "logistics-platform",
+/** Homepage case study cards — static snapshot for SSR-safe rendering */
+export const homepageCaseStudyCards = [
+  {
+    slug: "manufacturing-erp",
+    trust: { industry: "Manufacturing" },
+    cardHighlight: "₹12L annual savings",
+    subtitle: "How a mid-size manufacturer unified 3 facilities and saved ₹12L annually with custom ERP.",
+    challenges: ["No real-time visibility across 3 warehouses and production lines"],
+    heroResult: "₹12 Lakh Annual Savings + 99.2% Inventory Accuracy",
+  },
+  {
+    slug: "logistics-platform",
+    trust: { industry: "Logistics" },
+    cardHighlight: "30% fuel savings",
+    subtitle: "Real-time fleet command center for 200+ vehicles with route optimization.",
+    challenges: ["No real-time visibility into 200+ vehicle locations"],
+    heroResult: "25% Faster Deliveries · 95% On-Time Rate",
+  },
+  {
+    slug: "maxwell-website-rebuild",
+    trust: { industry: "Website & SEO" },
+    cardHighlight: "80 Google clicks in 28 days",
+    subtitle: "We rebuilt our own website — from 2 impressions to measurable organic traffic, no ads.",
+    challenges: ["Zero clicks and almost no pages indexed on Google"],
+    heroResult: "80 clicks · 1,204 impressions · 296 pages indexed",
+  },
 ] as const;
 
 export const homepageTestimonials = [
@@ -534,7 +591,7 @@ export const homepageFaqs = [
   {
     question: "What is Maxwell Electrodeal?",
     answer:
-      "Maxwell Electrodeal is a Vadodara, Gujarat-based software development company building custom software, ERP, CRM, websites, mobile apps, AI solutions, SaaS, and cloud systems for India, USA, UAE, and global clients. They offer milestone billing, 100% IP ownership, and on-site discovery for Gujarat businesses.",
+      "Maxwell Electrodeal is a website engineering company for businesses, headquartered in Vadodara, Gujarat, India. They build manufacturer, corporate, and industrial websites, web applications, custom software, ERP, CRM, and AI automation for clients in India and English-speaking markets. Milestone billing, 100% IP ownership, and on-site discovery for Gujarat businesses.",
     category: "Company",
   },
   {
@@ -563,7 +620,7 @@ export const homepageFaqs = [
   {
     question: "What services does Maxwell Electrodeal offer?",
     answer:
-      "Custom software, ERP, CRM, Next.js websites, Flutter/React Native mobile apps, AI and industrial computer vision (including PPE detection), SaaS platforms, cloud migration, digital transformation, and business automation.",
+      "Website development and manufacturer websites (primary), web applications, website redesign and maintenance, plus supporting custom software, ERP, CRM, Flutter/React Native mobile apps, AI automation, SaaS platforms, cloud migration, and digital transformation.",
     category: "Services",
   },
   {

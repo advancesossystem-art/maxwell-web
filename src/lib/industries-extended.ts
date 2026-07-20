@@ -1,6 +1,11 @@
 import type { IndustryPageData } from "./industries-data";
 import { getIndustryCatalog, programmaticIndustries } from "./seo/programmatic/catalog";
 
+function painPointToFocusTitle(pain: string): string {
+  const segment = pain.split(/[—–,:]/)[0]?.trim() ?? pain;
+  return segment.length > 55 ? `${segment.slice(0, 52)}…` : segment;
+}
+
 const sharedWhyMaxwell = [
   { title: "Industry-Native Engineering", description: "We understand your workflows—not just code. Domain expertise built into every sprint." },
   { title: "Compliance-Aware Architecture", description: "Security, audit trails, and regulatory requirements designed in from day one." },
@@ -33,10 +38,10 @@ export function buildExtendedIndustry(slug: string): IndustryPageData | undefine
     title: name,
     headline: `Software for ${name}. Built for How You Operate.`,
     subheadline: `Custom ERP, CRM, mobile apps, and AI for ${entry.focus}—GST-ready, Tally-integrated, engineered by ${name} domain specialists.`,
-    metaTitle: seo?.metaTitle ?? `${name} Software Development Company India | ERP, CRM & AI`,
+    metaTitle: seo?.metaTitle ?? `${name} Website Engineering India | Business Websites, ERP & AI`,
     metaDescription:
       seo?.metaDescription ??
-      `${name} software development in India—custom ERP, CRM, mobile apps & AI for ${entry.focus}. Compliance: ${entry.compliance}. Maxwell Electrodeal.`,
+      `${name} website engineering in India—business websites, custom ERP, CRM, mobile apps & AI for ${entry.focus}. Compliance: ${entry.compliance}. Maxwell Electrodeal.`,
     ...(seo?.startingPrice ? { startingPrice: seo.startingPrice } : {}),
     keywords: [
       `${name.toLowerCase()} software development company`,
@@ -47,8 +52,8 @@ export function buildExtendedIndustry(slug: string): IndustryPageData | undefine
     icon: entry.icon,
     gradient: "from-slate-950 via-blue-950 to-indigo-950",
     accent: "#2563EB",
-    focusAreas: entry.painPoints.map((p, i) => ({
-      title: `Focus ${i + 1}`,
+    focusAreas: entry.painPoints.map((p) => ({
+      title: painPointToFocusTitle(p),
       description: p.charAt(0).toUpperCase() + p.slice(1),
     })),
     challenges: entry.painPoints.map((p, i) => ({
@@ -79,12 +84,16 @@ export function buildExtendedIndustry(slug: string): IndustryPageData | undefine
       { title: "Mobile workforce", description: "Field and shop-floor data capture.", outcome: "Same-day operational visibility" },
     ],
     caseStudy: {
-      title: `${name} Digital Transformation`,
-      client: `Leading ${name.toLowerCase()} organization`,
+      title: `${name} digitization patterns`,
+      client: "Published case studies — not a fabricated client",
       challenge: entry.painPoints[0] ?? "Manual operations limiting growth.",
-      solution: `Custom ERP and mobile apps tailored to ${entry.focus}.`,
-      results: ["Reduced manual reporting", "Improved inventory accuracy", "Faster order fulfillment"],
-      tech: ["React", "Node.js", "PostgreSQL", "Flutter"],
+      solution: `Website engineering and ${entry.focus} software scoped after discovery — see /case-studies for documented deliveries.`,
+      results: [
+        "Fixed milestone scope after workflow mapping",
+        `Compliance context: ${entry.compliance}`,
+        "100% IP ownership on delivery",
+      ],
+      tech: ["Next.js", "Node.js", "PostgreSQL", "Flutter"],
     },
     workflowSteps: [
       { step: "01", title: "Discovery", description: "Map workflows on-site or virtual" },
@@ -95,10 +104,10 @@ export function buildExtendedIndustry(slug: string): IndustryPageData | undefine
     ],
     whyMaxwell: [...sharedWhyMaxwell],
     faqs: [
-      { question: `Do you build software for ${name}?`, answer: `Yes. We engineer ERP, CRM, mobile, and AI for ${entry.focus} with ${entry.compliance} considerations.` },
-      { question: `How much does ${name} software cost?`, answer: "Typical projects range ₹6L–₹45L+ depending on modules. See our cost guides or get a free estimate." },
-      { question: "Can you integrate Tally and GST?", answer: "Yes. Tally sync and GST e-invoicing are standard for Indian deployments." },
-      { question: `What is the timeline for ${name} ERP?`, answer: "Most projects run 8–20 weeks in phased milestones." },
+      { question: `Do you build software for ${name}?`, answer: `Yes. We engineer websites, ERP, CRM, mobile, and AI for ${entry.focus} with ${entry.compliance} considerations.` },
+      { question: `What website or software budget should a ${name.toLowerCase()} company plan?`, answer: `Business websites from published /pricing tiers; ERP/software typically ${entry.painPoints.length > 0 ? "₹6L–₹45L+ after discovery" : "scoped per module"}. See /cost guides.` },
+      { question: `How is ${name} software different from generic ERP?`, answer: `${entry.compliance} workflows and ${entry.focus} require domain-specific modules — not template customization alone.` },
+      { question: "Can you integrate Tally and GST?", answer: "Yes. Tally sync and GST e-invoicing are standard for Indian deployments when in scope." },
     ],
   };
 }

@@ -7,6 +7,10 @@ import {
   keywordsForService,
   keywordsForSolution,
 } from "@/lib/seo/search-keywords";
+import { buildInternationalWebLanguageAlternates } from "@/lib/seo/international-web-hreflang";
+import { getCanonicalPathForPage } from "@/lib/seo/keyword-canonical";
+import { shouldNoIndexSolutionPath } from "@/lib/seo/index-quality";
+import { siteConfig } from "@/lib/constants";
 
 export function createMetadata({
   title,
@@ -87,7 +91,7 @@ export function createProjectMetadata(project: {
       ...project.technologies,
       "case study",
       "portfolio",
-      "India software company",
+      "India website engineering company",
     ],
     openGraphType: "article",
   });
@@ -100,10 +104,12 @@ export function createSolutionMetadata(solution: {
   primaryKeyword: string;
   secondaryKeywords: string[];
 }): Metadata {
-  return buildSeoMetadata({
+  const solutionPath = `/solutions/${solution.slug}`;
+  const meta = buildSeoMetadata({
     title: solution.metaTitle,
     description: solution.metaDescription,
-    path: `/solutions/${solution.slug}`,
+    path: solutionPath,
+    noIndex: shouldNoIndexSolutionPath(solutionPath),
     keywords: [
       ...new Set([
         solution.primaryKeyword,
@@ -112,6 +118,16 @@ export function createSolutionMetadata(solution: {
       ]),
     ],
   });
+
+  // International hreflang only on canonical market spokes — not on pages consolidated to another URL
+  const hasCanonicalOverride = Boolean(getCanonicalPathForPage(`/solutions/${solution.slug}`));
+  if (solution.slug === "web-development-company-india" && !hasCanonicalOverride) {
+    meta.alternates = buildInternationalWebLanguageAlternates(
+      `${siteConfig.url}/solutions/web-development-company-india`,
+    );
+  }
+
+  return meta;
 }
 
 export function createLocationCountryMetadata(country: {

@@ -2,23 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { siteConfig } from "@/lib/constants";
+import { buildInternationalWebLanguageAlternates, marketExpansionNote } from "@/lib/seo/international-web-hreflang";
 
 const canonical = `${siteConfig.url}/solutions/web-development-company-india-uk`;
-const usaUrl = `${siteConfig.url}/solutions/web-development-company-india-usa`;
-const uaeUrl = `${siteConfig.url}/solutions/web-development-company-india-uae`;
 
 export const metadata: Metadata = {
   title: "Web Development Company India for UK Clients | Maxwell Electrodeal",
   description:
     "Maxwell Electrodeal builds websites and web apps for UK businesses at 70% below UK agency rates. Next.js, React, TypeScript. GBP/USD pricing. GDPR-aware builds. Free discovery call.",
-  alternates: {
-    canonical,
-    languages: {
-      "en-US": usaUrl,
-      "en-GB": canonical,
-      "en-AE": uaeUrl,
-    },
-  },
+  alternates: buildInternationalWebLanguageAlternates(canonical),
   openGraph: {
     title: "Web Development Company India for UK Clients | Maxwell Electrodeal",
     description:
@@ -42,9 +34,8 @@ export default function UkInternationalPage() {
             Web Development Company in India for UK Clients
           </h1>
           <p className="mt-6 text-lg text-slate-300 max-w-3xl">
-            UK buyers are already clicking Maxwell results despite low rankings, which signals strong
-            intent. This page is built for that audience with UK-relevant pricing context, timezone
-            overlap, and GDPR-aware delivery.
+            Built for UK buyers with GBP/USD pricing context, UK overlap hours, and GDPR-aware delivery.
+            {marketExpansionNote("GB")}
           </p>
         </Container>
       </section>

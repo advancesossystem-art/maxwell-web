@@ -12,11 +12,11 @@ export function ServicesExperience() {
         <FadeIn>
           <p className="v6-eyebrow-line v6-eyebrow">What we build</p>
           <h2 className="v6-section-title v6-section-title--wide mt-4 text-balance">
-            End-to-End IT Solutions for Growing Businesses
+            Website Engineering & Supporting IT Solutions
           </h2>
           <p className="v6-lead mt-4 max-w-3xl">
-            Enterprise-grade AI, cloud, cybersecurity, ERP, CRM, and custom software—with
-            transparent pricing and accountable delivery from Vadodara, Gujarat.
+            Business websites and manufacturer catalogs first—plus web apps, ERP, CRM, AI, cloud,
+            and custom software with transparent pricing from Vadodara, Gujarat.
           </p>
         </FadeIn>
 

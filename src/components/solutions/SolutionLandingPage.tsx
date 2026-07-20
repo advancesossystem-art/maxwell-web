@@ -11,6 +11,8 @@ import {
   SolutionCTA,
 } from "@/components/solutions/SolutionSections";
 import { SolutionPageJsonLd } from "@/components/seo/JsonLd";
+import { FounderAuthorityCard } from "@/components/trust/FounderAuthorityCard";
+import { ProofSignalsBar } from "@/components/trust/ProofSignalsBar";
 import type { SolutionPageData } from "@/lib/solutions-data";
 
 export function SolutionLandingPage({ solution }: { solution: SolutionPageData }) {
@@ -18,6 +20,8 @@ export function SolutionLandingPage({ solution }: { solution: SolutionPageData }
     <>
       <SolutionPageJsonLd solution={solution} />
       <SolutionHero solution={solution} />
+      <ProofSignalsBar compact />
+      <FounderAuthorityCard compact />
       <SolutionMarketInsights solution={solution} />
       <SolutionChallenges solution={solution} />
       <SolutionApproach solution={solution} />

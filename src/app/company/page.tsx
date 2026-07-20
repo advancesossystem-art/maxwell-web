@@ -20,7 +20,7 @@ export default function CompanyPage() {
         breadcrumb={[{ label: "About", href: "/about" }, { label: "Company" }]}
         eyebrow="Company"
         title={<AccentGradient>{siteConfig.legalName}</AccentGradient>}
-        description="A full-stack software company built for enterprise delivery, long-term partnerships, and measurable outcomes."
+        description="A website engineering company for businesses — built for enterprise delivery, long-term partnerships, and measurable outcomes."
         below={<TrustStrip compact />}
       />
       <CompanyPageContent />

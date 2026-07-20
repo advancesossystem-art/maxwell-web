@@ -1,16 +1,11 @@
-"use client";
-
 import Link from "next/link";
-import { homepageCaseStudySlugs, drashtiFeaturedCaseStudy } from "@/lib/homepage";
-import { caseStudiesData } from "@/lib/case-studies-data";
+import { drashtiFeaturedCaseStudy, homepageCaseStudyCards } from "@/lib/homepage";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { ArrowRight } from "@/components/ui/Icons";
 import { PrimaryCTA } from "@/components/conversion/PrimaryCTA";
 import { Button } from "@/components/ui/Button";
 import { HomeSection, HomeSectionIntro } from "@/components/home/HomeSection";
 import { CONVERSION_ROUTES } from "@/lib/conversion-copy";
-
-const studies = homepageCaseStudySlugs.map((slug) => caseStudiesData[slug]).filter(Boolean);
 
 function DrashtiFeaturedCard() {
   const d = drashtiFeaturedCaseStudy;
@@ -87,7 +82,7 @@ export function HomeCaseStudies() {
         <FadeIn className="lg:col-span-3">
           <DrashtiFeaturedCard />
         </FadeIn>
-        {studies.map((study) => (
+        {homepageCaseStudyCards.map((study) => (
           <article key={study.slug} className="v6-card flex min-w-0 flex-col overflow-hidden">
             <div className="border-b border-[var(--v6-border)] bg-[#f8fafc] px-6 py-5">
               <span className="text-xs font-medium uppercase tracking-wider text-[var(--v6-text-muted)]">
@@ -104,7 +99,7 @@ export function HomeCaseStudies() {
                 </div>
                 <div>
                   <dt className="font-semibold text-[var(--v6-text-muted)]">Result</dt>
-                  <dd className="mt-0.5 font-medium text-emerald-700">{study.heroResult ?? study.cardHighlight}</dd>
+                  <dd className="mt-0.5 font-medium text-emerald-700">{study.heroResult}</dd>
                 </div>
               </dl>
               <div className="mt-auto pt-6">

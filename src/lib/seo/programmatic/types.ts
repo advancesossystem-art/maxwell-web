@@ -105,7 +105,7 @@ export interface CompareTemplate {
   title: string;
   left: string;
   right: string;
-  category: "erp" | "crm" | "strategy" | "delivery" | "automation";
+  category: "erp" | "crm" | "strategy" | "delivery" | "automation" | "website";
   verdict: string;
   leftPros: string[];
   rightPros: string[];

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { buildSeoMetadata } from "@/lib/seo/metadata-utils";
-import { getAllCostPages } from "@/lib/seo/programmatic/build-pages";
+import { getAllCostPages, getIndexableCostPages } from "@/lib/seo/programmatic/build-pages";
 import { siteConfig } from "@/lib/constants";
 
 export const metadata: Metadata = buildSeoMetadata({
@@ -13,9 +13,12 @@ export const metadata: Metadata = buildSeoMetadata({
 });
 
 export default function CostHubPage() {
-  const pages = getAllCostPages();
+  const pages = getIndexableCostPages();
+  const allPages = getAllCostPages();
   const indiaPages = pages.filter((p) => p.slug.includes("-cost-india") || p.slug.includes("-cost-vadodara"));
-  const cityPages = pages.filter((p) => !p.slug.endsWith("-cost-india") && !p.slug.match(/-cost-(usa|uk|uae|canada|australia|singapore|germany)$/));
+  const cityPages = pages.filter(
+    (p) => !p.slug.endsWith("-cost-india") && !p.slug.match(/-cost-(usa|uk|uae|canada|australia|singapore|germany)$/),
+  );
 
   return (
     <>
@@ -23,7 +26,7 @@ export default function CostHubPage() {
         <Container>
           <h1 className="font-display text-4xl font-bold text-white md:text-5xl">Software Development Cost Guides</h1>
           <p className="mt-4 max-w-2xl text-lg text-muted">
-            Transparent ERP, CRM, AI, and custom software pricing for India and global markets. {pages.length} cost guides.
+            Transparent ERP, CRM, AI, and custom software pricing for India and global markets. {allPages.length} cost guides.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link href="/tools/software-cost-calculator" className="text-brand-400 hover:underline">

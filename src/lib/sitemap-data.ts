@@ -14,7 +14,8 @@ import { reportSlugs } from "./content/reports";
 import { answerSlugs } from "./answers-data";
 import { resourceCenterSlugs } from "./resource-centers-data";
 import { toolSlugs } from "./tools/registry";
-import { compareSlugs, costSlugs, getIndexableCityServicePages } from "./seo/programmatic/build-pages";
+import { compareSlugs, costSlugs, getComparePage, getIndexableCityServicePages } from "./seo/programmatic/build-pages";
+import { isConsolidatedSolutionPath, isIndexableCostSlug } from "./seo/index-quality";
 
 /** Phase 8 launch — use for lastmod on new service/industry URLs to speed discovery. */
 const PHASE8_LAUNCH = new Date("2026-06-18T00:00:00.000Z");
@@ -208,18 +209,28 @@ export function getSolutionsSitemapEntries() {
     { path: "/solutions/web-development-company-india-turkey", priority: 0.85 },
   ] as const;
 
+  const indexableSolutionSlugs = solutionSlugs.filter(
+    (slug) => !isConsolidatedSolutionPath(`/solutions/${slug}`),
+  );
+  const solutionSlugPaths = new Set(indexableSolutionSlugs.map((slug) => `/solutions/${slug}`));
+
   return [
     { url: `${siteConfig.url}/solutions`, priority: 0.88 },
-    ...solutionSlugs.map((slug) => ({
+    ...indexableSolutionSlugs.map((slug) => ({
       url: `${siteConfig.url}/solutions/${slug}`,
       priority: 0.88,
     })),
-    ...phase4SolutionEntries.map((entry) => ({
-      url: `${siteConfig.url}${entry.path}`,
-      priority: entry.priority,
-      lastModified: PHASE4_LAUNCH,
-      changeFreq: "monthly" as const,
-    })),
+    ...phase4SolutionEntries
+      .filter(
+        (entry) =>
+          !isConsolidatedSolutionPath(entry.path) && !solutionSlugPaths.has(entry.path),
+      )
+      .map((entry) => ({
+        url: `${siteConfig.url}${entry.path}`,
+        priority: entry.priority,
+        lastModified: PHASE4_LAUNCH,
+        changeFreq: "monthly" as const,
+      })),
   ];
 }
 
@@ -256,19 +267,26 @@ export function getContentSitemapEntries() {
 export function getCompareSitemapEntries() {
   return [
     { url: `${siteConfig.url}/compare`, priority: 0.87 },
-    ...compareSlugs.map((slug) => ({
-      url: `${siteConfig.url}/compare/${slug}`,
-      priority: 0.84,
-    })),
+    ...compareSlugs
+      .filter((slug) => {
+        const page = getComparePage(slug);
+        return page && !page.noIndex;
+      })
+      .map((slug) => ({
+        url: `${siteConfig.url}/compare/${slug}`,
+        priority: 0.84,
+      })),
   ];
 }
 
 export function getCostSitemapEntries() {
   return [
     { url: `${siteConfig.url}/cost`, priority: 0.9 },
-    ...costSlugs.map((slug) => ({
-      url: `${siteConfig.url}/cost/${slug}`,
-      priority: 0.86,
-    })),
+    ...costSlugs
+      .filter((slug) => isIndexableCostSlug(slug))
+      .map((slug) => ({
+        url: `${siteConfig.url}/cost/${slug}`,
+        priority: 0.86,
+      })),
   ];
 }

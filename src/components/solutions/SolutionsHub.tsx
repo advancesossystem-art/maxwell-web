@@ -45,9 +45,9 @@ const internationalWebPages = [
 
 const indiaWebPages = [
   {
-    href: "/solutions/web-development-company-india",
+    href: "/services/website-development",
     title: "Website Development — India",
-    keyword: "Website development company India",
+    keyword: "Website development company India (canonical pillar)",
   },
   {
     href: "/solutions/web-development-company-gujarat",
@@ -66,8 +66,18 @@ export function SolutionsHub() {
   const isIntlGeo = (slug: string) => slug.endsWith("-usa") || slug.endsWith("-uae");
   const isIndiaGeo = (slug: string) =>
     slug.endsWith("-india") || slug.endsWith("-gujarat") || slug.endsWith("-vadodara");
-  const geoIntl = all.filter((s) => isIntlGeo(s.slug));
-  const geoIndia = all.filter((s) => isIndiaGeo(s.slug));
+  const geoIntl = all.filter(
+    (s) =>
+      isIntlGeo(s.slug) &&
+      s.slug !== "web-development-company-usa" &&
+      s.slug !== "web-development-company-uae",
+  );
+  const geoIndia = all.filter(
+    (s) =>
+      isIndiaGeo(s.slug) &&
+      s.slug !== "web-development-company-india" &&
+      !s.slug.startsWith("web-development-company-"),
+  );
   const solutions = all.filter((s) => !isIntlGeo(s.slug) && !isIndiaGeo(s.slug));
 
   return (
@@ -79,7 +89,7 @@ export function SolutionsHub() {
             High-intent <AccentGradient>commercial solutions</AccentGradient>
           </>
         }
-        description="Deep landing pages for ERP, CRM, AI, mobile, SaaS, and cloud — with market insight and proven ROI framing."
+        description="Deep landing pages for website development, manufacturer sites, web apps, and supporting software — with market insight and clear next steps."
         below={<TrustStrip compact />}
       >
         <PrimaryCTA location="solutions_hub" context={{ source: "solutions-hub" }} />
@@ -102,9 +112,9 @@ export function SolutionsHub() {
       </PageSection>
 
       <PageSection tone="elevated" compact>
-        <h2 className="font-display text-xl font-bold">India — Vadodara, Gujarat & nationwide</h2>
+        <h2 className="font-display text-xl font-bold">India — supporting solutions</h2>
         <p className="mt-2 max-w-2xl text-sm text-muted">
-          Local SEO pages for software, ERP, web, mobile, CRM, and AI buyers in India—HQ in Vadodara, Gujarat.
+          Local SEO pages for website, web app, and supporting software buyers in India — HQ in Vadodara, Gujarat.
         </p>
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {geoIndia.map((solution) => (

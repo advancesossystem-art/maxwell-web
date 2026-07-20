@@ -36,7 +36,7 @@ export const termsSections = [
   },
   {
     title: "Services",
-    body: `Website content describes ${siteConfig.name} software development services. Formal engagements require executed statements of work or master service agreements.`,
+    body: `Website content describes ${siteConfig.name} website engineering and supporting software services. Formal engagements require executed statements of work or master service agreements.`,
   },
   {
     title: "Intellectual Property",

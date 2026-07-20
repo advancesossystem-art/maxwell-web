@@ -2,23 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { siteConfig } from "@/lib/constants";
+import { buildInternationalWebLanguageAlternates } from "@/lib/seo/international-web-hreflang";
 
 const canonical = `${siteConfig.url}/solutions/web-development-company-india-uae`;
-const usaUrl = `${siteConfig.url}/solutions/web-development-company-india-usa`;
-const ukUrl = `${siteConfig.url}/solutions/web-development-company-india-uk`;
 
 export const metadata: Metadata = {
   title: "Web Development Company India for UAE Clients | Maxwell Electrodeal",
   description:
     "Maxwell Electrodeal builds websites, ecommerce, and custom software for UAE businesses and Indian manufacturers targeting Middle East buyers. AED/USD pricing. Arabic-ready. Free discovery call.",
-  alternates: {
-    canonical,
-    languages: {
-      "en-US": usaUrl,
-      "en-GB": ukUrl,
-      "en-AE": canonical,
-    },
-  },
+  alternates: buildInternationalWebLanguageAlternates(canonical),
   openGraph: {
     title: "Web Development Company India for UAE Clients | Maxwell Electrodeal",
     description:

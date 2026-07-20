@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { HeroEcosystemVisual } from "@/components/home/HeroEcosystemVisual";
+import { HeroSidePanel } from "@/components/home/HeroSidePanel";
 import { Button } from "@/components/ui/Button";
 import { HeroTrustHighlights, VerifiedReviewBadge } from "@/components/conversion/VerifiedReviewBadge";
 import { heroServiceBadges, heroTrustMetrics, homeHero, trustHighlights } from "@/lib/homepage";
@@ -52,8 +52,8 @@ export function Hero() {
   return (
     <section className="v6-hero v6-section--white overflow-hidden" aria-label="Hero">
       <div className="v6-container">
-        <div className="grid items-start gap-8 lg:grid-cols-2 lg:gap-10">
-          <div>
+        <div className="grid items-start gap-8 md:grid-cols-2 md:gap-10">
+          <div className="min-w-0">
             <p className="v6-eyebrow-line v6-eyebrow">{homeHero.eyebrow}</p>
             <h1 className="v6-hero-title mt-4 text-balance" data-seo-speakable>
               {homeHero.headlineLine1}{" "}
@@ -126,25 +126,25 @@ export function Hero() {
                 </li>
               ))}
             </ul>
-
-            <ul className="v6-trust-bar mobile-content-safe grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-              {heroTrustMetrics.map((stat, i) => (
-                <li key={stat.label} className="v6-trust-item">
-                  <span className="v6-trust-icon">
-                    <TrustIcon type={trustIcons[i] ?? "shield"} />
-                  </span>
-                  <div>
-                    <p className="font-display text-lg font-bold text-[#0f172a]">{stat.value}</p>
-                    <p className="text-sm text-[var(--v6-text-muted)]">{stat.label}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
           </div>
 
-          <div className="relative lg:pl-4" data-hero="visual">
-            <HeroEcosystemVisual />
+          <div className="relative md:sticky md:top-24 md:pl-2 lg:pl-4" data-hero="visual">
+            <HeroSidePanel />
           </div>
+
+          <ul className="v6-trust-bar mobile-content-safe grid gap-4 sm:grid-cols-2 md:col-span-2 lg:grid-cols-5">
+            {heroTrustMetrics.map((stat, i) => (
+              <li key={stat.label} className="v6-trust-item">
+                <span className="v6-trust-icon">
+                  <TrustIcon type={trustIcons[i] ?? "shield"} />
+                </span>
+                <div>
+                  <p className="font-display text-lg font-bold text-[#0f172a]">{stat.value}</p>
+                  <p className="text-sm text-[var(--v6-text-muted)]">{stat.label}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

@@ -12,9 +12,9 @@ import { StaggerGrid, StaggerGridItem } from "@/components/motion/StaggerGrid";
 import { HubMetrics } from "@/components/design/HubMetrics";
 
 export const metadata = createMetadata({
-  title: "Industry Software Development Company India",
+  title: "Industry Website Engineering & Software India",
   description:
-    "Vertical software development for manufacturing, healthcare, education, logistics, retail & construction — ERP, mobile apps & automation by Maxwell Electrodeal, India.",
+    "Website engineering and vertical software for manufacturing, healthcare, education, logistics, retail & construction — business websites, ERP, mobile apps & automation by Maxwell Electrodeal, India.",
   path: "/industries",
 });
 

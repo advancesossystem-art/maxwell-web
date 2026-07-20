@@ -9,6 +9,7 @@ import { AccentGradient, H2, H3, Caption } from "@/components/design/typography"
 import { TrustBadgesRow } from "@/components/leads/LeadConversionLayer";
 import { FormCard } from "@/components/design/Form";
 import { MicroConversionCTA } from "@/components/conversion/MicroConversionCTA";
+import { CompanyAuthorityStrip } from "@/components/trust/CompanyAuthorityStrip";
 import { siteConfig } from "@/lib/constants";
 import { businessAddress } from "@/lib/business-address";
 import { WHATSAPP_HREF_CONTACT } from "@/lib/constants";
@@ -84,15 +85,13 @@ export function ContactPageContent() {
                 Headquartered in India with remote delivery capabilities worldwide.
               </Caption>
               <Card className="mt-6" interactive={false}>
-                <p className="font-display font-semibold text-[var(--v6-text)]">{siteConfig.legalName}</p>
-                <Caption className="mt-2 block">{siteConfig.address}</Caption>
+                <CompanyAuthorityStrip showMapLink={false} />
                 <Link
                   href="/locations/india/vadodara"
                   className="mt-3 inline-block text-sm font-medium text-brand-600 hover:underline"
                 >
                   View our Vadodara service page →
                 </Link>
-                <Caption className="mt-4 block">Response time: within 24 hours</Caption>
               </Card>
               <div className="mt-6 overflow-hidden rounded-2xl border border-[var(--v6-border)]">
                 <iframe

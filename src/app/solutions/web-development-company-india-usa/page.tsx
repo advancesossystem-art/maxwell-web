@@ -2,23 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { siteConfig } from "@/lib/constants";
+import { buildInternationalWebLanguageAlternates, marketExpansionNote } from "@/lib/seo/international-web-hreflang";
 
 const canonical = `${siteConfig.url}/solutions/web-development-company-india-usa`;
-const ukUrl = `${siteConfig.url}/solutions/web-development-company-india-uk`;
-const uaeUrl = `${siteConfig.url}/solutions/web-development-company-india-uae`;
 
 export const metadata: Metadata = {
   title: "Web Development Company India for US Clients | Maxwell Electrodeal",
   description:
     "Maxwell Electrodeal builds websites and web apps for US businesses at 70% below US agency rates. Next.js, React, TypeScript. USD pricing. NDA. IST/EST overlap. Free discovery call.",
-  alternates: {
-    canonical,
-    languages: {
-      "en-US": canonical,
-      "en-GB": ukUrl,
-      "en-AE": uaeUrl,
-    },
-  },
+  alternates: buildInternationalWebLanguageAlternates(canonical),
   openGraph: {
     title: "Web Development Company India for US Clients | Maxwell Electrodeal",
     description:
@@ -42,9 +34,10 @@ export default function UsaInternationalPage() {
             Web Development Company in India for US Clients
           </h1>
           <p className="mt-6 text-lg text-slate-300 max-w-3xl">
-            Maxwell already receives US impressions in Google Search Console, and this page is built
-            specifically for those visitors. US businesses often pay $10,000–$50,000 for projects
-            that cost $1,800–$6,000 with us, using the same stack: Next.js, React, and TypeScript.
+            Maxwell receives US Search Console impressions; this page serves US buyers with USD pricing,
+            IST/EST overlap, and Next.js delivery. {marketExpansionNote("US")} Typical US agency projects
+            of $10,000–$50,000 often map to $1,800–$6,000 with us on the same stack: Next.js, React, and
+            TypeScript.
           </p>
         </Container>
       </section>

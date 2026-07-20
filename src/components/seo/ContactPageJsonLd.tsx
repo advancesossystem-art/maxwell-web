@@ -13,9 +13,9 @@ export function ContactPageJsonLd() {
       {
         "@type": "ContactPage",
         "@id": `${contactUrl}#webpage`,
-        name: "Get ERP Quote in 24 Hours — Vadodara, India",
+        name: "Contact Maxwell — Website & Software Projects, Vadodara",
         description:
-          "Request a free ERP, CRM or custom software quote from Maxwell Electrodeal. Vadodara team — reply within 24 hours.",
+          "Contact Maxwell Electrodeal for website engineering, manufacturer websites, and custom software. Vadodara HQ — reply within one business day.",
         url: contactUrl,
         isPartOf: { "@id": seoIds.website },
       },

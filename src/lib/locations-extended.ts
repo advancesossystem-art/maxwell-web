@@ -15,9 +15,9 @@ function buildExtendedCityPage(city: (typeof programmaticCities)[number]): CityP
     countrySlug: "india",
     countryName: "India",
     state: city.state,
-    metaTitle: `Software Development Company in ${name} — ${siteConfig.name}`,
-    metaDescription: `Hire ${siteConfig.name} for ERP, CRM, mobile apps, AI & custom software in ${name}, ${city.state}. ${city.insight}`,
-    primaryKeyword: `Software Development Company in ${name}`,
+    metaTitle: `Maxwell Electrodeal ${name} — Website & Software Delivery`,
+    metaDescription: `${siteConfig.name} delivers websites, web apps, ERP, CRM & AI in ${name}, ${city.state}. ${city.insight}`,
+    primaryKeyword: `Website & Software Services in ${name}`,
     secondaryKeywords: [
       `ERP Development ${name}`,
       `CRM Development ${name}`,
@@ -25,8 +25,8 @@ function buildExtendedCityPage(city: (typeof programmaticCities)[number]): CityP
       `IT Company ${name}`,
     ],
     relatedSearches: [`best software company ${name}`, `ERP software ${city.state}`, `app development cost ${name}`],
-    headline: `Software Development Company in ${name}`,
-    subheadline: `${city.insight} Enterprise software from ${siteConfig.name}.`,
+    headline: `${siteConfig.name} — ${name}`,
+    subheadline: `${city.insight} Website and software delivery from ${siteConfig.name}.`,
     localInsights: city.insight,
     localChallenges: [
       { title: "Legacy manual processes", description: `${name} SMEs often outgrow spreadsheets—creating visibility gaps across ${city.industries[0] ?? "operations"}.` },

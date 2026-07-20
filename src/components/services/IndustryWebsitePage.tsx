@@ -1,6 +1,11 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { siteConfig, WHATSAPP_HREF_CONTACT } from "@/lib/constants";
+import { ManufacturerInformationGain } from "@/components/content/ManufacturerInformationGain";
+import {
+  getManufacturerVerticalInsight,
+  verticalSlugFromPath,
+} from "@/lib/content/information-gain/manufacturer-vertical-insights";
 
 export interface IndustryWebsitePageProps {
   industry: string;
@@ -25,6 +30,9 @@ export function IndustryWebsitePage({
   specificFeatures,
   priceRange = "₹75,000 - ₹3,00,000+",
 }: IndustryWebsitePageProps) {
+  const verticalSlug = verticalSlugFromPath(canonicalPath);
+  const verticalInsight = getManufacturerVerticalInsight(verticalSlug);
+
   const serviceJsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -124,6 +132,8 @@ export function IndustryWebsitePage({
           </div>
         </Container>
       </section>
+
+      {verticalInsight ? <ManufacturerInformationGain insight={verticalInsight} industry={industry} /> : null}
 
       {/* Standard Inclusions */}
       <section className="py-16 border-b border-slate-200">

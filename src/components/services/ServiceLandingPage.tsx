@@ -21,6 +21,8 @@ import { ServicePageJsonLd } from "@/components/seo/JsonLd";
 import { GeoContentSection } from "@/components/authority/GeoContentSection";
 import { StatisticsPanel } from "@/components/authority/StatisticsPanel";
 import { ProofSignalsBar } from "@/components/trust/ProofSignalsBar";
+import { FounderAuthorityCard } from "@/components/trust/FounderAuthorityCard";
+import { ServiceCommercialTrust } from "@/components/trust/ServiceCommercialTrust";
 import { buildServiceGeo } from "@/lib/geo-page-content";
 import { getStatisticsForService } from "@/lib/statistics-data";
 import { StickyEstimateCTA } from "@/components/common/StickyEstimateCTA";
@@ -39,7 +41,9 @@ export function ServiceLandingPage({ service }: { service: ServicePageData }) {
     <>
       <ServicePageJsonLd service={service} />
       <ServiceHero service={service} />
+      <FounderAuthorityCard compact />
       {conversionNarrative ? <ServiceConversionNarrativeSection narrative={conversionNarrative} /> : null}
+      <ServiceCommercialTrust service={service} />
       <GeoContentSection geo={geo} />
       <StatisticsPanel {...stats} />
       <ProofSignalsBar />

@@ -6,17 +6,16 @@ import { HeroMotionEnhancer } from "@/components/home/HeroMotionEnhancer";
 import { AiEntitySummary } from "@/components/seo/AiEntitySummary";
 import { HomepageStructuredData } from "@/components/seo/HomepageStructuredData";
 import { GlobalTrustBar } from "@/components/conversion/GlobalTrustBar";
+import { FounderAuthorityCard } from "@/components/trust/FounderAuthorityCard";
 import { TrustProofStrip } from "@/components/conversion/TrustProofStrip";
 import { RiskReductionBar } from "@/components/conversion/RiskReductionBar";
 import { HomeWhatWeBuild } from "@/components/home/HomeWhatWeBuild";
 import { HomeProblem } from "@/components/home/HomeProblem";
+import { HomeProblemSolutionMap } from "@/components/home/HomeProblemSolutionMap";
 import { HomepageAssessment } from "@/components/leads/HomepageAssessment";
 import WebsiteEstimateBanner from "@/components/home/WebsiteEstimateBanner";
 
-const HomeProblemSolutionMap = dynamic(
-  () => import("@/components/home/HomeProblemSolutionMap").then((m) => ({ default: m.HomeProblemSolutionMap })),
-  { ssr: true },
-);
+
 const HomeSolution = dynamic(
   () => import("@/components/home/HomeSolution").then((m) => ({ default: m.HomeSolution })),
   { ssr: true },
@@ -37,10 +36,7 @@ const DevelopmentProcess = dynamic(
   () => import("@/components/home/DevelopmentProcess").then((m) => ({ default: m.DevelopmentProcess })),
   { ssr: true },
 );
-const HomeCaseStudies = dynamic(
-  () => import("@/components/home/HomeCaseStudies").then((m) => ({ default: m.HomeCaseStudies })),
-  { ssr: true },
-);
+import { HomeCaseStudies } from "@/components/home/HomeCaseStudies";
 const HomeToolsSpotlight = dynamic(
   () => import("@/components/home/HomeToolsSpotlight").then((m) => ({ default: m.HomeToolsSpotlight })),
   { ssr: true },
@@ -89,6 +85,7 @@ export default function HomePage() {
       <AiEntitySummary />
       <TrustProofStrip />
       <GlobalTrustBar />
+      <FounderAuthorityCard compact />
       <RiskReductionBar />
       <HomeWhatWeBuild />
       <HomeProblem />

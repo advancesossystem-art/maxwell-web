@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { robotsSitemapUrls } from "@/lib/sitemap-index";
+import { erpCompareNoIndexSlugs } from "@/lib/seo/seo-waste-decisions";
 
 /**
  * Crawl-budget hygiene: block thin noindex programmatic matrices so Googlebot
@@ -17,6 +18,14 @@ const crawlWasteDisallow = [
   // City × service matrix — noindex except explicit allows below
   "/locations/india/*/*/",
   "/locations/india/*/*",
+  // ERP comparison demotion — noindex pages still crawlable without disallow
+  "/compare/best-erp-for-",
+  ...erpCompareNoIndexSlugs.map((slug) => `/compare/${slug}`),
+  // Thin international cost clones (India national + priority web markets stay indexable)
+  "/cost/*-cost-canada",
+  "/cost/*-cost-australia",
+  "/cost/*-cost-singapore",
+  "/cost/*-cost-germany",
 ];
 
 const crawlWasteAllow = [

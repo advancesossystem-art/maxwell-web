@@ -11,9 +11,9 @@ import { StaggerGrid, StaggerGridItem } from "@/components/motion/StaggerGrid";
 import { HubMetrics } from "@/components/design/HubMetrics";
 
 export const metadata = createMetadata({
-  title: "Software Development Services India | Website, ERP, Mobile & AI",
+  title: "Website Development Services India | Business, Manufacturer & Web Apps",
   description:
-    "Hire a software development company in India for website development, custom software, mobile apps, ERP & CRM, SaaS, AI & cloud. Maxwell Electrodeal — Vadodara, Gujarat & pan-India.",
+    "Website engineering company for businesses — website development, manufacturer sites, web applications, custom software, and AI automation. Maxwell Electrodeal — Vadodara, Gujarat.",
   path: "/services",
 });
 
@@ -27,19 +27,19 @@ export default function ServicesPage() {
         eyebrow="Services"
         title={
           <>
-            Business solutions,{" "}
-            <AccentGradient>delivered as software</AccentGradient>
+            Website engineering{" "}
+            <AccentGradient>for businesses</AccentGradient>
           </>
         }
-        description="From custom platforms to ERP, CRM, mobile, SaaS, AI, and cloud—each practice is scoped around the outcome your leadership team needs."
+        description="Primary focus: business, corporate, and industrial websites. Supporting practices: web apps, custom software, and AI automation — scoped around growth outcomes, not software catalogs."
         below={
           <HubMetrics
             className="gap-3"
             stats={[
               { value: `${allServices.length}`, label: "Service practices" },
-              { value: "ERP · CRM", label: "Enterprise systems" },
-              { value: "Web · Mobile", label: "Product delivery" },
-              { value: "AI · Cloud", label: "Modern stack" },
+              { value: "Websites", label: "Primary cluster" },
+              { value: "Web apps", label: "Supporting delivery" },
+              { value: "AI · Software", label: "Extensions" },
             ]}
           />
         }

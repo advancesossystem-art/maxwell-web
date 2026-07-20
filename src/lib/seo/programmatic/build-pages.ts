@@ -1,4 +1,11 @@
 import { siteConfig } from "@/lib/constants";
+import { isIndexableCostSlug } from "@/lib/seo/index-quality";
+import { buildIndustryIntroLead } from "@/lib/content/industry-intro-variants";
+import {
+  getInternationalWebCostNote,
+  getWebDevelopmentCostFaqs,
+  getWebDevelopmentCostSections,
+} from "@/lib/content/information-gain/website-cost-insights";
 import {
   compareTemplates,
   getIndustryCatalog,
@@ -53,6 +60,8 @@ function isNoIndexHref(href: string): boolean {
   if (/^\/industries\/[^/]+\/[^/]+$/.test(href)) return true;
   const cityServiceSlug = cityServiceHrefToSlug(href);
   if (cityServiceSlug) return !isIndexableCityServiceSlug(cityServiceSlug);
+  const costMatch = href.match(/^\/cost\/(.+)$/);
+  if (costMatch) return !isIndexableCostSlug(costMatch[1]);
   return false;
 }
 
@@ -108,20 +117,36 @@ function buildInternalLinks(
 export function buildComparePage(template: (typeof compareTemplates)[number]): ProgrammaticPageData {
   const path = `/compare/${template.slug}`;
   const categoryLabel =
-    template.category === "erp" ? "ERP" : template.category === "crm" ? "CRM" : template.category;
+    template.category === "erp"
+      ? "ERP"
+      : template.category === "crm"
+        ? "CRM"
+        : template.category === "website"
+          ? "website"
+          : template.category;
   const relatedService =
-    template.category === "crm"
-      ? programmaticServices.find((s) => s.key === "crm")
-      : template.category === "automation"
-        ? programmaticServices.find((s) => s.key === "automation")
-        : programmaticServices.find((s) => s.key === "erp");
+    template.category === "website" || template.category === "strategy"
+      ? programmaticServices.find((s) => s.key === "web")
+      : template.category === "crm"
+        ? programmaticServices.find((s) => s.key === "crm")
+        : template.category === "automation"
+          ? programmaticServices.find((s) => s.key === "automation")
+          : programmaticServices.find((s) => s.key === "erp");
+
+  const isErpSecondary = template.category === "erp";
 
   return {
     slug: template.slug,
     path,
     pageType: "compare",
-    metaTitle: `${template.left} vs ${template.right} (2026) — Which Wins for India?`,
-    metaDescription: `${template.left} vs ${template.right} for Indian ${categoryLabel} teams: side-by-side comparison, real costs, and which to pick for GST-ready SMEs. See the verdict + free advice.`,
+    metaTitle:
+      template.category === "website"
+        ? `${template.left} vs ${template.right} (2026) — Which Wins for Business Websites?`
+        : `${template.left} vs ${template.right} (2026) — Which Wins for India?`,
+    metaDescription:
+      template.category === "website"
+        ? `${template.left} vs ${template.right} for business websites: side-by-side comparison, costs, SEO impact, and which to pick. Verdict from Maxwell Electrodeal.`
+        : `${template.left} vs ${template.right} for Indian ${categoryLabel} teams: side-by-side comparison, real costs, and which to pick for GST-ready SMEs. See the verdict + free advice.`,
     comparisonMatrix: buildComparisonMatrix(template),
     primaryKeyword: template.title,
     secondaryKeywords: [
@@ -132,7 +157,10 @@ export function buildComparePage(template: (typeof compareTemplates)[number]): P
     ],
     headline: `${template.title}: Complete Comparison Guide`,
     subheadline: template.verdict,
-    intro: `${siteConfig.name} helps Indian manufacturers, distributors, and enterprises choose between ${template.left} and ${template.right} every month. This guide cuts through vendor marketing so CTOs and operations heads can decide with clarity—not hype.`,
+    intro:
+      template.category === "website"
+        ? `${siteConfig.name} is a website engineering company for businesses. We help founders and marketing leaders choose between ${template.left} and ${template.right} based on SEO, performance, ownership, and inquiry conversion—not vendor hype.`
+        : `${siteConfig.name} helps Indian manufacturers, distributors, and enterprises choose between ${template.left} and ${template.right} every month. This guide cuts through vendor marketing so CTOs and operations heads can decide with clarity—not hype.`,
     sections: [
       {
         title: `When ${template.left} wins`,
@@ -145,40 +173,55 @@ export function buildComparePage(template: (typeof compareTemplates)[number]): P
         bullets: template.rightPros,
       },
       {
-        title: "Our recommendation for Indian businesses",
-        content: `${template.verdict} Maxwell Electrodeal builds custom ${template.category === "crm" ? "CRM" : template.category === "erp" ? "ERP" : "software"} when off-the-shelf tools force costly workarounds—especially for GST, Tally, shop-floor mobile, and distributor workflows.`,
+        title: "Our recommendation for business buyers",
+        content:
+          template.category === "website"
+            ? `${template.verdict} Maxwell Electrodeal builds custom Next.js websites when templates and no-code tools cannot deliver rankings, catalogs, or conversion architecture.`
+            : `${template.verdict} Maxwell Electrodeal builds custom ${template.category === "crm" ? "CRM" : template.category === "erp" ? "ERP" : "software"} when off-the-shelf tools force costly workarounds—especially for GST, Tally, shop-floor mobile, and distributor workflows.`,
         bullets: [
           "Book a free discovery call before committing to a platform",
-          "Run a 2-week workflow audit to score build-vs-buy fit",
-          "Model 3-year TCO including customization and per-user licenses",
+          "Run a short workflow or website audit before rebuild",
+          "Model 3-year TCO including customization, plugins, and licenses",
         ],
       },
     ],
     challenges: [
-      { title: "Vendor bias in comparisons", description: "Resellers promote whichever product pays highest commission—not what fits your workflow." },
-      { title: "Hidden customization costs", description: "Off-the-shelf platforms often need ₹5L–₹20L+ customization to match how your team actually works." },
-      { title: "Integration debt", description: "Choosing without Tally, GST, or shop-floor requirements leads to expensive phase-two projects." },
+      { title: "Vendor bias in comparisons", description: "Resellers promote whichever product pays highest commission—not what fits your growth goals." },
+      { title: "Hidden customization costs", description: "Off-the-shelf platforms often need expensive plugins or redesigns to match how buyers actually convert." },
+      { title: "SEO and performance debt", description: "Choosing for convenience alone often means slow pages and weak Google visibility within a year." },
     ],
     approach: [
-      "Map your top 10 workflows before comparing platforms",
-      "Score each option on GST, Tally, mobile, and branch requirements",
+      "Map your top buyer journeys before comparing platforms",
+      "Score each option on SEO, speed, ownership, and integrations",
       "Get independent build-vs-buy analysis from a delivery partner—not a reseller",
-      "Pilot with one department before enterprise rollout",
+      "Pilot with one landing section or catalog before full rebuild",
     ],
     faqs: [
       { question: `${template.title}—which is better?`, answer: `Neither is universally better. ${template.verdict}` },
-      { question: `Can Maxwell implement ${template.left} or ${template.right}?`, answer: `We implement custom alternatives and integrate with platforms when off-the-shelf fits. We do not resell licenses—we advise based on your workflow.` },
-      { question: "How long does a comparison-led project take?", answer: "Discovery and recommendation: 1–2 weeks. Implementation: 8–20 weeks depending on scope and integrations." },
-      { question: "Do you serve businesses outside India?", answer: "Yes. We deliver for India, USA, UK, UAE, Canada, and Australia with offshore cost advantages." },
+      {
+        question: `Can Maxwell implement ${template.left} or ${template.right}?`,
+        answer:
+          template.category === "website"
+            ? `We primarily engineer custom Next.js business websites and can migrate from WordPress, Wix, Webflow, or Shopify when those stacks limit growth.`
+            : `We implement custom alternatives and integrate with platforms when off-the-shelf fits. We do not resell licenses—we advise based on your workflow.`,
+      },
+      { question: "How long does a comparison-led project take?", answer: "Discovery and recommendation: 1–2 weeks. Implementation: 4–16 weeks depending on scope." },
+      { question: "Do you serve businesses outside India?", answer: "Yes. We deliver for India and English-speaking markets with localized pricing on dedicated market pages." },
     ],
     internalLinks: buildInternalLinks(
       [
         { label: "All Comparisons", href: "/compare", description: "Browse comparison guides" },
-        ...(template.category === "erp"
-          ? [{ label: "ERP Development Cost India", href: "/cost/erp-development-cost-india", description: "Pricing benchmarks" }]
-          : template.category === "crm"
-            ? [{ label: "CRM Development Cost India", href: "/cost/crm-development-cost-india", description: "Pricing benchmarks" }]
-            : []),
+        { label: "Website Development", href: "/services/website-development", description: "Primary service cluster" },
+        ...(template.category === "website"
+          ? [
+              { label: "Website Cost India", href: "/cost/web-development-cost-india", description: "Pricing benchmarks" },
+              { label: "WordPress vs Custom", href: "/compare/wordpress-vs-custom-website", description: "Related comparison" },
+            ]
+          : template.category === "erp"
+            ? [{ label: "ERP Development Cost India", href: "/cost/erp-development-cost-india", description: "Pricing benchmarks" }]
+            : template.category === "crm"
+              ? [{ label: "CRM Development Cost India", href: "/cost/crm-development-cost-india", description: "Pricing benchmarks" }]
+              : []),
       ],
       { service: relatedService },
     ),
@@ -188,6 +231,7 @@ export function buildComparePage(template: (typeof compareTemplates)[number]): P
       { label: "Compare", href: "/compare" },
       { label: template.title },
     ],
+    ...(isErpSecondary ? { noIndex: true } : {}),
   };
 }
 
@@ -289,7 +333,20 @@ export function buildBestForIndustryCompare(industrySlug: string): ProgrammaticP
       { label: "Compare", href: "/compare" },
       { label: `Best ERP for ${industry.name}` },
     ],
+    noIndex: true,
   };
+}
+
+function cityCtxNote(
+  market: { type: "country"; slug: string; name: string } | { type: "city"; slug: string; name: string; state: string },
+): string {
+  if (market.type === "city") {
+    return `On-site discovery available for ${market.name}, ${market.state} manufacturers.`;
+  }
+  if (market.slug === "india") {
+    return "See manufacturer vertical pages for chemical, textile, ceramic, and engineering catalog requirements.";
+  }
+  return "";
 }
 
 export function buildCostPage(
@@ -322,6 +379,54 @@ export function buildCostPage(
       ? `${market.state} ${market.name} businesses`
       : `${market.name} buyers sourcing from India`;
 
+  const isWebDevelopment = service.slug === "web-development";
+  const webSections = isWebDevelopment
+    ? getWebDevelopmentCostSections(
+        locationLabel,
+        market.type === "city" ? "city" : "country",
+        market.type === "city" ? market.slug : undefined,
+      )
+    : null;
+  const intlSection =
+    isWebDevelopment && market.type === "country" && market.slug !== "india"
+      ? getInternationalWebCostNote(market.name, service.costRangeUsd)
+      : null;
+
+  const defaultSections = [
+    {
+      title: "Indicative cost range",
+      content: `For ${locationLabel}, expect ${costRange} for a production-grade ${service.shortLabel.toLowerCase()} project with documentation, testing, and deployment support.`,
+      bullets: [
+        "MVP / single-module: lower end of range",
+        "Multi-branch ERP/CRM with Tally: mid to upper range",
+        "Enterprise integrations and mobile apps: upper range+",
+      ],
+    },
+    {
+      title: "What drives the price",
+      content: "Scope, integrations, compliance, and user count affect final quotes more than hourly rates alone.",
+      bullets: [
+        "Number of modules and user roles",
+        "GST, Tally, payment gateway, and logistics integrations",
+        "Mobile apps and offline field force requirements",
+        "Migration from legacy spreadsheets or old ERP",
+        "Post-launch SLA and hosting",
+      ],
+    },
+    {
+      title: "Timeline expectations",
+      content: isWebDevelopment
+        ? "Published website tiers run 21 days (Starter) to 6–8 weeks (Growth). Custom portals extend beyond — scoped in discovery."
+        : "Most projects run 8–20 weeks in phased milestones with weekly demos. Rush timelines increase cost 15–30%.",
+    },
+  ];
+
+  const defaultFaqs = [
+    { question: `How much does ${service.label.toLowerCase()} cost in ${locationLabel}?`, answer: `Indicative range: ${costRange}. Final quotes follow discovery.` },
+    { question: "Do you offer fixed-price contracts?", answer: "Yes. We prefer milestone-based fixed pricing after scope documentation." },
+    { question: "Is offshore delivery cheaper?", answer: "India-based delivery typically saves 40–60% vs local US/UK agencies with same senior engineering depth." },
+  ];
+
   return {
     slug,
     path,
@@ -334,36 +439,16 @@ export function buildCostPage(
       `${service.shortLabel} development price ${locationLabel}`,
       `${service.shortLabel} project cost India`,
       `how much does ${service.shortLabel.toLowerCase()} cost`,
-      `${service.shortLabel} development company ${locationLabel}`,
+      `${service.shortLabel} pricing guide ${locationLabel}`,
     ],
     headline: `${service.label} Cost in ${locationLabel}`,
     subheadline: `Transparent pricing ranges, cost drivers, and timeline expectations for ${locationLabel} businesses—updated for 2026.`,
-    intro: `${siteConfig.name} publishes indicative ${service.label.toLowerCase()} costs so CTOs and founders can budget before discovery calls. Typical ${locationLabel} projects range ${costRange} depending on modules, integrations, and team size. ${service.description}`,
+    intro: isWebDevelopment
+      ? `${siteConfig.name} publishes fixed website tiers on /pricing (from ₹45,000) plus custom scope for catalogs and export buyers. ${locationLabel} projects typically need catalog depth, inquiry workflows, and SEO foundations — not brochure templates. ${cityCtxNote(market)}`
+      : `${siteConfig.name} publishes indicative ${service.label.toLowerCase()} costs so CTOs and founders can budget before discovery calls. Typical ${locationLabel} projects range ${costRange} depending on modules, integrations, and team size. ${service.description}`,
     sections: [
-      {
-        title: "Indicative cost range",
-        content: `For ${locationLabel}, expect ${costRange} for a production-grade ${service.shortLabel.toLowerCase()} project with documentation, testing, and deployment support.`,
-        bullets: [
-          "MVP / single-module: lower end of range",
-          "Multi-branch ERP/CRM with Tally: mid to upper range",
-          "Enterprise integrations and mobile apps: upper range+",
-        ],
-      },
-      {
-        title: "What drives the price",
-        content: "Scope, integrations, compliance, and user count affect final quotes more than hourly rates alone.",
-        bullets: [
-          "Number of modules and user roles",
-          "GST, Tally, payment gateway, and logistics integrations",
-          "Mobile apps and offline field force requirements",
-          "Migration from legacy spreadsheets or old ERP",
-          "Post-launch SLA and hosting",
-        ],
-      },
-      {
-        title: "Timeline expectations",
-        content: "Most projects run 8–20 weeks in phased milestones with weekly demos. Rush timelines increase cost 15–30%.",
-      },
+      ...(webSections ?? defaultSections),
+      ...(intlSection ? [intlSection] : []),
     ],
     challenges: [
       { title: "Quotes without discovery", description: "Vendors quoting ₹2L for ERP without site visit usually exclude integrations you'll need later." },
@@ -376,11 +461,7 @@ export function buildCostPage(
       "Compare 3-year TCO vs SaaS alternatives",
       "Start with one module, expand by ROI proof",
     ],
-    faqs: [
-      { question: `How much does ${service.label.toLowerCase()} cost in ${locationLabel}?`, answer: `Indicative range: ${costRange}. Final quotes follow discovery.` },
-      { question: "Do you offer fixed-price contracts?", answer: "Yes. We prefer milestone-based fixed pricing after scope documentation." },
-      { question: "Is offshore delivery cheaper?", answer: "India-based delivery typically saves 40–60% vs local US/UK agencies with same senior engineering depth." },
-    ],
+    faqs: isWebDevelopment ? getWebDevelopmentCostFaqs(locationLabel) : defaultFaqs,
     internalLinks: buildInternalLinks(
       [
         { label: "Software Cost Calculator", href: "/tools/software-cost-calculator", description: "Instant estimate" },
@@ -408,6 +489,7 @@ export function buildCostPage(
       { label: "Cost Guides", href: "/cost" },
       { label: `${service.shortLabel} — ${locationLabel}` },
     ],
+    noIndex: !isIndexableCostSlug(slug),
   };
 }
 
@@ -435,7 +517,7 @@ export function buildIndustryServicePage(industrySlug: string, serviceSlug: stri
     ],
     headline: `${service.label} for ${industry.name}`,
     subheadline: `Purpose-built ${service.shortLabel.toLowerCase()} for ${industry.focus}—not generic templates forced onto your operations team.`,
-    intro: `${industry.name} companies struggle with ${industry.painPoints.join(", ")}. ${siteConfig.name} engineers ${service.label.toLowerCase()} around ${industry.focus} with ${industry.compliance} built in from day one.`,
+    intro: `${buildIndustryIntroLead(industry, service)} ${siteConfig.name} engineers ${service.label.toLowerCase()} around ${industry.focus} with ${industry.compliance} built in from day one.`,
     sections: [
       {
         title: `Why ${industry.name} needs specialized ${service.shortLabel}`,
@@ -779,6 +861,10 @@ export function getAllComparePages(): ProgrammaticPageData[] {
 
 export function getAllCostPages(): ProgrammaticPageData[] {
   return [...costPagesMap.values()];
+}
+
+export function getIndexableCostPages(): ProgrammaticPageData[] {
+  return [...costPagesMap.values()].filter((page) => !page.noIndex);
 }
 
 export function getProgrammaticPageCount(): number {

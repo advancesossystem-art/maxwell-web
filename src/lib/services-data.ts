@@ -1,5 +1,9 @@
 import type { serviceIcons } from "@/components/ui/Icons";
 import { phase8ServiceSlugs, phase8ServicesData } from "@/lib/phase8/phase8-services-data";
+import {
+  websiteClusterServiceSlugs,
+  websiteClusterServicesData,
+} from "@/lib/website-cluster-services";
 
 export type ServiceIconKey = keyof typeof serviceIcons;
 
@@ -75,6 +79,7 @@ export const serviceProcess = sharedProcess;
 
 export const serviceSlugs = [
   "website-development",
+  ...websiteClusterServiceSlugs,
   "custom-software-development",
   "mobile-app-development",
   "erp-development",
@@ -91,27 +96,27 @@ export const servicesData: Record<ServiceSlug, ServicePageData> = {
   "website-development": {
     slug: "website-development",
     title: "Website Development",
-    headline: "Website Development Company India — Business & E-Commerce",
+    headline: "Website Engineering Company for Businesses — India",
     subheadline:
-      "Next.js corporate websites, e-commerce storefronts, and conversion-focused landing pages for Indian businesses—engineered for SEO, Core Web Vitals, and measurable lead generation.",
-    metaTitle: "Website Development Company India — Business & E-Commerce",
+      "Business, corporate, manufacturer, and industrial websites engineered for Google, AI search, and qualified inquiries — with web apps and automation as supporting systems, not competing identities.",
+    metaTitle: "Website Development Company India | Website Engineering for Businesses",
     metaDescription:
-      "Website development company in India. Next.js business sites, e-commerce, SEO. From ₹75K. Vadodara HQ · Gujarat & pan-India delivery. Free quote in 24h.",
+      "Website engineering company for businesses. Manufacturer, corporate & industrial websites on Next.js. From ₹45K–₹75K+. Vadodara HQ · pan-India. Free quote in 24h.",
     keywords: [
       "website development company India",
-      "website development in India",
-      "web development company India",
-      "website development company Gujarat",
+      "website engineering company",
+      "business website development",
+      "corporate website design India",
+      "industrial website development",
+      "manufacturer website development India",
       "website development company Vadodara",
-      "web application development company",
-      "corporate website development",
-      "business website development company",
-      "professional website development services",
+      "website development company Gujarat",
+      "web development company India",
     ],
     icon: "globe",
     gradient: "from-sky-950 via-blue-900 to-slate-950",
     accent: "#2563EB",
-    startingPrice: "₹75,000",
+    startingPrice: "₹45,000",
     problems: [
       {
         title: "Your website doesn't generate leads",
@@ -136,29 +141,29 @@ export const servicesData: Record<ServiceSlug, ServicePageData> = {
     ],
     solutions: [
       {
-        title: "Corporate Websites",
+        title: "Business & corporate websites",
         description: "Executive-grade web presence for established businesses and growing enterprises.",
-        highlights: ["Brand-aligned design systems", "Multi-language support", "Investor & stakeholder portals"],
+        highlights: ["Brand-aligned design systems", "Multi-language support", "Lead capture architecture"],
       },
       {
-        title: "Business Websites",
-        description: "Conversion-optimized sites that turn visitors into qualified sales conversations.",
-        highlights: ["Lead capture funnels", "CRM integration", "Analytics dashboards"],
+        title: "Manufacturer & industrial websites",
+        description: "Product catalogs and RFQ paths for factories, exporters, and B2B suppliers.",
+        highlights: ["Product SEO structure", "WhatsApp inquiry flows", "Export-ready messaging"],
       },
       {
-        title: "Landing Pages",
+        title: "Landing pages & campaigns",
         description: "High-converting campaign pages built for paid ads, product launches, and events.",
         highlights: ["A/B test ready", "Sub-second load times", "Mobile-first design"],
       },
       {
-        title: "E-commerce Websites",
+        title: "Ecommerce websites",
         description: "Scalable online stores with inventory sync, payment gateways, and order management.",
         highlights: ["Razorpay & Stripe", "Inventory management", "Admin dashboards"],
       },
       {
-        title: "SEO Friendly Websites",
-        description: "Technical SEO baked in—structured data, sitemaps, semantic HTML, and 95+ Lighthouse scores.",
-        highlights: ["Core Web Vitals optimized", "Schema markup", "Content architecture"],
+        title: "SEO & AI-search ready sites",
+        description: "Technical SEO, schema, and GEO structure so Google and AI systems can cite you.",
+        highlights: ["Core Web Vitals optimized", "Schema markup", "Definition + FAQ blocks"],
       },
     ],
     features: [
@@ -194,37 +199,62 @@ export const servicesData: Record<ServiceSlug, ServicePageData> = {
     ],
     whyMaxwell: [...sharedWhyMaxwell],
     seoParagraphs: [
-      "A professional website is your highest-leverage sales asset in India—yet most businesses still run slow WordPress themes that fail Core Web Vitals and leak leads. Maxwell Electrodeal builds Next.js sites that rank, load in under 2 seconds, and convert visitors into qualified enquiries.",
-      "We serve B2B manufacturers, healthcare groups, and funded startups across Vadodara, Mumbai, Delhi, and international markets. Every project includes technical SEO, schema markup, analytics, and conversion architecture—not just pretty mockups.",
+      "Maxwell Electrodeal is a website engineering company for businesses — not a generic software catalog. We build manufacturer, corporate, and industrial websites that rank, load fast, and convert inquiries.",
+      "Every pillar page answers who we serve, what we build, why custom beats templates, cost ranges, timelines, trade-offs, FAQs, and next steps — structured so Google and AI search systems can extract clear answers.",
+      "Supporting practices (web apps, custom software, AI automation) extend the website when workflows demand it. They do not replace the website as our primary identity.",
+      "We serve B2B manufacturers, exporters, and growing companies across Vadodara, Gujarat, Mumbai, Delhi, Bengaluru, and English-speaking markets with localized landing pages where intent is verified.",
     ],
     pricingTiers: [
-      { name: "Startup site", range: "₹75K – ₹2L", description: "5–10 pages, CMS, contact forms, SEO foundation, mobile-first design." },
-      { name: "Corporate site", range: "₹2L – ₹5L", description: "15–25 pages, multi-language, blog, integrations, advanced analytics." },
-      { name: "E-commerce / portal", range: "₹5L – ₹15L", description: "Catalog, payments, customer accounts, ERP/CRM integrations." },
+      { name: "Starter business site", range: "₹45K – ₹75K", description: "5–8 pages, forms, mobile-first, SEO foundation." },
+      { name: "Growth / manufacturer catalog", range: "₹75K – ₹2.5L", description: "Product architecture, CMS, inquiry automation." },
+      { name: "Corporate / multi-language", range: "₹2.5L – ₹5L", description: "15–25 pages, blog, integrations, advanced analytics." },
+      { name: "Ecommerce / portal", range: "₹5L – ₹15L", description: "Catalog, payments, accounts, deeper integrations." },
     ],
+    processSteps: [...sharedProcess],
     relatedBlogSlugs: ["how-much-does-website-cost-india-2026", "nextjs-enterprise-website-architecture", "b2b-website-conversion-patterns", "indiamart-alternative-website-manufacturer"],
     relatedIndustrySlugs: ["retail", "healthcare", "education", "chemical-manufacturing"],
     resourceLinks: [
+      { label: "Website Cost India", href: "/cost/web-development-cost-india" },
+      { label: "Website Technologies", href: "/services/website-technologies" },
+      { label: "Website Redesign", href: "/services/website-redesign" },
+      { label: "Website Maintenance", href: "/services/website-maintenance" },
+      { label: "Website Security", href: "/services/website-security" },
+      { label: "Website Speed Optimization", href: "/services/website-speed-optimization" },
+      { label: "Website SEO", href: "/services/website-seo" },
+      { label: "Web Application Development", href: "/services/web-application-development" },
+      { label: "Manufacturer Websites", href: "/services/website-development-for-manufacturers" },
+      { label: "WordPress vs Custom", href: "/compare/wordpress-vs-custom-website" },
+      { label: "Next.js vs WordPress", href: "/compare/nextjs-vs-wordpress-business" },
+      { label: "Portfolio", href: "/work" },
+      { label: "Case Studies", href: "/case-studies" },
+      { label: "Contact", href: "/contact" },
       { label: "Website Development — India", href: "/solutions/web-development-company-india" },
-      { label: "Website Development — Gujarat", href: "/solutions/web-development-company-gujarat" },
-      { label: "Website Developer — Vadodara", href: "/solutions/web-development-company-vadodara" },
       { label: "International Web Clients", href: "/solutions/web-development-company-india-international" },
-      { label: "Manufacturer-Specific Website Development", href: "/services/website-development-for-manufacturers" },
-      { label: "Why Manufacturers Are Moving Beyond Paid Directories", href: "/blog/indiamart-alternative-website-manufacturer" },
-      { label: "Drashti Chemicals — 263-Page Product Website Case Study", href: "/case-studies/drashti-chemicals" },
     ],
     faqs: [
       {
-        question: "How much does a professional website cost?",
-        answer: "Corporate websites typically range from ₹75,000 to ₹5,00,000 depending on scope, pages, integrations, and design complexity. We provide detailed proposals after discovery.",
+        question: "What is a website engineering company?",
+        answer:
+          "A website engineering company designs and builds business websites as growth systems — information architecture, performance, SEO, security, and conversion — not just visual templates. Maxwell focuses on manufacturer, corporate, and industrial sites.",
+      },
+      {
+        question: "How much does a professional website cost in India?",
+        answer:
+          "Starter business sites typically start around ₹45,000–₹75,000. Manufacturer catalogs and corporate sites often range ₹75,000–₹5,00,000 depending on products, languages, and integrations. See our cost guide for tier breakdowns.",
       },
       {
         question: "How long does website development take?",
-        answer: "Business websites: 4–8 weeks. Corporate sites with custom features: 8–12 weeks. Landing pages: 2–4 weeks.",
+        answer: "Starter sites: 3–6 weeks. Manufacturer catalogs: 6–10 weeks. Corporate sites with custom features: 8–12 weeks. Landing pages: 2–4 weeks.",
       },
       {
-        question: "Will my website rank on Google?",
-        answer: "We build with technical SEO foundations—fast load times, semantic HTML, schema markup, and mobile optimization. Content strategy recommendations included.",
+        question: "Will my website rank on Google and appear in AI answers?",
+        answer:
+          "We build technical SEO foundations — fast load times, semantic HTML, schema, and clear answer blocks. Rankings still depend on content quality, authority, and competition; we structure pages so both Google and AI systems can understand and cite them.",
+      },
+      {
+        question: "WordPress or custom Next.js?",
+        answer:
+          "WordPress can work for content blogs. For B2B lead generation and manufacturer catalogs, we usually recommend custom Next.js for Core Web Vitals, security, and ownership. See our WordPress vs Custom comparison.",
       },
       {
         question: "Can I update content myself?",
@@ -232,16 +262,17 @@ export const servicesData: Record<ServiceSlug, ServicePageData> = {
       },
     ],
   },
+  ...websiteClusterServicesData,
 
   "custom-software-development": {
     slug: "custom-software-development",
     title: "Custom Software Development",
-    headline: "Software Built For How Your Business Actually Works",
+    headline: "Custom Software — Supporting Systems Around Your Website",
     subheadline:
-      "Custom business software, enterprise applications, and workflow automation—engineered around your processes, not forced into generic SaaS templates.",
-    metaTitle: "Custom Software Development Services",
+      "Custom business software, enterprise applications, and workflow automation — engineered when your website and portals need deeper systems. Supporting Maxwell’s website engineering identity, not replacing it.",
+    metaTitle: "Custom Software Development Services | Maxwell Electrodeal",
     metaDescription:
-      "Custom software development services — enterprise apps, workflow automation, API integrations, and legacy modernization with full IP ownership. Maxwell Electrodeal, India.",
+      "Custom software development as a supporting practice — workflow apps, integrations, and business systems that extend your website. Maxwell Electrodeal, India.",
     keywords: [
       "custom software development company India",
       "custom software development services",
@@ -325,10 +356,17 @@ export const servicesData: Record<ServiceSlug, ServicePageData> = {
       },
     ],
     whyMaxwell: [...sharedWhyMaxwell],
+    resourceLinks: [
+      { label: "Website Development (primary)", href: "/services/website-development" },
+      { label: "Web Application Development", href: "/services/web-application-development" },
+      { label: "AI Automation", href: "/services/ai-automation" },
+      { label: "Case Studies", href: "/case-studies" },
+      { label: "Contact", href: "/contact" },
+    ],
     faqs: [
       {
         question: "Custom software vs off-the-shelf—which is right for us?",
-        answer: "If your processes are unique, you need integrations off-the-shelf can't provide, or you're scaling beyond spreadsheet limits—custom software delivers ROI that generic tools can't match.",
+        answer: "If your processes are unique, you need integrations off-the-shelf can't provide, or you're scaling beyond spreadsheet limits—custom software delivers ROI that generic tools can't match. Many clients start with a high-performing website first.",
       },
       {
         question: "What's the typical investment for custom software?",
@@ -799,12 +837,12 @@ export const servicesData: Record<ServiceSlug, ServicePageData> = {
   "ai-solutions": {
     slug: "ai-solutions",
     title: "AI Solutions",
-    headline: "AI Development Company India — Custom AI Solutions",
+    headline: "AI Solutions — Automation That Extends Your Digital Presence",
     subheadline:
-      "Practical AI for Indian businesses—computer vision on factory floors, document automation, LLM assistants, and predictive analytics with measurable ROI, not pilot-project theatre.",
-    metaTitle: "AI Development Company India — Custom AI Solutions",
+      "Practical AI for Indian businesses — computer vision, document automation, LLM assistants, and predictive analytics. A supporting practice around Maxwell’s website engineering core, used when automation creates measurable ROI.",
+    metaTitle: "AI Automation & Solutions India | Supporting Website Engineering",
     metaDescription:
-      "AI software development company in India. Computer vision, automation, LLM chatbots, predictive analytics. Production ROI from Maxwell Electrodeal.",
+      "AI automation and solutions that support your website and operations — computer vision, workflows, LLM assistants. Maxwell Electrodeal, Vadodara.",
     keywords: [
       "AI development company India",
       "artificial intelligence development company",

@@ -12,7 +12,7 @@ export function DevelopmentProcess() {
         <FadeIn>
           <p className="v6-eyebrow-line v6-eyebrow">Our process</p>
           <h2 className="v6-section-title v6-section-title--wide mt-4 text-balance">
-            How we turn ideas into software
+            How we engineer websites and systems
           </h2>
           <p className="v6-lead mt-4 max-w-3xl">
             Six clear stages reduce uncertainty—you always know what happens next, what you approve, and what you pay for.

@@ -14,7 +14,7 @@ import {
   estimateHref,
 } from "@/lib/conversion-copy";
 import { trackCTAClick } from "@/lib/conversion-events";
-import { servicesNavGroups } from "@/lib/navigation-services";
+import { mobileServiceShortcuts, servicesNavGroups } from "@/lib/navigation-services";
 import { ServicesNavMenu } from "@/components/layout/ServicesNavMenu";
 
 const primaryNav = [
@@ -45,11 +45,6 @@ function ChevronDownIcon({ className }: { className?: string }) {
   );
 }
 
-const mobileServiceShortcuts = [
-  { label: "🔥 Custom ERP", href: "/services/erp-development" },
-  { label: "⚡ AI Consulting", href: "/services/ai-consulting" },
-] as const;
-
 const telHref = `tel:${siteConfig.phone.replace(/\s/g, "")}`;
 
 function Chevron() {
@@ -74,6 +69,8 @@ export function Header() {
   const servicesBtnRef = useRef<HTMLButtonElement>(null);
   const [resourcesMenuStyle, setResourcesMenuStyle] = useState<React.CSSProperties>({});
   const [servicesMenuStyle, setServicesMenuStyle] = useState<React.CSSProperties>({});
+  /** Avoid SSR/client nav copy drift during Turbopack HMR — drawer links render after mount. */
+  const [mobileNavReady, setMobileNavReady] = useState(false);
   const closeMobile = useCallback(() => setMobileOpen(false), []);
   const headerRef = useRef<HTMLElement>(null);
 
@@ -118,6 +115,10 @@ export function Header() {
       if (idleId !== undefined) window.cancelIdleCallback(idleId);
       teardown?.();
     };
+  }, []);
+
+  useEffect(() => {
+    setMobileNavReady(true);
   }, []);
 
   useEffect(() => {
@@ -416,6 +417,8 @@ export function Header() {
           </button>
         </div>
         <nav className="flex flex-1 flex-col gap-0.5 overflow-y-auto px-3 py-4" aria-label="Mobile navigation">
+          {mobileNavReady ? (
+            <>
           {primaryNav.map((link) => (
             <Link
               key={link.href}
@@ -498,6 +501,8 @@ export function Header() {
               {link.label}
             </Link>
           ))}
+            </>
+          ) : null}
         </nav>
         <div className="space-y-3 border-t border-gray-100 p-4">
           <Link

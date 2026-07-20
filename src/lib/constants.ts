@@ -25,18 +25,18 @@ const siteUrl = normalizeSiteUrl(siteUrlRaw);
 
 /** Canonical brand disambiguation — schema and AI entity blocks only (not visible hero copy). */
 export const brandDisambiguation =
-  "Maxwell Electrodeal is a software development and IT services company, distinct from electronics component manufacturers of similar name." as const;
+  "Maxwell Electrodeal is a website engineering company for businesses, distinct from electronics component manufacturers of similar name." as const;
 
 /** Single visible disclaimer — footer only. */
 export const footerBrandNote =
-  "Maxwell Electrodeal Private Limited is a software development and IT services company. Not affiliated with electronics component distributors of similar name." as const;
+  "Maxwell Electrodeal Private Limited is a website engineering company for businesses. Not affiliated with electronics component distributors of similar name." as const;
 
 export const siteConfig = {
   name: "Maxwell Electrodeal",
   legalName: "Maxwell Electrodeal Private Limited",
-  tagline: "Powering Digital Growth",
+  tagline: "Website Engineering for Businesses",
   description:
-    "India-based enterprise software development company — websites, mobile apps, ERP, CRM, SaaS, AI & cloud for businesses in Gujarat, Mumbai, Bengaluru, Delhi & worldwide.",
+    "Website engineering company for businesses — manufacturer, corporate, and industrial websites, plus web apps, custom software, and AI automation. Based in Vadodara, Gujarat; serving India and English-speaking markets.",
   url: siteUrl,
   logoPath: "/logo.webp",
   logoUrl: `${siteUrl}/logo.webp`,
@@ -53,7 +53,7 @@ export const WHATSAPP_HREF_CONTACT =
   "https://wa.me/919586868538?text=Hi%20Maxwell%2C%20I'd%20like%20to%20discuss%20a%20project." as const;
 
 export const WHATSAPP_HREF_FLOATING =
-  "https://wa.me/919586868538?text=Hi%20Maxwell%2C%20I'm%20interested%20in%20your%20software%20services" as const;
+  "https://wa.me/919586868538?text=Hi%20Maxwell%2C%20I'm%20interested%20in%20website%20development" as const;
 
 /** @deprecated Use WHATSAPP_NUMBER_E164 */
 export function whatsappNumberE164(): string {

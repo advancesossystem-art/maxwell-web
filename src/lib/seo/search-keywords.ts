@@ -290,7 +290,12 @@ export const solutionSearchKeywords: Record<string, readonly string[]> = {
   ],
   "erp-development-company": ["ERP development company", "ERP software development company India", "custom ERP development"],
   "crm-development-company": ["CRM development company", "custom CRM development company India", "CRM development India"],
-  "website-development-company": ["website development company India", "web development agency", "website development company"],
+  "website-development-company": [
+    "enterprise website development solutions",
+    "corporate website development solutions",
+    "Next.js website solutions India",
+    "SEO website development solutions",
+  ],
   "ai-development-company": ["AI development company India", "AI solutions company", "AI software development company"],
   "mobile-app-development-company": ["mobile app development company India", "mobile app development company"],
   "saas-development-company": ["SaaS development company India", "SaaS development company"],
@@ -367,9 +372,9 @@ export const solutionSearchKeywords: Record<string, readonly string[]> = {
     "web development company Gujarat",
   ],
   "web-development-company-india": [
-    "website development company India",
     "website development in India",
-    "web development company India",
+    "pan-India website development",
+    "India website delivery",
   ],
   "web-development-company-india-germany": [
     "web development company India for Germany",
@@ -384,13 +389,13 @@ export const solutionSearchKeywords: Record<string, readonly string[]> = {
   "ai-development-company-india": ["AI development India", "AI development company India", "industrial AI solutions"],
 };
 
-/** City SEO — appended on location pages via locations-data */
+/** City SEO — local delivery intent only (commercial head terms live on geo solution pages). */
 export const locationQueryPatterns = [
-  "software development company in {city}",
-  "mobile app development company {city}",
-  "ERP development company {city}",
   "IT company {city}",
-  "web development company {city}",
+  "software company {city}",
+  "ERP development company {city}",
+  "mobile app development company {city}",
+  "Maxwell Electrodeal {city}",
 ] as const;
 
 /** FAQ / blog style — high volume informational → commercial bridge */

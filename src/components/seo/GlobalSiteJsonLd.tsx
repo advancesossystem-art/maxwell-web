@@ -1,5 +1,6 @@
 import { JsonLd } from "@/components/seo/JsonLdScript";
 import {
+  buildFounderPersonNode,
   buildLocalBusinessNode,
   buildOrganizationNode,
   buildWebsiteNode,
@@ -11,7 +12,7 @@ import {
 export function GlobalSiteJsonLd() {
   const graph = {
     "@context": "https://schema.org",
-    "@graph": [buildOrganizationNode(), buildLocalBusinessNode(), buildWebsiteNode()],
+    "@graph": [buildOrganizationNode(), buildFounderPersonNode(), buildLocalBusinessNode(), buildWebsiteNode()],
   };
 
   return <JsonLd data={graph} />;

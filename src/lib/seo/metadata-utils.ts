@@ -7,6 +7,7 @@ import {
   primaryLocale,
   siteTitleTemplate,
 } from "@/lib/seo/config";
+import { buildPageCanonicalAlternates } from "@/lib/seo/keyword-canonical";
 
 const defaultOgImage = `${siteConfig.url}/opengraph-image`;
 
@@ -134,7 +135,7 @@ export function buildSeoMetadata({
           : `${siteConfig.name} — ${siteConfig.tagline}`;
 
   const pageDescription = description ?? siteConfig.description;
-  const alternates = buildLanguageAlternates(path);
+  const alternates = buildPageCanonicalAlternates(path);
 
   return {
     title: pageTitleSegment,

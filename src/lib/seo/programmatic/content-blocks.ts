@@ -7,18 +7,17 @@ import type {
   LocalStatsBlock,
   ServiceCatalogEntry,
 } from "./types";
-
-function slugHash(slug: string): number {
-  let h = 0;
-  for (let i = 0; i < slug.length; i++) h = (h * 31 + slug.charCodeAt(i)) >>> 0;
-  return h;
-}
+import { buildPublishedWebsitePricingTable } from "@/lib/content/information-gain/website-cost-insights";
 
 export function buildPricingTable(
   service: ServiceCatalogEntry,
   locationLabel: string,
   costRange: string,
 ): PricingTableBlock {
+  if (service.slug === "web-development") {
+    return buildPublishedWebsitePricingTable(locationLabel);
+  }
+
   const short = service.shortLabel.toLowerCase();
   return {
     title: `${service.label} pricing tiers — ${locationLabel}`,
@@ -90,6 +89,14 @@ const COMPARE_CRITERIA: Record<CompareTemplate["category"], string[]> = {
     "Pilot speed",
     "Mission-critical suitability",
   ],
+  website: [
+    "SEO & Core Web Vitals",
+    "Ownership & lock-in risk",
+    "Content editing ease",
+    "Security surface area",
+    "B2B inquiry conversion",
+    "3-year total cost",
+  ],
 };
 
 function scoreLabel(favors: "left" | "right" | "neutral"): string {
@@ -119,33 +126,27 @@ export function buildComparisonMatrix(template: CompareTemplate): ComparisonMatr
 
 export function buildCityLocalStats(city: CityCatalogEntry, service: ServiceCatalogEntry): LocalStatsBlock {
   const topIndustry = city.industries[0] ?? "SME";
-  const h = slugHash(city.slug);
-  const adoption = 55 + (h % 25);
-  const projectCount = 12 + (h % 18);
 
   return {
     title: `${city.name} market snapshot`,
-    subtitle: `${city.insight}`,
+    subtitle: city.insight,
     stats: [
-      { value: `${adoption}%`, label: `${topIndustry} firms in ${city.name} evaluating ${service.shortLabel} digitization` },
-      { value: `${projectCount}+`, label: `${service.shortLabel} projects delivered to ${city.state} businesses` },
-      { value: city.industries.length.toString(), label: `Verticals we serve in ${city.name}: ${city.industries.join(", ")}` },
-      { value: "24h", label: `Estimate turnaround for ${city.name} discovery requests` },
+      { value: topIndustry, label: `Primary cluster served in ${city.name}` },
+      { value: service.costRangeInr, label: `Published ${service.shortLabel} range (India)` },
+      { value: city.industries.slice(0, 3).join(", "), label: `Key verticals in ${city.name}` },
+      { value: "Vadodara HQ", label: "Discovery and delivery for Gujarat projects" },
     ],
   };
 }
 
 export function buildIndustryLocalStats(industry: IndustryCatalogEntry, service: ServiceCatalogEntry): LocalStatsBlock {
-  const h = slugHash(industry.slug);
-  const roi = 8 + (h % 6);
-
   return {
-    title: `${industry.name} digitization benchmarks`,
+    title: `${industry.name} digitization scope`,
     subtitle: `Focused on ${industry.focus}`,
     stats: [
-      { value: "78%", label: `Indian ${industry.name.toLowerCase()} SMEs still run core ops on spreadsheets` },
-      { value: `${roi}–${roi + 4} mo`, label: `Typical ${service.shortLabel} payback for ${industry.name.toLowerCase()} clients` },
-      { value: "40–60%", label: "Manual work reduction post go-live (discovery baseline)" },
+      { value: industry.compliance, label: `Compliance context for ${industry.name}` },
+      { value: service.costRangeInr, label: `Typical ${service.shortLabel} investment range` },
+      { value: "Discovery-first", label: "Fixed milestone quotes after workflow mapping" },
     ],
   };
 }

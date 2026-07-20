@@ -9,6 +9,7 @@ import { Card } from "@/components/design/Card";
 import { H3, Text } from "@/components/design/typography";
 import { CertificationGrid } from "@/components/trust/CertificationGrid";
 import { ClientLogoCloud } from "@/components/trust/ClientLogoCloud";
+import { CompanyAuthorityStrip } from "@/components/trust/CompanyAuthorityStrip";
 
 const sections = [
   { key: "businessModel", title: "Business Model", content: companyOverview.businessModel },
@@ -23,6 +24,10 @@ export function CompanyPageContent() {
     <>
       <PageSection>
         <ClientLogoCloud mode="placeholder" />
+      </PageSection>
+
+      <PageSection>
+        <CompanyAuthorityStrip />
       </PageSection>
 
       <PageSection>

@@ -20,13 +20,13 @@ export type CityContentOverride = Partial<
 /** Unique SSR copy for priority Indian cities — not template swaps. */
 export const cityContentOverrides: Record<string, CityContentOverride> = {
   vadodara: {
-    headline: "Software Development Company in Vadodara | Maxwell Electrodeal",
+    headline: "Maxwell Electrodeal — Vadodara HQ",
     subheadline:
-      "Headquartered in Alkapuri, Vadodara—we build ERP, CRM, AI, and web platforms for Gujarat manufacturers, pharma suppliers, and growing SMEs.",
+      "Headquartered in Alkapuri, Vadodara—we build business websites, manufacturer catalogs, web apps, ERP, CRM, and AI for Gujarat manufacturers, pharma suppliers, and growing SMEs.",
     localInsights:
       "Vadodara (Baroda) is Gujarat's education and industrial hub—home to pharma API suppliers, engineering manufacturers along the Golden Corridor, and a fast-growing SME base digitizing beyond Tally. Maxwell Electrodeal was founded here in 2018 and runs discovery workshops on Jetalpur Road and at client plants across Anand, Bharuch, and Halol.",
     localIntro: [
-      "As a Vadodara-based software development company, we combine on-site factory visits with senior engineering—something remote-only vendors cannot replicate for ERP and shop-floor projects.",
+      "As a Vadodara-based website engineering company, we combine on-site factory visits with senior engineering—something remote-only vendors cannot replicate for manufacturer websites and shop-floor projects.",
       "Our team has delivered manufacturing ERP, healthcare portals, and AI safety systems for clients in Alkapuri, Makarpura GIDC, Savli, and clients exporting from Gujarat to the US and Middle East.",
     ],
     servingSince: "2018",
@@ -71,10 +71,10 @@ export const cityContentOverrides: Record<string, CityContentOverride> = {
         answer: "Yes. SLA-backed support retainers with Vadodara timezone alignment and optional on-site hypercare.",
       },
     ],
-    metaDescription: `Vadodara software development company — ERP, CRM, AI, mobile apps. ${siteConfig.name} HQ in Alkapuri since 2018. Free consultation.`,
+    metaDescription: `Vadodara website engineering company — business websites, manufacturer catalogs, web apps, ERP, CRM & AI. ${siteConfig.name} HQ in Alkapuri since 2018. Free consultation.`,
   },
   ahmedabad: {
-    headline: "Software Development Company in Ahmedabad | Maxwell Electrodeal",
+    headline: "Maxwell Electrodeal — Ahmedabad | Maxwell Electrodeal",
     subheadline:
       "Custom software for Ahmedabad's pharma, textile, fintech, and startup ecosystem—ERP, mobile apps, and SaaS with Gujarat delivery experience.",
     localInsights:
@@ -122,7 +122,7 @@ export const cityContentOverrides: Record<string, CityContentOverride> = {
     ],
   },
   surat: {
-    headline: "Software Development Company in Surat | Maxwell Electrodeal",
+    headline: "Maxwell Electrodeal — Surat | Maxwell Electrodeal",
     subheadline:
       "ERP, inventory, and B2B platforms for Surat's diamond, textile, and logistics businesses—real-time stock and dealer management.",
     localInsights:
@@ -170,7 +170,7 @@ export const cityContentOverrides: Record<string, CityContentOverride> = {
     ],
   },
   mumbai: {
-    headline: "Software Development Company in Mumbai | Maxwell Electrodeal",
+    headline: "Maxwell Electrodeal — Mumbai | Maxwell Electrodeal",
     subheadline:
       "Enterprise software for Mumbai finance, retail, healthcare, and logistics—scalable ERP, SaaS, and mobile apps with compliance-aware delivery.",
     localInsights:
@@ -218,7 +218,7 @@ export const cityContentOverrides: Record<string, CityContentOverride> = {
     ],
   },
   delhi: {
-    headline: "Software Development Company in Delhi NCR | Maxwell Electrodeal",
+    headline: "Maxwell Electrodeal — Delhi NCR | Maxwell Electrodeal",
     subheadline:
       "Software for Delhi NCR government vendors, education groups, healthcare chains, and retail—ERP, portals, and mobile apps.",
     localInsights:

@@ -31,10 +31,10 @@ const coreSolutionsData: Record<(typeof coreSolutionSlugs)[number], SolutionPage
     title: "Software Development Company",
     headline: "Software Development Company",
     subheadline:
-      "End-to-end software engineering—custom apps, ERP, CRM, mobile, AI, and cloud—for businesses that need one accountable partner, not fragmented vendors.",
-    metaTitle: "Software Development Company | Custom Software & IT Solutions",
+      "Website engineering for businesses—manufacturer, corporate, and industrial sites—plus custom apps, ERP, CRM, mobile, AI, and cloud for clients that need one accountable partner, not fragmented vendors.",
+    metaTitle: "Software Development Company | Website Engineering & IT Solutions",
     metaDescription:
-      "Software development company for custom software, ERP, CRM, mobile apps, AI & cloud. India HQ, global delivery. Maxwell Electrodeal — free consultation.",
+      "Maxwell Electrodeal is a website engineering company for businesses, also delivering custom software, ERP, CRM, mobile apps, AI & cloud. India HQ, global delivery — free consultation.",
     primaryKeyword: "Software Development Company",
     secondaryKeywords: [
       "software development services",
@@ -58,7 +58,7 @@ const coreSolutionsData: Record<(typeof coreSolutionSlugs)[number], SolutionPage
     ],
     caseStudySlugs: ["manufacturing-erp", "healthcare-management", "construction-platform"],
     marketInsights:
-      "A software development company delivers more than code—it maps workflows, architects systems, integrates Tally/GST/payments, and ships production software with documentation and IP ownership. Maxwell covers the full stack from discovery to 24/7 support.",
+      "Maxwell Electrodeal is a website engineering company for businesses. As a supporting practice, we also map workflows, architect custom software, integrate Tally/GST/payments, and ship production systems with documentation and IP ownership—from discovery to 24/7 support.",
     industryChallenges: [
       { title: "Vendor Fragmentation", description: "Separate web, mobile, and ERP vendors create integration debt and blame gaps." },
       { title: "No Domain Depth", description: "Generic agencies miss manufacturing shop-floor or healthcare compliance realities." },
@@ -193,13 +193,20 @@ const coreSolutionsData: Record<(typeof coreSolutionSlugs)[number], SolutionPage
 
   "website-development-company": {
     slug: "website-development-company",
-    title: "Website Development Company",
-    headline: "Website Development Company",
-    subheadline: "High-performance Next.js websites that rank, convert, and scale—Core Web Vitals 95+ guaranteed.",
-    metaTitle: "Website Development Solutions for Enterprise Businesses in India",
-    metaDescription: "Website development solutions for enterprise businesses in India — Next.js, SEO, Core Web Vitals, and conversion-focused corporate sites by Maxwell Electrodeal.",
-    primaryKeyword: "Website Development Company",
-    secondaryKeywords: ["web development company India", "Next.js development", "corporate website development", "SEO website company"],
+    title: "Enterprise Website Development Solutions",
+    headline: "Enterprise Website Development Solutions",
+    subheadline:
+      "Commercial solutions overview for large corporate and multi-location website programs — see the service pillar for capabilities, pricing, and delivery.",
+    metaTitle: "Enterprise Website Development Solutions India",
+    metaDescription:
+      "Enterprise website development solutions for multi-location and corporate programs in India — Next.js, SEO architecture, and conversion systems. Full delivery on our website development service page.",
+    primaryKeyword: "Enterprise Website Development Solutions",
+    secondaryKeywords: [
+      "corporate website development solutions",
+      "enterprise web development India",
+      "Next.js enterprise websites",
+      "multi-location website development",
+    ],
     relatedSearches: ["website development cost India", "best web development company", "Next.js agency"],
     serviceHref: "/services/website-development",
     industryLinks: [

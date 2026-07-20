@@ -2,33 +2,22 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { siteConfig } from "@/lib/constants";
+import { buildInternationalWebLanguageAlternates, internationalWebUrls } from "@/lib/seo/international-web-hreflang";
 
 const canonical = `${siteConfig.url}/solutions/web-development-company-india-germany`;
-const usaUrl = `${siteConfig.url}/solutions/web-development-company-india-usa`;
-const ukUrl = `${siteConfig.url}/solutions/web-development-company-india-uk`;
-const uaeUrl = `${siteConfig.url}/solutions/web-development-company-india-uae`;
-const intlUrl = `${siteConfig.url}/solutions/web-development-company-india-international`;
 
 export const metadata: Metadata = {
   title: "Web Development Company India for Germany | Maxwell Electrodeal",
   description:
     "Maxwell Electrodeal builds websites and B2B platforms for German businesses outsourcing to India and Indian exporters targeting Germany. EUR/USD pricing. GDPR-aware forms. NDA. Free discovery call.",
-  alternates: {
-    canonical,
-    languages: {
-      "en-US": usaUrl,
-      "en-GB": ukUrl,
-      "en-AE": uaeUrl,
-      "de-DE": canonical,
-    },
-  },
+  alternates: buildInternationalWebLanguageAlternates(canonical),
   openGraph: {
     title: "Web Development Company India for Germany | Maxwell Electrodeal",
     description:
       "Websites and export platforms for German clients and Indian manufacturers targeting EU buyers. Next.js, milestone billing, NDA.",
     url: canonical,
     siteName: "Maxwell Electrodeal",
-    locale: "de_DE",
+    locale: "en_DE",
     type: "website",
   },
 };
@@ -107,19 +96,19 @@ export default function GermanyInternationalPage() {
         <Container>
           <h2 className="font-display text-xl font-bold text-slate-900 mb-4">Other international pages</h2>
           <div className="flex flex-wrap gap-3 text-sm">
-            <Link href={intlUrl} className="text-blue-600 hover:underline">
+            <Link href={internationalWebUrls.international} className="text-blue-600 hover:underline">
               International hub
             </Link>
-            <Link href={usaUrl} className="text-blue-600 hover:underline">
+            <Link href={internationalWebUrls.usa} className="text-blue-600 hover:underline">
               USA
             </Link>
-            <Link href={ukUrl} className="text-blue-600 hover:underline">
+            <Link href={internationalWebUrls.uk} className="text-blue-600 hover:underline">
               UK
             </Link>
-            <Link href={uaeUrl} className="text-blue-600 hover:underline">
+            <Link href={internationalWebUrls.uae} className="text-blue-600 hover:underline">
               UAE
             </Link>
-            <Link href="/solutions/web-development-company-india-turkey" className="text-blue-600 hover:underline">
+            <Link href={internationalWebUrls.turkey} className="text-blue-600 hover:underline">
               Turkey
             </Link>
           </div>

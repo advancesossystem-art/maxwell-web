@@ -776,10 +776,10 @@ export const phase8ServicesData: Record<Phase8ServiceSlug, ServicePageData> = {
   "ai-automation": {
     slug: "ai-automation",
     title: "AI Automation",
-    headline: "AI Automation Services India — Business Process Automation | Maxwell Electrodeal",
-    subheadline: "Intelligent process automation that combines AI with workflow engines—invoice processing, data entry, reporting, and approval flows—for Indian SMBs and mid-market enterprises tired of manual bottlenecks.",
+    headline: "AI Automation Services India — Extend Website & Ops Workflows",
+    subheadline: "Intelligent process automation that combines AI with workflow engines—invoice processing, data entry, reporting, and approval flows—supporting Maxwell’s website engineering practice when manual bottlenecks slow growth.",
     metaTitle: "AI Automation Services India — Business Process Automation",
-    metaDescription: "AI automation company India. Invoice processing, intelligent workflows, n8n and Python automation. From ₹75K. Maxwell Electrodeal, Vadodara.",
+    metaDescription: "AI automation company India. Invoice processing, intelligent workflows, n8n and Python automation. Supporting website & ops growth. From ₹75K. Maxwell Electrodeal, Vadodara.",
     keywords: [
         "AI automation company India",
         "AI automation services India",

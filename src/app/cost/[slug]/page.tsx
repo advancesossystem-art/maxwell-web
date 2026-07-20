@@ -20,6 +20,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     path: page.path,
     keywords: [page.primaryKeyword, ...page.secondaryKeywords],
     absoluteTitle: true,
+    ...(page.noIndex ? { noIndex: true } : {}),
   });
 }
 

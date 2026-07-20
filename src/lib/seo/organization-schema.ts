@@ -5,28 +5,30 @@ import { testimonials } from "@/lib/testimonials-data";
 import type { Author } from "@/lib/content/authors";
 import type { ServicePageData } from "@/lib/services-data";
 import type { IndustryPageData } from "@/lib/industries-data";
+import { getFounderAuthor } from "@/lib/content/authors";
 import { headquarters, seoIds, socialProfiles } from "@/lib/seo/config";
 
 export const ORGANIZATION_DESCRIPTION =
-  "Maxwell Electrodeal builds custom websites, ERP, CRM, AI, and mobile software for manufacturers and businesses in India. Based in Vadodara, Gujarat.";
+  "Maxwell Electrodeal is a website engineering company for businesses. We build manufacturer, corporate, and industrial websites, plus web applications, custom software, and AI automation. Based in Vadodara, Gujarat, India.";
 
 const ORGANIZATION_ALTERNATE_NAMES = [
   "Maxwell Electrodeal Private Limited",
-  "Maxwell Electrodeal Software",
-  "Maxwell Electrodeal IT Services",
+  "Maxwell Electrodeal Website Engineering",
+  "Maxwell Electrodeal Web Development",
 ] as const;
 
 const CORE_OFFER_SERVICES = [
-  "Custom ERP Development",
-  "CRM Development",
-  "AI Development",
+  "Website Development",
+  "Manufacturer Website Development",
+  "Business Website Development",
   "Web Application Development",
-  "Mobile App Development",
+  "Custom Software Development",
+  "AI Automation",
 ] as const;
 
-/** Structured data constants — aligned with Knowledge Graph / GBP signals. */
-const SCHEMA_FOUNDING_DATE = "2006";
-const SCHEMA_EMPLOYEE_COUNT = 15;
+/** Structured data constants — aligned with company-data (founded 2018) and company-metrics. */
+const SCHEMA_FOUNDING_DATE = "2018";
+const SCHEMA_EMPLOYEE_COUNT = companyMetrics.expertEngineers;
 
 const OPENING_HOURS = {
   "@type": "OpeningHoursSpecification" as const,
@@ -124,10 +126,13 @@ export function buildOrganizationNode() {
     sameAs: socialProfiles,
     knowsAbout: [
       "Website Development",
+      "Website Engineering for Businesses",
       "Manufacturer Website Development India",
+      "Business Website Development",
+      "Corporate Website Design",
+      "Industrial Website Development",
+      "Web Application Development",
       "Custom Software Development",
-      "ERP Software India",
-      "CRM Software India",
       "Web Development Vadodara",
       "Next.js Development India",
     ],
@@ -138,9 +143,25 @@ export function buildOrganizationNode() {
     hasOfferCatalog: {
       "@type": "OfferCatalog" as const,
       "@id": seoIds.offerCatalog,
-      name: "Software Development Services",
+      name: "Website Engineering Services",
       itemListElement: catalogServices,
     },
+    founder: { "@id": seoIds.founder },
+  };
+}
+
+export function buildFounderPersonNode() {
+  const founder = getFounderAuthor();
+  return {
+    "@type": "Person" as const,
+    "@id": seoIds.founder,
+    name: founder.name,
+    ...(founder.role ? { jobTitle: founder.role } : {}),
+    description: founder.bio,
+    url: `${siteConfig.url}/authors/${founder.slug}`,
+    ...(founder.linkedin ? { sameAs: [founder.linkedin] } : {}),
+    knowsAbout: founder.expertise,
+    worksFor: { "@id": seoIds.organization },
   };
 }
 
@@ -210,10 +231,11 @@ export function buildWebsiteNode() {
 export function buildPersonAuthorNode(author: Author) {
   return {
     "@type": "Person" as const,
+    ...(author.isFounder ? { "@id": seoIds.founder } : {}),
     name: author.name,
     ...(author.role ? { jobTitle: author.role } : {}),
     description: author.bio,
-    url: author.isFounder ? `${siteConfig.url}/about` : `${siteConfig.url}/authors/${author.slug}`,
+    url: author.isFounder ? `${siteConfig.url}/authors/${author.slug}` : `${siteConfig.url}/authors/${author.slug}`,
     ...(author.linkedin ? { sameAs: [author.linkedin] } : {}),
     knowsAbout: author.expertise,
     worksFor: { "@id": seoIds.organization },

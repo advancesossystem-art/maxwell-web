@@ -73,7 +73,7 @@ const indiaCityConfigs: CityConfig[] = [
 
 function buildCityPage(config: CityConfig): CityPageData {
   const city = config.name;
-  const primaryKeyword = `Software Development Company in ${city}`;
+  const primaryKeyword = `Website & Software Services in ${city}`;
 
   return {
     slug: config.slug,
@@ -81,11 +81,14 @@ function buildCityPage(config: CityConfig): CityPageData {
     countrySlug: "india",
     countryName: "India",
     state: config.state,
-    metaTitle: `Software Development Company in ${city} — ${siteConfig.name}`,
-    metaDescription: `Hire ${siteConfig.name} for website, mobile app, ERP, CRM, AI & SaaS development in ${city}. Enterprise-grade software with local market expertise. Free consultation.`,
+    metaTitle: `${siteConfig.name} ${city} — Website & Software Delivery`,
+    metaDescription: `${siteConfig.name} delivers websites, web apps, ERP, CRM & AI to ${city}, ${config.state}. Local discovery and pan-India engineering from Vadodara HQ. Free consultation.`,
     primaryKeyword,
     secondaryKeywords: [
-      `Website Development Company in ${city}`,
+      `IT company ${city}`,
+      `software company ${city}`,
+      `ERP development ${city}`,
+      `Custom Software ${city}`,
       `Mobile App Development ${city}`,
       `ERP Development ${city}`,
       `Custom Software ${city}`,
@@ -96,8 +99,8 @@ function buildCityPage(config: CityConfig): CityPageData {
       `app development cost ${city}`,
       `ERP software ${config.state}`,
     ],
-    headline: `Software Development Company in ${city}`,
-    subheadline: `Enterprise-grade websites, apps, ERP, and AI solutions for ${city} businesses—built by ${siteConfig.name} with measurable ROI.`,
+    headline: `${siteConfig.name} — ${city}`,
+    subheadline: `Website, web app, ERP, and AI delivery for ${city} businesses—from ${siteConfig.name} with on-site discovery and measurable ROI.`,
     localInsights: config.insight,
     localChallenges: [
       { title: "Legacy Systems Holding Growth", description: `${city} businesses often run on spreadsheets and disconnected tools—limiting visibility as ${config.challengeFocus} scales.` },
@@ -105,9 +108,36 @@ function buildCityPage(config: CityConfig): CityPageData {
       { title: "Compliance & Integration", description: "GST, industry regulations, and third-party integrations (Tally, payment gateways, logistics APIs) require experienced engineering." },
     ],
     recommendedSolutions: [
-      { title: "Website Development", description: "SEO-ready Next.js sites, product catalogs, and corporate websites.", href: config.slug === "vadodara" ? "/solutions/web-development-company-vadodara" : config.slug === "gujarat" ? "/solutions/web-development-company-gujarat" : "/solutions/web-development-company-india" },
-      { title: "Custom Software Development", description: `Bespoke platforms aligned to ${city} business workflows.`, href: config.slug === "vadodara" ? "/solutions/software-development-company-vadodara" : config.slug === "gujarat" ? "/solutions/software-development-company-gujarat" : "/solutions/custom-software-development-company" },
-      { title: "ERP & Operations Systems", description: "Unify inventory, production, and finance for manufacturing and distribution.", href: config.slug === "vadodara" ? "/solutions/erp-development-company-vadodara" : config.slug === "gujarat" ? "/solutions/erp-development-company-gujarat" : "/solutions/erp-development-company" },
+      {
+        title: "Website Development",
+        description: "SEO-ready Next.js sites, product catalogs, and corporate websites.",
+        href:
+          config.slug === "vadodara"
+            ? "/solutions/web-development-company-vadodara"
+            : config.slug === "gujarat"
+              ? "/solutions/web-development-company-gujarat"
+              : "/services/website-development",
+      },
+      {
+        title: "Custom Software Development",
+        description: `Bespoke platforms aligned to ${city} business workflows.`,
+        href:
+          config.slug === "vadodara"
+            ? "/solutions/software-development-company-vadodara"
+            : config.slug === "gujarat"
+              ? "/solutions/software-development-company-gujarat"
+              : "/services/custom-software-development",
+      },
+      {
+        title: "ERP & Operations Systems",
+        description: "Unify inventory, production, and finance for manufacturing and distribution.",
+        href:
+          config.slug === "vadodara"
+            ? "/solutions/erp-development-company-vadodara"
+            : config.slug === "gujarat"
+              ? "/solutions/erp-development-company-gujarat"
+              : "/services/erp-development",
+      },
       { title: "Mobile Apps", description: "Customer and field-team apps for Android and iOS.", href: config.slug === "vadodara" ? "/solutions/mobile-app-development-company-vadodara" : "/solutions/mobile-app-development-company" },
       { title: "AI & Automation", description: "Intelligent automation for repetitive operational tasks.", href: config.slug === "gujarat" || config.slug === "vadodara" ? "/solutions/ai-development-company-india" : "/solutions/ai-development-company" },
     ],
@@ -156,9 +186,9 @@ export const internationalCountries: CountryPageData[] = [
     slug: "usa",
     name: "United States",
     region: "international",
-    metaTitle: "Software Development Company for USA Clients",
-    metaDescription: `${siteConfig.name} delivers enterprise software for US startups and enterprises. Timezone overlap, English-first delivery, IP ownership.`,
-    headline: "Software Development for USA Businesses",
+    metaTitle: "Maxwell Electrodeal USA — Offshore Website & Software",
+    metaDescription: `${siteConfig.name} delivers business websites, web apps, and supporting software for US startups and enterprises. Timezone overlap, English-first delivery, IP ownership.`,
+    headline: "Maxwell Electrodeal for USA Businesses",
     subheadline: "India-based engineering excellence with US timezone overlap and enterprise delivery standards.",
     overview: "US clients partner with Maxwell for cost-effective senior engineering without sacrificing quality. We align to EST/PST hours for standups and deliver SOC-aligned development practices.",
     citySlugs: [],
@@ -175,9 +205,9 @@ export const internationalCountries: CountryPageData[] = [
     slug: "uk",
     name: "United Kingdom",
     region: "international",
-    metaTitle: "Software Development Company UK — Maxwell Electrodeal",
-    metaDescription: "UK software development partner. GDPR-aware builds, dedicated teams, websites, apps, ERP, SaaS for British businesses.",
-    headline: "Software Development for UK Businesses",
+    metaTitle: "Website Engineering Company UK — Maxwell Electrodeal",
+    metaDescription: "UK website engineering partner. GDPR-aware business websites, web apps, ERP, SaaS for British businesses.",
+    headline: "Website Engineering for UK Businesses",
     subheadline: "GDPR-aware engineering with BST-friendly delivery and transparent milestone billing.",
     overview: "UK SMEs and enterprises choose Maxwell for Brexit-era supply chain software, fintech integrations, and digital transformation at competitive rates versus London agencies.",
     citySlugs: [],
@@ -193,9 +223,9 @@ export const internationalCountries: CountryPageData[] = [
     slug: "uae",
     name: "United Arab Emirates",
     region: "international",
-    metaTitle: "Software Development Company UAE — Dubai & GCC",
-    metaDescription: "Software development for UAE and GCC. ERP, mobile apps, websites, AI solutions with Gulf timezone overlap.",
-    headline: "Software Development for UAE & GCC",
+    metaTitle: "Website Engineering Company UAE — Dubai & GCC",
+    metaDescription: "Website engineering for UAE and GCC. Business websites, web apps, ERP, mobile apps, AI solutions with Gulf timezone overlap.",
+    headline: "Website Engineering for UAE & GCC",
     subheadline: "Enterprise software for Dubai, Abu Dhabi, and GCC enterprises—with Gulf timezone alignment.",
     overview: "UAE's diversification beyond oil drives demand for logistics, retail, healthcare, and construction software. We deliver with GST/UAE invoicing familiarity and Arabic-ready UI options.",
     citySlugs: [],
@@ -211,9 +241,9 @@ export const internationalCountries: CountryPageData[] = [
     slug: "canada",
     name: "Canada",
     region: "international",
-    metaTitle: "Software Development Company Canada",
-    metaDescription: "Canadian software development partner. Remote teams, ERP, SaaS, mobile apps with North American timezone overlap.",
-    headline: "Software Development for Canadian Businesses",
+    metaTitle: "Website Engineering Company Canada",
+    metaDescription: "Canadian website engineering partner. Business websites, web apps, ERP, SaaS, mobile apps with North American timezone overlap.",
+    headline: "Website Engineering for Canadian Businesses",
     subheadline: "Senior engineering teams with EST/PST overlap for Canadian startups and enterprises.",
     overview: "Canadian tech hubs in Toronto, Vancouver, and Montreal partner with Maxwell for product engineering, reducing burn rate while maintaining code quality.",
     citySlugs: [],
@@ -228,9 +258,9 @@ export const internationalCountries: CountryPageData[] = [
     slug: "australia",
     name: "Australia",
     region: "international",
-    metaTitle: "Software Development Company Australia",
-    metaDescription: "Australian software development. AEST overlap, websites, mobile apps, ERP for AU businesses.",
-    headline: "Software Development for Australian Businesses",
+    metaTitle: "Website Engineering Company Australia",
+    metaDescription: "Australian website engineering. AEST overlap, business websites, mobile apps, ERP for AU businesses.",
+    headline: "Website Engineering for Australian Businesses",
     subheadline: "Quality engineering with AEST-friendly communication and milestone transparency.",
     overview: "Australian businesses in mining tech, logistics, healthcare, and retail use Maxwell for scalable platforms without Sydney agency price tags.",
     citySlugs: [],
@@ -245,9 +275,9 @@ export const internationalCountries: CountryPageData[] = [
     slug: "germany",
     name: "Germany",
     region: "international",
-    metaTitle: "Software Development Company Germany",
-    metaDescription: "German software development partner. GDPR, Mittelstand ERP, Industry 4.0 solutions from Maxwell Electrodeal.",
-    headline: "Software Development for German Businesses",
+    metaTitle: "Website Engineering Company Germany",
+    metaDescription: "German website engineering partner. GDPR business websites, Mittelstand web platforms, Industry 4.0 solutions from Maxwell Electrodeal.",
+    headline: "Website Engineering for German Businesses",
     subheadline: "GDPR-compliant engineering for Mittelstand manufacturing and enterprise digitalization.",
     overview: "German Mittelstand manufacturers need ERP, IoT, and shop-floor integration. We deliver with documentation rigor and quality processes aligned to German expectations.",
     citySlugs: [],
@@ -262,10 +292,10 @@ export const internationalCountries: CountryPageData[] = [
     slug: "singapore",
     name: "Singapore",
     region: "international",
-    metaTitle: "ERP & Custom Software for Singapore — India HQ",
+    metaTitle: "Website Engineering for Singapore — India HQ",
     metaDescription:
-      "APAC delivery from India HQ: custom ERP, fintech & logistics platforms with SGT overlap and milestone billing. Book a Singapore discovery call.",
-    headline: "Software Development for Singapore & APAC",
+      "APAC delivery from India HQ: business websites, web apps, ERP, fintech & logistics platforms with SGT overlap and milestone billing.",
+    headline: "Website Engineering for Singapore & APAC",
     subheadline: "APAC-focused delivery for fintech, logistics, and enterprise platforms.",
     overview: "Singapore serves as APAC headquarters for many firms. We support regional rollouts with multi-currency, compliance-aware architecture.",
     citySlugs: [],
@@ -290,9 +320,9 @@ const countriesMap: Record<string, CountryPageData> = {
     slug: "india",
     name: "India",
     region: "india",
-    metaTitle: "Software Development Company in India — All Cities",
-    metaDescription: "Maxwell Electrodeal serves Vadodara, Mumbai, Bengaluru, Delhi, and cities across India. ERP, mobile apps, websites, AI solutions.",
-    headline: "Software Development Across India",
+    metaTitle: "Maxwell Electrodeal India — Delivery Hubs & Cities",
+    metaDescription: "Maxwell Electrodeal serves Vadodara, Mumbai, Bengaluru, Delhi, and cities across India. Website, web app, ERP, and AI delivery from Vadodara HQ.",
+    headline: "Maxwell Electrodeal Across India",
     subheadline: "Local expertise in Gujarat, Maharashtra, Karnataka, and national enterprise delivery.",
     overview: "Headquartered in India, Maxwell Electrodeal combines local market understanding with enterprise-grade engineering for businesses from SMEs to large enterprises.",
     citySlugs: citySlugs,
@@ -334,7 +364,7 @@ export function getLocationStaticParams(): { country: string; city?: string }[] 
 
 /** Programmatic title templates for SEO scale */
 export const programmaticTemplates = [
-  "Software Development Company in {city}",
+  "Maxwell Electrodeal {city}",
   "Website Development Company in {city}",
   "Mobile App Development Company in {city}",
   "ERP Development Company in {city}",

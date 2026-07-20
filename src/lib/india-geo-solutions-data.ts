@@ -118,7 +118,7 @@ export const indiaGeoSolutionsData: Record<IndiaGeoSolutionSlug, SolutionPageDat
       "Custom software, ERP, CRM, mobile apps, and AI for Indian SMEs and enterprises—GST-ready, Tally-integrated, milestone-based delivery from Vadodara HQ.",
     metaTitle: "Software Development Company India | Custom Software & ERP",
     metaDescription:
-      "Top software development company in India. Custom software, ERP, CRM, mobile apps & AI. Vadodara HQ, nationwide delivery. Maxwell Electrodeal — free quote.",
+      "Software development company in India. Custom software, ERP, CRM, mobile apps & AI. Vadodara HQ, nationwide delivery. Maxwell Electrodeal — free quote.",
     primaryKeyword: "Software Development Company India",
     secondaryKeywords: [
       "top software development company India",
@@ -256,10 +256,10 @@ export const indiaGeoSolutionsData: Record<IndiaGeoSolutionSlug, SolutionPageDat
     title: "Software Development Company Vadodara",
     headline: "Software Development Company in Vadodara",
     subheadline:
-      `${siteConfig.name} is headquartered in Vadodara—delivering ERP, CRM, websites, mobile apps, and AI for Gujarat SMEs with local accountability and global engineering standards.`,
+      `${siteConfig.name} is headquartered in Vadodara—delivering custom software, ERP, CRM, mobile apps, and AI for Gujarat SMEs with local accountability and global engineering standards.`,
     metaTitle: "Software Development Company in Vadodara | Maxwell Electrodeal HQ",
     metaDescription:
-      "Software development company in Vadodara, Gujarat. ERP, CRM, mobile apps, AI & websites. Local HQ team. Maxwell Electrodeal — book a free consultation.",
+      "Software development company in Vadodara, Gujarat. ERP, CRM, mobile apps, AI & custom software. Local HQ team. Maxwell Electrodeal — book a free consultation.",
     primaryKeyword: "Software Development Company in Vadodara",
     secondaryKeywords: [
       "IT company in Vadodara",
@@ -276,7 +276,7 @@ export const indiaGeoSolutionsData: Record<IndiaGeoSolutionSlug, SolutionPageDat
       "IT company Vadodara Gujarat",
     ],
     marketInsights:
-      "Vadodara combines manufacturing heritage with growing IT parks and SME digitization demand. As a Vadodara-headquartered software company, Maxwell Electrodeal offers same-city discovery workshops and long-term support—not distant offshore handoffs.",
+      "Vadodara combines manufacturing heritage with growing IT parks and SME digitization demand. As a Vadodara-headquartered software development company, Maxwell Electrodeal offers same-city discovery workshops and long-term support—not distant offshore handoffs.",
     industryChallenges: [
       {
         title: "Local SME Digitization Gap",
@@ -481,8 +481,8 @@ export const indiaGeoSolutionsData: Record<IndiaGeoSolutionSlug, SolutionPageDat
     internalLinks: [
       { label: "Gujarat", href: "/solutions/web-development-company-gujarat", description: "State page" },
       { label: "Vadodara", href: "/solutions/web-development-company-vadodara", description: "HQ city" },
+      { label: "Website Development Pillar", href: "/services/website-development", description: "National capabilities" },
       { label: "International Clients", href: "/solutions/web-development-company-india-international", description: "USD pricing" },
-      { label: "Website Service", href: "/services/website-development", description: "Full capabilities" },
       { label: "Get Estimate", href: "/get-estimate", description: "Free scoped quote" },
     ],
     faqs: [

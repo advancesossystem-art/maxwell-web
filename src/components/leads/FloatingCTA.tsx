@@ -15,6 +15,7 @@ export function FloatingCTA() {
     <div
       className="mobile-fixed-chrome fixed bottom-6 right-4 z-50 flex flex-col gap-2 lg:bottom-8 lg:right-6"
       data-intro-chrome
+      data-floating-cta
     >
       <a
         href={WHATSAPP_HREF_FLOATING}

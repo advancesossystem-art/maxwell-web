@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import { useCookieBannerVisible, useIsMobile } from "@/hooks/useMediaQuery";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -23,6 +23,9 @@ import { cn } from "@/lib/utils";
 
 const STEPS = ["Industry", "Project", "Team", "Budget", "Timeline"] as const;
 
+/** Don't show until user clears the hero — avoids covering primary CTAs. */
+const SCROLL_SHOW_THRESHOLD = 520;
+
 type QuickEstimateData = {
   industry: LeadIndustry;
   projectType: LeadProjectType;
@@ -37,6 +40,7 @@ export function QuickEstimateWidget({ stickyBarDismissed = false }: { stickyBarD
   const cookieVisible = useCookieBannerVisible();
   const dialogRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
+  const [scrolledPastHero, setScrolledPastHero] = useState(false);
   const [step, setStep] = useState(0);
   const [data, setData] = useState<QuickEstimateData>({
     industry: leadIndustries[0],
@@ -54,7 +58,14 @@ export function QuickEstimateWidget({ stickyBarDismissed = false }: { stickyBarD
   useEscapeKey(reset, open);
   useFocusTrap(dialogRef, open);
 
-  if (pathname === "/get-estimate" || isMobile || cookieVisible) return null;
+  useEffect(() => {
+    const onScroll = () => setScrolledPastHero(window.scrollY > SCROLL_SHOW_THRESHOLD);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  if (pathname === "/get-estimate" || isMobile || cookieVisible || !scrolledPastHero) return null;
 
   const estimateUrl = estimateHref({
     source: "quick-estimate-widget",
@@ -84,7 +95,7 @@ export function QuickEstimateWidget({ stickyBarDismissed = false }: { stickyBarD
           onClick={openWidget}
           data-intro-chrome
           className={cn(
-            "mobile-fixed-chrome fixed z-50 rounded-full bg-[#4f46e5] px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/30 transition-transform hover:scale-105 active:scale-95",
+            "mobile-fixed-chrome fixed z-50 hidden rounded-full bg-[#4f46e5] px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/30 transition-transform hover:scale-105 active:scale-95 lg:inline-flex",
             "left-4 lg:bottom-8 lg:left-8",
             stickyBarDismissed ? "bottom-4 lg:bottom-8" : "bottom-[4.5rem] lg:bottom-8",
           )}

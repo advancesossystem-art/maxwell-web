@@ -1,16 +1,18 @@
 import Link from "next/link";
 import { AboutPageContent } from "@/components/company/AboutPageContent";
+import { FounderAuthorityCard } from "@/components/trust/FounderAuthorityCard";
 import { CompanyPageHero } from "@/components/company/CompanyPageHero";
 import { CompanyPageJsonLd } from "@/components/seo/JsonLd";
 import { CompanyStatsBar } from "@/components/company/TrustMetrics";
 import { createMetadata } from "@/lib/metadata";
 import { companyStory } from "@/lib/company-data";
+import { companyMetricDisplay } from "@/lib/company-metrics";
 import { siteConfig } from "@/lib/constants";
 
 export const metadata = createMetadata({
-  title: "About Maxwell — ERP & Web Dev, Vadodara",
+  title: "About Maxwell — Website Engineering Company, Vadodara",
   description:
-    "Who is Maxwell Electrodeal? Vadodara team building custom ERP, websites & AI for manufacturers. GST-registered · 50+ projects · 4.9★ rating. Free consultation — reply in 4 hours.",
+    "Who is Maxwell Electrodeal? Vadodara website engineering company for manufacturers and businesses. Founded 2018 · 50+ projects · GST-compliant invoicing. Free consultation.",
   path: "/about",
   keywords: [
     "about Maxwell Electrodeal",
@@ -30,7 +32,7 @@ export default function AboutPage() {
         breadcrumb={[{ label: "About" }]}
         eyebrow="About Us"
         title={companyStory.headline}
-        description={`${siteConfig.legalName} — custom ERP, CRM, and software engineering from Vadodara since 2018. 50+ projects delivered for Indian manufacturers and global clients.`}
+        description={`${siteConfig.legalName} — website engineering for businesses from Vadodara since 2018. ${companyMetricDisplay.projectsCompleted} projects delivered for manufacturers and growing companies in India and abroad.`}
         below={<CompanyStatsBar />}
       />
       <div className="border-b border-border bg-surface px-6 py-3 text-center text-sm text-muted">
@@ -57,6 +59,7 @@ export default function AboutPage() {
           </Link>
         </div>
       </div>
+      <FounderAuthorityCard />
       <AboutPageContent />
     </>
   );

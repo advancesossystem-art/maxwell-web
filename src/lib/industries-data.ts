@@ -118,9 +118,9 @@ export const industriesData: Partial<Record<IndustrySlug, IndustryPageData>> = {
     headline: "Digitize the Factory Floor. Scale Production.",
     subheadline:
       "Custom ERP, MES, inventory systems, and AI monitoring platforms built for manufacturers who need real-time visibility—not spreadsheet chaos.",
-    metaTitle: "Manufacturing Software Development Company India",
+    metaTitle: "Manufacturing Website Engineering Company India",
     metaDescription:
-      "Manufacturing software development company in India — ERP, MES, inventory & factory digitization. Hire a team that understands Indian production workflows.",
+      "Manufacturing website engineering company in India — product catalog websites, ERP, MES, inventory & factory digitization. Hire a team that understands Indian production workflows.",
     keywords: [
       "manufacturing software development company",
       "manufacturing ERP development India",
@@ -213,9 +213,9 @@ export const industriesData: Partial<Record<IndustrySlug, IndustryPageData>> = {
     headline: "Technology That Puts Patients First",
     subheadline:
       "Patient portals, telemedicine platforms, hospital automation, and secure medical records systems—built for healthcare organizations that can't afford downtime or compliance gaps.",
-    metaTitle: "Healthcare Software Development Company India",
+    metaTitle: "Healthcare Website Engineering Company India",
     metaDescription:
-      "Healthcare software development company in India — patient portals, telemedicine, hospital management & secure records. HIPAA-aware delivery for clinics & hospital networks.",
+      "Healthcare website engineering company in India — patient portals, telemedicine, hospital management & secure records. HIPAA-aware delivery for clinics & hospital networks.",
     keywords: [
       "healthcare software development company",
       "hospital management software development",
@@ -295,9 +295,9 @@ export const industriesData: Partial<Record<IndustrySlug, IndustryPageData>> = {
     headline: "EdTech That Students and Staff Actually Use",
     subheadline:
       "Learning management systems, student portals, examination platforms, and campus management software—designed for adoption, not shelfware.",
-    metaTitle: "Education Software Development Company India",
+    metaTitle: "Education Website Engineering Company India",
     metaDescription:
-      "Education software development company in India — LMS, student portals, online exams & campus management for schools, colleges & EdTech startups.",
+      "Education website engineering company in India — LMS, student portals, online exams & campus management for schools, colleges & EdTech startups.",
     keywords: [
       "education software development company",
       "LMS development company India",
@@ -377,9 +377,9 @@ export const industriesData: Partial<Record<IndustrySlug, IndustryPageData>> = {
     headline: "Real-Time Visibility. Faster Deliveries. Lower Costs.",
     subheadline:
       "Fleet tracking, route optimization, warehouse management, and logistics ERP platforms—built for companies that need every shipment tracked and every route optimized.",
-    metaTitle: "Logistics Software Development Company India",
+    metaTitle: "Logistics Website Engineering Company India",
     metaDescription:
-      "Logistics software development company in India — fleet tracking, route optimization, WMS & driver apps for supply chain operators.",
+      "Logistics website engineering company in India — fleet tracking, route optimization, WMS & driver apps for supply chain operators.",
     keywords: [
       "logistics software development company",
       "fleet management software development",
@@ -539,9 +539,9 @@ export const industriesData: Partial<Record<IndustrySlug, IndustryPageData>> = {
     headline: "Build Smarter. Track Everything. Deliver On Time.",
     subheadline:
       "Construction ERP, project tracking, site monitoring, and workforce management platforms—built for contractors and developers who need every rupee and hour accounted for.",
-    metaTitle: "Construction Software Development Company India",
+    metaTitle: "Construction Website Engineering Company India",
     metaDescription:
-      "Construction software development company in India — project tracking, site monitoring, workforce management & construction ERP for builders.",
+      "Construction website engineering company in India — project tracking, site monitoring, workforce management & construction ERP for builders.",
     keywords: [
       "construction software development company",
       "construction ERP development",
