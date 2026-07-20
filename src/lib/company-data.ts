@@ -156,13 +156,13 @@ export interface TeamMember {
 
 export const teamMembers: TeamMember[] = [
   {
-    name: "Rajesh Mehta",
-    role: "Founder & Managing Director",
+    name: "Sanjay Prajapati",
+    role: "Founder & CEO",
     department: "Leadership",
-    bio: "15+ years in enterprise software. Former tech lead at a Fortune 500 manufacturing company.",
+    bio: "Founder & CEO of Maxwell Electrodeal. Leads website engineering and custom software for manufacturers and growing businesses from Vadodara — from product-catalog sites that rank on Google to ERP, CRM, and automation when operations demand it.",
     experience: "15+ years",
-    skills: ["Strategy", "ERP", "Manufacturing"],
-    initials: "RM",
+    skills: ["Website Engineering", "Manufacturing", "B2B Growth", "Product Catalogs", "Delivery"],
+    initials: "SP",
     linkedin: "https://www.linkedin.com/company/maxwellelectrodeal",
   },
   {
@@ -514,7 +514,7 @@ export const teamDepartmentHighlights = [
 ] as const;
 
 export const orgStructure = [
-  { level: "Leadership", teams: ["CEO", "CTO", "VP Engineering"] },
+  { level: "Leadership", teams: ["CEO — Sanjay Prajapati", "CTO", "VP Engineering"] },
   { level: "Delivery", teams: ["Project Management", "Client Success"] },
   { level: "Engineering", teams: ["Full-Stack", "Mobile", "Backend", "QA"] },
   { level: "Specialists", teams: ["AI/ML", "Cloud/DevOps", "Design"] },

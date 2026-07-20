@@ -10,7 +10,7 @@ export const seoBlogPhase3Articles: Article[] = [
     metaDescription:
       "ERP software cost in India 2026: ₹8L–₹50L for SMEs. Module pricing, Tally sync, GST compliance, implementation timeline, and vendor checklist.",
     category: "erp",
-    authorId: "rajesh-mehta",
+    authorId: "sanjay-prajapati",
     tags: ["ERP", "India", "Cost", "Manufacturing", "GST", "Tally"],
     publishedAt: "2026-05-01",
     featured: true,
@@ -160,7 +160,7 @@ export const seoBlogPhase3Articles: Article[] = [
     metaDescription:
       "Custom software development India vs off-the-shelf SaaS: TCO, workflow fit, GST/Tally integration, and a scored decision framework for 2026.",
     category: "software-development",
-    authorId: "rajesh-mehta",
+    authorId: "sanjay-prajapati",
     tags: ["Custom Software", "SaaS", "India", "Strategy", "TCO"],
     publishedAt: "2026-05-05",
     featured: true,
@@ -273,7 +273,7 @@ export const seoBlogPhase3Articles: Article[] = [
     metaDescription:
       "Best CRM for Indian manufacturing 2026: custom vs Salesforce, distributor beats, OEM pipelines, WhatsApp field sales, and Tally integration.",
     category: "crm",
-    authorId: "rajesh-mehta",
+    authorId: "sanjay-prajapati",
     tags: ["CRM", "Manufacturing", "India", "B2B", "Sales"],
     publishedAt: "2026-05-08",
     featured: true,
@@ -384,7 +384,7 @@ export const seoBlogPhase3Articles: Article[] = [
     metaDescription:
       "Mobile app development cost India 2026: iOS, Android, Flutter, React Native. MVP ₹3L–₹10L, enterprise ₹12L–₹25L+. Full platform comparison.",
     category: "mobile-apps",
-    authorId: "rajesh-mehta",
+    authorId: "sanjay-prajapati",
     tags: ["Mobile", "India", "Cost", "Flutter", "React Native", "iOS", "Android"],
     publishedAt: "2026-05-12",
     featured: true,
@@ -515,7 +515,7 @@ export const seoBlogPhase3Articles: Article[] = [
     metaDescription:
       "Choose a software development company in Vadodara: ERP, mobile, AI evaluation criteria, local references, Tally integration, and milestone contracts.",
     category: "software-development",
-    authorId: "rajesh-mehta",
+    authorId: "sanjay-prajapati",
     tags: ["Vadodara", "Gujarat", "Vendor Selection", "ERP", "India"],
     publishedAt: "2026-05-18",
     intro:
@@ -614,7 +614,7 @@ export const seoBlogPhase3Articles: Article[] = [
     metaDescription:
       "Custom ERP vs Tally Prime for Gujarat businesses: when to keep Tally, when to build ERP, hybrid integration patterns, and 2026 cost guidance.",
     category: "erp",
-    authorId: "rajesh-mehta",
+    authorId: "sanjay-prajapati",
     tags: ["ERP", "Tally", "Gujarat", "Manufacturing", "Integration"],
     publishedAt: "2026-05-22",
     featured: true,
@@ -719,7 +719,7 @@ export const seoBlogPhase3Articles: Article[] = [
     metaDescription:
       "AI software development India 2026: computer vision, document AI, forecasting, LLM integration costs ₹5L–₹30L+, and ROI frameworks for SMEs.",
     category: "ai",
-    authorId: "rajesh-mehta",
+    authorId: "sanjay-prajapati",
     tags: ["AI", "India", "Computer Vision", "LLM", "Manufacturing"],
     publishedAt: "2026-05-28",
     featured: true,
@@ -834,7 +834,7 @@ export const seoBlogPhase3Articles: Article[] = [
     metaDescription:
       "Professional website cost India 2026: corporate sites ₹1L–₹5L, ecommerce ₹3L–₹12L, Next.js B2B ₹2L–₹8L. Features, GST, hosting guide.",
     category: "web-development",
-    authorId: "rajesh-mehta",
+    authorId: "sanjay-prajapati",
     tags: ["Web Development", "India", "Cost", "Next.js", "SEO"],
     publishedAt: "2026-06-10",
     featured: true,

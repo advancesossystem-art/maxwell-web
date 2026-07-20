@@ -11,11 +11,11 @@ import {
   buildIndustryServiceSchema,
   buildServiceSchema,
 } from "@/lib/seo/organization-schema";
-import { getAuthorById } from "@/lib/content/authors";
+import { getFounderAuthor } from "@/lib/content/authors";
 
 export function ServicePageJsonLd({ service }: { service: import("@/lib/services-data").ServicePageData }) {
   const serviceSchema = buildServiceSchema(service);
-  const founder = getAuthorById("rajesh-mehta");
+  const founder = getFounderAuthor();
   const founderSchema = founder
     ? { "@context": "https://schema.org", ...buildPersonAuthorNode(founder) }
     : null;

@@ -3,12 +3,12 @@ import { siteConfig } from "@/lib/constants";
 import { teamMembers } from "@/lib/company-data";
 import { buildBreadcrumbSchema } from "@/lib/seo/breadcrumbs";
 import { buildPersonAuthorNode } from "@/lib/seo/organization-schema";
-import { getAuthorById } from "@/lib/content/authors";
+import { getAuthorById, getFounderAuthor } from "@/lib/content/authors";
 import { seoIds } from "@/lib/seo/config";
 
 /** E-E-A-T team page — Person entities for leadership and specialists. */
 export function TeamAboutPageJsonLd() {
-  const founder = getAuthorById("rajesh-mehta");
+  const founder = getFounderAuthor();
   const leadership = teamMembers
     .filter((m) => m.department === "Leadership")
     .map((m) => {

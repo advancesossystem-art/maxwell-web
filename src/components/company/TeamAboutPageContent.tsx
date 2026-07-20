@@ -5,12 +5,13 @@ import { TeamPageContent } from "@/components/company/TeamPageContent";
 import { AccentGradient } from "@/components/design/typography";
 import { Card } from "@/components/design/Card";
 import { H3, Text } from "@/components/design/typography";
-import { getAuthorById } from "@/lib/content/authors";
+import { getFounderAuthor } from "@/lib/content/authors";
+import { founderProfile } from "@/lib/trust/founder-profile";
 import { companyMetricDisplay } from "@/lib/company-metrics";
 import { socialProfiles } from "@/lib/seo/config";
 
 export function TeamAboutPageContent() {
-  const founder = getAuthorById("rajesh-mehta");
+  const founder = getFounderAuthor();
   const founderLinkedIn =
     founder?.linkedin ?? socialProfiles.find((url) => url.includes("linkedin.com"));
 
@@ -47,6 +48,12 @@ export function TeamAboutPageContent() {
                     <Text className="mt-1 text-sm text-[var(--v6-text-muted)]">{founder.position}</Text>
                   ) : null}
                   <Text className="mt-4 leading-relaxed">{founder.bio}</Text>
+                  <blockquote className="mt-4 border-l-2 border-[#4f46e5]/40 pl-4 text-sm leading-relaxed text-[var(--v6-text-secondary)]">
+                    &ldquo;{founderProfile.message}&rdquo;
+                    <footer className="mt-2 font-medium text-[var(--v6-text)]">
+                      — {founder.name}, {founder.role}
+                    </footer>
+                  </blockquote>
                   <Text className="mt-3 text-sm text-[var(--v6-text-secondary)]">
                     <span className="font-semibold text-[var(--v6-text)]">Expertise:</span>{" "}
                     {founder.expertise.join(" · ")}
@@ -66,7 +73,7 @@ export function TeamAboutPageContent() {
                       Company story
                     </Link>
                     <Link href="/book-consultation" className="v6-btn v6-btn-primary !min-h-9 text-sm">
-                      Book with Rajesh
+                      Book with Sanjay
                     </Link>
                   </div>
                 </div>

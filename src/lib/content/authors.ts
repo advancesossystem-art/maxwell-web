@@ -1,4 +1,5 @@
 import { teamMembers } from "@/lib/company-data";
+import { founderProfile, founderAuthorSlugAliases } from "@/lib/trust/founder-profile";
 import { socialProfiles } from "@/lib/seo/config";
 import { buildSearchIndex } from "./search";
 import { resolveContentAuthorId } from "./resolve-author";
@@ -28,10 +29,10 @@ const authorOverrides: Record<
   string,
   Partial<Pick<Author, "role" | "position" | "specialization" | "isFounder">>
 > = {
-  "rajesh-mehta": {
-    role: "Founder & Managing Director",
-    position: "Founder & Managing Director",
-    specialization: "ERP strategy, manufacturing operations, digital transformation",
+  "sanjay-prajapati": {
+    role: founderProfile.role,
+    position: founderProfile.role,
+    specialization: founderProfile.specialization,
     isFounder: true,
   },
   "priya-sharma": {
@@ -82,7 +83,7 @@ const authorOverrides: Record<
 };
 
 const editorialAuthorIds = new Set([
-  "rajesh-mehta",
+  "sanjay-prajapati",
   "priya-sharma",
   "amit-patel",
   "sneha-reddy",
@@ -120,12 +121,14 @@ export const authors: Author[] = teamMembers
 
 export function getAuthorById(id: string): Author | undefined {
   if (id === "maxwell-team") return undefined;
-  return authors.find((a) => a.id === id);
+  const resolvedId = founderAuthorSlugAliases[id] ?? id;
+  return authors.find((a) => a.id === resolvedId);
 }
 
 export function getAuthorBySlug(slug: string): Author | undefined {
   if (slug === "maxwell-team") return undefined;
-  return authors.find((a) => a.slug === slug);
+  const resolvedSlug = founderAuthorSlugAliases[slug] ?? slug;
+  return authors.find((a) => a.slug === resolvedSlug);
 }
 
 export function getFounderAuthor(): Author {

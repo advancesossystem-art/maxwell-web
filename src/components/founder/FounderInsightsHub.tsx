@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { founderInsights } from "@/lib/founder-insights-data";
 import { getFounderAuthor } from "@/lib/content/authors";
+import { founderProfile } from "@/lib/trust/founder-profile";
 import { PageHero } from "@/components/design/PageHero";
 import { PageSection } from "@/components/design/PageSection";
 import { Card } from "@/components/design/Card";
@@ -26,13 +27,16 @@ export function FounderInsightsHub() {
               </h1>
               {founder.role ? <Caption className="text-brand-500">{founder.role}</Caption> : null}
               <p className="mt-4 max-w-2xl text-[var(--v6-text-secondary)]">{founder.bio}</p>
+              <blockquote className="mt-5 max-w-2xl border-l-2 border-brand-600/50 pl-4 text-sm leading-relaxed text-[var(--v6-text-secondary)] md:text-base">
+                &ldquo;{founderProfile.message}&rdquo;
+              </blockquote>
               <Link href={`/authors/${founder.slug}`} className="mt-4 inline-block text-sm text-brand-600 hover:text-brand-500">
                 Full author profile →
               </Link>
             </div>
           </div>
         }
-        description="Practical perspectives on ERP, CRM, AI, automation, and technology strategy — from delivery experience, not theory."
+        description={`Practical perspectives from ${founderProfile.name}, ${founderProfile.role} — website engineering for manufacturers, product catalogs, B2B inquiry conversion, and supporting ERP, CRM, and automation when operations demand it.`}
       />
 
       <PageSection>
