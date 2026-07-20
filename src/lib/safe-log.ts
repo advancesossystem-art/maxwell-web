@@ -4,7 +4,5 @@ export function logLeadReceived(summary: {
   tier: string;
   score: number;
 }): void {
-  if (process.env.NODE_ENV !== "production") {
-    console.log("[Lead Submission]", summary);
-  }
+  console.log("[Lead Submission]", summary);
 }

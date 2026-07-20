@@ -151,25 +151,26 @@ function LeadContactFormInner({
       return;
     }
 
-    const validation = isTwoStep
-      ? validateConsultationFormFields({
-          name: step1Data?.name ?? raw.name,
-          email: step1Data?.email ?? raw.email,
-          phone: step1Data?.phone ?? phone,
-          company: raw.company,
-          message: raw.message,
-          projectType: step1Data?.projectType ?? raw.projectType,
-          budget: raw.budget,
-        })
-      : validateLeadFormFields({
-          name: raw.name,
-          email: raw.email,
-          phone,
-          company: raw.company,
-          message: raw.message,
-          projectType: raw.projectType,
-          budget: raw.budget,
-        });
+    const validation =
+      isTwoStep || source === "contact"
+        ? validateConsultationFormFields({
+            name: step1Data?.name ?? raw.name,
+            email: step1Data?.email ?? raw.email,
+            phone: step1Data?.phone ?? phone,
+            company: raw.company,
+            message: raw.message,
+            projectType: step1Data?.projectType ?? raw.projectType,
+            budget: raw.budget,
+          })
+        : validateLeadFormFields({
+            name: raw.name,
+            email: raw.email,
+            phone,
+            company: raw.company,
+            message: raw.message,
+            projectType: raw.projectType,
+            budget: raw.budget,
+          });
 
     if (!validation.success) {
       setFieldErrors(validation.errors);
@@ -317,9 +318,14 @@ function LeadContactFormInner({
               </select>
             </FormField>
             {!isTwoStep ? (
-              <FormField label="Project Budget" htmlFor="budget" required error={fieldErrors.budget}>
-                <select id="budget" name="budget" required className={ic(fieldErrors.budget)}>
-                  <option value="">Select budget range</option>
+              <FormField
+                label="Project Budget"
+                htmlFor="budget"
+                error={fieldErrors.budget}
+                hint="Optional — helps us prioritize your request"
+              >
+                <select id="budget" name="budget" className={ic(fieldErrors.budget)}>
+                  <option value="">Select budget range (optional)</option>
                   {budgetOptions.map((b) => (
                     <option key={b} value={b}>
                       {b}
@@ -376,22 +382,23 @@ function LeadContactFormInner({
           <FormField
             label="Project Details"
             htmlFor="message"
-            required={!isTwoStep}
             error={fieldErrors.message}
-            hint={isTwoStep ? "Optional — share goals or timeline if you have them" : undefined}
+            hint={
+              isTwoStep || source === "contact"
+                ? "Optional — share goals or timeline if you have them"
+                : undefined
+            }
           >
             <textarea
               id="message"
               name="message"
-              required={!isTwoStep}
               rows={compact ? 4 : 5}
-              minLength={isTwoStep ? undefined : 20}
               maxLength={5000}
               defaultValue={defaultMessage}
               className={cn(ic(fieldErrors.message), "resize-none")}
               placeholder={
-                isTwoStep
-                  ? "Brief context for your consultation (optional)..."
+                isTwoStep || source === "contact"
+                  ? "Brief context for your request (optional)..."
                   : "Tell us about your project goals, timeline, and requirements..."
               }
             />

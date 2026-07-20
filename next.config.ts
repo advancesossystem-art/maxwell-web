@@ -1,5 +1,80 @@
 import type { NextConfig } from "next";
 
+type Redirect = {
+  source: string;
+  destination: string;
+  permanent: boolean;
+};
+
+/**
+ * Legacy paths Google still discovers. Each entry also gets a trailing-slash
+ * variant that jumps straight to the final URL (avoids /old/ → /old → /new chains).
+ */
+const permanentRedirects: Array<{ source: string; destination: string }> = [
+  { source: "/services/software-development", destination: "/services/custom-software-development" },
+  { source: "/services/web-development", destination: "/services/website-development" },
+  { source: "/services/ai-development", destination: "/services/ai-solutions" },
+  { source: "/services/software-development-mumbai", destination: "/locations/india/mumbai" },
+  { source: "/services/software-development-delhi", destination: "/locations/india/delhi" },
+  { source: "/services/software-development-bangalore", destination: "/locations/india/bengaluru" },
+  { source: "/services/software-development-hyderabad", destination: "/locations/india/hyderabad" },
+  { source: "/services/software-development-pune", destination: "/locations/india/pune" },
+  { source: "/case-studies/crm-implementation", destination: "/case-studies/retail-analytics" },
+  { source: "/case-studies/textile-management-system", destination: "/case-studies/manufacturing-erp" },
+  { source: "/case-studies/business-automation", destination: "/case-studies/saas-workforce-management" },
+  { source: "/resources/erp-buyer-guide", destination: "/resources/erp-readiness-checklist" },
+  { source: "/privacy", destination: "/privacy-policy" },
+  { source: "/terms", destination: "/terms-of-service" },
+  { source: "/web-development-company-usa", destination: "/solutions/web-development-company-usa" },
+  { source: "/web-development-company-uae", destination: "/solutions/web-development-company-uae" },
+  { source: "/mobile-app-development-usa", destination: "/solutions/mobile-app-development-company-usa" },
+  { source: "/mobile-app-development-uae", destination: "/solutions/mobile-app-development-company-uae" },
+  { source: "/custom-software-development-usa", destination: "/solutions/custom-software-development-company-usa" },
+  { source: "/custom-software-development-uae", destination: "/solutions/custom-software-development-company-uae" },
+  { source: "/custom-software-development-uk", destination: "/solutions/custom-software-development-company" },
+  { source: "/software-development-company", destination: "/solutions/software-development-company" },
+  { source: "/erp-development-company", destination: "/solutions/erp-development-company" },
+  { source: "/crm-development-company", destination: "/solutions/crm-development-company" },
+  { source: "/website-development-company", destination: "/solutions/website-development-company" },
+  { source: "/web-development-company", destination: "/solutions/website-development-company" },
+  { source: "/mobile-app-development-company", destination: "/solutions/mobile-app-development-company" },
+  { source: "/ai-development-company", destination: "/solutions/ai-development-company" },
+  { source: "/digital-transformation-company", destination: "/solutions/digital-transformation-company" },
+  { source: "/it-consulting-company", destination: "/solutions/it-consulting-company" },
+  { source: "/business-automation-services", destination: "/solutions/business-automation-services" },
+  { source: "/software-development-company-india", destination: "/solutions/software-development-company-india" },
+  { source: "/software-development-company-vadodara", destination: "/solutions/software-development-company-vadodara" },
+  { source: "/software-development-company-gujarat", destination: "/solutions/software-development-company-gujarat" },
+  { source: "/erp-development-company-vadodara", destination: "/solutions/erp-development-company-vadodara" },
+  { source: "/erp-development-company-gujarat", destination: "/solutions/erp-development-company-gujarat" },
+  { source: "/vadodara", destination: "/locations/india/vadodara" },
+  { source: "/gujarat", destination: "/locations/india/gujarat" },
+  { source: "/discovery-call", destination: "/book-consultation" },
+  // Soft-404 / legacy paths still appearing in Search Console
+  { source: "/portal", destination: "/company" },
+  { source: "/founders", destination: "/about" },
+  { source: "/founder", destination: "/about" },
+  { source: "/team", destination: "/about" },
+  { source: "/home", destination: "/" },
+  { source: "/login", destination: "/admin/login" },
+  { source: "/index.html", destination: "/" },
+];
+
+function withTrailingSlashVariants(rules: Array<{ source: string; destination: string }>): Redirect[] {
+  const out: Redirect[] = [];
+  for (const rule of rules) {
+    out.push({ source: rule.source, destination: rule.destination, permanent: true });
+    if (!rule.source.endsWith("/")) {
+      out.push({
+        source: `${rule.source}/`,
+        destination: rule.destination,
+        permanent: true,
+      });
+    }
+  }
+  return out;
+}
+
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   compress: true,
@@ -28,6 +103,18 @@ const nextConfig: NextConfig = {
         ],
       },
       {
+        source: "/thank-you",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" }],
+      },
+      {
+        source: "/thank-you/",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" }],
+      },
+      {
+        source: "/admin/:path*",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" }],
+      },
+      {
         source: "/_next/static/:path*",
         headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
       },
@@ -38,71 +125,7 @@ const nextConfig: NextConfig = {
     ];
   },
   async redirects() {
-    return [
-      {
-        source: "/services/software-development",
-        destination: "/services/custom-software-development",
-        permanent: true,
-      },
-      { source: "/services/web-development", destination: "/services/website-development", permanent: true },
-      { source: "/services/ai-development", destination: "/services/ai-solutions", permanent: true },
-      {
-        source: "/services/software-development-mumbai",
-        destination: "/locations/india/mumbai",
-        permanent: true,
-      },
-      {
-        source: "/services/software-development-delhi",
-        destination: "/locations/india/delhi",
-        permanent: true,
-      },
-      {
-        source: "/services/software-development-bangalore",
-        destination: "/locations/india/bengaluru",
-        permanent: true,
-      },
-      {
-        source: "/services/software-development-hyderabad",
-        destination: "/locations/india/hyderabad",
-        permanent: true,
-      },
-      {
-        source: "/services/software-development-pune",
-        destination: "/locations/india/pune",
-        permanent: true,
-      },
-      { source: "/case-studies/crm-implementation", destination: "/case-studies/retail-analytics", permanent: true },
-      { source: "/case-studies/textile-management-system", destination: "/case-studies/manufacturing-erp", permanent: true },
-      { source: "/case-studies/business-automation", destination: "/case-studies/saas-workforce-management", permanent: true },
-      { source: "/resources/erp-buyer-guide", destination: "/resources/erp-readiness-checklist", permanent: true },
-      { source: "/privacy", destination: "/privacy-policy", permanent: true },
-      { source: "/terms", destination: "/terms-of-service", permanent: true },
-      { source: "/web-development-company-usa", destination: "/solutions/web-development-company-usa", permanent: true },
-      { source: "/web-development-company-uae", destination: "/solutions/web-development-company-uae", permanent: true },
-      { source: "/mobile-app-development-usa", destination: "/solutions/mobile-app-development-company-usa", permanent: true },
-      { source: "/mobile-app-development-uae", destination: "/solutions/mobile-app-development-company-uae", permanent: true },
-      { source: "/custom-software-development-usa", destination: "/solutions/custom-software-development-company-usa", permanent: true },
-      { source: "/custom-software-development-uae", destination: "/solutions/custom-software-development-company-uae", permanent: true },
-      { source: "/custom-software-development-uk", destination: "/solutions/custom-software-development-company", permanent: true },
-      { source: "/software-development-company", destination: "/solutions/software-development-company", permanent: true },
-      { source: "/erp-development-company", destination: "/solutions/erp-development-company", permanent: true },
-      { source: "/crm-development-company", destination: "/solutions/crm-development-company", permanent: true },
-      { source: "/website-development-company", destination: "/solutions/website-development-company", permanent: true },
-      { source: "/web-development-company", destination: "/solutions/website-development-company", permanent: true },
-      { source: "/mobile-app-development-company", destination: "/solutions/mobile-app-development-company", permanent: true },
-      { source: "/ai-development-company", destination: "/solutions/ai-development-company", permanent: true },
-      { source: "/digital-transformation-company", destination: "/solutions/digital-transformation-company", permanent: true },
-      { source: "/it-consulting-company", destination: "/solutions/it-consulting-company", permanent: true },
-      { source: "/business-automation-services", destination: "/solutions/business-automation-services", permanent: true },
-      { source: "/software-development-company-india", destination: "/solutions/software-development-company-india", permanent: true },
-      { source: "/software-development-company-vadodara", destination: "/solutions/software-development-company-vadodara", permanent: true },
-      { source: "/software-development-company-gujarat", destination: "/solutions/software-development-company-gujarat", permanent: true },
-      { source: "/erp-development-company-vadodara", destination: "/solutions/erp-development-company-vadodara", permanent: true },
-      { source: "/erp-development-company-gujarat", destination: "/solutions/erp-development-company-gujarat", permanent: true },
-      { source: "/vadodara", destination: "/locations/india/vadodara", permanent: true },
-      { source: "/gujarat", destination: "/locations/india/gujarat", permanent: true },
-      { source: "/discovery-call", destination: "/book-consultation", permanent: true },
-    ];
+    return withTrailingSlashVariants(permanentRedirects);
   },
 };
 

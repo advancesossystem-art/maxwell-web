@@ -9,7 +9,7 @@ import { companyMetricDisplay } from "@/lib/company-metrics";
 export const metadata = createMetadata({
   title: "Get Free Project Estimate — Website, ERP, CRM & Software | Maxwell Electrodeal",
   description:
-    "Get a free estimate for your website, ERP, CRM, AI, or custom software project. 5 fields. Response within 24 hours. No obligation. Vadodara-based team serving India.",
+    "Get a free estimate for your website, ERP, CRM, AI, or custom software project. Quick form. Response within 24 hours. No obligation. Vadodara-based team serving India.",
   path: "/get-estimate",
 });
 
@@ -24,7 +24,7 @@ export default function GetEstimatePage() {
             Get your free project estimate
           </h1>
           <p className="mt-4 max-w-xl text-white/55">
-            5 fields · no obligation · personalized estimate on WhatsApp within 24 hours.
+            Quick form · no obligation · personalized estimate on WhatsApp and email within 24 hours.
           </p>
         </Container>
       </section>
@@ -36,9 +36,9 @@ export default function GetEstimatePage() {
             {/* Form */}
             <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
               <h2 className="font-display text-xl font-bold text-gray-900 mb-6">
-                Quick Estimate — 5 fields, 2 minutes
+                Quick Estimate — about 2 minutes
               </h2>
-              <Suspense>
+              <Suspense fallback={<p className="text-sm text-gray-500">Loading form…</p>}>
                 <QuickEstimateForm />
               </Suspense>
             </div>

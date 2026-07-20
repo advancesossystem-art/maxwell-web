@@ -7,7 +7,14 @@ export type LeadFormPayload = Record<string, unknown>;
 export async function submitLeadForm(
   payload: LeadFormPayload,
   options?: { trackStart?: boolean },
-): Promise<{ success: boolean; message?: string; leadScore?: number; leadTier?: string; error?: string }> {
+): Promise<{
+  success: boolean;
+  message?: string;
+  leadScore?: number;
+  leadTier?: string;
+  emailDelivered?: boolean;
+  error?: string;
+}> {
   if (options?.trackStart !== false && typeof payload.source === "string") {
     trackFormStart(payload.source);
   }
@@ -23,6 +30,7 @@ export async function submitLeadForm(
     message?: string;
     leadScore?: number;
     leadTier?: string;
+    emailDelivered?: boolean;
     error?: string;
   } = {};
 
@@ -50,5 +58,6 @@ export async function submitLeadForm(
     message: body.message,
     leadScore: body.leadScore,
     leadTier: body.leadTier,
+    emailDelivered: body.emailDelivered,
   };
 }

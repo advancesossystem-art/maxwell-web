@@ -4,7 +4,6 @@ import { useState, useMemo, useEffect } from "react";
 import { ToolShell } from "@/components/tools/ToolShell";
 import { ToolFormPanel, ToolField, ToolRangeField } from "@/components/tools/ToolLayout";
 import { MetricCard, MetricGrid } from "@/components/tools/ToolUI";
-import { ToolRelatedLinks } from "@/components/tools/ToolRelatedLinks";
 import { FormField, inputClass } from "@/components/leads/LeadFormFields";
 import { PhoneCountryFields } from "@/components/leads/PhoneCountryFields";
 import { Button } from "@/components/ui/Button";
@@ -13,6 +12,7 @@ import { formatINR } from "@/lib/tools/format";
 import { trackToolStart, trackToolComplete } from "@/lib/tools/analytics";
 import { submitLeadForm } from "@/lib/submit-lead-form";
 import { composeInternationalPhone, defaultCountryIso } from "@/lib/country-phone-codes";
+import { useRouter } from "next/navigation";
 
 const BUSINESS_TYPES = [
   "Manufacturing",
@@ -53,6 +53,7 @@ function calculateRoiMetrics(input: WizardInput) {
 
 export function RoiCalculatorTool() {
   const tool = getToolBySlug("roi-calculator")!;
+  const router = useRouter();
   const [step, setStep] = useState(1);
   const [input, setInput] = useState<WizardInput>({
     businessType: "",
@@ -63,7 +64,6 @@ export function RoiCalculatorTool() {
   const [result, setResult] = useState<ReturnType<typeof calculateRoiMetrics> | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [submitted, setSubmitted] = useState(false);
 
   const preview = useMemo(() => calculateRoiMetrics(input), [input]);
 
@@ -85,6 +85,11 @@ export function RoiCalculatorTool() {
     setError("");
 
     const fd = new FormData(e.currentTarget);
+    if (String(fd.get("website_url") || "").trim()) {
+      router.push("/thank-you?source=tool-roi-calculator");
+      return;
+    }
+
     const phone = composeInternationalPhone(
       String(fd.get("phoneCountry") || defaultCountryIso),
       String(fd.get("phoneLocal") || ""),
@@ -109,8 +114,9 @@ export function RoiCalculatorTool() {
       setError(leadResult.error || "Could not submit. Please try again.");
       return;
     }
-    setSubmitted(true);
-    setStep(4);
+    router.push(
+      `/thank-you?source=tool-roi-calculator${leadResult.leadTier ? `&tier=${leadResult.leadTier}` : ""}`,
+    );
   }
 
   return (
@@ -205,11 +211,9 @@ export function RoiCalculatorTool() {
           title="Step 3 — Your ROI estimate"
           description="Indicative figures based on 60–80% automation of manual work."
           footer={
-            submitted ? null : (
-              <p className="text-sm text-[var(--v6-text-secondary)]">
-                Enter your details below for a detailed analysis tailored to your business.
-              </p>
-            )
+            <p className="text-sm text-[var(--v6-text-secondary)]">
+              Enter your details below for a detailed analysis tailored to your business.
+            </p>
           }
         >
           <MetricGrid columns={2}>
@@ -224,39 +228,29 @@ export function RoiCalculatorTool() {
             <MetricCard label="Payback period" value={`${result.paybackMonths} months`} />
           </MetricGrid>
 
-          {submitted ? (
-            <div className="mt-8 rounded-xl border border-[#4f46e5]/20 bg-[#4f46e5]/5 p-6 text-center">
-              <p className="font-display text-lg font-semibold">Full ROI report requested</p>
-              <p className="mt-2 text-sm text-[var(--v6-text-secondary)]">
-                We&apos;ll email your detailed analysis within 4 business hours.
-              </p>
-              <ToolRelatedLinks slug="roi-calculator" />
+          <form onSubmit={handleLeadSubmit} className="mt-8 space-y-4 rounded-2xl border border-[var(--v6-border)] bg-[#f8fafc] p-6">
+            <h3 className="font-display text-lg font-semibold text-[var(--v6-text)]">
+              Want a detailed analysis for your business?
+            </h3>
+            <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
+              <input name="website_url" type="text" tabIndex={-1} autoComplete="off" />
             </div>
-          ) : (
-            <form onSubmit={handleLeadSubmit} className="mt-8 space-y-4 rounded-2xl border border-[var(--v6-border)] bg-[#f8fafc] p-6">
-              <h3 className="font-display text-lg font-semibold text-[var(--v6-text)]">
-                Want a detailed analysis for your business?
-              </h3>
-              <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
-                <input name="website_url" type="text" tabIndex={-1} autoComplete="off" />
-              </div>
-              <FormField label="Name" htmlFor="roi-name" required>
-                <input id="roi-name" name="name" required className={inputClass} />
-              </FormField>
-              <FormField label="Email" htmlFor="roi-email" required>
-                <input id="roi-email" name="email" type="email" required className={inputClass} />
-              </FormField>
-              <PhoneCountryFields
-                countryInputClassName={inputClass}
-                phoneInputClassName={inputClass}
-                required
-              />
-              {error ? <p className="text-sm text-red-600">{error}</p> : null}
-              <Button type="submit" size="lg" disabled={loading}>
-                {loading ? "Sending…" : "Get My Full ROI Report →"}
-              </Button>
-            </form>
-          )}
+            <FormField label="Name" htmlFor="roi-name" required>
+              <input id="roi-name" name="name" required className={inputClass} />
+            </FormField>
+            <FormField label="Email" htmlFor="roi-email" required>
+              <input id="roi-email" name="email" type="email" required className={inputClass} />
+            </FormField>
+            <PhoneCountryFields
+              countryInputClassName={inputClass}
+              phoneInputClassName={inputClass}
+              required
+            />
+            {error ? <p className="text-sm text-red-600">{error}</p> : null}
+            <Button type="submit" size="lg" disabled={loading}>
+              {loading ? "Sending…" : "Get My Full ROI Report →"}
+            </Button>
+          </form>
         </ToolFormPanel>
       ) : null}
     </ToolShell>

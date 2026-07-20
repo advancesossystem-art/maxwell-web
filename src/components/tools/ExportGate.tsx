@@ -37,6 +37,7 @@ export function ExportGate({
     setLoading(true);
     setError("");
     const fd = new FormData(e.currentTarget);
+    const phoneRaw = String(fd.get("phone") || "").trim();
     try {
       const res = await fetch("/api/leads", {
         method: "POST",
@@ -45,7 +46,7 @@ export function ExportGate({
           source: `tool-${toolSlug}`,
           name: fd.get("name"),
           email: fd.get("email"),
-          phone: fd.get("phone") || undefined,
+          phone: phoneRaw || undefined,
           company: fd.get("company") || undefined,
           message: `[${toolName}] ${resultSummary}`,
           website_url: fd.get("website_url") ?? "",

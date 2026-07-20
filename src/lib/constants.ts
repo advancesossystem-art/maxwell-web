@@ -2,10 +2,26 @@ import { companyMetrics } from "@/lib/company-metrics";
 
 import { businessAddress } from "@/lib/business-address";
 
-const siteUrl =
+const siteUrlRaw =
   typeof process !== "undefined" && process.env.NEXT_PUBLIC_SITE_URL
     ? process.env.NEXT_PUBLIC_SITE_URL
     : "https://maxwellelectrodeal.com";
+
+/** Always apex + no trailing slash — prevents www leaking into canonicals/sitemaps. */
+function normalizeSiteUrl(raw: string): string {
+  try {
+    const u = new URL(raw.includes("://") ? raw : `https://${raw}`);
+    u.hostname = u.hostname.replace(/^www\./i, "");
+    u.hash = "";
+    u.search = "";
+    u.pathname = "";
+    return u.origin;
+  } catch {
+    return "https://maxwellelectrodeal.com";
+  }
+}
+
+const siteUrl = normalizeSiteUrl(siteUrlRaw);
 
 /** Canonical brand disambiguation — schema and AI entity blocks only (not visible hero copy). */
 export const brandDisambiguation =
@@ -21,9 +37,9 @@ export const siteConfig = {
   tagline: "Powering Digital Growth",
   description:
     "India-based enterprise software development company — websites, mobile apps, ERP, CRM, SaaS, AI & cloud for businesses in Gujarat, Mumbai, Bengaluru, Delhi & worldwide.",
-  url: siteUrl.replace(/\/$/, ""),
+  url: siteUrl,
   logoPath: "/logo.webp",
-  logoUrl: `${siteUrl.replace(/\/$/, "")}/logo.webp`,
+  logoUrl: `${siteUrl}/logo.webp`,
   email: "maxwellelectrodealsystems@gmail.com",
   phone: "+91 95868 68538",
   address: businessAddress.formatted,

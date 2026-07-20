@@ -21,18 +21,6 @@ function ThankYouInner() {
 
   const isCareers = source === "careers";
 
-  const calendlyUrl = getCalendlyUrl();
-  const wantsCalendly =
-    !isCareers &&
-    (source === "book-consultation" || source === "discovery-call" || source === "get-estimate");
-  const showCalendlyEmbed = !!calendlyUrl && wantsCalendly;
-  const showCalendlyFallback = wantsCalendly && !calendlyUrl;
-  const whatsappLink = whatsappHref(
-    isCareers
-      ? "Hi, I submitted a job application on your careers page and wanted to follow up."
-      : "Hi, I just submitted a form on your website and would like to schedule a call.",
-  );
-
   const isNewsletter =
     source === "newsletter" ||
     source === "resource-download" ||
@@ -41,19 +29,43 @@ function ThankYouInner() {
     source === "resource-hub" ||
     !!magnet;
 
+  const calendlyUrl = getCalendlyUrl();
+  // Same post-submit scheduling path as Book Strategy Call for every lead (except careers / newsletter).
+  const wantsCalendly = !isCareers && !isNewsletter;
+  const showCalendlyEmbed = !!calendlyUrl && wantsCalendly;
+  const showCalendlyFallback = wantsCalendly && !calendlyUrl;
+  const whatsappLink = whatsappHref(
+    isCareers
+      ? "Hi, I submitted a job application on your careers page and wanted to follow up."
+      : "Hi, I just submitted a form on your website and would like to schedule a call.",
+  );
+
   const sourceLabels: Record<string, string> = {
     contact: "message",
     "get-estimate": "estimate request",
     "project-calculator": "calculator estimate",
     "book-consultation": "consultation request",
     "discovery-call": "discovery call request",
+    "homepage-assessment": "assessment request",
+    "exit-intent": "free audit request",
     newsletter: "newsletter subscription",
     "resource-download": "download request",
     "guide-download": "download request",
     "report-download": "download request",
     "resource-hub": "newsletter subscription",
     careers: "job application",
+    "tool-roi-calculator": "ROI report request",
   };
+
+  const friendlySource =
+    sourceLabels[source] ??
+    (source.startsWith("service-")
+      ? "service quote request"
+      : source.startsWith("industry-")
+        ? "industry inquiry"
+        : source.startsWith("tool-")
+          ? "tool request"
+          : "inquiry");
 
   return (
     <section className="py-24 lg:py-32">

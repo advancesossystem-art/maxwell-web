@@ -116,6 +116,12 @@ export async function rateLimitAsync(
 
 /** Leads API: max 5 submissions per IP per hour (+ burst guard per minute). */
 export async function rateLimitLeads(ip: string): Promise<{ ok: boolean; resetIn: number }> {
+  // Local/dev: allow unlimited submits so form testing is not blocked by spam guards.
+  // Production keeps the real limits (bots / abuse).
+  if (process.env.NODE_ENV !== "production") {
+    return { ok: true, resetIn: 0 };
+  }
+
   const hourly = await rateLimitAsync(`leads-hour:${ip}`, LIMITS.leads, HOUR_MS);
   if (!hourly.ok) return hourly;
   const burst = await rateLimitAsync(`leads-burst:${ip}`, LIMITS.leadsBurst, WINDOW_MS);

@@ -39,7 +39,6 @@ const staticPages = [
   "/pricing",
   "/project-calculator",
   "/book-consultation",
-  "/book-consultation",
   "/privacy-policy",
   "/terms-of-service",
   "/cookie-policy",

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { FormField, inputClass } from "@/components/leads/LeadFormFields";
 import { PhoneCountryFields } from "@/components/leads/PhoneCountryFields";
 import { Button } from "@/components/ui/Button";
@@ -21,9 +22,10 @@ export function ServiceLeadForm({
   formTitle?: string;
   submitLabel?: string;
 }) {
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [done, setDone] = useState(false);
+  const leadSource = source ?? `service-${serviceSlug}`;
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -31,19 +33,26 @@ export function ServiceLeadForm({
     setError("");
 
     const fd = new FormData(e.currentTarget);
+    if (String(fd.get("website_url") || "").trim()) {
+      router.push(`/thank-you?source=${encodeURIComponent(leadSource)}`);
+      return;
+    }
+
     const phone = composeInternationalPhone(
       String(fd.get("phoneCountry") || defaultCountryIso),
       String(fd.get("phoneLocal") || ""),
     );
     const message = String(fd.get("message") || "").trim();
+    const fallback = `${serviceName} quote request from the service page — please follow up.`;
+    const finalMessage = message.length >= 20 ? message : `${fallback} ${message}`.trim();
 
     const result = await submitLeadForm({
-      source: source ?? `service-${serviceSlug}`,
+      source: leadSource,
       name: fd.get("name"),
       email: fd.get("email"),
       phone,
       projectType: serviceName,
-      message: message || `${serviceName} quote request from service page.`,
+      message: finalMessage,
     });
 
     setLoading(false);
@@ -51,7 +60,9 @@ export function ServiceLeadForm({
       setError(result.error || "Could not submit. Please try again.");
       return;
     }
-    setDone(true);
+    router.push(
+      `/thank-you?source=${encodeURIComponent(leadSource)}${result.leadTier ? `&tier=${result.leadTier}` : ""}`,
+    );
   }
 
   return (
@@ -65,43 +76,37 @@ export function ServiceLeadForm({
             Tell us about your project and get a free quote within 4 business hours.
           </p>
 
-          {done ? (
-            <p className="mt-6 rounded-xl border border-[#4f46e5]/20 bg-[#4f46e5]/5 p-4 text-sm text-[var(--v6-text)]">
-              Thanks — we&apos;ll review your project details and respond within 4 business hours.
-            </p>
-          ) : (
-            <form onSubmit={handleSubmit} className="mt-6 space-y-4">
-              <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
-                <input name="website_url" type="text" tabIndex={-1} autoComplete="off" />
-              </div>
-              <FormField label="Name" htmlFor={`svc-name-${serviceSlug}`} required>
-                <input id={`svc-name-${serviceSlug}`} name="name" required className={inputClass} />
-              </FormField>
-              <FormField label="Email" htmlFor={`svc-email-${serviceSlug}`} required>
-                <input id={`svc-email-${serviceSlug}`} name="email" type="email" required className={inputClass} />
-              </FormField>
-              <PhoneCountryFields
-                countryInputClassName={inputClass}
-                phoneInputClassName={inputClass}
+          <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+            <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
+              <input name="website_url" type="text" tabIndex={-1} autoComplete="off" />
+            </div>
+            <FormField label="Name" htmlFor={`svc-name-${serviceSlug}`} required>
+              <input id={`svc-name-${serviceSlug}`} name="name" required className={inputClass} />
+            </FormField>
+            <FormField label="Email" htmlFor={`svc-email-${serviceSlug}`} required>
+              <input id={`svc-email-${serviceSlug}`} name="email" type="email" required className={inputClass} />
+            </FormField>
+            <PhoneCountryFields
+              countryInputClassName={inputClass}
+              phoneInputClassName={inputClass}
+              required
+            />
+            <FormField label="Brief project description" htmlFor={`svc-msg-${serviceSlug}`} required>
+              <textarea
+                id={`svc-msg-${serviceSlug}`}
+                name="message"
                 required
+                rows={4}
+                minLength={20}
+                className={inputClass}
+                placeholder="What problem are you solving? Timeline, users, integrations…"
               />
-              <FormField label="Brief project description" htmlFor={`svc-msg-${serviceSlug}`} required>
-                <textarea
-                  id={`svc-msg-${serviceSlug}`}
-                  name="message"
-                  required
-                  rows={4}
-                  minLength={20}
-                  className={inputClass}
-                  placeholder="What problem are you solving? Timeline, users, integrations…"
-                />
-              </FormField>
-              {error ? <p className="text-sm text-red-600">{error}</p> : null}
-              <Button type="submit" size="lg" disabled={loading}>
-                {loading ? "Sending…" : submitLabel ?? "Get Free Quote →"}
-              </Button>
-            </form>
-          )}
+            </FormField>
+            {error ? <p className="text-sm text-red-600">{error}</p> : null}
+            <Button type="submit" size="lg" disabled={loading}>
+              {loading ? "Sending…" : submitLabel ?? "Get Free Quote →"}
+            </Button>
+          </form>
         </div>
       </Container>
     </section>

@@ -1,13 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { FormField, inputClass } from "@/components/leads/LeadFormFields";
 import { PhoneCountryFields } from "@/components/leads/PhoneCountryFields";
 import { Button } from "@/components/ui/Button";
 import { submitLeadForm } from "@/lib/submit-lead-form";
 import { composeInternationalPhone, defaultCountryIso } from "@/lib/country-phone-codes";
 import { cn } from "@/lib/utils";
-import { trackFormComplete } from "@/lib/conversion-events";
 
 const BUSINESS_TYPES = [
   "Manufacturing",
@@ -22,9 +22,9 @@ const BUSINESS_TYPES = [
 const SERVICE_OPTIONS = ["ERP", "CRM", "Website", "Mobile App", "AI", "Other"] as const;
 
 export function HomepageAssessmentForm() {
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [done, setDone] = useState(false);
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
 
   function toggleService(service: string) {
@@ -39,6 +39,11 @@ export function HomepageAssessmentForm() {
     setError("");
 
     const fd = new FormData(e.currentTarget);
+    if (String(fd.get("website_url") || "").trim()) {
+      router.push("/thank-you?source=homepage-assessment");
+      return;
+    }
+
     const phone = composeInternationalPhone(
       String(fd.get("phoneCountry") || defaultCountryIso),
       String(fd.get("phoneLocal") || ""),
@@ -62,22 +67,8 @@ export function HomepageAssessmentForm() {
       setError(result.error || "Could not submit. Please try again.");
       return;
     }
-    trackFormComplete("homepage-assessment");
-    setDone(true);
-    e.currentTarget.reset();
-    setSelectedServices([]);
-  }
-
-  if (done) {
-    return (
-      <div className="m-6 rounded-2xl border border-[#4f46e5]/20 bg-[#4f46e5]/5 p-6 text-center sm:m-8 lg:m-10">
-        <p className="font-display text-lg font-semibold text-[var(--v6-text)]">
-          Thank you — we&apos;ll be in touch within 4 hours.
-        </p>
-        <p className="mt-2 text-sm text-[var(--v6-text-secondary)]">
-          A solutions consultant will review your needs and follow up with tailored recommendations.
-        </p>
-      </div>
+    router.push(
+      `/thank-you?source=homepage-assessment${result.leadTier ? `&tier=${result.leadTier}` : ""}`,
     );
   }
 

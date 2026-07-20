@@ -54,7 +54,7 @@ export function ProjectCalculator() {
           source: "project-calculator",
           name: contact.name,
           email: contact.email,
-          phone: contact.phone,
+          phone: contact.phone?.trim() || undefined,
           company: contact.company,
           projectType,
           scope,

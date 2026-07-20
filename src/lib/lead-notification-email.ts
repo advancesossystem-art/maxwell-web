@@ -172,6 +172,14 @@ export async function deliverLeadNotificationEmail(payload: LeadPayload): Promis
   const html = buildLeadEmailHtml(payload);
   const replyTo = leadReplyTo(payload, to);
 
+  console.log("[LEAD-DIAG] EMAIL BUILD", {
+    source: payload.source,
+    to,
+    subject,
+    googleScript: isGoogleScriptConfigured(),
+    smtpOrResendConfigured: isEmailDeliveryConfigured(),
+  });
+
   if (!isGoogleScriptConfigured() && !isEmailDeliveryConfigured()) {
     const hint =
       "Set GMAIL_APPS_SCRIPT_URL (recommended for production) or GMAIL_USER + GMAIL_APP_PASSWORD";
@@ -180,27 +188,34 @@ export async function deliverLeadNotificationEmail(payload: LeadPayload): Promis
     }
     console.warn(`[Lead Email] ${hint}`);
     console.log("[Lead Email preview]", { to, subject, text });
+    console.log("[LEAD-DIAG] EMAIL SKIPPED — not configured (dev preview only)");
     return;
   }
 
   if (isGoogleScriptConfigured()) {
     try {
+      console.log("[LEAD-DIAG] TRANSPORTER SELECTED", { transporter: "google-apps-script", to, subject });
       await sendViaGoogleAppsScript({ to, subject, html, text, replyTo });
       if (process.env.NODE_ENV !== "production") {
         console.log(`[Lead Email] Sent via Google Apps Script to ${to}`);
       }
+      console.log("[LEAD-DIAG] sendViaGoogleAppsScript SUCCESS", { to });
       return;
     } catch (scriptError) {
       const detail = scriptError instanceof Error ? scriptError.message : "Google Script failed";
       // Only fall back to SMTP for clear config/auth failures — not after a likely successful send.
       if (!isEmailDeliveryConfigured() || !isGoogleScriptConfigError(scriptError)) {
+        console.log("[LEAD-DIAG] Google Script FAILED (no SMTP fallback)", { detail });
         throw scriptError;
       }
       console.error(`[Lead Email] Google Script failed (${detail}), trying SMTP fallback`);
+      console.log("[LEAD-DIAG] FALLING BACK TO SMTP", { detail });
     }
   }
 
+  console.log("[LEAD-DIAG] TRANSPORTER SELECTED", { transporter: "smtp/resend", to, subject });
   await sendLeadInboxViaSmtp(payload, to, subject, text, html);
+  console.log("[LEAD-DIAG] sendMail SUCCESS", { to, subject });
 }
 
 function firstName(fullName: string): string {

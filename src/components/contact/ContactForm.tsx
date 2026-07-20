@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, Suspense } from "react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 import {
@@ -41,6 +41,7 @@ function fieldInputClass(base: string, hasError?: boolean) {
 }
 
 function ContactFormInner() {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const defaultService = searchParams.get("service") ?? "";
   const defaultIndustry = searchParams.get("industry") ?? "";
@@ -65,7 +66,7 @@ function ContactFormInner() {
     const formData = new FormData(e.currentTarget);
     const raw = Object.fromEntries(formData.entries()) as Record<string, string>;
     if (raw.website_url?.trim()) {
-      setState("success");
+      router.push("/thank-you?source=contact");
       return;
     }
 
@@ -116,8 +117,10 @@ function ContactFormInner() {
         throw new Error(body.error || "Something went wrong");
       }
 
-      setState("success");
-      (e.target as HTMLFormElement).reset();
+      const body = await res.json().catch(() => ({}));
+      router.push(
+        `/thank-you?source=contact${body.leadTier ? `&tier=${body.leadTier}` : ""}`,
+      );
     } catch (err) {
       setState("error");
       setErrorMessage(err instanceof Error ? err.message : "Failed to submit");

@@ -52,6 +52,7 @@ export async function POST(request: Request) {
       success: true,
       leadScore: result.leadScore,
       leadTier: result.leadTier,
+      emailDelivered: result.emailDelivered,
       message: "Lead received",
     });
   } catch (error) {

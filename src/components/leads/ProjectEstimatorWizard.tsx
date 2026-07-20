@@ -203,6 +203,10 @@ function ProjectEstimatorInner() {
         if (!data.name.trim()) e.name = "Name is required";
         if (!data.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email))
           e.email = "Valid email required";
+        const phoneDigits = data.phone.replace(/\D/g, "");
+        if (!data.phone.trim() || phoneDigits.length < 7) {
+          e.phone = "Phone number is required (include country code, e.g. +91…)";
+        }
       }
       setErrors(e);
       return Object.keys(e).length === 0;
@@ -249,12 +253,31 @@ function ProjectEstimatorInner() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           source: "get-estimate",
-          ...data,
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          company: data.company || undefined,
+          projectType: data.projectType,
           industry,
-          estimatedCost: estimate.estimatedCost.display,
-          estimatedTimeline: estimate.developmentTime,
-          complexity: estimate.complexityLabel,
-          suggestedSolution: estimate.suggestedSolution,
+          scope: data.scope,
+          features: data.features,
+          timeline: data.timeline,
+          budget: data.budget,
+          companySize: data.userCount,
+          message: [
+            `Estimate request for ${data.projectType} (${industry}).`,
+            `Scope: ${data.scope}. Users: ${data.userCount}. Timeline: ${data.timeline}. Budget: ${data.budget}.`,
+            `Features: ${data.features.join(", ") || "none"}.`,
+            `Ballpark shown: ${estimate.estimatedCost.display} · ${estimate.developmentTime}.`,
+          ].join(" "),
+          estimate: {
+            costMin: estimate.estimatedCost.min,
+            costMax: estimate.estimatedCost.max,
+            developmentTime: estimate.developmentTime,
+            teamSize: estimate.teamSize,
+            complexityScore: estimate.complexityScore,
+          },
+          website_url: "",
         }),
       });
       const body = await res.json();
@@ -493,14 +516,15 @@ function ProjectEstimatorInner() {
                             autoComplete="email"
                           />
                         </FormField>
-                        <FormField label="Phone" htmlFor="phone">
+                        <FormField label="Phone / WhatsApp" htmlFor="phone" required error={errors.phone}>
                           <input
                             id="phone"
                             type="tel"
+                            required
                             className={inputClass}
                             value={data.phone}
                             onChange={(e) => saveDraft({ ...data, phone: e.target.value })}
-                            placeholder="+91 XXXXX XXXXX"
+                            placeholder="+91 98765 43210"
                             autoComplete="tel"
                           />
                         </FormField>

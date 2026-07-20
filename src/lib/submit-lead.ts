@@ -19,7 +19,7 @@ const PHONE_REQUIRED_SOURCES = new Set([
   "homepage-assessment",
 ]);
 
-const MESSAGE_REQUIRED_SOURCES = new Set(["contact"]);
+const MESSAGE_DEFAULT_SOURCES = new Set(["contact", "book-consultation", "discovery-call"]);
 
 function isServiceSource(source: string): boolean {
   return /^service-[a-z0-9-]+$/.test(source);
@@ -53,8 +53,9 @@ export const leadSchema = z
       .max(80, "Name is too long")
       .refine(isValidFullName, "Enter a valid full name"),
     email: z
-      .string()
+      .string({ error: "Email is required" })
       .trim()
+      .min(1, "Email is required")
       .refine(isValidWorkEmail, "Enter a valid work email address"),
     phone: z.string().trim().max(25).optional(),
     company: z.string().trim().max(120).optional(),
@@ -107,28 +108,43 @@ export const leadSchema = z
       });
     }
 
+    // Contact / service / industry: allow short messages — defaults applied in submitLead
+    // (matches Book Strategy Call, which does not require a long message).
     if (
-      (MESSAGE_REQUIRED_SOURCES.has(data.source) ||
-        isServiceSource(data.source) ||
-        isIndustrySource(data.source)) &&
+      (isServiceSource(data.source) || isIndustrySource(data.source)) &&
       (!data.message || data.message.trim().length < 20)
     ) {
-      ctx.addIssue({
-        code: "custom",
-        message: "Please describe your project in at least 20 characters",
-        path: ["message"],
-      });
+      // ServiceLeadForm pads short messages client-side; keep a soft server check only when empty
+      if (!data.message?.trim()) {
+        ctx.addIssue({
+          code: "custom",
+          message: "Please describe your project in at least 20 characters",
+          path: ["message"],
+        });
+      }
     }
   });
 
-const CONSULTATION_SOURCES = new Set(["book-consultation", "discovery-call"]);
-
 export type SubmitLeadResult =
-  | { ok: true; leadScore: number; leadTier: string }
+  | { ok: true; leadScore: number; leadTier: string; emailDelivered: boolean }
   | { ok: false; error: string; status: 400 | 503 };
 
+function diag(step: string, detail?: Record<string, unknown>) {
+  console.log(`[LEAD-DIAG] ${step}`, detail ?? "");
+}
+
 export async function submitLead(raw: Record<string, unknown>): Promise<SubmitLeadResult> {
+  diag("FORM RECEIVED", {
+    source: raw.source,
+    hasName: Boolean(raw.name),
+    hasEmail: Boolean(raw.email),
+    hasPhone: Boolean(raw.phone),
+    hasMessage: Boolean(raw.message),
+    keys: Object.keys(raw),
+  });
+
   const data = leadSchema.parse(raw);
+  diag("VALIDATION OK", { source: data.source, email: data.email });
 
   const message =
     data.message?.trim() ||
@@ -136,7 +152,7 @@ export async function submitLead(raw: Record<string, unknown>): Promise<SubmitLe
       ? `Assessment request. Business: ${data.businessType ?? data.industry ?? "—"}. Services: ${data.services?.join(", ") || data.features?.join(", ") || "—"}.`
       : data.source === "exit-intent"
         ? "Exit-intent popup — free software audit request."
-        : CONSULTATION_SOURCES.has(data.source)
+        : MESSAGE_DEFAULT_SOURCES.has(data.source)
       ? "Consultation request — details to be discussed on the call."
       : data.source === "get-estimate"
         ? `Estimate request: ${data.projectType}, ${data.industry}, scope ${data.scope}, budget ${data.budget}, timeline ${data.timeline}. Features: ${data.features?.join(", ") || "none"}.`
@@ -202,32 +218,56 @@ export async function submitLead(raw: Record<string, unknown>): Promise<SubmitLe
     score: leadScore.score,
     tier: leadScore.tier,
   });
+  diag("LEAD ACCEPTED (no DB write — email + CRM only)", {
+    source: payload.source,
+    score: leadScore.score,
+    tier: leadScore.tier,
+  });
 
   void dispatchLeadToCRM(payload).catch((err) => {
     console.error("[Lead CRM]", err instanceof Error ? err.message : "CRM dispatch failed");
   });
 
   try {
+    diag("EMAIL FUNCTION ENTERED", {
+      source: payload.source,
+      toHint: "LEAD_NOTIFICATION_EMAIL / GMAIL_USER",
+      subjectSource: payload.source,
+    });
     await sendLeadNotificationEmail(payload);
+    diag("EMAIL SEND SUCCESS", { source: payload.source });
     void sendLeadAutoReplyEmail(payload).catch((err) => {
       console.error("[Lead Auto-Reply]", err instanceof Error ? err.message : "Auto-reply failed");
     });
+    return {
+      ok: true,
+      leadScore: leadScore.score,
+      leadTier: leadScore.tier,
+      emailDelivered: true,
+    };
   } catch (error) {
     const message = error instanceof Error ? error.message : "Email send failed";
     console.error("[Lead Email]", message);
+    diag("EMAIL SEND FAILURE", { source: payload.source, error: message });
+    // Never drop a validated lead because SMTP failed — log enough to recover from host logs.
+    console.error("[Lead Email Fallback] Accepted lead without inbox delivery:", {
+      source: payload.source,
+      name: payload.name,
+      email: payload.email,
+      phone: payload.phone,
+      company: payload.company,
+      projectType: payload.projectType,
+      budget: payload.budget,
+      message: payload.message?.slice(0, 500),
+      submittedAt: payload.submittedAt,
+      leadScore: leadScore.score,
+      leadTier: leadScore.tier,
+    });
     return {
-      ok: false,
-      error:
-        process.env.NODE_ENV === "production"
-          ? "We could not deliver your message right now. Please email maxwellelectrodealsystems@gmail.com or call us directly."
-          : `Email failed: ${message}. Regenerate App Password at https://myaccount.google.com/apppasswords`,
-      status: 503,
+      ok: true,
+      leadScore: leadScore.score,
+      leadTier: leadScore.tier,
+      emailDelivered: false,
     };
   }
-
-  return {
-    ok: true,
-    leadScore: leadScore.score,
-    leadTier: leadScore.tier,
-  };
 }
