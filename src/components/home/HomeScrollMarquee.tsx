@@ -13,26 +13,18 @@ import { FadeIn } from "@/components/motion/FadeIn";
 function MarqueeTileCard({ tile, wide = false }: { tile: MarqueeTile; wide?: boolean }) {
   return (
     <div
-      className={
-        wide
-          ? "mx-ship-card mx-ship-card--wide"
-          : "mx-ship-card"
-      }
+      className={wide ? "mx-ship-card mx-ship-card--wide" : "mx-ship-card"}
       style={{ backgroundColor: tile.color }}
     >
-      <p className={`font-display font-bold tracking-tight text-white ${wide ? "text-[1.35rem] leading-snug" : "text-xl leading-snug"}`}>
-        {tile.label}
-      </p>
-      <p className="mt-1.5 text-[0.8125rem] font-medium leading-snug text-white/75">
-        {tile.sublabel}
-      </p>
+      <p className="mx-ship-card-title">{tile.label}</p>
+      <p className="mx-ship-card-sub">{tile.sublabel}</p>
     </div>
   );
 }
 
 /**
- * “What we ship” — dual-row scroll marquee matching Jack-style layout:
- * soft band, eyebrow, full-bleed opposing rows, solid color cards, edge fades.
+ * Exact “What we ship” screenshot layout:
+ * soft band, eyebrow only, solid color cards, dual opposing scroll rows.
  */
 export function HomeScrollMarquee() {
   const allTiles = [...homeMarqueeRow1, ...homeMarqueeRow2];
@@ -47,23 +39,13 @@ export function HomeScrollMarquee() {
         <p className="v6-container v6-eyebrow mb-7">What we ship</p>
       </FadeIn>
 
-      {/* Mobile — unique tiles, no loop duplicates */}
       <div className="v6-container grid gap-3 sm:grid-cols-2 md:hidden">
         {allTiles.map((tile) => (
           <MarqueeTileCard key={tile.id} tile={tile} />
         ))}
       </div>
 
-      {/* Desktop — two opposing scroll rows with edge fades */}
-      <div className="relative hidden flex-col gap-3.5 md:flex">
-        <div
-          className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-20 bg-gradient-to-r from-[var(--v6-bg-soft)] to-transparent lg:w-28"
-          aria-hidden
-        />
-        <div
-          className="pointer-events-none absolute inset-y-0 right-0 z-[1] w-20 bg-gradient-to-l from-[var(--v6-bg-soft)] to-transparent lg:w-28"
-          aria-hidden
-        />
+      <div className="relative hidden flex-col gap-3 md:flex">
         <ScrollMarquee direction="right" speed={0.35} baseOffset={180}>
           {homeMarqueeRow1Loop.map((tile, i) => (
             <MarqueeTileCard key={`${tile.id}-r1-${i}`} tile={tile} wide />

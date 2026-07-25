@@ -1,10 +1,9 @@
-/** Homepage “What we ship” tiles — dual-row Jack marquee pattern. */
+/** Homepage “What we ship” tiles — exact dual-row screenshot layout. */
 
 export type MarqueeTile = {
   id: string;
   label: string;
   sublabel: string;
-  /** Solid brand color (matches screenshot cards) */
   color: string;
 };
 
@@ -80,7 +79,6 @@ export const homeMarqueeRow2: MarqueeTile[] = [
   },
 ];
 
-/** Triple for scroll-linked runway so rows stay filled on wide screens. */
 function triple<T>(items: T[]): T[] {
   return [...items, ...items, ...items];
 }

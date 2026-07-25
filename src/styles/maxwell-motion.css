@@ -8,9 +8,9 @@
   will-change: transform;
 }
 
-/* What we ship — card + track (screenshot-faithful) */
+/* What we ship — exact screenshot cards (solid color only) */
 .mx-ship-track {
-  gap: 0.875rem;
+  gap: 0.75rem;
 }
 
 .mx-ship-card {
@@ -18,23 +18,44 @@
   flex-direction: column;
   justify-content: flex-end;
   width: 100%;
-  height: 11.5rem;
+  height: 11.25rem;
   flex-shrink: 0;
   border-radius: 1rem;
-  padding: 1.25rem 1.35rem;
+  padding: 1.35rem 1.5rem;
   color: #fff;
 }
 
 .mx-ship-card--wide {
-  width: 22.5rem;
-  height: 13.75rem;
-  padding: 1.5rem 1.65rem;
+  width: 22rem;
+  height: 13.5rem;
   border-radius: 1.125rem;
+  padding: 1.5rem 1.65rem;
+}
+
+.mx-ship-card-title {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.35rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+.mx-ship-card--wide .mx-ship-card-title {
+  font-size: 1.5rem;
+}
+
+.mx-ship-card-sub {
+  margin-top: 0.4rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.78);
 }
 
 @media (min-width: 640px) {
-  .mx-ship-card {
-    height: 13rem;
+  .mx-ship-card:not(.mx-ship-card--wide) {
+    height: 12.5rem;
   }
 }
 
