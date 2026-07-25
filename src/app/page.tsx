@@ -4,6 +4,7 @@ import { createHomeMetadata } from "@/lib/seo/metadata-utils";
 import { Hero } from "@/components/home/Hero";
 import { HeroMotionEnhancer } from "@/components/home/HeroMotionEnhancer";
 import { HeroJackEntrance } from "@/components/home/HeroJackEntrance";
+import { HomeScrollMarquee } from "@/components/home/HomeScrollMarquee";
 import { AiEntitySummary } from "@/components/seo/AiEntitySummary";
 import { HomepageStructuredData } from "@/components/seo/HomepageStructuredData";
 import { GlobalTrustBar } from "@/components/conversion/GlobalTrustBar";
@@ -84,6 +85,7 @@ export default function HomePage() {
       <Hero />
       <HeroJackEntrance />
       <HeroMotionEnhancer />
+      <HomeScrollMarquee />
       <AiEntitySummary />
       <TrustProofStrip />
       <GlobalTrustBar />
