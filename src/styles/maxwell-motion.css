@@ -1,0 +1,15 @@
+/* Jack-inspired motion utilities (Maxwell homepage) */
+
+.mx-scroll-reveal-text {
+  line-height: 1.65;
+}
+
+.mx-sticky-stack-card {
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mx-sticky-stack-card {
+    transform: none !important;
+  }
+}

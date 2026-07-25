@@ -3,6 +3,8 @@ import dynamic from "next/dynamic";
 import { createHomeMetadata } from "@/lib/seo/metadata-utils";
 import { Hero } from "@/components/home/Hero";
 import { HeroMotionEnhancer } from "@/components/home/HeroMotionEnhancer";
+import { HeroJackEntrance } from "@/components/home/HeroJackEntrance";
+import { HomeScrollMarquee } from "@/components/home/HomeScrollMarquee";
 import { AiEntitySummary } from "@/components/seo/AiEntitySummary";
 import { HomepageStructuredData } from "@/components/seo/HomepageStructuredData";
 import { GlobalTrustBar } from "@/components/conversion/GlobalTrustBar";
@@ -37,6 +39,10 @@ const DevelopmentProcess = dynamic(
   { ssr: true },
 );
 import { HomeCaseStudies } from "@/components/home/HomeCaseStudies";
+const HomeStickyProjects = dynamic(
+  () => import("@/components/home/HomeStickyProjects").then((m) => ({ default: m.HomeStickyProjects })),
+  { ssr: true },
+);
 const HomeToolsSpotlight = dynamic(
   () => import("@/components/home/HomeToolsSpotlight").then((m) => ({ default: m.HomeToolsSpotlight })),
   { ssr: true },
@@ -81,7 +87,9 @@ export default function HomePage() {
     <>
       <HomepageStructuredData />
       <Hero />
+      <HeroJackEntrance />
       <HeroMotionEnhancer />
+      <HomeScrollMarquee />
       <AiEntitySummary />
       <TrustProofStrip />
       <GlobalTrustBar />
@@ -94,6 +102,7 @@ export default function HomePage() {
       <HomeBusinessOutcomes />
       <ServicesExperience />
       <HomeCaseStudies />
+      <HomeStickyProjects />
       <HomeSocialProof />
       <HomepageAssessment />
       <IndustriesShowcase />

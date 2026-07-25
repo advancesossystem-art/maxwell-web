@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "../styles/maxwell-v6.css";
+@import "../styles/maxwell-motion.css";
 
 .sr-only {
   position: absolute;

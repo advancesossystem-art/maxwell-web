@@ -2,8 +2,12 @@
 
 import { partnerComparison, whyMaxwellPillars } from "@/lib/homepage";
 import { FadeIn } from "@/components/motion/FadeIn";
+import { ScrollRevealText } from "@/components/motion/ScrollRevealText";
 import { PrimaryCTA } from "@/components/conversion/PrimaryCTA";
 import { HomeSection, HomeSectionIntro } from "@/components/home/HomeSection";
+
+const whyScrollNarrative =
+  "With deep experience in manufacturing software, we focus on ERP, catalogs, portals, and automation—not generic templates. If you are tired of spreadsheet chaos and want measurable ops growth, we are built for that conversation.";
 
 /** Section 7 — Why Maxwell */
 export function WhyMaxwell() {
@@ -15,9 +19,13 @@ export function WhyMaxwell() {
           wideTitle
           eyebrow="Why Maxwell"
           title="Why businesses choose Maxwell"
-          description="Not another generic agency—a business technology partner with industry depth, transparent delivery, and long-term support."
         />
       </FadeIn>
+
+      <ScrollRevealText
+        text={whyScrollNarrative}
+        className="v6-lead mx-auto mt-8 max-w-2xl text-center text-balance sm:mt-10"
+      />
 
       <ul className="mt-14 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         {whyMaxwellPillars.map((item) => (

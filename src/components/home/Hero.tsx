@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { HeroSidePanel } from "@/components/home/HeroSidePanel";
-import { Button } from "@/components/ui/Button";
+import { HeroMagneticActions } from "@/components/home/HeroMagneticActions";
+import { Magnet } from "@/components/motion/Magnet";
 import { HeroTrustHighlights, VerifiedReviewBadge } from "@/components/conversion/VerifiedReviewBadge";
 import { heroServiceBadges, heroTrustMetrics, homeHero, trustHighlights } from "@/lib/homepage";
-import { WHATSAPP_HREF_CONTACT } from "@/lib/constants";
 import { CONVERSION_EXPECTATIONS } from "@/lib/conversion-copy";
 import { companyMetricDisplay } from "@/lib/company-metrics";
 
@@ -54,12 +54,31 @@ export function Hero() {
       <div className="v6-container">
         <div className="grid items-start gap-8 md:grid-cols-2 md:gap-10">
           <div className="min-w-0">
-            <p className="v6-eyebrow-line v6-eyebrow">{homeHero.eyebrow}</p>
-            <h1 className="v6-hero-title mt-4 text-balance" data-seo-speakable>
+            <p
+              className="v6-eyebrow-line v6-eyebrow mx-reveal-pending"
+              data-hero-enter
+              data-hero-delay="0"
+              data-hero-y="20"
+            >
+              {homeHero.eyebrow}
+            </p>
+            <h1
+              className="v6-hero-title mx-reveal-pending mt-4 text-balance"
+              data-hero-enter
+              data-hero-delay="0.15"
+              data-hero-y="40"
+              data-seo-speakable
+            >
               {homeHero.headlineLine1}{" "}
               <span className="v6-gradient-text">{homeHero.headlineLine2}</span>
             </h1>
-            <p className="v6-lead mt-4 max-w-2xl text-balance lg:max-w-none" data-seo-speakable>
+            <p
+              className="v6-lead mx-reveal-pending mt-4 max-w-2xl text-balance lg:max-w-none"
+              data-hero-enter
+              data-hero-delay="0.35"
+              data-hero-y="20"
+              data-seo-speakable
+            >
               {homeHero.subhead}
             </p>
 
@@ -98,13 +117,8 @@ export function Hero() {
               </a>
             </p>
 
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <Button href={homeHero.primaryCta.href} size="lg" variant="primary">
-                {homeHero.primaryCta.label}
-              </Button>
-              <Button href={WHATSAPP_HREF_CONTACT} size="lg" variant="outline" external>
-                {homeHero.secondaryCta.label}
-              </Button>
+            <div className="mt-6 mx-reveal-pending" data-hero-enter data-hero-delay="0.5" data-hero-y="20">
+              <HeroMagneticActions />
             </div>
             <p className="mt-3 text-sm text-[var(--v6-text-muted)]">
               {CONVERSION_EXPECTATIONS.estimateTimeline} · {CONVERSION_EXPECTATIONS.responseTime} · No obligation
@@ -128,8 +142,16 @@ export function Hero() {
             </ul>
           </div>
 
-          <div className="relative md:sticky md:top-24 md:pl-2 lg:pl-4" data-hero="visual">
-            <HeroSidePanel />
+          <div
+            className="relative mx-reveal-pending md:sticky md:top-24 md:pl-2 lg:pl-4"
+            data-hero="visual"
+            data-hero-enter
+            data-hero-delay="0.6"
+            data-hero-y="30"
+          >
+            <Magnet padding={150} strength={3} className="w-full">
+              <HeroSidePanel />
+            </Magnet>
           </div>
 
           <ul className="v6-trust-bar mobile-content-safe grid gap-4 sm:grid-cols-2 md:col-span-2 lg:grid-cols-5">
