@@ -31,11 +31,12 @@ export function StickyCTA({ context, location = "sticky_bar", className, dismiss
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > 500);
+    const threshold = pathname === "/" ? 1400 : 500;
+    const onScroll = () => setVisible(window.scrollY > threshold);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [pathname]);
 
   if (
     isMobile ||

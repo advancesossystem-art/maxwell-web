@@ -61,11 +61,7 @@ export function ScrollMarquee({
 
   return (
     <div ref={sectionRef} className={cn("overflow-hidden", className)}>
-      <div
-        ref={trackRef}
-        className="flex w-max gap-3 will-change-transform"
-        style={enabled ? undefined : { transform: "none" }}
-      >
+      <div ref={trackRef} className="flex w-max gap-3 will-change-transform">
         {children}
       </div>
     </div>

@@ -25,6 +25,7 @@ const STEPS = ["Industry", "Project", "Team", "Budget", "Timeline"] as const;
 
 /** Don't show until user clears the hero — avoids covering primary CTAs. */
 const SCROLL_SHOW_THRESHOLD = 520;
+const HOMEPAGE_SCROLL_SHOW_THRESHOLD = 1400;
 
 type QuickEstimateData = {
   industry: LeadIndustry;
@@ -59,11 +60,12 @@ export function QuickEstimateWidget({ stickyBarDismissed = false }: { stickyBarD
   useFocusTrap(dialogRef, open);
 
   useEffect(() => {
-    const onScroll = () => setScrolledPastHero(window.scrollY > SCROLL_SHOW_THRESHOLD);
+    const threshold = pathname === "/" ? HOMEPAGE_SCROLL_SHOW_THRESHOLD : SCROLL_SHOW_THRESHOLD;
+    const onScroll = () => setScrolledPastHero(window.scrollY > threshold);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [pathname]);
 
   if (pathname === "/get-estimate" || isMobile || cookieVisible || !scrolledPastHero) return null;
 

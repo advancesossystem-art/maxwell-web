@@ -23,14 +23,16 @@ export function StickyCtaBar() {
   }, []);
 
   useEffect(() => {
+    const minY = pathname === "/" ? 1400 : 300;
+    const maxY = pathname === "/" ? 2200 : 600;
     const onScroll = () => {
       const y = window.scrollY;
-      setInRange(y > 300 && y < 600);
+      setInRange(y > minY && y < maxY);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [pathname]);
 
   function dismiss() {
     sessionStorage.setItem(DISMISS_KEY, "1");
