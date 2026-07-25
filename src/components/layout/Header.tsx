@@ -83,41 +83,6 @@ export function Header() {
   useFocusTrap(drawerRef, mobileOpen);
 
   useEffect(() => {
-    const header = headerRef.current;
-    if (!header) return;
-
-    const isMobile = window.matchMedia("(max-width: 1024px)").matches;
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (isMobile || prefersReducedMotion) return;
-
-    let teardown: (() => void) | undefined;
-    let cancelled = false;
-
-    const start = () => {
-      void import("@/lib/animations/navigation").then(({ runNavbarEntrance }) => {
-        if (cancelled || !headerRef.current) return;
-        teardown = runNavbarEntrance(headerRef.current);
-      });
-    };
-
-    let idleId: number | undefined;
-    const delayId = window.setTimeout(() => {
-      if ("requestIdleCallback" in window) {
-        idleId = window.requestIdleCallback(start, { timeout: 3000 });
-      } else {
-        start();
-      }
-    }, 1500);
-
-    return () => {
-      cancelled = true;
-      window.clearTimeout(delayId);
-      if (idleId !== undefined) window.cancelIdleCallback(idleId);
-      teardown?.();
-    };
-  }, []);
-
-  useEffect(() => {
     setMobileNavReady(true);
   }, []);
 

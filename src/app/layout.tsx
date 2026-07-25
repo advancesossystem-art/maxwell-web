@@ -13,6 +13,7 @@ const inter = Inter({
   display: "swap",
   preload: true,
   adjustFontFallback: true,
+  weight: ["400", "500", "600", "700"],
 });
 
 const spaceGrotesk = Space_Grotesk({

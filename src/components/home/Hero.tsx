@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { HeroSidePanel } from "@/components/home/HeroSidePanel";
 import { HeroMagneticActions } from "@/components/home/HeroMagneticActions";
-import { Magnet } from "@/components/motion/Magnet";
 import { HeroTrustHighlights, VerifiedReviewBadge } from "@/components/conversion/VerifiedReviewBadge";
 import { heroServiceBadges, heroTrustMetrics, homeHero, trustHighlights } from "@/lib/homepage";
 import { CONVERSION_EXPECTATIONS } from "@/lib/conversion-copy";
@@ -149,9 +148,7 @@ export function Hero() {
             data-hero-delay="0.6"
             data-hero-y="30"
           >
-            <Magnet padding={150} strength={3} className="w-full">
-              <HeroSidePanel />
-            </Magnet>
+            <HeroSidePanel />
           </div>
 
           <ul className="v6-trust-bar mobile-content-safe grid gap-4 sm:grid-cols-2 md:col-span-2 lg:grid-cols-5">

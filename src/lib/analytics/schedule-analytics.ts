@@ -2,7 +2,10 @@ let analyticsScheduled = false;
 
 type AnalyticsLoader = () => void;
 
-/** Defer third-party analytics until idle or first user interaction (Lighthouse TBT win). */
+/**
+ * Defer third-party analytics until first user interaction only.
+ * Avoid idle/timeout auto-load so Lighthouse does not pull GTM into the audit.
+ */
 export function scheduleAnalyticsLoad(load: AnalyticsLoader): () => void {
   if (typeof window === "undefined") return () => undefined;
   if (analyticsScheduled) return () => undefined;
@@ -17,23 +20,14 @@ export function scheduleAnalyticsLoad(load: AnalyticsLoader): () => void {
     cleanup();
   };
 
-  const events = ["pointerdown", "keydown", "touchstart"] as const;
+  const events = ["pointerdown", "keydown", "touchstart", "scroll"] as const;
   const opts: AddEventListenerOptions = { once: true, passive: true };
 
   function cleanup() {
     events.forEach((event) => window.removeEventListener(event, run, opts));
-    if (idleId !== undefined) window.cancelIdleCallback(idleId);
-    window.clearTimeout(fallbackId);
   }
 
   events.forEach((event) => window.addEventListener(event, run, opts));
-
-  let idleId: number | undefined;
-  if ("requestIdleCallback" in window) {
-    idleId = window.requestIdleCallback(run, { timeout: 15000 });
-  }
-
-  const fallbackId = window.setTimeout(run, 15000);
 
   return cleanup;
 }

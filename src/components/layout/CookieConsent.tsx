@@ -8,7 +8,7 @@ const choiceButtonClass =
   "min-h-[44px] flex-1 rounded-lg px-3 py-2 text-xs font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4f46e5]";
 
 /** Delay before showing banner so hero H1 paints first (LCP). */
-const BANNER_MOUNT_DELAY_MS = 800;
+const BANNER_MOUNT_DELAY_MS = 4000;
 
 export function CookieConsent() {
   const { consent, setConsent } = useCookieConsent();

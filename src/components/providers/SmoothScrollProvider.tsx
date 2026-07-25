@@ -3,8 +3,7 @@
 import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 
-/** Lenis smooth scroll on marketing routes — performance-conscious */
-const LENIS_INIT_DELAY_MS = 2000;
+/** Lenis smooth scroll on marketing routes — starts after first intentional scroll */
 function isMarketingRoute(pathname: string | null): boolean {
   if (!pathname) return false;
   if (pathname === "/") return true;
@@ -43,8 +42,6 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
     }
 
     let cancelled = false;
-    let delayTimer = 0;
-    let idleId: number | undefined;
 
     async function init() {
       const [{ default: Lenis }] = await Promise.all([import("lenis")]);
@@ -70,22 +67,23 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
       };
     }
 
-    delayTimer = window.setTimeout(() => {
-      if (typeof window.requestIdleCallback === "function") {
-        idleId = window.requestIdleCallback(() => {
-          void init();
-        }, { timeout: 1500 });
-        return;
-      }
+    const start = () => {
       void init();
-    }, LENIS_INIT_DELAY_MS);
+      cleanup();
+    };
+
+    const events = ["wheel", "touchstart", "pointerdown"] as const;
+    const opts: AddEventListenerOptions = { once: true, passive: true };
+
+    function cleanup() {
+      events.forEach((event) => window.removeEventListener(event, start, opts));
+    }
+
+    events.forEach((event) => window.addEventListener(event, start, opts));
 
     return () => {
       cancelled = true;
-      window.clearTimeout(delayTimer);
-      if (idleId !== undefined) {
-        window.cancelIdleCallback(idleId);
-      }
+      cleanup();
       teardownRef.current?.();
     };
   }, [enabled]);

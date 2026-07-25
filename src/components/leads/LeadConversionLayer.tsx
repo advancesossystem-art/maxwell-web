@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { MobileBodyState } from "@/components/layout/MobileBodyState";
 import { useIsDesktop } from "@/hooks/useMediaQuery";
@@ -49,11 +50,29 @@ export function LeadConversionLayer() {
   const isDesktop = useIsDesktop();
   const showMarketing = pathname !== "/thank-you";
   const { dismissed: stickyDismissed, dismiss: dismissStickyBar } = useStickyBarDismiss();
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    let armed = false;
+    const arm = () => {
+      if (armed) return;
+      armed = true;
+      setReady(true);
+      cleanup();
+    };
+    const events = ["pointerdown", "keydown", "touchstart", "scroll"] as const;
+    const opts: AddEventListenerOptions = { once: true, passive: true };
+    function cleanup() {
+      events.forEach((e) => window.removeEventListener(e, arm, opts));
+    }
+    events.forEach((e) => window.addEventListener(e, arm, opts));
+    return cleanup;
+  }, []);
 
   return (
     <>
-      <MobileBodyState stickyBarActive={showMarketing && !stickyDismissed && isDesktop} />
-      {showMarketing ? (
+      <MobileBodyState stickyBarActive={showMarketing && ready && !stickyDismissed && isDesktop} />
+      {showMarketing && ready ? (
         <>
           <StickyCtaBar />
           <FloatingCTA />

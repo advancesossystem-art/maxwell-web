@@ -86,6 +86,7 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     optimizePackageImports: ["animejs", "lenis"],
+    optimizeCss: true,
   },
   async headers() {
     return [
