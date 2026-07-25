@@ -8,6 +8,36 @@
   will-change: transform;
 }
 
+/* What we ship — card + track (screenshot-faithful) */
+.mx-ship-track {
+  gap: 0.875rem;
+}
+
+.mx-ship-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  height: 11.5rem;
+  flex-shrink: 0;
+  border-radius: 1rem;
+  padding: 1.25rem 1.35rem;
+  color: #fff;
+}
+
+.mx-ship-card--wide {
+  width: 22.5rem;
+  height: 13.75rem;
+  padding: 1.5rem 1.65rem;
+  border-radius: 1.125rem;
+}
+
+@media (min-width: 640px) {
+  .mx-ship-card {
+    height: 13rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .mx-sticky-stack-card {
     transform: none !important;

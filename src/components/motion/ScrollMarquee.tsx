@@ -8,16 +8,21 @@ type ScrollMarqueeProps = {
   children: ReactNode;
   className?: string;
   direction?: "left" | "right";
+  /** Scroll influence multiplier */
   speed?: number;
+  /** Initial horizontal offset so rows don’t align */
   baseOffset?: number;
 };
 
-/** Horizontal strip driven by page scroll (Jack marquee pattern). */
+/**
+ * Horizontal strip driven by page scroll (Jack marquee pattern).
+ * Rows move in opposite directions as the user scrolls through the section.
+ */
 export function ScrollMarquee({
   children,
   className,
   direction = "right",
-  speed = 0.3,
+  speed = 0.35,
   baseOffset = 200,
 }: ScrollMarqueeProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -61,7 +66,7 @@ export function ScrollMarquee({
 
   return (
     <div ref={sectionRef} className={cn("overflow-hidden", className)}>
-      <div ref={trackRef} className="flex w-max gap-3 will-change-transform">
+      <div ref={trackRef} className="mx-ship-track flex w-max will-change-transform">
         {children}
       </div>
     </div>

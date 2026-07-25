@@ -15,34 +15,36 @@ function MarqueeTileCard({ tile, wide = false }: { tile: MarqueeTile; wide?: boo
     <div
       className={
         wide
-          ? "flex h-[270px] w-[420px] shrink-0 flex-col justify-end rounded-2xl p-6 text-white"
-          : "flex h-[200px] w-full flex-col justify-end rounded-2xl p-5 text-white sm:h-[220px]"
+          ? "mx-ship-card mx-ship-card--wide"
+          : "mx-ship-card"
       }
-      style={{ background: tile.gradient }}
+      style={{ backgroundColor: tile.color }}
     >
-      <p className={`font-display font-bold tracking-tight ${wide ? "text-2xl" : "text-xl"}`}>
+      <p className={`font-display font-bold tracking-tight text-white ${wide ? "text-[1.35rem] leading-snug" : "text-xl leading-snug"}`}>
         {tile.label}
       </p>
-      <p className="mt-1 text-sm font-medium text-white/75">{tile.sublabel}</p>
+      <p className="mt-1.5 text-[0.8125rem] font-medium leading-snug text-white/75">
+        {tile.sublabel}
+      </p>
     </div>
   );
 }
 
 /**
- * Exact “What we ship” dual-row scroll marquee (Jack-style).
- * Mobile grid + desktop rows both always in DOM for hydration safety.
+ * “What we ship” — dual-row scroll marquee matching Jack-style layout:
+ * soft band, eyebrow, full-bleed opposing rows, solid color cards, edge fades.
  */
 export function HomeScrollMarquee() {
   const allTiles = [...homeMarqueeRow1, ...homeMarqueeRow2];
 
   return (
     <section
-      className="v6-section v6-section--soft overflow-x-clip !pb-10 !pt-16 sm:!pt-24"
+      className="v6-section v6-section--soft overflow-x-clip !pb-12 !pt-14 sm:!pt-20"
       aria-label="What we ship"
       data-home-marquee
     >
       <FadeIn>
-        <p className="v6-container v6-eyebrow mb-6">What we ship</p>
+        <p className="v6-container v6-eyebrow mb-7">What we ship</p>
       </FadeIn>
 
       {/* Mobile — unique tiles, no loop duplicates */}
@@ -53,21 +55,21 @@ export function HomeScrollMarquee() {
       </div>
 
       {/* Desktop — two opposing scroll rows with edge fades */}
-      <div className="relative hidden flex-col gap-3 md:flex">
+      <div className="relative hidden flex-col gap-3.5 md:flex">
         <div
-          className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-16 bg-gradient-to-r from-[var(--v6-bg-soft)] to-transparent lg:w-24"
+          className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-20 bg-gradient-to-r from-[var(--v6-bg-soft)] to-transparent lg:w-28"
           aria-hidden
         />
         <div
-          className="pointer-events-none absolute inset-y-0 right-0 z-[1] w-16 bg-gradient-to-l from-[var(--v6-bg-soft)] to-transparent lg:w-24"
+          className="pointer-events-none absolute inset-y-0 right-0 z-[1] w-20 bg-gradient-to-l from-[var(--v6-bg-soft)] to-transparent lg:w-28"
           aria-hidden
         />
-        <ScrollMarquee direction="right">
+        <ScrollMarquee direction="right" speed={0.35} baseOffset={180}>
           {homeMarqueeRow1Loop.map((tile, i) => (
             <MarqueeTileCard key={`${tile.id}-r1-${i}`} tile={tile} wide />
           ))}
         </ScrollMarquee>
-        <ScrollMarquee direction="left">
+        <ScrollMarquee direction="left" speed={0.35} baseOffset={320}>
           {homeMarqueeRow2Loop.map((tile, i) => (
             <MarqueeTileCard key={`${tile.id}-r2-${i}`} tile={tile} wide />
           ))}
