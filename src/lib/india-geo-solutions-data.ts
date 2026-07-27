@@ -1,4 +1,5 @@
 import { siteConfig } from "./constants";
+import { TCO_FAQ_ANSWER } from "./tco-model";
 import type { SolutionPageData } from "./solutions-types";
 
 type IndiaServiceKey = "software" | "erp" | "web" | "mobile" | "crm" | "ai";
@@ -719,8 +720,7 @@ export const indiaGeoSolutionsData: Record<IndiaGeoSolutionSlug, SolutionPageDat
       },
       {
         question: "What is the total cost of ownership (TCO) for a website in Vadodara?",
-        answer:
-          "TCO = upfront build cost + annual plugin/theme licences + annual hosting + annual maintenance + developer overhead + performance revenue loss over the lifecycle. For a 3-year cycle: WordPress TCO ≈ ₹2,77,000; Maxwell Next.js TCO ≈ ₹1,20,000. Net saving: ₹1,57,000.",
+        answer: TCO_FAQ_ANSWER,
       },
     ],
   }),

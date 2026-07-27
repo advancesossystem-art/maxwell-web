@@ -55,6 +55,10 @@ export const WHATSAPP_HREF_CONTACT =
 export const WHATSAPP_HREF_FLOATING =
   "https://wa.me/919586868538?text=Hi%20Maxwell%2C%20I'm%20interested%20in%20website%20development" as const;
 
+/** Header / hero — speak with an engineer (not generic contact). */
+export const WHATSAPP_HREF_ENGINEER =
+  "https://wa.me/919586868538?text=Hi%20Maxwell%2C%20I'd%20like%20to%20speak%20with%20an%20engineer%20about%20my%20project." as const;
+
 /** @deprecated Use WHATSAPP_NUMBER_E164 */
 export function whatsappNumberE164(): string {
   return WHATSAPP_NUMBER_E164;

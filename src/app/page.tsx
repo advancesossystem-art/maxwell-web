@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { createHomeMetadata } from "@/lib/seo/metadata-utils";
 import { Hero } from "@/components/home/Hero";
+import { HeroTrustBadges } from "@/components/conversion/HeroTrustBadges";
 import { AiEntitySummary } from "@/components/seo/AiEntitySummary";
 import { HomepageStructuredData } from "@/components/seo/HomepageStructuredData";
 import { GlobalTrustBar } from "@/components/conversion/GlobalTrustBar";
@@ -19,6 +20,7 @@ export default function HomePage() {
     <>
       <HomepageStructuredData />
       <Hero />
+      <HeroTrustBadges />
       <AiEntitySummary />
       <TrustProofStrip />
       <GlobalTrustBar />

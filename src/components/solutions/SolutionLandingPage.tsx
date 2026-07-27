@@ -13,6 +13,7 @@ import {
 import { SolutionPageJsonLd } from "@/components/seo/JsonLd";
 import { FounderAuthorityCard } from "@/components/trust/FounderAuthorityCard";
 import { ProofSignalsBar } from "@/components/trust/ProofSignalsBar";
+import { HeroTrustBadges } from "@/components/conversion/HeroTrustBadges";
 import type { SolutionPageData } from "@/lib/solutions-data";
 
 export function SolutionLandingPage({ solution }: { solution: SolutionPageData }) {
@@ -20,6 +21,7 @@ export function SolutionLandingPage({ solution }: { solution: SolutionPageData }
     <>
       <SolutionPageJsonLd solution={solution} />
       <SolutionHero solution={solution} />
+      <HeroTrustBadges compact />
       <ProofSignalsBar compact />
       <FounderAuthorityCard compact />
       <SolutionMarketInsights solution={solution} />

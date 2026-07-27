@@ -5,6 +5,8 @@ import { notFound } from "next/navigation";
 import { siteConfig } from "@/lib/constants";
 import { businessAddress } from "@/lib/business-address";
 import { FaqPageJsonLd } from "@/components/seo/FaqPageJsonLd";
+import { AsymmetricTcoCalculator } from "@/components/conversion/AsymmetricTcoCalculator";
+import { TCO_FAQ_ANSWER } from "@/lib/tco-model";
 import Link from "next/link";
 
 /* ------------------------------------------------------------------ */
@@ -180,8 +182,7 @@ const tcoFaqItems = [
   },
   {
     question: "What is the total cost of ownership (TCO) of a Vadodara website?",
-    answer:
-      "TCO = initial build cost + annual licensing fees + annual hosting + annual maintenance + developer overhead + performance revenue loss. For a typical Vadodara WordPress site over 3 years: ₹25,000 + ₹1,62,000 recurring + ₹90,000 performance loss = ₹2,77,000. For Maxwell's Next.js build: ₹75,000 + ₹45,000 recurring + ₹0 performance loss = ₹1,20,000. Net saving: ₹1,57,000.",
+    answer: TCO_FAQ_ANSWER,
   },
   {
     question: "Do you visit manufacturing facilities in Vadodara for discovery?",
@@ -204,153 +205,6 @@ const tcoFaqItems = [
       "Next.js 14 delivers server-rendered SEO, sub-2-second LCP scores, zero plugin vulnerability surface, and headless architecture for content updates without developer involvement — critical for Google and AI search visibility in 2026. WordPress plugins introduce recurring costs, security gaps, and Core Web Vitals failures that suppress rankings.",
   },
 ];
-
-/* ------------------------------------------------------------------ */
-/*  Section: TCO Comparison                                             */
-/* ------------------------------------------------------------------ */
-
-function TcoComparisonSection() {
-  const wpItems = [
-    { label: "Upfront build cost", value: "₹25,000" },
-    { label: "Plugin licences / yr", value: "₹15,000" },
-    { label: "Theme renewals / yr", value: "₹5,000" },
-    { label: "Managed hosting / yr", value: "₹8,000" },
-    { label: "Maintenance & security / yr", value: "₹12,000" },
-    { label: "Developer overhead / yr", value: "₹14,000" },
-    { label: "Performance revenue loss / yr", value: "₹30,000" },
-  ];
-
-  const mwItems = [
-    { label: "Upfront build cost", value: "₹75,000" },
-    { label: "Plugin licences / yr", value: "₹0" },
-    { label: "Theme renewals / yr", value: "₹0" },
-    { label: "Cloud hosting / yr", value: "₹6,000" },
-    { label: "Core maintenance / yr", value: "₹9,000" },
-    { label: "Developer overhead / yr", value: "₹0" },
-    { label: "Performance revenue loss / yr", value: "₹0" },
-  ];
-
-  return (
-    <section
-      id="tco-comparison"
-      aria-label="3-year total cost of ownership comparison"
-      className="border-t border-gray-200 bg-white py-16 lg:py-24"
-    >
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="mb-2 text-center">
-          <p className="text-xs font-semibold uppercase tracking-widest text-blue-600">
-            3-Year Cost Reality
-          </p>
-          <h2 className="mt-3 font-display text-2xl font-bold text-gray-900 sm:text-3xl">
-            The Total Cost of Ownership (TCO) Model
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base text-gray-500">
-            Cheap websites are rarely cheap. Here is an honest three-year accounting of what a
-            standard Vadodara WordPress site actually costs — versus a Maxwell custom build.
-          </p>
-        </div>
-
-        {/* TCO Formula */}
-        <div className="mb-10 mt-8 rounded-xl border border-blue-100 bg-blue-50 px-5 py-4 text-center sm:px-8">
-          <p className="font-mono text-sm text-blue-800 leading-relaxed">
-            TCO = C<sub>initial</sub> + Σ ( C<sub>licensing</sub> + C<sub>hosting</sub> +
-            C<sub>maintenance</sub> + C<sub>dev overhead</sub> ) + C<sub>performance loss</sub>
-          </p>
-        </div>
-
-        {/* Comparison columns */}
-        <div className="grid gap-6 sm:grid-cols-2">
-          {/* WordPress column */}
-          <div className="rounded-2xl border border-red-200 bg-white p-6 shadow-sm">
-            <div className="mb-4 flex items-center gap-3">
-              <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-red-100">
-                <svg className="h-5 w-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </span>
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-red-500">
-                  The Standard WordPress Trap
-                </p>
-                <p className="text-sm text-gray-500">Typical Vadodara agency, 3-year lifecycle</p>
-              </div>
-            </div>
-            <ul className="space-y-2">
-              {wpItems.map((item) => (
-                <li key={item.label} className="flex items-center justify-between border-b border-gray-100 pb-2 text-sm">
-                  <span className="text-gray-600">{item.label}</span>
-                  <span className="font-semibold text-gray-800">{item.value}</span>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-5 rounded-xl bg-red-50 px-4 py-3">
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-bold text-red-700">3-Year Total TCO</span>
-                <span className="text-xl font-extrabold text-red-600">₹2,77,000</span>
-              </div>
-              <p className="mt-1 text-xs text-red-500">
-                Includes ₹90,000 in estimated performance revenue loss
-              </p>
-            </div>
-          </div>
-
-          {/* Maxwell column */}
-          <div className="rounded-2xl border border-green-200 bg-white p-6 shadow-sm ring-2 ring-green-400/30">
-            <div className="mb-4 flex items-center gap-3">
-              <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-green-100">
-                <svg className="h-5 w-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-              </span>
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-green-600">
-                  Maxwell Next.js 14 Custom Build
-                </p>
-                <p className="text-sm text-gray-500">100% custom codebase, 3-year lifecycle</p>
-              </div>
-            </div>
-            <ul className="space-y-2">
-              {mwItems.map((item) => (
-                <li key={item.label} className="flex items-center justify-between border-b border-gray-100 pb-2 text-sm">
-                  <span className="text-gray-600">{item.label}</span>
-                  <span className={`font-semibold ${item.value === "₹0" ? "text-green-600" : "text-gray-800"}`}>
-                    {item.value}
-                  </span>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-5 rounded-xl bg-green-50 px-4 py-3">
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-bold text-green-700">3-Year Total TCO</span>
-                <span className="text-xl font-extrabold text-green-600">₹1,20,000</span>
-              </div>
-              <p className="mt-1 text-xs text-green-600">
-                Zero plugin costs · Zero performance revenue loss
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Savings callout */}
-        <div className="mt-6 rounded-2xl bg-blue-600 px-6 py-6 text-center sm:px-10">
-          <p className="text-lg font-bold text-white sm:text-xl">
-            Save ₹1,57,000 in total ownership costs over 3 years with a custom, secure codebase.
-          </p>
-          <p className="mt-2 text-sm text-blue-200">
-            ΔTco = ₹2,77,000 (WordPress) − ₹1,20,000 (Maxwell Next.js) = <strong className="text-white">₹1,57,000 net saving</strong>
-          </p>
-          <Link
-            href="/get-estimate"
-            className="mt-5 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-bold text-blue-700 transition hover:bg-blue-50"
-          >
-            Request a Free Design Wireframe &amp; Speed Audit →
-          </Link>
-        </div>
-      </div>
-    </section>
-  );
-}
 
 /* ------------------------------------------------------------------ */
 /*  Section: Verified Local Case Profiles                               */
@@ -713,8 +567,13 @@ export default function VadodaraWebDevPage() {
 
       {/* ── Additional sections from the SEO brief ── */}
 
-      {/* 1. TCO mathematical comparison */}
-      <TcoComparisonSection />
+      {/* 1. Interactive TCO calculator (shared sitewide model) */}
+      <AsymmetricTcoCalculator
+        id="tco-comparison"
+        title="The Total Cost of Ownership (TCO) Model for Vadodara Businesses"
+        subtitle="Cheap websites are rarely cheap. Adjust the lifecycle slider to see how WordPress hidden costs compare to a Maxwell Next.js Professional build."
+        source="vadodara-tco"
+      />
 
       {/* 2. Verified local industrial case profiles */}
       <LocalCaseProfilesSection />

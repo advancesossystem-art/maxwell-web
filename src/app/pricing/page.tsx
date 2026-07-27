@@ -3,9 +3,9 @@ import { createMetadata } from "@/lib/metadata";
 import { PricingPageContent } from "@/components/pricing/PricingPageContent";
 
 export const metadata: Metadata = createMetadata({
-  title: "Website Development Pricing — Fixed Prices, No Quote Games | Maxwell Electrodeal",
+  title: "Website Pricing India 2026 — TCO vs WordPress | From ₹45K",
   description:
-    "Published website pricing for Gujarat manufacturers: Starter ₹45,000 · Professional ₹75,000 · Growth ₹1,50,000. +18% GST. You own domain, hosting, and code. Vadodara.",
+    "Compare 3-year TCO before you buy: WordPress ₹2.77L vs Maxwell Next.js ₹1.2L. Published tiers — Starter ₹45K · Professional ₹75K · Growth ₹1.5L. GST invoice. Full IP ownership.",
   path: "/pricing",
   keywords: [
     "website development cost Vadodara",

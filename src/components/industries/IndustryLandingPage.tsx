@@ -19,6 +19,7 @@ import { IndustryPageJsonLd } from "@/components/seo/JsonLd";
 import { GeoContentSection } from "@/components/authority/GeoContentSection";
 import { StatisticsPanel } from "@/components/authority/StatisticsPanel";
 import { ProofSignalsBar } from "@/components/trust/ProofSignalsBar";
+import { HeroTrustBadges } from "@/components/conversion/HeroTrustBadges";
 import { buildIndustryGeo } from "@/lib/geo-page-content";
 import { getStatisticsForIndustry } from "@/lib/statistics-data";
 import { IndustryLeadForm } from "@/components/leads/IndustryLeadForm";
@@ -53,6 +54,7 @@ export function IndustryLandingPage({ industry }: { industry: IndustryPageData }
     <>
       <IndustryPageJsonLd industry={industry} />
       <IndustryHero industry={industry} />
+      <HeroTrustBadges compact />
       <GeoContentSection geo={geo} />
       <StatisticsPanel {...stats} />
       {showErpRoiLink ? (

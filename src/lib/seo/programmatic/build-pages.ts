@@ -779,6 +779,26 @@ const compareMetaOverrides: Record<string, {
       },
     ],
   },
+  "best-erp-for-real-estate": {
+    metaTitle: "Best ERP for Real Estate India 2026 — RERA, Booking & Broker CRM",
+    metaDescription:
+      "Best ERP for real estate developers in India 2026: RERA compliance, booking reconciliation, construction progress & broker commissions. Compare SAP (₹25L+), Odoo & custom ERP (₹8L–₹25L). Free estimate.",
+    extraSections: [
+      {
+        title: "Real Estate ERP in India — Why Generic CRM Fails Developers",
+        content:
+          "Real estate developers and property managers juggle RERA registration workflows, unit booking ledgers, construction milestone billing, broker commission disputes, and customer demand letters — workflows that generic CRM and Tally cannot model without painful workarounds. The right real estate ERP links inventory towers, payment schedules, and construction progress in one audit-ready system.\n\nSAP Business One and Oracle NetSuite are enterprise-priced for mid-market builders. Odoo needs heavy customization for Indian RERA formats and broker hierarchies. Maxwell Electrodeal builds custom real estate ERP from ₹8L–₹25L with booking reconciliation, broker portal, and RERA document vault included — without per-user license creep.",
+        bullets: [
+          "RERA registration and compliance document vault",
+          "Unit booking, cancellation & refund reconciliation",
+          "Construction milestone billing and vendor tracking",
+          "Broker commission slabs and dispute resolution",
+          "Customer demand letters and payment schedules",
+          "Custom real estate ERP from ₹8L–₹25L",
+        ],
+      },
+    ],
+  },
 };
 for (const [slug, override] of Object.entries(compareMetaOverrides)) {
   const existing = comparePagesMap.get(slug);

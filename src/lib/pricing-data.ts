@@ -73,8 +73,8 @@ export const pricingTerms = {
 } as const;
 
 export const pricingHero = {
-  eyebrow: "Transparent pricing",
-  title: "Website development pricing — fixed, published, no surprises",
+  eyebrow: "TCO-first pricing",
+  title: "Compare 3-year total cost before you choose a tier",
   description:
-    "Real prices for Gujarat manufacturers. No hidden fees, no lock-in, no quote games. GST invoice on every project.",
+    "A ₹25K WordPress quote often costs ₹2.77L over three years. Our published tiers include zero plugin lock-in and full code ownership — real prices for Gujarat manufacturers with GST invoice on every project.",
 } as const;

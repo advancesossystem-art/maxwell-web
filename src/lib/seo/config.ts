@@ -92,9 +92,10 @@ export const socialProfiles: string[] = [
 ];
 
 export const homeSeo = {
-  title: "Website Engineering Company for Businesses | Maxwell Electrodeal",
+  title:
+    "Custom Website Development Company Vadodara | Next.js from ₹45K | Maxwell Electrodeal",
   description:
-    "Maxwell Electrodeal is the website engineering company for businesses — manufacturer, corporate, and industrial websites that rank on Google and convert inquiries. From ₹45,000. Vadodara, Gujarat, India.",
+    "GST-registered website engineering company in Vadodara — custom Next.js sites for manufacturers from ₹45,000. Save ₹1.57L over 3 years vs WordPress. 94+ PageSpeed, full IP ownership. Free scoped estimate in 24h.",
   keywords: [
     "website engineering company",
     "website engineering company for businesses",

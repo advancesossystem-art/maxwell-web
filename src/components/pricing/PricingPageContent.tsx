@@ -3,8 +3,11 @@ import { CompanyPageHero } from "@/components/company/CompanyPageHero";
 import { CompanyCTA } from "@/components/company/CompanyCTA";
 import { StraightAnswers } from "@/components/conversion/StraightAnswers";
 import { WhoWeAreNotFor } from "@/components/conversion/WhoWeAreNotFor";
+import { AsymmetricTcoCalculator } from "@/components/conversion/AsymmetricTcoCalculator";
+import { HeroTrustBadges } from "@/components/conversion/HeroTrustBadges";
 import { pricingHero, pricingTerms, websitePricingTiers } from "@/lib/pricing-data";
-import { WHATSAPP_HREF_CONTACT } from "@/lib/constants";
+import { WHATSAPP_HREF_ENGINEER } from "@/lib/constants";
+import { estimateHref } from "@/lib/conversion-copy";
 import { Button } from "@/components/ui/Button";
 
 export function PricingPageContent() {
@@ -17,11 +20,19 @@ export function PricingPageContent() {
         description={pricingHero.description}
       />
 
+      <HeroTrustBadges compact />
+
+      <AsymmetricTcoCalculator showCta={false} source="pricing-tco" />
+
       <section className="v6-section">
         <div className="v6-container">
-          <p className="mx-auto max-w-2xl text-center text-lg font-semibold text-[#4f46e5]">
-            {pricingTerms.noGames}
-          </p>
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-xs font-semibold uppercase tracking-wider text-emerald-600">Published tiers</p>
+            <h2 className="mt-2 font-display text-2xl font-bold text-[var(--v6-text)]">
+              Fixed milestone pricing — after you understand TCO
+            </h2>
+            <p className="mt-3 text-lg font-semibold text-[#4f46e5]">{pricingTerms.noGames}</p>
+          </div>
 
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
             {websitePricingTiers.map((tier) => (
@@ -31,7 +42,7 @@ export function PricingPageContent() {
               >
                 {tier.highlight ? (
                   <span className="mb-3 inline-block w-fit rounded-full bg-[#4f46e5] px-3 py-0.5 text-xs font-semibold text-white">
-                    Most popular
+                    Most popular · TCO benchmark tier
                   </span>
                 ) : null}
                 <h2 className="font-display text-xl font-bold text-[var(--v6-text)]">{tier.name}</h2>
@@ -49,8 +60,12 @@ export function PricingPageContent() {
                   ))}
                 </ul>
                 <p className="mt-4 text-xs text-[var(--v6-text-muted)]">Best for: {tier.bestFor}</p>
-                <Button href="/get-estimate?source=pricing" variant={tier.highlight ? "primary" : "secondary"} className="mt-6 w-full">
-                  Get started
+                <Button
+                  href={estimateHref({ source: "pricing", project: tier.id })}
+                  variant={tier.highlight ? "primary" : "secondary"}
+                  className="mt-6 w-full"
+                >
+                  Get scoped estimate
                 </Button>
               </article>
             ))}
@@ -67,11 +82,11 @@ export function PricingPageContent() {
           </div>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Button href="/get-estimate?source=pricing" size="lg" variant="primary">
-              Get your free estimate
+            <Button href={estimateHref({ source: "pricing" })} size="lg" variant="primary">
+              Get your free scoped estimate
             </Button>
-            <Button href={WHATSAPP_HREF_CONTACT} size="lg" variant="outline" external>
-              WhatsApp us
+            <Button href={WHATSAPP_HREF_ENGINEER} size="lg" variant="outline" external>
+              WhatsApp an engineer
             </Button>
             <Link
               href="/case-studies/maxwell-website-rebuild"

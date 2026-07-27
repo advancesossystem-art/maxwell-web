@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "test:email": "node scripts/test-gmail.mjs",
+    "test:forms": "node scripts/test-all-forms.mjs",
     "verify:seo": "node scripts/verify-seo.mjs",
     "verify:live": "node scripts/verify-live-seo.mjs"
   },

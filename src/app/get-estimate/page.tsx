@@ -7,9 +7,9 @@ import { createMetadata } from "@/lib/metadata";
 import { companyMetricDisplay } from "@/lib/company-metrics";
 
 export const metadata = createMetadata({
-  title: "Get Free Project Estimate — Website, ERP, CRM & Software | Maxwell Electrodeal",
+  title: "Get Free Scoped Estimate — Website, ERP & Software | Maxwell",
   description:
-    "Get a free estimate for your website, ERP, CRM, AI, or custom software project. Quick form. Response within 24 hours. No obligation. Vadodara-based team serving India.",
+    "3-field quick form — scoped estimate on WhatsApp and email within 24 hours. GST-registered Vadodara team. No obligation. Full TCO breakdown available on request.",
   path: "/get-estimate",
 });
 
@@ -83,17 +83,25 @@ export default function GetEstimatePage() {
         </Container>
       </section>
 
-      {/* Detailed wizard — accessible via anchor */}
+      {/* Detailed wizard — secondary path for users who want a full scope breakdown */}
       <section id="wizard" className="bg-white py-12 border-t border-gray-100">
         <Container className="max-w-4xl">
-          <p className="text-center text-sm text-gray-500 mb-2">
-            Want a more detailed scoped estimate with cost range?
-          </p>
-          <h2 className="text-center font-display text-xl font-bold text-gray-900 mb-8">
-            Guided Project Estimator — 8 steps, ~5 minutes
-          </h2>
+          <details className="group rounded-2xl border border-gray-200 bg-gray-50/80 p-6">
+            <summary className="cursor-pointer list-none text-center font-display text-lg font-bold text-gray-900 marker:content-none [&::-webkit-details-marker]:hidden">
+              <span className="inline-flex items-center gap-2">
+                Need a detailed cost range? Open the 8-step guided estimator (~5 min)
+                <span className="text-sm font-normal text-gray-500 transition group-open:rotate-180">▼</span>
+              </span>
+            </summary>
+            <p className="mt-4 text-center text-sm text-gray-500">
+              Most buyers get a scoped estimate from the quick form above. Use this wizard only if you want
+              module-by-module pricing for ERP, CRM, or multi-phase software.
+            </p>
+            <div className="mt-8">
+              <ProjectEstimatorWizard />
+            </div>
+          </details>
         </Container>
-        <ProjectEstimatorWizard />
       </section>
 
       <StraightAnswers />
