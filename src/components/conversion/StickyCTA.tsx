@@ -3,10 +3,10 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { persistLeadContext } from "@/lib/lead-context";
 import {
   CTA_LABELS,
-  consultationHref,
-  estimateHref,
+  CONVERSION_ROUTES,
   type ConversionContext,
 } from "@/lib/conversion-copy";
 import { trackCTAClick } from "@/lib/conversion-events";
@@ -49,8 +49,8 @@ export function StickyCTA({ context, location = "sticky_bar", className, dismiss
     return null;
   }
 
-  const consultHref = consultationHref(context);
-  const estHref = estimateHref(context);
+  const consultHref = CONVERSION_ROUTES.consultation;
+  const estHref = CONVERSION_ROUTES.estimate;
 
   return (
     <div
@@ -66,14 +66,20 @@ export function StickyCTA({ context, location = "sticky_bar", className, dismiss
         <div className="flex min-w-0 flex-1 items-center justify-center gap-2 sm:gap-3">
           <Link
             href={consultHref}
-            onClick={() => trackCTAClick(CTA_LABELS.primary, consultHref, location)}
+            onClick={() => {
+              if (context) persistLeadContext(context);
+              trackCTAClick(CTA_LABELS.primary, consultHref, location);
+            }}
             className="v6-btn v6-btn-primary min-w-0 flex-1 text-center text-sm sm:flex-none sm:px-6"
           >
             {CTA_LABELS.primary}
           </Link>
           <Link
             href={estHref}
-            onClick={() => trackCTAClick(CTA_LABELS.secondary, estHref, location)}
+            onClick={() => {
+              if (context) persistLeadContext(context);
+              trackCTAClick(CTA_LABELS.secondary, estHref, location);
+            }}
             className="v6-btn v6-btn-secondary min-w-0 flex-1 text-sm sm:flex-none sm:px-6"
           >
             {CTA_LABELS.secondary}

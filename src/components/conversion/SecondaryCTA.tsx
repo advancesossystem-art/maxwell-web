@@ -1,9 +1,10 @@
 "use client";
 
 import { Button } from "@/components/ui/Button";
+import { persistLeadContext } from "@/lib/lead-context";
 import {
   CTA_LABELS,
-  estimateHref,
+  CONVERSION_ROUTES,
   type ConversionContext,
 } from "@/lib/conversion-copy";
 import { trackCTAClick } from "@/lib/conversion-events";
@@ -24,7 +25,7 @@ export function SecondaryCTA({
   onClick,
   ...props
 }: SecondaryCTAProps) {
-  const href = estimateHref(context);
+  const href = CONVERSION_ROUTES.estimate;
 
   return (
     <Button
@@ -32,6 +33,7 @@ export function SecondaryCTA({
       size={size}
       variant={variant}
       onClick={(e) => {
+        if (context) persistLeadContext(context);
         trackCTAClick(label, href, location);
         onClick?.(e);
       }}

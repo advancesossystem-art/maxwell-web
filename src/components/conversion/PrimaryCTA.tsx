@@ -2,9 +2,10 @@
 
 import { Button } from "@/components/ui/Button";
 import { ArrowRight } from "@/components/ui/Icons";
+import { persistLeadContext } from "@/lib/lead-context";
 import {
   CTA_LABELS,
-  consultationHref,
+  CONVERSION_ROUTES,
   type ConversionContext,
 } from "@/lib/conversion-copy";
 import { trackCTAClick } from "@/lib/conversion-events";
@@ -27,7 +28,7 @@ export function PrimaryCTA({
   onClick,
   ...props
 }: PrimaryCTAProps) {
-  const href = consultationHref(context);
+  const href = CONVERSION_ROUTES.consultation;
 
   return (
     <Button
@@ -35,6 +36,7 @@ export function PrimaryCTA({
       size={size}
       variant={variant}
       onClick={(e) => {
+        if (context) persistLeadContext(context);
         trackCTAClick(label, href, location);
         onClick?.(e);
       }}

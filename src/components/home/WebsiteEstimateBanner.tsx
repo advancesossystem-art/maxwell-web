@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { persistLeadContext } from "@/lib/lead-context";
 
 export default function WebsiteEstimateBanner() {
   const [visible, setVisible] = useState(false);
@@ -63,7 +64,8 @@ export default function WebsiteEstimateBanner() {
       </p>
       <div className="flex gap-2">
         <Link
-          href="/get-estimate?service=Manufacturer+Website&source=homepage-popup"
+          href="/get-estimate"
+          onClick={() => persistLeadContext({ service: "Manufacturer Website", source: "homepage-popup" })}
           className="flex-1 bg-blue-600 text-white text-xs font-semibold px-3 py-2 rounded-md text-center hover:bg-blue-700 transition"
         >
           Get Free Estimate

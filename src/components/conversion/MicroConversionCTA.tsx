@@ -4,11 +4,10 @@ import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/design/Card";
 import { Caption, H3 } from "@/components/design/typography";
+import { persistLeadContext } from "@/lib/lead-context";
 import {
   CTA_LABELS,
   CONVERSION_ROUTES,
-  discoveryHref,
-  estimateHref,
 } from "@/lib/conversion-copy";
 import {
   trackCTAClick,
@@ -45,7 +44,7 @@ const defaults: Record<
   newsletter: {
     title: "Stay ahead on enterprise delivery",
     description: "Monthly insights on ERP, AI, and digital transformation — no spam.",
-    href: "/contact?intent=newsletter",
+    href: "/contact",
     action: "Subscribe",
   },
   download: {
@@ -85,11 +84,13 @@ export function MicroConversionCTA({
   className,
 }: MicroConversionCTAProps) {
   const preset = defaults[variant];
-  const resolvedHref =
-    href ??
-    (variant === "industry-audit" && industryName
-      ? `${CONVERSION_ROUTES.consultation}?industry=${encodeURIComponent(industryName)}`
-      : preset.href);
+  const resolvedHref = href ?? (variant === "industry-audit" ? CONVERSION_ROUTES.consultation : preset.href);
+  const leadContext =
+    variant === "newsletter"
+      ? { intent: "newsletter", source: location }
+      : variant === "industry-audit" && industryName
+        ? { industry: industryName, source: location }
+        : undefined;
 
   function handleClick() {
     const name = title ?? preset.title;
@@ -118,26 +119,41 @@ export function MicroConversionCTA({
               href={resolvedHref}
               size="sm"
               onClick={() => {
+                if (leadContext) persistLeadContext(leadContext);
                 handleClick();
                 if (industryName) trackIndustryAudit(industryName, location);
               }}
             >
               {CTA_LABELS.industryAudit}
             </Button>
-            <Button href={discoveryHref({ industry: industryName })} size="sm" variant="secondary">
+            <Button
+              href={CONVERSION_ROUTES.consultation}
+              size="sm"
+              variant="secondary"
+              onClick={() => {
+                if (industryName) persistLeadContext({ industry: industryName, source: location });
+              }}
+            >
               {CTA_LABELS.discoveryCall}
             </Button>
           </>
         ) : (
-          <Button href={resolvedHref} size="sm" onClick={handleClick}>
+          <Button
+            href={resolvedHref}
+            size="sm"
+            onClick={() => {
+              if (leadContext) persistLeadContext(leadContext);
+              handleClick();
+            }}
+          >
             {preset.action}
             <ArrowRight />
           </Button>
         )}
         <Link
-          href={estimateHref()}
+          href={CONVERSION_ROUTES.estimate}
           className="inline-flex items-center text-sm font-medium text-brand-500 hover:text-brand-400"
-          onClick={() => trackCTAClick(CTA_LABELS.secondary, estimateHref(), location)}
+          onClick={() => trackCTAClick(CTA_LABELS.secondary, CONVERSION_ROUTES.estimate, location)}
         >
           {CTA_LABELS.secondary}
         </Link>

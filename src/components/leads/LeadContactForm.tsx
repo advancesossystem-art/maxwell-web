@@ -14,6 +14,7 @@ import {
 } from "@/lib/form-validation";
 import { composeInternationalPhone, defaultCountryIso } from "@/lib/country-phone-codes";
 import { PhoneCountryFields } from "@/components/leads/PhoneCountryFields";
+import { mergeLeadContexts, readLeadContextFromDocumentCookie, readLeadContextFromUrlSearchParams } from "@/lib/lead-context";
 import { cn } from "@/lib/utils";
 
 const budgetOptions = [
@@ -472,8 +473,12 @@ function LeadContactFormWithParams({
   compact?: boolean;
 }) {
   const searchParams = useSearchParams();
-  const defaultService = searchParams.get("service") ?? "";
-  const defaultIndustry = searchParams.get("industry") ?? "";
+  const leadContext = mergeLeadContexts(
+    readLeadContextFromDocumentCookie(),
+    readLeadContextFromUrlSearchParams(searchParams),
+  );
+  const defaultService = leadContext.service ?? "";
+  const defaultIndustry = leadContext.industry ?? "";
   const defaultMessage = defaultIndustry ? `I'm interested in software solutions for the ${defaultIndustry} industry. ` : "";
 
   return (

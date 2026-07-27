@@ -1,6 +1,13 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { siteConfig } from "@/lib/constants";
+import {
+  LEAD_CONTEXT_COOKIE,
+  hasLeadContext,
+  isLeadContextPath,
+  readLeadContextFromUrlSearchParams,
+  serializeLeadContext,
+} from "@/lib/lead-context";
 import { getClientIp, rateLimit, rateLimits } from "@/lib/rate-limit";
 import {
   ADMIN_COOKIE_NAME,
@@ -110,9 +117,38 @@ function apexHostRedirect(request: NextRequest): NextResponse | null {
   return null;
 }
 
+function normalizeLeadContextUrl(request: NextRequest): NextResponse | null {
+  if (request.method !== "GET") return null;
+
+  const { pathname, searchParams } = request.nextUrl;
+  if (!isLeadContextPath(pathname)) return null;
+
+  const leadContext = readLeadContextFromUrlSearchParams(searchParams);
+  if (!hasLeadContext(leadContext)) return null;
+
+  const destination = new URL(request.url);
+  destination.pathname = pathname;
+  for (const key of searchParams.keys()) {
+    if (key in leadContext) destination.searchParams.delete(key);
+  }
+
+  const response = NextResponse.redirect(destination, 308);
+  response.cookies.set({
+    name: LEAD_CONTEXT_COOKIE,
+    value: serializeLeadContext(leadContext),
+    maxAge: 60 * 60 * 24 * 7,
+    path: "/",
+    sameSite: "lax",
+  });
+  return response;
+}
+
 export function proxy(request: NextRequest) {
   const hostRedirect = apexHostRedirect(request);
   if (hostRedirect) return hostRedirect;
+
+  const leadContextRedirect = normalizeLeadContextUrl(request);
+  if (leadContextRedirect) return leadContextRedirect;
 
   const { pathname } = request.nextUrl;
 

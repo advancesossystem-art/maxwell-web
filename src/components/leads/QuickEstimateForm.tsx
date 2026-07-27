@@ -6,6 +6,7 @@ import Link from "next/link";
 import { submitLeadForm } from "@/lib/submit-lead-form";
 import { composeInternationalPhone, defaultCountryIso } from "@/lib/country-phone-codes";
 import { PhoneCountryFields } from "@/components/leads/PhoneCountryFields";
+import { mergeLeadContexts, readLeadContextFromDocumentCookie, readLeadContextFromUrlSearchParams } from "@/lib/lead-context";
 import { cn } from "@/lib/utils";
 
 const SERVICES = [
@@ -86,17 +87,21 @@ export function QuickEstimateForm({
 }) {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const leadContext = mergeLeadContexts(
+    readLeadContextFromDocumentCookie(),
+    readLeadContextFromUrlSearchParams(searchParams),
+  );
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   const serviceDefault =
     resolvePrefillService(prefillService) ||
-    resolvePrefillService(searchParams.get("service") ?? "") ||
+    resolvePrefillService(leadContext.service ?? "") ||
     "";
   const referral =
     referralSource.trim() ||
-    searchParams.get("source")?.trim() ||
-    searchParams.get("ref")?.trim() ||
+    leadContext.source?.trim() ||
+    leadContext.ref?.trim() ||
     "";
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
