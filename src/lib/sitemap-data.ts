@@ -88,7 +88,23 @@ const phase3LocationPages = [
   "/services/website-development/msme-india",
 ];
 
-const phase4ServicePages = ["/services/website-development/manufacturer-export-website"];
+const phase4ServicePages = [
+  "/services/website-development/manufacturer-export-website",
+  "/services/website-development/owned-enquiry-channel",
+  "/services/dealer-portal-development",
+];
+
+const gidcLocationPages = [
+  "/locations/india/gujarat/gidc",
+  "/locations/india/gujarat/makarpura-gidc",
+  "/locations/india/gujarat/savli-gidc",
+  "/locations/india/gujarat/nandesari-gidc",
+  "/locations/india/gujarat/halol-gidc",
+  "/locations/india/gujarat/ankleshwar-gidc",
+  "/locations/india/gujarat/vatva-gidc",
+];
+
+const GIDC_LAUNCH = new Date("2026-08-03T00:00:00.000Z");
 
 export function getServicesSitemapEntries() {
   return [
@@ -193,6 +209,14 @@ export function getLocationsSitemapEntries() {
     });
   });
 
+  gidcLocationPages.forEach((path) => {
+    entries.push({
+      url: `${siteConfig.url}${path}`,
+      priority: path.endsWith("/gidc") ? 0.92 : 0.9,
+      ...{ lastModified: GIDC_LAUNCH, changeFreq: "monthly" as const },
+    });
+  });
+
   return entries;
 }
 
@@ -202,6 +226,8 @@ export function getSolutionsSitemapEntries() {
     { path: "/solutions/web-development-company-india", priority: 0.9 },
     { path: "/solutions/web-development-company-gujarat", priority: 0.9 },
     { path: "/solutions/web-development-company-vadodara", priority: 0.92 },
+    { path: "/solutions/seo-company-vadodara", priority: 0.91 },
+    { path: "/solutions/seo-company-gujarat", priority: 0.9 },
     { path: "/solutions/web-development-company-india-usa", priority: 0.88 },
     { path: "/solutions/web-development-company-india-uae", priority: 0.88 },
     { path: "/solutions/web-development-company-india-uk", priority: 0.88 },
@@ -280,13 +306,23 @@ export function getCompareSitemapEntries() {
 }
 
 export function getCostSitemapEntries() {
+  const customCostPages = [
+    "/cost/manufacturing-website-cost",
+    "/cost/web-development-cost-vadodara",
+  ];
+  const programmatic = costSlugs
+    .filter((slug) => isIndexableCostSlug(slug))
+    .map((slug) => `/cost/${slug}`);
+  const paths = [...new Set([...programmatic, ...customCostPages])];
+
   return [
     { url: `${siteConfig.url}/cost`, priority: 0.9 },
-    ...costSlugs
-      .filter((slug) => isIndexableCostSlug(slug))
-      .map((slug) => ({
-        url: `${siteConfig.url}/cost/${slug}`,
-        priority: 0.86,
-      })),
+    ...paths.map((path) => ({
+      url: `${siteConfig.url}${path}`,
+      priority: path.includes("vadodara") || path.includes("manufacturing") ? 0.91 : 0.86,
+      ...(path.includes("manufacturing") || path.includes("vadodara")
+        ? { lastModified: GIDC_LAUNCH, changeFreq: "monthly" as const }
+        : {}),
+    })),
   ];
 }

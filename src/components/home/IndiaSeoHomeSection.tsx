@@ -45,7 +45,8 @@ export function IndiaSeoHomeSection() {
             {siteConfig.legalName} builds manufacturer, corporate, and industrial websites — plus web
             applications, custom software, and AI automation — for businesses across India: Mumbai,
             Delhi NCR, Bengaluru, Hyderabad, Pune, Chennai, Ahmedabad, Surat, and nationwide.
-            Headquartered in Vadodara, Gujarat. Milestone billing and 100% source code ownership.
+            Headquartered in Vadodara, Gujarat. No advance on website packages — full payment within 3
+            days of go-live (+18% GST). 100% source code ownership.
           </p>
         </div>
 

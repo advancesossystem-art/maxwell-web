@@ -43,6 +43,21 @@ export const servicesNavGroups: NavServiceGroup[] = [
         description: "Technical SEO, clusters & GEO",
       },
       {
+        label: "Owned Enquiry Channel",
+        href: "/services/website-development/owned-enquiry-channel",
+        description: "Catalog sites vs paid listings",
+      },
+      {
+        label: "Dealer Portal Development",
+        href: "/services/dealer-portal-development",
+        description: "B2B login price lists & stock",
+      },
+      {
+        label: "Gujarat GIDC Websites",
+        href: "/locations/india/gujarat/gidc",
+        description: "Makarpura to Vatva estate pages",
+      },
+      {
         label: "Website Speed",
         href: "/services/website-speed-optimization",
         description: "Core Web Vitals optimization",

@@ -19,7 +19,7 @@ export const straightAnswers: StraightAnswer[] = [
   {
     question: "What if I don't like the design?",
     answer:
-      "Full refund before development starts. You pay 40% only after you approve the design direction.",
+      "No advance payment. Full payment is due within 3 days after the website goes live (plus 18% GST).",
   },
   {
     question: "Can I meet you in person?",

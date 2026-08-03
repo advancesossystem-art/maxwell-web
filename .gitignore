@@ -49,3 +49,12 @@ next-env.d.ts
 # editor / local tooling
 .cursor/
 agent-tools/
+
+# Local recovery / debug scratch
+_git.txt
+_git2.txt
+_recover*.txt
+_recovery*.txt
+_shell_*.txt
+desktop.ini
+

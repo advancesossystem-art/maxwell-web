@@ -489,7 +489,7 @@ export const indiaGeoSolutionsData: Record<IndiaGeoSolutionSlug, SolutionPageDat
     faqs: [
       {
         question: "How much does website development cost in India?",
-        answer: "Business websites from ₹75K; corporate sites ₹2L–₹5L; e-commerce and product catalogs ₹5L–₹15L+. We quote after a free discovery call with milestone pricing.",
+        answer: "Business websites from ₹45,000 (25–30 pages + core SEO); corporate and catalog builds higher. Website packages: no advance payment — full payment within 3 days of go-live (+18% GST).",
       },
       {
         question: "Do you serve clients outside Vadodara and Gujarat?",
@@ -576,9 +576,9 @@ export const indiaGeoSolutionsData: Record<IndiaGeoSolutionSlug, SolutionPageDat
     subheadline:
       "We build high-performance Next.js 14 websites with 94+ PageSpeed scores, zero plugin licensing dependencies, and 100% custom codebase ownership — turning your web traffic into a B2B sales funnel. Headquartered at Lalita Tower, Jetalpur Road, Vadodara. Free quote in 4 hours.",
     metaTitle:
-      "Top Website Development Company in Vadodara | Custom Next.js 14 Websites | Maxwell Electrodeal",
+      "Website Development Company Vadodara | From ₹45,000 | Maxwell Electrodeal",
     metaDescription:
-      "Leading website development company in Vadodara. Custom Next.js 14 builds with 94+ PageSpeed, zero plugin costs, and 100% code ownership. Save ₹1,57,000 over 3 years vs. WordPress. Free TCO analysis.",
+      "Website development company in Vadodara — manufacturer catalogs, GIDC estates, Next.js from ₹45,000. Owned enquiries, 94+ PageSpeed, GST invoice. Free estimate.",
     primaryKeyword: "website development company in Vadodara",
     secondaryKeywords: [
       "website development company Vadodara",
@@ -588,10 +588,9 @@ export const indiaGeoSolutionsData: Record<IndiaGeoSolutionSlug, SolutionPageDat
       "website development services Vadodara",
       "Next.js website development Vadodara",
       "best website developer Vadodara",
-      "corporate website design Vadodara",
+      "manufacturer website Vadodara",
+      "Makarpura GIDC website",
       "website development Vadodara Gujarat",
-      "erp development services vadodara",
-      "custom erp development company vadodara",
     ],
     relatedSearches: [
       "website development cost Vadodara",
@@ -657,14 +656,9 @@ export const indiaGeoSolutionsData: Record<IndiaGeoSolutionSlug, SolutionPageDat
         description: "Local city page",
       },
       {
-        label: "Gujarat Website Development",
-        href: "/solutions/web-development-company-gujarat",
-        description: "State-wide page",
-      },
-      {
-        label: "India Website Development",
-        href: "/solutions/web-development-company-india",
-        description: "National page",
+        label: "Gujarat GIDC Estates",
+        href: "/locations/india/gujarat/gidc",
+        description: "Makarpura to Vatva",
       },
       {
         label: "Manufacturer Website Service",
@@ -672,7 +666,27 @@ export const indiaGeoSolutionsData: Record<IndiaGeoSolutionSlug, SolutionPageDat
         description: "Industrial focus",
       },
       {
-        label: "Drashti Chemicals Website Case Study",
+        label: "Web Development Cost Vadodara",
+        href: "/cost/web-development-cost-vadodara",
+        description: "Published tiers from ₹45,000",
+      },
+      {
+        label: "SEO Company Vadodara",
+        href: "/solutions/seo-company-vadodara",
+        description: "Technical SEO + clusters",
+      },
+      {
+        label: "Gujarat Website Development",
+        href: "/solutions/web-development-company-gujarat",
+        description: "State-wide page",
+      },
+      {
+        label: "Owned Enquiry Channel",
+        href: "/services/website-development/owned-enquiry-channel",
+        description: "Vs paid listings",
+      },
+      {
+        label: "Chemical Catalog Case Study",
         href: "/case-studies/drashti-chemicals",
         description: "263-page chemical catalog",
       },
@@ -696,7 +710,7 @@ export const indiaGeoSolutionsData: Record<IndiaGeoSolutionSlug, SolutionPageDat
       {
         question: "How much does website development cost in Vadodara?",
         answer:
-          "Business and corporate websites start from ₹75,000. Manufacturer product catalog websites typically range ₹3L–₹12L depending on SKU count and integrations. We provide fixed-price milestone quotes after a free 30-minute discovery call. Response in 4 hours.",
+          "Business and corporate websites start from ₹45,000 (25–30 pages + core SEO). Manufacturer product catalog websites often start at ₹75,000. Website packages: no advance — full payment within 3 days after go-live (+18% GST). Response in 4 hours.",
       },
       {
         question: "Do you have a local office in Vadodara?",

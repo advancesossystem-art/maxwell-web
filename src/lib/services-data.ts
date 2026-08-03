@@ -99,9 +99,9 @@ export const servicesData: Record<ServiceSlug, ServicePageData> = {
     headline: "Website Engineering Company for Businesses — India",
     subheadline:
       "Business, corporate, manufacturer, and industrial websites engineered for Google, AI search, and qualified inquiries — with web apps and automation as supporting systems, not competing identities.",
-    metaTitle: "Website Development Company India | Website Engineering for Businesses",
+    metaTitle: "Website Development Company India | From ₹45,000 | Maxwell Electrodeal",
     metaDescription:
-      "Website engineering company for businesses. Manufacturer, corporate & industrial websites on Next.js. From ₹45K–₹75K+. Vadodara HQ · pan-India. Free quote in 24h.",
+      "Website development for businesses and manufacturers — Next.js catalogs, owned enquiries, core SEO. From ₹45,000 (25–30 pages). Vadodara HQ · Gujarat GIDC ready.",
     keywords: [
       "website development company India",
       "website engineering company",

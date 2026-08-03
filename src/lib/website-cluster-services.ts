@@ -14,8 +14,9 @@ const sharedWhyMaxwell = [
     description: "Senior developers, designers, and a project manager—not rotating freelancers.",
   },
   {
-    title: "Transparent Milestone Delivery",
-    description: "Weekly demos, visible progress, and billing tied to completed milestones.",
+    title: "No Advance on Websites",
+    description:
+      "Website packages: no advance payment — full payment within 3 days after go-live (+18% GST). Weekly demos so you see progress before you pay.",
   },
   {
     title: "Post-Launch Partnership",
@@ -587,11 +588,13 @@ export const websiteClusterServicesData: Record<WebsiteClusterServiceSlug, Servi
     headline: "Website SEO — Technical SEO, Content Architecture & GEO",
     subheadline:
       "SEO built into website engineering: technical foundations, topical clusters, internal linking, schema, and AI-search (GEO) structure so business pages can rank and get cited.",
-    metaTitle: "Website SEO Services India | Technical SEO & GEO",
+    metaTitle: "Website SEO Services India | SEO Company Vadodara & Gujarat | Maxwell",
     metaDescription:
-      "Website SEO for business and manufacturer sites — technical SEO, schema, topical clusters, Core Web Vitals, GEO for AI search. Maxwell Electrodeal.",
+      "Website SEO for manufacturers and businesses — technical SEO, topical clusters, GIDC locality, GEO for AI search. Vadodara team from ₹50,000. Pair with sites from ₹45,000.",
     keywords: [
       "website SEO India",
+      "SEO company Vadodara",
+      "SEO company Gujarat",
       "technical SEO company",
       "SEO for business websites",
       "manufacturer website SEO",
@@ -657,6 +660,10 @@ export const websiteClusterServicesData: Record<WebsiteClusterServiceSlug, Servi
       { label: "Website Speed", href: "/services/website-speed-optimization" },
       { label: "Website Technologies", href: "/services/website-technologies" },
       { label: "Website Cost", href: "/cost/web-development-cost-india" },
+      { label: "SEO Company Vadodara", href: "/solutions/seo-company-vadodara" },
+      { label: "SEO Company Gujarat", href: "/solutions/seo-company-gujarat" },
+      { label: "Manufacturer Websites", href: "/services/website-development-for-manufacturers" },
+      { label: "Gujarat GIDC Hub", href: "/locations/india/gujarat/gidc" },
     ],
     faqs: [
       {

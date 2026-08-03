@@ -533,6 +533,10 @@ export default function ManufacturerWebsitePage() {
           <p className="text-sm text-slate-500 mb-6">Specialist pages for Gujarat&apos;s key industrial corridors</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {[
+              { label: "Gujarat GIDC Estates Hub →", href: "/locations/india/gujarat/gidc" },
+              { label: "Makarpura GIDC →", href: "/locations/india/gujarat/makarpura-gidc" },
+              { label: "Nandesari GIDC →", href: "/locations/india/gujarat/nandesari-gidc" },
+              { label: "Ankleshwar GIDC →", href: "/locations/india/gujarat/ankleshwar-gidc" },
               { label: "Bharuch-Ankleshwar Chemical Corridor →", href: "/services/website-development/bharuch-ankleshwar-chemical" },
               { label: "Surat Textile Manufacturers →", href: "/services/website-development/surat-textile-manufacturer" },
               { label: "Rajkot Engineering Companies →", href: "/services/website-development/rajkot-engineering-company" },
@@ -553,10 +557,12 @@ export default function ManufacturerWebsitePage() {
           <h2 className="font-display text-xl font-bold text-[var(--v6-text,#0f172a)] mb-4">Related resources</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {[
+              { label: "Owned Enquiry Channel vs Paid Listings", href: "/services/website-development/owned-enquiry-channel" },
+              { label: "Manufacturing Website Cost", href: "/cost/manufacturing-website-cost" },
+              { label: "Website Development Company Vadodara", href: "/solutions/web-development-company-vadodara" },
               { label: "Why Manufacturers Are Moving Beyond Paid Directories", href: "/blog/indiamart-alternative-website-manufacturer" },
-              { label: "Drashti Chemicals — 263-Page Product Website Case Study", href: "/case-studies/drashti-chemicals" },
-              { label: "CRM & ERP for Chemical Manufacturers", href: "/industries/chemical-manufacturing" },
-              { label: "ERP Development for Manufacturers", href: "/services/erp-development" },
+              { label: "GIDC Manufacturer Website Checklist", href: "/blog/gidc-manufacturer-website-checklist-vadodara" },
+              { label: "Chemical Catalog Case Study", href: "/case-studies/drashti-chemicals" },
             ].map(({ label, href }) => (
               <Link key={href} href={href} className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-800 hover:underline">
                 <span aria-hidden>→</span> {label}

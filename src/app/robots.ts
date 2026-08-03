@@ -32,6 +32,14 @@ const crawlWasteAllow = [
   "/",
   "/locations/india/surat/custom-software-development",
   "/locations/india/halol/ai-development",
+  // GIDC estate cluster (would otherwise match /locations/india/*/* disallow)
+  "/locations/india/gujarat/gidc",
+  "/locations/india/gujarat/makarpura-gidc",
+  "/locations/india/gujarat/savli-gidc",
+  "/locations/india/gujarat/nandesari-gidc",
+  "/locations/india/gujarat/halol-gidc",
+  "/locations/india/gujarat/ankleshwar-gidc",
+  "/locations/india/gujarat/vatva-gidc",
 ];
 
 export default function robots(): MetadataRoute.Robots {

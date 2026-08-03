@@ -79,6 +79,6 @@ export const CONVERSION_EXPECTATIONS = {
   successConsultation:
     "You'll receive a calendar invite and preparation checklist within 24 hours.",
   successEstimate:
-    "Our solutions team will review your scope and send a phased estimate with timeline options.",
-  successContact: "A project lead will reach out within 24 hours to discuss next steps.",
+    "Our solutions team will review your scope and send a clear estimate. Website packages: no advance — full payment within 3 days of go-live (+18% GST).",
+  successContact: "A project lead will reach out within 24 hours to discuss next steps. Website packages: no advance payment.",
 } as const;

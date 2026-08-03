@@ -93,18 +93,18 @@ export const socialProfiles: string[] = [
 
 export const homeSeo = {
   title:
-    "Custom Website Development Company Vadodara | Next.js from ₹45K | Maxwell Electrodeal",
+    "Website Development Company Vadodara | Manufacturer Sites from ₹45,000 | Maxwell",
   description:
-    "GST-registered website engineering company in Vadodara — custom Next.js sites for manufacturers from ₹45,000. Save ₹1.57L over 3 years vs WordPress. 94+ PageSpeed, full IP ownership. Free scoped estimate in 24h.",
+    "Website development company in Vadodara — manufacturer catalogs, GIDC estates, and business sites from ₹45,000 (25–30 pages + core SEO). Owned enquiries, Next.js, GST invoice. Free estimate.",
   keywords: [
+    "website development company Vadodara",
     "website engineering company",
-    "website engineering company for businesses",
-    "Maxwell Electrodeal",
-    "business website development",
     "manufacturer website development India",
-    "corporate website design India",
-    "industrial website development",
-    "web development company India international",
+    "website development Gujarat",
+    "GIDC manufacturer website",
+    "business website development",
+    "SEO company Vadodara",
+    "Maxwell Electrodeal",
   ],
   path: "/",
 } as const;

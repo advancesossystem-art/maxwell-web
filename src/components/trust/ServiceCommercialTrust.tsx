@@ -3,10 +3,21 @@ import { Container } from "@/components/ui/Container";
 import type { ServicePageData } from "@/lib/services-data";
 import { companyAuthorityFacts } from "@/lib/trust/company-authority";
 import { leadTrustBadges } from "@/lib/company-metrics";
+import { pricingTerms } from "@/lib/pricing-data";
 
 function extractTimelineAnswer(service: ServicePageData): string | undefined {
   const match = service.faqs.find((f) => /how long|timeline|take to build/i.test(f.question));
   return match?.answer;
+}
+
+function isWebsitePackageService(slug: string): boolean {
+  return (
+    slug.includes("website") ||
+    slug.includes("web-application") ||
+    slug === "website-redesign" ||
+    slug === "website-maintenance" ||
+    slug === "website-seo"
+  );
 }
 
 /** Commercial trust block — who, timeline, deliverables, outcomes (from service data only). */
@@ -15,6 +26,9 @@ export function ServiceCommercialTrust({ service }: { service: ServicePageData }
   const deliverables = service.features.slice(0, 4).map((f) => f.title);
   const outcomes = service.projects?.map((p) => p.result).filter(Boolean) ?? [];
   const industries = service.industries.map((i) => i.name);
+  const billingLine = isWebsitePackageService(service.slug)
+    ? pricingTerms.payment
+    : companyAuthorityFacts.milestoneBilling;
 
   return (
     <section className="border-b border-border bg-surface py-12" aria-labelledby={`commercial-trust-${service.slug}`}>
@@ -39,7 +53,8 @@ export function ServiceCommercialTrust({ service }: { service: ServicePageData }
             <h3 className="text-sm font-semibold uppercase tracking-wider text-brand-600">Typical engagement</h3>
             <ul className="mt-3 space-y-1.5 text-sm text-muted">
               <li>• Starting from {service.startingPrice}</li>
-              <li>• {companyAuthorityFacts.milestoneBilling}</li>
+              <li>• {billingLine}</li>
+              {isWebsitePackageService(service.slug) ? <li>• {pricingTerms.gst}</li> : null}
               {timeline ? <li>• {timeline}</li> : null}
               <li>• {companyAuthorityFacts.responseExpectation}</li>
             </ul>

@@ -29,7 +29,7 @@ export function PricingPageContent() {
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-xs font-semibold uppercase tracking-wider text-emerald-600">Published tiers</p>
             <h2 className="mt-2 font-display text-2xl font-bold text-[var(--v6-text)]">
-              Fixed milestone pricing — after you understand TCO
+              Published pricing — pay after go-live
             </h2>
             <p className="mt-3 text-lg font-semibold text-[#4f46e5]">{pricingTerms.noGames}</p>
           </div>

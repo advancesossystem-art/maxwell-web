@@ -4,61 +4,9 @@ import { companyAuthorityFacts } from "@/lib/trust/company-authority";
 import { BrandLogo } from "@/components/layout/BrandLogo";
 import { CookieSettingsLink } from "@/components/layout/CookieSettingsLink";
 import { consultationHref, estimateHref } from "@/lib/conversion-copy";
+import { footerNavColumns } from "@/lib/footer-nav";
 
-const columns = [
-  {
-    title: "Services",
-    links: [
-      { label: "Website Development", href: "/services/website-development" },
-      { label: "Manufacturer Websites", href: "/services/website-development-for-manufacturers" },
-      { label: "Website Cost Guide", href: "/cost/web-development-cost-india" },
-      { label: "Vadodara Website Developer", href: "/solutions/web-development-company-vadodara" },
-      { label: "Gujarat Web Development", href: "/solutions/web-development-company-gujarat" },
-      { label: "ERP Development Vadodara", href: "/solutions/erp-development-company-vadodara" },
-      { label: "ERP Development", href: "/services/erp-development" },
-      { label: "CRM Development", href: "/services/crm-development" },
-      { label: "AI Solutions", href: "/services/ai-solutions" },
-      { label: "Mobile Apps", href: "/services/mobile-app-development" },
-    ],
-  },
-  {
-    title: "Industries",
-    links: [
-      { label: "Chemical Manufacturing", href: "/industries/chemical-manufacturing" },
-      { label: "Manufacturing", href: "/industries/manufacturing" },
-      { label: "Healthcare", href: "/industries/healthcare" },
-      { label: "Logistics", href: "/industries/logistics" },
-      { label: "Retail", href: "/industries/retail" },
-    ],
-  },
-  {
-    title: "Company",
-    links: [
-      { label: "About", href: "/about" },
-      { label: "Founder Insights", href: "/founder-insights" },
-      { label: "Company", href: "/company" },
-      { label: "Vadodara Office", href: "/locations/india/vadodara" },
-      { label: "International Clients", href: "/solutions/web-development-company-india-international" },
-      { label: "Process", href: "/process" },
-      { label: "Engagement Models", href: "/engagement-models" },
-      { label: "Reviews", href: "/reviews" },
-      { label: "Work", href: "/work" },
-      { label: "Contact", href: "/contact" },
-    ],
-  },
-  {
-    title: "Resources",
-    links: [
-      { label: "Case Study: Drashti Chemicals", href: "/case-studies/drashti-chemicals" },
-      { label: "Knowledge Center", href: "/knowledge-center" },
-      { label: "Maxwell Answers", href: "/answers" },
-      { label: "Blog", href: "/blog" },
-      { label: "Compare", href: "/compare" },
-      { label: "Cost Guides", href: "/cost" },
-      { label: "Tools", href: "/tools" },
-    ],
-  },
-] as const;
+const columns = footerNavColumns;
 
 export function Footer() {
   const year = new Date().getFullYear();

@@ -1,9 +1,9 @@
 /** SEO metadata for manufacturer website landing pages — keywords, titles, descriptions. */
 
 export const manufacturerHubSeo = {
-  title: "Website Development for Manufacturers India",
+  title: "Manufacturer Website Development India | Catalogs from ₹45,000 | Maxwell",
   description:
-    "Website development for manufacturers in India & Gujarat. Product catalogs, Google SEO, direct buyer leads. MSME-ready from ₹75,000.",
+    "Website development for manufacturers in India & Gujarat — product catalogs, GIDC SEO, owned enquiries. Starter from ₹45,000 · Professional catalogs often ₹75,000.",
   path: "/services/website-development-for-manufacturers",
   keywords: [
     "website development for manufacturers India",
@@ -16,6 +16,7 @@ export const manufacturerHubSeo = {
     "direct inquiry website manufacturer",
     "industrial website design company India",
     "manufacturing company website India",
+    "GIDC manufacturer website",
   ],
 } as const;
 

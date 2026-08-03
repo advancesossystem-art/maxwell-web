@@ -19,10 +19,10 @@ export const homeHero = {
 export const heroServiceBadges = [
   { label: "Website Development", href: "/services/website-development" },
   { label: "Manufacturer Websites", href: "/services/website-development-for-manufacturers" },
-  { label: "Business Websites", href: "/services/website-development" },
-  { label: "Web Apps", href: "/services/web-application-development" },
-  { label: "Custom Software", href: "/services/custom-software-development" },
-  { label: "AI Automation", href: "/services/ai-automation" },
+  { label: "Vadodara Web Company", href: "/solutions/web-development-company-vadodara" },
+  { label: "Gujarat GIDC", href: "/locations/india/gujarat/gidc" },
+  { label: "Website Cost", href: "/cost/web-development-cost-vadodara" },
+  { label: "SEO Company", href: "/solutions/seo-company-vadodara" },
 ] as const;
 
 export const heroTrustMetrics = [
@@ -140,10 +140,17 @@ export const problemSolutionMap = [
     href: "/services/website-development-for-manufacturers",
   },
   {
-    problem: "Inventory errors & stock chaos",
-    solution: "ERP Solution",
-    description: "Real-time inventory, production planning, and Tally/GST integration.",
-    href: "/services/erp-development",
+    problem: "Paying yearly for listings you do not own",
+    solution: "Owned Enquiry Channel",
+    description:
+      "Replace rented directory slots with SEO-ready product pages and WhatsApp RFQs you control.",
+    href: "/services/website-development/owned-enquiry-channel",
+  },
+  {
+    problem: "Dealers need private price lists",
+    solution: "Dealer Portal",
+    description: "Secure login catalogs for distributors after your public site ships.",
+    href: "/services/dealer-portal-development",
   },
   {
     problem: "Poor customer & sales tracking",
@@ -158,10 +165,10 @@ export const problemSolutionMap = [
     href: "/services/custom-software-development",
   },
   {
-    problem: "Lack of insights & forecasting gaps",
-    solution: "AI Solution",
-    description: "Practical AI for demand forecasting, document extraction, and exception alerts.",
-    href: "/services/ai-solutions",
+    problem: "Inventory errors & stock chaos",
+    solution: "ERP Solution",
+    description: "Real-time inventory, production planning, and Tally/GST integration.",
+    href: "/services/erp-development",
   },
 ] as const;
 
@@ -469,7 +476,11 @@ export const partnerComparison = [
 ] as const;
 
 export const trustHighlights = [
-  { label: "Milestone billing", desc: "Pay as value is delivered", href: "/engagement-models" },
+  {
+    label: "No advance on websites",
+    desc: "Full payment within 3 days of go-live (+18% GST)",
+    href: "/pricing",
+  },
   { label: "Weekly demos", desc: "See progress every week", href: "/process" },
   { label: "Full IP transfer", desc: "You own the codebase", href: "/contact" },
   {
@@ -591,13 +602,13 @@ export const homepageFaqs = [
   {
     question: "What is Maxwell Electrodeal?",
     answer:
-      "Maxwell Electrodeal is a website engineering company for businesses, headquartered in Vadodara, Gujarat, India. They build manufacturer, corporate, and industrial websites, web applications, custom software, ERP, CRM, and AI automation for clients in India and English-speaking markets. Milestone billing, 100% IP ownership, and on-site discovery for Gujarat businesses.",
+      "Maxwell Electrodeal is a website engineering company for businesses, headquartered in Vadodara, Gujarat, India. They build manufacturer, corporate, and industrial websites, web applications, custom software, ERP, CRM, and AI automation for clients in India and English-speaking markets. Website packages: no advance payment (full pay within 3 days of go-live + 18% GST). Custom software/ERP uses milestone billing. 100% IP ownership and on-site discovery for Gujarat businesses.",
     category: "Company",
   },
   {
     question: "What does a typical project cost?",
     answer:
-      "Engagements often range from ₹1L for focused work to ₹50L+ for enterprise platforms. We provide itemized estimates after discovery—milestone billing, no surprise invoices.",
+      "Website packages start from ₹45,000 (25–30 pages + core SEO) with no advance — full payment within 3 days of go-live (+18% GST). Custom software and ERP engagements are quoted after discovery with milestone billing.",
     category: "Cost",
   },
   {
@@ -632,7 +643,7 @@ export const homepageFaqs = [
   {
     question: "Do you serve clients outside India?",
     answer:
-      "Yes. We deliver for clients in the United States, United Kingdom, UAE, Canada, Australia, and other markets with English-first communication, milestone billing, and 100% IP ownership.",
+      "Yes. We deliver for clients in the United States, United Kingdom, UAE, Canada, Australia, and other markets with English-first communication, 100% IP ownership, and clear commercial terms (website packages: no advance; software/ERP: milestone billing).",
     category: "Global",
   },
   {

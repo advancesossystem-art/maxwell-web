@@ -8,16 +8,12 @@ import { toolsRegistry } from "@/lib/tools/registry";
 import { ArrowRight } from "@/components/ui/Icons";
 
 const phase4Tools = [
-  { slug: "erp-roi-calculator", name: "ERP ROI Calculator", desc: "Payback period and 5-year ERP value.", accent: "#1A4B8C" },
-  { slug: "crm-roi-calculator", name: "CRM ROI Calculator", desc: "Pipeline efficiency and lead conversion ROI.", accent: "#8B5CF6" },
-  { slug: "software-cost-calculator", name: "Software Cost Calculator", desc: "Ballpark ERP, CRM, and custom software investment.", accent: "#F59E0B" },
-  { slug: "ai-readiness-assessment", name: "AI Readiness Assessment", desc: "Score data, infra, and governance for AI pilots.", accent: "#EC4899" },
-  { slug: "digital-transformation-assessment", name: "Digital Maturity Assessment", desc: "Modernization score and phased roadmap.", accent: "#6366F1" },
-  { slug: "vendor-comparison-scorecard", name: "Vendor Scorecard", desc: "Compare up to 3 vendors with weighted scores.", accent: "#06B6D4" },
-  { slug: "erp-requirement-generator", name: "ERP Requirement Generator", desc: "Structured ERP specs for RFPs and alignment.", accent: "#1A4B8C" },
-  { slug: "crm-requirement-generator", name: "CRM Requirement Generator", desc: "Pipeline, automation, and integration requirements.", accent: "#8B5CF6" },
-  { slug: "project-timeline-estimator", name: "Timeline Estimator", desc: "Realistic delivery schedule by scope.", accent: "#2563EB" },
+  { slug: "software-cost-calculator", name: "Software Cost Calculator", desc: "Ballpark website, ERP, CRM, and custom software investment.", accent: "#F59E0B" },
+  { slug: "project-timeline-estimator", name: "Timeline Estimator", desc: "Realistic delivery schedule by website or software scope.", accent: "#2563EB" },
   { slug: "team-size-calculator", name: "Team Size Calculator", desc: "PM, dev, QA, and design headcount guide.", accent: "#10B981" },
+  { slug: "vendor-comparison-scorecard", name: "Vendor Scorecard", desc: "Compare up to 3 vendors with weighted scores.", accent: "#06B6D4" },
+  { slug: "digital-transformation-assessment", name: "Digital Maturity Assessment", desc: "Modernization score and phased roadmap.", accent: "#6366F1" },
+  { slug: "ai-readiness-assessment", name: "AI Readiness Assessment", desc: "Score data, infra, and governance for AI pilots.", accent: "#EC4899" },
 ] as const;
 
 export function HomeToolsSpotlight() {
@@ -25,9 +21,9 @@ export function HomeToolsSpotlight() {
     <HomeSection tone="elevated" aria-label="Free assessment tools">
       <FadeIn>
         <HomeSectionIntro
-          eyebrow="ROI & value"
-          title="Calculate ROI before you commit"
-          description="Interactive calculators and assessment tools—ERP ROI, software cost, project timeline, and CRM payback. Visitors love seeing numbers before vendor calls."
+          eyebrow="Planning tools"
+          title="Estimate scope before you commit"
+          description="Cost, timeline, and vendor scorecards — useful after you review manufacturer website pricing and Vadodara cost pages. ERP ROI tools remain on /tools if you need them later."
         />
       </FadeIn>
       <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">

@@ -4,6 +4,7 @@ import { buildSeoArticlesBatch } from "./seo-articles-batch";
 import { seoBlogPhase3Articles } from "./seo-blog-phase3";
 import { seoBlogPhase8Articles } from "./seo-blog-phase8";
 import { websiteBuyerArticles } from "./seo-blog-website-buyers";
+import { seoSprintRestoreArticles } from "./seo-blog-sprint-restore";
 
 const articlesList: Article[] = [
   enrichedCreateArticle({
@@ -814,6 +815,7 @@ const articlesList: Article[] = [
   ...seoBlogPhase3Articles,
   ...seoBlogPhase8Articles,
   ...websiteBuyerArticles,
+  ...seoSprintRestoreArticles,
   ...buildSeoArticlesBatch(),
 ];
 

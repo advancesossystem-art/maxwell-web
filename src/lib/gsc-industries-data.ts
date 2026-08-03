@@ -34,9 +34,9 @@ export const gscIndustriesData: Record<(typeof gscIndustrySlugs)[number], Indust
     subheadline:
       "Consolidate your operations. Manage recipe version controls, automate safety compliance, and simplify GHS/HAZMAT documentation with a custom cloud platform integrated with Tally Prime. Proven 99.5% batch trace accuracy and audit prep reduced from 2 weeks to 48 hours. Projects start from ₹2,50,000.",
     metaTitle:
-      "ERP & CRM Software for Chemical Manufacturing Industry India | Maxwell Electrodeal",
+      "CRM Software for Chemical Industry India | Chemical Manufacturing CRM | Maxwell",
     metaDescription:
-      "Streamline chemical batch production, recipe version controls, safety compliance, and GHS/HAZMAT documentation with Maxwell Electrodeal's custom ERP & CRM for chemical manufacturers. Batch traceability, SDS vault, Tally Prime integration. From ₹2,50,000.",
+      "CRM software for chemical industry India — grade catalogs, hazard flags, sample requests, GST/Tally links. Gujarat Bharuch–Ankleshwar & Vadodara corridors. From ₹2,50,000.",
     keywords: [
       "CRM software for chemical industry",
       "chemical manufacturing CRM",

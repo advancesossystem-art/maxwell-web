@@ -16,10 +16,10 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: {
     absolute:
-      "Top Website Development Company in Vadodara | Custom Next.js Websites | Maxwell Electrodeal",
+      "Website Development Company Vadodara | From ₹45,000 | Maxwell Electrodeal",
   },
   description:
-    "Leading website development company in Vadodara. Custom Next.js 14 builds with 94+ PageSpeed, zero plugin dependencies, and 100% code ownership. Save ₹1,57,000 over 3 years vs. WordPress. Free TCO analysis.",
+    "Website development company in Vadodara — manufacturer catalogs, GIDC estates, Next.js sites from ₹45,000 (25–30 pages + core SEO). Owned enquiries, 94+ PageSpeed, GST invoice. Free estimate.",
   keywords: [
     "website development company in Vadodara",
     "website development company Vadodara",
@@ -29,10 +29,9 @@ export const metadata: Metadata = {
     "website development services Vadodara",
     "Next.js website development Vadodara",
     "best website developer Vadodara",
-    "corporate website design Vadodara",
+    "manufacturer website Vadodara",
+    "Makarpura GIDC website",
     "website development Vadodara Gujarat",
-    "erp development services vadodara",
-    "custom erp development company vadodara",
   ],
   alternates: {
     canonical: `${siteConfig.url}/solutions/web-development-company-vadodara`,
@@ -138,7 +137,7 @@ const localBusinessSchema = {
         },
         priceSpecification: {
           "@type": "UnitPriceSpecification",
-          price: "75000",
+          price: "45000",
           priceCurrency: "INR",
           name: "Starting price for business website",
         },
@@ -173,12 +172,12 @@ const tcoFaqItems = [
   {
     question: "How much does website development cost in Vadodara?",
     answer:
-      "Business and corporate websites start from ₹75,000 with Maxwell Electrodeal. Manufacturer product catalog websites with B2B RFQ forms typically range ₹3L–₹12L depending on SKU count, languages, and integrations. We provide fixed-price milestone quotes after a free discovery call. Response guaranteed in 4 hours.",
+      "Starter business websites start from ₹45,000 (25–30 pages + core SEO). Professional manufacturer product catalog websites often start at ₹75,000. Larger Growth builds for 200+ SKUs are scoped after discovery. Website packages: no advance payment — full payment within 3 days after go-live (+18% GST). Response typically within 4 hours.",
   },
   {
     question: "Who is the best website development company in Vadodara?",
     answer:
-      "Look for a GST-registered company with published case studies, Core Web Vitals above 90, documented delivery milestones, and the ability to visit your site or factory. Maxwell Electrodeal is headquartered at 419 Lalita Tower, Jetalpur Road, Vadodara and has delivered 50+ projects including a 263-page chemical supplier product catalog with 94+ PageSpeed.",
+      "Look for a GST-registered company with published case studies, Core Web Vitals above 90, clear payment terms, and the ability to visit your site or factory. Maxwell Electrodeal is headquartered at 419 Lalita Tower, Jetalpur Road, Vadodara and has delivered 50+ projects including a 263-page chemical supplier product catalog.",
   },
   {
     question: "What is the total cost of ownership (TCO) of a Vadodara website?",
@@ -192,7 +191,7 @@ const tcoFaqItems = [
   {
     question: "Why does the website ranking position matter for Vadodara manufacturers?",
     answer:
-      "B2B buyers now research vendors on Google before calling or visiting trade fairs. A manufacturer ranking on page 1 for relevant queries captures direct enquiries at 10–20× lower cost than perpetual IndiaMART or JustDial listing fees. Maxwell builds SEO-first Next.js websites designed to rank for your industry and location keywords.",
+      "B2B buyers research vendors on Google before calling or visiting trade fairs. A manufacturer ranking on page 1 for relevant queries captures direct enquiries at far lower cost than perpetual paid directory listing fees. Maxwell builds SEO-first Next.js websites designed to rank for your industry and location keywords.",
   },
   {
     question: "Do you build export-ready websites for Vadodara manufacturers?",
@@ -517,13 +516,21 @@ function LocalEeatSection() {
                 Savli, Halol, and Bharuch-Ankleshwar chemical belt. No extra charge.
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
-                {["GIDC Makarpura", "GIDC Savli", "Halol GIDC", "Bharuch-Ankleshwar", "Baroda City"].map((area) => (
-                  <span
-                    key={area}
-                    className="rounded-full bg-white border border-blue-200 px-3 py-1 text-xs font-medium text-blue-700"
+                {[
+                  { label: "GIDC Makarpura", href: "/locations/india/gujarat/makarpura-gidc" },
+                  { label: "GIDC Savli", href: "/locations/india/gujarat/savli-gidc" },
+                  { label: "Nandesari GIDC", href: "/locations/india/gujarat/nandesari-gidc" },
+                  { label: "Halol GIDC", href: "/locations/india/gujarat/halol-gidc" },
+                  { label: "Ankleshwar GIDC", href: "/locations/india/gujarat/ankleshwar-gidc" },
+                  { label: "All Gujarat GIDC", href: "/locations/india/gujarat/gidc" },
+                ].map((area) => (
+                  <Link
+                    key={area.href}
+                    href={area.href}
+                    className="rounded-full bg-white border border-blue-200 px-3 py-1 text-xs font-medium text-blue-700 hover:border-blue-400"
                   >
-                    {area}
-                  </span>
+                    {area.label}
+                  </Link>
                 ))}
               </div>
               <Link
@@ -577,6 +584,51 @@ export default function VadodaraWebDevPage() {
 
       {/* 2. Verified local industrial case profiles */}
       <LocalCaseProfilesSection />
+
+      <section className="border-t border-gray-200 bg-white py-14">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <h2 className="font-display text-2xl font-bold text-gray-900">
+            Vadodara depth: what we build for local manufacturers
+          </h2>
+          <p className="mt-3 max-w-3xl text-gray-600 leading-relaxed">
+            Beyond corporate brochure sites, Vadodara buyers need product architecture, enquiry
+            ownership, and estate-aware SEO. Starter launches from ₹45,000 cover 25–30 pages with
+            core SEO; Professional catalogs (often ₹75,000) add category depth for multi-SKU plants
+            in Makarpura, Savli, Nandesari, and Halol.
+          </p>
+          <ul className="mt-6 grid gap-3 sm:grid-cols-2 text-sm text-gray-700">
+            <li>• Owned enquiry websites vs yearly paid directory renewals</li>
+            <li>• Manufacturer hub with chemical, engineering, pharma verticals</li>
+            <li>• GIDC estate landing pages with locality internal links</li>
+            <li>• Optional dealer portals after the public catalog ships</li>
+            <li>• Published cost pages for Vadodara and manufacturing scopes</li>
+            <li>• SEO company engagements for technical + topical clusters</li>
+          </ul>
+          <div className="mt-6 flex flex-wrap gap-4 text-sm">
+            <Link
+              href="/services/website-development-for-manufacturers"
+              className="font-medium text-blue-600 hover:underline"
+            >
+              Manufacturer websites hub →
+            </Link>
+            <Link href="/locations/india/gujarat/gidc" className="font-medium text-blue-600 hover:underline">
+              Gujarat GIDC hub →
+            </Link>
+            <Link
+              href="/cost/web-development-cost-vadodara"
+              className="font-medium text-blue-600 hover:underline"
+            >
+              Vadodara website cost →
+            </Link>
+            <Link
+              href="/services/website-development/owned-enquiry-channel"
+              className="font-medium text-blue-600 hover:underline"
+            >
+              Owned enquiry channel →
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* 3. Local E-E-A-T contact + Google Maps */}
       <LocalEeatSection />
