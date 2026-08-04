@@ -31,6 +31,18 @@ export type IndustrialServicePageProps = {
   path: string;
 };
 
+const heroProof = [
+  { label: "Starter", value: websitePricingTiers[0].price, detail: websitePricingTiers[0].scope },
+  { label: "Professional", value: websitePricingTiers[1].price, detail: websitePricingTiers[1].scope },
+  { label: "Timeline", value: "21–45 days", detail: "Typical launch window" },
+] as const;
+
+const heroSignals = [
+  "HTML catalogs & RFQ paths — not PDF brochure sites",
+  "Gujarat GIDC + manufacturer SEO from Vadodara",
+  "Full code ownership · GST invoice on every build",
+] as const;
+
 export function IndustrialServicePage({
   breadcrumb,
   eyebrow,
@@ -95,9 +107,17 @@ export function IndustrialServicePage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(professionalServiceJsonLd) }}
       />
-      <section className="bg-[#030b1f] text-white py-20 md:py-28">
-        <Container>
-          <nav className="mb-6 flex flex-wrap items-center gap-2 text-sm text-white/50">
+      <section className="relative overflow-hidden bg-[#030b1f] text-white">
+        <div
+          className="pointer-events-none absolute inset-0 opacity-40"
+          style={{
+            background:
+              "radial-gradient(ellipse 65% 50% at 90% 15%, rgba(37, 99, 235, 0.18), transparent 58%), radial-gradient(ellipse 50% 40% at 8% 95%, rgba(15, 23, 42, 0.9), transparent 55%)",
+          }}
+          aria-hidden
+        />
+        <Container className="relative z-10 py-16 md:py-20 lg:py-24">
+          <nav className="mb-8 flex flex-wrap items-center gap-2 text-sm text-white/50">
             <Link href="/" className="hover:text-white transition-colors">
               Home
             </Link>
@@ -111,35 +131,79 @@ export function IndustrialServicePage({
             <span>/</span>
             <span className="text-white/80">{breadcrumb}</span>
           </nav>
-          <p className="text-sm font-semibold uppercase tracking-widest text-indigo-400 mb-4">
-            {eyebrow}
-          </p>
-          <h1 className="font-display text-3xl font-bold leading-tight sm:text-4xl md:text-5xl max-w-4xl">
-            {h1}
-          </h1>
-          <p className="mt-6 text-lg text-slate-300 max-w-3xl">{lead}</p>
-          {pageDirectAnswer ? (
-            <p className="mt-4 max-w-3xl text-base text-indigo-100/90 leading-relaxed" data-speakable="direct-answer">
-              {pageDirectAnswer}
-            </p>
-          ) : null}
-          <p className="mt-4 text-indigo-200">{priceLine}</p>
-          <p className="mt-2 text-sm text-slate-400">
-            {pricingTerms.payment} · {pricingTerms.gst}
-          </p>
-          <div className="mt-8 flex flex-col sm:flex-row gap-4">
-            <Link
-              href={`/get-estimate?service=${encodeURIComponent(schemaName)}&source=${estimateSource}`}
-              className="inline-flex items-center justify-center rounded-lg bg-indigo-600 px-6 py-3 text-base font-semibold text-white hover:bg-indigo-500 transition"
-            >
-              {estimateLabel}
-            </Link>
-            <Link
-              href="/tools/industrial-website-rfq-estimator"
-              className="inline-flex items-center justify-center rounded-lg border border-white/20 px-6 py-3 text-base font-semibold text-white hover:bg-white/10 transition"
-            >
-              Free industrial cost estimator →
-            </Link>
+
+          <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-x-14 lg:gap-y-0">
+            <div className="lg:col-span-7 min-w-0">
+              <p className="text-sm font-semibold uppercase tracking-widest text-indigo-300 mb-4">
+                {eyebrow}
+              </p>
+              <h1 className="font-display text-3xl font-bold leading-[1.08] tracking-tight sm:text-4xl md:text-5xl lg:text-[3.25rem] max-w-[18ch] sm:max-w-none">
+                {h1}
+              </h1>
+              <p className="mt-6 text-lg text-slate-300 leading-relaxed max-w-[60ch]">{lead}</p>
+              {pageDirectAnswer ? (
+                <p
+                  className="mt-4 max-w-[60ch] text-base text-indigo-100/90 leading-relaxed"
+                  data-speakable="direct-answer"
+                >
+                  {pageDirectAnswer}
+                </p>
+              ) : null}
+              <p className="mt-5 text-indigo-200/95 max-w-[60ch]">{priceLine}</p>
+              <p className="mt-2 text-sm text-slate-400 max-w-[60ch]">
+                {pricingTerms.payment} · {pricingTerms.gst}
+              </p>
+              <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <Link
+                  href={`/get-estimate?service=${encodeURIComponent(schemaName)}&source=${estimateSource}`}
+                  className="inline-flex items-center justify-center rounded-lg bg-indigo-600 px-6 py-3 text-base font-semibold text-white hover:bg-indigo-500 transition"
+                >
+                  {estimateLabel}
+                </Link>
+                <Link
+                  href="/tools/industrial-website-rfq-estimator"
+                  className="inline-flex items-center justify-center rounded-lg border border-white/20 px-6 py-3 text-base font-semibold text-white hover:bg-white/10 transition"
+                >
+                  Free industrial cost estimator →
+                </Link>
+              </div>
+            </div>
+
+            <aside className="lg:col-span-5 min-w-0 lg:pt-2" aria-label="Pricing and delivery signals">
+              <div className="border-t border-white/15 pt-6 lg:border-t-0 lg:border-l lg:border-white/15 lg:pt-0 lg:pl-10">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/45 mb-5">
+                  Published industrial pricing
+                </p>
+                <dl className="grid grid-cols-1 gap-0 sm:grid-cols-3 lg:grid-cols-1">
+                  {heroProof.map((item, i) => (
+                    <div
+                      key={item.label}
+                      className={
+                        i > 0
+                          ? "border-t border-white/10 pt-4 mt-4 sm:border-t-0 sm:border-l sm:border-white/10 sm:pt-0 sm:mt-0 sm:pl-4 lg:border-l-0 lg:border-t lg:border-white/10 lg:pl-0 lg:pt-4 lg:mt-4"
+                          : ""
+                      }
+                    >
+                      <dt className="text-xs uppercase tracking-wider text-white/45">{item.label}</dt>
+                      <dd className="mt-1 font-display text-2xl font-bold tracking-tight text-white">
+                        {item.value}
+                      </dd>
+                      <dd className="mt-0.5 text-sm text-slate-400">{item.detail}</dd>
+                    </div>
+                  ))}
+                </dl>
+                <ul className="mt-8 space-y-3 border-t border-white/10 pt-6">
+                  {heroSignals.map((signal) => (
+                    <li key={signal} className="flex gap-3 text-sm text-slate-300 leading-snug">
+                      <span className="mt-0.5 text-indigo-400 shrink-0" aria-hidden>
+                        ✓
+                      </span>
+                      <span>{signal}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </aside>
           </div>
         </Container>
       </section>
@@ -147,24 +211,37 @@ export function IndustrialServicePage({
       {sections.map((s) => (
         <section key={s.heading} className="py-14 border-b border-slate-200">
           <Container>
-            <h2 className="font-display text-2xl font-bold text-slate-900 mb-4">{s.heading}</h2>
-            {s.directAnswer ? <DirectAnswerBlock answer={s.directAnswer} /> : null}
-            <div className="max-w-3xl space-y-4">
-              {s.paragraphs.map((p) => (
-                <p key={p.slice(0, 40)} className="text-slate-700 leading-relaxed">
-                  {p}
-                </p>
-              ))}
-              {s.bullets ? (
-                <ul className="mt-4 space-y-2 text-slate-700">
-                  {s.bullets.map((b) => (
-                    <li key={b} className="flex gap-2">
-                      <span className="text-indigo-600 shrink-0">✓</span>
-                      <span>{b}</span>
-                    </li>
+            <div className="grid gap-8 lg:grid-cols-12 lg:gap-12">
+              <div className="lg:col-span-4 min-w-0">
+                <h2 className="font-display text-2xl font-bold text-slate-900 tracking-tight lg:sticky lg:top-8">
+                  {s.heading}
+                </h2>
+              </div>
+              <div className="lg:col-span-8 min-w-0">
+                {s.directAnswer ? (
+                  <DirectAnswerBlock
+                    answer={s.directAnswer}
+                    className="mb-5 max-w-none rounded-lg border border-indigo-100 bg-indigo-50/60 px-4 py-3 text-base leading-relaxed text-slate-800"
+                  />
+                ) : null}
+                <div className="space-y-4 max-w-[70ch]">
+                  {s.paragraphs.map((p) => (
+                    <p key={p.slice(0, 40)} className="text-slate-700 leading-relaxed text-base md:text-lg">
+                      {p}
+                    </p>
                   ))}
-                </ul>
-              ) : null}
+                </div>
+                {s.bullets ? (
+                  <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+                    {s.bullets.map((b) => (
+                      <li key={b} className="flex gap-2 text-slate-700">
+                        <span className="text-indigo-600 shrink-0">✓</span>
+                        <span>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+              </div>
             </div>
           </Container>
         </section>
@@ -172,8 +249,10 @@ export function IndustrialServicePage({
 
       <section className="py-16 bg-slate-50 border-b border-slate-200">
         <Container>
-          <h2 className="font-display text-2xl font-bold text-slate-900 mb-6">{featureGridTitle}</h2>
-          <div className="grid gap-3 sm:grid-cols-2">
+          <h2 className="font-display text-2xl font-bold text-slate-900 mb-8 tracking-tight">
+            {featureGridTitle}
+          </h2>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {features.map((f) => (
               <div
                 key={f}
@@ -190,7 +269,7 @@ export function IndustrialServicePage({
       <section className="py-12 border-b border-slate-100 bg-[#f8fafc]">
         <Container>
           <p className="text-sm font-semibold text-slate-700 mb-3">Related industrial pages</p>
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-x-6 gap-y-3">
             {related.map((r) => (
               <Link key={r.href} href={r.href} className="text-sm text-indigo-600 hover:underline">
                 {r.label} →
@@ -202,14 +281,17 @@ export function IndustrialServicePage({
 
       <section className="py-16 bg-[#030b1f] text-white">
         <Container>
-          <div className="max-w-xl mx-auto text-center">
-            <h2 className="font-display text-2xl font-bold mb-3">
-              Ready for an industrial architecture estimate?
-            </h2>
-            <p className="text-slate-300 mb-8">
-              Free consultation for factory catalogs, RFQ flows, and GIDC-focused SEO. {pricingTerms.payment}.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="grid items-center gap-8 lg:grid-cols-12">
+            <div className="lg:col-span-7 min-w-0">
+              <h2 className="font-display text-2xl font-bold mb-3 md:text-3xl tracking-tight">
+                Ready for an industrial architecture estimate?
+              </h2>
+              <p className="text-slate-300 max-w-[55ch]">
+                Free consultation for factory catalogs, RFQ flows, and GIDC-focused SEO.{" "}
+                {pricingTerms.payment}.
+              </p>
+            </div>
+            <div className="lg:col-span-5 flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-3 sm:gap-4 lg:justify-end">
               <Link
                 href={`/get-estimate?service=${encodeURIComponent(schemaName)}&source=${estimateSource}-cta`}
                 className="inline-flex items-center justify-center rounded-lg bg-indigo-600 px-6 py-3 text-base font-semibold text-white hover:bg-indigo-500 transition"
