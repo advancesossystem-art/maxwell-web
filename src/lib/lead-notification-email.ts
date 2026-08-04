@@ -5,7 +5,7 @@ import { isGoogleScriptConfigured } from "@/lib/gmail-script-config";
 import { isGoogleScriptConfigError, sendViaGoogleAppsScript } from "@/lib/send-via-google-script";
 import { sanitizeEmailHeader } from "@/lib/security/sanitize";
 
-/** Fallback inbox if env vars are missing */
+/** Fallback inbox if env vars are missing — prefer LEAD_NOTIFICATION_EMAIL env. */
 export const LEAD_NOTIFICATION_EMAIL = "maxwellelectrodealsystems@gmail.com";
 
 const SOURCE_LABELS: Record<string, string> = {

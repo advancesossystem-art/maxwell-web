@@ -220,6 +220,72 @@ export const gidcEstates: GidcEstate[] = [
     ],
     nearbyNote: "Statewide Gujarat delivery from Vadodara — discovery calls + scheduled Vatva visits.",
   },
+  {
+    slug: "waghodia-gidc",
+    name: "Waghodia GIDC",
+    shortName: "Waghodia",
+    cityRegion: "Vadodara / Waghodia",
+    path: "/locations/india/gujarat/waghodia-gidc",
+    h1: "Manufacturer Websites for Waghodia GIDC, Vadodara",
+    metaTitle: "Waghodia GIDC Website Development Vadodara | Industrial Sites from ₹45,000",
+    metaDescription:
+      "Catalog & industrial websites for Waghodia GIDC manufacturers near Vadodara. RFQ paths, core SEO, owned enquiries. From ₹45,000 · on-site discovery.",
+    keywords: [
+      "Waghodia GIDC website development",
+      "manufacturer website Waghodia",
+      "Waghodia industrial estate website",
+      "industrial web design Waghodia Vadodara",
+    ],
+    eyebrow: "Vadodara corridor · Waghodia GIDC",
+    intro:
+      "Waghodia GIDC anchors engineering, polymers, and mid-size industrial units east of Vadodara. Local search for plant-level suppliers is rising; most plots still answer with a directory listing, not an owned product catalog with RFQ fields.",
+    industries: ["Engineering & fabrication", "Polymers & plastics", "Industrial supplies", "Process equipment"],
+    buyerSearches: [
+      "manufacturer Waghodia GIDC",
+      "engineering company Waghodia Vadodara",
+      "industrial supplier Waghodia GIDC",
+    ],
+    siteIncludes: [
+      "Capability and product page structure",
+      "RFQ / WhatsApp conversion paths",
+      "Core SEO for estate + product long-tails",
+      "Internal links into Vadodara and Gujarat manufacturer hubs",
+    ],
+    nearbyNote: "Vadodara HQ — Waghodia plant visits scheduled in the discovery week.",
+  },
+  {
+    slug: "por-gidc",
+    name: "Por GIDC",
+    shortName: "Por",
+    cityRegion: "Vadodara / Por",
+    path: "/locations/india/gujarat/por-gidc",
+    h1: "Manufacturer Websites for Por GIDC, Vadodara",
+    metaTitle: "Por GIDC Website Development Vadodara | Industrial Sites from ₹45,000",
+    metaDescription:
+      "Catalog & industrial websites for Por GIDC manufacturers near Vadodara. RFQ paths, core SEO, owned enquiries. From ₹45,000 · on-site discovery from Jetalpur Road HQ.",
+    keywords: [
+      "Por GIDC website development",
+      "manufacturer website Por GIDC",
+      "Por industrial estate website Vadodara",
+      "industrial web design Por GIDC",
+    ],
+    eyebrow: "Vadodara corridor · Por GIDC",
+    intro:
+      "Por GIDC sits in the Vadodara manufacturing belt with engineering, plastics, and industrial supply units selling B2B nationally. Local product searches still lean on directory listings; an owned catalog with RFQ fields captures those plant-level enquiries permanently.",
+    industries: ["Engineering & fabrication", "Plastics & polymers", "Industrial supplies", "Auto ancillary (select units)"],
+    buyerSearches: [
+      "manufacturer Por GIDC",
+      "engineering company Por Vadodara",
+      "industrial supplier Por GIDC Gujarat",
+    ],
+    siteIncludes: [
+      "Capability and product line pages with specs",
+      "RFQ / WhatsApp conversion paths you own",
+      "Core SEO for Por estate + product long-tails",
+      "Links into Vadodara manufacturer hub and industrial silos",
+    ],
+    nearbyNote: "Vadodara HQ on Jetalpur Road — Por plant visits scheduled during discovery week.",
+  },
 ];
 
 export function getGidcEstateBySlug(slug: string): GidcEstate | undefined {

@@ -18,6 +18,9 @@ export const KEYWORD_CANONICAL_PATHS = {
 
   /** Manufacturer website cluster */
   manufacturerWebsiteDevelopment: "/services/website-development-for-manufacturers",
+  industrialWebsiteDesign: "/services/industrial-website-design",
+  rfqWebsiteDevelopment: "/services/rfq-website-development",
+  industrialCatalogDevelopment: "/services/industrial-catalog-development",
 
   /** Web application */
   webApplicationDevelopment: "/services/web-application-development",

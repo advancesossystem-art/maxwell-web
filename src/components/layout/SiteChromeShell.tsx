@@ -1,5 +1,5 @@
 import { SkipLink } from "@/components/layout/SkipLink";
-import { Header } from "@/components/layout/Header";
+import { Header } from "@/components/layout/SiteHeader";
 
 /** Header + main only — Footer stays a server sibling in LayoutBody (hydration-safe). */
 export function SiteChromeShell({ children }: { children: React.ReactNode }) {

@@ -114,73 +114,74 @@ export const indiaGeoSolutionsData: Record<IndiaGeoSolutionSlug, SolutionPageDat
   "software-development-company-india": buildIndiaGeo("software", {
     slug: "software-development-company-india",
     title: "Software Development Company India",
-    headline: "Top Software Development Company in India",
+    headline: "Custom Software for Businesses — After Your Industrial Website Works",
     subheadline:
-      "Custom software, ERP, CRM, mobile apps, and AI for Indian SMEs and enterprises—GST-ready, Tally-integrated, milestone-based delivery from Vadodara HQ.",
-    metaTitle: "Software Development Company India | Custom Software & ERP",
+      "Maxwell is a website engineering company first. For manufacturers and B2B firms that need catalogs and RFQs, we then build supporting custom software, ERP, CRM, and web apps — GST-aware delivery from Vadodara, not generic agency theatre.",
+    metaTitle: "Custom Software for Indian Businesses | Industrial Web + Systems | Maxwell",
     metaDescription:
-      "Software development company in India. Custom software, ERP, CRM, mobile apps & AI. Vadodara HQ, nationwide delivery. Maxwell Electrodeal — free quote.",
-    primaryKeyword: "Software Development Company India",
+      "Custom software and operational systems for Indian manufacturers and SMEs — after your industrial website and RFQ channel. Vadodara HQ. Website packages from ₹45,000; software scoped separately.",
+    primaryKeyword: "custom software development India",
     secondaryKeywords: [
-      "top software development company India",
-      "custom software development India",
-      "best IT company India",
-      "software development services India",
-      "offshore software development India",
-      "enterprise software development India",
+      "custom software for manufacturers India",
+      "business software development Gujarat",
+      "ERP and CRM after website India",
+      "industrial digital systems Vadodara",
+      "software development company India manufacturers",
+      "GST ready custom software India",
     ],
     relatedSearches: [
-      "software development cost in India",
-      "hire software developers India",
-      "dedicated development team India",
-      "ERP development India",
+      "manufacturer website India",
+      "industrial website design",
+      "RFQ website development",
+      "manufacturing software India",
     ],
     marketInsights:
-      "India's software services market exceeds $250B annually. SMEs choosing a software development company in India gain 40–60% cost advantage versus Western agencies while accessing senior engineers fluent in GST, Tally, and industry-specific compliance.",
+      "Buyers who land on generic Software Development Company India pages often bounce when they wanted industrial websites, RFQs, or plant catalogs. Maxwell leads with manufacturer and industrial web, then scopes custom software, ERP, and CRM only when workflows need them — so the right intent stays on the right URL.",
     industryChallenges: [
       {
-        title: "Spreadsheet-Led Operations",
+        title: "Wrong Intent on Agency Head Terms",
         description:
-          "Most Indian SMEs lose ₹5L–₹20L yearly to manual inventory, production, and sales data—fixable with integrated ERP and custom software.",
+          "National software head terms attract curiosity traffic with weak commercial fit. Ranking for industrial website and RFQ long-tails converts better for Gujarat plants.",
       },
       {
-        title: "Offshore Without Accountability",
+        title: "Software Before Owned Enquiries",
         description:
-          "Freelancer marketplaces create delivery risk; enterprises need documented sprints, IP ownership, and post-launch SLAs.",
+          "Many SMEs buy software before Google can find their factory. We recommend owned catalog + RFQ first (from ₹45,000), then systems — so software has clean lead data to process.",
       },
     ],
     recommendedApproach: [
-      "Discovery workshop (on-site or remote)",
-      "Phased MVP with GST/Tally integration",
-      "Dedicated squad with weekly demos",
-      "24/7 production monitoring option",
+      "Confirm industrial / manufacturer website readiness",
+      "Discovery for operational systems only when RFQ volume justifies it",
+      "Phased MVP with GST/Tally integration where required",
+      "Dedicated squad with weekly demos and IP ownership",
     ],
     roiExamples: [
-      { metric: "40–60%", label: "Cost vs Western Agency", description: "India delivery" },
+      { metric: "₹45K+", label: "Website Wedge", description: "Owned enquiry first" },
       { metric: "100%", label: "IP Ownership", description: "Your code, always" },
-      { metric: "8 mo", label: "Average ERP ROI", description: "Manufacturing clients" },
+      { metric: "Phased", label: "Software Scope", description: "Milestones after web" },
     ],
     internalLinks: [
-      { label: "Vadodara Office", href: "/locations/india/vadodara", description: "HQ city" },
-      { label: "Gujarat Delivery", href: "/locations/india/gujarat", description: "State hub" },
-      { label: "ERP Development", href: "/solutions/erp-development-company", description: "ERP solutions" },
+      { label: "Industrial Website Design", href: "/services/industrial-website-design", description: "Primary commercial" },
+      { label: "Manufacturer Websites", href: "/services/website-development-for-manufacturers", description: "Catalog hub" },
+      { label: "Industrial Cost Estimator", href: "/tools/industrial-website-rfq-estimator", description: "Budget planner" },
+      { label: "Custom Software Service", href: "/services/custom-software-development", description: "Depth page" },
       { label: "Get Estimate", href: "/get-estimate", description: "Free scoped quote" },
     ],
     faqs: [
       {
-        question: "Why hire a software development company in India?",
+        question: "Should we hire for software company India or manufacturer websites first?",
         answer:
-          "India offers senior engineering talent, GST-aware delivery, and 40–60% cost savings versus US/UK agencies—with English-first communication and timezone flexibility for global clients.",
+          "If buyers need product specs and RFQs, start with an industrial or manufacturer website. Custom software and ERP help after enquiries and data routines exist — Maxwell sequences website first for most Gujarat plants.",
       },
       {
-        question: "How much does custom software development cost in India?",
+        question: "How much does custom software development cost in India with Maxwell?",
         answer:
-          "Focused tools from ₹2L; enterprise platforms ₹15L–₹50L+. ERP and multi-module systems are quoted after discovery with milestone billing.",
+          "Focused tools from roughly ₹2L; multi-module ERP-class systems higher and quoted after discovery with milestone billing. Website packages remain separate (Starter ₹45,000 / Professional ₹75,000 anchors).",
       },
       {
-        question: "Do you serve clients outside Gujarat?",
+        question: "Do you still offer ERP and CRM?",
         answer:
-          "Yes—we deliver nationwide from Mumbai, Bengaluru, Delhi, Chennai, Hyderabad, Pune, and all Gujarat cities with remote and on-site discovery.",
+          "Yes as supporting practices. Primary growth focus is industrial websites, RFQ systems, catalogs, and GIDC locality pages — ERP/CRM when operations need them.",
       },
     ],
   }),

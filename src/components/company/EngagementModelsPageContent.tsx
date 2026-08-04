@@ -6,7 +6,7 @@ import { AccentGradient, H3, Caption } from "@/components/design/typography";
 import { PrimaryCTA } from "@/components/conversion/PrimaryCTA";
 import { SecondaryCTA } from "@/components/conversion/SecondaryCTA";
 import { TrustStrip } from "@/components/trust/TrustStrip";
-import { engagementModelFaqs, engagementModels } from "@/lib/engagement-models";
+import { engagementModelFaqs, engagementModels, upsellLadder } from "@/lib/engagement-models";
 import { CONVERSION_ROUTES } from "@/lib/conversion-copy";
 
 export function EngagementModelsPageContent() {
@@ -61,6 +61,41 @@ export function EngagementModelsPageContent() {
             </Card>
           ))}
         </div>
+      </PageSection>
+
+      <PageSection tone="elevated">
+        <SectionHeader
+          title="Growth ladder after the website"
+          description="Website catalog first — then optional systems. Ranges below are indicative planning bands, not fixed quotes. ERP and portals use milestone billing; website packages use no-advance / pay-after-go-live terms."
+        />
+        <ol className="grid gap-4 md:grid-cols-2">
+          {upsellLadder.map((item) => (
+            <li key={item.step}>
+              <Card href={item.href} padding="lg" className="h-full">
+                <p className="text-xs font-semibold uppercase tracking-wider text-brand-500">
+                  Step {item.step}
+                  {item.primary ? " · Start here" : " · Upsell"}
+                </p>
+                <H3 className="mt-2 text-base">{item.title}</H3>
+                <p className="mt-2 font-display text-lg font-bold text-brand-600">{item.range}</p>
+                <Caption className="mt-2">{item.note}</Caption>
+              </Card>
+            </li>
+          ))}
+        </ol>
+        <p className="mt-6 text-center text-sm text-muted">
+          Prefer industrial website pricing first?{" "}
+          <Link href="/pricing" className="font-semibold text-brand-600 hover:underline">
+            Published website tiers
+          </Link>{" "}
+          ·{" "}
+          <Link
+            href="/tools/industrial-website-rfq-estimator"
+            className="font-semibold text-brand-600 hover:underline"
+          >
+            RFQ estimator
+          </Link>
+        </p>
       </PageSection>
 
       <PageSection>

@@ -23,24 +23,38 @@ function normalizeSiteUrl(raw: string): string {
 
 const siteUrl = normalizeSiteUrl(siteUrlRaw);
 
-/** Canonical brand disambiguation — schema and AI entity blocks only (not visible hero copy). */
+/**
+ * Canonical brand disambiguation — schema, AI entity blocks, and entity FAQs.
+ * Explicitly excludes printer/toner retail and maxwells.in (Maxwell Engineering Solutions).
+ */
 export const brandDisambiguation =
-  "Maxwell Electrodeal is a website engineering company for businesses, distinct from electronics component manufacturers of similar name." as const;
+  "Maxwell Electrodeal Private Limited is a software and website engineering company (industrial B2B product catalog & RFQ websites, web apps, custom software). Not a printer, toner, or photocopier hardware retailer. Not affiliated with Maxwell Engineering Solutions (maxwells.in) or other Waghodia pelletizing-die manufacturers using a similar name." as const;
 
 /** Single visible disclaimer — footer only. */
 export const footerBrandNote =
-  "Maxwell Electrodeal Private Limited is a website engineering company for businesses. Not affiliated with electronics component distributors of similar name." as const;
+  "Maxwell Electrodeal Private Limited engineers websites and software for manufacturers and businesses. Not a printer/toner dealer. Not Maxwell Engineering Solutions (maxwells.in)." as const;
+
+/** Corporate contact emails — single source of truth (display, mailto, schema). */
+export const corporateEmails = {
+  /** Only public contact email (founder + general display use the same inbox). */
+  primary: "maxwellelectrodealsystems@gmail.com",
+  /** @deprecated Same as primary — kept for call sites expecting founder/general keys */
+  founder: "maxwellelectrodealsystems@gmail.com",
+  general: "maxwellelectrodealsystems@gmail.com",
+} as const;
 
 export const siteConfig = {
   name: "Maxwell Electrodeal",
   legalName: "Maxwell Electrodeal Private Limited",
   tagline: "Website Engineering for Businesses",
   description:
-    "Website engineering company for businesses — manufacturer, corporate, and industrial websites, plus web apps, custom software, and AI automation. Based in Vadodara, Gujarat; serving India and English-speaking markets.",
+    "Software & Website Engineering Company — industrial B2B product catalog & RFQ websites, web apps, and custom software for manufacturers and businesses. Based in Vadodara, Gujarat; serving India and English-speaking markets.",
   url: siteUrl,
   logoPath: "/logo.webp",
   logoUrl: `${siteUrl}/logo.webp`,
-  email: "maxwellelectrodealsystems@gmail.com",
+  /** Primary public contact (schema, footer, forms display). */
+  email: corporateEmails.general,
+  founderEmail: corporateEmails.founder,
   phone: "+91 95868 68538",
   address: businessAddress.formatted,
   locale: "en_IN",

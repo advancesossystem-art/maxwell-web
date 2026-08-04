@@ -34,7 +34,7 @@ export const straightAnswers: StraightAnswer[] = [
   {
     question: "How long, really?",
     answer:
-      "21 days for a Starter site. 30 days for Professional. We'll put it in writing. If we miss it, we tell you why before the deadline — not after.",
+      "1 week for a Starter site. 30 days for Professional. We'll put it in writing. If we miss it, we tell you why before the deadline — not after.",
   },
 ];
 
@@ -42,7 +42,7 @@ export const whoWeAreNotFor = {
   title: "We're Not Right For Everyone",
   notFor: [
     "We don't compete with ₹15,000 quotes — we can't build properly at that price",
-    "We don't do 3-day rush jobs — good work takes 21 days minimum",
+    "We don't do same-day rush jobs — good Starter work takes about 1 week minimum",
     "We don't take more than 4 website projects a month",
     "We don't do logo design, printing, or social media management",
   ],

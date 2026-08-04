@@ -26,6 +26,37 @@ export function AboutPageContent() {
         <ClientLogoCloud mode="placeholder" />
       </PageSection>
 
+      <PageSection compact tone="raised">
+        <FadeIn>
+          <h2 className="font-display text-2xl font-bold">About our brand identity</h2>
+          <p className="mt-4 max-w-3xl leading-relaxed text-muted">
+            Maxwell Electrodeal Private Limited is a Software &amp; Website Engineering Company. We
+            build industrial B2B product catalog websites, RFQ systems, web applications, and custom
+            software for manufacturers and businesses from Vadodara, Gujarat.
+          </p>
+          <ul className="mt-4 max-w-3xl space-y-2 text-sm leading-relaxed text-muted">
+            <li>
+              We are <strong className="text-foreground">not</strong> a printer, toner, or
+              photocopier hardware retailer — even if older directory listings reuse the word
+              &quot;Maxwell.&quot;
+            </li>
+            <li>
+              We are <strong className="text-foreground">not</strong> Maxwell Engineering Solutions
+              (maxwells.in) or other Waghodia pelletizing-die manufacturers with a similar trade
+              name.
+            </li>
+            <li>
+              Match invoices and GST to <strong className="text-foreground">Maxwell Electrodeal
+              Private Limited</strong> and the domain maxwellelectrodeal.com — contact{" "}
+              <a href="mailto:maxwellelectrodealsystems@gmail.com" className="text-brand-600 hover:underline">
+                maxwellelectrodealsystems@gmail.com
+              </a>
+              .
+            </li>
+          </ul>
+        </FadeIn>
+      </PageSection>
+
       <PageSection compact>
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-10">
           <FadeIn>

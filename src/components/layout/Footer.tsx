@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { footerBrandNote, siteConfig } from "@/lib/constants";
 import { companyAuthorityFacts } from "@/lib/trust/company-authority";
-import { BrandLogo } from "@/components/layout/BrandLogo";
+import { BrandLogo } from "@/components/layout/BrandLogoMark";
 import { CookieSettingsLink } from "@/components/layout/CookieSettingsLink";
 import { consultationHref, estimateHref } from "@/lib/conversion-copy";
 import { footerNavColumns } from "@/lib/footer-nav";

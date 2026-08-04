@@ -4,8 +4,9 @@ import { buildDeepIndustryServiceArticle } from "./deep-seo-article-builder";
 import { programmaticIndustries, programmaticServices } from "../seo/programmatic/catalog";
 
 /**
- * Programmatic SEO blog articles — industry × service long-form guides (search-intent optimized).
- * Articles are indexed by default; unique per-industry intro paragraphs come from industry-intro-variants.
+ * Programmatic SEO blog articles — industry × service long-form.
+ * Surgical cleanup: ALL batch articles are noIndex to stop scaled-content crawl bloat.
+ * Hand blogs live only via seo-blog-sprint-restore and curated articles.
  */
 export function buildSeoArticlesBatch(): Article[] {
   const articles: Article[] = [];
@@ -19,7 +20,13 @@ export function buildSeoArticlesBatch(): Article[] {
     for (const service of services) {
       const slug = `${service.key}-for-${industry.slug}-india`;
       if (slug.length > 80) continue;
-      articles.push(createArticle(buildDeepIndustryServiceArticle(industry, service, date)));
+      const def = buildDeepIndustryServiceArticle(industry, service, date);
+      articles.push(
+        createArticle({
+          ...def,
+          noIndex: true,
+        }),
+      );
     }
   }
 

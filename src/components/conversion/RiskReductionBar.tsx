@@ -15,10 +15,10 @@ const offers = [
     ariaLabel: CTA_LABELS.secondary,
   },
   {
-    label: "Free ERP Assessment",
-    href: "/tools/erp-roi-calculator",
-    desc: "ROI & readiness check",
-    ariaLabel: CTA_LABELS.freeErpAssessment,
+    label: "Free Industrial Site Estimator",
+    href: "/tools/industrial-website-rfq-estimator",
+    desc: "SKU, RFQ & catalog ranges",
+    ariaLabel: "Free industrial website cost and RFQ estimator",
   },
   {
     label: "Free Custom Roadmap",

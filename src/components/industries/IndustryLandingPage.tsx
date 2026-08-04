@@ -58,15 +58,30 @@ export function IndustryLandingPage({ industry }: { industry: IndustryPageData }
       <GeoContentSection geo={geo} />
       <StatisticsPanel {...stats} />
       {showErpRoiLink ? (
-        <Container className="border-b border-border pb-10">
+        <Container className="border-b border-border pb-10 flex flex-wrap gap-4">
           <Link
-            href="/tools/erp-roi-calculator"
+            href="/tools/industrial-website-rfq-estimator"
             className="inline-flex items-center gap-1 text-sm font-semibold text-brand-600 hover:text-brand-500"
           >
-            Free ERP ROI Calculator — estimate 5-year payback →
+            Industrial website cost &amp; RFQ estimator →
+          </Link>
+          <Link
+            href="/tools/erp-roi-calculator"
+            className="inline-flex items-center gap-1 text-sm font-semibold text-[var(--v6-text-secondary)] hover:text-brand-600"
+          >
+            ERP ROI calculator (systems later) →
           </Link>
         </Container>
-      ) : null}
+      ) : (
+        <Container className="border-b border-border pb-10">
+          <Link
+            href="/tools/industrial-website-rfq-estimator"
+            className="inline-flex items-center gap-1 text-sm font-semibold text-brand-600 hover:text-brand-500"
+          >
+            Free industrial website cost &amp; RFQ estimator →
+          </Link>
+        </Container>
+      )}
       <ProofSignalsBar />
       <IndustryFocusAreas industry={industry} />
       <IndustryWorkflow industry={industry} />

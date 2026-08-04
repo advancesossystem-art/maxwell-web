@@ -58,6 +58,31 @@ const permanentRedirects: Array<{ source: string; destination: string }> = [
   { source: "/home", destination: "/" },
   { source: "/login", destination: "/admin/login" },
   { source: "/index.html", destination: "/" },
+  // Surgical SEO: consolidate duplicate manufacturer verticals → one canonical per industry
+  {
+    source: "/services/website-development/chemical-manufacturer",
+    destination: "/services/website-development/chemical-manufacturers",
+  },
+  {
+    source: "/services/website-development/engineering-company",
+    destination: "/services/website-development/engineering-machinery",
+  },
+  {
+    source: "/services/website-development/machinery-oem",
+    destination: "/services/website-development/engineering-machinery",
+  },
+  {
+    source: "/services/website-development/ceramic-manufacturer",
+    destination: "/services/website-development/ceramic-exporters",
+  },
+  {
+    source: "/services/website-development/pharmaceutical-company",
+    destination: "/services/website-development/pharma-equipment",
+  },
+  {
+    source: "/services/website-development/rajkot-engineering-company",
+    destination: "/services/website-development/engineering-machinery",
+  },
 ];
 
 function withTrailingSlashVariants(rules: Array<{ source: string; destination: string }>): Redirect[] {
@@ -115,14 +140,31 @@ const nextConfig: NextConfig = {
         source: "/admin/:path*",
         headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" }],
       },
-      {
-        source: "/_next/static/:path*",
-        headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
-      },
-      {
-        source: "/(.*)\\.(ico|jpg|jpeg|png|gif|webp|svg|woff|woff2)",
-        headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
-      },
+      // Only hash-immutable static caching in production. In dev, do not set
+      // Cache-Control on /_next/static — Turbopack may reuse chunk paths; long
+      // immutable max-age causes stale client modules / hydration mismatch.
+      ...(process.env.NODE_ENV === "production"
+        ? [
+            {
+              source: "/_next/static/:path*",
+              headers: [
+                {
+                  key: "Cache-Control",
+                  value: "public, max-age=31536000, immutable",
+                },
+              ],
+            },
+            {
+              source: "/(.*)\\.(ico|jpg|jpeg|png|gif|webp|svg|woff|woff2)",
+              headers: [
+                {
+                  key: "Cache-Control",
+                  value: "public, max-age=31536000, immutable",
+                },
+              ],
+            },
+          ]
+        : []),
     ];
   },
   async redirects() {

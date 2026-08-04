@@ -7,37 +7,43 @@ import { siteConfig } from "@/lib/constants";
 const LOGO_WIDTH = 1672;
 const LOGO_HEIGHT = 941;
 
+type BrandLogoSize = "navMobile" | "header" | "footer" | "sm" | "md" | "lg";
+
 type BrandLogoProps = {
-  size?: "sm" | "md" | "lg" | "header" | "footer";
+  size?: BrandLogoSize;
   className?: string;
   href?: string;
   priority?: boolean;
 };
 
-const heightClass = {
+const heightClass: Record<BrandLogoSize, string> = {
+  navMobile: "h-10",
+  header: "h-[4.55rem] sm:h-[5.2rem]",
   footer: "h-32",
   sm: "h-[8.75rem]",
   md: "h-40",
   lg: "h-[12.5rem]",
-  header: "h-14 sm:h-16",
-} as const;
+};
 
-const sizesAttr = {
+const sizesAttr: Record<BrandLogoSize, string> = {
+  navMobile: "160px",
+  header: "(max-width: 640px) 148px, 185px",
   footer: "228px",
   sm: "250px",
   md: "285px",
   lg: "356px",
-  header: "(max-width: 640px) 114px, 142px",
-} as const;
+};
 
-const maxWidthClass = {
+const maxWidthClass: Record<BrandLogoSize, string> = {
+  navMobile: "max-w-[160px]",
+  header: "max-w-[148px] sm:max-w-[185px]",
   footer: "max-w-[228px]",
   sm: "max-w-[250px]",
   md: "max-w-[285px]",
   lg: "max-w-[356px]",
-  header: "max-w-[114px] sm:max-w-[142px]",
-} as const;
+};
 
+/** Single source of truth for site logo sizing (nav / header / footer). */
 export function BrandLogo({
   size = "md",
   className,

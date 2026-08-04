@@ -31,6 +31,10 @@ const HomeToolsSpotlight = dynamic(
   () => import("@/components/home/HomeToolsSpotlight").then((m) => ({ default: m.HomeToolsSpotlight })),
   { ssr: false },
 );
+const HomeUnfairAdvantage = dynamic(
+  () => import("@/components/home/HomeUnfairAdvantage").then((m) => ({ default: m.HomeUnfairAdvantage })),
+  { ssr: false },
+);
 const WhyMaxwell = dynamic(
   () => import("@/components/home/WhyMaxwell").then((m) => ({ default: m.WhyMaxwell })),
   { ssr: false },
@@ -75,6 +79,7 @@ function BelowFoldSections() {
   return (
     <>
       <HomeSolution />
+      <HomeUnfairAdvantage />
       <HomeBusinessOutcomes />
       <ServicesExperience />
       <HomeCaseStudies />

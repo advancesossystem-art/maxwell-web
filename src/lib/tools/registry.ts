@@ -61,6 +61,27 @@ export const toolsRegistry: ToolDefinition[] = [
     tags: ["architecture", "stack", "cloud"],
   },
   {
+    slug: "industrial-website-rfq-estimator",
+    name: "Industrial Website Cost & RFQ Estimator",
+    shortName: "Industrial RFQ Cost",
+    description:
+      "Planning ranges for industrial / manufacturer websites by SKU count, RFQ depth, catalog, GIDC SEO, and dealer portal — Starter ₹45k / Professional ₹75k anchors.",
+    category: "finance",
+    icon: "calculator",
+    accent: "#0F766E",
+    featured: true,
+    popular: true,
+    recentlyUpdated: true,
+    estimatedMinutes: 3,
+    tags: [
+      "industrial website cost",
+      "RFQ website price",
+      "manufacturer website cost",
+      "industrial catalog estimate",
+      "B2B website estimator",
+    ],
+  },
+  {
     slug: "software-cost-calculator",
     name: "Software Cost Calculator",
     shortName: "Cost Calculator",
@@ -105,8 +126,7 @@ export const toolsRegistry: ToolDefinition[] = [
     category: "finance",
     icon: "roi",
     accent: "#1A4B8C",
-    featured: true,
-    popular: true,
+    // Soft-deprioritized vs industrial website wedge (GSC growth focus 2026)
     estimatedMinutes: 4,
     tags: ["ERP ROI", "ERP payback", "manufacturing ERP", "ERP cost savings"],
   },

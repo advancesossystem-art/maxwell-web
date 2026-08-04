@@ -2,6 +2,7 @@
 
 import { createHash } from "crypto";
 
+/** Lead inbox fallback — domain general (set LEAD_NOTIFICATION_EMAIL in production). */
 const FALLBACK_INBOX = "maxwellelectrodealsystems@gmail.com";
 
 function cleanAppPassword(value: string): string {

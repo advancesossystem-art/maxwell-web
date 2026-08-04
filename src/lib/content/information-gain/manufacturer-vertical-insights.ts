@@ -331,6 +331,182 @@ export const manufacturerVerticalInsights: Record<string, ManufacturerVerticalIn
     ownedVsMarketplace: "MSMEs benefit from owned site + basic marketplace listing — not marketplace-only dependency.",
     readinessQuestions: ["How many products in first launch vs phase 2?"],
   },
+  "electrical-manufacturer": {
+    slug: "electrical-manufacturer",
+    buyerChecklist: [
+      ...BASE_CHECKLIST,
+      "List voltage classes, IP ratings, and key standards references per product family",
+      "Decide which datasheets are public vs request-gated",
+    ],
+    commonMistakes: [
+      "Publishing only generic panel photos without electrical ratings tables",
+      "No RFQ fields for installation context or quantity",
+    ],
+    selectionCriteria: [
+      "Catalog supports filters by application and rating band",
+      "Link into industrial website design and RFQ silos",
+    ],
+    uniqueFaqs: [
+      {
+        question: "Do electrical manufacturers need a different website than general engineering firms?",
+        answer:
+          "Yes — buyers search ratings, standards, and duty cycle. Pages need structured specs and RFQ fields; brochure company pages underserve OEM procurement.",
+      },
+    ],
+    ownedVsMarketplace:
+      "Owned catalog pages rank for product + rating long-tails; directories put you beside competitors on rented placement.",
+    readinessQuestions: ["Top 20 SKUs that need HTML pages at launch?"],
+  },
+  "machinery-oem": {
+    slug: "machinery-oem",
+    buyerChecklist: [
+      ...BASE_CHECKLIST,
+      "One model page template: capacity, footprint, typical application, options",
+      "Define who receives drawing-attached RFQs in sales",
+    ],
+    commonMistakes: [
+      "All machines on one scroll with no indexable model URLs",
+      "Contact form only — no draw-upload RFQ for custom lines",
+    ],
+    selectionCriteria: [
+      "Vendor understands RFQ UX vs consumer ecommerce carts",
+      "Optional dealer portal phase after public models ship",
+    ],
+    uniqueFaqs: [
+      {
+        question: "Should spare parts be on the same OEM website as machines?",
+        answer:
+          "Often yes as secondary navigation so models stay primary for SEO — spare-parts depth can expand in phase 2.",
+      },
+    ],
+    ownedVsMarketplace:
+      "Machine buyers research models before directory calls — model pages and RFQs create owned pipeline.",
+    readinessQuestions: ["How many machine models for phase-one launch?"],
+  },
+  "chemical-manufacturers": {
+    slug: "chemical-manufacturers",
+    buyerChecklist: [
+      ...BASE_CHECKLIST,
+      "Map CAS numbers, grades, and packaging units for each SKU",
+      "Approve SDS/PDF version dates before publish",
+      "Flag products that need REACH / export disclosure copy (you supply legal text)",
+    ],
+    commonMistakes: [
+      "CAS and SDS buried in unsearchable multi-megabyte PDFs only",
+      "One generic form for sample, bulk, and export inquiries",
+      "No Ankleshwar / Nandesari locality signals buyers use after trade shows",
+    ],
+    selectionCriteria: [
+      "Corridor experience on Bharuch–Ankleshwar chemical belt SEO",
+      "Per-product document library + RFQ field schema",
+      "Published pricing — Starter ₹45,000 · Professional ₹75,000 · Growth ₹1,50,000",
+    ],
+    uniqueFaqs: [
+      {
+        question: "Should chemical sites list CAS and SDS on HTML product pages?",
+        answer:
+          "Yes for B2B trust and long-tail search. Link each SKU to an SDS PDF with version date; keep CAS and grade in HTML tables buyers and Google can parse.",
+      },
+      {
+        question: "How do owned catalogs reduce IndiaMART-style directory dependency?",
+        answer:
+          "Directories rent placement beside competitors. Your catalog ranks for grade + CAS + corridor queries and sends WhatsApp/RFQ leads you own — no annual listing fee.",
+      },
+    ],
+    ownedVsMarketplace:
+      "Paid directory listings put you next to competitors on rented real estate. An owned Next.js catalog with CAS/SDS/RFQ paths captures corridor and grade search traffic after fairs without perpetual platform fees.",
+    readinessQuestions: [
+      "Excel of SKUs with CAS, grade, packaging?",
+      "Who signs off SDS marketing display before go-live?",
+    ],
+  },
+  "engineering-machinery": {
+    slug: "engineering-machinery",
+    buyerChecklist: [
+      ...BASE_CHECKLIST,
+      "Model list with capacity, footprint, power, and options",
+      "Define CAD / drawing file types sales accepts on RFQ",
+      "Short machinery video or process clips per flagship model (optional phase 1)",
+    ],
+    commonMistakes: [
+      "All machines on one long page with no indexable model URLs",
+      "No file upload on quote forms — drawings stay in personal WhatsApp",
+      "Ignoring Makarpura / Savli estate locality for plant buyers nearby",
+    ],
+    selectionCriteria: [
+      "RFQ UX with drawing upload, not consumer cart",
+      "Video embed that does not destroy Core Web Vitals",
+      "Path to dealer portal after public models ship",
+    ],
+    uniqueFaqs: [
+      {
+        question: "Do Makarpura and Savli OEMs need different website architecture?",
+        answer:
+          "Architecture is shared (model pages + RFQ); locality and cluster SEO differ. We link GIDC estate pages and industrial silos so nearby buyers and Google understand plant context.",
+      },
+    ],
+    ownedVsMarketplace:
+      "Engineering buyers research models online before directory cold-calls. Owned model pages + CAD RFQ create pipeline you control.",
+    readinessQuestions: ["How many models in phase-one launch?", "Who owns application page content?"],
+  },
+  "ceramic-exporters": {
+    slug: "ceramic-exporters",
+    buyerChecklist: [
+      ...BASE_CHECKLIST,
+      "Size × finish matrix and PEI / abrasion class per SKU family",
+      "Export packing, destination ports, and sample request fields",
+      "English export pages for overseas buyers researching Morbi",
+    ],
+    commonMistakes: [
+      "Image galleries without size/finish filters overseas buyers need",
+      "No PEI or technical rating tables — only lifestyle photos",
+      "Contact-only sites that force export buyers onto directories",
+    ],
+    selectionCriteria: [
+      "Morbi cluster SEO literacy",
+      "Catalog filters for size, finish, application",
+      "Direct RFQ / sample workflow, not only email links",
+    ],
+    uniqueFaqs: [
+      {
+        question: "Should tile sites publish PEI and size matrices in HTML?",
+        answer:
+          "Yes — overseas procurement filters by size, finish, and PEI. HTML tables rank and convert better than PDF-only catalogues.",
+      },
+    ],
+    ownedVsMarketplace:
+      "Export buyers often land on Morbi company sites and WhatsApp RFQs after fair research — owned pages capture that, while directories keep you in a rented multi-supplier view.",
+    readinessQuestions: ["Top export SKU families for phase one?", "Sample vs container RFQ routing?"],
+  },
+  "pharma-equipment": {
+    slug: "pharma-equipment",
+    buyerChecklist: [
+      ...BASE_CHECKLIST,
+      "Equipment lines: process, packaging, utility, cleanroom accessories — separate IA",
+      "Facility / validation narrative pages (claims you approve)",
+      "RFQ fields for capacity, utility requirements, destination plant",
+    ],
+    commonMistakes: [
+      "Stock lifestyle photos instead of clean, label-safe equipment presentation",
+      "Mixing consumer health claims with B2B equipment marketing",
+      "No Halol / Vadodara corridor context for pharma cluster buyers",
+    ],
+    selectionCriteria: [
+      "Clean industrial visual system, not generic agency templates",
+      "Document request / brochure RFQ without compliance theater you cannot support",
+      "Optional dealer or service-partner portal later",
+    ],
+    uniqueFaqs: [
+      {
+        question: "Is a pharma equipment website different from a formulation company site?",
+        answer:
+          "Yes — equipment OEM sites need model specs, utility data, and RFQ for capex buyers; formulation sites need API/product compliance narrative. Architecture and trust signals diverge.",
+      },
+    ],
+    ownedVsMarketplace:
+      "Capex buyers shortlist vendors from owned sites with clear models and RFQ. Directory listings alone rarely show the validation-ready depth equipment RFQs need.",
+    readinessQuestions: ["How many equipment models at launch?", "Service network pages needed in phase 1?"],
+  },
 };
 
 export function getManufacturerVerticalInsight(slug: string): ManufacturerVerticalInsight | undefined {

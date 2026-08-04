@@ -1,35 +1,34 @@
-# Maxwell Electrodeal — llms-full.txt
-# Expanded URL map for AI systems (restored sprint 2026-08-03)
+# Maxwell Electrodeal — llms-full (money sitemap allowlist only)
+# Surgical SEO cleanup 2026-08-04 — programmatic doorways excluded
 
 ## Core
 - https://maxwellelectrodeal.com/
 - https://maxwellelectrodeal.com/about
-- https://maxwellelectrodeal.com/company
 - https://maxwellelectrodeal.com/contact
-- https://maxwellelectrodeal.com/pricing
 - https://maxwellelectrodeal.com/get-estimate
-- https://maxwellelectrodeal.com/book-consultation
+- https://maxwellelectrodeal.com/pricing
 
-## Website & manufacturer
+## Services & verticals
 - https://maxwellelectrodeal.com/services/website-development
 - https://maxwellelectrodeal.com/services/website-development-for-manufacturers
+- https://maxwellelectrodeal.com/services/industrial-website-design
+- https://maxwellelectrodeal.com/services/rfq-website-development
+- https://maxwellelectrodeal.com/services/industrial-catalog-development
 - https://maxwellelectrodeal.com/services/website-development/owned-enquiry-channel
 - https://maxwellelectrodeal.com/services/dealer-portal-development
-- https://maxwellelectrodeal.com/services/website-seo
-- https://maxwellelectrodeal.com/services/website-development/chemical-manufacturer
+- https://maxwellelectrodeal.com/services/website-development/chemical-manufacturers
+- https://maxwellelectrodeal.com/services/website-development/engineering-machinery
+- https://maxwellelectrodeal.com/services/website-development/ceramic-exporters
+- https://maxwellelectrodeal.com/services/website-development/pharma-equipment
+- https://maxwellelectrodeal.com/services/website-development/electrical-manufacturer
 - https://maxwellelectrodeal.com/services/website-development/bharuch-ankleshwar-chemical
+- https://maxwellelectrodeal.com/services/website-development/morbi-ceramic-website
 
-## Solutions / geo
+## Geo
 - https://maxwellelectrodeal.com/solutions/web-development-company-vadodara
 - https://maxwellelectrodeal.com/solutions/web-development-company-gujarat
-- https://maxwellelectrodeal.com/solutions/web-development-company-india
 - https://maxwellelectrodeal.com/solutions/seo-company-vadodara
-- https://maxwellelectrodeal.com/solutions/seo-company-gujarat
-
-## Cost
-- https://maxwellelectrodeal.com/cost/web-development-cost-vadodara
-- https://maxwellelectrodeal.com/cost/manufacturing-website-cost
-- https://maxwellelectrodeal.com/cost/web-development-cost-india
+- https://maxwellelectrodeal.com/locations/india/vadodara
 
 ## GIDC
 - https://maxwellelectrodeal.com/locations/india/gujarat/gidc
@@ -38,17 +37,21 @@
 - https://maxwellelectrodeal.com/locations/india/gujarat/nandesari-gidc
 - https://maxwellelectrodeal.com/locations/india/gujarat/halol-gidc
 - https://maxwellelectrodeal.com/locations/india/gujarat/ankleshwar-gidc
-- https://maxwellelectrodeal.com/locations/india/gujarat/vatva-gidc
-- https://maxwellelectrodeal.com/locations/india/vadodara
+- https://maxwellelectrodeal.com/locations/india/gujarat/waghodia-gidc
 
-## Blog (sprint)
-- https://maxwellelectrodeal.com/blog/manufacturer-website-seo-timeline-gujarat
-- https://maxwellelectrodeal.com/blog/directory-renewal-vs-owned-manufacturer-website
-- https://maxwellelectrodeal.com/blog/gidc-manufacturer-website-checklist-vadodara
+## Cost / tools / TCO
+- https://maxwellelectrodeal.com/cost/web-development-cost-india
+- https://maxwellelectrodeal.com/cost/web-development-cost-vadodara
+- https://maxwellelectrodeal.com/cost/manufacturing-website-cost
+- https://maxwellelectrodeal.com/tools/industrial-website-rfq-estimator
+- https://maxwellelectrodeal.com/compare/nextjs-vs-wordpress-business
+- https://maxwellelectrodeal.com/compare/wordpress-vs-custom-website
 
-## Proof
+## Proof & blogs
 - https://maxwellelectrodeal.com/case-studies/drashti-chemicals
-
-## Industries
-- https://maxwellelectrodeal.com/industries/chemical-manufacturing
-- https://maxwellelectrodeal.com/industries/manufacturing
+- https://maxwellelectrodeal.com/blog/nextjs-vs-wordpress-industrial-website
+- https://maxwellelectrodeal.com/blog/vadodara-manufacturers-directory-to-nextjs-catalog
+- https://maxwellelectrodeal.com/blog/b2b-rfq-website-architecture-manufacturers
+- https://maxwellelectrodeal.com/blog/how-to-structure-industrial-product-catalogue-online
+- https://maxwellelectrodeal.com/blog/gidc-manufacturer-website-checklist-vadodara
+- https://maxwellelectrodeal.com/blog/manufacturer-website-seo-timeline-gujarat

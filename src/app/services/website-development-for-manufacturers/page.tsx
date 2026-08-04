@@ -22,67 +22,49 @@ const industries = [
     emoji: "⚗️",
     name: "Chemical Manufacturers",
     desc: "Product catalogs, MSDS downloads, and inquiry forms for chemical suppliers.",
-    href: "/services/website-development/chemical-manufacturer",
+    href: "/services/website-development/chemical-manufacturers",
   },
   {
     emoji: "💊",
-    name: "Pharmaceutical Companies",
-    desc: "WHO-GMP display, API product catalogs, and international buyer forms.",
-    href: "/services/website-development/pharmaceutical-company",
+    name: "Pharma Equipment",
+    desc: "WHO-GMP display, equipment catalogs, and international buyer forms.",
+    href: "/services/website-development/pharma-equipment",
   },
   {
     emoji: "⚙️",
-    name: "Engineering Companies",
+    name: "Engineering & Machinery",
     desc: "Technical spec sheets, RFQ forms, and ISO certification display for GIDC manufacturers.",
-    href: "/services/website-development/engineering-company",
-  },
-  {
-    emoji: "🧵",
-    name: "Textile Manufacturers",
-    desc: "Fabric swatch galleries, sample request forms, and export-ready product pages.",
-    href: "/services/website-development/textile-manufacturer",
+    href: "/services/website-development/engineering-machinery",
   },
   {
     emoji: "🏺",
-    name: "Ceramic Manufacturers",
+    name: "Ceramic Exporters (Morbi)",
     desc: "Tile catalogs with size, finish, and PEI ratings — targeting Morbi's 800+ factories.",
-    href: "/services/website-development/ceramic-manufacturer",
+    href: "/services/website-development/ceramic-exporters",
   },
   {
-    emoji: "🥫",
-    name: "Food Processing Companies",
-    desc: "FSSAI-linked product pages and export compliance content.",
-    href: "/services/website-development/food-processing-company",
+    emoji: "⚡",
+    name: "Electrical Manufacturers",
+    desc: "Ratings, standards references, equipment catalogs, and RFQ forms for electrical OEMs.",
+    href: "/services/website-development/electrical-manufacturer",
   },
   {
-    emoji: "🔧",
-    name: "Auto Parts Manufacturers",
-    desc: "Part catalogs with OEM fitment data and B2B RFQ workflows.",
-    href: "/services/website-development/auto-parts-manufacturer",
+    emoji: "🔗",
+    name: "Owned Enquiry Channel",
+    desc: "Catalog sites that capture direct RFQs instead of rental directory leads.",
+    href: "/services/website-development/owned-enquiry-channel",
   },
   {
-    emoji: "🎨",
-    name: "Paint & Coating Companies",
-    desc: "Product range pages, shade cards, and technical data sheets for Ankleshwar corridor.",
-    href: "/services/website-development/paint-coating-company",
+    emoji: "🏭",
+    name: "Morbi Ceramic Corridor",
+    desc: "Local Morbi tile & ceramic manufacturer website builds.",
+    href: "/services/website-development/morbi-ceramic-website",
   },
   {
-    emoji: "♻️",
-    name: "Plastic Manufacturers",
-    desc: "Grade specifications, material data, and direct B2B inquiry forms.",
-    href: "/services/website-development/plastic-manufacturer",
-  },
-  {
-    emoji: "🌍",
-    name: "Exporters & Trading Companies",
-    desc: "International buyer acquisition pages with country-specific inquiry forms.",
-    href: "/services/website-development/exporter-india",
-  },
-  {
-    emoji: "🚢",
-    name: "Manufacturer Export Websites",
-    desc: "Export-ready websites with multi-currency, buyer inquiry, and country-targeted landing pages.",
-    href: "/services/website-development/manufacturer-export-website",
+    emoji: "🧪",
+    name: "Bharuch–Ankleshwar Chemicals",
+    desc: "Chemical corridor websites for specialty grades and export buyers.",
+    href: "/services/website-development/bharuch-ankleshwar-chemical",
   },
 ];
 
@@ -223,10 +205,10 @@ export default function ManufacturerWebsitePage() {
                 See What Your Website Would Cost
               </Link>
               <Link
-                href="/case-studies/drashti-chemicals"
+                href="/tools/industrial-website-rfq-estimator"
                 className="inline-flex items-center justify-center rounded-lg border border-white/20 px-6 py-3 text-base font-semibold text-white hover:bg-white/10 transition"
               >
-                See Case Study →
+                Free industrial cost estimator →
               </Link>
             </div>
             <div className="mt-10 flex flex-wrap gap-4">
@@ -533,15 +515,23 @@ export default function ManufacturerWebsitePage() {
           <p className="text-sm text-slate-500 mb-6">Specialist pages for Gujarat&apos;s key industrial corridors</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {[
+              { label: "Industrial Website Design →", href: "/services/industrial-website-design" },
+              { label: "RFQ Website Development →", href: "/services/rfq-website-development" },
+              { label: "Industrial Catalog Development →", href: "/services/industrial-catalog-development" },
+              { label: "Industrial Cost Estimator →", href: "/tools/industrial-website-rfq-estimator" },
+              { label: "Chemical Manufacturers →", href: "/services/website-development/chemical-manufacturers" },
+              { label: "Engineering & Machinery →", href: "/services/website-development/engineering-machinery" },
+              { label: "Ceramic Exporters Morbi →", href: "/services/website-development/ceramic-exporters" },
+              { label: "Pharma Equipment →", href: "/services/website-development/pharma-equipment" },
+              { label: "Electrical Manufacturers →", href: "/services/website-development/electrical-manufacturer" },
               { label: "Gujarat GIDC Estates Hub →", href: "/locations/india/gujarat/gidc" },
               { label: "Makarpura GIDC →", href: "/locations/india/gujarat/makarpura-gidc" },
+              { label: "Savli GIDC →", href: "/locations/india/gujarat/savli-gidc" },
               { label: "Nandesari GIDC →", href: "/locations/india/gujarat/nandesari-gidc" },
+              { label: "Halol GIDC →", href: "/locations/india/gujarat/halol-gidc" },
               { label: "Ankleshwar GIDC →", href: "/locations/india/gujarat/ankleshwar-gidc" },
-              { label: "Bharuch-Ankleshwar Chemical Corridor →", href: "/services/website-development/bharuch-ankleshwar-chemical" },
-              { label: "Surat Textile Manufacturers →", href: "/services/website-development/surat-textile-manufacturer" },
-              { label: "Rajkot Engineering Companies →", href: "/services/website-development/rajkot-engineering-company" },
-              { label: "Morbi Ceramic Manufacturers →", href: "/services/website-development/morbi-ceramic-website" },
-              { label: "MSME Website India →", href: "/services/website-development/msme-india" },
+              { label: "Morbi Ceramic Corridor →", href: "/services/website-development/morbi-ceramic-website" },
+              { label: "Bharuch–Ankleshwar Corridor →", href: "/services/website-development/bharuch-ankleshwar-chemical" },
             ].map(({ label, href }) => (
               <Link key={href} href={href} className="flex items-center gap-2 text-sm text-indigo-600 hover:text-indigo-800 hover:underline font-medium">
                 {label}
@@ -557,10 +547,15 @@ export default function ManufacturerWebsitePage() {
           <h2 className="font-display text-xl font-bold text-[var(--v6-text,#0f172a)] mb-4">Related resources</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {[
+              { label: "Industrial Website Design", href: "/services/industrial-website-design" },
+              { label: "RFQ Website Development", href: "/services/rfq-website-development" },
+              { label: "Industrial Catalog Development", href: "/services/industrial-catalog-development" },
+              { label: "Industrial Website Cost Estimator", href: "/tools/industrial-website-rfq-estimator" },
               { label: "Owned Enquiry Channel vs Paid Listings", href: "/services/website-development/owned-enquiry-channel" },
               { label: "Manufacturing Website Cost", href: "/cost/manufacturing-website-cost" },
               { label: "Website Development Company Vadodara", href: "/solutions/web-development-company-vadodara" },
-              { label: "Why Manufacturers Are Moving Beyond Paid Directories", href: "/blog/indiamart-alternative-website-manufacturer" },
+              { label: "B2B RFQ Systems for Manufacturers", href: "/blog/b2b-rfq-website-architecture-manufacturers" },
+              { label: "Directory → Next.js Catalog (lead magnet)", href: "/blog/vadodara-manufacturers-directory-to-nextjs-catalog" },
               { label: "GIDC Manufacturer Website Checklist", href: "/blog/gidc-manufacturer-website-checklist-vadodara" },
               { label: "Chemical Catalog Case Study", href: "/case-studies/drashti-chemicals" },
             ].map(({ label, href }) => (

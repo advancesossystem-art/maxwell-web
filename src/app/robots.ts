@@ -40,6 +40,8 @@ const crawlWasteAllow = [
   "/locations/india/gujarat/halol-gidc",
   "/locations/india/gujarat/ankleshwar-gidc",
   "/locations/india/gujarat/vatva-gidc",
+  "/locations/india/gujarat/waghodia-gidc",
+  "/locations/india/gujarat/por-gidc",
 ];
 
 export default function robots(): MetadataRoute.Robots {

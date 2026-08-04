@@ -416,7 +416,7 @@ export function buildCostPage(
     {
       title: "Timeline expectations",
       content: isWebDevelopment
-        ? "Published website tiers run 21 days (Starter) to 6–8 weeks (Growth). Custom portals extend beyond — scoped in discovery."
+        ? "Published website tiers run about 1 week (Starter) to 6–8 weeks (Growth). Custom portals extend beyond — scoped in discovery."
         : "Most projects run 8–20 weeks in phased milestones with weekly demos. Rush timelines increase cost 15–30%.",
     },
   ];

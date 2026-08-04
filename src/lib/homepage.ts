@@ -1,11 +1,11 @@
 /** Maxwell 2026 — homepage narrative (single source of truth) */
 
 export const homeHero = {
-  eyebrow: "Maxwell Electrodeal · Website Engineering for Businesses",
-  headlineLine1: "Your buyers are searching Google right now.",
-  headlineLine2: "They're finding your competitor.",
+  eyebrow: "Maxwell Electrodeal · Industrial website engineering · Gujarat",
+  headlineLine1: "Replace directory dependency",
+  headlineLine2: "with an owned Direct RFQ catalog.",
   subhead:
-    "We are the website engineering company for businesses — product catalog and corporate sites that show up on Google and send inquiries to WhatsApp. Starting from ₹45,000.",
+    "Next.js product catalog and RFQ engines for Gujarat industrial exporters and manufacturers — CAS, models, tiles, equipment — that rank on Google and send WhatsApp inquiries you own. Starting from ₹45,000.",
   /** Social proof in first viewport — pairs with primary CTA */
   proofOutcome:
     "Last build: 263 pages · 154 products · 94/100 Google Speed · Live in 6 weeks",
@@ -16,11 +16,44 @@ export const homeHero = {
   secondaryCta: { label: "WhatsApp Us — reply in 2 hrs", href: "/contact" },
 } as const;
 
+/** High-intent unfair advantage — homepage section (TCO + ownership narrative). */
+export const unfairAdvantageOffer = {
+  eyebrow: "Unfair advantage vs ₹25K WordPress",
+  title: "Cheap build quotes hide a ₹2.77L three-year bill",
+  description:
+    "A typical low-cost WordPress plant site often costs ~₹2,77,000 over three years once you add hosting, plugin renewals, security cleanups, and redesign churn — while you still rent inquiries from directories. Maxwell Next.js catalogs target 90+ PageSpeed, zero annual plugin license fees, 100% IP ownership, and Direct WhatsApp + RFQ on product pages.",
+  assumptions:
+    "Illustrative 3-year stack assumptions published on /pricing (build + hosting + plugins/maintenance + lost-lead opportunity). Your scoped estimate may differ.",
+  pillars: [
+    {
+      title: "3-year TCO clarity",
+      detail: "Compare WordPress ~₹2.77L narrative vs Maxwell published tiers — transparent assumptions on pricing.",
+    },
+    {
+      title: "Next.js 90+ PageSpeed",
+      detail: "Core Web Vitals budgets for factory mobile networks — not bloated page builders.",
+    },
+    {
+      title: "Zero annual plugin fees",
+      detail: "No Elementor / SEO plugin / form plugin lock-in — you own the codebase.",
+    },
+    {
+      title: "Direct WhatsApp + RFQ",
+      detail: "Product-page inquiry paths you control — reduce IndiaMART and directory-only dependency.",
+    },
+  ],
+  ctaPrimary: { label: "Compare 3-year TCO", href: "/pricing" },
+  ctaSecondary: { label: "Industrial RFQ estimator", href: "/tools/industrial-website-rfq-estimator" },
+} as const;
+
 export const heroServiceBadges = [
   { label: "Website Development", href: "/services/website-development" },
   { label: "Manufacturer Websites", href: "/services/website-development-for-manufacturers" },
+  { label: "Industrial Web Design", href: "/services/industrial-website-design" },
+  { label: "RFQ Websites", href: "/services/rfq-website-development" },
   { label: "Vadodara Web Company", href: "/solutions/web-development-company-vadodara" },
   { label: "Gujarat GIDC", href: "/locations/india/gujarat/gidc" },
+  { label: "Industrial Cost Estimator", href: "/tools/industrial-website-rfq-estimator" },
   { label: "Website Cost", href: "/cost/web-development-cost-vadodara" },
   { label: "SEO Company", href: "/solutions/seo-company-vadodara" },
 ] as const;
@@ -29,7 +62,7 @@ export const heroTrustMetrics = [
   { value: "50+", label: "Projects delivered" },
   { value: "₹45K", label: "Starting price for websites" },
   { value: "15+", label: "Industries served" },
-  { value: "21 days", label: "Starter site delivery" },
+  { value: "1 week", label: "Starter site delivery" },
   { value: "<4hr", label: "Response time" },
 ] as const;
 
@@ -59,11 +92,11 @@ export const heroSidePanel = {
   ],
   websiteTypes: [
     { label: "Manufacturer catalogs", href: "/services/website-development-for-manufacturers" },
-    { label: "Corporate & industrial", href: "/services/website-development" },
+    { label: "Industrial website design", href: "/services/industrial-website-design" },
+    { label: "RFQ & quote portals", href: "/services/rfq-website-development" },
     { label: "Export & B2B sites", href: "/services/website-development/exporter-india" },
-    { label: "Website redesign", href: "/services/website-redesign" },
   ],
-  priceNote: "Websites from ₹45,000 · Starter delivery in 21 days",
+  priceNote: "Websites from ₹45,000 · Starter delivery in 1 week",
   primaryLink: { label: "See website pricing", href: "/pricing" },
   secondaryLink: { label: "All website services", href: "/services/website-development" },
 } as const;
@@ -138,6 +171,20 @@ export const problemSolutionMap = [
     description:
       "Build a product catalog website that generates direct Google inquiries — without paying platform fees forever.",
     href: "/services/website-development-for-manufacturers",
+  },
+  {
+    problem: "Industrial brochure site gets zero RFQs",
+    solution: "Industrial Website Design",
+    description:
+      "Factory-ready architecture: specs, catalogs, GIDC SEO, and RFQ paths instead of a static PDF online.",
+    href: "/services/industrial-website-design",
+  },
+  {
+    problem: "Generic contact form only — no quote workflow",
+    solution: "RFQ Website Development",
+    description:
+      "Inquiry carts, drawing uploads, and WhatsApp routing built for B2B procurement.",
+    href: "/services/rfq-website-development",
   },
   {
     problem: "Paying yearly for listings you do not own",
@@ -301,7 +348,7 @@ export const homepageIndustries = [
     slug: "chemical",
     title: "Chemical",
     outcome: "Product catalog websites, MSDS pages, and inquiry paths for chemical exporters.",
-    href: "/services/website-development/chemical-manufacturer",
+    href: "/services/website-development/chemical-manufacturers",
     icon: "factory",
   },
   {
@@ -315,7 +362,7 @@ export const homepageIndustries = [
     slug: "pharma",
     title: "Pharma",
     outcome: "Corporate and API company websites with compliance-ready product presentation.",
-    href: "/services/website-development/pharmaceutical-company",
+    href: "/services/website-development/pharma-equipment",
     icon: "health",
   },
   {
@@ -343,7 +390,7 @@ export const homepageIndustries = [
     slug: "automotive",
     title: "Engineering",
     outcome: "Corporate websites and product catalogs for engineering and fabrication firms.",
-    href: "/services/website-development/engineering-company",
+    href: "/services/website-development/engineering-machinery",
     icon: "factory",
   },
 ] as const;
@@ -602,13 +649,25 @@ export const homepageFaqs = [
   {
     question: "What is Maxwell Electrodeal?",
     answer:
-      "Maxwell Electrodeal is a website engineering company for businesses, headquartered in Vadodara, Gujarat, India. They build manufacturer, corporate, and industrial websites, web applications, custom software, ERP, CRM, and AI automation for clients in India and English-speaking markets. Website packages: no advance payment (full pay within 3 days of go-live + 18% GST). Custom software/ERP uses milestone billing. 100% IP ownership and on-site discovery for Gujarat businesses.",
+      "Maxwell Electrodeal Private Limited is a Software & Website Engineering Company headquartered in Vadodara, Gujarat, India. We engineer industrial B2B product catalog and RFQ websites, web apps, and custom software for manufacturers and businesses. Website packages: no advance (full pay within 3 days of go-live + 18% GST). Custom software/ERP uses milestone billing. 100% IP ownership.",
+    category: "Company",
+  },
+  {
+    question: "Are you a printer toner or photocopier dealer?",
+    answer:
+      "No. Maxwell Electrodeal is not a printer, toner, or photocopier hardware retailer. Some legacy directory listings may use similar 'Maxwell' names for hardware dealers — that is a different entity. We engineer websites and software for manufacturers and businesses only.",
+    category: "Company",
+  },
+  {
+    question: "Are you connected to maxwells.in or Maxwell Engineering Solutions?",
+    answer:
+      "No. We are Maxwell Electrodeal Private Limited (maxwellelectrodeal.com) — website and software engineering. We are not Maxwell Engineering Solutions (maxwells.in) or Waghodia pelletizing-die manufacturers using a similar name. Please match us by GST invoice name and this domain.",
     category: "Company",
   },
   {
     question: "What does a typical project cost?",
     answer:
-      "Website packages start from ₹45,000 (25–30 pages + core SEO) with no advance — full payment within 3 days of go-live (+18% GST). Custom software and ERP engagements are quoted after discovery with milestone billing.",
+      "Website packages: Starter ₹45,000 · Professional ₹75,000 · Growth ₹1,50,000 with no advance — full payment within 3 days of go-live (+18% GST). Custom software and ERP engagements are quoted after discovery with milestone billing.",
     category: "Cost",
   },
   {

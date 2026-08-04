@@ -1,5 +1,41 @@
 /** Engagement & pricing models — single source for /engagement-models */
 
+/** Phase 4 upsell ladder — website first, systems later (indicative ranges). */
+export const upsellLadder = [
+  {
+    step: 1,
+    title: "Website catalog",
+    range: "₹75,000 – ₹1,50,000",
+    note: "Professional–Growth published website packages (Starter from ₹45,000)",
+    href: "/services/website-development-for-manufacturers",
+    primary: true,
+  },
+  {
+    step: 2,
+    title: "Connect inquiry → Tally / GST",
+    range: "~₹50,000 framing",
+    note: "Indicative estimate for inquiry CRM/email → Tally/GST handoff integrations after the catalog ships",
+    href: "/services/custom-software-development",
+    primary: false,
+  },
+  {
+    step: 3,
+    title: "Dealer portal",
+    range: "~₹2.5L framing",
+    note: "Indicative estimate for login catalogs, price lists, and distributor-only SKUs",
+    href: "/services/dealer-portal-development",
+    primary: false,
+  },
+  {
+    step: 4,
+    title: "Production / inventory ERP",
+    range: "₹5L – ₹12L range",
+    note: "Indicative estimate only — scoped after discovery; not website package billing",
+    href: "/services/erp-development",
+    primary: false,
+  },
+] as const;
+
 export const engagementModels = [
   {
     slug: "fixed-price",

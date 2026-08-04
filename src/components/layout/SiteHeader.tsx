@@ -5,7 +5,7 @@ import { useEscapeKey, useFocusTrap } from "@/lib/a11y/dialog";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { BrandLogo } from "@/components/layout/BrandLogo";
+import { BrandLogo } from "@/components/layout/BrandLogoMark";
 import { siteConfig, WHATSAPP_HREF_ENGINEER } from "@/lib/constants";
 import {
   CTA_LABELS,
@@ -16,6 +16,7 @@ import { trackCTAClick } from "@/lib/conversion-events";
 import { mobileServiceShortcuts, servicesNavGroups } from "@/lib/navigation-services";
 import { ServicesNavMenu } from "@/components/layout/ServicesNavMenu";
 import { QuickEstimateModal } from "@/components/leads/QuickEstimateModal";
+import { IconWhatsApp } from "@/components/ui/Icons";
 
 const primaryNav = [
   { label: "Home", href: "/" },
@@ -198,7 +199,7 @@ export function Header() {
       {/* Mobile header — logo + hamburger only (no CTA) */}
       <div className="flex h-16 w-full items-center justify-between px-4 lg:hidden">
         <span data-nav="logo" className="mx-nav-pending inline-flex shrink-0">
-          <BrandLogo size="sm" href="/" className="!h-8 w-auto max-w-[140px]" />
+          <BrandLogo size="navMobile" href="/" priority />
         </span>
         <button
           type="button"
@@ -228,7 +229,7 @@ export function Header() {
       <div className="hidden w-full lg:block">
         <div className="v6-container v6-nav-inner">
           <span data-nav="logo" className="mx-nav-pending inline-flex shrink-0">
-            <BrandLogo size="header" href="/" />
+            <BrandLogo size="header" href="/" priority />
           </span>
 
           <nav className="flex shrink-0 items-center gap-0.5" aria-label="Main navigation">
@@ -346,10 +347,7 @@ export function Header() {
               data-nav="cta"
               onClick={() => trackCTAClick("WhatsApp Engineer", WHATSAPP_HREF_ENGINEER, "header")}
             >
-              <svg viewBox="0 0 24 24" className="h-4 w-4 fill-[#25D366]" aria-hidden>
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
-                <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.523 5.845L.057 23.886l6.202-1.424A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z" />
-              </svg>
+              <IconWhatsApp className="h-4 w-4 text-[#25D366]" />
               WhatsApp
             </a>
             <button
@@ -507,6 +505,7 @@ export function Header() {
               closeMobile();
             }}
           >
+            <IconWhatsApp className="h-5 w-5 text-[#25D366]" />
             WhatsApp an Engineer
           </a>
           <Link

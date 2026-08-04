@@ -11,15 +11,18 @@ export function GidcEstatePage({ estate }: { estate: GidcEstate }) {
     "@type": "Service",
     name: `Website development for ${estate.name}`,
     provider: {
-      "@type": "Organization",
+      "@type": "ProfessionalService",
       name: siteConfig.legalName,
       url: siteConfig.url,
       address: {
         "@type": "PostalAddress",
+        streetAddress: "419, Lalita Tower, Jetalpur Road",
         addressLocality: "Vadodara",
         addressRegion: "Gujarat",
+        postalCode: "390007",
         addressCountry: "IN",
       },
+      telephone: siteConfig.phone,
     },
     areaServed: {
       "@type": "Place",
@@ -188,6 +191,12 @@ export function GidcEstatePage({ estate }: { estate: GidcEstate }) {
             ))}
           </div>
           <div className="mt-8 flex flex-wrap gap-4 text-sm">
+            <Link href="/services/industrial-website-design" className="text-indigo-600 hover:underline">
+              Industrial website design →
+            </Link>
+            <Link href="/tools/industrial-website-rfq-estimator" className="text-indigo-600 hover:underline">
+              Industrial cost estimator →
+            </Link>
             <Link href="/solutions/web-development-company-vadodara" className="text-indigo-600 hover:underline">
               Website development company Vadodara →
             </Link>

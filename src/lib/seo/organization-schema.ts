@@ -9,12 +9,13 @@ import { getFounderAuthor } from "@/lib/content/authors";
 import { headquarters, seoIds, socialProfiles } from "@/lib/seo/config";
 
 export const ORGANIZATION_DESCRIPTION =
-  "Maxwell Electrodeal is a website engineering company for businesses. We build manufacturer, corporate, and industrial websites, plus web applications, custom software, and AI automation. Based in Vadodara, Gujarat, India.";
+  "Maxwell Electrodeal Private Limited is a Software & Website Engineering Company based in Vadodara, Gujarat, India. We build industrial B2B product catalog websites, RFQ systems, manufacturer websites, web applications, and custom software. Not a printer, toner, or photocopier hardware retailer. Not affiliated with Maxwell Engineering Solutions (maxwells.in) or Waghodia pelletizing-die manufacturers.";
 
 const ORGANIZATION_ALTERNATE_NAMES = [
   "Maxwell Electrodeal Private Limited",
   "Maxwell Electrodeal Website Engineering",
   "Maxwell Electrodeal Web Development",
+  "Maxwell Electrodeal Software Engineering",
 ] as const;
 
 const CORE_OFFER_SERVICES = [
@@ -116,6 +117,13 @@ export function buildOrganizationNode() {
         areaServed: ["IN", "US", "GB", "AU"],
         availableLanguage: ["English", "Hindi", "Gujarati"],
       },
+      {
+        "@type": "ContactPoint" as const,
+        contactType: "customer service",
+        email: siteConfig.founderEmail,
+        areaServed: "IN",
+        availableLanguage: ["English", "Hindi", "Gujarati"],
+      },
     ],
     areaServed: [
       { "@type": "Country" as const, name: "India" },
@@ -128,6 +136,8 @@ export function buildOrganizationNode() {
       "Website Development",
       "Website Engineering for Businesses",
       "Manufacturer Website Development India",
+      "Industrial B2B Product Catalog Websites",
+      "RFQ Website Development",
       "Business Website Development",
       "Corporate Website Design",
       "Industrial Website Development",
@@ -135,6 +145,7 @@ export function buildOrganizationNode() {
       "Custom Software Development",
       "Web Development Vadodara",
       "Next.js Development India",
+      "Gujarat GIDC Manufacturer Websites",
     ],
     speakable: {
       "@type": "SpeakableSpecification" as const,

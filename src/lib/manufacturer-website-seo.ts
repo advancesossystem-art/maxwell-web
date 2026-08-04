@@ -8,6 +8,9 @@ export const manufacturerHubSeo = {
   keywords: [
     "website development for manufacturers India",
     "B2B manufacturer website India",
+    "b2b manufacturing website development",
+    "industrial website design company",
+    "rfq website development for manufacturers",
     "website for industrial supplier India",
     "website development MSME India",
     "factory website development India",
@@ -197,6 +200,93 @@ export const exporterIndiaSeo = {
     "IEC code website India",
     "export catalog website India",
     "international buyer website India",
+  ],
+} as const;
+
+export const electricalManufacturerSeo = {
+  title: "Electrical Manufacturer Website India | Catalog & RFQ | Maxwell",
+  description:
+    "Websites for electrical equipment manufacturers — product catalogs, ratings, IS/IEC references, RFQ forms. Gujarat GIDC delivery from ₹45,000 / Professional ₹75,000.",
+  path: "/services/website-development/electrical-manufacturer",
+  keywords: [
+    "electrical manufacturer website India",
+    "electrical equipment catalog website",
+    "switchgear manufacturer website",
+    "industrial electrical supplier website",
+    "electrical OEM website Gujarat",
+    "RFQ website electrical manufacturer",
+  ],
+} as const;
+
+export const machineryOemSeo = {
+  title: "Machinery & OEM Manufacturer Website India | RFQ Catalogs | Maxwell",
+  description:
+    "Websites for machinery builders and OEM suppliers — machine models, specs, application pages, RFQ with drawing upload. From ₹45,000 · Professional catalogs from ₹75,000.",
+  path: "/services/website-development/machinery-oem",
+  keywords: [
+    "machinery manufacturer website India",
+    "OEM manufacturer website",
+    "machine builder website Gujarat",
+    "industrial machinery RFQ website",
+    "OEM supplier website India",
+    "equipment manufacturer catalog website",
+  ],
+} as const;
+
+/** CEO Founder Blueprint — four authoritative corridor verticals (exact paths). */
+export const chemicalManufacturersBlueprintSeo = {
+  title: "Chemical Manufacturer Websites — Ankleshwar & Nandesari | Maxwell",
+  description:
+    "Direct RFQ catalog websites for chemical manufacturers in the Ankleshwar–Nandesari corridor. CAS, SDS PDF, REACH readiness display. Starter ₹45,000 · Professional ₹75,000 · Growth ₹1,50,000.",
+  path: "/services/website-development/chemical-manufacturers",
+  keywords: [
+    "chemical manufacturer website Ankleshwar",
+    "chemical website Nandesari GIDC",
+    "CAS SDS product catalog website",
+    "REACH chemical manufacturer website India",
+    "Bharuch Ankleshwar chemical website",
+  ],
+} as const;
+
+export const engineeringMachineryBlueprintSeo = {
+  title: "Engineering & Machinery Websites — Makarpura & Savli | Maxwell",
+  description:
+    "RFQ and CAD-ready websites for engineering and machinery OEMs in Makarpura & Savli GIDC. Machine video, specs, drawing upload. From ₹45,000 · Professional ₹75,000 · Growth ₹1,50,000.",
+  path: "/services/website-development/engineering-machinery",
+  keywords: [
+    "engineering machinery website Gujarat",
+    "Makarpura GIDC manufacturer website",
+    "Savli machinery OEM website",
+    "CAD RFQ website engineering company",
+    "machinery video catalog website India",
+  ],
+} as const;
+
+export const ceramicExportersBlueprintSeo = {
+  title: "Ceramic Exporter Websites Morbi — Tile Catalog & PEI | Maxwell",
+  description:
+    "Export websites for Morbi ceramic and tile manufacturers — size/finish matrices, PEI ratings, overseas RFQ. Starter ₹45,000 · Professional ₹75,000 · Growth ₹1,50,000.",
+  path: "/services/website-development/ceramic-exporters",
+  keywords: [
+    "ceramic exporter website Morbi",
+    "tile manufacturer export website India",
+    "PEI rating tile catalog website",
+    "Morbi ceramic B2B website",
+    "vitrified tile export website",
+  ],
+} as const;
+
+export const pharmaEquipmentBlueprintSeo = {
+  title: "Pharma Equipment Websites — Vadodara & Halol | Maxwell",
+  description:
+    "Clean showcase and RFQ websites for pharma equipment manufacturers in Vadodara and Halol GIDC. Validation-ready presentation, not generic agency templates. From ₹45,000.",
+  path: "/services/website-development/pharma-equipment",
+  keywords: [
+    "pharma equipment website Vadodara",
+    "pharmaceutical machinery website Halol",
+    "process equipment catalog website India",
+    "cleanroom equipment manufacturer website",
+    "pharma OEM website Gujarat",
   ],
 } as const;
 

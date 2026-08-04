@@ -5,6 +5,15 @@ export interface ToolRelatedLink {
 }
 
 export const toolRelatedLinks: Record<string, ToolRelatedLink[]> = {
+  "industrial-website-rfq-estimator": [
+    { href: "/services/industrial-website-design", label: "Industrial Website Design" },
+    { href: "/services/rfq-website-development", label: "RFQ Website Development" },
+    { href: "/services/industrial-catalog-development", label: "Industrial Catalog Development" },
+    { href: "/services/website-development-for-manufacturers", label: "Manufacturer Websites Hub" },
+    { href: "/cost/manufacturing-website-cost", label: "Manufacturing Website Cost" },
+    { href: "/locations/india/gujarat/gidc", label: "Gujarat GIDC Hub" },
+    { href: "/get-estimate", label: "Get Free Estimate" },
+  ],
   "erp-roi-calculator": [
     { href: "/services/erp-development", label: "ERP Development", description: "Custom ERP for manufacturing & distribution" },
     { href: "/tools/erp-requirement-generator", label: "ERP Requirement Generator" },
