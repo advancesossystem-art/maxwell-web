@@ -69,11 +69,6 @@ export const aboutPageIndustries = [
       "English-language product catalogs for Indian exporters targeting German, UK, UAE, and US industrial buyers. HS code product pages, container inquiry forms, certification badge display, and SEO targeting international buyer search terms.",
   },
 ] as const;
-    title: "Real Estate & Construction",
-    description:
-      "RERA-compliant CRM, booking reconciliation, and broker commission tracking for developers. Construction project ERP with material tracking, subcontractor billing, and site progress dashboards.",
-  },
-] as const;
 
 export const coreValues = [
   { title: "Engineering Excellence", description: "Security, performance, and scalability built in—not bolted on.", icon: "⚡" },
