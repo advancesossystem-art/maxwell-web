@@ -98,7 +98,13 @@ const permanentRedirects: Array<{ source: string; destination: string }> = [
   { source: "/tools/rfp-builder", destination: "/get-estimate" },
   { source: "/tools/proposal-generator", destination: "/get-estimate" },
   { source: "/tools/vendor-comparison-scorecard", destination: "/services/website-development-for-manufacturers" },
-  { source: "/tools/:slug", destination: "/tools/industrial-website-rfq-estimator" },
+  // Deleted tools only — never catch-all /tools/:slug (that redirected the live estimator to itself)
+  { source: "/tools/ai-readiness-assessment", destination: "/tools/industrial-website-rfq-estimator" },
+  { source: "/tools/digital-transformation-assessment", destination: "/tools/industrial-website-rfq-estimator" },
+  { source: "/tools/project-roadmap", destination: "/get-estimate" },
+  { source: "/tools/project-timeline-estimator", destination: "/get-estimate" },
+  { source: "/tools/team-size-calculator", destination: "/pricing" },
+  { source: "/tools/tech-stack-advisor", destination: "/services/website-development-for-manufacturers" },
   // International solutions removed — redirect to manufacturer service or contact
   { source: "/solutions/web-development-company-india-germany", destination: "/services/website-development/manufacturer-export-website" },
   { source: "/solutions/web-development-company-india-uk", destination: "/services/website-development/manufacturer-export-website" },
