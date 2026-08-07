@@ -104,9 +104,9 @@ export function EngagementModelsPageContent() {
           description="Compare options and explore cost guides before you commit."
         />
         <div className="grid gap-4 sm:grid-cols-3">
-          <Card href="/compare" padding="md">
+          <Card href="/blog/nextjs-vs-wordpress-industrial-website" padding="md">
             <H3 className="text-base group-hover:text-brand-400 transition-colors">Compare guides</H3>
-            <Caption className="mt-2">ERP vs CRM, SAP vs custom, and more</Caption>
+            <Caption className="mt-2">Next.js vs WordPress for industrial websites</Caption>
           </Card>
           <Card href="/cost" padding="md">
             <H3 className="text-base group-hover:text-brand-400 transition-colors">Cost guides</H3>

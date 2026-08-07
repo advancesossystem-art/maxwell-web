@@ -54,7 +54,7 @@ export function WhyMaxwellPageContent() {
           <CertificationsRow />
         </div>
         <Link
-          href="/work"
+          href="/case-studies"
           className="mt-10 inline-flex items-center gap-1 text-sm font-medium text-brand-500 hover:text-brand-400"
         >
           View our work <ArrowRight className="h-3.5 w-3.5" />

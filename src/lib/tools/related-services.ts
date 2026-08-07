@@ -50,9 +50,7 @@ export const toolRelatedLinks: Record<string, ToolRelatedLink[]> = {
     { href: "/book-consultation", label: "Book AI Strategy Call" },
   ],
   "vendor-comparison-scorecard": [
-    { href: "/compare", label: "Vendor Comparison Guides" },
-    { href: "/tools/rfp-builder", label: "RFP Builder" },
-    { href: "/tools/erp-requirement-generator", label: "ERP Requirement Generator" },
+    { href: "/blog/nextjs-vs-wordpress-industrial-website", label: "Platform Comparison Guide" },
     { href: "/get-estimate", label: "Get Maxwell Quote" },
   ],
   "erp-requirement-generator": [

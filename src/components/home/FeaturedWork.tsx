@@ -26,7 +26,7 @@ export function FeaturedWork() {
           />
         </FadeIn>
         <FadeIn delay={0.05}>
-          <Button href="/work" variant="secondary" size="md" className="shrink-0">
+          <Button href="/case-studies" variant="secondary" size="md" className="shrink-0">
             View all work <ArrowRight />
           </Button>
         </FadeIn>

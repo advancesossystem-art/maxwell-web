@@ -73,7 +73,7 @@ export function ManufacturerInformationGain({ insight, industry }: InformationGa
           <h2 className="font-display text-xl font-bold text-slate-900 mb-3">Owned website vs marketplace listing</h2>
           <p className="max-w-3xl text-sm leading-relaxed text-slate-600">{insight.ownedVsMarketplace}</p>
           <div className="mt-4 flex flex-wrap gap-4 text-sm font-medium">
-            <Link href="/compare" className="text-indigo-600 hover:underline">
+            <Link href="/blog/nextjs-vs-wordpress-industrial-website" className="text-indigo-600 hover:underline">
               Platform comparisons →
             </Link>
             <Link href="/pricing" className="text-indigo-600 hover:underline">
