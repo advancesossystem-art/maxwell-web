@@ -18,64 +18,57 @@ export const certifications = [
 ] as const;
 
 export const companyStory = {
-  headline: "A software partner for operators who need results",
+  headline: "Website engineering for Vadodara manufacturers since 2018",
   paragraphs: [
-    'Maxwell Electrodeal started in 2018 with a single question from a Vadodara manufacturer: "Can you build us inventory software that actually works the way our stores team works — not the way SAP thinks they should work?"',
-    "That first project took 14 weeks. It tracked stock across two warehouses, synced with Tally, and generated GST invoices without anyone re-keying data. The client saved roughly ₹4L in the first year from eliminated errors and manual work. More importantly, the stores team actually used it — because we built the screens around their daily workflow, not around an ERP consultant's ideal process.",
-    "That discipline hasn't changed. We still start every project with a process walk, not a slide deck. We still build for the person doing the work, not just the person who signed the purchase order. And we still believe that software should reduce the friction in your operations, not add a new layer of it.",
-    "Eight years later, the clients are bigger and the systems are more complex — multi-plant ERP, AI-powered quality inspection, healthcare platforms serving 10,000 patients, fleet systems tracking 200 vehicles. But the starting point is always the same: understand how the work actually gets done, then build something that makes it better.",
+    'Maxwell Electrodeal started in 2018 with a clear problem: Gujarat manufacturers with genuinely world-class products were invisible on Google. Their buyers were finding them on IndiaMart alongside five competitors, on a shared listing that cost ₹1.5–3L a year and shared their leads with rivals.',
+    "The solution was an owned catalog website — a direct channel where a manufacturer's chemical products, engineering components, or pharma equipment showed up when a procurement manager searched Google at 11pm. First inquiry comes directly to their WhatsApp. No platform middleman. No competitor adjacency. No annual renewal.",
+    "Our first full product catalog was for a specialty chemical supplier in Nandesari GIDC, Vadodara. 263 pages. 154 products. PageSpeed 94. Live in 6 weeks. The client received the first direct online inquiry from a buyer in Pune within 30 days — someone who found them by searching their product category, not the company name.",
+    "That discipline hasn't changed. We still start every project with a site visit or discovery call — not a template form. We build for the manufacturer's actual products, certifications, and buyers, not generic service pages. Every Maxwell website is a custom Next.js build: owned codebase, no plugin subscriptions, no annual WordPress tax.",
   ],
   mission:
-    "Build digital systems that reduce manual work, improve visibility, and support confident growth—with direct communication and accountable delivery.",
+    "Build catalog websites and RFQ systems that make Gujarat manufacturers visible on Google and eliminate dependence on paid directories.",
   vision:
-    "Be the partner leaders call when operations outgrow spreadsheets and off-the-shelf tools—and want a team that stays accountable after go-live.",
+    "Be the web engineering partner that industrial manufacturers in Gujarat call when they are ready to own their buyer channel — before their competitor does.",
 } as const;
 
 export const aboutPageIndustries = [
   {
-    slug: "manufacturing",
-    title: "Manufacturing",
-    description:
-      "Deep shop-floor understanding across auto components, metals, plastics, and process manufacturing. Custom ERP with BOM, work orders, multi-plant inventory, and mobile GRN for workers on the floor.",
-  },
-  {
     slug: "chemical-manufacturing",
-    title: "Chemical & Pharma",
+    title: "Chemical & Pharma Manufacturing",
     description:
-      "Batch genealogy, MSDS compliance, and reactor scheduling for Gujarat's GIDC chemical clusters. Audit-ready documentation and GST-compliant billing for specialty chemicals and API manufacturers.",
+      "Product catalog websites for specialty chemical manufacturers, chemical distributors, and pharma equipment suppliers. CAS number pages, SDS/MSDS downloads, COA request forms, and category SEO — for manufacturers in Nandesari, Ankleshwar, Bharuch-Ankleshwar, and Vatva GIDC corridors.",
   },
   {
-    slug: "textile",
-    title: "Textile & Apparel",
+    slug: "manufacturing",
+    title: "Engineering & Machinery",
     description:
-      "Fabric inventory, job-work tracking (ITC-04), and seasonal order management for Surat and Ahmedabad mills. CRM for sampling, design approval, and buyer communication across domestic and export markets.",
+      "B2B supplier websites for precision engineering companies, OEM machinery manufacturers, and auto component suppliers in Makarpura, Savli, and Halol GIDC. Spec sheet pages, RFQ forms, ISO/CE certification display, and export-ready catalog architecture.",
   },
   {
-    slug: "healthcare",
-    title: "Healthcare",
+    slug: "pharma",
+    title: "Pharma Equipment & API",
     description:
-      "Patient portals, telemedicine platforms, and clinic management for multi-location healthcare groups. HIPAA-aware architecture, encrypted records, and appointment automation for 10,000+ patient systems.",
+      "Catalog websites for pharma equipment manufacturers and bulk drug API suppliers. WHO-GMP compliant product formats, pharmacopeia specification pages, export inquiry forms, and international buyer targeting for manufacturers in Halol, Padra, and Vapi.",
   },
   {
-    slug: "logistics",
-    title: "Logistics & Distribution",
+    slug: "ceramics",
+    title: "Ceramic & Tile Exporters (Morbi)",
     description:
-      "Fleet tracking, route optimization, and POD reconciliation for 3PL operators and last-mile fleets. Warehouse WMS with e-way bill integration and GST-compliant invoicing for distribution networks.",
+      "Product catalog websites for Morbi tile manufacturers and ceramic exporters — size/finish/PEI rating catalog pages, dealer portal architecture, and export inquiry flows targeting international buyers. Specialist in Morbi corridor digital presence.",
   },
   {
-    slug: "retail",
-    title: "Retail & FMCG",
+    slug: "food-processing",
+    title: "FMCG & Food Processing",
     description:
-      "POS integration, omnichannel inventory, and distributor ERP for organized retail and FMCG brands. Van sales apps, beat planning, and secondary sales visibility for pan-India distribution teams.",
+      "Supplier websites for food processing manufacturers, packaging suppliers, and FMCG distributors. Private label inquiry flows, FSSAI compliance display, and B2B buyer targeting for manufacturers in Waghodia and Anand corridors.",
   },
   {
-    slug: "education",
-    title: "Education & EdTech",
+    slug: "export",
+    title: "Export-Ready Manufacturer Websites",
     description:
-      "LMS, student data privacy (DPDP Act compliance), and campus management for schools and colleges. Examination platforms, fee automation, and parent portals built for adoption, not shelf life.",
+      "English-language product catalogs for Indian exporters targeting German, UK, UAE, and US industrial buyers. HS code product pages, container inquiry forms, certification badge display, and SEO targeting international buyer search terms.",
   },
-  {
-    slug: "real-estate",
+] as const;
     title: "Real Estate & Construction",
     description:
       "RERA-compliant CRM, booking reconciliation, and broker commission tracking for developers. Construction project ERP with material tracking, subcontractor billing, and site progress dashboards.",
@@ -92,14 +85,14 @@ export const coreValues = [
 ] as const;
 
 export const companyJourney = [
-  { year: "2018", title: "Founded", description: "Started as a custom ERP consultancy serving Gujarat manufacturers." },
-  { year: "2019", title: "First Enterprise Client", description: "Delivered multi-facility ERP for precision manufacturing—₹12L annual savings." },
-  { year: "2020", title: "Healthcare & EdTech", description: "Expanded into healthcare platforms and learning management systems." },
-  { year: "2021", title: "SaaS & Mobile", description: "Launched SaaS MVP practice and cross-platform mobile development." },
-  { year: "2022", title: "Global Delivery", description: "First international clients across UAE, Singapore, and UK markets." },
-  { year: "2023", title: "AI Practice", description: "Computer vision, LLM integration, and intelligent automation services." },
-  { year: "2024", title: "50+ Team", description: "Grew to 50+ engineers across full-stack, cloud, and AI specializations." },
-  { year: "2025", title: `${companyMetricDisplay.projectsCompleted} Projects`, description: `Crossed ${companyMetricDisplay.projectsCompleted} delivered projects with ${companyMetricDisplay.clientRetention} client retention.` },
+  { year: "2018", title: "Founded in Vadodara", description: "Started as a web and software engineering company serving local manufacturers and businesses in Vadodara, Gujarat." },
+  { year: "2019", title: "First industrial catalog", description: "Delivered first product catalog website for a Vadodara-based industrial supplier — owned inquiry flow replacing directory dependency." },
+  { year: "2020", title: "GIDC corridor focus", description: "Began specialising in GIDC estate manufacturers: Makarpura, Nandesari, Ankleshwar — chemical, engineering, pharma." },
+  { year: "2021", title: "RFQ system launches", description: "Launched first B2B RFQ portal with grade/spec/MOQ fields and WhatsApp notification — for a specialty chemical exporter." },
+  { year: "2022", title: "Export-ready websites", description: "First manufacturer clients started receiving direct inquiries from UAE, Germany, and UK buyers via website." },
+  { year: "2023", title: "Next.js catalog architecture", description: "Migrated all manufacturer websites to Next.js SSG — 90+ PageSpeed, 200+ indexed product pages, direct GSC traffic." },
+  { year: "2024", title: "50+ manufacturer projects", description: "Crossed 50+ delivered websites and catalog systems for chemical, pharma equipment, engineering, FMCG, and tile manufacturers." },
+  { year: "2025", title: "Drashti Chemicals goes live", description: "Launched drashtichemical.com — 263 pages, 154 products, PageSpeed 94, first direct buyer inquiry within 30 days." },
 ] as const;
 
 export const technologyExpertise = [
@@ -159,138 +152,16 @@ export const teamMembers: TeamMember[] = [
     name: "Sanjay Prajapati",
     role: "Founder & CEO",
     department: "Leadership",
-    bio: "Founder & CEO of Maxwell Electrodeal. Started the company in Vadodara in 2018 — from manufacturer inventory software to website engineering and custom systems for growing businesses across India.",
+    bio: "Founder & CEO of Maxwell Electrodeal. Started the company in Vadodara in 2018. Leads website engineering projects personally — from initial discovery at the client's factory to final go-live. Has delivered 50+ projects for manufacturers, exporters, and industrial suppliers across Gujarat and India.",
     experience: "Leading Maxwell since 2018",
-    skills: ["Website Engineering", "Manufacturing", "B2B Growth", "Product Catalogs", "Delivery"],
+    skills: ["Website Engineering", "Industrial Catalogs", "RFQ Systems", "GIDC SEO", "Manufacturing B2B"],
     initials: "SP",
     linkedin: "https://www.linkedin.com/company/maxwellelectrodeal",
-  },
-  {
-    name: "Priya Sharma",
-    role: "CTO",
-    department: "Leadership",
-    bio: "Architect of 40+ production systems. Expert in scalable SaaS and cloud-native architecture.",
-    experience: "12+ years",
-    skills: ["Architecture", "Cloud", "SaaS"],
-    initials: "PS",
-  },
-  {
-    name: "Amit Patel",
-    role: "VP Engineering",
-    department: "Leadership",
-    bio: "Leads 30+ engineers across full-stack, mobile, and AI teams with Agile delivery excellence.",
-    experience: "10+ years",
-    skills: ["Engineering Leadership", "Agile", "DevOps"],
-    initials: "AP",
-  },
-  {
-    name: "Sneha Reddy",
-    role: "Senior Full-Stack Engineer",
-    department: "Engineering",
-    bio: "React, Node.js, and PostgreSQL specialist. Led ERP and healthcare platform builds.",
-    experience: "8+ years",
-    skills: ["React", "Node.js", "PostgreSQL"],
-    initials: "SR",
-  },
-  {
-    name: "Vikram Desai",
-    role: "Mobile Engineering Lead",
-    department: "Engineering",
-    bio: "React Native and Flutter expert. Shipped 15+ apps with 4.5+ average store ratings.",
-    experience: "7+ years",
-    skills: ["React Native", "Flutter", "iOS/Android"],
-    initials: "VD",
-  },
-  {
-    name: "Ananya Iyer",
-    role: "Backend Architect",
-    department: "Engineering",
-    bio: "Python, microservices, and API design. Built high-throughput logistics and fintech systems.",
-    experience: "9+ years",
-    skills: ["Python", "API Design", "Microservices"],
-    initials: "AI",
-  },
-  {
-    name: "Karan Singh",
-    role: "Lead UI/UX Designer",
-    department: "Design",
-    bio: "Design systems, accessibility, and conversion-focused interfaces for B2B and B2C products.",
-    experience: "8+ years",
-    skills: ["Figma", "Design Systems", "UX Research"],
-    initials: "KS",
-  },
-  {
-    name: "Meera Nair",
-    role: "Product Designer",
-    department: "Design",
-    bio: "Mobile-first design for healthcare, education, and SaaS products with WCAG compliance.",
-    experience: "6+ years",
-    skills: ["Mobile UX", "Prototyping", "Accessibility"],
-    initials: "MN",
-  },
-  {
-    name: "Arun Kulkarni",
-    role: "Senior Project Manager",
-    department: "Project Management",
-    bio: "PMP-certified. Managed 25+ enterprise deliveries with 94% on-time milestone completion.",
-    experience: "10+ years",
-    skills: ["PMP", "Agile", "Stakeholder Mgmt"],
-    initials: "AK",
-  },
-  {
-    name: "Divya Menon",
-    role: "Delivery Manager",
-    department: "Project Management",
-    bio: "Client-facing delivery lead ensuring transparent communication and scope alignment.",
-    experience: "7+ years",
-    skills: ["Scrum", "Client Relations", "Risk Mgmt"],
-    initials: "DM",
-  },
-  {
-    name: "Rahul Verma",
-    role: "AI/ML Engineer",
-    department: "AI Specialists",
-    bio: "Computer vision and LLM integration specialist. Built industrial safety AI and chatbot systems.",
-    experience: "6+ years",
-    skills: ["Python", "YOLO", "LLM APIs"],
-    initials: "RV",
-  },
-  {
-    name: "Sarah Chen",
-    role: "AI Solutions Architect",
-    department: "AI Specialists",
-    bio: "Designs production AI pipelines with edge deployment and responsible AI practices.",
-    experience: "8+ years",
-    skills: ["MLOps", "Edge AI", "Data Pipelines"],
-    initials: "SC",
-  },
-  {
-    name: "Mohit Agarwal",
-    role: "Cloud Architect",
-    department: "Cloud Specialists",
-    bio: "AWS and Azure certified. Designs scalable, cost-optimized cloud infrastructure.",
-    experience: "9+ years",
-    skills: ["AWS", "Azure", "Terraform"],
-    initials: "MA",
-  },
-  {
-    name: "Lisa Fernandes",
-    role: "DevOps Engineer",
-    department: "Cloud Specialists",
-    bio: "CI/CD pipelines, monitoring, and 99.9% uptime infrastructure for production systems.",
-    experience: "6+ years",
-    skills: ["Docker", "Kubernetes", "Monitoring"],
-    initials: "LF",
   },
 ];
 
 export const teamDepartments: TeamDepartment[] = [
   "Leadership",
-  "Engineering",
-  "Design",
-  "Project Management",
-  "AI Specialists",
-  "Cloud Specialists",
 ];
 
 export const sdlcPhases = [

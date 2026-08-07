@@ -8,15 +8,13 @@ type PageProps = {
   params: Promise<{ slug: string }>;
 };
 
+/** No static pre-build — all dynamic industry pages are noindexed; use hand-written /industries/chemical-manufacturing etc. */
 export async function generateStaticParams() {
-  return industrySlugs.map((slug) => ({ slug }));
+  return [];
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const industry = getIndustryBySlug(slug);
-  if (!industry) return { robots: { index: false, follow: false } };
-  return createIndustryMetadata(industry);
+  return { robots: { index: false, follow: false } };
 }
 
 export default async function IndustryPage({ params }: PageProps) {

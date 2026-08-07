@@ -1,12 +1,10 @@
 import type { MetadataRoute } from "next";
 import { robotsSitemapUrls } from "@/lib/sitemap-index";
-import { erpCompareNoIndexSlugs } from "@/lib/seo/seo-waste-decisions";
 
 /**
  * Crawl-budget hygiene: block thin noindex programmatic matrices so Googlebot
  * stops fetching pages it will only drop, freeing budget for real pages.
- * Google honors more-specific Allow rules, so the two indexable city×service
- * pages are explicitly re-allowed.
+ * Google honors more-specific Allow rules, so GIDC estate pages are explicitly re-allowed.
  */
 const crawlWasteDisallow = [
   "/api/",
@@ -15,23 +13,32 @@ const crawlWasteDisallow = [
   // Industry × service matrix — all noindex
   "/industries/*/*/",
   "/industries/*/*",
-  // City × service matrix — noindex except explicit allows below
+  // City × service matrix — noindex
   "/locations/india/*/*/",
   "/locations/india/*/*",
-  // ERP comparison demotion — noindex pages still crawlable without disallow
-  "/compare/best-erp-for-",
-  ...erpCompareNoIndexSlugs.map((slug) => `/compare/${slug}`),
-  // Thin international cost clones (India national + priority web markets stay indexable)
-  "/cost/*-cost-canada",
-  "/cost/*-cost-australia",
-  "/cost/*-cost-singapore",
-  "/cost/*-cost-germany",
+  // Programmatic dynamic solutions — all noindex (hand-written ones are in their own folders)
+  "/solutions/erp-",
+  "/solutions/crm-",
+  "/solutions/saas-",
+  "/solutions/ai-",
+  "/solutions/mobile-",
+  "/solutions/cloud-",
+  "/solutions/digital-",
+  "/solutions/it-",
+  "/solutions/business-",
+  "/solutions/software-",
+  "/solutions/custom-",
+  // Thin cost pages — all noindex (hand-written ones are in their own folders)
+  "/cost/mobile-",
+  "/cost/crm-",
+  "/cost/erp-",
+  "/cost/custom-software-",
+  "/cost/ai-",
+  "/cost/saas-",
 ];
 
 const crawlWasteAllow = [
   "/",
-  "/locations/india/surat/custom-software-development",
-  "/locations/india/halol/ai-development",
   // GIDC estate cluster (would otherwise match /locations/india/*/* disallow)
   "/locations/india/gujarat/gidc",
   "/locations/india/gujarat/makarpura-gidc",
@@ -42,6 +49,9 @@ const crawlWasteAllow = [
   "/locations/india/gujarat/vatva-gidc",
   "/locations/india/gujarat/waghodia-gidc",
   "/locations/india/gujarat/por-gidc",
+  // City pages with real GSC traffic
+  "/locations/india/ahmedabad",
+  "/locations/india/hyderabad",
 ];
 
 export default function robots(): MetadataRoute.Robots {

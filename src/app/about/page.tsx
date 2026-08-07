@@ -10,17 +10,17 @@ import { companyMetricDisplay } from "@/lib/company-metrics";
 import { siteConfig } from "@/lib/constants";
 
 export const metadata = createMetadata({
-  title: "About Maxwell — Website Engineering Company, Vadodara",
+  title: "About Maxwell Electrodeal — Website Engineering for Gujarat Manufacturers Since 2018",
   description:
-    "Who is Maxwell Electrodeal? Vadodara website engineering company for manufacturers and businesses. Founded 2018 · 50+ projects · GST-compliant invoicing. Free consultation.",
+    "Maxwell Electrodeal builds websites and software for manufacturers in Vadodara, Gujarat. Founded 2018 by Sanjay. 50+ projects delivered — chemical, pharma, engineering, FMCG. On-site discovery at GIDC estates. Free assessment.",
   path: "/about",
   keywords: [
     "about Maxwell Electrodeal",
-    "software company Vadodara",
     "website development company Vadodara",
+    "Vadodara website engineering company",
+    "Maxwell Electrodeal founder",
     "IT company Vadodara Gujarat",
-    "custom software development company India",
-    "ERP company Vadodara",
+    "industrial website development Gujarat",
   ],
 });
 

@@ -62,7 +62,7 @@ export const heroTrustMetrics = [
   { value: "50+", label: "Projects delivered" },
   { value: "₹45K", label: "Starting price for websites" },
   { value: "15+", label: "Industries served" },
-  { value: "1 week", label: "Starter site delivery" },
+  { value: "3–4 wks", label: "Starter site delivery" },
   { value: "<4hr", label: "Response time" },
 ] as const;
 
@@ -96,7 +96,7 @@ export const heroSidePanel = {
     { label: "RFQ & quote portals", href: "/services/rfq-website-development" },
     { label: "Export & B2B sites", href: "/services/website-development/exporter-india" },
   ],
-  priceNote: "Websites from ₹45,000 · Starter delivery in 1 week",
+  priceNote: "Websites from ₹45,000 · Starter in 3–4 weeks · Professional in 5–6 weeks",
   primaryLink: { label: "See website pricing", href: "/pricing" },
   secondaryLink: { label: "All website services", href: "/services/website-development" },
 } as const;

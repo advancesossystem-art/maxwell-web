@@ -2,11 +2,11 @@ import { ToolsHub } from "@/components/tools/ToolsHub";
 import { buildPageMetadata } from "@/lib/seo-helpers";
 
 export const metadata = buildPageMetadata({
-  title: "AI Business Tools — Free Software Planning Tools",
+  title: "Industrial Website Cost Estimator — Free Tool for Manufacturers",
   description:
-    "Free enterprise tools: project roadmap generator, proposal builder, RFP creator, tech stack advisor, cost calculator, digital maturity assessment, and ROI calculator.",
+    "Free RFQ cost estimator for industrial manufacturer websites in Gujarat and India. Get an honest website planning estimate in 4 minutes — no signup required.",
   path: "/tools",
-  keywords: ["software cost calculator", "project roadmap", "RFP builder", "tech stack advisor", "ROI calculator"],
+  keywords: ["industrial website cost estimator", "manufacturer website cost India", "RFQ website estimator", "website cost Gujarat"],
 });
 
 export default function ToolsPage() {

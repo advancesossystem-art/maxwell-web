@@ -386,12 +386,12 @@ function LocalEeatSection() {
   ];
 
   const trustSignals = [
-    { label: "GST Registration", value: "Verified GSTIN — Gujarat" },
-    { label: "Company Registration", value: "Private Limited — CIN Registered" },
+    { label: "Legal Entity", value: "Maxwell Electrodeal Private Limited" },
     { label: "Founded", value: "2018 — Vadodara, Gujarat" },
     { label: "Projects Delivered", value: "50+ across India & globally" },
     { label: "Response Time", value: "≤ 4 business hours guaranteed" },
     { label: "Billing", value: "GST invoice on every project" },
+    { label: "Code Ownership", value: "100% IP transfer on go-live" },
   ];
 
   return (
@@ -571,6 +571,82 @@ export default function VadodaraWebDevPage() {
 
       {/* Standard solution page (hero, market insights, challenges, approach, ROI, case studies, FAQ, CTA) */}
       <SolutionLandingPage solution={solution} />
+
+      {/* ── Hyper-local industry depth — Vadodara neighborhoods & industrial areas ── */}
+      <section className="border-t border-gray-100 bg-gray-50 py-14">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <p className="text-xs font-semibold uppercase tracking-widest text-blue-600 mb-2">
+            Vadodara Industrial Map
+          </p>
+          <h2 className="font-display text-2xl font-bold text-gray-900 mb-3">
+            We Know Every Industrial Pocket of Vadodara and Gujarat
+          </h2>
+          <p className="max-w-3xl text-gray-600 leading-relaxed mb-8">
+            Unlike remote-delivery agencies, Maxwell Electrodeal visits your site. We have built
+            websites and systems for manufacturers across every major industrial corridor in
+            Vadodara and Gujarat — from the chemical belt in Nandesari to the engineering clusters
+            in Gorwa and the pharma API suppliers in Padra.
+          </p>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                area: "Makarpura GIDC, Vadodara",
+                href: "/locations/india/gujarat/makarpura-gidc",
+                desc: "Precision engineering, auto components, and industrial equipment manufacturers. We build product catalog websites with spec sheets and RFQ forms for Makarpura OEMs targeting Tier-1 buyers.",
+              },
+              {
+                area: "Nandesari GIDC, Vadodara",
+                href: "/locations/india/gujarat/nandesari-gidc",
+                desc: "Specialty chemical manufacturers, industrial chemical intermediates, and pharmaceutical API suppliers. Full catalog sites with SDS downloads, COA request forms, and hazard-class product pages.",
+              },
+              {
+                area: "Savli GIDC, Vadodara",
+                href: "/locations/india/gujarat/savli-gidc",
+                desc: "Process manufacturing, auto parts, and industrial gases. B2B supplier websites with technical specification pages that procurement managers find on Google.",
+              },
+              {
+                area: "Gorwa, Vadodara",
+                desc: "Precision engineering and machine shops serving the Vadodara auto corridor. We build websites that showcase CNC capabilities, tolerance data, and export certifications for Gorwa engineering firms.",
+              },
+              {
+                area: "Waghodia GIDC, Vadodara",
+                href: "/locations/india/gujarat/waghodia-gidc",
+                desc: "FMCG, food processing, and packaging manufacturers. Product portfolio websites with export inquiry flows for Waghodia manufacturers targeting domestic and international buyers.",
+              },
+              {
+                area: "Ankleshwar GIDC, Bharuch",
+                href: "/locations/india/gujarat/ankleshwar-gidc",
+                desc: "India's largest chemical manufacturing cluster — chlor-alkali, dyes, surfactants, and specialty chemicals. Export-ready websites with CAS number product pages and international buyer inquiry flows.",
+              },
+              {
+                area: "Halol GIDC, Panchmahal",
+                href: "/locations/india/gujarat/halol-gidc",
+                desc: "Auto components, plastics, and pharma manufacturers. Tier-2 supplier websites with OEM compliance pages, quality certificates, and digital catalogs for Halol industrial estate.",
+              },
+              {
+                area: "Padra, Vadodara",
+                desc: "Pharma API manufacturers and bulk drug suppliers. WHO-GMP compliant catalog formats with pharmacopeia specification pages and export registration documentation.",
+              },
+              {
+                area: "Vatva GIDC, Ahmedabad",
+                href: "/locations/india/gujarat/vatva-gidc",
+                desc: "Dyes, pigments, agrochemicals, and textile chemicals. Category-depth websites with shade card displays, technical data sheets, and export inquiry forms for Vatva chemical exporters.",
+              },
+            ].map((item) => (
+              <div key={item.area} className="rounded-xl border border-gray-200 bg-white p-5">
+                {item.href ? (
+                  <Link href={item.href} className="font-semibold text-blue-700 hover:text-blue-900 text-sm mb-1 block">
+                    {item.area} →
+                  </Link>
+                ) : (
+                  <p className="font-semibold text-gray-900 text-sm mb-1">{item.area}</p>
+                )}
+                <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ── Additional sections from the SEO brief ── */}
 

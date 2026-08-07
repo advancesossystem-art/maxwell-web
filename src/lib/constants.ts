@@ -46,7 +46,7 @@ export const corporateEmails = {
 export const siteConfig = {
   name: "Maxwell Electrodeal",
   legalName: "Maxwell Electrodeal Private Limited",
-  tagline: "Website Engineering for Businesses",
+  tagline: "Website Engineering for Manufacturers",
   description:
     "Software & Website Engineering Company — industrial B2B product catalog & RFQ websites, web apps, and custom software for manufacturers and businesses. Based in Vadodara, Gujarat; serving India and English-speaking markets.",
   url: siteUrl,
@@ -277,74 +277,25 @@ export const stats = [
 export const testimonials = [
   {
     quote:
-      "Maxwell Electrodeal transformed our manufacturing operations. Their custom ERP reduced our manual processes by 40% within the first quarter.",
-    author: "",
-    role: "COO",
-    company: "",
-    industry: "Manufacturing",
-  },
-  {
-    quote:
-      "They delivered our SaaS MVP in 8 weeks—investor-ready, beautifully designed, and built to scale. Exactly what we needed to close our seed round.",
-    author: "",
-    role: "Founder & CEO",
-    company: "",
-    industry: "Startup",
-  },
-  {
-    quote:
-      "Professional, transparent, and technically excellent. Our healthcare portal handles 10,000+ patients with zero downtime since launch.",
+      "We were spending ₹2L+ per year on IndiaMart and still sharing leads with competitors. Maxwell built our own catalog website — the first direct inquiry came within 30 days of going live.",
     author: "",
     role: "Director",
     company: "",
-    industry: "Healthcare",
+    industry: "Chemical Manufacturing",
   },
 ] as const;
 
 export const caseStudies = [
   {
-    slug: "precision-manufacturing-erp",
-    title: "Custom ERP for Precision Manufacturing",
-    client: "Leading manufacturing organization",
-    industry: "Manufacturing",
-    challenge: "Manual inventory tracking across 3 facilities causing delays and errors.",
-    solution: "Unified ERP with real-time inventory, production scheduling, and supplier integration.",
-    results: ["40% reduction in manual data entry", "₹12L annual cost savings", "Real-time visibility across locations"],
-    tech: ["React", "Node.js", "PostgreSQL", "AWS"],
-    image: "/case-studies/manufacturing.jpg",
-  },
-  {
-    slug: "flowmetrics-saas-mvp",
-    title: "SaaS MVP for Analytics Startup",
-    client: "Leading SaaS organization",
-    industry: "Startup",
-    challenge: "Need investor-ready product in 8 weeks with scalable multi-tenant architecture.",
-    solution: "Full-stack SaaS with Stripe billing, admin dashboard, and usage analytics.",
-    results: ["MVP delivered in 7 weeks", "$1.2M seed round closed", "500+ beta users onboarded"],
-    tech: ["Next.js", "TypeScript", "Stripe", "Vercel"],
-    image: "/case-studies/saas.jpg",
-  },
-  {
-    slug: "carefirst-healthcare-portal",
-    title: "Patient Portal for Healthcare Network",
-    client: "Leading healthcare organization",
-    industry: "Healthcare",
-    challenge: "Fragmented patient experience across 15 clinic locations.",
-    solution: "Unified patient portal with appointments, records access, and telehealth integration.",
-    results: ["10,000+ active patients", "99.9% uptime", "60% reduction in phone inquiries"],
-    tech: ["React Native", "Node.js", "MongoDB", "AWS"],
-    image: "/case-studies/healthcare.jpg",
-  },
-  {
-    slug: "logitrack-fleet-management",
-    title: "Fleet Management for Logistics Company",
-    client: "Leading logistics organization",
-    industry: "Logistics",
-    challenge: "No real-time visibility into fleet location and delivery status.",
-    solution: "GPS-integrated fleet dashboard with route optimization and client tracking portal.",
-    results: ["25% faster deliveries", "30% fuel cost reduction", "Real-time client updates"],
-    tech: ["React", "Python", "PostgreSQL", "Google Maps API"],
-    image: "/case-studies/logistics.jpg",
+    slug: "drashti-chemicals",
+    title: "Product Catalog Website for Drashti Chemicals, Vadodara",
+    client: "Drashti Chemicals, Vadodara",
+    industry: "Chemical Manufacturing",
+    challenge: "Dependent on paid B2B directories for all inquiries — sharing leads with competitors, no organic visibility on Google.",
+    solution: "Custom Next.js product catalog with 263 pages, 154 chemical product listings, SDS downloads, CAS number SEO, and direct WhatsApp RFQ flow.",
+    results: ["263 pages indexed on Google", "154 product pages with CAS/spec SEO", "PageSpeed 94/100", "Live in 6 weeks", "First direct buyer inquiry within 30 days"],
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
+    image: "/case-studies/drashti-chemicals.jpg",
   },
 ] as const;
 

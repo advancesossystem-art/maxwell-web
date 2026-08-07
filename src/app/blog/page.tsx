@@ -2,11 +2,11 @@ import { BlogHub } from "@/components/content/BlogHub";
 import { buildPageMetadata } from "@/lib/seo-helpers";
 
 export const metadata = buildPageMetadata({
-  title: "Blog — Software Engineering Insights",
+  title: "Blog — Manufacturer Website & Industrial SEO Guides",
   description:
-    "Expert articles on ERP, AI, cloud, SaaS, mobile apps, and digital transformation from Maxwell Electrodeal engineers.",
+    "Practical guides for Gujarat manufacturers: how to replace IndiaMart with an owned catalog website, GIDC estate SEO, RFQ architecture, and what buyers actually search on Google.",
   path: "/blog",
-  keywords: ["software development blog", "ERP articles", "AI insights", "digital transformation"],
+  keywords: ["manufacturer website guide", "industrial website blog", "GIDC SEO guide", "website for manufacturers India", "RFQ website guide"],
 });
 
 export default function BlogPage() {

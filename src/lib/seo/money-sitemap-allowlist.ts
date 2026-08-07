@@ -60,12 +60,17 @@ export const MONEY_SITEMAP_ALLOWLIST: readonly MoneySitemapEntry[] = [
   { path: "/locations/india/gujarat/waghodia-gidc", priority: 0.9, changeFreq: "monthly", lastModified: LAUNCH },
 
   // Cost + tools + TCO
-  { path: "/cost/web-development-cost-india", priority: 0.9, changeFreq: "monthly" },
   { path: "/cost/web-development-cost-vadodara", priority: 0.92, changeFreq: "monthly", lastModified: LAUNCH },
   { path: "/cost/manufacturing-website-cost", priority: 0.93, changeFreq: "monthly", lastModified: LAUNCH },
   { path: "/tools/industrial-website-rfq-estimator", priority: 0.96, changeFreq: "weekly", lastModified: LAUNCH },
-  { path: "/compare/nextjs-vs-wordpress-business", priority: 0.91, changeFreq: "monthly", lastModified: LAUNCH },
-  { path: "/compare/wordpress-vs-custom-website", priority: 0.88, changeFreq: "monthly" },
+
+  // Chemical manufacturing — high impression page closest to page 1
+  { path: "/industries/chemical-manufacturing", priority: 0.96, changeFreq: "weekly", lastModified: LAUNCH },
+
+  // Additional geo/SEO money pages
+  { path: "/solutions/seo-company-gujarat", priority: 0.88, changeFreq: "monthly", lastModified: LAUNCH },
+  { path: "/locations/india/gujarat/vatva-gidc", priority: 0.9, changeFreq: "monthly", lastModified: LAUNCH },
+  { path: "/locations/india/gujarat/por-gidc", priority: 0.9, changeFreq: "monthly", lastModified: LAUNCH },
 
   // Proof
   { path: "/case-studies/drashti-chemicals", priority: 0.94, changeFreq: "monthly", lastModified: LAUNCH },
@@ -77,6 +82,9 @@ export const MONEY_SITEMAP_ALLOWLIST: readonly MoneySitemapEntry[] = [
   { path: "/blog/how-to-structure-industrial-product-catalogue-online", priority: 0.87, changeFreq: "monthly", lastModified: LAUNCH },
   { path: "/blog/gidc-manufacturer-website-checklist-vadodara", priority: 0.87, changeFreq: "monthly", lastModified: LAUNCH },
   { path: "/blog/manufacturer-website-seo-timeline-gujarat", priority: 0.86, changeFreq: "monthly", lastModified: LAUNCH },
+  { path: "/blog/gujarat-manufacturer-buyers-search-google-2026", priority: 0.9, changeFreq: "monthly", lastModified: LAUNCH },
+  { path: "/blog/gidc-plant-google-enquiries-owned-website", priority: 0.87, changeFreq: "monthly", lastModified: LAUNCH },
+  { path: "/blog/vadodara-manufacturers-outdated-websites-export-orders", priority: 0.86, changeFreq: "monthly", lastModified: LAUNCH },
 ] as const;
 
 export const MONEY_SITEMAP_PATH_SET = new Set(

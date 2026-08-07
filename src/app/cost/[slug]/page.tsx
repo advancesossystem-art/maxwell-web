@@ -6,22 +6,16 @@ import { costSlugs, getCostPage } from "@/lib/seo/programmatic/build-pages";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
+/** No static pre-build — cost pages are noindexed; use hand-written /cost/web-development-cost-vadodara etc. */
 export async function generateStaticParams() {
-  return costSlugs.map((slug) => ({ slug }));
+  return [];
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const page = getCostPage(slug);
   if (!page) return { robots: { index: false, follow: false } };
-  return buildSeoMetadata({
-    title: page.metaTitle,
-    description: page.metaDescription,
-    path: page.path,
-    keywords: [page.primaryKeyword, ...page.secondaryKeywords],
-    absoluteTitle: true,
-    ...(page.noIndex ? { noIndex: true } : {}),
-  });
+  return { robots: { index: false, follow: false } };
 }
 
 export default async function CostSlugPage({ params }: PageProps) {

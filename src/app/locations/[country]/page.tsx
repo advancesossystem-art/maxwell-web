@@ -8,18 +8,13 @@ type PageProps = {
   params: Promise<{ country: string }>;
 };
 
+/** No static pre-build for programmatic country pages — noindexed. */
 export async function generateStaticParams() {
-  return getLocationStaticParams()
-    .filter((p) => !p.city)
-    .map((p) => ({ country: p.country }));
+  return [];
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { country: countrySlug } = await params;
-  const country = getCountryBySlug(countrySlug);
-  if (!country) return { robots: { index: false, follow: false } };
-
-  return createLocationCountryMetadata(country);
+  return { robots: { index: false, follow: false } };
 }
 
 export default async function CountryPage({ params }: PageProps) {

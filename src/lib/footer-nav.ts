@@ -50,9 +50,10 @@ export const footerNavColumns: FooterNavColumn[] = [
       { label: "Industrial Cost Estimator", href: "/tools/industrial-website-rfq-estimator" },
       { label: "Manufacturing Website Cost", href: "/cost/manufacturing-website-cost" },
       { label: "Vadodara Website Cost", href: "/cost/web-development-cost-vadodara" },
-      { label: "Next.js vs WordPress", href: "/compare/nextjs-vs-wordpress-business" },
+      { label: "Next.js vs WordPress Guide", href: "/blog/nextjs-vs-wordpress-industrial-website" },
       { label: "Directory → Catalog Guide", href: "/blog/vadodara-manufacturers-directory-to-nextjs-catalog" },
       { label: "RFQ Architecture Guide", href: "/blog/b2b-rfq-website-architecture-manufacturers" },
+      { label: "Buyer Search Guide 2026", href: "/blog/gujarat-manufacturer-buyers-search-google-2026" },
     ],
   },
 ];
