@@ -50,6 +50,17 @@ export const MONEY_SITEMAP_ALLOWLIST: readonly MoneySitemapEntry[] = [
   { path: "/services/website-development/bharuch-ankleshwar-chemical", priority: 0.9, changeFreq: "monthly", lastModified: LAUNCH },
   { path: "/services/website-development/morbi-ceramic-website", priority: 0.93, changeFreq: "monthly", lastModified: LAUNCH },
 
+  // Additional live verticals — fully indexed
+  { path: "/services/website-development/textile-manufacturer", priority: 0.9, changeFreq: "monthly", lastModified: LAUNCH },
+  { path: "/services/website-development/food-processing-company", priority: 0.9, changeFreq: "monthly", lastModified: LAUNCH },
+  { path: "/services/website-development/plastic-manufacturer", priority: 0.88, changeFreq: "monthly", lastModified: LAUNCH },
+  { path: "/services/website-development/paint-coating-company", priority: 0.88, changeFreq: "monthly", lastModified: LAUNCH },
+  { path: "/services/website-development/auto-parts-manufacturer", priority: 0.88, changeFreq: "monthly", lastModified: LAUNCH },
+  { path: "/services/website-development/msme-india", priority: 0.88, changeFreq: "monthly", lastModified: LAUNCH },
+  { path: "/services/website-development/exporter-india", priority: 0.88, changeFreq: "monthly", lastModified: LAUNCH },
+  { path: "/services/website-development/manufacturer-export-website", priority: 0.9, changeFreq: "monthly", lastModified: LAUNCH },
+  { path: "/services/website-development/surat-textile-manufacturer", priority: 0.87, changeFreq: "monthly", lastModified: LAUNCH },
+
   // GIDC corridors
   { path: "/locations/india/gujarat/gidc", priority: 0.94, changeFreq: "weekly", lastModified: LAUNCH },
   { path: "/locations/india/gujarat/makarpura-gidc", priority: 0.93, changeFreq: "monthly", lastModified: LAUNCH },

@@ -89,6 +89,8 @@ export const socialProfiles: string[] = [
   "https://twitter.com/MaxwellElectrodeal",
   "https://www.facebook.com/maxwellelectrodeal",
   "https://techbehemoths.com/company/maxwellelectrodeal",
+  // Google Maps — replace with your verified Place ID URL once GBP is claimed:
+  // "https://maps.google.com/?cid=YOUR_PLACE_CID"
 ];
 
 export const homeSeo = {

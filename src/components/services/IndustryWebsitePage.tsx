@@ -75,6 +75,47 @@ export function IndustryWebsitePage({
     })),
   };
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
+      { "@type": "ListItem", position: 2, name: "Manufacturer Websites", item: `${siteConfig.url}/services/website-development-for-manufacturers` },
+      { "@type": "ListItem", position: 3, name: industry, item: `${siteConfig.url}${canonicalPath}` },
+    ],
+  };
+
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: `How much does a website for a ${industry.toLowerCase()} cost in India?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `A Starter product catalog for a ${industry.toLowerCase()} starts at ₹45,000 (25–30 pages, core SEO, WhatsApp inquiry). A Professional catalog with 100+ products is ₹75,000. A Growth catalog with full RFQ, 200+ SKUs, and GIDC corridor SEO is ₹1,50,000+. All prices include 18% GST and full code ownership.`,
+        },
+      },
+      {
+        "@type": "Question",
+        name: `Why do ${industry.toLowerCase()}s need a website instead of IndiaMART?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `IndiaMART costs ₹1.5–3L per year and places your products beside competitors on a shared listing. An owned website builds Google SEO equity permanently — buyers who search your product category land directly on your inquiry form, not on a competitor comparison page.`,
+        },
+      },
+      {
+        "@type": "Question",
+        name: `How long does it take to build a ${industry.toLowerCase()} website?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `Starter sites (25–30 pages) are delivered in 3–4 weeks. Professional catalogs (100+ products) in 5–6 weeks. Growth builds with full RFQ in 6–8 weeks. All Maxwell websites are custom Next.js builds — no WordPress, no plugin subscriptions.`,
+        },
+      },
+    ],
+  };
+
   const defaultLinks: IndustryRelatedLink[] = [
     { label: "Manufacturer websites hub", href: "/services/website-development-for-manufacturers" },
     { label: "Industrial website design", href: "/services/industrial-website-design" },
@@ -92,6 +133,14 @@ export function IndustryWebsitePage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
       <section className="bg-[#030b1f] text-white py-20 md:py-28">

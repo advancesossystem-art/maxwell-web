@@ -28,8 +28,8 @@ const clusterLinks = [
   { label: "Website Development (pillar)", href: "/services/website-development" },
   { label: "Manufacturer Websites", href: "/services/website-development-for-manufacturers" },
   { label: "Website Cost India", href: "/cost/web-development-cost-india" },
-  { label: "WordPress vs Custom", href: "/compare/wordpress-vs-custom-website" },
-  { label: "Portfolio", href: "/work" },
+  { label: "Next.js vs WordPress", href: "/blog/nextjs-vs-wordpress-industrial-website" },
+  { label: "Case Studies", href: "/case-studies" },
   { label: "Case Studies", href: "/case-studies" },
   { label: "Contact", href: "/contact" },
 ];
@@ -485,7 +485,7 @@ export const websiteClusterServicesData: Record<WebsiteClusterServiceSlug, Servi
     resourceLinks: [
       ...clusterLinks,
       { label: "Website Redesign", href: "/services/website-redesign" },
-      { label: "Next.js vs WordPress", href: "/compare/nextjs-vs-wordpress-business" },
+      { label: "Next.js vs WordPress", href: "/blog/nextjs-vs-wordpress-industrial-website" },
     ],
     faqs: [
       {
@@ -569,8 +569,7 @@ export const websiteClusterServicesData: Record<WebsiteClusterServiceSlug, Servi
     ],
     resourceLinks: [
       ...clusterLinks,
-      { label: "Next.js vs WordPress", href: "/compare/nextjs-vs-wordpress-business" },
-      { label: "Next.js vs React", href: "/compare/nextjs-vs-react" },
+      { label: "Next.js vs WordPress", href: "/blog/nextjs-vs-wordpress-industrial-website" },
       { label: "Website SEO", href: "/services/website-seo" },
     ],
     faqs: [

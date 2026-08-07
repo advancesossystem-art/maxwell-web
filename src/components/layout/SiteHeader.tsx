@@ -29,13 +29,11 @@ const primaryNav = [
 const resourceLinks = [
   { label: "Pricing", href: "/pricing" },
   { label: "Solutions", href: "/solutions" },
-  { label: "Compare", href: "/compare" },
   { label: "Cost Guides", href: "/cost" },
   { label: "Blog", href: "/blog" },
-  { label: "Work", href: "/work" },
   { label: "Case Studies", href: "/case-studies" },
   { label: "Tools", href: "/tools" },
-  { label: "Engagement Models", href: "/engagement-models" },
+  { label: "Site Map", href: "/sitemap" },
 ] as const;
 
 function ChevronDownIcon({ className }: { className?: string }) {
