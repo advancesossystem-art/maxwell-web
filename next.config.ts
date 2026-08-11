@@ -25,7 +25,7 @@ const permanentRedirects: Array<{ source: string; destination: string }> = [
   { source: "/resources/erp-buyer-guide", destination: "/resources/erp-readiness-checklist" },
   { source: "/privacy", destination: "/privacy-policy" },
   { source: "/terms", destination: "/terms-of-service" },
-  { source: "/web-development-company-usa", destination: "/solutions/web-development-company-usa" },
+  { source: "/web-development-company-usa", destination: "/services/website-development/manufacturer-export-website" },
   { source: "/web-development-company-uae", destination: "/solutions/web-development-company-uae" },
   { source: "/mobile-app-development-usa", destination: "/solutions/mobile-app-development-company-usa" },
   { source: "/mobile-app-development-uae", destination: "/solutions/mobile-app-development-company-uae" },
@@ -42,7 +42,7 @@ const permanentRedirects: Array<{ source: string; destination: string }> = [
   { source: "/digital-transformation-company", destination: "/solutions/digital-transformation-company" },
   { source: "/it-consulting-company", destination: "/solutions/it-consulting-company" },
   { source: "/business-automation-services", destination: "/solutions/business-automation-services" },
-  { source: "/software-development-company-india", destination: "/solutions/software-development-company-india" },
+  { source: "/software-development-company-india", destination: "/services/website-development-for-manufacturers" },
   { source: "/software-development-company-vadodara", destination: "/solutions/software-development-company-vadodara" },
   { source: "/software-development-company-gujarat", destination: "/solutions/software-development-company-gujarat" },
   { source: "/erp-development-company-vadodara", destination: "/solutions/erp-development-company-vadodara" },
@@ -112,6 +112,9 @@ const permanentRedirects: Array<{ source: string; destination: string }> = [
   { source: "/solutions/web-development-company-india-uae", destination: "/services/website-development/manufacturer-export-website" },
   { source: "/solutions/web-development-company-india-turkey", destination: "/services/website-development/manufacturer-export-website" },
   { source: "/solutions/web-development-company-india-international", destination: "/services/website-development/manufacturer-export-website" },
+  // GSC noindex-validation failures — send leftover pages to live money URLs
+  { source: "/solutions/software-development-company-india", destination: "/services/website-development-for-manufacturers" },
+  { source: "/solutions/web-development-company-usa", destination: "/services/website-development/manufacturer-export-website" },
   // Removed stub pages
   { source: "/work", destination: "/case-studies" },
   { source: "/work/:slug", destination: "/case-studies" },

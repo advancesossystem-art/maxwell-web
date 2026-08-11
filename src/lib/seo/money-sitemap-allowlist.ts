@@ -29,6 +29,7 @@ export const MONEY_SITEMAP_ALLOWLIST: readonly MoneySitemapEntry[] = [
   // Geo money
   { path: "/solutions/web-development-company-vadodara", priority: 0.98, changeFreq: "weekly", lastModified: LAUNCH },
   { path: "/solutions/web-development-company-gujarat", priority: 0.96, changeFreq: "weekly", lastModified: LAUNCH },
+  { path: "/solutions/web-development-company-india", priority: 0.97, changeFreq: "weekly", lastModified: LAUNCH },
   { path: "/solutions/seo-company-vadodara", priority: 0.9, changeFreq: "monthly", lastModified: LAUNCH },
   { path: "/locations/india/vadodara", priority: 0.94, changeFreq: "monthly", lastModified: LAUNCH },
 

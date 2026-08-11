@@ -13,7 +13,10 @@ type PageProps = {
  * Hand-written routes (vadodara, seo-*) live in their own folders — this allowlist
  * covers geo pages that still use the dynamic SolutionLandingPage template.
  */
-const INDEXABLE_SOLUTION_SLUGS = new Set(["web-development-company-gujarat"]);
+const INDEXABLE_SOLUTION_SLUGS = new Set([
+  "web-development-company-gujarat",
+  "web-development-company-india",
+]);
 
 export async function generateStaticParams() {
   return [...INDEXABLE_SOLUTION_SLUGS].map((slug) => ({ slug }));

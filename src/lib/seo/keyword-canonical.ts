@@ -12,9 +12,9 @@ const u = (path: string) =>
 /** National & global commercial head terms → single canonical path (relative). */
 export const KEYWORD_CANONICAL_PATHS = {
   /** Website development / engineering — India national commercial */
-  websiteDevelopmentCompanyIndia: "/services/website-development",
+  websiteDevelopmentCompanyIndia: "/solutions/web-development-company-india",
   websiteEngineeringCompany: "/services/website-development",
-  webDevelopmentCompanyIndia: "/services/website-development",
+  webDevelopmentCompanyIndia: "/solutions/web-development-company-india",
 
   /** Manufacturer website cluster */
   manufacturerWebsiteDevelopment: "/services/website-development-for-manufacturers",
@@ -55,7 +55,6 @@ export const KEYWORD_CANONICAL_PATHS = {
 export const PAGE_CANONICAL_OVERRIDES: Record<string, string> = {
   // Website national triple-pillar → service pillar
   "/solutions/website-development-company": KEYWORD_CANONICAL_PATHS.websiteDevelopmentCompanyIndia,
-  "/solutions/web-development-company-india": KEYWORD_CANONICAL_PATHS.websiteDevelopmentCompanyIndia,
 
   // Software national geo → custom software service
   "/solutions/software-development-company": KEYWORD_CANONICAL_PATHS.customSoftwareDevelopment,
