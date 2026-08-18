@@ -16,6 +16,13 @@ export const homeHero = {
   secondaryCta: { label: "WhatsApp for Quote", href: "/contact" },
 } as const;
 
+export const heroTrustRow = [
+  { label: "No long-term lock-in", href: "/pricing" },
+  { label: "On-time delivery", href: "/process" },
+  { label: "GST invoice · code you own", href: "/pricing" },
+  { label: "Secure Next.js hosting", href: "/services/website-development" },
+] as const;
+
 /** High-intent unfair advantage — homepage section (TCO + ownership narrative). */
 export const unfairAdvantageOffer = {
   eyebrow: "Unfair advantage vs ₹25K WordPress",
@@ -59,11 +66,10 @@ export const heroServiceBadges = [
 ] as const;
 
 export const heroTrustMetrics = [
-  { value: "50+", label: "Projects delivered" },
-  { value: "₹45K", label: "Starting price for websites" },
-  { value: "15+", label: "Industries served" },
-  { value: "3–4 wks", label: "Starter site delivery" },
-  { value: "<4hr", label: "Response time" },
+  { value: "263+", label: "Pages delivered" },
+  { value: "154+", label: "Products listed" },
+  { value: "94/100", label: "Google Speed score" },
+  { value: "6 weeks", label: "Typical go-live" },
 ] as const;
 
 /** Right-column hero panel — website outcomes (not case study). */
@@ -91,12 +97,12 @@ export const heroSidePanel = {
     },
   ],
   websiteTypes: [
-    { label: "Manufacturer catalogs", href: "/services/website-development-for-manufacturers" },
-    { label: "Industrial website design", href: "/services/industrial-website-design" },
-    { label: "RFQ & quote portals", href: "/services/rfq-website-development" },
-    { label: "Export & B2B sites", href: "/services/website-development/exporter-india" },
+    { label: "Catalog websites", href: "/services/website-development-for-manufacturers" },
+    { label: "Corporate websites", href: "/services/business-website-development" },
+    { label: "Industrial portals", href: "/services/industrial-website-design" },
+    { label: "RFQ platforms", href: "/services/rfq-website-development" },
   ],
-  priceNote: "Websites from ₹45,000 · Starter in 3–4 weeks · Professional in 5–6 weeks",
+  priceNote: "Websites from ₹35,000 · Starter in 3–4 weeks · Professional in 5–6 weeks",
   primaryLink: { label: "See website pricing", href: "/pricing" },
   secondaryLink: { label: "All website services", href: "/services/website-development" },
 } as const;

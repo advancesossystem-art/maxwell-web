@@ -1,170 +1,112 @@
 import Link from "next/link";
 import { HeroSidePanel } from "@/components/home/HeroSidePanel";
 import { HeroMagneticActions } from "@/components/home/HeroMagneticActions";
-import { HeroTrustHighlights, VerifiedReviewBadge } from "@/components/conversion/VerifiedReviewBadge";
-import { heroServiceBadges, heroTrustMetrics, homeHero, trustHighlights } from "@/lib/homepage";
+import {
+  heroServiceBadges,
+  heroTrustMetrics,
+  heroTrustRow,
+  homeHero,
+} from "@/lib/homepage";
 import { CONVERSION_EXPECTATIONS } from "@/lib/conversion-copy";
-import { companyMetricDisplay } from "@/lib/company-metrics";
 
-const trustIcons = ["rocket", "users", "support", "shield", "shield"] as const;
-
-function TrustIcon({ type }: { type: (typeof trustIcons)[number] }) {
-  const paths: Record<(typeof trustIcons)[number], React.ReactNode> = {
-    rocket: (
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M15.59 14.37a6 6 0 0 1-7.02 7.02M15.59 14.37l-2.121-2.122m0 0L8.25 16.5m5.218-4.252L12 9.75"
-      />
-    ),
-    users: (
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z"
-      />
-    ),
-    support: (
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 0 0 .75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 0 0-3.413-.387m4.5 8.006c-.449.98-.75 2.019-.75 3.14v4.25M6.75 14.15v4.25c0 1.094.787 2.036 1.872 2.18 2.087.277 4.216.42 6.378.42s4.291-.143 6.378-.42c1.085-.144 1.872-1.086 1.872-2.18v-4.25m-16.5 0a2.18 2.18 0 0 1 .75-1.661V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 0 1 3.413-.387m4.5 8.006V6.75a2.25 2.25 0 0 0-2.25-2.25h-9a2.25 2.25 0 0 0-2.25 2.25v5.456"
-      />
-    ),
-    shield: (
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"
-      />
-    ),
-  };
-
+function CheckIcon() {
   return (
-    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-      {paths[type]}
+    <svg className="h-4 w-4 shrink-0 text-[#22c55e]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden>
+      <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+    </svg>
+  );
+}
+
+function RocketIcon() {
+  return (
+    <svg className="h-5 w-5 shrink-0 text-[#4f46e5]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75} aria-hidden>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M15.59 14.37a6 6 0 0 1-7.02 7.02M15.59 14.37 8.25 16.5m7.34-2.13L12 9.75M8.25 16.5 12 9.75m0 0 3.75-6.75 6 6L12 9.75" />
     </svg>
   );
 }
 
 export function Hero() {
   return (
-    <section className="v6-hero v6-section--white overflow-hidden" aria-label="Hero">
-      <div className="v6-container">
-        <div className="grid items-start gap-8 md:grid-cols-2 md:gap-10">
+    <section className="overflow-hidden bg-white" aria-label="Hero">
+      <div className="v6-container py-10 md:py-14 lg:py-16">
+        <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-12">
           <div className="min-w-0">
-            <p
-              className="v6-eyebrow-line v6-eyebrow mx-reveal-pending"
-              data-hero-enter
-              data-hero-delay="0"
-              data-hero-y="20"
-            >
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#6366f1]">
               {homeHero.eyebrow}
             </p>
             <h1
-              className="v6-hero-title mx-reveal-pending mt-4 text-balance"
-              data-hero-enter
-              data-hero-delay="0.15"
-              data-hero-y="40"
+              className="mt-4 font-display text-[2rem] font-bold leading-[1.12] tracking-tight text-[#0f172a] sm:text-4xl md:text-[2.75rem] lg:text-[3.15rem]"
               data-seo-speakable
             >
               {homeHero.headlineLine1}{" "}
-              <span className="v6-gradient-text">{homeHero.headlineLine2}</span>
+              <span className="text-[#4f46e5]">{homeHero.headlineLine2}</span>
             </h1>
-            <p
-              className="v6-lead mx-reveal-pending mt-4 max-w-2xl text-balance lg:max-w-none"
-              data-hero-enter
-              data-hero-delay="0.35"
-              data-hero-y="20"
-              data-seo-speakable
-            >
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg" data-seo-speakable>
               {homeHero.subhead}
             </p>
 
-            <div className="mt-4">
-              <VerifiedReviewBadge compact />
-            </div>
-
-            <div className="mt-5 hidden flex-wrap gap-2 md:flex">
+            <div className="mt-6 grid grid-cols-2 gap-2 sm:grid-cols-3">
               {heroServiceBadges.map((badge) => (
                 <Link
                   key={badge.label}
                   href={badge.href}
-                  className="rounded-full border border-[var(--v6-border)] bg-white px-3 py-1.5 text-xs font-semibold text-[var(--v6-text-secondary)] transition-colors hover:border-[#4f46e5]/40 hover:text-[#4f46e5]"
+                  className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-3 py-2 text-center text-[11px] font-semibold text-slate-600 transition hover:border-[#4f46e5]/40 hover:text-[#4f46e5] sm:text-xs"
                 >
                   {badge.label}
                 </Link>
               ))}
             </div>
 
-            <p className="mt-4 text-xs text-[var(--v6-text-muted)] md:hidden">
-              {companyMetricDisplay.projectsCompleted} projects delivered · Vadodara
-            </p>
-            <p className="mt-4 rounded-xl border border-[#4f46e5]/15 bg-[#f8fafc] px-4 py-3 text-sm text-[var(--v6-text-secondary)]">
-              <span className="font-semibold text-[#4f46e5]">Proven delivery:</span> {homeHero.proofOutcome}.{" "}
-              <Link href={homeHero.proofLink.href} className="font-semibold text-[#4f46e5] hover:underline">
-                {homeHero.proofLink.label} →
-              </Link>{" "}
-              ·{" "}
-              <a
-                href={homeHero.proofExternalUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-semibold text-[#4f46e5] hover:underline"
-              >
-                {homeHero.proofExternalLabel}
-              </a>
-            </p>
+            <div className="mt-5 flex gap-3 rounded-2xl border border-[#4f46e5]/15 bg-[#eef2ff]/80 px-4 py-3.5">
+              <RocketIcon />
+              <p className="text-sm leading-relaxed text-slate-700">
+                <span className="font-semibold text-[#4f46e5]">Proven delivery:</span> {homeHero.proofOutcome}.{" "}
+                <Link href={homeHero.proofLink.href} className="font-semibold text-[#4f46e5] hover:underline">
+                  {homeHero.proofLink.label} →
+                </Link>{" "}
+                <a
+                  href={homeHero.proofExternalUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-[#4f46e5] hover:underline"
+                >
+                  {homeHero.proofExternalLabel}
+                </a>
+              </p>
+            </div>
 
-            <div className="mt-6 mx-reveal-pending" data-hero-enter data-hero-delay="0.5" data-hero-y="20">
+            <div className="mt-6">
               <HeroMagneticActions />
             </div>
-            <p className="mt-3 text-sm text-[var(--v6-text-muted)]">
-              {CONVERSION_EXPECTATIONS.estimateTimeline} · {CONVERSION_EXPECTATIONS.responseTime} · No obligation
+            <p className="mt-3 text-sm text-slate-500">
+              {CONVERSION_EXPECTATIONS.estimateTimeline} · {CONVERSION_EXPECTATIONS.responseTime}
             </p>
 
-            <HeroTrustHighlights className="mt-5 hidden md:flex" />
-
-            <ul className="mt-5 hidden flex-wrap gap-2 md:flex" aria-label="Delivery highlights">
-              {trustHighlights.map((item) => (
-                <li
-                  key={item.label}
-                  className="rounded-full border border-[var(--v6-border)] bg-white px-3 py-1.5 text-xs text-[var(--v6-text-secondary)]"
-                >
-                  <Link href={item.href} className="hover:text-[#4f46e5]">
-                    <span className="font-semibold text-[var(--v6-text)]">{item.label}</span>
-                    <span className="mx-1 text-[var(--v6-text-muted)]">·</span>
-                    {item.desc}
+            <ul className="mt-6 grid grid-cols-2 gap-x-4 gap-y-2 sm:grid-cols-4" aria-label="Delivery promises">
+              {heroTrustRow.map((item) => (
+                <li key={item.label}>
+                  <Link href={item.href} className="flex items-start gap-2 text-xs font-medium text-slate-600 hover:text-[#4f46e5]">
+                    <CheckIcon />
+                    <span>{item.label}</span>
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div
-            className="relative mx-reveal-pending md:sticky md:top-24 md:pl-2 lg:pl-4"
-            data-hero="visual"
-            data-hero-enter
-            data-hero-delay="0.6"
-            data-hero-y="30"
-          >
+          <div className="relative md:sticky md:top-24">
             <HeroSidePanel />
           </div>
-
-          <ul className="v6-trust-bar mobile-content-safe grid gap-4 sm:grid-cols-2 md:col-span-2 lg:grid-cols-5">
-            {heroTrustMetrics.map((stat, i) => (
-              <li key={stat.label} className="v6-trust-item">
-                <span className="v6-trust-icon">
-                  <TrustIcon type={trustIcons[i] ?? "shield"} />
-                </span>
-                <div>
-                  <p className="font-display text-lg font-bold text-[#0f172a]">{stat.value}</p>
-                  <p className="text-sm text-[var(--v6-text-muted)]">{stat.label}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
         </div>
+
+        <ul className="mt-10 grid grid-cols-2 gap-4 rounded-2xl border border-slate-200 bg-[#f8fafc] px-4 py-5 sm:grid-cols-4 sm:px-6">
+          {heroTrustMetrics.map((stat) => (
+            <li key={stat.label} className="text-center sm:text-left">
+              <p className="font-display text-xl font-bold text-[#0f172a] sm:text-2xl">{stat.value}</p>
+              <p className="mt-0.5 text-xs text-slate-500 sm:text-sm">{stat.label}</p>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

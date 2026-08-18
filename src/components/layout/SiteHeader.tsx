@@ -350,7 +350,7 @@ export function Header() {
             </a>
             <button
               type="button"
-              className="mx-nav-pending inline-flex items-center gap-1 rounded-full bg-emerald-600 px-4 py-2.5 text-sm font-bold text-white transition hover:bg-emerald-700"
+              className="mx-nav-pending inline-flex items-center gap-1 rounded-full bg-[#4f46e5] px-4 py-2.5 text-sm font-bold text-white transition hover:bg-[#4338ca]"
               data-nav="cta"
               onClick={() => {
                 trackCTAClick("Request Quote", CONVERSION_ROUTES.estimate, "header-modal");
@@ -484,7 +484,7 @@ export function Header() {
         <div className="space-y-3 border-t border-gray-100 p-4">
           <button
             type="button"
-            className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-xl bg-emerald-600 py-3.5 text-base font-semibold text-white"
+            className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-xl bg-[#4f46e5] py-3.5 text-base font-semibold text-white hover:bg-[#4338ca]"
             onClick={() => {
               trackCTAClick("Request Quote", CONVERSION_ROUTES.estimate, "header_mobile_modal");
               closeMobile();
