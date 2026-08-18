@@ -38,6 +38,21 @@ const indiaWebPages = [
     title: "Website pricing — from ₹35,000",
     keyword: "Website development cost Vadodara",
   },
+  {
+    href: "/solutions/web-design-company-vadodara",
+    title: "Web Design Company — Vadodara",
+    keyword: "Web design company in Vadodara",
+  },
+  {
+    href: "/solutions/website-development-company-ahmedabad",
+    title: "Website Development — Ahmedabad",
+    keyword: "Website development company Ahmedabad",
+  },
+  {
+    href: "/solutions/business-website-vadodara",
+    title: "Business Website — Vadodara MSME",
+    keyword: "Company website Vadodara",
+  },
 ] as const;
 
 export function SolutionsHub() {

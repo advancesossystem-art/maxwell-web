@@ -25,7 +25,7 @@ export default function WebsiteMaintenancePage() {
       path={path}
       breadcrumb="Website Maintenance"
       eyebrow="Monthly AMC · manufacturer websites · Vadodara"
-      h1="Website maintenance AMC for manufacturer sites"
+      h1="Website AMC in India — monthly website maintenance from ₹11,000"
       lead="A catalog that is not updated after launch dies on Google. Maxwell AMC from ₹11,000/month: two product changes, weekly updates, SEO and performance work with a monthly report, plus two tailor-made articles published on your site."
       pageDirectAnswer="Website AMC for manufacturer sites starts at ₹11,000/month. It includes two product changes, weekly website updates, monthly SEO and performance reporting, and two original articles or knowledge posts published on your website — plus backups, SSL, and uptime monitoring."
       estimateSource="website-maintenance"

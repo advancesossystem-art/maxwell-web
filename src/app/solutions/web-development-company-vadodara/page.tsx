@@ -16,7 +16,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: {
     absolute:
-      "Website Development Company Vadodara | From ₹45,000 | Maxwell Electrodeal",
+      "Website Development Company Vadodara | From ₹35,000 | Maxwell Electrodeal",
   },
   description:
     "Website development company in Vadodara — manufacturer catalogs, GIDC estates, Next.js sites from ₹45,000 (25–30 pages + core SEO). Owned enquiries, 94+ PageSpeed, GST invoice. Free estimate.",

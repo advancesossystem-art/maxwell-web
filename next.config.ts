@@ -187,6 +187,10 @@ const permanentRedirects: Array<{ source: string; destination: string }> = [
   { source: "/solutions/mobile-app-development-company-usa", destination: "/services/website-development" },
   { source: "/solutions/mobile-app-development-company-uae", destination: "/services/website-development" },
   { source: "/solutions/web-development-company-uae", destination: "/services/website-development/manufacturer-export-website" },
+  { source: "/solutions/website-designing-company-vadodara", destination: "/solutions/web-design-company-vadodara" },
+  { source: "/solutions/web-design-company-india", destination: "/services/web-design" },
+  { source: "/solutions/seo-services-india", destination: "/services/website-seo" },
+  { source: "/solutions/website-amc-india", destination: "/services/website-maintenance" },
 ];
 
 function withTrailingSlashVariants(rules: Array<{ source: string; destination: string }>): Redirect[] {

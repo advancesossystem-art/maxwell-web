@@ -13,6 +13,21 @@ export const servicesNavGroups: NavServiceGroup[] = [
         description: "Business, corporate & industrial websites",
       },
       {
+        label: "Web Design Company",
+        href: "/services/web-design",
+        description: "Website designing from ₹35,000",
+      },
+      {
+        label: "Business / MSME Websites",
+        href: "/services/business-website-development",
+        description: "Company websites, not only factories",
+      },
+      {
+        label: "Ecommerce Websites",
+        href: "/services/ecommerce-website-development",
+        description: "Stores and B2B catalogs",
+      },
+      {
         label: "Industrial Website Design",
         href: "/services/industrial-website-design",
         description: "Factory catalogs, RFQ paths, GIDC SEO",
@@ -55,7 +70,7 @@ export const servicesNavGroups: NavServiceGroup[] = [
       {
         label: "Website SEO",
         href: "/services/website-seo",
-        description: "Technical SEO, clusters & GEO",
+        description: "SEO services — rank the site we build",
       },
       {
         label: "Owned Enquiry Channel",

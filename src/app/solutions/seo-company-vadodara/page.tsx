@@ -26,14 +26,14 @@ export default function SeoCompanyVadodaraPage() {
             Vadodara · SEO engineering
           </p>
           <h1 className="font-display text-3xl font-bold leading-tight sm:text-4xl md:text-5xl max-w-3xl">
-            SEO Company in Vadodara for Manufacturer Websites
+            SEO Company in Vadodara — SEO services for websites that need buyers, not vanity traffic
           </h1>
           <p className="mt-6 text-lg text-slate-300 max-w-2xl">
             Technical SEO and content architecture built into website engineering — so Makarpura,
             Savli, Nandesari, and city businesses rank for product + locality searches, not only
             brand name.
           </p>
-          <p className="mt-4 text-indigo-200">SEO engagements from ₹50,000 · sites from ₹45,000</p>
+          <p className="mt-4 text-indigo-200">Websites from ₹35,000 · Website AMC from ₹11,000 includes monthly SEO</p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4">
             <Link
               href="/get-estimate?service=Website+SEO&source=seo-vadodara"
