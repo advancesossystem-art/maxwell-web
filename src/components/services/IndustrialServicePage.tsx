@@ -34,7 +34,7 @@ export type IndustrialServicePageProps = {
 const heroProof = [
   { label: "Starter", value: websitePricingTiers[0].price, detail: websitePricingTiers[0].scope },
   { label: "Professional", value: websitePricingTiers[1].price, detail: websitePricingTiers[1].scope },
-  { label: "Timeline", value: "21–45 days", detail: "Typical launch window" },
+  { label: "Timeline", value: "4–5 days", detail: "Typical launch window" },
 ] as const;
 
 const heroSignals = [
