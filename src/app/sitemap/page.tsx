@@ -13,9 +13,9 @@ const sections = [
     links: [
       { label: "Home", href: "/" },
       { label: "About Us", href: "/about" },
-      { label: "Pricing — Website Tiers from ₹45,000", href: "/pricing" },
+      { label: "Pricing — Website Tiers from ₹35,000", href: "/pricing" },
       { label: "Contact", href: "/contact" },
-      { label: "Get Free Estimate", href: "/get-estimate" },
+      { label: "Request Quote", href: "/get-estimate" },
       { label: "Case Studies", href: "/case-studies" },
       { label: "Reviews & Client Work", href: "/reviews" },
       { label: "Blog", href: "/blog" },

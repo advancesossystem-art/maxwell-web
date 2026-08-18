@@ -37,8 +37,7 @@ export function HomeWhatWeBuild() {
     <HomeSection tone="white" aria-label="What we build">
       <h2 className="v6-section-title v6-section-title--wide text-balance">What We Build</h2>
       <p className="v6-lead mt-4 max-w-3xl">
-        From a ₹75,000 manufacturer website to a ₹50L enterprise ERP — we build exactly what your business needs,
-        nothing more.
+        Manufacturer catalog websites from ₹35,000, monthly AMC from ₹11,000, and SEO so buyers find you on Google — not IndiaMART.
       </p>
 
       <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
