@@ -40,10 +40,10 @@ const indiaServiceBase: Record<
   web: {
     serviceHref: "/services/website-development",
     technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Vercel"],
-    caseStudySlugs: ["educational-portal"],
+    caseStudySlugs: ["drashti-chemicals"],
     industryLinks: [
-      { name: "Retail", href: "/industries/retail" },
-      { name: "Education", href: "/industries/education" },
+      { name: "Chemical manufacturers", href: "/services/website-development/chemical-manufacturers" },
+      { name: "Engineering & machinery", href: "/services/website-development/engineering-machinery" },
     ],
     gradient: "from-cyan-950 via-blue-900 to-slate-950",
     accent: "#06B6D4",
@@ -441,64 +441,64 @@ export const indiaGeoSolutionsData: Record<IndiaGeoSolutionSlug, SolutionPageDat
     title: "Website Development Company India",
     headline: "Website Development Company in India",
     subheadline:
-      "Next.js business websites, e-commerce, and B2B product catalogs for Indian SMEs and exporters — SEO-first, Core Web Vitals 95+, milestone pricing from ₹75K. HQ in Vadodara, Gujarat.",
-    metaTitle: "Website Development Company India 2026 — Next.js & SEO Sites",
+      "Business and manufacturer websites from ₹35,000. Catalog + WhatsApp enquiry, SEO, monthly AMC from ₹11,000. Vadodara team, delivered anywhere in India. GST invoice. Pay after go-live.",
+    metaTitle: "Website Development Company in India | From ₹35,000 | Maxwell",
     metaDescription:
-      "Website development company in India: Next.js corporate sites, e-commerce, manufacturer catalogs. From ₹75K. Vadodara HQ, pan-India delivery. Free quote in 24h.",
+      "Website development company in India — business and manufacturer sites from ₹35,000. Catalog, SEO, AMC from ₹11,000. Vadodara HQ. Request a quote.",
     primaryKeyword: "Website Development Company India",
     secondaryKeywords: [
       "website development company in India",
       "web development company India",
       "business website development India",
-      "professional website development services India",
-      "Next.js website development India",
-      "website development services India",
+      "manufacturer website India",
+      "website development cost India",
     ],
     relatedSearches: [
       "website development cost India",
       "best website development company India",
-      "corporate website development India",
       "website development company Gujarat",
       "website development company Vadodara",
     ],
     marketInsights:
-      "India's B2B buyers now research vendors on Google before calling — yet most MSMEs still rely on paid directory listings with no owned website. A fast, SEO-ready Next.js site from an India-based website development company captures direct inquiries at 10–20× lower cost than perpetual marketplace fees.\n\nMaxwell Electrodeal builds websites for manufacturers, exporters, pharma, chemical, textile, and service businesses across India — with GST invoicing, milestone billing, and 100% code ownership. We also serve international clients from the US, UK, UAE, Germany, and Turkey.",
+      "Buyers in India Google a vendor before they call. A directory listing does not show your full product list, and you do not own the lead. A site from ₹35,000 with WhatsApp and Search Console is the owned channel. Maxwell is a Vadodara company — websites, SEO, AMC. Not ERP.",
     industryChallenges: [
-      { title: "Directory Dependency", description: "Paid B2B platforms charge renewal fees but you never own the traffic or buyer data." },
-      { title: "Slow Template Sites", description: "WordPress themes fail Core Web Vitals — hurting Google rankings and mobile conversions." },
-      { title: "No Lead Architecture", description: "Brochure sites without RFQ forms, product catalogs, and analytics cannot convert search traffic." },
+      { title: "You rent the lead", description: "IndiaMART and similar charge every year. The buyer data stays on their platform." },
+      { title: "The site does not load", description: "Cheap WordPress themes fail on phone data. Google then hides you." },
+      { title: "No way to enquire", description: "A brochure site without products, RFQ, or WhatsApp cannot convert the search you already paid for." },
     ],
     recommendedApproach: [
-      "SEO-first information architecture",
-      "Next.js SSG/SSR for speed and crawlability",
-      "JSON-LD schema (Organization, Product, FAQ)",
-      "Conversion CTAs + GA4 event tracking",
-      "Milestone billing: 40–40–20",
+      "Write the page list from how buyers search (product + city)",
+      "Build on Next.js so the catalog is fast on mobile",
+      "Put WhatsApp and quote on every money page",
+      "Connect Search Console and a sitemap at go-live",
+      "Optional AMC ₹11,000/month for edits and SEO",
     ],
     roiExamples: [
-      { metric: "95+", label: "Lighthouse Score", description: "Performance target" },
-      { metric: "3×", label: "Organic Traffic", description: "SEO-ready clients" },
-      { metric: "₹75K+", label: "Starting Price", description: "Business website" },
+      { metric: "₹35,000", label: "Starter site", description: "25–30 pages + SEO setup" },
+      { metric: "₹11,000", label: "Monthly AMC", description: "Edits, SEO, two articles" },
+      { metric: "94/100", label: "Drashti mobile", description: "Live catalog, not a target" },
     ],
     internalLinks: [
       { label: "Gujarat", href: "/solutions/web-development-company-gujarat", description: "State page" },
       { label: "Vadodara", href: "/solutions/web-development-company-vadodara", description: "HQ city" },
-      { label: "Website Development Pillar", href: "/services/website-development", description: "National capabilities" },
-      { label: "International Clients", href: "/solutions/web-development-company-india-international", description: "USD pricing" },
-      { label: "Get Estimate", href: "/get-estimate", description: "Free scoped quote" },
+      { label: "Website pricing", href: "/pricing", description: "Published tiers" },
+      { label: "Request Quote", href: "/get-estimate", description: "Written scope" },
     ],
     faqs: [
       {
         question: "How much does website development cost in India?",
-        answer: "Business websites from ₹45,000 (25–30 pages + core SEO); corporate and catalog builds higher. Website packages: no advance payment — full payment within 3 days of go-live (+18% GST).",
+        answer:
+          "Starter business websites from ₹35,000 (25–30 pages + core SEO). Professional catalogs from ₹75,000. Growth / large SKU sites from ₹1,50,000. Website packages: no advance — full payment within 3 days of go-live (+18% GST). Monthly AMC from ₹11,000.",
       },
       {
         question: "Do you serve clients outside Vadodara and Gujarat?",
-        answer: "Yes. We deliver website development across India — Mumbai, Bengaluru, Delhi, Chennai, Hyderabad, and tier-2 cities — with remote discovery and on-site workshops when needed.",
+        answer:
+          "Yes. Discovery is Zoom, Drive, and WhatsApp for the rest of India. On-site plant visits are Gujarat-first (Vadodara GIDC, Ankleshwar, Halol, Savli, Makarpura).",
       },
       {
         question: "Will my website rank on Google?",
-        answer: "We build technical SEO foundations: fast Core Web Vitals, semantic HTML, schema markup, and mobile-first design. Content strategy recommendations are included.",
+        answer:
+          "We ship speed, titles, schema, and Search Console. Ranking for a product name needs those product pages to exist. Monthly AMC is the ongoing SEO work after launch.",
       },
     ],
   }),
@@ -508,16 +508,15 @@ export const indiaGeoSolutionsData: Record<IndiaGeoSolutionSlug, SolutionPageDat
     title: "Website Development Company Gujarat",
     headline: "Website Development Company in Gujarat",
     subheadline:
-      "Next.js websites for Gujarat manufacturers, exporters, and MSMEs — product catalogs, corporate sites, and B2B portals for Vadodara, Ahmedabad, Surat, Rajkot, and Morbi.",
-    metaTitle: "Website Development Company Gujarat 2026 — Next.js & SEO",
+      "Manufacturer catalogs and MSME sites from ₹35,000. AMC ₹11,000/month. Vadodara HQ — Ahmedabad, Surat, Rajkot, Morbi, Ankleshwar. GST invoice. Pay after go-live.",
+    metaTitle: "Website Development Company in Gujarat | From ₹35,000 | Maxwell",
     metaDescription:
-      "Website development company in Gujarat: manufacturer catalogs, corporate sites, export websites. Vadodara HQ. From ₹75K. Free quote for Ahmedabad, Surat, Rajkot.",
+      "Website development company in Gujarat — manufacturer catalogs and MSME sites from ₹35,000. AMC from ₹11,000. Vadodara HQ. Request a quote.",
     primaryKeyword: "Website Development Company Gujarat",
     secondaryKeywords: [
       "website development company in Gujarat",
       "web development company Gujarat",
       "website development Vadodara Gujarat",
-      "business website development Gujarat",
       "manufacturer website Gujarat",
       "website development Ahmedabad Surat Rajkot",
     ],
@@ -528,43 +527,46 @@ export const indiaGeoSolutionsData: Record<IndiaGeoSolutionSlug, SolutionPageDat
       "chemical company website Ankleshwar",
     ],
     marketInsights:
-      "Gujarat is India's manufacturing export hub — chemicals in Ankleshwar, ceramics in Morbi, textiles in Surat, engineering in Rajkot, pharma in Vadodara. Yet most Gujarat MSMEs have no website optimized for how buyers search: 'chemical manufacturer Gujarat', 'ceramic exporter Morbi', 'textile supplier Surat'.\n\nMaxwell Electrodeal is headquartered in Vadodara and builds website development projects for Gujarat businesses that need product catalogs, RFQ forms, GST-compliant lead capture, and English content for international buyers — not generic brochure templates.",
+      "Gujarat buyers search product + city before they call. A directory slot next to five competitors is not a catalog. Maxwell is in Vadodara: websites from ₹35,000, AMC ₹11,000/month, plant visits on the GIDC belt. Not ERP.",
     industryChallenges: [
-      { title: "No Owned Digital Presence", description: "Gujarat manufacturers depend on IndiaMART and trade fairs but lose buyers who search Google first." },
-      { title: "Export-Ready Content Gap", description: "International buyers need spec sheets, COA requests, and container inquiry forms — not Gujarati brochure PDFs." },
-      { title: "Local Agency Quality Variance", description: "Freelancers deliver slow WordPress sites; enterprises need Next.js performance and documented delivery." },
+      { title: "You rent the lead", description: "IndiaMART renews every year. You never own the buyer list." },
+      { title: "The brochure is a PDF", description: "Purchase managers need grade, size, and a quote form — not a 12MB download." },
+      { title: "The site dies on phone data", description: "Cheap WordPress themes fail Core Web Vitals. Google then hides GIDC units." },
     ],
     recommendedApproach: [
-      "Industry-specific product catalog IA",
-      "Next.js for speed and SEO crawlability",
-      "Export inquiry forms (container, sample, RFQ)",
-      "Schema markup for products and organization",
-      "On-site discovery in Vadodara GIDC corridors",
+      "Page list from how buyers search (product + GIDC / city)",
+      "Catalog + WhatsApp + RFQ on money pages",
+      "Next.js so it loads on Jio 4G",
+      "Search Console at go-live",
+      "Optional AMC ₹11,000/month",
     ],
     roiExamples: [
-      { metric: "263", label: "Product Pages", description: "Drashti Chemicals site" },
-      { metric: "94", label: "PageSpeed Score", description: "Export catalog client" },
-      { metric: "₹1L–₹5L", label: "Gujarat SMB Sites", description: "Typical corporate" },
+      { metric: "₹35,000", label: "Starter site", description: "25–30 pages + SEO setup" },
+      { metric: "263", label: "Drashti pages", description: "Live Vadodara catalog" },
+      { metric: "₹11,000", label: "Monthly AMC", description: "Edits + SEO + two articles" },
     ],
     internalLinks: [
       { label: "Vadodara", href: "/solutions/web-development-company-vadodara", description: "HQ city page" },
       { label: "India Nationwide", href: "/solutions/web-development-company-india", description: "Pan-India" },
       { label: "Manufacturer Websites", href: "/services/website-development-for-manufacturers", description: "Industrial focus" },
-      { label: "Gujarat Location", href: "/locations/india/gujarat", description: "State hub" },
-      { label: "Book Consultation", href: "/book-consultation", description: "Free call" },
+      { label: "Website pricing", href: "/pricing", description: "Published tiers" },
+      { label: "Request Quote", href: "/get-estimate", description: "Written scope" },
     ],
     faqs: [
       {
         question: "How much does website development cost in Gujarat?",
-        answer: "Corporate SMB sites typically ₹1L–₹5L; manufacturer product catalogs ₹3L–₹12L depending on SKU count, languages, and integrations. Milestone quotes after discovery.",
+        answer:
+          "Starter from ₹35,000 (25–30 pages + core SEO). Professional catalogs from ₹75,000. Growth / large SKU sites from ₹1,50,000. No advance — pay within 3 days of go-live (+18% GST). Monthly AMC from ₹11,000.",
       },
       {
         question: "Do you visit factories in Gujarat for discovery?",
-        answer: "Yes. We meet clients on-site across Vadodara GIDC, Bharuch-Ankleshwar chemical belt, Morbi ceramic cluster, and Surat textile hubs.",
+        answer:
+          "Yes, when the catalog is wrong without walking the floor — Vadodara GIDC, Ankleshwar, Halol, Savli, Makarpura. Ahmedabad, Surat, Rajkot, and Morbi can start on Zoom with photos and an Excel list.",
       },
       {
         question: "Can you build export-ready websites for Gujarat manufacturers?",
-        answer: "Yes. We build English-language product catalogs with spec sheets, certification badges, container inquiry forms, and SEO targeting international buyer search terms.",
+        answer:
+          "Yes. English product pages, spec / SDS / COA paths where needed, container or RFQ forms, and SEO aimed at how overseas buyers search.",
       },
     ],
   }),
@@ -572,14 +574,12 @@ export const indiaGeoSolutionsData: Record<IndiaGeoSolutionSlug, SolutionPageDat
   "web-development-company-vadodara": buildIndiaGeo("web", {
     slug: "web-development-company-vadodara",
     title: "Website Development Company Vadodara",
-    headline:
-      "Slow, Outdated Websites Cost Customers Every Day — Partner with Vadodara's Elite Custom Web Development Team",
+    headline: "Website Development Company in Vadodara",
     subheadline:
-      "We build high-performance Next.js 14 websites with 94+ PageSpeed scores, zero plugin licensing dependencies, and 100% custom codebase ownership — turning your web traffic into a B2B sales funnel. Headquartered at Lalita Tower, Jetalpur Road, Vadodara. Free quote in 4 hours.",
-    metaTitle:
-      "Website Development Company Vadodara | From ₹45,000 | Maxwell Electrodeal",
+      "Manufacturer catalogs and business sites from ₹35,000. AMC ₹11,000/month. Jetalpur Road office. GIDC plant visits. GST invoice. Pay after go-live.",
+    metaTitle: "Website Development Company in Vadodara | From ₹35,000 | Maxwell",
     metaDescription:
-      "Website development company in Vadodara — manufacturer catalogs, GIDC estates, Next.js from ₹45,000. Owned enquiries, 94+ PageSpeed, GST invoice. Free estimate.",
+      "Website development company in Vadodara — manufacturer catalogs, GIDC estates, sites from ₹35,000. AMC from ₹11,000. Request a quote.",
     primaryKeyword: "website development company in Vadodara",
     secondaryKeywords: [
       "website development company Vadodara",
@@ -602,7 +602,7 @@ export const indiaGeoSolutionsData: Record<IndiaGeoSolutionSlug, SolutionPageDat
       "manufacturer website Vadodara",
     ],
     marketInsights:
-      "Vadodara is Gujarat's industrial capital — home to over 2,000 manufacturing units across chemical, pharma, engineering, and FMCG. Yet local agencies like H Cube Web Solutions (2009), M2 Web Solution (2009), and Dreamsdesign dominate page-one rankings despite running outdated, slow WordPress or PHP setups. They maintain positions through 15+ years of domain age and local backlink profiles.\n\nThe antidote is not competing on age — it is competing on technical performance, measurable TCO savings, and genuine local presence. Maxwell Electrodeal is headquartered at 419 Lalita Tower, Near Hotel Rajpath, Jetalpur Road, Vadodara. We deliver on-site discovery workshops at GIDC Makarpura, Savli, Halol, and the Bharuch-Ankleshwar chemical belt.\n\nA standard Vadodara WordPress site appears cheap at ₹25,000 upfront — but costs ₹2,77,000 over three years once you factor in plugin licensing (₹15K/yr), hosting (₹8K/yr), maintenance (₹12K/yr), developer overhead (₹14K/yr), and performance revenue loss (₹30K/yr). Maxwell's custom Next.js site starts at ₹75,000 and costs just ₹1,20,000 over three years — a saving of ₹1,57,000 with zero plugin dependency and zero performance loss.",
+      "Vadodara manufacturers still send PDF catalogs and IndiaMART links. Buyers in Pune and Dubai Google the product name first. Maxwell is on Jetalpur Road: sites from ₹35,000, AMC ₹11,000/month, plant visits in Makarpura, Savli, Nandesari, Waghodia. Live proof is the Drashti Chemicals catalog — not a TCO spreadsheet.",
     industryChallenges: [
       {
         title: "Legacy WordPress Competitor Advantage",

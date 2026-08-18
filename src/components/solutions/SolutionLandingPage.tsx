@@ -5,31 +5,24 @@ import {
   SolutionApproach,
   SolutionROI,
   SolutionCaseStudies,
-  SolutionIndustries,
   SolutionInternalLinks,
   SolutionFAQ,
   SolutionCTA,
 } from "@/components/solutions/SolutionSections";
 import { SolutionPageJsonLd } from "@/components/seo/JsonLd";
-import { FounderAuthorityCard } from "@/components/trust/FounderAuthorityCard";
-import { ProofSignalsBar } from "@/components/trust/ProofSignalsBar";
-import { HeroTrustBadges } from "@/components/conversion/HeroTrustBadges";
 import type { SolutionPageData } from "@/lib/solutions-data";
 
+/** Tight layout: no stacked trust/founder bands (they added empty space and off-topic copy). */
 export function SolutionLandingPage({ solution }: { solution: SolutionPageData }) {
   return (
     <>
       <SolutionPageJsonLd solution={solution} />
       <SolutionHero solution={solution} />
-      <HeroTrustBadges compact />
-      <ProofSignalsBar compact />
-      <FounderAuthorityCard compact />
       <SolutionMarketInsights solution={solution} />
       <SolutionChallenges solution={solution} />
       <SolutionApproach solution={solution} />
       <SolutionROI solution={solution} />
       <SolutionCaseStudies solution={solution} />
-      <SolutionIndustries solution={solution} />
       <SolutionInternalLinks solution={solution} />
       <SolutionFAQ solution={solution} />
       <SolutionCTA solution={solution} />

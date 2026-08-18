@@ -116,8 +116,8 @@ export function IndustrialServicePage({
           }}
           aria-hidden
         />
-        <Container className="relative z-10 py-16 md:py-20 lg:py-24">
-          <nav className="mb-8 flex flex-wrap items-center gap-2 text-sm text-white/50">
+        <Container className="relative z-10 py-10 md:py-12">
+          <nav className="mb-5 flex flex-wrap items-center gap-2 text-sm text-white/50">
             <Link href="/" className="hover:text-white transition-colors">
               Home
             </Link>
@@ -132,7 +132,7 @@ export function IndustrialServicePage({
             <span className="text-white/80">{breadcrumb}</span>
           </nav>
 
-          <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-x-14 lg:gap-y-0">
+          <div className="grid items-start gap-8 lg:grid-cols-12 lg:gap-x-12 lg:gap-y-0">
             <div className="lg:col-span-7 min-w-0">
               <p className="text-sm font-semibold uppercase tracking-widest text-indigo-300 mb-4">
                 {eyebrow}
@@ -140,7 +140,7 @@ export function IndustrialServicePage({
               <h1 className="font-display text-3xl font-bold leading-[1.08] tracking-tight sm:text-4xl md:text-5xl lg:text-[3.25rem] max-w-[18ch] sm:max-w-none">
                 {h1}
               </h1>
-              <p className="mt-6 text-lg text-slate-300 leading-relaxed max-w-[60ch]">{lead}</p>
+              <p className="mt-5 text-base text-slate-300 leading-relaxed max-w-[60ch] sm:text-lg">{lead}</p>
               {pageDirectAnswer ? (
                 <p
                   className="mt-4 max-w-[60ch] text-base text-indigo-100/90 leading-relaxed"
@@ -209,7 +209,7 @@ export function IndustrialServicePage({
       </section>
 
       {sections.map((s) => (
-        <section key={s.heading} className="py-14 border-b border-slate-200">
+        <section key={s.heading} className="py-10 border-b border-slate-200">
           <Container>
             <div className="grid gap-8 lg:grid-cols-12 lg:gap-12">
               <div className="lg:col-span-4 min-w-0">
@@ -247,7 +247,7 @@ export function IndustrialServicePage({
         </section>
       ))}
 
-      <section className="py-16 bg-slate-50 border-b border-slate-200">
+      <section className="py-10 bg-slate-50 border-b border-slate-200">
         <Container>
           <h2 className="font-display text-2xl font-bold text-slate-900 mb-8 tracking-tight">
             {featureGridTitle}
@@ -268,7 +268,7 @@ export function IndustrialServicePage({
 
       <section className="py-12 border-b border-slate-100 bg-[#f8fafc]">
         <Container>
-          <p className="text-sm font-semibold text-slate-700 mb-3">Related industrial pages</p>
+          <p className="text-sm font-semibold text-slate-700 mb-3">Related pages</p>
           <div className="flex flex-wrap gap-x-6 gap-y-3">
             {related.map((r) => (
               <Link key={r.href} href={r.href} className="text-sm text-indigo-600 hover:underline">
@@ -279,15 +279,15 @@ export function IndustrialServicePage({
         </Container>
       </section>
 
-      <section className="py-16 bg-[#030b1f] text-white">
+      <section className="py-12 bg-[#030b1f] text-white">
         <Container>
           <div className="grid items-center gap-8 lg:grid-cols-12">
             <div className="lg:col-span-7 min-w-0">
               <h2 className="font-display text-2xl font-bold mb-3 md:text-3xl tracking-tight">
-                Ready for an industrial architecture estimate?
+                Request a written website quote
               </h2>
               <p className="text-slate-300 max-w-[55ch]">
-                Free consultation for factory catalogs, RFQ flows, and GIDC-focused SEO.{" "}
+                Starter from ₹35,000. AMC from ₹11,000/month. No advance — pay after go-live.{" "}
                 {pricingTerms.payment}.
               </p>
             </div>
@@ -299,10 +299,10 @@ export function IndustrialServicePage({
                 Request Quote
               </Link>
               <Link
-                href="/tools/industrial-website-rfq-estimator"
+                href="/pricing"
                 className="inline-flex items-center justify-center rounded-lg border border-white/20 px-6 py-3 text-base font-semibold text-white hover:bg-white/10 transition"
               >
-                Run cost estimator
+                See pricing
               </Link>
             </div>
           </div>
