@@ -5,9 +5,9 @@ import { IndustrialServicePage } from "@/components/services/IndustrialServicePa
 const path = "/services/website-maintenance";
 
 export const metadata: Metadata = createMetadata({
-  title: "Website Maintenance AMC India | Manufacturer Sites from ₹4,999/mo",
+  title: "Website AMC India | Manufacturer Maintenance from ₹11,000/mo",
   description:
-    "Monthly website maintenance for manufacturer catalogs — backups, security, product edits, Search Console watch. Care ₹4,999 · Growth ₹9,999 · Plant ₹19,999. Vadodara.",
+    "Monthly website AMC from ₹11,000: two product changes, weekly updates, SEO + performance report, two published articles. Vadodara manufacturer sites.",
   path,
   keywords: [
     "website maintenance India",
@@ -26,8 +26,8 @@ export default function WebsiteMaintenancePage() {
       breadcrumb="Website Maintenance"
       eyebrow="Monthly AMC · manufacturer websites · Vadodara"
       h1="Website maintenance AMC for manufacturer sites"
-      lead="A catalog that is not updated after launch dies on Google. Maxwell runs monthly care plans: backups, security patches, product edits, form checks, and Search Console watch — so your RFQ site keeps earning enquiries."
-      pageDirectAnswer="Website maintenance for manufacturer sites is a monthly AMC, not a one-time launch. Maxwell Care is ₹4,999/month (uptime, backups, two edits). Growth is ₹9,999/month (catalog edits + Search Console). Plant is ₹19,999/month for export catalogs with weekly SKU or certificate changes."
+      lead="A catalog that is not updated after launch dies on Google. Maxwell AMC from ₹11,000/month: two product changes, weekly updates, SEO and performance work with a monthly report, plus two tailor-made articles published on your site."
+      pageDirectAnswer="Website AMC for manufacturer sites starts at ₹11,000/month. It includes two product changes, weekly website updates, monthly SEO and performance reporting, and two original articles or knowledge posts published on your website — plus backups, SSL, and uptime monitoring."
       estimateSource="website-maintenance"
       schemaName="Website Maintenance AMC for Manufacturers"
       schemaDescription="Monthly website maintenance and AMC plans for manufacturer catalog websites from Maxwell Electrodeal, Vadodara."
@@ -50,15 +50,15 @@ export default function WebsiteMaintenancePage() {
         {
           heading: "Published monthly plans",
           directAnswer:
-            "Care ₹4,999/mo, Growth ₹9,999/mo, Plant ₹19,999/mo — all +18% GST. Website packages stay no-advance. AMC is billed monthly after go-live.",
+            "Website AMC starts at ₹11,000/month (+18% GST). Website builds stay no-advance. AMC is billed monthly after go-live.",
           paragraphs: [
-            "Care: keep the site online and safe — two edits a month. Growth: eight catalog edits, new product pages, monthly GSC note. Plant: priority edits and a quarterly ranking/enquiry call for export catalogs.",
-            "You can start AMC on a Maxwell-built site or on a site we take over after a paid health check. We do not lock you into annual prepay.",
+            "₹11,000 plan: two product changes, weekly updates, monthly SEO + performance report, two original articles published on your site, plus backups and uptime. Growth ₹19,000 and Plant ₹29,000 add more edits and SLA.",
+            "Start AMC on a Maxwell-built site or after a paid health check on an existing site. No annual lock-in beyond a 3-month minimum.",
           ],
           bullets: [
-            "Care ₹4,999/mo — security, backups, 2 edits",
-            "Growth ₹9,999/mo — catalog ops + GSC watch (most manufacturers)",
-            "Plant ₹19,999/mo — SLA edits + quarterly review",
+            "Website AMC ₹11,000/mo — the published starter",
+            "Growth ₹19,000/mo — heavier catalog + extra posts",
+            "Plant ₹29,000/mo — priority SLA",
             "See full inclusions on /pricing",
           ],
         },

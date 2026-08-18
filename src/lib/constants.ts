@@ -28,11 +28,11 @@ const siteUrl = normalizeSiteUrl(siteUrlRaw);
  * Explicitly excludes printer/toner retail and maxwells.in (Maxwell Engineering Solutions).
  */
 export const brandDisambiguation =
-  "Maxwell Electrodeal Private Limited is a software and website engineering company (industrial B2B product catalog & RFQ websites, web apps, custom software). Not a printer, toner, or photocopier hardware retailer. Not affiliated with Maxwell Engineering Solutions (maxwells.in) or other Waghodia pelletizing-die manufacturers using a similar name." as const;
+  "Maxwell Electrodeal Private Limited is a website development, SEO, and website AMC company for manufacturers and businesses. Not a printer, toner, or photocopier hardware retailer. Not affiliated with Maxwell Engineering Solutions (maxwells.in)." as const;
 
 /** Single visible disclaimer — footer only. */
 export const footerBrandNote =
-  "Maxwell Electrodeal Private Limited engineers websites and software for manufacturers and businesses. Not a printer/toner dealer. Not Maxwell Engineering Solutions (maxwells.in)." as const;
+  "Maxwell Electrodeal Private Limited builds, ranks, and maintains websites for manufacturers and businesses. Not a printer/toner dealer. Not Maxwell Engineering Solutions (maxwells.in)." as const;
 
 /** Corporate contact emails — single source of truth (display, mailto, schema). */
 export const corporateEmails = {
@@ -46,9 +46,9 @@ export const corporateEmails = {
 export const siteConfig = {
   name: "Maxwell Electrodeal",
   legalName: "Maxwell Electrodeal Private Limited",
-  tagline: "Website Engineering for Manufacturers",
+  tagline: "Website development, SEO & AMC for manufacturers",
   description:
-    "Software & Website Engineering Company — industrial B2B product catalog & RFQ websites, web apps, and custom software for manufacturers and businesses. Based in Vadodara, Gujarat; serving India and English-speaking markets.",
+    "Website development company in Vadodara — manufacturer catalogs, SEO ranking, and monthly website AMC from ₹11,000. Sites from ₹35,000. GST invoice. You own the code.",
   url: siteUrl,
   logoPath: "/logo.webp",
   logoUrl: `${siteUrl}/logo.webp`,

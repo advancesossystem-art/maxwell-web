@@ -5,35 +5,32 @@
 
 /** Head terms — homepage, root metadata (India + commercial intent) */
 export const headTerms = [
-  "software development company",
-  "software development company India",
-  "custom software development company",
-  "custom software development company India",
-  "best software development company India",
-  "top software development company India",
-  "IT company India",
-  "software development services",
-  "enterprise software development company",
-  "offshore software development India",
-  "hire software developers India",
-  "dedicated development team India",
-  "software outsourcing India",
+  "website development company Vadodara",
+  "website development company Gujarat",
+  "website development company India",
+  "manufacturer website development",
+  "industrial website design",
+  "website AMC India",
+  "website maintenance Vadodara",
+  "SEO company Vadodara",
+  "website ranking company",
+  "GIDC manufacturer website",
+  "RFQ website development",
+  "catalog website for manufacturers",
+  "hire website developers Vadodara",
 ] as const;
 
 /** Global / export-market head terms — same site, international English buyers */
 export const globalHeadTerms = [
-  "custom software development company",
-  "enterprise software development company",
-  "offshore software development company",
-  "hire dedicated software developers",
-  "software development outsourcing",
-  "IT outsourcing company",
-  "B2B software development services",
-  "software development agency",
-  "application development company",
-  "digital product development company",
-  "nearshore software development",
-  "offshore development team",
+  "website development company India",
+  "manufacturer website development company",
+  "industrial website design agency",
+  "B2B catalog website development",
+  "website maintenance company",
+  "SEO company for manufacturers",
+  "website AMC services",
+  "Next.js website development India",
+  "hire website developers India",
 ] as const;
 
 /** Region-specific commercial modifiers (metadata + llms.txt) */

@@ -13,7 +13,7 @@ import { HubMetrics } from "@/components/design/HubMetrics";
 export const metadata = createMetadata({
   title: "Website Development Services India | Business, Manufacturer & Web Apps",
   description:
-    "Website engineering company for businesses — website development, manufacturer sites, web applications, custom software, and AI automation. Maxwell Electrodeal — Vadodara, Gujarat.",
+    "Website development, SEO, and monthly AMC for manufacturers and businesses. Catalog sites from ₹35,000. Website AMC from ₹11,000. Maxwell Electrodeal — Vadodara, Gujarat.",
   path: "/services",
 });
 

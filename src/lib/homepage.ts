@@ -3,17 +3,17 @@
 export const homeHero = {
   eyebrow: "Maxwell Electrodeal · Industrial website engineering · Gujarat",
   headlineLine1: "Website development company in Vadodara",
-  headlineLine2: "for manufacturers — catalogs from ₹45,000.",
+  headlineLine2: "for manufacturers — catalogs from ₹35,000.",
   subhead:
-    "Product catalog + RFQ websites for Gujarat factories and GIDC plants. Buyers find you on Google, enquire on WhatsApp, and you own the lead — not IndiaMART. Next.js builds from ₹45,000. Optional monthly AMC after launch.",
+    "Product catalog + RFQ websites for Gujarat factories and GIDC plants. Buyers find you on Google, enquire on WhatsApp, and you own the lead — not IndiaMART. Website packages from ₹35,000. Monthly AMC from ₹11,000 (SEO, weekly updates, two articles).",
   /** Social proof in first viewport — pairs with primary CTA */
   proofOutcome:
     "Last build: 263 pages · 154 products · 94/100 Google Speed · Live in 6 weeks",
   proofLink: { label: "See case study", href: "/case-studies/drashti-chemicals" },
   proofExternalUrl: "https://drashtichemical.com",
   proofExternalLabel: "See it live → drashtichemical.com",
-  primaryCta: { label: "See What Your Website Would Cost", href: "/pricing" },
-  secondaryCta: { label: "WhatsApp Us — reply in 2 hrs", href: "/contact" },
+  primaryCta: { label: "Request Quote", href: "/get-estimate" },
+  secondaryCta: { label: "WhatsApp for Quote", href: "/contact" },
 } as const;
 
 /** High-intent unfair advantage — homepage section (TCO + ownership narrative). */
@@ -649,31 +649,31 @@ export const homepageFaqs = [
   {
     question: "What is Maxwell Electrodeal?",
     answer:
-      "Maxwell Electrodeal Private Limited is a Software & Website Engineering Company headquartered in Vadodara, Gujarat, India. We engineer industrial B2B product catalog and RFQ websites, web apps, and custom software for manufacturers and businesses. Website packages: no advance (full pay within 3 days of go-live + 18% GST). Custom software/ERP uses milestone billing. 100% IP ownership.",
+      "Maxwell Electrodeal Private Limited is a website development, SEO, and website AMC company in Vadodara, Gujarat. We build manufacturer catalog and RFQ websites, rank them on Google, and maintain them monthly. Website packages from ₹35,000 (no advance — pay within 3 days of go-live + 18% GST). Website AMC from ₹11,000/month. 100% IP ownership.",
     category: "Company",
   },
   {
     question: "Are you a printer toner or photocopier dealer?",
     answer:
-      "No. Maxwell Electrodeal is not a printer, toner, or photocopier hardware retailer. Some legacy directory listings may use similar 'Maxwell' names for hardware dealers — that is a different entity. We engineer websites and software for manufacturers and businesses only.",
+      "No. Maxwell Electrodeal is not a printer, toner, or photocopier hardware retailer. Some legacy directory listings may use similar Maxwell names for hardware dealers — that is a different entity. We only build, rank, and maintain websites.",
     category: "Company",
   },
   {
     question: "Are you connected to maxwells.in or Maxwell Engineering Solutions?",
     answer:
-      "No. We are Maxwell Electrodeal Private Limited (maxwellelectrodeal.com) — website and software engineering. We are not Maxwell Engineering Solutions (maxwells.in) or Waghodia pelletizing-die manufacturers using a similar name. Please match us by GST invoice name and this domain.",
+      "No. We are Maxwell Electrodeal Private Limited (maxwellelectrodeal.com) — website development, SEO, and AMC. We are not Maxwell Engineering Solutions (maxwells.in). Match us by GST invoice name and this domain.",
     category: "Company",
   },
   {
     question: "What does a typical project cost?",
     answer:
-      "Website packages: Starter ₹45,000 · Professional ₹75,000 · Growth ₹1,50,000 with no advance — full payment within 3 days of go-live (+18% GST). Custom software and ERP engagements are quoted after discovery with milestone billing.",
+      "Website packages: Starter ₹35,000 · Professional ₹75,000 · Growth ₹1,50,000 — no advance; full payment within 3 days of go-live (+18% GST). Monthly website AMC starts at ₹11,000 (two product changes, weekly updates, SEO report, two published articles).",
     category: "Cost",
   },
   {
     question: "How long does delivery take?",
     answer:
-      "MVPs often ship in 6–10 weeks. Larger ERP and multi-system programs run 3–9 months with phased go-lives so you see value early.",
+      "Starter websites typically launch in 21–30 days. Professional catalogs 30–45 days. Growth catalogs 6–8 weeks. Monthly AMC starts after go-live.",
     category: "Timeline",
   },
   {
@@ -690,25 +690,25 @@ export const homepageFaqs = [
   {
     question: "What services does Maxwell Electrodeal offer?",
     answer:
-      "Website development and manufacturer websites (primary), web applications, website redesign and maintenance, plus supporting custom software, ERP, CRM, Flutter/React Native mobile apps, AI automation, SaaS platforms, cloud migration, and digital transformation.",
+      "Website development, manufacturer catalog websites, industrial SEO, website redesign, and monthly website AMC (updates, ranking, content, performance).",
     category: "Services",
   },
   {
-    question: "Do you develop custom ERP systems in India?",
+    question: "What is included in website AMC?",
     answer:
-      "Yes. Maxwell Electrodeal builds custom ERP for Indian manufacturers and enterprises with GST/Tally integration, inventory, production, finance, and multi-location support. See /services/erp-development and /solutions/erp-development-company-gujarat.",
-    category: "ERP",
+      "From ₹11,000/month: two product changes, weekly site updates, monthly SEO and performance work with a written report, and two tailor-made articles or knowledge posts published on your website — plus backups, SSL, and uptime watch.",
+    category: "AMC",
   },
   {
-    question: "Do you serve clients outside India?",
+    question: "Do you serve clients outside Vadodara?",
     answer:
-      "Yes. We deliver for clients in the United States, United Kingdom, UAE, Canada, Australia, and other markets with English-first communication, 100% IP ownership, and clear commercial terms (website packages: no advance; software/ERP: milestone billing).",
-    category: "Global",
+      "Yes. We are based in Vadodara and deliver manufacturer websites and AMC across Gujarat and India, plus English-language export catalog sites. Website packages: no advance. AMC billed monthly.",
+    category: "Location",
   },
   {
-    question: "How long does it take to build a custom web application?",
+    question: "How do I request a quote?",
     answer:
-      "Marketing sites and focused web apps often launch in 6–10 weeks. Larger platforms with integrations typically run 3–6 months with phased releases so you see value early.",
-    category: "Timeline",
+      "Use Request Quote on any page, WhatsApp, or /get-estimate. We reply with a scoped website or AMC quote — published prices, GST invoice, no advance on website builds.",
+    category: "Quote",
   },
 ] as const;

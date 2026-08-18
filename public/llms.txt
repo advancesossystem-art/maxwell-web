@@ -1,13 +1,13 @@
 # Maxwell Electrodeal — Website Engineering for Manufacturers
-> Vadodara-based website engineering company building industrial product catalogs, RFQ systems, and B2B portals for manufacturers in Gujarat and India. Starting from ₹45,000. Not a printer/toner dealer. Not maxwells.in.
+> Vadodara website development, SEO, and AMC company for manufacturer catalogs and RFQ sites. Websites from ₹35,000. Monthly AMC from ₹11,000. Not a printer/toner dealer. Not maxwells.in.
 
 ## Core Pages
 
-- [Home](https://maxwellelectrodeal.com/): Maxwell Electrodeal homepage — manufacturer website development from ₹45,000
+- [Home](https://maxwellelectrodeal.com/): Maxwell Electrodeal homepage — manufacturer website development from ₹35,000 · Request Quote
 - [About](https://maxwellelectrodeal.com/about): About Maxwell Electrodeal — founded 2018 in Vadodara by Sanjay Prajapati
-- [Pricing](https://maxwellelectrodeal.com/pricing): Published website pricing tiers — Starter ₹45,000 · Professional ₹75,000 · Growth ₹1,50,000
+- [Pricing](https://maxwellelectrodeal.com/pricing): Starter ₹35,000 · Professional ₹75,000 · Growth ₹1,50,000 · Website AMC from ₹11,000/mo
 - [Contact](https://maxwellelectrodeal.com/contact): Contact Maxwell Electrodeal — Vadodara, Gujarat
-- [Get Estimate](https://maxwellelectrodeal.com/get-estimate): Free project estimate in 24 hours
+- [Request Quote](https://maxwellelectrodeal.com/get-estimate): Request a website or AMC quote — reply in 24 hours
 - [Site Map](https://maxwellelectrodeal.com/sitemap): Full HTML sitemap of all pages
 
 ## Manufacturer Website Services
@@ -16,7 +16,7 @@
 - [Industrial Website Design](https://maxwellelectrodeal.com/services/industrial-website-design): Industrial B2B website design for manufacturers
 - [RFQ Website Development](https://maxwellelectrodeal.com/services/rfq-website-development): RFQ portal development for manufacturers — grade, MOQ, drawing upload flows
 - [Industrial Catalog Development](https://maxwellelectrodeal.com/services/industrial-catalog-development): Product catalog websites for industrial suppliers
-- [Website Maintenance AMC](https://maxwellelectrodeal.com/services/website-maintenance): Monthly website maintenance for manufacturer sites — Care ₹4,999 · Growth ₹9,999 · Plant ₹19,999
+- [Website Maintenance AMC](https://maxwellelectrodeal.com/services/website-maintenance): Monthly website AMC from ₹11,000 — two product changes, weekly updates, SEO report, two published articles
 - [Chemical Manufacturers](https://maxwellelectrodeal.com/services/website-development/chemical-manufacturers): Website development for chemical manufacturers — Nandesari, Ankleshwar GIDC
 - [Engineering & Machinery](https://maxwellelectrodeal.com/services/website-development/engineering-machinery): Website development for engineering and machinery manufacturers — Makarpura, Savli GIDC
 - [Pharma Equipment](https://maxwellelectrodeal.com/services/website-development/pharma-equipment): Website development for pharma equipment manufacturers — Halol, Vadodara

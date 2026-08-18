@@ -75,12 +75,11 @@ export const indiaKeywords = [
   "ecommerce website development India",
   "website redesign company India",
   "website maintenance company India",
-  "software development company in India",
-  "custom software development company India",
-  "ERP development company India",
-  "CRM development India",
-  "AI automation India",
-  "IT company in Vadodara",
+  "website AMC Vadodara",
+  "website maintenance company India",
+  "SEO company Vadodara",
+  "website ranking company Gujarat",
+  "digital presence for manufacturers",
 ] as const;
 
 /** Live profiles for Knowledge Graph / sameAs signals. */
@@ -95,9 +94,9 @@ export const socialProfiles: string[] = [
 
 export const homeSeo = {
   title:
-    "Website Development Company Vadodara | Manufacturer Sites from ₹45,000 | Maxwell",
+    "Website Development Company Vadodara | From ₹35,000 | AMC ₹11,000 | Maxwell",
   description:
-    "Website development company in Vadodara — manufacturer catalogs, GIDC estates, and business sites from ₹45,000 (25–30 pages + core SEO). Owned enquiries, Next.js, GST invoice. Free estimate.",
+    "Website development, SEO, and monthly AMC in Vadodara. Manufacturer catalogs from ₹35,000. Website AMC from ₹11,000 — weekly updates, SEO reports, two articles. Request a quote.",
   keywords: [
     "website development company Vadodara",
     "website engineering company",
@@ -106,6 +105,8 @@ export const homeSeo = {
     "GIDC manufacturer website",
     "business website development",
     "SEO company Vadodara",
+    "website AMC Vadodara",
+    "website maintenance company India",
     "Maxwell Electrodeal",
   ],
   path: "/",

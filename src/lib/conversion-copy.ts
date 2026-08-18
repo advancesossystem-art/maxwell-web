@@ -4,22 +4,22 @@
  */
 
 export const CTA_LABELS = {
-  primary: "Book Free 30-Min Strategy Call",
-  secondary: "Get My Free Quote — Reply in 24h",
-  tertiary: "Explore Services",
+  primary: "Request Quote",
+  secondary: "WhatsApp for Quote",
+  tertiary: "See website pricing",
   exploreProcess: "Our Process",
   howWeWork: "How We Work",
-  requestProposal: "Request Proposal",
-  similarProject: "Start Similar Project",
-  getProposal: "Get Proposal",
-  industryAudit: "Request Industry Audit",
-  discoveryCall: "Book Discovery Call",
-  freeStrategySession: "Free Strategy Session",
-  instantEstimate: "Get Instant Project Estimate",
-  freeErpAssessment: "Get Free ERP Assessment",
-  calculateCost: "Calculate Project Cost",
-  customRoadmap: "Get Custom Roadmap",
-  strategyCall: "Book Strategy Call",
+  requestProposal: "Request Quote",
+  similarProject: "Request Quote",
+  getProposal: "Request Quote",
+  industryAudit: "Request Quote",
+  discoveryCall: "Request Quote",
+  freeStrategySession: "Request Quote",
+  instantEstimate: "Request Quote",
+  freeErpAssessment: "Request Quote",
+  calculateCost: "See website pricing",
+  customRoadmap: "Request Quote",
+  strategyCall: "Request Quote",
 } as const;
 
 export const CONVERSION_ROUTES = {

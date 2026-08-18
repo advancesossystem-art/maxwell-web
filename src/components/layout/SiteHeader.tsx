@@ -353,11 +353,11 @@ export function Header() {
               className="mx-nav-pending inline-flex items-center gap-1 rounded-full bg-emerald-600 px-4 py-2.5 text-sm font-bold text-white transition hover:bg-emerald-700"
               data-nav="cta"
               onClick={() => {
-                trackCTAClick("Get Free Project Estimate", CONVERSION_ROUTES.estimate, "header-modal");
+                trackCTAClick("Request Quote", CONVERSION_ROUTES.estimate, "header-modal");
                 setEstimateModalOpen(true);
               }}
             >
-              Get Free Project Estimate
+              Request Quote
               <span aria-hidden>→</span>
             </button>
           </div>
@@ -486,12 +486,12 @@ export function Header() {
             type="button"
             className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-xl bg-emerald-600 py-3.5 text-base font-semibold text-white"
             onClick={() => {
-              trackCTAClick("Get Free Project Estimate", CONVERSION_ROUTES.estimate, "header_mobile_modal");
+              trackCTAClick("Request Quote", CONVERSION_ROUTES.estimate, "header_mobile_modal");
               closeMobile();
               setEstimateModalOpen(true);
             }}
           >
-            Get Free Project Estimate →
+            Request Quote →
           </button>
           <a
             href={WHATSAPP_HREF_ENGINEER}

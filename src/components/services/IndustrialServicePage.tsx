@@ -50,7 +50,7 @@ export function IndustrialServicePage({
   lead,
   priceLine = `Starter from ${websitePricingTiers[0].price} · ${websitePricingTiers[0].scope} · Professional from ${websitePricingTiers[1].price}`,
   estimateSource,
-  estimateLabel = "Get Free Estimate",
+  estimateLabel = "Request Quote",
   pageDirectAnswer,
   sections,
   featureGridTitle,
@@ -296,7 +296,7 @@ export function IndustrialServicePage({
                 href={`/get-estimate?service=${encodeURIComponent(schemaName)}&source=${estimateSource}-cta`}
                 className="inline-flex items-center justify-center rounded-lg bg-indigo-600 px-6 py-3 text-base font-semibold text-white hover:bg-indigo-500 transition"
               >
-                Get Free Estimate
+                Request Quote
               </Link>
               <Link
                 href="/tools/industrial-website-rfq-estimator"
