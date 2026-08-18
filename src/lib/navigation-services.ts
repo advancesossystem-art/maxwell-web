@@ -25,12 +25,12 @@ export const servicesNavGroups: NavServiceGroup[] = [
       {
         label: "Industrial Cost Estimator",
         href: "/tools/industrial-website-rfq-estimator",
-        description: "Starter ₹45k / Professional ₹75k planner",
+        description: "Starter ₹35k / Professional ₹75k planner",
       },
       {
         label: "Manufacturer Websites",
         href: "/services/website-development-for-manufacturers",
-        description: "Product catalog sites starting from ₹45K",
+        description: "Product catalog sites starting from ₹35K",
       },
       {
         label: "Website Cost Guide",
@@ -50,7 +50,7 @@ export const servicesNavGroups: NavServiceGroup[] = [
       {
         label: "Website Maintenance",
         href: "/services/website-maintenance",
-        description: "Security, updates, and uptime",
+        description: "Monthly AMC from ₹11,000 — SEO, updates, articles",
       },
       {
         label: "Website SEO",
@@ -106,86 +106,6 @@ export const servicesNavGroups: NavServiceGroup[] = [
         label: "Export Websites",
         href: "/services/website-development/owned-enquiry-channel",
         description: "Owned enquiry channel for exporters",
-      },
-    ],
-  },
-  {
-    title: "Web Apps & Software",
-    links: [
-      {
-        label: "Web Application Development",
-        href: "/services/web-application-development",
-        description: "Custom portals, dashboards, and business apps",
-      },
-      {
-        label: "Custom Software",
-        href: "/services/custom-software-development",
-        description: "Bespoke systems for growing businesses",
-      },
-      {
-        label: "Mobile Apps",
-        href: "/services/mobile-app-development",
-        description: "iOS, Android, Flutter, React Native",
-      },
-      {
-        label: "SaaS Development",
-        href: "/services/saas-development",
-        description: "Multi-tenant products and MVPs",
-      },
-      {
-        label: "Custom ERP",
-        href: "/services/erp-development",
-        description: "Secondary — operations systems for manufacturers",
-      },
-      {
-        label: "CRM Development",
-        href: "/services/crm-development",
-        description: "Secondary — sales pipelines for B2B teams",
-      },
-    ],
-  },
-  {
-    title: "AI & Automation",
-    links: [
-      { label: "AI Automation", href: "/services/ai-automation" },
-      { label: "AI Consulting", href: "/services/ai-consulting" },
-      { label: "AI Agent Development", href: "/services/ai-agent-development" },
-      { label: "Generative AI", href: "/services/generative-ai-development" },
-      { label: "Enterprise AI", href: "/services/enterprise-ai-solutions" },
-    ],
-  },
-  {
-    title: "Cloud & IT (Supporting)",
-    links: [
-      { label: "Cloud Services", href: "/services/cloud-services" },
-      { label: "Cloud Migration", href: "/services/cloud-migration" },
-      { label: "Digital Transformation", href: "/services/digital-transformation" },
-      { label: "Cybersecurity", href: "/services/cybersecurity" },
-      { label: "Managed IT Services", href: "/services/managed-it-services" },
-    ],
-  },
-  {
-    title: "Global Clients",
-    links: [
-      {
-        label: "International Clients",
-        href: "/solutions/web-development-company-india-international",
-        description: "US, UK, UAE, Turkey, Germany and more",
-      },
-      {
-        label: "US Clients",
-        href: "/solutions/web-development-company-india-usa",
-        description: "USD pricing with IST/EST overlap",
-      },
-      {
-        label: "UAE Clients",
-        href: "/solutions/web-development-company-india-uae",
-        description: "Middle East delivery with Gulf timezone overlap",
-      },
-      {
-        label: "UK Clients",
-        href: "/solutions/web-development-company-india-uk",
-        description: "GDPR-aware builds with UK overlap hours",
       },
     ],
   },

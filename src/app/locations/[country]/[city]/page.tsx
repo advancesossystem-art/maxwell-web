@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { CityLandingPage } from "@/components/locations/CityLandingPage";
 import { createLocationCityMetadata } from "@/lib/metadata";
 import { getCityBySlug, getLocationStaticParams } from "@/lib/locations-data";
@@ -8,8 +8,8 @@ type PageProps = {
   params: Promise<{ country: string; city: string }>;
 };
 
-/** Only pre-build Ahmedabad and Hyderabad — the two cities with real GSC traffic. All others are noindexed on-demand. */
-const INDEXABLE_CITIES = new Set(["ahmedabad", "hyderabad"]);
+/** Gujarat cities only. Delhi/Mumbai/etc. 301 away — we are a Vadodara website company. */
+const INDEXABLE_CITIES = new Set(["ahmedabad"]);
 
 export async function generateStaticParams() {
   return getLocationStaticParams()
@@ -41,9 +41,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function CityPage({ params }: PageProps) {
   const { country, city: citySlug } = await params;
+  if (!INDEXABLE_CITIES.has(citySlug)) {
+    redirect("/solutions/web-development-company-vadodara");
+  }
   const cityData = getCityBySlug(country, citySlug);
-
   if (!cityData) notFound();
-
   return <CityLandingPage city={cityData} />;
 }

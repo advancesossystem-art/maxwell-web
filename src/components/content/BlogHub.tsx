@@ -5,15 +5,18 @@ import { NewsletterSignup } from "@/components/content/NewsletterSignup";
 import { contentCategories } from "@/lib/content/categories";
 import { buildSearchIndex, getFeaturedContent, getTrendingContent } from "@/lib/content/search";
 import { getAllArticles } from "@/lib/content/articles";
+import { isWebsiteTopicSlug } from "@/lib/website-only";
 import { PageHero } from "@/components/design/PageHero";
 import { PageSection, SectionHeader } from "@/components/design/PageSection";
 import { AccentGradient, Caption } from "@/components/design/typography";
 
 export function BlogHub() {
-  const articles = buildSearchIndex().filter((d) => d.type === "article");
-  const featured = getFeaturedContent().filter((d) => d.type === "article");
-  const trending = getTrendingContent().filter((d) => d.type === "article");
-  const totalArticles = getAllArticles().filter((a) => !a.noIndex).length;
+  const articles = buildSearchIndex().filter(
+    (d) => d.type === "article" && isWebsiteTopicSlug(d.slug),
+  );
+  const featured = getFeaturedContent().filter((d) => d.type === "article" && isWebsiteTopicSlug(d.slug));
+  const trending = getTrendingContent().filter((d) => d.type === "article" && isWebsiteTopicSlug(d.slug));
+  const totalArticles = getAllArticles().filter((a) => !a.noIndex && isWebsiteTopicSlug(a.slug)).length;
 
   return (
     <>
@@ -24,7 +27,7 @@ export function BlogHub() {
             Software engineering <AccentGradient>thought leadership</AccentGradient>
           </>
         }
-        description={`${totalArticles}+ in-depth articles on ERP, AI, cloud, SaaS, and digital transformation — from practitioners who ship production systems.`}
+        description="Guides on manufacturer websites, GIDC SEO, RFQ catalogs, and website AMC — written from live Vadodara projects."
       />
 
       {featured.length > 0 && (

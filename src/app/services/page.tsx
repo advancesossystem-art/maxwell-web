@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/Button";
 import { FinalCTA } from "@/components/home/FinalCTA";
 import { getAllServices } from "@/lib/services-data";
+import { WEBSITE_SERVICE_SLUGS } from "@/lib/website-only";
 import { serviceIcons, ArrowRight } from "@/components/ui/Icons";
 import { createMetadata } from "@/lib/metadata";
 import { PageHero } from "@/components/design/PageHero";
@@ -11,14 +12,14 @@ import { StaggerGrid, StaggerGridItem } from "@/components/motion/StaggerGrid";
 import { HubMetrics } from "@/components/design/HubMetrics";
 
 export const metadata = createMetadata({
-  title: "Website Development Services India | Business, Manufacturer & Web Apps",
+  title: "Website Development, SEO & AMC | Vadodara | From ₹35,000",
   description:
     "Website development, SEO, and monthly AMC for manufacturers and businesses. Catalog sites from ₹35,000. Website AMC from ₹11,000. Maxwell Electrodeal — Vadodara, Gujarat.",
   path: "/services",
 });
 
 export default function ServicesPage() {
-  const allServices = getAllServices();
+  const allServices = getAllServices().filter((s) => WEBSITE_SERVICE_SLUGS.has(s.slug));
 
   return (
     <>
@@ -31,15 +32,15 @@ export default function ServicesPage() {
             <AccentGradient>for businesses</AccentGradient>
           </>
         }
-        description="Primary focus: business, corporate, and industrial websites. Supporting practices: web apps, custom software, and AI automation — scoped around growth outcomes, not software catalogs."
+        description="Website development from ₹35,000, monthly website AMC from ₹11,000, and SEO for manufacturers and businesses in Vadodara and Gujarat."
         below={
           <HubMetrics
             className="gap-3"
             stats={[
-              { value: `${allServices.length}`, label: "Service practices" },
-              { value: "Websites", label: "Primary cluster" },
-              { value: "Web apps", label: "Supporting delivery" },
-              { value: "AI · Software", label: "Extensions" },
+              { value: "₹35,000", label: "Website from" },
+              { value: "₹11,000", label: "AMC / month" },
+              { value: "SEO", label: "Ranking work" },
+              { value: "Vadodara", label: "Gujarat HQ" },
             ]}
           />
         }

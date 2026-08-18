@@ -1192,5 +1192,7 @@ export function getServiceBySlug(slug: string): ServicePageData | undefined {
 }
 
 export function getAllServices(): ServicePageData[] {
-  return serviceSlugs.map((slug) => getServiceBySlug(slug)!);
+  return serviceSlugs
+    .filter((slug) => slug === "website-development")
+    .map((slug) => getServiceBySlug(slug)!);
 }
