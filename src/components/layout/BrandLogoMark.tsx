@@ -18,7 +18,7 @@ type BrandLogoProps = {
 
 const heightClass: Record<BrandLogoSize, string> = {
   navMobile: "h-10",
-  header: "h-[4.55rem] sm:h-[5.2rem]",
+  header: "h-10 lg:h-11",
   footer: "h-32",
   sm: "h-[8.75rem]",
   md: "h-40",

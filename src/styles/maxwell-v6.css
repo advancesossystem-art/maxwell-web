@@ -29,7 +29,7 @@
   --v6-section-y: clamp(1.5rem, 2.5vw, 2.75rem);
   --v6-container-max: calc(100vw - 2.5rem);
   --v6-gutter: clamp(1rem, 2vw, 1.75rem);
-  --v6-nav-h: clamp(5rem, 7vw, 5.75rem);
+  --v6-nav-h: 4rem;
 
   /* Bridge legacy tokens → V6 (marketing site) */
   --background: var(--v6-bg);

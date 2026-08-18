@@ -28,8 +28,8 @@ function RocketIcon() {
 export function Hero() {
   return (
     <section className="overflow-hidden bg-white" aria-label="Hero">
-      <div className="v6-container py-10 md:py-14 lg:py-16">
-        <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-12">
+      <div className="v6-container pb-8 pt-3 md:pb-10 md:pt-4 lg:pb-12 lg:pt-5">
+        <div className="grid items-start gap-8 lg:grid-cols-2 lg:gap-10">
           <div className="min-w-0">
             <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#6366f1]">
               {homeHero.eyebrow}
