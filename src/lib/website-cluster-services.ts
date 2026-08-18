@@ -261,7 +261,7 @@ export const websiteClusterServicesData: Record<WebsiteClusterServiceSlug, Servi
     icon: "cloud",
     gradient: "from-emerald-950 via-teal-900 to-slate-950",
     accent: "#059669",
-    startingPrice: "₹8,000/mo",
+    startingPrice: "₹4,999/mo",
     problems: [
       {
         title: "Launch and abandon",

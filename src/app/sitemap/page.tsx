@@ -32,6 +32,7 @@ const sections = [
       { label: "Website Development", href: "/services/website-development" },
       { label: "Owned Enquiry Channel", href: "/services/website-development/owned-enquiry-channel" },
       { label: "Dealer Portal Development", href: "/services/dealer-portal-development" },
+      { label: "Website Maintenance AMC — from ₹4,999/mo", href: "/services/website-maintenance" },
     ],
   },
   {

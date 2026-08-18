@@ -2,10 +2,10 @@
 
 export const homeHero = {
   eyebrow: "Maxwell Electrodeal · Industrial website engineering · Gujarat",
-  headlineLine1: "Replace directory dependency",
-  headlineLine2: "with an owned Direct RFQ catalog.",
+  headlineLine1: "Website development company in Vadodara",
+  headlineLine2: "for manufacturers — catalogs from ₹45,000.",
   subhead:
-    "Next.js product catalog and RFQ engines for Gujarat industrial exporters and manufacturers — CAS, models, tiles, equipment — that rank on Google and send WhatsApp inquiries you own. Starting from ₹45,000.",
+    "Product catalog + RFQ websites for Gujarat factories and GIDC plants. Buyers find you on Google, enquire on WhatsApp, and you own the lead — not IndiaMART. Next.js builds from ₹45,000. Optional monthly AMC after launch.",
   /** Social proof in first viewport — pairs with primary CTA */
   proofOutcome:
     "Last build: 263 pages · 154 products · 94/100 Google Speed · Live in 6 weeks",

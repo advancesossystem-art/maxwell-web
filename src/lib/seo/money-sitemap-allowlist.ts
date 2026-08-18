@@ -41,6 +41,7 @@ export const MONEY_SITEMAP_ALLOWLIST: readonly MoneySitemapEntry[] = [
   { path: "/services/industrial-catalog-development", priority: 0.96, changeFreq: "weekly", lastModified: LAUNCH },
   { path: "/services/website-development/owned-enquiry-channel", priority: 0.93, changeFreq: "monthly", lastModified: LAUNCH },
   { path: "/services/dealer-portal-development", priority: 0.88, changeFreq: "monthly" },
+  { path: "/services/website-maintenance", priority: 0.92, changeFreq: "monthly", lastModified: LAUNCH },
 
   // Canonical verticals (after 301 consolidation)
   { path: "/services/website-development/chemical-manufacturers", priority: 0.95, changeFreq: "weekly", lastModified: LAUNCH },

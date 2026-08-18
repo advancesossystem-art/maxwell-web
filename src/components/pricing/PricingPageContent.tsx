@@ -5,7 +5,7 @@ import { StraightAnswers } from "@/components/conversion/StraightAnswers";
 import { WhoWeAreNotFor } from "@/components/conversion/WhoWeAreNotFor";
 import { AsymmetricTcoCalculator } from "@/components/conversion/AsymmetricTcoCalculator";
 import { HeroTrustBadges } from "@/components/conversion/HeroTrustBadges";
-import { pricingHero, pricingTerms, websitePricingTiers } from "@/lib/pricing-data";
+import { pricingHero, pricingTerms, websiteAmcTiers, websitePricingTiers } from "@/lib/pricing-data";
 import { WHATSAPP_HREF_ENGINEER } from "@/lib/constants";
 import { estimateHref } from "@/lib/conversion-copy";
 import { Button } from "@/components/ui/Button";
@@ -95,6 +95,65 @@ export function PricingPageContent() {
               See how we rebuilt our own site →
             </Link>
           </div>
+        </div>
+      </section>
+
+      <section className="v6-section border-t border-[var(--v6-border)]">
+        <div className="v6-container">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-xs font-semibold uppercase tracking-wider text-emerald-600">
+              After go-live
+            </p>
+            <h2 className="mt-2 font-display text-2xl font-bold text-[var(--v6-text)]">
+              Website maintenance AMC — monthly, published
+            </h2>
+            <p className="mt-3 text-[var(--v6-text-secondary)]">
+              Build is one project. Rankings and RFQs need a monthly owner. Plans below are for
+              manufacturer catalogs we built — or sites we take over after a health check.
+            </p>
+          </div>
+          <div className="mt-12 grid gap-6 lg:grid-cols-3">
+            {websiteAmcTiers.map((tier) => (
+              <article
+                key={tier.id}
+                className={`v6-card flex flex-col p-6 ${tier.highlight ? "ring-2 ring-[#4f46e5]" : ""}`}
+              >
+                {tier.highlight ? (
+                  <span className="mb-3 inline-block w-fit rounded-full bg-[#4f46e5] px-3 py-0.5 text-xs font-semibold text-white">
+                    Most manufacturers
+                  </span>
+                ) : null}
+                <h3 className="font-display text-xl font-bold text-[var(--v6-text)]">{tier.name}</h3>
+                <p className="mt-2 font-display text-3xl font-bold text-[#4f46e5]">{tier.price}</p>
+                <p className="mt-1 text-sm text-[var(--v6-text-muted)]">{tier.scope}</p>
+                <p className="mt-1 text-sm font-medium text-[var(--v6-text-secondary)]">{tier.timeline}</p>
+                <ul className="mt-5 flex-1 space-y-2 text-sm text-[var(--v6-text-secondary)]">
+                  {tier.features.map((f) => (
+                    <li key={f} className="flex gap-2">
+                      <span className="text-emerald-600" aria-hidden>
+                        ✓
+                      </span>
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-4 text-xs text-[var(--v6-text-muted)]">Best for: {tier.bestFor}</p>
+                <Button
+                  href={estimateHref({ source: "pricing-amc", project: tier.id })}
+                  variant={tier.highlight ? "primary" : "secondary"}
+                  className="mt-6 w-full"
+                >
+                  Start AMC conversation
+                </Button>
+              </article>
+            ))}
+          </div>
+          <p className="mx-auto mt-8 max-w-2xl text-center text-sm text-[var(--v6-text-muted)]">
+            Full AMC scope:{" "}
+            <Link href="/services/website-maintenance" className="font-semibold text-[#4f46e5] hover:underline">
+              /services/website-maintenance
+            </Link>
+          </p>
         </div>
       </section>
 

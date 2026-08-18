@@ -64,6 +64,55 @@ export const websitePricingTiers: PricingTier[] = [
   },
 ];
 
+export const websiteAmcTiers: PricingTier[] = [
+  {
+    id: "amc-care",
+    name: "Care AMC",
+    price: "₹4,999/mo",
+    scope: "Keep the live site secure and online",
+    timeline: "Billed monthly · cancel anytime after 3 months",
+    features: [
+      "Uptime monitoring + SSL watch",
+      "Weekly backups + restore test",
+      "Security / dependency patches",
+      "2 content or product edits / month",
+      "Broken form / WhatsApp check",
+    ],
+    bestFor: "Starter sites that must not go stale after launch",
+  },
+  {
+    id: "amc-growth",
+    name: "Growth AMC",
+    price: "₹9,999/mo",
+    scope: "Edits + ranking hygiene for catalogs",
+    timeline: "Billed monthly · 3-month minimum",
+    highlight: true,
+    features: [
+      "Everything in Care",
+      "8 catalog / page edits per month",
+      "New product or category page (fair use)",
+      "Search Console watch + monthly note",
+      "Core Web Vitals check",
+    ],
+    bestFor: "Manufacturers adding SKUs and chasing Google enquiries",
+  },
+  {
+    id: "amc-plant",
+    name: "Plant AMC",
+    price: "₹19,999/mo",
+    scope: "Catalog ops for busy export plants",
+    timeline: "Billed monthly · SLA response next business day",
+    features: [
+      "Everything in Growth",
+      "Priority same-day edits (business hours)",
+      "RFQ form + WhatsApp path checks",
+      "GIDC / product SEO tweaks",
+      "Quarterly ranking + enquiry review call",
+    ],
+    bestFor: "Export catalogs with weekly product or certificate changes",
+  },
+];
+
 export const pricingTerms = {
   gst: "All prices + 18% GST",
   payment: "No advance payment · Full payment within 3 days after go-live",
