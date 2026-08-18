@@ -4,28 +4,14 @@ import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { MobileBodyState } from "@/components/layout/MobileBodyState";
-import { useIsDesktop } from "@/hooks/useMediaQuery";
-import { useStickyBarDismiss } from "@/hooks/useStickyBarDismiss";
 import { leadTrustBadges } from "@/lib/company-metrics";
 
-const StickyCTA = dynamic(
-  () => import("@/components/conversion/StickyCTA").then((m) => ({ default: m.StickyCTA })),
-  { ssr: false },
-);
 const FloatingCTA = dynamic(
   () => import("@/components/leads/FloatingCTA").then((m) => ({ default: m.FloatingCTA })),
   { ssr: false },
 );
-const StickyCtaBar = dynamic(
-  () => import("@/components/leads/StickyCtaBar").then((m) => ({ default: m.StickyCtaBar })),
-  { ssr: false },
-);
 const ExitIntentPopup = dynamic(
   () => import("@/components/leads/ExitIntentPopup").then((m) => ({ default: m.ExitIntentPopup })),
-  { ssr: false },
-);
-const QuickEstimateWidget = dynamic(
-  () => import("@/components/conversion/QuickEstimateWidget").then((m) => ({ default: m.QuickEstimateWidget })),
   { ssr: false },
 );
 
@@ -47,9 +33,7 @@ export function TrustBadgesRow() {
 
 export function LeadConversionLayer() {
   const pathname = usePathname();
-  const isDesktop = useIsDesktop();
   const showMarketing = pathname !== "/thank-you";
-  const { dismissed: stickyDismissed, dismiss: dismissStickyBar } = useStickyBarDismiss();
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
@@ -71,13 +55,10 @@ export function LeadConversionLayer() {
 
   return (
     <>
-      <MobileBodyState stickyBarActive={showMarketing && ready && !stickyDismissed && isDesktop} />
+      <MobileBodyState stickyBarActive={false} />
       {showMarketing && ready ? (
         <>
-          <StickyCtaBar />
           <FloatingCTA />
-          <StickyCTA location="global_sticky" dismissed={stickyDismissed} onDismiss={dismissStickyBar} />
-          <QuickEstimateWidget stickyBarDismissed={stickyDismissed} />
           <ExitIntentPopup />
         </>
       ) : null}
