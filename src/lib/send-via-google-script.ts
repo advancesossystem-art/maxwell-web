@@ -170,9 +170,9 @@ export async function sendViaGoogleAppsScript(payload: ScriptEmailPayload): Prom
     }
   } catch (error) {
     if (error instanceof Error && error.name === "AbortError") {
-      // MailApp often completes after the HTTP client times out — don't fail the form.
-      console.warn("[Lead Email] Google Script timed out — email may already have been delivered");
-      return;
+      // Do not treat timeout as success — callers need to fall back to FormSubmit/SMTP.
+      console.warn("[Lead Email] Google Script timed out — falling back to next provider");
+      throw new Error("Google Script timed out");
     }
     throw error;
   } finally {

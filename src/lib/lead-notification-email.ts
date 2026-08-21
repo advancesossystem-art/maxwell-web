@@ -194,8 +194,14 @@ export async function deliverLeadNotificationEmail(payload: LeadPayload): Promis
 
   const errors: string[] = [];
 
-  // Prefer Apps Script on Vercel (SMTP is often blocked). Fall through on any failure.
-  if (isGoogleScriptConfigured()) {
+  // Vercel: prefer FormSubmit/SMTP first. Apps Script often returns empty/timeout
+  // "success" without delivering, which blocks the working App Password / FormSubmit path.
+  // Local / non-Vercel: Apps Script first is fine when configured.
+  const onVercel = Boolean(process.env.VERCEL || process.env.VERCEL_ENV);
+  const preferHttpTransport = onVercel && isEmailDeliveryConfigured();
+
+  const tryAppsScript = async (): Promise<boolean> => {
+    if (!isGoogleScriptConfigured()) return false;
     try {
       console.log("[LEAD-DIAG] TRANSPORTER SELECTED", { transporter: "google-apps-script", to, subject });
       await sendViaGoogleAppsScript({ to, subject, html, text, replyTo });
@@ -203,25 +209,40 @@ export async function deliverLeadNotificationEmail(payload: LeadPayload): Promis
         console.log(`[Lead Email] Sent via Google Apps Script to ${to}`);
       }
       console.log("[LEAD-DIAG] sendViaGoogleAppsScript SUCCESS", { to });
-      return;
+      return true;
     } catch (scriptError) {
       const detail = scriptError instanceof Error ? scriptError.message : "Google Script failed";
       errors.push(`apps-script: ${detail}`);
-      console.log("[LEAD-DIAG] Google Script FAILED — trying SMTP/Resend", { detail });
+      console.log("[LEAD-DIAG] Google Script FAILED — trying next", { detail });
+      return false;
     }
-  }
+  };
 
-  if (isEmailDeliveryConfigured()) {
+  const trySmtpOrFormSubmit = async (): Promise<boolean> => {
+    if (!isEmailDeliveryConfigured()) return false;
     try {
-      console.log("[LEAD-DIAG] TRANSPORTER SELECTED", { transporter: "smtp/resend", to, subject });
+      console.log("[LEAD-DIAG] TRANSPORTER SELECTED", {
+        transporter: onVercel ? "formsubmit/smtp" : "smtp/resend",
+        to,
+        subject,
+      });
       await sendLeadInboxViaSmtp(payload, to, subject, text, html);
       console.log("[LEAD-DIAG] sendMail SUCCESS", { to, subject });
-      return;
+      return true;
     } catch (smtpError) {
       const detail = smtpError instanceof Error ? smtpError.message : "SMTP failed";
       errors.push(`smtp: ${detail}`);
-      console.log("[LEAD-DIAG] SMTP/Resend FAILED", { detail });
+      console.log("[LEAD-DIAG] SMTP/Resend/FormSubmit FAILED", { detail });
+      return false;
     }
+  };
+
+  if (preferHttpTransport) {
+    if (await trySmtpOrFormSubmit()) return;
+    if (await tryAppsScript()) return;
+  } else {
+    if (await tryAppsScript()) return;
+    if (await trySmtpOrFormSubmit()) return;
   }
 
   throw new Error(
