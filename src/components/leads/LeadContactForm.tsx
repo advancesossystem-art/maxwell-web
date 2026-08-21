@@ -14,6 +14,7 @@ import {
 } from "@/lib/form-validation";
 import { composeInternationalPhone, defaultCountryIso } from "@/lib/country-phone-codes";
 import { PhoneCountryFields } from "@/components/leads/PhoneCountryFields";
+import { HoneypotField, honeypotValueFromFormData } from "@/components/leads/HoneypotField";
 import { mergeLeadContexts, readLeadContextFromDocumentCookie, readLeadContextFromUrlSearchParams } from "@/lib/lead-context";
 import { cn } from "@/lib/utils";
 
@@ -192,7 +193,7 @@ function LeadContactFormInner({
           source,
           ...validation.data,
           industry: defaultIndustry || raw.industry,
-          mx_hp_field: raw.mx_hp_field ?? "",
+          mx_hp_field: honeypotValueFromFormData(new FormData(form)),
         }),
       });
       const body = await res.json();
@@ -238,10 +239,7 @@ function LeadContactFormInner({
     >
       {isTwoStep ? <ProgressBar current={step} total={2} /> : null}
 
-      <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
-        <label htmlFor="mx_hp_field">Website</label>
-        <input id="mx_hp_field" name="mx_hp_field" type="text" tabIndex={-1} autoComplete="off" />
-      </div>
+      <HoneypotField />
 
       {(!isTwoStep || step === 1) && (
         <div className="space-y-3.5">

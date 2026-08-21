@@ -10,6 +10,7 @@ import { PageSection } from "@/components/design/PageSection";
 import { Card } from "@/components/design/Card";
 import { AccentGradient, H3 } from "@/components/design/typography";
 import { FormField, inputClass } from "@/components/leads/LeadFormFields";
+import { HoneypotField, honeypotValueFromFormData } from "@/components/leads/HoneypotField";
 import {
   careersBenefits,
   workCulture,
@@ -44,7 +45,7 @@ export function CareersPageContent() {
           projectType: "Careers",
           budget: "N/A",
           message: `Career application for: ${data.role || role}\nLinkedIn/Portfolio: ${data.portfolio || "N/A"}\n\n${data.coverLetter || ""}`,
-          mx_hp_field: data.mx_hp_field ?? "",
+          mx_hp_field: honeypotValueFromFormData(formData),
         }),
       });
       const body = await res.json();
@@ -140,9 +141,7 @@ export function CareersPageContent() {
         <Container className="max-w-2xl">
           <FadeIn><h2 className="font-display text-2xl font-bold text-center">Apply now</h2></FadeIn>
           <form onSubmit={handleSubmit} className="mt-10 space-y-5 rounded-2xl border border-border bg-surface-elevated p-8">
-            <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
-              <input name="mx_hp_field" type="text" tabIndex={-1} autoComplete="off" />
-            </div>
+            <HoneypotField />
             <FormField label="Full Name" htmlFor="name" required>
               <input id="name" name="name" required className={inputClass} />
             </FormField>

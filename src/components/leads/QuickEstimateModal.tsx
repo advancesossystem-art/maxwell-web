@@ -7,6 +7,7 @@ import { ModalBackdrop, ModalPanel } from "@/components/motion/ModalEnter";
 import { submitLeadForm } from "@/lib/submit-lead-form";
 import { composeInternationalPhone, defaultCountryIso } from "@/lib/country-phone-codes";
 import { PhoneCountryFields } from "@/components/leads/PhoneCountryFields";
+import { HoneypotField, honeypotValueFromFormData } from "@/components/leads/HoneypotField";
 import { trackCTAClick } from "@/lib/conversion-events";
 import { CONVERSION_EXPECTATIONS } from "@/lib/conversion-copy";
 
@@ -53,6 +54,7 @@ export function QuickEstimateModal({ open, onClose, source = "header-modal" }: Q
         phone,
         message: [description, referral ? `Landing source: ${referral}` : ""].filter(Boolean).join("\n"),
         projectType: "Website / Software Inquiry",
+        mx_hp_field: honeypotValueFromFormData(fd),
       },
       { trackStart: true },
     );
@@ -98,9 +100,7 @@ export function QuickEstimateModal({ open, onClose, source = "header-modal" }: Q
         <p className="mt-1 text-sm text-gray-500">{CONVERSION_EXPECTATIONS.estimateTimeline}</p>
 
         <form onSubmit={handleSubmit} className="mt-5 space-y-4" noValidate>
-          <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
-            <input name="mx_hp_field" type="text" tabIndex={-1} autoComplete="off" />
-          </div>
+          <HoneypotField />
 
           <div>
             <label htmlFor="qem-name" className="block text-sm font-medium text-gray-700 mb-1">

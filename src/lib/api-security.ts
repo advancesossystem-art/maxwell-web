@@ -79,9 +79,12 @@ export function assertAllowedUserAgent(request: Request): NextResponse | null {
 
 /** Honeypot — bots fill hidden fields; return fake success without processing. */
 export function isHoneypotTriggered(body: Record<string, unknown>): boolean {
-  const trap = body.mx_hp_field ?? body.website_url ?? body.url ?? body.company_website;
-  if (typeof trap === "string" && trap.trim().length > 0) return true;
-  if (typeof trap === "number") return true;
+  // Check every trap key (do not use ?? — empty mx_hp_field would hide filled website_url).
+  for (const key of ["mx_hp_field", "website_url", "url", "company_website"] as const) {
+    const trap = body[key];
+    if (typeof trap === "string" && trap.trim().length > 0) return true;
+    if (typeof trap === "number") return true;
+  }
   return false;
 }
 

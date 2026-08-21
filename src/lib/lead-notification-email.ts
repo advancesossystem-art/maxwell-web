@@ -2,7 +2,7 @@ import type { LeadPayload } from "@/lib/crm";
 import { isEmailDeliveryConfigured, sendOutboundEmail } from "@/lib/email-transport";
 import { getGmailFromAddress, getLeadInbox } from "@/lib/gmail-config";
 import { isGoogleScriptConfigured } from "@/lib/gmail-script-config";
-import { isGoogleScriptConfigError, sendViaGoogleAppsScript } from "@/lib/send-via-google-script";
+import { sendViaGoogleAppsScript } from "@/lib/send-via-google-script";
 import { sanitizeEmailHeader } from "@/lib/security/sanitize";
 
 /** Fallback inbox if env vars are missing — prefer LEAD_NOTIFICATION_EMAIL env. */
@@ -192,6 +192,9 @@ export async function deliverLeadNotificationEmail(payload: LeadPayload): Promis
     return;
   }
 
+  const errors: string[] = [];
+
+  // Prefer Apps Script on Vercel (SMTP is often blocked). Fall through on any failure.
   if (isGoogleScriptConfigured()) {
     try {
       console.log("[LEAD-DIAG] TRANSPORTER SELECTED", { transporter: "google-apps-script", to, subject });
@@ -203,19 +206,29 @@ export async function deliverLeadNotificationEmail(payload: LeadPayload): Promis
       return;
     } catch (scriptError) {
       const detail = scriptError instanceof Error ? scriptError.message : "Google Script failed";
-      // Only fall back to SMTP for clear config/auth failures — not after a likely successful send.
-      if (!isEmailDeliveryConfigured() || !isGoogleScriptConfigError(scriptError)) {
-        console.log("[LEAD-DIAG] Google Script FAILED (no SMTP fallback)", { detail });
-        throw scriptError;
-      }
-      console.error(`[Lead Email] Google Script failed (${detail}), trying SMTP fallback`);
-      console.log("[LEAD-DIAG] FALLING BACK TO SMTP", { detail });
+      errors.push(`apps-script: ${detail}`);
+      console.log("[LEAD-DIAG] Google Script FAILED — trying SMTP/Resend", { detail });
     }
   }
 
-  console.log("[LEAD-DIAG] TRANSPORTER SELECTED", { transporter: "smtp/resend", to, subject });
-  await sendLeadInboxViaSmtp(payload, to, subject, text, html);
-  console.log("[LEAD-DIAG] sendMail SUCCESS", { to, subject });
+  if (isEmailDeliveryConfigured()) {
+    try {
+      console.log("[LEAD-DIAG] TRANSPORTER SELECTED", { transporter: "smtp/resend", to, subject });
+      await sendLeadInboxViaSmtp(payload, to, subject, text, html);
+      console.log("[LEAD-DIAG] sendMail SUCCESS", { to, subject });
+      return;
+    } catch (smtpError) {
+      const detail = smtpError instanceof Error ? smtpError.message : "SMTP failed";
+      errors.push(`smtp: ${detail}`);
+      console.log("[LEAD-DIAG] SMTP/Resend FAILED", { detail });
+    }
+  }
+
+  throw new Error(
+    process.env.NODE_ENV === "production"
+      ? "Email delivery failed"
+      : errors.join(" | ") || "Email delivery failed",
+  );
 }
 
 function firstName(fullName: string): string {

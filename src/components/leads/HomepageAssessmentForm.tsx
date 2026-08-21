@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { FormField, inputClass } from "@/components/leads/LeadFormFields";
 import { PhoneCountryFields } from "@/components/leads/PhoneCountryFields";
+import { HoneypotField, honeypotValueFromFormData } from "@/components/leads/HoneypotField";
 import { Button } from "@/components/ui/Button";
 import { submitLeadForm } from "@/lib/submit-lead-form";
 import { composeInternationalPhone, defaultCountryIso } from "@/lib/country-phone-codes";
@@ -55,6 +56,7 @@ export function HomepageAssessmentForm() {
       industry: businessType,
       features: selectedServices,
       message: `Free software needs assessment. Business type: ${businessType}. Services needed: ${selectedServices.join(", ") || "not specified"}.`,
+      mx_hp_field: honeypotValueFromFormData(fd),
     });
 
     setLoading(false);
@@ -69,9 +71,7 @@ export function HomepageAssessmentForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5 p-6 sm:p-8 lg:p-10">
-      <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
-        <input name="mx_hp_field" type="text" tabIndex={-1} autoComplete="off" />
-      </div>
+      <HoneypotField />
 
       <FormField label="Business type" htmlFor="assess-business" required>
         <select id="assess-business" name="businessType" required className={inputClass} defaultValue="">

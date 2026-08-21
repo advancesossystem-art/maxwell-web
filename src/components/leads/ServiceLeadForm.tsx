@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { FormField, inputClass } from "@/components/leads/LeadFormFields";
 import { PhoneCountryFields } from "@/components/leads/PhoneCountryFields";
+import { HoneypotField, honeypotValueFromFormData } from "@/components/leads/HoneypotField";
 import { Button } from "@/components/ui/Button";
 import { submitLeadForm } from "@/lib/submit-lead-form";
 import { composeInternationalPhone, defaultCountryIso } from "@/lib/country-phone-codes";
@@ -48,6 +49,7 @@ export function ServiceLeadForm({
       phone,
       projectType: serviceName,
       message: finalMessage,
+      mx_hp_field: honeypotValueFromFormData(fd),
     });
 
     setLoading(false);
@@ -72,9 +74,7 @@ export function ServiceLeadForm({
           </p>
 
           <form onSubmit={handleSubmit} className="mt-6 space-y-4">
-            <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
-              <input name="mx_hp_field" type="text" tabIndex={-1} autoComplete="off" />
-            </div>
+            <HoneypotField />
             <FormField label="Name" htmlFor={`svc-name-${serviceSlug}`} required>
               <input id={`svc-name-${serviceSlug}`} name="name" required className={inputClass} />
             </FormField>

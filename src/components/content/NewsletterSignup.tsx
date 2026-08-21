@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
+import { HoneypotField, honeypotValueFromFormData } from "@/components/leads/HoneypotField";
 
 export function NewsletterSignup({
   variant = "default",
@@ -18,17 +19,18 @@ export function NewsletterSignup({
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
-  const [honeypot, setHoneypot] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  async function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setLoading(true);
     setError("");
 
     try {
-      if (honeypot.trim()) {
+      const fd = new FormData(e.currentTarget);
+      const honeypot = honeypotValueFromFormData(fd);
+      if (honeypot) {
         router.push(`/thank-you?source=${source}`);
         return;
       }
@@ -73,15 +75,7 @@ export function NewsletterSignup({
           : "ERP, AI, and software strategy from Maxwell engineers. No spam."}
       </p>
       <form onSubmit={handleSubmit} className={`mt-5 flex flex-col gap-3 ${!isCompact ? "sm:flex-row sm:flex-wrap" : ""}`}>
-        <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
-          <input
-            type="text"
-            tabIndex={-1}
-            autoComplete="off"
-            value={honeypot}
-            onChange={(e) => setHoneypot(e.target.value)}
-          />
-        </div>
+        <HoneypotField />
         {!isCompact && (
           <label htmlFor="newsletter-name" className="sr-only">
             Your name
