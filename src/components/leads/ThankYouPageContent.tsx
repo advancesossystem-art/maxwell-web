@@ -17,7 +17,9 @@ function ThankYouInner() {
   const source = searchParams.get("source") ?? "contact";
   const position = searchParams.get("position");
   const magnetId = searchParams.get("magnet");
+  const delivered = searchParams.get("delivered");
   const magnet = magnetId ? getLeadMagnetById(magnetId) : undefined;
+  const deliveryFailed = delivered === "0";
 
   const isCareers = source === "careers";
 
@@ -91,6 +93,18 @@ function ThankYouInner() {
                 ? `Your ${sourceLabels[source] ?? "inquiry"} is confirmed. Pick a time below — or we'll reach out within one business day.`
                 : `Your ${sourceLabels[source] ?? "inquiry"} has been received. Our team will respond within 24 hours.`}
         </p>
+
+        {deliveryFailed && !isCareers && !isNewsletter ? (
+          <div className="mt-6 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-left text-sm text-amber-950">
+            <p className="font-semibold">Want a faster reply?</p>
+            <p className="mt-1 text-amber-900/90">
+              Message us on WhatsApp now — we respond during business hours.
+            </p>
+            <Button href={whatsappLink} external size="md" className="mt-3">
+              WhatsApp +91 95868 68538
+            </Button>
+          </div>
+        ) : null}
 
         {showCalendlyEmbed && calendlyUrl ? (
           <div className="mt-10 text-left">

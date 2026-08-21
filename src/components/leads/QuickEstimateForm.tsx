@@ -142,7 +142,9 @@ export function QuickEstimateForm({
       setError(result.error || "Could not submit. Please try again.");
       return;
     }
-    router.push("/thank-you?source=get-estimate");
+    router.push(
+      `/thank-you?source=get-estimate&delivered=${result.emailDelivered === true ? "1" : "0"}`,
+    );
   }
 
   return (

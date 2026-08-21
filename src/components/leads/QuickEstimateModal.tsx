@@ -67,7 +67,10 @@ export function QuickEstimateModal({ open, onClose, source = "header-modal" }: Q
 
     trackCTAClick("Get My Scoped Estimate", "/thank-you", source);
     onClose();
-    router.push(`/thank-you?source=${encodeURIComponent(source)}`);
+    const delivered = result.emailDelivered === true ? "1" : "0";
+    router.push(
+      `/thank-you?source=${encodeURIComponent(source)}&delivered=${delivered}`,
+    );
   }
 
   return (

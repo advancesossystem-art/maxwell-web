@@ -79,8 +79,12 @@ function isAdminAuthorized(request: NextRequest): boolean {
   return false;
 }
 
+/** Allow health checks; all other public APIs are POST-only. */
 function apiMethodBlocked(request: NextRequest): NextResponse | null {
   if (!request.nextUrl.pathname.startsWith("/api/")) return null;
+  if (request.method === "GET" && request.nextUrl.pathname === "/api/leads/health") {
+    return null;
+  }
   if (request.method !== "POST") {
     return NextResponse.json({ error: "Method not allowed" }, { status: 405 });
   }

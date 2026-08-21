@@ -23,10 +23,13 @@ function hasLegacySmtpConfig(): boolean {
 }
 
 function formSubmitEnabled(): boolean {
-  // Default ON as last-resort when SMTP/Apps Script fail.
-  // Set FORMSUBMIT_FALLBACK=false to disable.
   if (process.env.FORMSUBMIT_FALLBACK?.trim().toLowerCase() === "false") return false;
   return true;
+}
+
+/** Vercel serverless often cannot open smtp.gmail.com — skip slow timeouts. */
+function isVercelRuntime(): boolean {
+  return Boolean(process.env.VERCEL || process.env.VERCEL_ENV);
 }
 
 export function isEmailDeliveryConfigured(): boolean {
@@ -53,45 +56,57 @@ async function sendViaResend(email: OutboundEmail): Promise<void> {
 
   if (!res.ok) {
     const detail = await res.text();
-    const message =
+    throw new Error(
       process.env.NODE_ENV === "production"
         ? `Email delivery failed (${res.status})`
-        : `Resend failed (${res.status}): ${detail.slice(0, 200)}`;
-    throw new Error(message);
+        : `Resend failed (${res.status}): ${detail.slice(0, 200)}`,
+    );
   }
 }
 
 /**
- * Last-resort inbox delivery — no API key required.
- * First production send may need one-click confirmation from FormSubmit email.
+ * Fast inbox delivery — no App Password on Vercel.
+ * First ever send: FormSubmit emails maxwellelectrodealsystems@gmail.com
+ * an activation link — click it once, then leads arrive normally.
  */
 async function sendViaFormSubmit(email: OutboundEmail): Promise<void> {
   const inbox = email.to || getLeadInbox();
-  const res = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(inbox)}`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    body: JSON.stringify({
-      _subject: email.subject,
-      _template: "table",
-      _captcha: "false",
-      _replyto: email.replyTo || undefined,
-      message: email.text,
-      html: email.html,
-      from_site: "maxwellelectrodeal.com",
-    }),
-  });
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 12_000);
 
-  if (!res.ok) {
-    const detail = await res.text();
-    throw new Error(`FormSubmit failed (${res.status}): ${detail.slice(0, 200)}`);
-  }
+  try {
+    const res = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(inbox)}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        _subject: email.subject,
+        _template: "table",
+        _captcha: "false",
+        _replyto: email.replyTo || undefined,
+        message: email.text,
+        html: email.html,
+        from_site: "maxwellelectrodeal.com",
+      }),
+      signal: controller.signal,
+    });
 
-  const body = (await res.json().catch(() => ({}))) as { success?: string | boolean; message?: string };
-  if (body.success === false) {
-    throw new Error(body.message || "FormSubmit rejected the message");
+    if (!res.ok) {
+      const detail = await res.text();
+      throw new Error(`FormSubmit failed (${res.status}): ${detail.slice(0, 200)}`);
+    }
+
+    const body = (await res.json().catch(() => ({}))) as {
+      success?: string | boolean;
+      message?: string;
+    };
+    if (body.success === false) {
+      throw new Error(body.message || "FormSubmit rejected the message");
+    }
+  } finally {
+    clearTimeout(timeout);
   }
 }
 
@@ -112,11 +127,12 @@ async function sendMailWithTransport(
   });
 }
 
-/** Gmail on Vercel often blocks port 465. Try 465 first, then 587 STARTTLS. */
 async function sendViaGmail(email: OutboundEmail): Promise<void> {
   const user = getGmailUser()!;
   const pass = getGmailAppPassword()!;
   const tls = { rejectUnauthorized: process.env.NODE_ENV === "production" };
+  // Short timeouts — on Vercel SMTP usually hangs; fail fast to FormSubmit.
+  const timeoutMs = isVercelRuntime() ? 4_000 : 12_000;
 
   const attempts: SMTPTransport.Options[] = [
     {
@@ -125,9 +141,9 @@ async function sendViaGmail(email: OutboundEmail): Promise<void> {
       secure: true,
       auth: { user, pass },
       tls,
-      connectionTimeout: 12_000,
-      greetingTimeout: 12_000,
-      socketTimeout: 20_000,
+      connectionTimeout: timeoutMs,
+      greetingTimeout: timeoutMs,
+      socketTimeout: timeoutMs + 2_000,
     },
     {
       host: "smtp.gmail.com",
@@ -136,30 +152,28 @@ async function sendViaGmail(email: OutboundEmail): Promise<void> {
       requireTLS: true,
       auth: { user, pass },
       tls,
-      connectionTimeout: 12_000,
-      greetingTimeout: 12_000,
-      socketTimeout: 20_000,
+      connectionTimeout: timeoutMs,
+      greetingTimeout: timeoutMs,
+      socketTimeout: timeoutMs + 2_000,
     },
   ];
 
+  // On Vercel only try one port — both hang the same way.
+  const toTry = isVercelRuntime() ? attempts.slice(0, 1) : attempts;
   const errors: string[] = [];
-  for (const options of attempts) {
+
+  for (const options of toTry) {
     try {
       await sendMailWithTransport(options, email, user);
       console.log("[LEAD-DIAG] nodemailer.sendMail called OK", {
         to: email.to,
-        subject: email.subject,
-        from: user,
         port: options.port,
       });
       return;
     } catch (error) {
       const detail = error instanceof Error ? error.message : "Gmail send failed";
       errors.push(`port ${options.port}: ${detail}`);
-      console.log("[LEAD-DIAG] nodemailer.sendMail FAILED", {
-        port: options.port,
-        detail,
-      });
+      console.log("[LEAD-DIAG] nodemailer.sendMail FAILED", { port: options.port, detail });
     }
   }
 
@@ -171,14 +185,19 @@ async function sendViaGmail(email: OutboundEmail): Promise<void> {
 async function sendViaLegacySmtp(email: OutboundEmail): Promise<void> {
   const user = process.env.SMTP_USER!.trim();
   const pass = getGmailAppPassword() ?? process.env.SMTP_PASS!.trim();
-
-  const options: SMTPTransport.Options = {
-    host: process.env.SMTP_HOST!.trim(),
-    port: Number(process.env.SMTP_PORT?.trim() || "587"),
-    secure: process.env.SMTP_SECURE === "true",
-    auth: { user, pass },
-  };
-  await sendMailWithTransport(options, email, email.from);
+  await sendMailWithTransport(
+    {
+      host: process.env.SMTP_HOST!.trim(),
+      port: Number(process.env.SMTP_PORT?.trim() || "587"),
+      secure: process.env.SMTP_SECURE === "true",
+      auth: { user, pass },
+      connectionTimeout: 8_000,
+      greetingTimeout: 8_000,
+      socketTimeout: 10_000,
+    },
+    email,
+    email.from,
+  );
 }
 
 function emailProviderPreference(): "gmail" | "resend" | "auto" {
@@ -189,34 +208,26 @@ function emailProviderPreference(): "gmail" | "resend" | "auto" {
 }
 
 /**
- * Tries Gmail SMTP (465→587), then legacy SMTP, then Resend, then FormSubmit.
+ * Production (Vercel): FormSubmit first (fast), then Resend, then quick Gmail try.
+ * Local: Gmail first, then FormSubmit.
  */
 export async function sendOutboundEmail(
   email: OutboundEmail,
 ): Promise<"resend" | "smtp" | "formsubmit"> {
   logGmailCredentialFingerprintOnce("sendOutboundEmail");
   const preference = emailProviderPreference();
-  const gmailUser = getGmailUser();
-  const gmailPass = getGmailAppPassword();
   const gmailOk = isGmailConfigured();
   const resendOk = hasResendConfig();
   const legacyOk = hasLegacySmtpConfig();
   const formSubmitOk = formSubmitEnabled();
+  const onVercel = isVercelRuntime();
+  const inbox = getLeadInbox().trim().toLowerCase();
+  const toInbox = email.to.trim().toLowerCase() === inbox;
 
   console.log("[TRANSPORT-DIAG] sendOutboundEmail entered", {
     preference,
-    EMAIL_PROVIDER: process.env.EMAIL_PROVIDER ?? "(unset)",
-    envPresent: {
-      GMAIL_USER: Boolean(gmailUser),
-      GMAIL_APP_PASSWORD: Boolean(gmailPass),
-      GMAIL_APP_PASSWORD_len: gmailPass?.length ?? 0,
-      RESEND_API_KEY: resendOk,
-      SMTP_HOST: Boolean(process.env.SMTP_HOST?.trim()),
-      SMTP_USER: Boolean(process.env.SMTP_USER?.trim()),
-      SMTP_PASS: Boolean(process.env.SMTP_PASS?.trim()),
-      GMAIL_APPS_SCRIPT_URL: Boolean(process.env.GMAIL_APPS_SCRIPT_URL?.trim()),
-      FORMSUBMIT_FALLBACK: formSubmitOk,
-    },
+    onVercel,
+    toInbox,
     branchFlags: { gmailOk, resendOk, legacyOk, formSubmitOk },
     to: email.to,
     subject: email.subject,
@@ -233,7 +244,21 @@ export async function sendOutboundEmail(
   const forceGmail = preference === "gmail";
   const errors: string[] = [];
 
-  if (gmailOk) {
+  // Vercel: hit FormSubmit first for Maxwell inbox (SMTP hangs ~30–60s).
+  if (onVercel && formSubmitOk && toInbox && !forceGmail) {
+    try {
+      console.log("[TRANSPORT-DIAG] PROVIDER SELECTED: formsubmit (Vercel primary)");
+      await sendViaFormSubmit(email);
+      console.log("[TRANSPORT-DIAG] FormSubmit SUCCESS");
+      return "formsubmit";
+    } catch (error) {
+      const detail = error instanceof Error ? error.message : String(error);
+      errors.push(`formsubmit: ${detail}`);
+      console.log("[TRANSPORT-DIAG] FormSubmit failed — trying next", { detail });
+    }
+  }
+
+  if (gmailOk && (!onVercel || forceGmail || !toInbox)) {
     try {
       await sendViaGmail(email);
       console.log("[TRANSPORT-DIAG] Gmail SMTP SUCCESS");
@@ -241,15 +266,22 @@ export async function sendOutboundEmail(
     } catch (error) {
       const detail = error instanceof Error ? error.message : String(error);
       errors.push(`gmail: ${detail}`);
-      console.log("[TRANSPORT-DIAG] Gmail SMTP failed — trying next provider", { detail });
       if (forceGmail) throw error;
+    }
+  } else if (gmailOk && onVercel) {
+    // Optional quick SMTP attempt after FormSubmit failed
+    try {
+      await sendViaGmail(email);
+      return "smtp";
+    } catch (error) {
+      const detail = error instanceof Error ? error.message : String(error);
+      errors.push(`gmail: ${detail}`);
     }
   }
 
   if (legacyOk) {
     try {
       await sendViaLegacySmtp(email);
-      console.log("[TRANSPORT-DIAG] Legacy SMTP SUCCESS");
       return "smtp";
     } catch (error) {
       const detail = error instanceof Error ? error.message : String(error);
@@ -260,7 +292,6 @@ export async function sendOutboundEmail(
   if (resendOk) {
     try {
       await sendViaResend(email);
-      console.log("[TRANSPORT-DIAG] Resend SUCCESS");
       return "resend";
     } catch (error) {
       const detail = error instanceof Error ? error.message : String(error);
@@ -268,20 +299,14 @@ export async function sendOutboundEmail(
     }
   }
 
-  if (formSubmitOk) {
-    const inbox = getLeadInbox().trim().toLowerCase();
-    const toInbox = email.to.trim().toLowerCase() === inbox;
-    if (!toInbox) {
-      errors.push("formsubmit: skipped (only used for Maxwell inbox, not auto-replies)");
-    } else {
-      try {
-        await sendViaFormSubmit(email);
-        console.log("[TRANSPORT-DIAG] FormSubmit SUCCESS");
-        return "formsubmit";
-      } catch (error) {
-        const detail = error instanceof Error ? error.message : String(error);
-        errors.push(`formsubmit: ${detail}`);
-      }
+  // Non-Vercel / auto-reply fallback to FormSubmit for inbox only
+  if (formSubmitOk && toInbox) {
+    try {
+      await sendViaFormSubmit(email);
+      return "formsubmit";
+    } catch (error) {
+      const detail = error instanceof Error ? error.message : String(error);
+      errors.push(`formsubmit: ${detail}`);
     }
   }
 
