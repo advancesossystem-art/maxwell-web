@@ -10,6 +10,7 @@ import {
 } from "@/lib/form-validation";
 import { composeInternationalPhone, defaultCountryIso } from "@/lib/country-phone-codes";
 import { PhoneCountryFields } from "@/components/leads/PhoneCountryFields";
+import { HoneypotField } from "@/components/leads/HoneypotField";
 
 type FormState = "idle" | "loading" | "success" | "error";
 
@@ -65,10 +66,6 @@ function ContactFormInner() {
 
     const formData = new FormData(e.currentTarget);
     const raw = Object.fromEntries(formData.entries()) as Record<string, string>;
-    if (raw.website_url?.trim()) {
-      router.push("/thank-you?source=contact");
-      return;
-    }
 
     const phone = composeInternationalPhone(
       raw.phoneCountry || defaultCountryIso,
@@ -108,7 +105,7 @@ function ContactFormInner() {
           projectType: validation.data.projectType,
           budget: validation.data.budget,
           industry: raw.industry,
-          website_url: raw.website_url ?? "",
+          mx_hp_field: raw.mx_hp_field ?? "",
         }),
       });
 
@@ -272,11 +269,7 @@ function ContactFormInner() {
 
       {defaultIndustry && <input type="hidden" name="industry" value={defaultIndustry} />}
 
-      {/* Honeypot — hidden from users; bots fill and are silently rejected server-side */}
-      <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
-        <label htmlFor="website_url">Website</label>
-        <input id="website_url" name="website_url" type="text" tabIndex={-1} autoComplete="off" />
-      </div>
+      <HoneypotField />
 
       <div>
         <label htmlFor="message" className="mb-1.5 block text-sm font-medium">

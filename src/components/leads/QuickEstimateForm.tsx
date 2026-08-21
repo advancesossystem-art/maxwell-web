@@ -6,6 +6,7 @@ import Link from "next/link";
 import { submitLeadForm } from "@/lib/submit-lead-form";
 import { composeInternationalPhone, defaultCountryIso } from "@/lib/country-phone-codes";
 import { PhoneCountryFields } from "@/components/leads/PhoneCountryFields";
+import { HoneypotField } from "@/components/leads/HoneypotField";
 import { mergeLeadContexts, readLeadContextFromDocumentCookie, readLeadContextFromUrlSearchParams } from "@/lib/lead-context";
 import { cn } from "@/lib/utils";
 
@@ -146,9 +147,7 @@ export function QuickEstimateForm({
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
-        <input name="website_url" type="text" tabIndex={-1} autoComplete="off" />
-      </div>
+      <HoneypotField />
 
       <div>
         <label htmlFor="qe-name" className="block text-sm font-medium text-gray-700 mb-1">

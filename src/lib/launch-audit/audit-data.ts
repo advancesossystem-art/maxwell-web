@@ -91,7 +91,7 @@ export function buildAuditChecks(): AuditCheck[] {
     { id: "sec-headers", category: "Security", label: "Security headers", status: "pass", detail: "CSP, HSTS, X-Frame-Options via proxy" },
     { id: "sec-rate", category: "Security", label: "API rate limiting", status: "pass", detail: "20 req/min per IP on /api/leads" },
     { id: "sec-zod", category: "Security", label: "Input validation (Zod)", status: "pass", detail: "Leads + newsletter APIs" },
-    { id: "sec-honeypot", category: "Security", label: "Honeypot field", status: "pass", detail: "website_url field rejects bots" },
+    { id: "sec-honeypot", category: "Security", label: "Honeypot field", status: "pass", detail: "mx_hp_field rejects bots (not website_url — avoids autofill false positives)" },
     { id: "legal-pages", category: "Legal", label: "Legal document suite", status: "pass", detail: "5 policies + redirects from legacy URLs" },
     { id: "legal-cookie", category: "Legal", label: "Cookie consent banner", status: "pass", detail: "Accept/reject all — UK/EU GDPR" },
     { id: "analytics-dl", category: "Analytics", label: "dataLayer events", status: "pass", detail: "Leads and tools events wired" },

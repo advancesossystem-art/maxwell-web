@@ -4,6 +4,7 @@ import { useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { FormField, inputClass, ProgressBar } from "@/components/leads/LeadFormFields";
+import { HoneypotField } from "@/components/leads/HoneypotField";
 import { trackFormStart, trackFormComplete, trackFormStep } from "@/lib/conversion-events";
 import { FormTrustFooter } from "@/components/conversion/FormTrustFooter";
 import {
@@ -147,10 +148,6 @@ function LeadContactFormInner({
     setFieldErrors({});
 
     const { raw, phone } = readFormValues(form);
-    if (raw.website_url?.trim()) {
-      router.push(`/thank-you?source=${source}`);
-      return;
-    }
 
     const validation =
       isTwoStep || source === "contact"
@@ -197,7 +194,7 @@ function LeadContactFormInner({
           source,
           ...validation.data,
           industry: defaultIndustry || raw.industry,
-          website_url: raw.website_url ?? "",
+          mx_hp_field: raw.mx_hp_field ?? "",
         }),
       });
       const body = await res.json();
@@ -243,10 +240,7 @@ function LeadContactFormInner({
     >
       {isTwoStep ? <ProgressBar current={step} total={2} /> : null}
 
-      <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
-        <label htmlFor="website_url">Website</label>
-        <input id="website_url" name="website_url" type="text" tabIndex={-1} autoComplete="off" />
-      </div>
+      <HoneypotField />
 
       {(!isTwoStep || step === 1) && (
         <div className="space-y-3.5">

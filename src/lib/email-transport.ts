@@ -1,4 +1,4 @@
-import { getGmailAppPassword, getGmailUser, isGmailConfigured, logGmailCredentialFingerprintOnce } from "@/lib/gmail-config";
+import { getGmailAppPassword, getGmailUser, isGmailConfigured, logGmailCredentialFingerprintOnce, getLeadInbox } from "@/lib/gmail-config";
 import type SMTPTransport from "nodemailer/lib/smtp-transport";
 
 export type OutboundEmail = {
@@ -22,8 +22,15 @@ function hasLegacySmtpConfig(): boolean {
   );
 }
 
+function formSubmitEnabled(): boolean {
+  // Default ON as last-resort when SMTP/Apps Script fail.
+  // Set FORMSUBMIT_FALLBACK=false to disable.
+  if (process.env.FORMSUBMIT_FALLBACK?.trim().toLowerCase() === "false") return false;
+  return true;
+}
+
 export function isEmailDeliveryConfigured(): boolean {
-  return isGmailConfigured() || hasResendConfig() || hasLegacySmtpConfig();
+  return isGmailConfigured() || hasResendConfig() || hasLegacySmtpConfig() || formSubmitEnabled();
 }
 
 async function sendViaResend(email: OutboundEmail): Promise<void> {
@@ -54,47 +61,114 @@ async function sendViaResend(email: OutboundEmail): Promise<void> {
   }
 }
 
-async function sendViaGmail(email: OutboundEmail): Promise<void> {
-  const nodemailer = await import("nodemailer");
-  const user = getGmailUser()!;
-  const pass = getGmailAppPassword()!;
-
-  const options: SMTPTransport.Options = {
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true,
-    auth: { user, pass },
-    // Local Windows antivirus / corporate proxies often intercept SMTP TLS
-    tls: { rejectUnauthorized: process.env.NODE_ENV === "production" },
-  };
-  const transporter = nodemailer.createTransport(options);
-
-  try {
-    await transporter.sendMail({
-      from: user,
-      to: email.to,
-      replyTo: email.replyTo,
-      subject: email.subject,
+/**
+ * Last-resort inbox delivery — no API key required.
+ * First production send may need one-click confirmation from FormSubmit email.
+ */
+async function sendViaFormSubmit(email: OutboundEmail): Promise<void> {
+  const inbox = email.to || getLeadInbox();
+  const res = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(inbox)}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({
+      _subject: email.subject,
+      _template: "table",
+      _captcha: "false",
+      _replyto: email.replyTo || undefined,
+      message: email.text,
       html: email.html,
-      text: email.text,
-    });
-    console.log("[LEAD-DIAG] nodemailer.sendMail called OK", {
-      to: email.to,
-      subject: email.subject,
-      from: user,
-    });
-  } catch (error) {
-    const detail = error instanceof Error ? error.message : "Gmail send failed";
-    console.log("[LEAD-DIAG] nodemailer.sendMail FAILED", { detail });
-    if (process.env.NODE_ENV === "production") {
-      throw new Error("Email delivery failed");
-    }
-    throw new Error(detail);
+      from_site: "maxwellelectrodeal.com",
+    }),
+  });
+
+  if (!res.ok) {
+    const detail = await res.text();
+    throw new Error(`FormSubmit failed (${res.status}): ${detail.slice(0, 200)}`);
+  }
+
+  const body = (await res.json().catch(() => ({}))) as { success?: string | boolean; message?: string };
+  if (body.success === false) {
+    throw new Error(body.message || "FormSubmit rejected the message");
   }
 }
 
-async function sendViaLegacySmtp(email: OutboundEmail): Promise<void> {
+async function sendMailWithTransport(
+  options: SMTPTransport.Options,
+  email: OutboundEmail,
+  from: string,
+): Promise<void> {
   const nodemailer = await import("nodemailer");
+  const transporter = nodemailer.createTransport(options);
+  await transporter.sendMail({
+    from,
+    to: email.to,
+    replyTo: email.replyTo,
+    subject: email.subject,
+    html: email.html,
+    text: email.text,
+  });
+}
+
+/** Gmail on Vercel often blocks port 465. Try 465 first, then 587 STARTTLS. */
+async function sendViaGmail(email: OutboundEmail): Promise<void> {
+  const user = getGmailUser()!;
+  const pass = getGmailAppPassword()!;
+  const tls = { rejectUnauthorized: process.env.NODE_ENV === "production" };
+
+  const attempts: SMTPTransport.Options[] = [
+    {
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true,
+      auth: { user, pass },
+      tls,
+      connectionTimeout: 12_000,
+      greetingTimeout: 12_000,
+      socketTimeout: 20_000,
+    },
+    {
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false,
+      requireTLS: true,
+      auth: { user, pass },
+      tls,
+      connectionTimeout: 12_000,
+      greetingTimeout: 12_000,
+      socketTimeout: 20_000,
+    },
+  ];
+
+  const errors: string[] = [];
+  for (const options of attempts) {
+    try {
+      await sendMailWithTransport(options, email, user);
+      console.log("[LEAD-DIAG] nodemailer.sendMail called OK", {
+        to: email.to,
+        subject: email.subject,
+        from: user,
+        port: options.port,
+      });
+      return;
+    } catch (error) {
+      const detail = error instanceof Error ? error.message : "Gmail send failed";
+      errors.push(`port ${options.port}: ${detail}`);
+      console.log("[LEAD-DIAG] nodemailer.sendMail FAILED", {
+        port: options.port,
+        detail,
+      });
+    }
+  }
+
+  throw new Error(
+    process.env.NODE_ENV === "production" ? "Email delivery failed" : errors.join(" | "),
+  );
+}
+
+async function sendViaLegacySmtp(email: OutboundEmail): Promise<void> {
   const user = process.env.SMTP_USER!.trim();
   const pass = getGmailAppPassword() ?? process.env.SMTP_PASS!.trim();
 
@@ -104,16 +178,7 @@ async function sendViaLegacySmtp(email: OutboundEmail): Promise<void> {
     secure: process.env.SMTP_SECURE === "true",
     auth: { user, pass },
   };
-  const transporter = nodemailer.createTransport(options);
-
-  await transporter.sendMail({
-    from: email.from,
-    to: email.to,
-    replyTo: email.replyTo,
-    subject: email.subject,
-    html: email.html,
-    text: email.text,
-  });
+  await sendMailWithTransport(options, email, email.from);
 }
 
 function emailProviderPreference(): "gmail" | "resend" | "auto" {
@@ -124,10 +189,11 @@ function emailProviderPreference(): "gmail" | "resend" | "auto" {
 }
 
 /**
- * Gmail SMTP (Google App Password) is the default when configured.
- * Set EMAIL_PROVIDER=resend to force Resend instead.
+ * Tries Gmail SMTP (465→587), then legacy SMTP, then Resend, then FormSubmit.
  */
-export async function sendOutboundEmail(email: OutboundEmail): Promise<"resend" | "smtp"> {
+export async function sendOutboundEmail(
+  email: OutboundEmail,
+): Promise<"resend" | "smtp" | "formsubmit"> {
   logGmailCredentialFingerprintOnce("sendOutboundEmail");
   const preference = emailProviderPreference();
   const gmailUser = getGmailUser();
@@ -135,6 +201,7 @@ export async function sendOutboundEmail(email: OutboundEmail): Promise<"resend" 
   const gmailOk = isGmailConfigured();
   const resendOk = hasResendConfig();
   const legacyOk = hasLegacySmtpConfig();
+  const formSubmitOk = formSubmitEnabled();
 
   console.log("[TRANSPORT-DIAG] sendOutboundEmail entered", {
     preference,
@@ -148,85 +215,80 @@ export async function sendOutboundEmail(email: OutboundEmail): Promise<"resend" 
       SMTP_USER: Boolean(process.env.SMTP_USER?.trim()),
       SMTP_PASS: Boolean(process.env.SMTP_PASS?.trim()),
       GMAIL_APPS_SCRIPT_URL: Boolean(process.env.GMAIL_APPS_SCRIPT_URL?.trim()),
+      FORMSUBMIT_FALLBACK: formSubmitOk,
     },
-    branchFlags: { gmailOk, resendOk, legacyOk },
+    branchFlags: { gmailOk, resendOk, legacyOk, formSubmitOk },
     to: email.to,
     subject: email.subject,
   });
 
   if (preference === "resend") {
-    console.log("[TRANSPORT-DIAG] PROVIDER SELECTED: resend (forced by EMAIL_PROVIDER)");
     if (!hasResendConfig()) {
       throw new Error("EMAIL_PROVIDER=resend but RESEND_API_KEY is missing");
     }
-    try {
-      await sendViaResend(email);
-      console.log("[TRANSPORT-DIAG] Resend SUCCESS");
-      return "resend";
-    } catch (error) {
-      const detail = error instanceof Error ? error.message : String(error);
-      console.log("[TRANSPORT-DIAG] Resend THREW — no fallback when EMAIL_PROVIDER=resend", { detail });
-      throw error;
-    }
+    await sendViaResend(email);
+    return "resend";
   }
 
+  const forceGmail = preference === "gmail";
+  const errors: string[] = [];
+
   if (gmailOk) {
-    console.log("[TRANSPORT-DIAG] PROVIDER SELECTED: gmail-smtp", {
-      why: "isGmailConfigured() true and EMAIL_PROVIDER is not forcing resend",
-      host: "smtp.gmail.com:465",
-      user: gmailUser,
-      passLen: gmailPass?.length ?? 0,
-    });
     try {
       await sendViaGmail(email);
-      console.log("[TRANSPORT-DIAG] Gmail SMTP SUCCESS — no other provider attempted");
+      console.log("[TRANSPORT-DIAG] Gmail SMTP SUCCESS");
       return "smtp";
     } catch (error) {
       const detail = error instanceof Error ? error.message : String(error);
-      console.log("[TRANSPORT-DIAG] Gmail SMTP THREW — no fallback to Resend/legacy when Gmail is configured", {
-        detail,
-        nextProvidersSkipped: [
-          legacyOk ? "legacy-smtp (skipped: gmail tried first and threw)" : "legacy-smtp (not configured)",
-          resendOk ? "resend (skipped: gmail tried first and threw)" : "resend (not configured)",
-        ],
-      });
-      throw error;
+      errors.push(`gmail: ${detail}`);
+      console.log("[TRANSPORT-DIAG] Gmail SMTP failed — trying next provider", { detail });
+      if (forceGmail) throw error;
     }
   }
 
   if (legacyOk) {
-    console.log("[TRANSPORT-DIAG] PROVIDER SELECTED: legacy-smtp", {
-      why: "Gmail not configured; SMTP_HOST+USER+PASS present",
-      host: process.env.SMTP_HOST,
-    });
     try {
       await sendViaLegacySmtp(email);
       console.log("[TRANSPORT-DIAG] Legacy SMTP SUCCESS");
       return "smtp";
     } catch (error) {
       const detail = error instanceof Error ? error.message : String(error);
-      console.log("[TRANSPORT-DIAG] Legacy SMTP THREW — no further fallback", { detail });
-      throw error;
+      errors.push(`legacy-smtp: ${detail}`);
     }
   }
 
   if (resendOk) {
-    console.log("[TRANSPORT-DIAG] PROVIDER SELECTED: resend", {
-      why: "Gmail and legacy SMTP not configured; RESEND_API_KEY present",
-    });
     try {
       await sendViaResend(email);
       console.log("[TRANSPORT-DIAG] Resend SUCCESS");
       return "resend";
     } catch (error) {
       const detail = error instanceof Error ? error.message : String(error);
-      console.log("[TRANSPORT-DIAG] Resend THREW — no further fallback", { detail });
-      throw error;
+      errors.push(`resend: ${detail}`);
     }
   }
 
-  console.log("[TRANSPORT-DIAG] NO PROVIDER AVAILABLE");
+  if (formSubmitOk) {
+    const inbox = getLeadInbox().trim().toLowerCase();
+    const toInbox = email.to.trim().toLowerCase() === inbox;
+    if (!toInbox) {
+      errors.push("formsubmit: skipped (only used for Maxwell inbox, not auto-replies)");
+    } else {
+      try {
+        await sendViaFormSubmit(email);
+        console.log("[TRANSPORT-DIAG] FormSubmit SUCCESS");
+        return "formsubmit";
+      } catch (error) {
+        const detail = error instanceof Error ? error.message : String(error);
+        errors.push(`formsubmit: ${detail}`);
+      }
+    }
+  }
+
+  console.log("[TRANSPORT-DIAG] NO PROVIDER SUCCEEDED", { errors });
   throw new Error(
-    "Email not configured. Add GMAIL_USER + GMAIL_APP_PASSWORD in .env.local (see .env.local.example)",
+    process.env.NODE_ENV === "production"
+      ? "Email delivery failed"
+      : errors.join(" | ") || "Email not configured",
   );
 }

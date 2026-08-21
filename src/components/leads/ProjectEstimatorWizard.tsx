@@ -277,7 +277,7 @@ function ProjectEstimatorInner() {
             teamSize: estimate.teamSize,
             complexityScore: estimate.complexityScore,
           },
-          website_url: "",
+          mx_hp_field: "",
         }),
       });
       const body = await res.json();

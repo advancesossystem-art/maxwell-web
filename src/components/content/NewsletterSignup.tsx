@@ -28,14 +28,17 @@ export function NewsletterSignup({
     setError("");
 
     try {
-      if (honeypot.trim()) {
-        router.push(`/thank-you?source=${source}`);
-        return;
-      }
       const res = await fetch("/api/newsletter", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, name, source, magnetId, contentSlug, website_url: honeypot }),
+        body: JSON.stringify({
+          email,
+          name,
+          source,
+          magnetId,
+          contentSlug,
+          mx_hp_field: honeypot,
+        }),
       });
       const body = await res.json();
       if (!res.ok) throw new Error(body.error || "Subscription failed");
