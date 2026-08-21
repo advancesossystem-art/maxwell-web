@@ -4,7 +4,6 @@ import { useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { FormField, inputClass, ProgressBar } from "@/components/leads/LeadFormFields";
-import { HoneypotField } from "@/components/leads/HoneypotField";
 import { trackFormStart, trackFormComplete, trackFormStep } from "@/lib/conversion-events";
 import { FormTrustFooter } from "@/components/conversion/FormTrustFooter";
 import {
@@ -148,7 +147,6 @@ function LeadContactFormInner({
     setFieldErrors({});
 
     const { raw, phone } = readFormValues(form);
-
     const validation =
       isTwoStep || source === "contact"
         ? validateConsultationFormFields({
@@ -240,7 +238,10 @@ function LeadContactFormInner({
     >
       {isTwoStep ? <ProgressBar current={step} total={2} /> : null}
 
-      <HoneypotField />
+      <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
+        <label htmlFor="mx_hp_field">Website</label>
+        <input id="mx_hp_field" name="mx_hp_field" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
 
       {(!isTwoStep || step === 1) && (
         <div className="space-y-3.5">

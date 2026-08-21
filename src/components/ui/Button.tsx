@@ -34,7 +34,6 @@ export function Button({
   href,
   external,
   onClick,
-  type = "button",
   ...props
 }: ButtonProps) {
   const classes = cn(
@@ -67,7 +66,7 @@ export function Button({
   }
 
   return (
-    <button className={classes} onClick={onClick} {...props} type={type}>
+    <button type="button" className={classes} onClick={onClick} {...props}>
       {children}
     </button>
   );

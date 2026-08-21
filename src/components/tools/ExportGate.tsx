@@ -5,7 +5,6 @@ import { ModalBackdrop, ModalPanel } from "@/components/motion/ModalEnter";
 import { useEscapeKey, useFocusTrap } from "@/lib/a11y/dialog";
 import { Button } from "@/components/ui/Button";
 import { FormField, inputClass } from "@/components/leads/LeadFormFields";
-import { HoneypotField } from "@/components/leads/HoneypotField";
 import { unlockExport, saveToolResult } from "@/lib/tools/storage";
 import { trackToolExport } from "@/lib/tools/analytics";
 
@@ -94,7 +93,9 @@ export function ExportGate({
               onSubmit={handleSubmit}
               className="mt-6 space-y-4 [--v6-text:rgba(255,255,255,0.92)] [--v6-text-muted:rgba(255,255,255,0.55)]"
             >
-              <HoneypotField />
+              <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
+                <input name="mx_hp_field" type="text" tabIndex={-1} autoComplete="off" />
+              </div>
               <FormField label="Full Name" htmlFor="gate-name" required>
                 <input id="gate-name" name="name" required className={inputClass} />
               </FormField>

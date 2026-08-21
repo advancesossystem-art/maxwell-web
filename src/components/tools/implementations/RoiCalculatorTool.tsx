@@ -6,7 +6,6 @@ import { ToolFormPanel, ToolField, ToolRangeField } from "@/components/tools/Too
 import { MetricCard, MetricGrid } from "@/components/tools/ToolUI";
 import { FormField, inputClass } from "@/components/leads/LeadFormFields";
 import { PhoneCountryFields } from "@/components/leads/PhoneCountryFields";
-import { HoneypotField, honeypotValueFromFormData } from "@/components/leads/HoneypotField";
 import { Button } from "@/components/ui/Button";
 import { getToolBySlug } from "@/lib/tools/registry";
 import { formatINR } from "@/lib/tools/format";
@@ -103,7 +102,6 @@ export function RoiCalculatorTool() {
         costMax: Math.round(result.projectCost * 1.25),
         developmentTime: `${result.paybackMonths} mo payback`,
       },
-      mx_hp_field: honeypotValueFromFormData(fd),
     });
 
     setLoading(false);
@@ -229,7 +227,9 @@ export function RoiCalculatorTool() {
             <h3 className="font-display text-lg font-semibold text-[var(--v6-text)]">
               Want a detailed analysis for your business?
             </h3>
-            <HoneypotField />
+            <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
+              <input name="mx_hp_field" type="text" tabIndex={-1} autoComplete="off" />
+            </div>
             <FormField label="Name" htmlFor="roi-name" required>
               <input id="roi-name" name="name" required className={inputClass} />
             </FormField>

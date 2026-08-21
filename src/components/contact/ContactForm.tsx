@@ -10,7 +10,6 @@ import {
 } from "@/lib/form-validation";
 import { composeInternationalPhone, defaultCountryIso } from "@/lib/country-phone-codes";
 import { PhoneCountryFields } from "@/components/leads/PhoneCountryFields";
-import { HoneypotField } from "@/components/leads/HoneypotField";
 
 type FormState = "idle" | "loading" | "success" | "error";
 
@@ -66,7 +65,6 @@ function ContactFormInner() {
 
     const formData = new FormData(e.currentTarget);
     const raw = Object.fromEntries(formData.entries()) as Record<string, string>;
-
     const phone = composeInternationalPhone(
       raw.phoneCountry || defaultCountryIso,
       raw.phoneLocal || raw.phone || "",
@@ -269,7 +267,11 @@ function ContactFormInner() {
 
       {defaultIndustry && <input type="hidden" name="industry" value={defaultIndustry} />}
 
-      <HoneypotField />
+      {/* Honeypot — hidden from users; bots fill and are silently rejected server-side */}
+      <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
+        <label htmlFor="mx_hp_field">Website</label>
+        <input id="mx_hp_field" name="mx_hp_field" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
 
       <div>
         <label htmlFor="message" className="mb-1.5 block text-sm font-medium">

@@ -10,7 +10,6 @@ import { submitLeadForm } from "@/lib/submit-lead-form";
 import { trackExitIntent } from "@/lib/conversion-events";
 import { composeInternationalPhone, defaultCountryIso } from "@/lib/country-phone-codes";
 import { PhoneCountryFields } from "@/components/leads/PhoneCountryFields";
-import { HoneypotField, honeypotValueFromFormData } from "@/components/leads/HoneypotField";
 
 const STORAGE_KEY = "exit-shown";
 
@@ -59,8 +58,7 @@ export function ExitIntentPopup() {
       email: fd.get("email"),
       phone: phone || undefined,
       company: fd.get("company") || undefined,
-      message: "Exit-intent popup — free website audit request.",
-      mx_hp_field: honeypotValueFromFormData(fd),
+      message: "Exit-intent popup — free software audit request.",
     });
 
     setLoading(false);
@@ -108,7 +106,9 @@ export function ExitIntentPopup() {
         </p>
 
         <form onSubmit={handleSubmit} className="mt-6 space-y-4">
-          <HoneypotField />
+          <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
+            <input name="mx_hp_field" type="text" tabIndex={-1} autoComplete="off" />
+          </div>
           <FormField label="Name" htmlFor="exit-name" required>
             <input id="exit-name" name="name" required className={inputClass} autoComplete="name" />
           </FormField>

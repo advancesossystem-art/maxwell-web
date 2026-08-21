@@ -22,7 +22,7 @@ export async function submitLeadForm(
   const res = await fetch("/api/leads", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ mx_hp_field: "", website_url: "", ...payload }),
+    body: JSON.stringify({ mx_hp_field: "", ...payload }),
   });
 
   let body: {
