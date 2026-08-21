@@ -42,7 +42,7 @@ const sections = [
       { label: "Website AMC Vadodara", href: "/solutions/website-amc-vadodara" },
       { label: "Owned Enquiry Channel", href: "/services/website-development/owned-enquiry-channel" },
       { label: "Dealer Portal Development", href: "/services/dealer-portal-development" },
-      { label: "Website Maintenance AMC — from ₹11,000/mo", href: "/services/website-maintenance" },
+      { label: "Website Maintenance AMC — from ₹15,000/mo", href: "/services/website-maintenance" },
     ],
   },
   {

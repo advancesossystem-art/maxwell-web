@@ -68,7 +68,7 @@ export const websiteAmcTiers: PricingTier[] = [
   {
     id: "amc-care",
     name: "Website AMC",
-    price: "₹11,000/mo",
+    price: "₹15,000/mo",
     scope: "SEO, weekly updates, two articles, two product changes",
     timeline: "Billed monthly · 3-month minimum",
     highlight: true,

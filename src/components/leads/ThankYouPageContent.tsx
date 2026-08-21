@@ -254,7 +254,7 @@ function ThankYouInner() {
                         href="/pricing"
                         className="group inline-flex items-baseline gap-2 text-base font-medium text-indigo-700 hover:text-indigo-900"
                       >
-                        <span>Website pricing — ₹35,000 · ₹75,000 · AMC ₹11,000</span>
+                        <span>Website pricing — ₹35,000 · ₹75,000 · AMC ₹15,000</span>
                         <ArrowRight className="h-3.5 w-3.5 shrink-0 opacity-60 transition group-hover:translate-x-0.5" />
                       </Link>
                     </li>

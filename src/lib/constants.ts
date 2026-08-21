@@ -48,7 +48,7 @@ export const siteConfig = {
   legalName: "Maxwell Electrodeal Private Limited",
   tagline: "Website development, SEO & AMC for manufacturers",
   description:
-    "Website development company in Vadodara — manufacturer catalogs, SEO ranking, and monthly website AMC from ₹11,000. Sites from ₹35,000. GST invoice. You own the code.",
+    "Website development company in Vadodara — manufacturer catalogs, SEO ranking, and monthly website AMC from ₹15,000. Sites from ₹35,000. GST invoice. You own the code.",
   url: siteUrl,
   logoPath: "/logo.webp",
   logoUrl: `${siteUrl}/logo.webp`,

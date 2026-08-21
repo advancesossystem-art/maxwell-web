@@ -33,7 +33,7 @@ export default function SeoCompanyVadodaraPage() {
             Savli, Nandesari, and city businesses rank for product + locality searches, not only
             brand name.
           </p>
-          <p className="mt-4 text-indigo-200">Websites from ₹35,000 · Website AMC from ₹11,000 includes monthly SEO</p>
+          <p className="mt-4 text-indigo-200">Websites from ₹35,000 · Website AMC from ₹15,000 includes monthly SEO</p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4">
             <Link
               href="/get-estimate?service=Website+SEO&source=seo-vadodara"

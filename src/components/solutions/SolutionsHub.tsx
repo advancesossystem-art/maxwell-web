@@ -30,7 +30,7 @@ const indiaWebPages = [
   },
   {
     href: "/services/website-maintenance",
-    title: "Website AMC — from ₹11,000/mo",
+    title: "Website AMC — from ₹15,000/mo",
     keyword: "Website maintenance Vadodara",
   },
   {
@@ -65,7 +65,7 @@ export function SolutionsHub() {
             Website development, <AccentGradient>SEO & AMC</AccentGradient>
           </>
         }
-        description="Vadodara manufacturer websites from ₹35,000. Monthly AMC from ₹11,000. SEO so buyers find you on Google — not IndiaMART."
+        description="Vadodara manufacturer websites from ₹35,000. Monthly AMC from ₹15,000. SEO so buyers find you on Google — not IndiaMART."
         below={<TrustStrip compact />}
       >
         <PrimaryCTA location="solutions_hub" context={{ source: "solutions-hub" }} />

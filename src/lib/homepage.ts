@@ -5,7 +5,7 @@ export const homeHero = {
   headlineLine1: "Website development company in Vadodara",
   headlineLine2: "for manufacturers — catalogs from ₹35,000.",
   subhead:
-    "Product catalog + RFQ websites for Gujarat factories and GIDC plants. Buyers find you on Google, enquire on WhatsApp, and you own the lead — not IndiaMART. Website packages from ₹35,000. Monthly AMC from ₹11,000 (SEO, weekly updates, two articles).",
+    "Product catalog + RFQ websites for Gujarat factories and GIDC plants. Buyers find you on Google, enquire on WhatsApp, and you own the lead — not IndiaMART. Website packages from ₹35,000. Monthly AMC from ₹15,000 (SEO, weekly updates, two articles).",
   /** Social proof in first viewport — pairs with primary CTA */
   proofOutcome:
     "Last build: 263 pages · 154 products · 94/100 Google Speed · Live in 6 weeks",
@@ -655,7 +655,7 @@ export const homepageFaqs = [
   {
     question: "What is Maxwell Electrodeal?",
     answer:
-      "Maxwell Electrodeal Private Limited is a website development, SEO, and website AMC company in Vadodara, Gujarat. We build manufacturer catalog and RFQ websites, rank them on Google, and maintain them monthly. Website packages from ₹35,000 (no advance — pay within 3 days of go-live + 18% GST). Website AMC from ₹11,000/month. 100% IP ownership.",
+      "Maxwell Electrodeal Private Limited is a website development, SEO, and website AMC company in Vadodara, Gujarat. We build manufacturer catalog and RFQ websites, rank them on Google, and maintain them monthly. Website packages from ₹35,000 (no advance — pay within 3 days of go-live + 18% GST). Website AMC from ₹15,000/month. 100% IP ownership.",
     category: "Company",
   },
   {
@@ -673,7 +673,7 @@ export const homepageFaqs = [
   {
     question: "What does a typical project cost?",
     answer:
-      "Website packages: Starter ₹35,000 · Professional ₹75,000 · Growth ₹1,50,000 — no advance; full payment within 3 days of go-live (+18% GST). Monthly website AMC starts at ₹11,000 (two product changes, weekly updates, SEO report, two published articles).",
+      "Website packages: Starter ₹35,000 · Professional ₹75,000 · Growth ₹1,50,000 — no advance; full payment within 3 days of go-live (+18% GST). Monthly website AMC starts at ₹15,000 (two product changes, weekly updates, SEO report, two published articles).",
     category: "Cost",
   },
   {
@@ -702,7 +702,7 @@ export const homepageFaqs = [
   {
     question: "What is included in website AMC?",
     answer:
-      "From ₹11,000/month: two product changes, weekly site updates, monthly SEO and performance work with a written report, and two tailor-made articles or knowledge posts published on your website — plus backups, SSL, and uptime watch.",
+      "From ₹15,000/month: two product changes, weekly site updates, monthly SEO and performance work with a written report, and two tailor-made articles or knowledge posts published on your website — plus backups, SSL, and uptime watch.",
     category: "AMC",
   },
   {

@@ -441,10 +441,10 @@ export const indiaGeoSolutionsData: Record<IndiaGeoSolutionSlug, SolutionPageDat
     title: "Website Development Company India",
     headline: "Website Development Company in India",
     subheadline:
-      "Business and manufacturer websites from ₹35,000. Catalog + WhatsApp enquiry, SEO, monthly AMC from ₹11,000. Vadodara team, delivered anywhere in India. GST invoice. Pay after go-live.",
+      "Business and manufacturer websites from ₹35,000. Catalog + WhatsApp enquiry, SEO, monthly AMC from ₹15,000. Vadodara team, delivered anywhere in India. GST invoice. Pay after go-live.",
     metaTitle: "Website Development Company in India | From ₹35,000 | Maxwell",
     metaDescription:
-      "Website development company in India — business and manufacturer sites from ₹35,000. Catalog, SEO, AMC from ₹11,000. Vadodara HQ. Request a quote.",
+      "Website development company in India — business and manufacturer sites from ₹35,000. Catalog, SEO, AMC from ₹15,000. Vadodara HQ. Request a quote.",
     primaryKeyword: "Website Development Company India",
     secondaryKeywords: [
       "website development company in India",
@@ -471,11 +471,11 @@ export const indiaGeoSolutionsData: Record<IndiaGeoSolutionSlug, SolutionPageDat
       "Build on Next.js so the catalog is fast on mobile",
       "Put WhatsApp and quote on every money page",
       "Connect Search Console and a sitemap at go-live",
-      "Optional AMC ₹11,000/month for edits and SEO",
+      "Optional AMC ₹15,000/month for edits and SEO",
     ],
     roiExamples: [
       { metric: "₹35,000", label: "Starter site", description: "25–30 pages + SEO setup" },
-      { metric: "₹11,000", label: "Monthly AMC", description: "Edits, SEO, two articles" },
+      { metric: "₹15,000", label: "Monthly AMC", description: "Edits, SEO, two articles" },
       { metric: "94/100", label: "Drashti mobile", description: "Live catalog, not a target" },
     ],
     internalLinks: [
@@ -488,7 +488,7 @@ export const indiaGeoSolutionsData: Record<IndiaGeoSolutionSlug, SolutionPageDat
       {
         question: "How much does website development cost in India?",
         answer:
-          "Starter business websites from ₹35,000 (25–30 pages + core SEO). Professional catalogs from ₹75,000. Growth / large SKU sites from ₹1,50,000. Website packages: no advance — full payment within 3 days of go-live (+18% GST). Monthly AMC from ₹11,000.",
+          "Starter business websites from ₹35,000 (25–30 pages + core SEO). Professional catalogs from ₹75,000. Growth / large SKU sites from ₹1,50,000. Website packages: no advance — full payment within 3 days of go-live (+18% GST). Monthly AMC from ₹15,000.",
       },
       {
         question: "Do you serve clients outside Vadodara and Gujarat?",
@@ -508,10 +508,10 @@ export const indiaGeoSolutionsData: Record<IndiaGeoSolutionSlug, SolutionPageDat
     title: "Website Development Company Gujarat",
     headline: "Website Development Company in Gujarat",
     subheadline:
-      "Manufacturer catalogs and MSME sites from ₹35,000. AMC ₹11,000/month. Vadodara HQ — Ahmedabad, Surat, Rajkot, Morbi, Ankleshwar. GST invoice. Pay after go-live.",
+      "Manufacturer catalogs and MSME sites from ₹35,000. AMC ₹15,000/month. Vadodara HQ — Ahmedabad, Surat, Rajkot, Morbi, Ankleshwar. GST invoice. Pay after go-live.",
     metaTitle: "Website Development Company in Gujarat | From ₹35,000 | Maxwell",
     metaDescription:
-      "Website development company in Gujarat — manufacturer catalogs and MSME sites from ₹35,000. AMC from ₹11,000. Vadodara HQ. Request a quote.",
+      "Website development company in Gujarat — manufacturer catalogs and MSME sites from ₹35,000. AMC from ₹15,000. Vadodara HQ. Request a quote.",
     primaryKeyword: "Website Development Company Gujarat",
     secondaryKeywords: [
       "website development company in Gujarat",
@@ -527,7 +527,7 @@ export const indiaGeoSolutionsData: Record<IndiaGeoSolutionSlug, SolutionPageDat
       "chemical company website Ankleshwar",
     ],
     marketInsights:
-      "Gujarat buyers search product + city before they call. A directory slot next to five competitors is not a catalog. Maxwell is in Vadodara: websites from ₹35,000, AMC ₹11,000/month, plant visits on the GIDC belt. Not ERP.",
+      "Gujarat buyers search product + city before they call. A directory slot next to five competitors is not a catalog. Maxwell is in Vadodara: websites from ₹35,000, AMC ₹15,000/month, plant visits on the GIDC belt. Not ERP.",
     industryChallenges: [
       { title: "You rent the lead", description: "IndiaMART renews every year. You never own the buyer list." },
       { title: "The brochure is a PDF", description: "Purchase managers need grade, size, and a quote form — not a 12MB download." },
@@ -538,12 +538,12 @@ export const indiaGeoSolutionsData: Record<IndiaGeoSolutionSlug, SolutionPageDat
       "Catalog + WhatsApp + RFQ on money pages",
       "Next.js so it loads on Jio 4G",
       "Search Console at go-live",
-      "Optional AMC ₹11,000/month",
+      "Optional AMC ₹15,000/month",
     ],
     roiExamples: [
       { metric: "₹35,000", label: "Starter site", description: "25–30 pages + SEO setup" },
       { metric: "263", label: "Drashti pages", description: "Live Vadodara catalog" },
-      { metric: "₹11,000", label: "Monthly AMC", description: "Edits + SEO + two articles" },
+      { metric: "₹15,000", label: "Monthly AMC", description: "Edits + SEO + two articles" },
     ],
     internalLinks: [
       { label: "Vadodara", href: "/solutions/web-development-company-vadodara", description: "HQ city page" },
@@ -556,7 +556,7 @@ export const indiaGeoSolutionsData: Record<IndiaGeoSolutionSlug, SolutionPageDat
       {
         question: "How much does website development cost in Gujarat?",
         answer:
-          "Starter from ₹35,000 (25–30 pages + core SEO). Professional catalogs from ₹75,000. Growth / large SKU sites from ₹1,50,000. No advance — pay within 3 days of go-live (+18% GST). Monthly AMC from ₹11,000.",
+          "Starter from ₹35,000 (25–30 pages + core SEO). Professional catalogs from ₹75,000. Growth / large SKU sites from ₹1,50,000. No advance — pay within 3 days of go-live (+18% GST). Monthly AMC from ₹15,000.",
       },
       {
         question: "Do you visit factories in Gujarat for discovery?",
@@ -576,10 +576,10 @@ export const indiaGeoSolutionsData: Record<IndiaGeoSolutionSlug, SolutionPageDat
     title: "Website Development Company Vadodara",
     headline: "Website Development Company in Vadodara",
     subheadline:
-      "Manufacturer catalogs and business sites from ₹35,000. AMC ₹11,000/month. Jetalpur Road office. GIDC plant visits. GST invoice. Pay after go-live.",
+      "Manufacturer catalogs and business sites from ₹35,000. AMC ₹15,000/month. Jetalpur Road office. GIDC plant visits. GST invoice. Pay after go-live.",
     metaTitle: "Website Development Company in Vadodara | From ₹35,000 | Maxwell",
     metaDescription:
-      "Website development company in Vadodara — manufacturer catalogs, GIDC estates, sites from ₹35,000. AMC from ₹11,000. Request a quote.",
+      "Website development company in Vadodara — manufacturer catalogs, GIDC estates, sites from ₹35,000. AMC from ₹15,000. Request a quote.",
     primaryKeyword: "website development company in Vadodara",
     secondaryKeywords: [
       "website development company Vadodara",
@@ -602,7 +602,7 @@ export const indiaGeoSolutionsData: Record<IndiaGeoSolutionSlug, SolutionPageDat
       "manufacturer website Vadodara",
     ],
     marketInsights:
-      "Vadodara manufacturers still send PDF catalogs and IndiaMART links. Buyers in Pune and Dubai Google the product name first. Maxwell is on Jetalpur Road: sites from ₹35,000, AMC ₹11,000/month, plant visits in Makarpura, Savli, Nandesari, Waghodia. Live proof is the Drashti Chemicals catalog — not a TCO spreadsheet.",
+      "Vadodara manufacturers still send PDF catalogs and IndiaMART links. Buyers in Pune and Dubai Google the product name first. Maxwell is on Jetalpur Road: sites from ₹35,000, AMC ₹15,000/month, plant visits in Makarpura, Savli, Nandesari, Waghodia. Live proof is the Drashti Chemicals catalog — not a TCO spreadsheet.",
     industryChallenges: [
       {
         title: "Legacy WordPress Competitor Advantage",

@@ -321,7 +321,7 @@ export function SolutionCTA({ solution }: { solution: SolutionPageData }) {
           Request a quote for {solution.title}
         </h2>
         <p className="mx-auto mt-3 max-w-xl text-slate-300">
-          Starter websites from ₹35,000. AMC from ₹11,000/month. No advance — pay after go-live. GST invoice.
+          Starter websites from ₹35,000. AMC from ₹15,000/month. No advance — pay after go-live. GST invoice.
         </p>
         <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
           <Button href="/get-estimate" size="lg">

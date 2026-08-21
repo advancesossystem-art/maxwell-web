@@ -94,7 +94,7 @@ export function IndustryWebsitePage({
         name: `How much does a website for a ${industry.toLowerCase()} cost in India?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `A Starter product catalog for a ${industry.toLowerCase()} starts at ₹35,000 (25–30 pages, core SEO, WhatsApp inquiry). A Professional catalog with 100+ products is ₹75,000. A Growth catalog with full RFQ, 200+ SKUs, and GIDC corridor SEO is ₹1,50,000+. Monthly website AMC from ₹11,000. All prices + 18% GST. Full code ownership.`,
+          text: `A Starter product catalog for a ${industry.toLowerCase()} starts at ₹35,000 (25–30 pages, core SEO, WhatsApp inquiry). A Professional catalog with 100+ products is ₹75,000. A Growth catalog with full RFQ, 200+ SKUs, and GIDC corridor SEO is ₹1,50,000+. Monthly website AMC from ₹15,000. All prices + 18% GST. Full code ownership.`,
         },
       },
       {

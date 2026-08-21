@@ -287,7 +287,7 @@ export function IndustrialServicePage({
                 Request a written website quote
               </h2>
               <p className="text-slate-300 max-w-[55ch]">
-                Starter from ₹35,000. AMC from ₹11,000/month. No advance — pay after go-live.{" "}
+                Starter from ₹35,000. AMC from ₹15,000/month. No advance — pay after go-live.{" "}
                 {pricingTerms.payment}.
               </p>
             </div>

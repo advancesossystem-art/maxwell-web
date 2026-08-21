@@ -65,7 +65,7 @@ export const servicesNavGroups: NavServiceGroup[] = [
       {
         label: "Website Maintenance",
         href: "/services/website-maintenance",
-        description: "Monthly AMC from ₹11,000 — SEO, updates, articles",
+        description: "Monthly AMC from ₹15,000 — SEO, updates, articles",
       },
       {
         label: "Website SEO",

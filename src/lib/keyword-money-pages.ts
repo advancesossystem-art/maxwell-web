@@ -12,7 +12,7 @@ export type KeywordMoneyDef = {
 
 const relatedCore = [
   { label: "Website development", href: "/services/website-development" },
-  { label: "Website AMC from ₹11,000", href: "/services/website-maintenance" },
+  { label: "Website AMC from ₹15,000", href: "/services/website-maintenance" },
   { label: "SEO company Vadodara", href: "/solutions/seo-company-vadodara" },
   { label: "Published pricing", href: "/pricing" },
   { label: "Request Quote", href: "/get-estimate" },
@@ -23,7 +23,7 @@ export const keywordMoneyPages = {
     meta: {
       title: "Web Design Company India | Business Sites from ₹35,000 | Maxwell",
       description:
-        "Web design company in India — custom business and manufacturer websites from ₹35,000. Layout, brand, mobile, SEO. AMC from ₹11,000. GST invoice. Request a quote.",
+        "Web design company in India — custom business and manufacturer websites from ₹35,000. Layout, brand, mobile, SEO. AMC from ₹15,000. GST invoice. Request a quote.",
       path: "/services/web-design",
       keywords: [
         "web design company India",
@@ -75,7 +75,7 @@ export const keywordMoneyPages = {
         "On-page SEO titles and H1s",
         "Enquiry + WhatsApp paths",
         "GST invoice and code ownership",
-        "Optional AMC from ₹11,000/month",
+        "Optional AMC from ₹15,000/month",
       ],
       related: relatedCore,
     },
@@ -84,7 +84,7 @@ export const keywordMoneyPages = {
     meta: {
       title: "Web Design Company in Vadodara | Website Designing from ₹35,000",
       description:
-        "Web design company in Vadodara and website designing company in Baroda. Custom business sites from ₹35,000. AMC ₹11,000. Alkapuri / Jetalpur office. Request a quote.",
+        "Web design company in Vadodara and website designing company in Baroda. Custom business sites from ₹35,000. AMC ₹15,000. Alkapuri / Jetalpur office. Request a quote.",
       path: "/solutions/web-design-company-vadodara",
       keywords: [
         "web design company in Vadodara",
@@ -130,7 +130,7 @@ export const keywordMoneyPages = {
         "Custom layout, not a cloned competitor",
         "Gujarati/English as needed on key pages",
         "Google Business + NAP matching your GST board",
-        "Sites from ₹35,000 · AMC from ₹11,000",
+        "Sites from ₹35,000 · AMC from ₹15,000",
         "Request Quote — no ‘call for price’ theatre",
       ],
       related: [
@@ -143,7 +143,7 @@ export const keywordMoneyPages = {
     meta: {
       title: "Best Website Development Company in Vadodara | Published Prices",
       description:
-        "Best website development company in Vadodara is a search, not a trophy. Maxwell publishes prices from ₹35,000, a live chemical catalog case, GST invoices, and AMC from ₹11,000.",
+        "Best website development company in Vadodara is a search, not a trophy. Maxwell publishes prices from ₹35,000, a live chemical catalog case, GST invoices, and AMC from ₹15,000.",
       path: "/solutions/best-website-development-company-vadodara",
       keywords: [
         "best website development company in Vadodara",
@@ -159,7 +159,7 @@ export const keywordMoneyPages = {
       h1: "Best website development company in Vadodara — judge the work, not the badge",
       lead: "Every Vadodara agency claims ‘best’. We publish the number, the case, and the office. If that is not enough, do not hire us.",
       pageDirectAnswer:
-        "Maxwell Electrodeal is a Vadodara website company with published Starter pricing from ₹35,000, monthly AMC from ₹11,000, and a live manufacturer catalog (Drashti Chemicals). No fake 500-client counters.",
+        "Maxwell Electrodeal is a Vadodara website company with published Starter pricing from ₹35,000, monthly AMC from ₹15,000, and a live manufacturer catalog (Drashti Chemicals). No fake 500-client counters.",
       estimateSource: "best-vadodara",
       schemaName: "Website Development Company Vadodara",
       schemaDescription: "Vadodara website development with published pricing and a live industrial case study.",
@@ -182,7 +182,7 @@ export const keywordMoneyPages = {
       featureGridTitle: "What ‘best’ means here",
       features: [
         "Published ₹35,000 / ₹75,000 / ₹1.5L tiers",
-        "AMC ₹11,000 with SEO + two articles",
+        "AMC ₹15,000 with SEO + two articles",
         "Next.js Core Web Vitals, not bloated builders",
         "GST + IP in your name",
       ],
@@ -208,10 +208,10 @@ export const keywordMoneyPages = {
       h1: "Best website development company in India — a Vadodara team with published rates",
       lead: "India has thousands of website shops. We are not a Bangalore body shop. We are a small Vadodara company that ships catalog and business sites with GST invoices and monthly AMC.",
       pageDirectAnswer:
-        "Maxwell Electrodeal builds websites for Indian businesses from ₹35,000 and website AMC from ₹11,000/month. HQ in Vadodara; we deliver anywhere in India over Zoom and courier of content.",
+        "Maxwell Electrodeal builds websites for Indian businesses from ₹35,000 and website AMC from ₹15,000/month. HQ in Vadodara; we deliver anywhere in India over Zoom and courier of content.",
       estimateSource: "best-india",
       schemaName: "Website Development Company India",
-      schemaDescription: "Indian website development from ₹35,000 with monthly AMC from ₹11,000.",
+      schemaDescription: "Indian website development from ₹35,000 with monthly AMC from ₹15,000.",
       sections: [
         {
           heading: "Pan-India without a Delhi or Bengaluru office theatre",
@@ -252,7 +252,7 @@ export const keywordMoneyPages = {
       h1: "WordPress website in Vadodara — we will tell you when not to use WordPress",
       lead: "If you googled WordPress website Vadodara, you will get 40 theme sellers. We build Next.js sites instead: faster, fewer hacks, you own the code. If you already have WordPress, we migrate it without torching your rankings.",
       pageDirectAnswer:
-        "Maxwell does not sell ₹12,000 WordPress theme installs. For WordPress website Vadodara and India searches we offer a rebuild or migration to Next.js from ₹35,000, with 301s from old URLs and AMC from ₹11,000.",
+        "Maxwell does not sell ₹12,000 WordPress theme installs. For WordPress website Vadodara and India searches we offer a rebuild or migration to Next.js from ₹35,000, with 301s from old URLs and AMC from ₹15,000.",
       estimateSource: "wordpress",
       schemaName: "WordPress to Next.js Website Rebuild",
       schemaDescription: "WordPress website migration and Next.js rebuilds for Vadodara and India businesses.",
@@ -329,7 +329,7 @@ export const keywordMoneyPages = {
     meta: {
       title: "Ecommerce Website Development India | B2B Catalogs & Stores",
       description:
-        "Ecommerce website development in India for brands and manufacturers. Carts where they make sense; RFQ catalogs when you sell B2B. From ₹35,000. AMC ₹11,000.",
+        "Ecommerce website development in India for brands and manufacturers. Carts where they make sense; RFQ catalogs when you sell B2B. From ₹35,000. AMC ₹15,000.",
       path: "/services/ecommerce-website-development",
       keywords: [
         "ecommerce website development India",
@@ -388,7 +388,7 @@ export const keywordMoneyPages = {
       h1: "Ecommerce website development in Vadodara",
       lead: "Retailers in Vadodara want UPI checkout. GIDC manufacturers want RFQ. Both search ecommerce website development Vadodara. We split those jobs on purpose.",
       pageDirectAnswer:
-        "Maxwell builds ecommerce websites in Vadodara from ₹35,000. Local retail gets a store; industrial sellers get a catalog and quote flow. AMC from ₹11,000 for product changes.",
+        "Maxwell builds ecommerce websites in Vadodara from ₹35,000. Local retail gets a store; industrial sellers get a catalog and quote flow. AMC from ₹15,000 for product changes.",
       estimateSource: "ecommerce-vadodara",
       schemaName: "Ecommerce Website Development Vadodara",
       schemaDescription: "Ecommerce and catalog websites in Vadodara from ₹35,000.",
@@ -411,7 +411,7 @@ export const keywordMoneyPages = {
     meta: {
       title: "Website Redesign India | Rebuild Slow Sites from ₹35,000",
       description:
-        "Website redesign in India — rebuild outdated, slow, or WordPress sites on Next.js. Keep your domain and Google history. From ₹35,000. AMC ₹11,000.",
+        "Website redesign in India — rebuild outdated, slow, or WordPress sites on Next.js. Keep your domain and Google history. From ₹35,000. AMC ₹15,000.",
       path: "/services/website-redesign",
       keywords: [
         "website redesign India",
@@ -426,7 +426,7 @@ export const keywordMoneyPages = {
       h1: "Website redesign in India — keep the domain, lose the 2016 template",
       lead: "A redesign is not new colours on a dead theme. It is new IA, speed, and enquiry paths with 301s from every old URL that still ranks.",
       pageDirectAnswer:
-        "Maxwell redesigns Indian business websites from ₹35,000. We map old URLs, rebuild on Next.js, and offer AMC from ₹11,000 so the new site does not rot.",
+        "Maxwell redesigns Indian business websites from ₹35,000. We map old URLs, rebuild on Next.js, and offer AMC from ₹15,000 so the new site does not rot.",
       estimateSource: "redesign-india",
       schemaName: "Website Redesign India",
       schemaDescription: "Website redesign and rebuild services in India from ₹35,000.",
@@ -464,7 +464,7 @@ export const keywordMoneyPages = {
       h1: "Website redesign in Vadodara",
       lead: "If your Baroda site still says ‘Best viewed in Internet Explorer’, buyers have already left. We rebuild it, keep the domain, and put Request Quote where the Flash banner was.",
       pageDirectAnswer:
-        "Website redesign Vadodara starts at ₹35,000 with Maxwell Electrodeal. Local discovery, Next.js rebuild, 301s from old pages, AMC from ₹11,000.",
+        "Website redesign Vadodara starts at ₹35,000 with Maxwell Electrodeal. Local discovery, Next.js rebuild, 301s from old pages, AMC from ₹15,000.",
       estimateSource: "redesign-vadodara",
       schemaName: "Website Redesign Vadodara",
       schemaDescription: "Website redesign services in Vadodara from ₹35,000.",
@@ -485,9 +485,9 @@ export const keywordMoneyPages = {
   },
   amcVadodara: {
     meta: {
-      title: "Website AMC Vadodara | Baroda Maintenance from ₹11,000/mo",
+      title: "Website AMC Vadodara | Baroda Maintenance from ₹15,000/mo",
       description:
-        "Website AMC in Vadodara (Baroda): ₹11,000/month — two product changes, weekly updates, SEO report, two articles. Local website maintenance company.",
+        "Website AMC in Vadodara (Baroda): ₹15,000/month — two product changes, weekly updates, SEO report, two articles. Local website maintenance company.",
       path: "/solutions/website-amc-vadodara",
       keywords: [
         "website AMC Vadodara",
@@ -500,16 +500,16 @@ export const keywordMoneyPages = {
       path: "/solutions/website-amc-vadodara",
       breadcrumb: "Website AMC Vadodara",
       eyebrow: "Vadodara · Baroda · AMC",
-      h1: "Website AMC in Vadodara — monthly maintenance from ₹11,000",
+      h1: "Website AMC in Vadodara — monthly maintenance from ₹15,000",
       lead: "Website AMC Vadodara and Baroda searches mean: someone to update products, keep Google happy, and not vanish. That is this plan — not ‘we’ll look at it if it hacks’.",
       pageDirectAnswer:
-        "Website AMC in Vadodara with Maxwell starts at ₹11,000 per month: two product changes, weekly updates, monthly SEO and performance report, two published articles, backups and uptime. GST invoice.",
+        "Website AMC in Vadodara with Maxwell starts at ₹15,000 per month: two product changes, weekly updates, monthly SEO and performance report, two published articles, backups and uptime. GST invoice.",
       estimateSource: "amc-vadodara",
       schemaName: "Website AMC Vadodara",
-      schemaDescription: "Website annual/monthly maintenance contract in Vadodara from ₹11,000 per month.",
+      schemaDescription: "Website annual/monthly maintenance contract in Vadodara from ₹15,000 per month.",
       sections: [
         {
-          heading: "What ₹11,000 actually buys in Baroda",
+          heading: "What ₹15,000 actually buys in Baroda",
           directAnswer:
             "Two SKU or page edits, weekly checks, SEO work with a written report, two original posts on your domain. Not unlimited design retainers.",
           paragraphs: [
@@ -519,7 +519,7 @@ export const keywordMoneyPages = {
       ],
       featureGridTitle: "Vadodara AMC",
       features: [
-        "₹11,000/mo starter",
+        "₹15,000/mo starter",
         "Weekly updates",
         "SEO + performance report",
         "Two articles",
@@ -536,7 +536,7 @@ export const keywordMoneyPages = {
     meta: {
       title: "SEO Services India | Website SEO from a Vadodara Team",
       description:
-        "SEO services in India for business and manufacturer websites: technical SEO, content, Search Console. Pair with sites from ₹35,000 and AMC from ₹11,000.",
+        "SEO services in India for business and manufacturer websites: technical SEO, content, Search Console. Pair with sites from ₹35,000 and AMC from ₹15,000.",
       path: "/services/website-seo",
       keywords: [
         "SEO services India",
@@ -552,7 +552,7 @@ export const keywordMoneyPages = {
       h1: "SEO services in India — ranking work on a site you actually own",
       lead: "SEO without a fast, crawlable website is a monthly PDF of excuses. We either build the site or inherit it, then do technical SEO, titles, internal links, and content — measured in Search Console, not vanity dashboards.",
       pageDirectAnswer:
-        "Maxwell Electrodeal offers SEO services in India from Vadodara. Technical SEO and content on Next.js business sites. Website builds from ₹35,000; monthly AMC from ₹11,000 already includes SEO hours. Larger SEO-only retainers are scoped after a GSC look.",
+        "Maxwell Electrodeal offers SEO services in India from Vadodara. Technical SEO and content on Next.js business sites. Website builds from ₹35,000; monthly AMC from ₹15,000 already includes SEO hours. Larger SEO-only retainers are scoped after a GSC look.",
       estimateSource: "seo-india",
       schemaName: "SEO Services India",
       schemaDescription: "Website SEO services in India for manufacturers and businesses.",
@@ -597,7 +597,7 @@ export const keywordMoneyPages = {
       h1: "Website development company in Ahmedabad — Gujarat delivery from Vadodara",
       lead: "You searched website development company Ahmedabad. We are not an SG Highway glass office. We are a Vadodara engineering team that already builds for Vatva, Naroda, Sanand, and Changodar plants.",
       pageDirectAnswer:
-        "Maxwell Electrodeal serves Ahmedabad from Vadodara: business and manufacturer websites from ₹35,000, AMC from ₹11,000. Gujarat prices, GST invoice, plant visits on the Ahmedabad–Vadodara belt when the catalog needs it.",
+        "Maxwell Electrodeal serves Ahmedabad from Vadodara: business and manufacturer websites from ₹35,000, AMC from ₹15,000. Gujarat prices, GST invoice, plant visits on the Ahmedabad–Vadodara belt when the catalog needs it.",
       estimateSource: "ahmedabad",
       schemaName: "Website Development Company Ahmedabad",
       schemaDescription: "Website development for Ahmedabad and Gujarat businesses from ₹35,000.",
@@ -612,7 +612,7 @@ export const keywordMoneyPages = {
         },
       ],
       featureGridTitle: "Ahmedabad / Gujarat",
-      features: ["₹35,000 Starter", "AMC ₹11,000", "Vatva / Naroda / Sanand familiarity", "Request Quote"],
+      features: ["₹35,000 Starter", "AMC ₹15,000", "Vatva / Naroda / Sanand familiarity", "Request Quote"],
       related: relatedCore,
     },
   },
@@ -620,7 +620,7 @@ export const keywordMoneyPages = {
     meta: {
       title: "Business Website Development India | Company Websites from ₹35,000",
       description:
-        "Company website and business website development in India for MSMEs — not only factories. From ₹35,000. AMC ₹11,000. GST invoice.",
+        "Company website and business website development in India for MSMEs — not only factories. From ₹35,000. AMC ₹15,000. GST invoice.",
       path: "/services/business-website-development",
       keywords: [
         "business website development India",
@@ -636,7 +636,7 @@ export const keywordMoneyPages = {
       h1: "Business website development in India — company sites, not only factories",
       lead: "Traders, clinics, CA firms, hotels, and distributors also need a site that ranks. You do not have to be a GIDC plant to get published pricing and a GST invoice.",
       pageDirectAnswer:
-        "Maxwell builds company and business websites in India from ₹35,000. MSME sites: home, services, about, contact, Google map, WhatsApp. AMC from ₹11,000 if you want monthly SEO and two articles.",
+        "Maxwell builds company and business websites in India from ₹35,000. MSME sites: home, services, about, contact, Google map, WhatsApp. AMC from ₹15,000 if you want monthly SEO and two articles.",
       estimateSource: "business-india",
       schemaName: "Business Website Development India",
       schemaDescription: "MSME and company website development in India from ₹35,000.",
@@ -659,7 +659,7 @@ export const keywordMoneyPages = {
     meta: {
       title: "Business Website Vadodara | Company Website for MSMEs from ₹35,000",
       description:
-        "Company website and business website in Vadodara for MSMEs, traders, and professionals — not only manufacturers. From ₹35,000. AMC ₹11,000.",
+        "Company website and business website in Vadodara for MSMEs, traders, and professionals — not only manufacturers. From ₹35,000. AMC ₹15,000.",
       path: "/solutions/business-website-vadodara",
       keywords: [
         "business website Vadodara",
@@ -675,7 +675,7 @@ export const keywordMoneyPages = {
       h1: "Business website in Vadodara — company sites for MSMEs, not only plants",
       lead: "If you run a trading office in Alkapuri, a clinic in Gotri, or a dealership on Old Padra Road, you still need a site Google trusts. That is this page.",
       pageDirectAnswer:
-        "Maxwell builds business and company websites in Vadodara from ₹35,000 for MSMEs as well as manufacturers. Local office, GST invoice, AMC from ₹11,000.",
+        "Maxwell builds business and company websites in Vadodara from ₹35,000 for MSMEs as well as manufacturers. Local office, GST invoice, AMC from ₹15,000.",
       estimateSource: "business-vadodara",
       schemaName: "Business Website Vadodara",
       schemaDescription: "MSME and company website development in Vadodara from ₹35,000.",

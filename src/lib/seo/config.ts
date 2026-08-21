@@ -94,9 +94,9 @@ export const socialProfiles: string[] = [
 
 export const homeSeo = {
   title:
-    "Website Development Company Vadodara | From ₹35,000 | AMC ₹11,000 | Maxwell",
+    "Website Development Company Vadodara | From ₹35,000 | AMC ₹15,000 | Maxwell",
   description:
-    "Website development, SEO, and monthly AMC in Vadodara. Manufacturer catalogs from ₹35,000. Website AMC from ₹11,000 — weekly updates, SEO reports, two articles. Request a quote.",
+    "Website development, SEO, and monthly AMC in Vadodara. Manufacturer catalogs from ₹35,000. Website AMC from ₹15,000 — weekly updates, SEO reports, two articles. Request a quote.",
   keywords: [
     "website development company Vadodara",
     "website engineering company",

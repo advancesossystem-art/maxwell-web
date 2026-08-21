@@ -14,7 +14,7 @@ import { HubMetrics } from "@/components/design/HubMetrics";
 export const metadata = createMetadata({
   title: "Website Development, SEO & AMC | Vadodara | From ₹35,000",
   description:
-    "Website development, SEO, and monthly AMC for manufacturers and businesses. Catalog sites from ₹35,000. Website AMC from ₹11,000. Maxwell Electrodeal — Vadodara, Gujarat.",
+    "Website development, SEO, and monthly AMC for manufacturers and businesses. Catalog sites from ₹35,000. Website AMC from ₹15,000. Maxwell Electrodeal — Vadodara, Gujarat.",
   path: "/services",
 });
 
@@ -32,13 +32,13 @@ export default function ServicesPage() {
             <AccentGradient>for businesses</AccentGradient>
           </>
         }
-        description="Website development from ₹35,000, monthly website AMC from ₹11,000, and SEO for manufacturers and businesses in Vadodara and Gujarat."
+        description="Website development from ₹35,000, monthly website AMC from ₹15,000, and SEO for manufacturers and businesses in Vadodara and Gujarat."
         below={
           <HubMetrics
             className="gap-3"
             stats={[
               { value: "₹35,000", label: "Website from" },
-              { value: "₹11,000", label: "AMC / month" },
+              { value: "₹15,000", label: "AMC / month" },
               { value: "SEO", label: "Ranking work" },
               { value: "Vadodara", label: "Gujarat HQ" },
             ]}

@@ -11,7 +11,7 @@ const path = "/solutions/web-development-company-vadodara";
 export const metadata: Metadata = createMetadata({
   title: "Website Development Company in Vadodara | From ₹35,000 | Maxwell",
   description:
-    "Website development company in Vadodara — manufacturer catalogs, GIDC estates, business sites from ₹35,000. AMC ₹11,000/month. Jetalpur Road office. GST invoice. Request a quote.",
+    "Website development company in Vadodara — manufacturer catalogs, GIDC estates, business sites from ₹35,000. AMC ₹15,000/month. Jetalpur Road office. GST invoice. Request a quote.",
   path,
   keywords: [
     "website development company in Vadodara",
@@ -64,10 +64,10 @@ export default function VadodaraWebDevPage() {
         eyebrow="Vadodara · Jetalpur Road · sites from ₹35,000"
         h1="Website development company in Vadodara"
         lead="If your plant is in Makarpura, Savli, Nandesari, or Waghodia, buyers already Google you. We build the site they should open: products, proof, WhatsApp. Starter from ₹35,000. Office on Jetalpur Road — not a ‘virtual Vadodara’ listing."
-        pageDirectAnswer="Starter ₹35,000. Catalog ₹75,000. AMC ₹11,000/month. GST invoice. Pay after go-live. Plant visits across Vadodara GIDC. Live proof: Drashti Chemicals catalog."
+        pageDirectAnswer="Starter ₹35,000. Catalog ₹75,000. AMC ₹15,000/month. GST invoice. Pay after go-live. Plant visits across Vadodara GIDC. Live proof: Drashti Chemicals catalog."
         estimateSource="web-vadodara"
         schemaName="Website Development Company Vadodara"
-        schemaDescription="Website development in Vadodara for manufacturers and MSMEs from ₹35,000, with monthly AMC from ₹11,000. Maxwell Electrodeal, Jetalpur Road."
+        schemaDescription="Website development in Vadodara for manufacturers and MSMEs from ₹35,000, with monthly AMC from ₹15,000. Maxwell Electrodeal, Jetalpur Road."
         sections={[
           {
             heading: "What a Vadodara manufacturer actually needs on a site",
@@ -101,7 +101,7 @@ export default function VadodaraWebDevPage() {
             directAnswer:
               "Published tiers. No advance on website packages. Pay within 3 days of go-live + 18% GST.",
             paragraphs: [
-              "₹35,000 — 25–30 pages, enquiry, SEO setup. ₹75,000 — catalog + RFQ. ₹1,50,000 — large SKU / filters. AMC ₹11,000/month: two product edits, weekly checks, SEO report, two articles.",
+              "₹35,000 — 25–30 pages, enquiry, SEO setup. ₹75,000 — catalog + RFQ. ₹1,50,000 — large SKU / filters. AMC ₹15,000/month: two product edits, weekly checks, SEO report, two articles.",
             ],
           },
           {
@@ -115,7 +115,7 @@ export default function VadodaraWebDevPage() {
         featureGridTitle="Vadodara website package"
         features={[
           "Starter ₹35,000 · Professional ₹75,000 · Growth ₹1.5L",
-          "AMC ₹11,000/mo with SEO",
+          "AMC ₹15,000/mo with SEO",
           "GIDC plant visits when the catalog needs it",
           "Next.js — no plugin rent",
           "Code ownership at go-live",

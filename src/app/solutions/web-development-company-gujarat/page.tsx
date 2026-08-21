@@ -7,7 +7,7 @@ const path = "/solutions/web-development-company-gujarat";
 export const metadata: Metadata = createMetadata({
   title: "Website Development Company in Gujarat | From ₹35,000 | Maxwell",
   description:
-    "Website development company in Gujarat — manufacturer catalogs, MSME sites, GIDC SEO. From ₹35,000. AMC ₹11,000/month. Vadodara HQ. Ahmedabad, Surat, Rajkot, Morbi, Ankleshwar. Request a quote.",
+    "Website development company in Gujarat — manufacturer catalogs, MSME sites, GIDC SEO. From ₹35,000. AMC ₹15,000/month. Vadodara HQ. Ahmedabad, Surat, Rajkot, Morbi, Ankleshwar. Request a quote.",
   path,
   keywords: [
     "website development company in Gujarat",
@@ -26,10 +26,10 @@ export default function WebsiteDevelopmentCompanyGujaratPage() {
       eyebrow="Gujarat · Vadodara HQ · sites from ₹35,000"
       h1="Website development company in Gujarat"
       lead="If you make chemicals, tiles, machines, or textiles in Gujarat, buyers already Google you before they call. Maxwell builds the site they should land on: products, proof, WhatsApp. Starter from ₹35,000. We sit in Vadodara — not a Delhi agency with a Gujarat keyword."
-      pageDirectAnswer="Starter ₹35,000. Catalog ₹75,000. AMC ₹11,000/month. GST invoice. Pay after go-live. Plant visits across Vadodara GIDC, Ankleshwar, Halol, Savli, Makarpura."
+      pageDirectAnswer="Starter ₹35,000. Catalog ₹75,000. AMC ₹15,000/month. GST invoice. Pay after go-live. Plant visits across Vadodara GIDC, Ankleshwar, Halol, Savli, Makarpura."
       estimateSource="web-gujarat"
       schemaName="Website Development Company Gujarat"
-      schemaDescription="Website development for Gujarat manufacturers and MSMEs from ₹35,000, with monthly AMC from ₹11,000. Maxwell Electrodeal, Vadodara."
+      schemaDescription="Website development for Gujarat manufacturers and MSMEs from ₹35,000, with monthly AMC from ₹15,000. Maxwell Electrodeal, Vadodara."
       sections={[
         {
           heading: "What Gujarat buyers look for on a vendor site",
@@ -71,14 +71,14 @@ export default function WebsiteDevelopmentCompanyGujaratPage() {
           directAnswer:
             "Same published tiers as the rest of India. Gujarat GST invoice. No advance on website packages.",
           paragraphs: [
-            "₹35,000 — 25–30 pages, enquiry, SEO setup. ₹75,000 — catalog + RFQ. ₹1,50,000 — large SKU / filters. AMC ₹11,000/month: two product edits, weekly checks, SEO report, two articles.",
+            "₹35,000 — 25–30 pages, enquiry, SEO setup. ₹75,000 — catalog + RFQ. ₹1,50,000 — large SKU / filters. AMC ₹15,000/month: two product edits, weekly checks, SEO report, two articles.",
           ],
         },
       ]}
       featureGridTitle="Gujarat website package"
       features={[
         "Starter ₹35,000 · Professional ₹75,000 · Growth ₹1.5L",
-        "AMC ₹11,000/mo with SEO",
+        "AMC ₹15,000/mo with SEO",
         "Manufacturer catalogs, not brochure PDFs",
         "GIDC-aware internal links",
         "Code ownership at go-live",

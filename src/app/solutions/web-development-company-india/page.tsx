@@ -7,7 +7,7 @@ const path = "/solutions/web-development-company-india";
 export const metadata: Metadata = createMetadata({
   title: "Website Development Company in India | From ₹35,000 | Maxwell",
   description:
-    "Website development company in India — business and manufacturer sites from ₹35,000. Catalog + WhatsApp enquiry, SEO, monthly AMC from ₹11,000. Vadodara team, pan-India. GST invoice. Request a quote.",
+    "Website development company in India — business and manufacturer sites from ₹35,000. Catalog + WhatsApp enquiry, SEO, monthly AMC from ₹15,000. Vadodara team, pan-India. GST invoice. Request a quote.",
   path,
   keywords: [
     "website development company in India",
@@ -24,13 +24,13 @@ export default function WebsiteDevelopmentCompanyIndiaPage() {
     <IndustrialServicePage
       path={path}
       breadcrumb="Website Development India"
-      eyebrow="India · websites from ₹35,000 · AMC ₹11,000/mo"
+      eyebrow="India · websites from ₹35,000 · AMC ₹15,000/mo"
       h1="Website development company in India"
       lead="You need a site buyers can find on Google and message on WhatsApp — not a theme, not an ERP pitch. Maxwell is a Vadodara team that builds business and manufacturer websites for companies anywhere in India. Starter from ₹35,000. No advance. You own the code."
-      pageDirectAnswer="Starter website ₹35,000. Catalog ₹75,000. AMC ₹11,000/month. Pay after go-live. GST invoice. We do websites, SEO, and AMC — not ERP."
+      pageDirectAnswer="Starter website ₹35,000. Catalog ₹75,000. AMC ₹15,000/month. Pay after go-live. GST invoice. We do websites, SEO, and AMC — not ERP."
       estimateSource="web-india"
       schemaName="Website Development Company India"
-      schemaDescription="Website development for Indian businesses and manufacturers from ₹35,000, with monthly AMC from ₹11,000. Maxwell Electrodeal, Vadodara."
+      schemaDescription="Website development for Indian businesses and manufacturers from ₹35,000, with monthly AMC from ₹15,000. Maxwell Electrodeal, Vadodara."
       sections={[
         {
           heading: "What you actually get",
@@ -39,7 +39,7 @@ export default function WebsiteDevelopmentCompanyIndiaPage() {
           paragraphs: [
             "Starter (₹35,000) is 25–30 pages: Home, About, Contact, and the service or product pages you need. Forms go to your email and WhatsApp. We set up Analytics and Search Console.",
             "Professional (₹75,000) is a catalog: categories, product pages, RFQ fields (grade, MOQ, city). That is what a plant in Ankleshwar or a trader in Ahmedabad actually uses.",
-            "Growth (₹1,50,000) is a large catalog (filters, 200+ SKUs, extra languages if you export). AMC from ₹11,000/month keeps products and Google work going after launch.",
+            "Growth (₹1,50,000) is a large catalog (filters, 200+ SKUs, extra languages if you export). AMC from ₹15,000/month keeps products and Google work going after launch.",
           ],
           bullets: [
             "No advance on website packages — pay within 3 days of go-live + 18% GST",
@@ -82,7 +82,7 @@ export default function WebsiteDevelopmentCompanyIndiaPage() {
           directAnswer:
             "Directories rent you a slot next to five competitors. A site you own can rank for your product name. AMC is how it stays updated.",
           paragraphs: [
-            "Most owners already pay ₹1.5–3 lakh a year on listings. A ₹35,000 site plus ₹11,000 AMC is a different cost shape: you keep the enquiries.",
+            "Most owners already pay ₹1.5–3 lakh a year on listings. A ₹35,000 site plus ₹15,000 AMC is a different cost shape: you keep the enquiries.",
           ],
         },
         {
@@ -113,7 +113,7 @@ export default function WebsiteDevelopmentCompanyIndiaPage() {
       featureGridTitle="India website package, in one list"
       features={[
         "Starter ₹35,000 · Professional ₹75,000 · Growth ₹1.5L",
-        "AMC ₹11,000/mo: 2 product edits, weekly checks, SEO report, 2 articles",
+        "AMC ₹15,000/mo: 2 product edits, weekly checks, SEO report, 2 articles",
         "WhatsApp + quote on money pages",
         "Next.js — no plugin rent",
         "Pan-India delivery from Vadodara",
