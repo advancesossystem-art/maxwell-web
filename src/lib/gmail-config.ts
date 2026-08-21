@@ -31,7 +31,6 @@ export function getGmailCredentialFingerprint(): {
   inbox: string;
   source: "GMAIL_APP_PASSWORD" | "SMTP_PASS" | "none";
   passLen: number;
-  last4Masked: string;
   fingerprint: string;
 } {
   const user = getGmailUser();
@@ -51,7 +50,6 @@ export function getGmailCredentialFingerprint(): {
     inbox: getLeadInbox(),
     source,
     passLen: pass?.length ?? 0,
-    last4Masked: pass && pass.length >= 4 ? `****${pass.slice(-4)}` : "(none)",
     fingerprint: pass
       ? createHash("sha256").update(pass).digest("hex").slice(0, 8)
       : "(none)",
@@ -72,9 +70,8 @@ export function logGmailCredentialFingerprintOnce(reason = "startup"): void {
     inbox: fp.inbox,
     passwordSource: fp.source,
     passwordLength: fp.passLen,
-    passwordLast4: fp.last4Masked,
     passwordFingerprint: fp.fingerprint,
-    note: "Compare passwordFingerprint after regenerating App Password — if unchanged, runtime still has the old value.",
+    note: "Compare passwordFingerprint after regenerating App Password — if unchanged, runtime still has the old value. Never log password plaintext or last4.",
   });
 }
 
