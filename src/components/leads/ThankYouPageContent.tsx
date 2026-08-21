@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-import { whatsappHref } from "@/lib/constants";
+import { siteConfig, whatsappHref } from "@/lib/constants";
 import { getLeadMagnetById } from "@/lib/content/lead-magnets";
 import { ArrowRight } from "@/components/ui/Icons";
 import { CalendlyEmbed } from "@/components/leads/CalendlyEmbed";
@@ -32,7 +32,6 @@ function ThankYouInner() {
     !!magnet;
 
   const calendlyUrl = getCalendlyUrl();
-  // Same post-submit scheduling path as Book Strategy Call for every lead (except careers / newsletter).
   const wantsCalendly = !isCareers && !isNewsletter;
   const showCalendlyEmbed = !!calendlyUrl && wantsCalendly;
   const showCalendlyFallback = wantsCalendly && !calendlyUrl;
@@ -59,188 +58,309 @@ function ThankYouInner() {
     "tool-roi-calculator": "ROI report request",
   };
 
-  const friendlySource =
-    sourceLabels[source] ??
-    (source.startsWith("service-")
-      ? "service quote request"
-      : source.startsWith("industry-")
-        ? "industry inquiry"
-        : source.startsWith("tool-")
-          ? "tool request"
-          : "inquiry");
+  const friendlyLabel = sourceLabels[source] ?? "inquiry";
+
+  const headline = isCareers
+    ? "Application received"
+    : isNewsletter
+      ? magnet
+        ? "Your download is ready"
+        : "You're on the list"
+      : "Request received";
+
+  const lead = isCareers
+    ? position
+      ? `Thanks for applying for ${position}. Our team will review your application and reply if there is a fit.`
+      : "Thanks for applying to Maxwell Electrodeal. Our team will review your application and reply if there is a fit."
+    : isNewsletter
+      ? magnet
+        ? `${magnet.title} is ready below. We also sent a copy to your inbox.`
+        : "You will get Maxwell website and SEO notes in your inbox. Check spam if nothing arrives in a few minutes."
+      : `Your ${friendlyLabel} is with us. A consultant will reply within one business day — usually sooner.`;
+
+  const nextSteps = isCareers
+    ? [
+        { time: "3–5 business days", text: "We review your application and portfolio." },
+        { time: "If shortlisted", text: "We email or call to schedule an interview." },
+        { time: "Your inbox", text: `Watch for mail from ${siteConfig.email} (and spam).` },
+      ]
+    : isNewsletter
+      ? [
+          { time: "Now", text: magnet?.downloadPath ? "Download your resource below." : "Confirm the subscription email if asked." },
+          { time: "This week", text: "Useful notes on manufacturer websites, SEO, and AMC." },
+          { time: "Anytime", text: "Reply to any Maxwell email to talk to a consultant." },
+        ]
+      : [
+          { time: "Today", text: "We read your request and prepare a clear reply." },
+          { time: "Within 24 hours", text: CONVERSION_EXPECTATIONS.responseTime.replace("We respond ", "You hear from us ") + "." },
+          {
+            time: "Next step",
+            text:
+              source === "get-estimate"
+                ? CONVERSION_EXPECTATIONS.successEstimate
+                : "A short call or WhatsApp thread to lock scope and price.",
+          },
+        ];
 
   return (
-    <section className="py-24 lg:py-32">
-      <Container className="max-w-2xl text-center">
-        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-brand-600 text-white">
-          <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-          </svg>
-        </div>
-        <h1 className="mt-8 font-display text-3xl font-bold sm:text-4xl">
-          {isCareers ? "Application received!" : "Thank you!"}
-        </h1>
-        <p className="mt-4 text-lg text-muted">
-          {isCareers
-            ? position
-              ? `Thank you for applying for ${position}. Our HR team has your application and will review it shortly.`
-              : "Thank you for applying to Maxwell Electrodeal. Our HR team has your application and will review it shortly."
-            : isNewsletter
-              ? magnet
-                ? `Your download is ready. We've also sent ${magnet.title} details to your inbox.`
-                : "You're subscribed to Maxwell engineering insights. Check your inbox to confirm."
-              : showCalendlyEmbed || showCalendlyFallback
-                ? `Your ${sourceLabels[source] ?? "inquiry"} is confirmed. Pick a time below — or we'll reach out within one business day.`
-                : `Your ${sourceLabels[source] ?? "inquiry"} has been received. Our team will respond within 24 hours.`}
-        </p>
-
-        {deliveryFailed && !isCareers && !isNewsletter ? (
-          <div className="mt-6 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-left text-sm text-amber-950">
-            <p className="font-semibold">Want a faster reply?</p>
-            <p className="mt-1 text-amber-900/90">
-              Message us on WhatsApp now — we respond during business hours.
-            </p>
-            <Button href={whatsappLink} external size="md" className="mt-3">
-              WhatsApp +91 95868 68538
-            </Button>
-          </div>
-        ) : null}
-
-        {showCalendlyEmbed && calendlyUrl ? (
-          <div className="mt-10 text-left">
-            <h2 className="font-display text-lg font-bold text-center sm:text-left">
-              {source === "get-estimate" ? "Prefer to talk sooner?" : "Book your session now"}
-            </h2>
-            <p className="mt-2 text-center text-sm text-muted sm:text-left">
-              {CONVERSION_EXPECTATIONS.consultationLength} · {CONVERSION_EXPECTATIONS.responseTime}
-            </p>
-            <div className="mt-6">
-              <CalendlyEmbed url={calendlyUrl} height={source === "get-estimate" ? 600 : 700} />
+    <>
+      <section className="relative overflow-hidden bg-[#030b1f] text-white">
+        <div
+          className="pointer-events-none absolute inset-0 opacity-50"
+          style={{
+            background:
+              "radial-gradient(ellipse 70% 80% at 0% 50%, rgba(37, 99, 235, 0.22), transparent 55%)",
+          }}
+          aria-hidden
+        />
+        <Container className="relative z-10 py-12 md:py-16 lg:py-20">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-300">
+            Maxwell Electrodeal
+          </p>
+          <div className="mt-5 flex items-start gap-4">
+            <span
+              className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-500 text-white"
+              aria-hidden
+            >
+              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+              </svg>
+            </span>
+            <div className="min-w-0">
+              <h1 className="font-display text-3xl font-bold tracking-tight sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]">
+                {headline}
+              </h1>
+              <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
+                {lead}
+              </p>
             </div>
           </div>
-        ) : null}
 
-        {showCalendlyFallback ? (
-          <div className="mt-10 rounded-2xl border border-border bg-surface-elevated p-6 text-left">
-            <h2 className="font-display text-lg font-bold">
-              {source === "get-estimate" ? "Prefer to talk sooner?" : "Book your session now"}
-            </h2>
-            <p className="mt-2 text-sm text-muted">
-              Our scheduling calendar is loading separately — a consultant will email you a booking link within one
-              business day. For a faster response, message us on WhatsApp.
-            </p>
-            <p className="mt-2 text-sm text-muted">
-              {CONVERSION_EXPECTATIONS.consultationLength} · {CONVERSION_EXPECTATIONS.responseTime}
-            </p>
-            <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-              <Button href={whatsappLink} external size="lg" className="w-full sm:w-auto">
-                Chat on WhatsApp
+          {!isCareers && !isNewsletter ? (
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <Button href={whatsappLink} external size="lg">
+                WhatsApp an engineer
               </Button>
-              <Button href="/book-consultation" variant="secondary" size="lg" className="w-full sm:w-auto">
-                Book consultation page
+              <Button
+                href="/pricing"
+                size="lg"
+                variant="outline"
+                className="border-white/25 text-white hover:bg-white/10"
+              >
+                See published pricing
               </Button>
             </div>
-          </div>
-        ) : null}
+          ) : null}
 
-        {magnet?.downloadPath && (
-          <Button href={magnet.downloadPath} external className="mt-8" size="lg">
-            Download {magnet.title}
-          </Button>
-        )}
+          {deliveryFailed && !isCareers && !isNewsletter ? (
+            <p className="mt-5 max-w-xl text-sm text-amber-200/95">
+              Prefer not to wait on email? WhatsApp{" "}
+              <a href={whatsappLink} className="font-semibold underline underline-offset-2">
+                {siteConfig.phone}
+              </a>{" "}
+              — we reply in business hours.
+            </p>
+          ) : null}
+        </Container>
+      </section>
 
-        <div className="mt-12 rounded-2xl border border-border bg-surface-elevated p-8 text-left">
-          <h2 className="font-display text-lg font-bold">
-            {isCareers ? "What happens next?" : isNewsletter ? "While you're here" : "What happens next?"}
-          </h2>
-          <ol className="mt-4 space-y-4">
-            {(isCareers
-              ? [
-                  { time: "Within 3–5 business days", text: "Our HR team reviews your application and portfolio" },
-                  { time: "If shortlisted", text: "We'll email or call you to schedule an interview" },
-                  { time: "Keep an eye on your inbox", text: "Check spam/junk for messages from maxwellelectrodealsystems@gmail.com" },
-                ]
-              : isNewsletter
-              ? [
-                  { time: "Now", text: "Access your resource using the download button above" },
-                  { time: "Weekly", text: "Receive curated articles on ERP, AI, and software strategy" },
-                  { time: "Anytime", text: "Reply to our emails to speak with a consultant" },
-                ]
-              : [
-              { time: "Within 24 hours", text: "A senior consultant reviews your requirements" },
-              { time: "1–2 business days", text: "We schedule a discovery or strategy call" },
-              { time: "3–5 business days", text: "You receive a detailed proposal with transparent pricing" },
-            ]).map((step, i) => (
-              <li key={step.time} className="flex gap-4">
-                <span className="v6-step-num h-8 w-8 text-sm">{i + 1}</span>
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-wider text-brand-600">{step.time}</p>
-                  <p className="mt-0.5 text-sm text-muted">{step.text}</p>
+      <section className="border-b border-slate-200 bg-white py-12 md:py-16">
+        <Container>
+          <div className="grid gap-12 lg:grid-cols-12 lg:gap-14">
+            <div className="lg:col-span-7 min-w-0">
+              <h2 className="font-display text-2xl font-bold tracking-tight text-slate-900">
+                {isCareers ? "What happens next" : isNewsletter ? "While you are here" : "What happens next"}
+              </h2>
+              <ol className="mt-8 space-y-0">
+                {nextSteps.map((step, i) => (
+                  <li
+                    key={step.time}
+                    className="relative flex gap-4 border-l border-slate-200 pb-8 pl-6 last:pb-0"
+                  >
+                    <span className="absolute -left-3 top-0 flex h-6 w-6 items-center justify-center rounded-full bg-[#030b1f] text-xs font-bold text-white">
+                      {i + 1}
+                    </span>
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wider text-indigo-600">
+                        {step.time}
+                      </p>
+                      <p className="mt-1 text-base leading-relaxed text-slate-700">{step.text}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+
+              {magnet?.downloadPath ? (
+                <div className="mt-2">
+                  <Button href={magnet.downloadPath} external size="lg">
+                    Download {magnet.title}
+                  </Button>
                 </div>
-              </li>
-            ))}
-          </ol>
-        </div>
+              ) : null}
 
-        <div className={`mt-10 grid gap-3 ${isCareers ? "sm:grid-cols-2" : "sm:grid-cols-3"}`}>
-          {isCareers ? (
-            <>
-              <Button href="/careers" variant="primary" className="w-full">
-                View open positions
-              </Button>
-              <Button href="/about" variant="secondary" className="w-full">
-                About Maxwell Electrodeal
-              </Button>
-            </>
-          ) : (
-            <>
-              <Button href={whatsappLink} external variant="primary" className="w-full">
-                WhatsApp Us
-              </Button>
-              <Button href="/case-studies" variant="secondary" className="w-full">
-                Case Studies
-              </Button>
-              <Button href="/services" variant="secondary" className="w-full">
-                Explore Services
-              </Button>
-            </>
-          )}
-        </div>
+              {showCalendlyEmbed && calendlyUrl ? (
+                <div className="mt-10 border-t border-slate-200 pt-10">
+                  <h2 className="font-display text-xl font-bold text-slate-900">
+                    {source === "get-estimate" ? "Book a call if you want to move faster" : "Book your session"}
+                  </h2>
+                  <p className="mt-2 text-sm text-slate-600">
+                    {CONVERSION_EXPECTATIONS.consultationLength} · {CONVERSION_EXPECTATIONS.responseTime}
+                  </p>
+                  <div className="mt-6">
+                    <CalendlyEmbed
+                      url={calendlyUrl}
+                      height={source === "get-estimate" ? 560 : 640}
+                    />
+                  </div>
+                </div>
+              ) : null}
 
-        {!isCareers && !isNewsletter && (
-          <div className="mt-8 rounded-2xl border border-border bg-surface-elevated p-6 text-left">
-            <h2 className="font-display text-base font-bold">While you wait — see how we've helped similar businesses:</h2>
-            <ul className="mt-4 space-y-2 text-sm">
-              <li>
-                <Link href="/case-studies/drashti-chemicals" className="text-brand-600 hover:underline font-medium">
-                  How we built a 263-page manufacturer website in 6 weeks →
+              {showCalendlyFallback ? (
+                <div className="mt-10 border-t border-slate-200 pt-10">
+                  <h2 className="font-display text-xl font-bold text-slate-900">
+                    Prefer to talk sooner?
+                  </h2>
+                  <p className="mt-2 max-w-prose text-sm leading-relaxed text-slate-600">
+                    WhatsApp is the fastest path. Or open the consultation page and we will lock a slot.
+                  </p>
+                  <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+                    <Button href={whatsappLink} external size="lg">
+                      Chat on WhatsApp
+                    </Button>
+                    <Button href="/book-consultation" variant="secondary" size="lg">
+                      Book consultation
+                    </Button>
+                  </div>
+                </div>
+              ) : null}
+
+              {!isCareers && !isNewsletter ? (
+                <div className="mt-10 border-t border-slate-200 pt-10">
+                  <h2 className="font-display text-xl font-bold text-slate-900">
+                    Useful while you wait
+                  </h2>
+                  <ul className="mt-5 space-y-3">
+                    <li>
+                      <Link
+                        href="/case-studies/drashti-chemicals"
+                        className="group inline-flex items-baseline gap-2 text-base font-medium text-indigo-700 hover:text-indigo-900"
+                      >
+                        <span>Drashti Chemicals — 263-page catalog, live proof</span>
+                        <ArrowRight className="h-3.5 w-3.5 shrink-0 opacity-60 transition group-hover:translate-x-0.5" />
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/pricing"
+                        className="group inline-flex items-baseline gap-2 text-base font-medium text-indigo-700 hover:text-indigo-900"
+                      >
+                        <span>Website pricing — ₹35,000 · ₹75,000 · AMC ₹11,000</span>
+                        <ArrowRight className="h-3.5 w-3.5 shrink-0 opacity-60 transition group-hover:translate-x-0.5" />
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/blog/indiamart-alternative-website-manufacturer"
+                        className="group inline-flex items-baseline gap-2 text-base font-medium text-indigo-700 hover:text-indigo-900"
+                      >
+                        <span>Why manufacturers leave paid directories</span>
+                        <ArrowRight className="h-3.5 w-3.5 shrink-0 opacity-60 transition group-hover:translate-x-0.5" />
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              ) : null}
+            </div>
+
+            <aside className="lg:col-span-5 min-w-0">
+              <div className="lg:sticky lg:top-24 space-y-8 border-t border-slate-200 pt-8 lg:border-t-0 lg:border-l lg:border-slate-200 lg:pt-0 lg:pl-10">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+                    Reach us directly
+                  </p>
+                  <ul className="mt-4 space-y-3 text-sm text-slate-700">
+                    <li>
+                      <a
+                        href={whatsappLink}
+                        className="font-semibold text-indigo-700 hover:underline"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        WhatsApp {siteConfig.phone}
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href={`mailto:${siteConfig.email}`}
+                        className="hover:text-indigo-700 hover:underline"
+                      >
+                        {siteConfig.email}
+                      </a>
+                    </li>
+                    <li className="text-slate-600 leading-relaxed">
+                      419, Lalita Tower, Jetalpur Road
+                      <br />
+                      Vadodara, Gujarat 390007
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="flex flex-col gap-3">
+                  {isCareers ? (
+                    <>
+                      <Button href="/careers" className="w-full sm:w-auto lg:w-full">
+                        View open positions
+                      </Button>
+                      <Button href="/about" variant="secondary" className="w-full sm:w-auto lg:w-full">
+                        About Maxwell
+                      </Button>
+                    </>
+                  ) : (
+                    <>
+                      <Button href={whatsappLink} external className="w-full sm:w-auto lg:w-full">
+                        WhatsApp us
+                      </Button>
+                      <Button
+                        href="/case-studies/drashti-chemicals"
+                        variant="secondary"
+                        className="w-full sm:w-auto lg:w-full"
+                      >
+                        See a live case study
+                      </Button>
+                      <Button
+                        href="/services/website-development"
+                        variant="secondary"
+                        className="w-full sm:w-auto lg:w-full"
+                      >
+                        Website development
+                      </Button>
+                    </>
+                  )}
+                </div>
+
+                <Link
+                  href="/"
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-slate-600 hover:text-indigo-700"
+                >
+                  Back to homepage
+                  <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
-              </li>
-              <li>
-                <Link href="/blog/indiamart-alternative-website-manufacturer" className="text-brand-600 hover:underline font-medium">
-                  Why manufacturers are moving beyond paid directories →
-                </Link>
-              </li>
-              <li>
-                <Link href="/blog/erp-software-cost-india-2026" className="text-brand-600 hover:underline font-medium">
-                  ERP software cost in India 2026 — complete guide →
-                </Link>
-              </li>
-            </ul>
+              </div>
+            </aside>
           </div>
-        )}
-
-        <Link href="/" className="mt-8 inline-flex items-center gap-1 text-sm font-semibold text-brand-600">
-          Back to homepage <ArrowRight className="h-3.5 w-3.5" />
-        </Link>
-      </Container>
-    </section>
+        </Container>
+      </section>
+    </>
   );
 }
 
 export function ThankYouPageContent() {
   return (
-    <Suspense fallback={<div className="h-96 animate-pulse" />}>
+    <Suspense
+      fallback={
+        <div className="min-h-[50vh] animate-pulse bg-slate-100" aria-hidden />
+      }
+    >
       <ThankYouInner />
     </Suspense>
   );
