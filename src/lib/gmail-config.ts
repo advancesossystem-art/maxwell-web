@@ -78,9 +78,28 @@ export function logGmailCredentialFingerprintOnce(reason = "startup"): void {
   });
 }
 
-/** Inbox that receives contact / lead form alerts. */
+function looksLikeEmail(value: string): boolean {
+  // Practical guard — rejects App Passwords / random strings pasted into inbox env by mistake.
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+/**
+ * Inbox that receives contact / lead form alerts.
+ * Never treat a non-email env value as the inbox (common misconfig: App Password in LEAD_NOTIFICATION_EMAIL).
+ */
 export function getLeadInbox(): string {
-  return process.env.LEAD_NOTIFICATION_EMAIL?.trim() || getGmailUser() || FALLBACK_INBOX;
+  const configured = process.env.LEAD_NOTIFICATION_EMAIL?.trim();
+  if (configured) {
+    if (looksLikeEmail(configured)) return configured;
+    console.error(
+      "[GMAIL-CRED] LEAD_NOTIFICATION_EMAIL is not a valid email address — ignoring. Use maxwellelectrodealsystems@gmail.com (App Password belongs in GMAIL_APP_PASSWORD only).",
+    );
+  }
+
+  const user = getGmailUser();
+  if (user && looksLikeEmail(user)) return user;
+
+  return FALLBACK_INBOX;
 }
 
 /** Gmail always sends from the authenticated account. */
