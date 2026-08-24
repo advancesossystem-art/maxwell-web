@@ -26,10 +26,10 @@ export function HomeTrust() {
           {trustHighlights.map((item) => (
             <li
               key={item.label}
-              className="rounded-full border border-[var(--v6-border)] bg-white px-4 py-2 text-sm text-[var(--v6-text-secondary)]"
+              className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-300"
             >
-              <span className="font-semibold text-[var(--v6-text)]">{item.label}</span>
-              <span className="mx-1.5 text-[var(--v6-text-muted)]">·</span>
+              <span className="font-semibold text-white">{item.label}</span>
+              <span className="mx-1.5 text-slate-500">·</span>
               {item.desc}
             </li>
           ))}
@@ -52,29 +52,29 @@ export function HomeTrust() {
 
           <div className="lg:col-span-5">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#4f46e5]">Engagement snapshot</p>
-            <div className="mt-4 rounded-2xl border border-[var(--v6-border)] bg-white p-6 shadow-[var(--v6-shadow-md)]">
+            <div className="mt-4 rounded-2xl border border-white/10 bg-[#12121c] p-6 shadow-[var(--v6-shadow-md)]">
               <dl className="space-y-4 text-sm">
                 <div>
-                  <dt className="text-[var(--v6-text-muted)]">Industry</dt>
-                  <dd className="mt-0.5 font-medium text-[var(--v6-text)]">{current.industry}</dd>
+                  <dt className="text-slate-400">Industry</dt>
+                  <dd className="mt-0.5 font-medium text-slate-100">{current.industry}</dd>
                 </div>
                 <div>
-                  <dt className="text-[var(--v6-text-muted)]">Project type</dt>
-                  <dd className="mt-0.5 font-medium text-[var(--v6-text)]">{current.projectType}</dd>
+                  <dt className="text-slate-400">Project type</dt>
+                  <dd className="mt-0.5 font-medium text-slate-100">{current.projectType}</dd>
                 </div>
                 <div>
-                  <dt className="text-[var(--v6-text-muted)]">Company size</dt>
-                  <dd className="mt-0.5 font-medium text-[var(--v6-text)]">{current.companySize}</dd>
+                  <dt className="text-slate-400">Company size</dt>
+                  <dd className="mt-0.5 font-medium text-slate-100">{current.companySize}</dd>
                 </div>
                 {current.projectValue ? (
                   <div>
-                    <dt className="text-[var(--v6-text-muted)]">Project value</dt>
-                    <dd className="mt-0.5 font-display text-lg font-bold text-[#4f46e5]">{current.projectValue}</dd>
+                    <dt className="text-slate-400">Project value</dt>
+                    <dd className="mt-0.5 font-display text-lg font-bold text-violet-400">{current.projectValue}</dd>
                   </div>
                 ) : null}
               </dl>
               {current.outcome ? (
-                <p className="mt-5 rounded-lg bg-[#ecfdf5] px-3 py-2.5 text-sm font-medium text-[#047857]">
+                <p className="mt-5 rounded-lg bg-emerald-500/10 px-3 py-2.5 text-sm font-medium text-emerald-400">
                   {current.outcome}
                 </p>
               ) : null}

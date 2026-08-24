@@ -28,7 +28,10 @@ export function TeamCard({ member, index = 0 }: { member: TeamMember; index?: nu
         <Caption className="mt-4 line-clamp-3 leading-relaxed">{member.bio}</Caption>
         <div className="mt-4 flex flex-wrap gap-1.5">
           {member.skills.map((skill) => (
-            <span key={skill} className="v6-chip">
+            <span
+              key={skill}
+              className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-xs text-slate-300"
+            >
               {skill}
             </span>
           ))}

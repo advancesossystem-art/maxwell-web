@@ -853,6 +853,29 @@ body:not(.portal-shell) .mx-hub-card:not([class*="bg-[#03"]):not([class*="bg-[#0
   box-shadow: var(--v6-shadow-sm);
 }
 
+/*
+ * Tailwind still hardcodes bg-white / slate-50 on many cards.
+ * Dark-theme --v6-text is light ink — reset tokens inside light panels so copy stays readable.
+ */
+:where(
+  .bg-white,
+  .bg-slate-50,
+  .bg-gray-50,
+  .bg-\[\#f8fafc\],
+  .bg-\[\#f1f5f9\],
+  .bg-\[\#f4f6fb\],
+  .bg-\[\#fafafa\]
+) {
+  --v6-text: #0f172a;
+  --v6-text-secondary: #334155;
+  --v6-text-muted: #64748b;
+  --muted: #475569;
+  --foreground: #0f172a;
+  --v6-border: rgba(15, 23, 42, 0.1);
+  --v6-border-strong: rgba(15, 23, 42, 0.14);
+  color: #0f172a;
+}
+
 body:not(.portal-shell)
   .mx-hub-card:not([class*="bg-[#03"]):not([class*="bg-[#0B"]):not([class*="bg-[#030"])
   :is(p, h2, h3, a, span).text-white {

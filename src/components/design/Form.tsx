@@ -2,9 +2,9 @@ import { Children, cloneElement, isValidElement } from "react";
 import { cn } from "@/lib/utils";
 
 export const inputClass = cn(
-  "tool-input w-full min-h-11 rounded-xl border border-[var(--v6-border-strong)] bg-white px-4 py-3 text-base text-[var(--v6-text)] shadow-[var(--v6-shadow-sm)] sm:text-sm",
+  "tool-input w-full min-h-11 rounded-xl border border-[var(--v6-border-strong)] bg-[var(--v6-bg-soft)] px-4 py-3 text-base text-[var(--v6-text)] shadow-[var(--v6-shadow-sm)] sm:text-sm",
   "placeholder:text-[var(--v6-text-muted)] transition-colors",
-  "hover:border-[#4f46e5]/30 focus:border-[#4f46e5] focus:outline-none focus:ring-2 focus:ring-[#4f46e5]/20",
+  "hover:border-violet-500/40 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500/20",
 );
 
 export const labelClass = "mb-2 block text-sm font-medium text-[var(--v6-text)]";

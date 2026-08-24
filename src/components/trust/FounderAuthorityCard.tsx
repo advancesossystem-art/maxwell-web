@@ -58,11 +58,11 @@ export function FounderAuthorityCard({ compact, className = "" }: FounderAuthori
               ))}
             </div>
 
-            <blockquote className="mt-6 rounded-xl border border-[var(--v6-border)] bg-white p-5">
-              <p className="text-sm italic leading-relaxed text-[var(--v6-text)] md:text-base">
+            <blockquote className="mt-6 rounded-xl border border-white/10 bg-[#12121c] p-5">
+              <p className="text-sm italic leading-relaxed text-slate-200 md:text-base">
                 &ldquo;{founderProfile.message}&rdquo;
               </p>
-              <footer className="mt-3 text-sm font-medium text-[var(--v6-text-muted)]">
+              <footer className="mt-3 text-sm font-medium text-slate-400">
                 — {founder.name}, {founder.role}
               </footer>
             </blockquote>
@@ -71,7 +71,7 @@ export function FounderAuthorityCard({ compact, className = "" }: FounderAuthori
               {founder.expertise.map((item) => (
                 <li
                   key={item}
-                  className="rounded-full border border-[var(--v6-border)] bg-white px-3 py-1 text-xs text-[var(--v6-text-secondary)]"
+                  className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300"
                 >
                   {item}
                 </li>
@@ -80,12 +80,12 @@ export function FounderAuthorityCard({ compact, className = "" }: FounderAuthori
           </div>
 
           <div className="lg:col-span-5">
-            <div className="h-full rounded-2xl border border-[var(--v6-border)] bg-white p-5 md:p-6">
-              <p className="text-xs font-semibold uppercase tracking-wider text-[#4f46e5]">How we work with you</p>
+            <div className="h-full rounded-2xl border border-white/10 bg-[#12121c] p-5 md:p-6">
+              <p className="text-xs font-semibold uppercase tracking-wider text-violet-400">How we work with you</p>
               <ul className="mt-4 space-y-3">
                 {founderProfile.principles.map((line) => (
-                  <li key={line} className="flex gap-2.5 text-sm leading-relaxed text-[var(--v6-text-secondary)]">
-                    <span className="mt-0.5 shrink-0 text-[#4f46e5]" aria-hidden>
+                  <li key={line} className="flex gap-2.5 text-sm leading-relaxed text-slate-300">
+                    <span className="mt-0.5 shrink-0 text-violet-400" aria-hidden>
                       ✓
                     </span>
                     {line}
@@ -93,19 +93,19 @@ export function FounderAuthorityCard({ compact, className = "" }: FounderAuthori
                 ))}
               </ul>
 
-              <div className="mt-6 space-y-2 border-t border-[var(--v6-border)] pt-5 text-sm text-[var(--v6-text-secondary)]">
+              <div className="mt-6 space-y-2 border-t border-white/10 pt-5 text-sm text-slate-400">
                 <p>
-                  <span className="font-medium text-[var(--v6-text)]">{founderProfile.careerExperience}</span>{" "}
+                  <span className="font-medium text-slate-100">{founderProfile.careerExperience}</span>{" "}
                   (career)
                 </p>
                 <p>
-                  <span className="font-medium text-[var(--v6-text)]">Maxwell founded {companyAuthorityFacts.foundedYear}</span>
+                  <span className="font-medium text-slate-100">Maxwell founded {companyAuthorityFacts.foundedYear}</span>
                   {" · "}
                   {companyAuthorityFacts.yearsInBusiness} years in business · Vadodara HQ
                 </p>
                 {publications > 0 ? (
                   <p>
-                    <span className="font-medium text-[var(--v6-text)]">{publications}</span> guides and insights
+                    <span className="font-medium text-slate-100">{publications}</span> guides and insights
                     published on this site
                   </p>
                 ) : null}
@@ -116,13 +116,13 @@ export function FounderAuthorityCard({ compact, className = "" }: FounderAuthori
               </div>
 
               <div className="mt-5 flex flex-wrap gap-x-4 gap-y-2 text-sm font-medium">
-                <Link href={founderAuthorityPaths.about} className="text-[#4f46e5] hover:underline">
+                <Link href={founderAuthorityPaths.about} className="text-violet-400 hover:underline">
                   About Maxwell →
                 </Link>
-                <Link href={`/authors/${founder.slug}`} className="text-[#4f46e5] hover:underline">
+                <Link href={`/authors/${founder.slug}`} className="text-violet-400 hover:underline">
                   Founder profile →
                 </Link>
-                <Link href={founderAuthorityPaths.founderInsights} className="text-[#4f46e5] hover:underline">
+                <Link href={founderAuthorityPaths.founderInsights} className="text-violet-400 hover:underline">
                   Founder insights →
                 </Link>
               </div>
