@@ -1,26 +1,26 @@
 /**
- * Maxwell Design System V6 — Light premium SaaS (reference-aligned)
+ * Maxwell Design System V6 — Dark industrial (homepage reference)
  */
 
 :root {
-  --v6-bg: #f8fafc;
-  --v6-bg-white: #ffffff;
-  --v6-bg-soft: #f1f5f9;
-  --v6-text: #0f172a;
-  --v6-text-secondary: #475569;
-  --v6-text-muted: #5c6778;
-  --v6-border: rgba(15, 23, 42, 0.08);
-  --v6-border-strong: rgba(15, 23, 42, 0.12);
-  --v6-blue: #4f46e5;
-  --v6-purple: #7c3aed;
+  --v6-bg: #07070c;
+  --v6-bg-white: #0e0e16;
+  --v6-bg-soft: #12121c;
+  --v6-text: #f1f5f9;
+  --v6-text-secondary: #94a3b8;
+  --v6-text-muted: #64748b;
+  --v6-border: rgba(148, 163, 184, 0.12);
+  --v6-border-strong: rgba(148, 163, 184, 0.2);
+  --v6-blue: #7c3aed;
+  --v6-purple: #a78bfa;
   --v6-orange: #f59e0b;
-  --v6-green: #10b981;
-  --v6-gradient: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-  --v6-gradient-text: linear-gradient(135deg, #4f46e5 0%, #7c3aed 55%, #6366f1 100%);
-  --v6-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
-  --v6-shadow-md: 0 8px 24px rgba(15, 23, 42, 0.06);
-  --v6-shadow-lg: 0 20px 50px rgba(15, 23, 42, 0.08);
-  --v6-shadow-xl: 0 32px 64px rgba(79, 70, 229, 0.12);
+  --v6-green: #22c55e;
+  --v6-gradient: linear-gradient(135deg, #6366f1 0%, #7c3aed 100%);
+  --v6-gradient-text: linear-gradient(135deg, #818cf8 0%, #a78bfa 55%, #c4b5fd 100%);
+  --v6-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --v6-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --v6-shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.45);
+  --v6-shadow-xl: 0 32px 64px rgba(124, 58, 237, 0.2);
   --v6-radius-sm: 12px;
   --v6-radius-md: 16px;
   --v6-radius-lg: 20px;
@@ -29,7 +29,7 @@
   --v6-section-y: clamp(1.5rem, 2.5vw, 2.75rem);
   --v6-container-max: calc(100vw - 2.5rem);
   --v6-gutter: clamp(1rem, 2vw, 1.75rem);
-  --v6-nav-h: 4rem;
+  --v6-nav-h: 3.5rem;
 
   /* Bridge legacy tokens → V6 (marketing site) */
   --background: var(--v6-bg);
@@ -37,18 +37,16 @@
   --muted: var(--v6-text-secondary);
   --border: var(--v6-border);
   --hairline: var(--v6-border);
-  /* Dark brand scale — used for emphasis text on light UI and dark section backgrounds */
-  --brand-900: #0f172a;
-  --brand-800: #1e1b4b;
-  /* brand-700: emphasis text on light UI (not a background surface) */
-  --brand-700: #4338ca;
+  --brand-900: #07070c;
+  --brand-800: #12121c;
+  --brand-700: #a78bfa;
   --brand-600: var(--v6-blue);
-  --brand-500: #6366f1;
-  --brand-400: #818cf8;
-  --brand-100: rgba(79, 70, 229, 0.1);
-  --brand-50: rgba(79, 70, 229, 0.06);
+  --brand-500: #8b5cf6;
+  --brand-400: #a78bfa;
+  --brand-100: rgba(124, 58, 237, 0.18);
+  --brand-50: rgba(124, 58, 237, 0.1);
   --surface: var(--v6-bg-white);
-  --surface-elevated: var(--v6-bg-white);
+  --surface-elevated: #161622;
   --accent-premium: var(--v6-orange);
   --accent-warm: var(--v6-orange);
   --accent-success: var(--v6-green);
@@ -86,7 +84,6 @@
 }
 
 .v6-gradient-text {
-  color: #4f46e5;
   background: var(--v6-gradient-text);
   -webkit-background-clip: text;
   background-clip: text;
@@ -164,8 +161,8 @@
   position: relative;
   z-index: 40;
   min-height: var(--v6-nav-h);
-  border-bottom: 1px solid transparent;
-  background: rgba(255, 255, 255, 0.94);
+  border-bottom: 1px solid var(--v6-border);
+  background: rgba(7, 7, 12, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   transition:
@@ -210,8 +207,8 @@
 }
 
 .v6-nav-link {
-  padding: 0.5rem 0.875rem;
-  font-size: 0.9375rem;
+  padding: 0.35rem 0.65rem;
+  font-size: 0.8125rem;
   font-weight: 500;
   color: var(--v6-text-secondary);
   border-radius: 10px;
@@ -220,7 +217,7 @@
 
 .v6-nav-link:hover {
   color: var(--v6-text);
-  background: rgba(15, 23, 42, 0.04);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .v6-nav-link--active {
@@ -275,9 +272,9 @@
   padding: 0.875rem 1.5rem;
   font-size: 1rem;
   color: var(--v6-text);
-  background: var(--v6-bg-white);
+  background: transparent;
   border: 1px solid var(--v6-border-strong);
-  box-shadow: var(--v6-shadow-sm);
+  box-shadow: none;
 }
 
 .v6-btn-lg {
@@ -698,7 +695,7 @@
 
 /* Footer */
 .v6-footer {
-  background: var(--v6-bg-white);
+  background: #050508;
   border-top: 1px solid var(--v6-border);
   color: var(--v6-text-secondary);
 }

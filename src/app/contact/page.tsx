@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/Button";
 import { AccentGradient } from "@/components/design/typography";
 import { ArrowRight } from "@/components/ui/Icons";
 import { createMetadata } from "@/lib/metadata";
+import { WHATSAPP_HREF_CONTACT } from "@/lib/constants";
 
 export const metadata = createMetadata({
   title: "Contact Maxwell — Free Quote in 4 Hours | Vadodara",
@@ -21,17 +22,17 @@ export default function ContactPage() {
         eyebrow="Contact"
         title={
           <>
-            Start with a <AccentGradient>clear conversation</AccentGradient>
+            Get a <AccentGradient>free quote</AccentGradient> in 4 hours
           </>
         }
-        description="Tell us what is slowing the business down. We respond within one business day with a practical next step."
+        description="Short form below — or WhatsApp us. No obligation. We only ask what we need to reply with a clear next step."
       >
-        <Button href="/book-consultation" size="lg">
-          Book Consultation
+        <Button href="#contact-form" size="lg">
+          Fill the quote form
           <ArrowRight />
         </Button>
-        <Button href="/get-estimate" size="lg" variant="outline">
-          Get Project Estimate
+        <Button href={WHATSAPP_HREF_CONTACT} size="lg" variant="outline" external>
+          WhatsApp instead
         </Button>
       </PageHero>
       <ContactPageContent />

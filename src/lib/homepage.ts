@@ -2,10 +2,11 @@
 
 export const homeHero = {
   eyebrow: "Maxwell Electrodeal · Industrial website engineering · Gujarat",
-  headlineLine1: "Website development company in Vadodara",
-  headlineLine2: "for manufacturers — catalogs from ₹35,000.",
+  headlineLine1: "Websites that bring",
+  headlineLine2: "manufacturers",
+  headlineLine3: "more buyers.",
   subhead:
-    "Product catalog + RFQ websites for Gujarat factories and GIDC plants. Buyers find you on Google, enquire on WhatsApp, and you own the lead — not IndiaMART. Website packages from ₹35,000. Monthly AMC from ₹15,000 (SEO, weekly updates, two articles).",
+    "Product catalogs, RFQ websites & corporate portals that rank on Google, convert inquiries, and grow with your SKU list. Website packages from ₹35,000. Monthly AMC from ₹15,000.",
   /** Social proof in first viewport — pairs with primary CTA */
   proofOutcome:
     "Last build: 263 pages · 154 products · 94/100 Google Speed · Live in 6 weeks",

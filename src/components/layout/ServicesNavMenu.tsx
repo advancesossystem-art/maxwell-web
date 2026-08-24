@@ -12,7 +12,7 @@ type ServicesNavMenuProps = {
 export function ServicesNavMenu({ style, onNavigate }: ServicesNavMenuProps) {
   return (
     <div
-      className="max-h-[min(80vh,32rem)] overflow-y-auto overscroll-contain rounded-2xl border border-[var(--v6-border)] bg-white p-4 shadow-xl"
+      className="max-h-[min(80vh,32rem)] overflow-y-auto overscroll-contain rounded-2xl border border-[var(--v6-border)] bg-[#12121c] p-4 shadow-xl"
       style={style}
       role="menu"
       aria-labelledby="services-menu-button"
@@ -32,7 +32,7 @@ export function ServicesNavMenu({ style, onNavigate }: ServicesNavMenuProps) {
                     onClick={onNavigate}
                     className={cn(
                       "block rounded-lg px-2 py-2 text-sm font-medium text-[var(--v6-text)]",
-                      "transition-colors hover:bg-[#f1f5f9] hover:text-[#4f46e5]",
+                      "transition-colors hover:bg-white/5 hover:text-violet-300",
                     )}
                   >
                     {link.label}
@@ -52,7 +52,7 @@ export function ServicesNavMenu({ style, onNavigate }: ServicesNavMenuProps) {
         <Link
           href="/services"
           onClick={onNavigate}
-          className="block rounded-lg px-2 py-2 text-sm font-semibold text-[#4f46e5] hover:bg-[#f1f5f9]"
+          className="block rounded-lg px-2 py-2 text-sm font-semibold text-violet-300 hover:bg-white/5"
         >
           View all services →
         </Link>

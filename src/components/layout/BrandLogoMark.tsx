@@ -3,9 +3,9 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { siteConfig } from "@/lib/constants";
 
-/** Intrinsic size of public/logo.webp — update if you replace the file */
-const LOGO_WIDTH = 1672;
-const LOGO_HEIGHT = 941;
+/** Intrinsic size of public/logo.png */
+const LOGO_WIDTH = 1774;
+const LOGO_HEIGHT = 887;
 
 type BrandLogoSize = "navMobile" | "header" | "footer" | "sm" | "md" | "lg";
 
@@ -17,30 +17,30 @@ type BrandLogoProps = {
 };
 
 const heightClass: Record<BrandLogoSize, string> = {
-  navMobile: "h-10",
-  header: "h-10 lg:h-11",
-  footer: "h-32",
-  sm: "h-[8.75rem]",
-  md: "h-40",
-  lg: "h-[12.5rem]",
+  navMobile: "h-8",
+  header: "h-9",
+  footer: "h-20",
+  sm: "h-14",
+  md: "h-16",
+  lg: "h-24",
 };
 
 const sizesAttr: Record<BrandLogoSize, string> = {
-  navMobile: "160px",
-  header: "(max-width: 640px) 148px, 185px",
-  footer: "228px",
-  sm: "250px",
-  md: "285px",
-  lg: "356px",
+  navMobile: "140px",
+  header: "168px",
+  footer: "220px",
+  sm: "200px",
+  md: "240px",
+  lg: "320px",
 };
 
 const maxWidthClass: Record<BrandLogoSize, string> = {
-  navMobile: "max-w-[160px]",
-  header: "max-w-[148px] sm:max-w-[185px]",
-  footer: "max-w-[228px]",
-  sm: "max-w-[250px]",
-  md: "max-w-[285px]",
-  lg: "max-w-[356px]",
+  navMobile: "max-w-[140px]",
+  header: "max-w-[168px]",
+  footer: "max-w-[220px]",
+  sm: "max-w-[200px]",
+  md: "max-w-[240px]",
+  lg: "max-w-[320px]",
 };
 
 /** Single source of truth for site logo sizing (nav / header / footer). */
@@ -59,7 +59,7 @@ export function BrandLogo({
       priority={priority}
       sizes={sizesAttr[size]}
       className={cn(
-        "w-auto object-contain object-left aspect-[1672/941]",
+        "w-auto object-contain object-left aspect-[1774/887]",
         heightClass[size],
         maxWidthClass[size],
         className,

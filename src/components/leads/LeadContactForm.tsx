@@ -293,6 +293,11 @@ function LeadContactFormInner({
               phoneInputClassName={ic(fieldErrors.phone)}
               compact={compact}
             />
+            {!isTwoStep && source === "contact" ? (
+              <p className="-mt-1 text-xs text-[var(--v6-text-muted)]">
+                We use WhatsApp or a quick call — enter the number without country code.
+              </p>
+            ) : null}
           </div>
           <div className={cn(!isTwoStep && "grid gap-3.5 sm:grid-cols-2")}>
             <FormField label="Service Needed" htmlFor="service" required error={fieldErrors.projectType}>
@@ -316,9 +321,14 @@ function LeadContactFormInner({
                 label="Project Budget"
                 htmlFor="budget"
                 error={fieldErrors.budget}
-                hint="Optional — helps us prioritize your request"
+                hint="Optional — pick “Not sure yet” if you prefer"
               >
-                <select id="budget" name="budget" className={ic(fieldErrors.budget)}>
+                <select
+                  id="budget"
+                  name="budget"
+                  className={ic(fieldErrors.budget)}
+                  defaultValue={source === "contact" ? "Not sure yet" : ""}
+                >
                   <option value="">Select budget range (optional)</option>
                   {budgetOptions.map((b) => (
                     <option key={b} value={b}>
@@ -379,20 +389,20 @@ function LeadContactFormInner({
             error={fieldErrors.message}
             hint={
               isTwoStep || source === "contact"
-                ? "Optional — share goals or timeline if you have them"
+                ? "Optional — even one sentence helps us prepare"
                 : undefined
             }
           >
             <textarea
               id="message"
               name="message"
-              rows={compact ? 4 : 5}
+              rows={source === "contact" ? 3 : compact ? 4 : 5}
               maxLength={5000}
               defaultValue={defaultMessage}
               className={cn(ic(fieldErrors.message), "resize-none")}
               placeholder={
                 isTwoStep || source === "contact"
-                  ? "Brief context for your request (optional)..."
+                  ? "e.g. Need a manufacturer catalog website for our Vadodara plant (optional)"
                   : "Tell us about your project goals, timeline, and requirements..."
               }
             />
@@ -447,7 +457,7 @@ function LeadContactFormInner({
             {loading ? "Sending..." : submitLabel}
           </Button>
         ) : (
-          <Button type="submit" size={compact ? "md" : "lg"} disabled={loading} className="w-full sm:w-auto">
+          <Button type="submit" size={compact ? "md" : "lg"} disabled={loading} className="w-full sm:w-auto min-w-[12rem]">
             {loading ? "Sending..." : submitLabel}
           </Button>
         )}

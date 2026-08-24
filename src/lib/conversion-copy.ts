@@ -71,8 +71,8 @@ export function contactHref(context?: ConversionContext): string {
 
 /** Standard response expectation copy for forms & CTAs */
 export const CONVERSION_EXPECTATIONS = {
-  responseTime: "We respond within one business day",
-  estimateTimeline: "Detailed estimate within 24–48 hours",
+  responseTime: "We reply within 4 business hours",
+  estimateTimeline: "Detailed estimate within 24 hours",
   consultationLength: "30-minute executive strategy session",
   privacyNote:
     "Your information is confidential. We never sell your data. NDA available on request.",
@@ -80,5 +80,5 @@ export const CONVERSION_EXPECTATIONS = {
     "You'll receive a calendar invite and preparation checklist within 24 hours.",
   successEstimate:
     "Our solutions team will review your scope and send a clear estimate. Website packages: no advance — full payment within 3 days of go-live (+18% GST).",
-  successContact: "A project lead will reach out within 24 hours to discuss next steps. Website packages: no advance payment.",
+  successContact: "A project lead will reach out within 4 hours to discuss next steps. Website packages: no advance payment.",
 } as const;
