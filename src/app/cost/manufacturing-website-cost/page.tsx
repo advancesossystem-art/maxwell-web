@@ -1,13 +1,13 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { createMetadata } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
 import { websitePricingTiers, pricingTerms } from "@/lib/pricing-data";
 
 export const metadata: Metadata = createMetadata({
-  title: "Manufacturing Website Cost India 2026 | From ₹45,000 | Maxwell Electrodeal",
+  title: "Manufacturing Website Cost | From ₹35,000",
   description:
-    "Manufacturer website pricing — Starter ₹45,000 (25–30 pages + core SEO), Professional ₹75,000 product catalogs, Growth for 200+ SKUs. Gujarat GIDC ready.",
+    "Manufacturer website pricing India — Starter ₹35,000, Professional ₹75,000 catalogs, Growth for 200+ SKUs. Gujarat GIDC ready. Compare published rates.",
   path: "/cost/manufacturing-website-cost",
   keywords: [
     "manufacturing website cost",
@@ -36,7 +36,7 @@ export default function ManufacturingWebsiteCostPage() {
         </Container>
       </section>
 
-      <section className="py-16 border-b border-slate-200">
+      <section className="py-16 border-b border-slate-200 bg-white">
         <Container>
           <h2 className="font-display text-2xl font-bold text-slate-900 mb-6">
             Tiers manufacturers choose

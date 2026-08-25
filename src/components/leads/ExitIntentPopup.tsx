@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { useEscapeKey, useFocusTrap } from "@/lib/a11y/dialog";
 import { ModalBackdrop, ModalPanel } from "@/components/motion/ModalEnter";
 import { FormField, inputClass } from "@/components/leads/LeadFormFields";
@@ -11,6 +12,9 @@ import { trackExitIntent } from "@/lib/conversion-events";
 import { composeInternationalPhone, defaultCountryIso } from "@/lib/country-phone-codes";
 import { PhoneCountryFields } from "@/components/leads/PhoneCountryFields";
 import { HoneypotField, honeypotValueFromFormData } from "@/components/leads/HoneypotField";
+import { CTA_LABELS } from "@/lib/conversion-copy";
+import { WHATSAPP_HREF_CONTACT } from "@/lib/constants";
+import { trackLeadClick } from "@/lib/conversion-events";
 
 const STORAGE_KEY = "exit-shown";
 
@@ -52,14 +56,15 @@ export function ExitIntentPopup() {
       String(fd.get("phoneCountry") || defaultCountryIso),
       String(fd.get("phoneLocal") || ""),
     );
+    const email = String(fd.get("email") || "").trim();
 
     const result = await submitLeadForm({
       source: "exit-intent",
       name: fd.get("name"),
-      email: fd.get("email"),
-      phone: phone || undefined,
+      email: email || undefined,
+      phone,
       company: fd.get("company") || undefined,
-      message: "Exit-intent popup — free software audit request.",
+      message: "Exit-intent — website quote request (Starter from ₹35,000).",
       mx_hp_field: honeypotValueFromFormData(fd),
     });
 
@@ -69,7 +74,7 @@ export function ExitIntentPopup() {
       return;
     }
 
-    trackExitIntent("convert", "free-audit");
+    trackExitIntent("convert", "website-quote");
     router.push(
       `/thank-you?source=exit-intent${result.leadTier ? `&tier=${result.leadTier}` : ""}`,
     );
@@ -100,11 +105,11 @@ export function ExitIntentPopup() {
         </button>
 
         <h3 id="exit-popup-title" className="pr-8 font-display text-xl font-bold text-[var(--v6-text)] sm:text-2xl">
-          Wait — Get a Free Software Audit
+          Wait — get a website quote
         </h3>
         <p className="mt-2 text-sm leading-relaxed text-[var(--v6-text-secondary)]">
-          We&apos;ll review your current processes and tell you exactly what custom software would save your
-          business time and money.
+          Manufacturer &amp; business websites from ₹35,000. AMC from ₹15,000/mo. Name + phone is enough —
+          we reply within 4 hours.
         </p>
 
         <form onSubmit={handleSubmit} className="mt-6 space-y-4">
@@ -112,22 +117,43 @@ export function ExitIntentPopup() {
           <FormField label="Name" htmlFor="exit-name" required>
             <input id="exit-name" name="name" required className={inputClass} autoComplete="name" />
           </FormField>
-          <FormField label="Email" htmlFor="exit-email" required>
-            <input id="exit-email" name="email" type="email" required className={inputClass} autoComplete="email" />
+          <FormField label="Email" htmlFor="exit-email" hint="Optional — phone is enough">
+            <input
+              id="exit-email"
+              name="email"
+              type="email"
+              className={inputClass}
+              autoComplete="email"
+            />
           </FormField>
           <PhoneCountryFields
             countryInputClassName={inputClass}
             phoneInputClassName={inputClass}
-            required={false}
+            required
           />
           <FormField label="Company" htmlFor="exit-company">
             <input id="exit-company" name="company" className={inputClass} autoComplete="organization" />
           </FormField>
           {error ? <p className="text-sm text-red-600">{error}</p> : null}
           <Button type="submit" size="lg" className="w-full" disabled={loading}>
-            {loading ? "Sending…" : "Get My Free Audit →"}
+            {loading ? "Sending…" : CTA_LABELS.primary}
           </Button>
-          <p className="text-center text-xs text-[var(--v6-text-muted)]">No spam. Response within 4 hours.</p>
+          <a
+            href={WHATSAPP_HREF_CONTACT}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackLeadClick("whatsapp")}
+            className="flex w-full items-center justify-center rounded-lg border border-[#25D366]/40 bg-[#25D366]/10 px-4 py-3 text-sm font-semibold text-[#128C7E] hover:bg-[#25D366]/20"
+          >
+            {CTA_LABELS.secondary}
+          </a>
+          <p className="text-center text-xs text-[var(--v6-text-muted)]">
+            Or see{" "}
+            <Link href="/pricing" className="font-semibold text-indigo-600 hover:underline" onClick={close}>
+              published pricing
+            </Link>
+            .
+          </p>
         </form>
       </ModalPanel>
     </>

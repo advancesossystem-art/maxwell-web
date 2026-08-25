@@ -84,11 +84,7 @@ const sections = [
       { label: "Makarpura GIDC", href: "/locations/india/gujarat/makarpura-gidc" },
       { label: "Nandesari GIDC", href: "/locations/india/gujarat/nandesari-gidc" },
       { label: "Savli GIDC", href: "/locations/india/gujarat/savli-gidc" },
-      { label: "Halol GIDC", href: "/locations/india/gujarat/halol-gidc" },
       { label: "Ankleshwar GIDC", href: "/locations/india/gujarat/ankleshwar-gidc" },
-      { label: "Waghodia GIDC", href: "/locations/india/gujarat/waghodia-gidc" },
-      { label: "Vatva GIDC", href: "/locations/india/gujarat/vatva-gidc" },
-      { label: "POR GIDC", href: "/locations/india/gujarat/por-gidc" },
     ],
   },
   {

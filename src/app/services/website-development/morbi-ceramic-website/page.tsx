@@ -4,9 +4,9 @@ import { createMetadata } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
 
 export const metadata: Metadata = createMetadata({
-  title: "Website for Ceramic Manufacturers in Morbi, Gujarat | Maxwell Electrodeal",
+  title: "Morbi Ceramic Manufacturer Website | From ₹35,000",
   description:
-    "Product catalog websites for tile manufacturers, vitrified tile exporters, and sanitary ware companies in Morbi. International buyer inquiry, PEI ratings, container forms. From ₹75,000.",
+    "Catalog websites for Morbi tile and ceramic exporters — PEI ratings, container forms, international RFQ. From ₹35,000. Request a quote.",
   path: "/services/website-development/morbi-ceramic-website",
   keywords: [
     "ceramic manufacturer website Morbi",

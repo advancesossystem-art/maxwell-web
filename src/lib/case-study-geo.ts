@@ -8,8 +8,8 @@ export interface CaseStudyGeoLinks {
 }
 
 const serviceHrefMap: Record<string, string> = {
-  "ERP Development": "/services/erp-development",
-  "CRM Development": "/services/crm-development",
+  "ERP Development": "/services/website-development-for-manufacturers",
+  "CRM Development": "/services/website-development",
   "Custom Software Development": "/services/custom-software-development",
   "Mobile App Development": "/services/mobile-app-development",
   "AI Solutions": "/services/ai-solutions",

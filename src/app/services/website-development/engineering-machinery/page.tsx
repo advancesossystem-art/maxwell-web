@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { createMetadata } from "@/lib/metadata";
 import { IndustryWebsitePage } from "@/components/services/IndustryWebsitePage";
 import { engineeringMachineryBlueprintSeo } from "@/lib/manufacturer-website-seo";
@@ -19,13 +19,13 @@ export default function EngineeringMachineryBlueprintPage() {
       description="Machine builders and precision engineering firms in Makarpura and Savli need model pages buyers can quote from — capacity, CAD/drawing RFQ, and machinery video — not a PDF brochure. Maxwell engineers RFQ-first Next.js catalogs so plant buyers send drawings and get WhatsApp routes without living only on paid directories."
       canonicalPath={engineeringMachineryBlueprintSeo.path}
       serviceName="Website Development for Engineering & Machinery OEMs"
-      directAnswer="Maxwell builds engineering and machinery websites for Makarpura and Savli GIDC OEMs: model catalogs, CAD/drawing RFQ upload, and optional machinery video embeds tuned for Core Web Vitals. Starter ₹45,000 · Professional ₹75,000 · Growth ₹1,50,000 — no advance; pay within 3 days of go-live + 18% GST with 100% IP ownership."
+      directAnswer="Maxwell builds engineering and machinery websites for Makarpura and Savli GIDC OEMs: model catalogs, CAD/drawing RFQ upload, and optional machinery video embeds tuned for Core Web Vitals. Starter ₹35,000 · Professional ₹75,000 · Growth ₹1,50,000 — no advance; pay within 3 days of go-live + 18% GST with 100% IP ownership."
       catalogWireframe={[
         "Model hub: grid of machines with capacity chips and application tags",
         "Model page: specs, footprint, options, short machinery video block",
         "RFQ form: quantity, destination, PDF/STEP/DWG upload",
         "After-sales / spares secondary nav (models stay primary for SEO)",
-        "Estate context: Makarpura / Savli / Por GIDC internal links",
+        "Estate context: Makarpura / Savli GIDC internal links",
       ]}
       specificFeatures={[
         "Indexable machine / model pages with capacity and application sections",
@@ -40,7 +40,7 @@ export default function EngineeringMachineryBlueprintPage() {
         { label: "Machinery & OEM spoke", href: "/services/website-development/machinery-oem" },
         { label: "Makarpura GIDC", href: "/locations/india/gujarat/makarpura-gidc" },
         { label: "Savli GIDC", href: "/locations/india/gujarat/savli-gidc" },
-        { label: "Por GIDC", href: "/locations/india/gujarat/por-gidc" },
+        { label: "Gujarat GIDC hub", href: "/locations/india/gujarat/gidc" },
         { label: "RFQ website development", href: "/services/rfq-website-development" },
       ]}
     />

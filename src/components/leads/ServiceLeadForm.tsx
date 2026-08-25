@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/Button";
 import { submitLeadForm } from "@/lib/submit-lead-form";
 import { composeInternationalPhone, defaultCountryIso } from "@/lib/country-phone-codes";
 import { Container } from "@/components/ui/Container";
+import { CTA_LABELS } from "@/lib/conversion-copy";
 
 export function ServiceLeadForm({
   serviceName,
@@ -39,13 +40,14 @@ export function ServiceLeadForm({
       String(fd.get("phoneLocal") || ""),
     );
     const message = String(fd.get("message") || "").trim();
+    const email = String(fd.get("email") || "").trim();
     const fallback = `${serviceName} quote request from the service page — please follow up.`;
-    const finalMessage = message.length >= 20 ? message : `${fallback} ${message}`.trim();
+    const finalMessage = message || fallback;
 
     const result = await submitLeadForm({
       source: leadSource,
       name: fd.get("name"),
-      email: fd.get("email"),
+      email: email || undefined,
       phone,
       projectType: serviceName,
       message: finalMessage,
@@ -78,28 +80,39 @@ export function ServiceLeadForm({
             <FormField label="Name" htmlFor={`svc-name-${serviceSlug}`} required>
               <input id={`svc-name-${serviceSlug}`} name="name" required className={inputClass} />
             </FormField>
-            <FormField label="Email" htmlFor={`svc-email-${serviceSlug}`} required>
-              <input id={`svc-email-${serviceSlug}`} name="email" type="email" required className={inputClass} />
+            <FormField
+              label="Email"
+              htmlFor={`svc-email-${serviceSlug}`}
+              hint="Optional — phone is enough for a quote"
+            >
+              <input
+                id={`svc-email-${serviceSlug}`}
+                name="email"
+                type="email"
+                className={inputClass}
+              />
             </FormField>
             <PhoneCountryFields
               countryInputClassName={inputClass}
               phoneInputClassName={inputClass}
               required
             />
-            <FormField label="Brief project description" htmlFor={`svc-msg-${serviceSlug}`} required>
+            <FormField
+              label="Brief project description"
+              htmlFor={`svc-msg-${serviceSlug}`}
+              hint="Optional"
+            >
               <textarea
                 id={`svc-msg-${serviceSlug}`}
                 name="message"
-                required
                 rows={4}
-                minLength={20}
                 className={inputClass}
                 placeholder="What problem are you solving? Timeline, users, integrations…"
               />
             </FormField>
             {error ? <p className="text-sm text-red-600">{error}</p> : null}
             <Button type="submit" size="lg" disabled={loading}>
-              {loading ? "Sending…" : submitLabel ?? "Get Free Quote →"}
+              {loading ? "Sending…" : submitLabel ?? CTA_LABELS.primary}
             </Button>
           </form>
         </div>

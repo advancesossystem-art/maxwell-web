@@ -5,9 +5,9 @@ import { IndustrialServicePage } from "@/components/services/IndustrialServicePa
 const path = "/services/website-maintenance";
 
 export const metadata: Metadata = createMetadata({
-  title: "Website AMC India | Manufacturer Maintenance from ₹15,000/mo",
+  title: "Website AMC India | From ₹15,000/mo",
   description:
-    "Monthly website AMC from ₹15,000: two product changes, weekly updates, SEO + performance report, two published articles. Vadodara manufacturer sites.",
+    "Monthly website AMC from ₹15,000: two product changes, weekly updates, SEO + performance report, two articles. Vadodara manufacturer sites. Get a quote.",
   path,
   keywords: [
     "website maintenance India",

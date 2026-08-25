@@ -33,7 +33,7 @@ const CITY_SERVICE_SEO_OVERRIDES: Record<string, { metaTitle: string; metaDescri
   "halol-ai-development": {
     metaTitle: "AI for Manufacturers in Halol — GIDC Specialists",
     metaDescription:
-      "Computer vision, predictive maintenance & process automation for Halol GIDC plants. India HQ, on-site discovery. Book a free AI feasibility call.",
+      "Computer vision, predictive maintenance & process automation for Gujarat GIDC plants. India HQ, on-site discovery. Book a free AI feasibility call.",
   },
 };
 
@@ -444,7 +444,7 @@ export function buildCostPage(
     headline: `${service.label} Cost in ${locationLabel}`,
     subheadline: `Transparent pricing ranges, cost drivers, and timeline expectations for ${locationLabel} businesses—updated for 2026.`,
     intro: isWebDevelopment
-      ? `${siteConfig.name} publishes fixed website tiers on /pricing (from ₹45,000) plus custom scope for catalogs and export buyers. ${locationLabel} projects typically need catalog depth, inquiry workflows, and SEO foundations — not brochure templates. ${cityCtxNote(market)}`
+      ? `${siteConfig.name} publishes fixed website tiers on /pricing (from ₹35,000) plus custom scope for catalogs and export buyers. ${locationLabel} projects typically need catalog depth, inquiry workflows, and SEO foundations — not brochure templates. ${cityCtxNote(market)}`
       : `${siteConfig.name} publishes indicative ${service.label.toLowerCase()} costs so CTOs and founders can budget before discovery calls. Typical ${locationLabel} projects range ${costRange} depending on modules, integrations, and team size. ${service.description}`,
     sections: [
       ...(webSections ?? defaultSections),

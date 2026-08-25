@@ -1,17 +1,24 @@
 import { ContactPageContent } from "@/components/leads/ContactPageContent";
 import { ContactPageJsonLd } from "@/components/seo/ContactPageJsonLd";
+import { MoneyInternalLinks } from "@/components/seo/MoneyInternalLinks";
 import { PageHero } from "@/components/design/PageHero";
 import { Button } from "@/components/ui/Button";
 import { AccentGradient } from "@/components/design/typography";
 import { ArrowRight } from "@/components/ui/Icons";
 import { createMetadata } from "@/lib/metadata";
-import { WHATSAPP_HREF_CONTACT } from "@/lib/constants";
+import { TrackedWhatsAppLink } from "@/components/conversion/TrackedWhatsAppLink";
 
 export const metadata = createMetadata({
-  title: "Contact Maxwell — Free Quote in 4 Hours | Vadodara",
+  title: "Contact Maxwell | Quote in 4 Hours",
   description:
-    "Talk to Maxwell Electrodeal about your website, ERP, CRM, or software project. Reply within 4 hours on WhatsApp, phone, or form. No obligation · NDA available.",
+    "Contact Maxwell for website development, SEO, or AMC in Vadodara. Reply within 4 hours on WhatsApp, phone, or form. From ₹35,000. No obligation.",
   path: "/contact",
+  keywords: [
+    "contact website development company Vadodara",
+    "Maxwell Electrodeal contact",
+    "website quote Vadodara",
+    "get estimate manufacturer website",
+  ],
 });
 
 export default function ContactPage() {
@@ -31,11 +38,12 @@ export default function ContactPage() {
           Fill the quote form
           <ArrowRight />
         </Button>
-        <Button href={WHATSAPP_HREF_CONTACT} size="lg" variant="outline" external>
+        <TrackedWhatsAppLink className="inline-flex h-12 items-center justify-center rounded-full border border-slate-300 bg-white px-7 text-sm font-semibold text-slate-900 transition hover:bg-slate-50">
           WhatsApp instead
-        </Button>
+        </TrackedWhatsAppLink>
       </PageHero>
       <ContactPageContent />
+      <MoneyInternalLinks path="/contact" />
     </>
   );
 }

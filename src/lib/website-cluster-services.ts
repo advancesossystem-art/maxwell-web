@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Website Engineering cluster spokes — redesign, maintenance, security, speed/SEO, web apps.
  * Linked from the /services/website-development pillar.
  */
@@ -515,7 +515,7 @@ export const websiteClusterServicesData: Record<WebsiteClusterServiceSlug, Servi
     icon: "code",
     gradient: "from-violet-950 via-indigo-900 to-slate-950",
     accent: "#7C3AED",
-    startingPrice: "₹45,000",
+    startingPrice: "₹35,000",
     problems: [
       {
         title: "Confused by tech sales pitches",
@@ -565,7 +565,7 @@ export const websiteClusterServicesData: Record<WebsiteClusterServiceSlug, Servi
     ],
     pricingTiers: [
       { name: "Stack advisory", range: "Included in discovery", description: "Build-vs-buy recommendation." },
-      { name: "Next.js business site", range: "₹45K+", description: "Production stack with CMS option." },
+      { name: "Next.js business site", range: "₹35K+", description: "Production stack with CMS option." },
     ],
     resourceLinks: [
       ...clusterLinks,
@@ -589,7 +589,7 @@ export const websiteClusterServicesData: Record<WebsiteClusterServiceSlug, Servi
       "SEO built into website engineering: technical foundations, topical clusters, internal linking, schema, and AI-search (GEO) structure so business pages can rank and get cited.",
     metaTitle: "Website SEO Services India | SEO Company Vadodara & Gujarat | Maxwell",
     metaDescription:
-      "Website SEO for manufacturers and businesses — technical SEO, topical clusters, GIDC locality, GEO for AI search. Vadodara team from ₹50,000. Pair with sites from ₹45,000.",
+      "Website SEO for manufacturers and businesses — technical SEO, topical clusters, GIDC locality, GEO for AI search. Vadodara team from ₹50,000. Pair with sites from ₹35,000.",
     keywords: [
       "website SEO India",
       "SEO company Vadodara",

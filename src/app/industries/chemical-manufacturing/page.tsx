@@ -9,26 +9,20 @@ import { FaqPageJsonLd } from "@/components/seo/FaqPageJsonLd";
 export const metadata: Metadata = {
   title: {
     absolute:
-      "Website & Software for Chemical Manufacturers India | Maxwell Electrodeal",
+      "Chemical Industry Websites | From ₹35,000 | Maxwell",
   },
   description:
-    "Maxwell Electrodeal builds Google-ranked websites and custom CRM/ERP software for chemical manufacturers in Gujarat and India. Product catalog sites, buyer inquiry flows, batch traceability, SDS vault. Vadodara-based. Free project assessment.",
+    "Websites for chemical manufacturers in Gujarat & India — catalogs, SDS/COA, RFQ, GIDC SEO. From ₹35,000. Vadodara team. Nandesari to Bharuch.",
   keywords: [
     "website development for chemical manufacturers",
     "chemical manufacturer website India",
-    "CRM software for chemical industry",
-    "chemical manufacturing CRM",
-    "chemical manufacturing ERP software",
     "chemical industry website design Gujarat",
     "chemical supplier website India",
     "specialty chemical manufacturer website",
     "chemical distributor website development",
-    "ERP for chemical manufacturing",
-    "batch tracking software chemical",
-    "MSDS management software India",
-    "CRM for chemical distributors Gujarat",
-    "chemical ERP software India",
     "chemical manufacturer website Vadodara",
+    "Nandesari Ankleshwar chemical website",
+    "MSDS product page chemical website",
   ],
   alternates: {
     canonical: `${siteConfig.url}/industries/chemical-manufacturing`,
@@ -39,9 +33,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Website & Software for Chemical Manufacturers India | Maxwell Electrodeal",
+    title: "Chemical Industry Websites | From ₹35,000 | Maxwell",
     description:
-      "Google-ranked product catalog websites + CRM/ERP software for chemical manufacturers in Gujarat. Batch traceability, SDS vault, buyer inquiry capture. Based in Vadodara — on-site discovery across Nandesari, Ankleshwar, Bharuch chemical belt.",
+      "Google-ranked product catalog websites for chemical manufacturers in Gujarat. SDS/COA paths, buyer RFQ. Vadodara — Nandesari, Ankleshwar, Bharuch.",
     url: `${siteConfig.url}/industries/chemical-manufacturing`,
     type: "website",
     siteName: siteConfig.name,
@@ -50,15 +44,15 @@ export const metadata: Metadata = {
         url: `${siteConfig.url}/opengraph-image`,
         width: 1200,
         height: 630,
-        alt: "Chemical Manufacturer Website & Software — Maxwell Electrodeal",
+        alt: "Chemical Manufacturer Website — Maxwell Electrodeal",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Website & Software for Chemical Manufacturers India",
+    title: "Chemical Industry Websites | From ₹35,000 | Maxwell",
     description:
-      "Catalog websites that rank on Google + batch ERP, SDS vault, CRM for chemical manufacturers in Gujarat. On-site discovery, Vadodara.",
+      "Catalog websites that rank on Google for chemical manufacturers in Gujarat. RFQ, SDS paths, Vadodara delivery.",
   },
   robots: {
     index: true,
@@ -77,64 +71,15 @@ export const metadata: Metadata = {
 };
 
 /* ------------------------------------------------------------------ */
-/*  Structured Data                                                      */
+/*  Structured Data — website offer only (no ERP/CRM software schema)  */
 /* ------------------------------------------------------------------ */
-
-const softwareApplicationSchema = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  name: "Maxwell Chemical Manufacturing ERP & CRM",
-  description:
-    "Custom cloud ERP and CRM for chemical manufacturers — batch genealogy, SDS compliance vault, hazmat inventory control, recipe version management, GHS/OSHA label generation, and Tally Prime integration.",
-  applicationCategory: "BusinessApplication",
-  applicationSubCategory: "Enterprise Resource Planning",
-  operatingSystem: "All Cloud Platforms",
-  offers: {
-    "@type": "Offer",
-    price: "250000.00",
-    priceCurrency: "INR",
-    priceSpecification: {
-      "@type": "UnitPriceSpecification",
-      price: "250000.00",
-      priceCurrency: "INR",
-      name: "Starting price — focused CRM or warehouse module",
-    },
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    ratingCount: "12",
-    bestRating: "5",
-    worstRating: "1",
-    description:
-      "Verified rating from delivered chemical industry ERP and CRM engagements",
-  },
-  featureList: [
-    "Batch and lot genealogy traceability",
-    "Safety Data Sheet (SDS) version-controlled vault",
-    "GHS/OSHA compliant label generation",
-    "Hazmat storage segregation rules enforcement",
-    "Recipe and formula version control",
-    "Certificate of Analysis (COA) automated generation",
-    "Tally Prime bi-directional integration",
-    "GST e-invoice and e-way bill automation",
-    "Chemical distributor CRM with pipeline management",
-    "Regulatory reporting dashboard (PCB, HSE)",
-  ],
-  provider: {
-    "@type": "Organization",
-    name: siteConfig.legalName,
-    url: siteConfig.url,
-  },
-  url: `${siteConfig.url}/industries/chemical-manufacturing`,
-};
 
 const localServiceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "Chemical Manufacturing ERP & CRM Development",
+  name: "Chemical Manufacturer Website Development",
   description:
-    "Custom ERP and CRM software for chemical manufacturers in India — batch traceability, SDS compliance, hazmat inventory, recipe management, and Tally Prime integration. Delivered by Maxwell Electrodeal from Vadodara, Gujarat.",
+    "Product catalog websites for chemical manufacturers in Gujarat and India — CAS/grade pages, SDS paths, RFQ forms, and Google SEO. Delivered by Maxwell Electrodeal from Vadodara.",
   provider: {
     "@type": "Organization",
     "@id": `${siteConfig.url}/#organization`,
@@ -147,42 +92,42 @@ const localServiceSchema = {
     { "@type": "State", name: "Gujarat" },
     { "@type": "Country", name: "India" },
   ],
-  serviceType: "Chemical Industry Software Development",
+  serviceType: "Website Development",
   offers: {
     "@type": "Offer",
-    price: "250000",
+    price: "35000",
     priceCurrency: "INR",
-    description: "Starting price for focused chemical CRM or ERP module",
+    description: "Starter manufacturer website from ₹35,000; Professional chemical catalogs from ₹75,000",
   },
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "Chemical Manufacturing Software Solutions",
+    name: "Chemical manufacturer website packages",
     itemListElement: [
       {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Chemical Batch Manufacturing ERP",
+          name: "Chemical product catalog website",
           description:
-            "End-to-end ERP for process manufacturing — batch genealogy, reactor scheduling, in-process QC, Tally integration.",
+            "Indexed product pages with CAS, grades, packing, and WhatsApp/RFQ enquiry paths.",
         },
       },
       {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Chemical Distributor CRM",
+          name: "SDS / COA request paths",
           description:
-            "Lead-to-order CRM for chemical manufacturers and distributors — product catalogs with hazard flags, quote versioning, sample requests.",
+            "Document request flows linked to SKUs — procurement-ready without a PDF brochure site.",
         },
       },
       {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "SDS & Compliance Document Hub",
+          name: "GIDC chemical corridor SEO",
           description:
-            "Version-controlled SDS vault linked to SKUs and batches with GHS/OSHA label generation and automatic COA generation.",
+            "On-page SEO for Nandesari, Ankleshwar, Bharuch, and Vatva buyer searches.",
         },
       },
     ],
@@ -197,27 +142,27 @@ const chemicalFaqs = [
   {
     question: "Does a chemical manufacturer need a website to get B2B buyers?",
     answer:
-      "Yes. Procurement managers at FMCG companies, pharma manufacturers, and industrial processors search Google for suppliers by product name — 'specialty defoamer supplier India', 'chlor-alkali chemical manufacturer Gujarat'. A chemical manufacturer without a properly indexed website loses these high-intent buyers to competitors and paid directories. Maxwell Electrodeal builds product catalog websites for chemical manufacturers with category pages optimized for Google, spec-sheet downloads, and direct inquiry forms — so buyers find you before they find IndiaMart.",
+      "Yes. Procurement managers search Google for suppliers by product name — specialty grades, CAS, and Gujarat corridors. A chemical manufacturer without an indexed catalog loses buyers to directories. Maxwell builds product catalog websites with category SEO, SDS/COA request paths, and direct inquiry forms from ₹35,000.",
   },
   {
     question: "What should a chemical manufacturer's website include?",
     answer:
-      "A chemical manufacturer's website needs: individual product category pages with CAS numbers, purity grades, and packaging options; downloadable Safety Data Sheets (SDS/MSDS); Certificate of Analysis (COA) request forms; hazard classification labels; export inquiry forms with UN number fields; GST quote generation; and SEO-optimized content targeting the search terms your buyers use. Maxwell Electrodeal has delivered a 263-page chemical supplier catalog for Drashti Chemicals, Nandesari GIDC, with full product SEO.",
+      "Individual product pages with CAS numbers, purity grades, and packing; SDS/MSDS request paths; COA request forms; export RFQ fields; and SEO for buyer search terms. Live proof: Drashti Chemicals, Nandesari GIDC — 263-page chemical supplier catalog.",
   },
   {
     question: "What is the cost of a website for a chemical manufacturer in India?",
     answer:
-      "A professional chemical manufacturer catalog website in India ranges from ₹75,000 (starter, up to 50 products, category pages, inquiry forms, GST quote, SEO setup) to ₹3,00,000+ for large catalogs with 500+ SKUs, SDS vault integration, and export-targeted content. Maxwell Electrodeal is based in Vadodara and serves chemical manufacturers across Gujarat's Nandesari, Ankleshwar, Bharuch-Ankleshwar belt, Vatva, and Vapi corridors.",
-  },
-  {
-    question: "What CRM software does Maxwell build for chemical distributors?",
-    answer:
-      "Maxwell Electrodeal builds custom CRM for chemical distributors and manufacturers — lead-to-order pipeline with product hazard flags, quote versioning, sample request tracking, and SDS dispatch linking. Key features: route-based sales rep management, chemical-specific pricing tiers, automated COA and SDS email at dispatch, GST invoice integration with Tally Prime. Starting from ₹2,50,000 for a focused CRM module.",
+      "Starter business sites from ₹35,000. Professional chemical catalogs from ₹75,000 (typical for 50+ products with RFQ). Growth catalogs for large SKU counts from ₹1,50,000. Monthly AMC from ₹15,000. Maxwell serves Nandesari, Ankleshwar, Bharuch, and Gujarat chemical corridors from Vadodara.",
   },
   {
     question: "Do you serve chemical manufacturers in Ankleshwar and Bharuch?",
     answer:
-      "Yes. Maxwell Electrodeal conducts on-site discovery workshops at the Bharuch-Ankleshwar chemical corridor — one of India's largest chemical manufacturing clusters. We have built systems for chemical manufacturers in Nandesari GIDC (Vadodara), Ankleshwar GIDC (Bharuch), and Vatva GIDC (Ahmedabad). We offer a free one-day discovery workshop for chemical manufacturers planning a website or software project.",
+      "Yes. Maxwell Electrodeal delivers manufacturer websites across the Bharuch–Ankleshwar chemical corridor plus Nandesari GIDC (Vadodara). Plant visits when the catalog needs shop-floor accuracy. Request a quote for a scoped website package.",
+  },
+  {
+    question: "Is this page about ERP or CRM software for chemical plants?",
+    answer:
+      "No. This page is for chemical manufacturer websites — catalogs, SEO, and enquiry paths. Maxwell’s primary offer is website development, SEO, and AMC. We do not sell SAP or generic ERP packages here.",
   },
 ];
 
@@ -230,8 +175,8 @@ function ChemicalWebsiteSection() {
     { name: "Nandesari GIDC, Vadodara", href: "/locations/india/gujarat/nandesari-gidc", note: "Specialty chemicals, intermediates, API" },
     { name: "Ankleshwar GIDC, Bharuch", href: "/locations/india/gujarat/ankleshwar-gidc", note: "Chlor-alkali, dyes, surfactants" },
     { name: "Bharuch–Ankleshwar belt", href: "/services/website-development/bharuch-ankleshwar-chemical", note: "Largest chemical corridor Gujarat" },
-    { name: "Vatva GIDC, Ahmedabad", href: "/locations/india/gujarat/vatva-gidc", note: "Dyes, pigments, agro-chemicals" },
     { name: "Savli GIDC, Vadodara", href: "/locations/india/gujarat/savli-gidc", note: "Process chemicals, industrial gases" },
+    { name: "Gujarat GIDC hub", href: "/locations/india/gujarat/gidc", note: "All focus estates we publish for" },
   ];
 
   return (
@@ -322,25 +267,16 @@ export default function ChemicalManufacturingPage() {
 
   return (
     <>
-      {/* SoftwareApplication schema — targets "CRM software for chemical industry" queries */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareApplicationSchema) }}
-      />
-      {/* Service schema with local provider and offer catalog */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localServiceSchema) }}
       />
-      {/* FAQ schema for AEO / AI search answers */}
       <FaqPageJsonLd
         faqs={chemicalFaqs}
         id={`${siteConfig.url}/industries/chemical-manufacturing#faq`}
-        name="Chemical Manufacturer Website & Software — Frequently Asked Questions"
+        name="Chemical Manufacturer Website — Frequently Asked Questions"
       />
-      {/* Primary landing page content */}
       <IndustryLandingPage industry={industry} />
-      {/* Website development for chemical manufacturers section */}
       <ChemicalWebsiteSection />
     </>
   );

@@ -69,7 +69,7 @@ export function buildLeadEmailText(payload: LeadPayload): string {
     "",
     careersPosition && `Position: ${careersPosition}`,
     `Name: ${payload.name}`,
-    `Email: ${payload.email}`,
+    payload.email ? `Email: ${payload.email}` : "Email: (not provided)",
     payload.phone && `Phone: ${payload.phone}`,
     payload.company && `Company: ${payload.company}`,
     payload.projectType && `Service / project: ${payload.projectType}`,
@@ -101,7 +101,7 @@ export function buildLeadEmailHtml(payload: LeadPayload): string {
     row("Source", sourceLabel(payload.source)),
     row("Position applied for", careersPosition),
     row("Name", payload.name),
-    row("Email", payload.email),
+    row("Email", payload.email || "(not provided)"),
     row("Phone", payload.phone),
     row("Company", payload.company),
     row("Service / project", payload.projectType),
@@ -125,7 +125,13 @@ export function buildLeadEmailHtml(payload: LeadPayload): string {
 <tr><td style="padding:20px 24px;background:${headerColor};color:#fff;font-size:18px;font-weight:700">${headerTitle}</td></tr>
 <tr><td style="padding:8px 8px 16px"><table width="100%" cellpadding="0" cellspacing="0">${rows}</table></td></tr>
 </table>
-<p style="max-width:560px;margin:16px auto 0;font-size:12px;color:#64748b">Reply to this email to reach the prospect at ${escapeHtml(payload.email)}.</p>
+${
+    payload.email
+      ? `<p style="max-width:560px;margin:16px auto 0;font-size:12px;color:#64748b">Reply to this email to reach the prospect at ${escapeHtml(payload.email)}.</p>`
+      : payload.phone
+        ? `<p style="max-width:560px;margin:16px auto 0;font-size:12px;color:#64748b">No email provided — call or WhatsApp the prospect at ${escapeHtml(payload.phone)}.</p>`
+        : ""
+  }
 </body></html>`;
 }
 
@@ -137,6 +143,7 @@ function resolveFromAddress(): string {
 }
 
 function leadReplyTo(payload: LeadPayload, inbox: string): string | undefined {
+  if (!payload.email) return undefined;
   const prospect = sanitizeEmailHeader(payload.email);
   if (!prospect || prospect.toLowerCase() === inbox.trim().toLowerCase()) {
     return undefined;
@@ -297,21 +304,23 @@ export function buildLeadAutoReplyText(payload: LeadPayload): string {
 
 export async function sendLeadAutoReplyEmail(payload: LeadPayload): Promise<void> {
   if (payload.source === "newsletter" || payload.source === "careers") return;
+  if (!payload.email?.trim()) return;
 
+  const to = payload.email.trim();
   const subject = buildLeadAutoReplySubject(payload);
   const text = buildLeadAutoReplyText(payload);
   const html = buildLeadAutoReplyHtml(payload);
 
   if (!isGoogleScriptConfigured() && !isEmailDeliveryConfigured()) {
     if (process.env.NODE_ENV !== "production") {
-      console.log("[Lead Auto-Reply preview]", { to: payload.email, subject });
+      console.log("[Lead Auto-Reply preview]", { to, subject });
     }
     return;
   }
 
   if (isGoogleScriptConfigured()) {
     await sendViaGoogleAppsScript({
-      to: payload.email,
+      to,
       subject,
       html,
       text,
@@ -320,7 +329,7 @@ export async function sendLeadAutoReplyEmail(payload: LeadPayload): Promise<void
   }
 
   await sendOutboundEmail({
-    to: payload.email,
+    to,
     from: resolveFromAddress(),
     replyTo: getLeadInbox(),
     subject,

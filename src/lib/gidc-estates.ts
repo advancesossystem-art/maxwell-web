@@ -29,9 +29,9 @@ export const gidcEstates: GidcEstate[] = [
     cityRegion: "Vadodara",
     path: "/locations/india/gujarat/makarpura-gidc",
     h1: "Manufacturer Websites for Makarpura GIDC, Vadodara",
-    metaTitle: "Makarpura GIDC Website Development Vadodara | From ₹45,000 | Maxwell",
+    metaTitle: "Makarpura GIDC Websites | From ₹35,000",
     metaDescription:
-      "Product catalog & corporate websites for Makarpura GIDC manufacturers in Vadodara. Owned enquiry channel, core SEO, on-site discovery. From ₹45,000.",
+      "Website development for Makarpura GIDC manufacturers — catalogs, RFQ, SEO. From ₹35,000. Vadodara HQ. Not a company list. Request a quote.",
     keywords: [
       "Makarpura GIDC website",
       "website development Makarpura GIDC",
@@ -53,7 +53,7 @@ export const gidcEstates: GidcEstate[] = [
       "Core on-page SEO for estate + product terms",
       "Mobile-fast Next.js delivery targeting 90+ PageSpeed",
     ],
-    nearbyNote: "On-site discovery from our Jetalpur Road HQ — typically same-day visits for Makarpura plots.",
+    nearbyNote: "On-site discovery from our Vadodara office — typically same-day visits for Makarpura plots.",
   },
   {
     slug: "savli-gidc",
@@ -62,9 +62,9 @@ export const gidcEstates: GidcEstate[] = [
     cityRegion: "Vadodara / Savli",
     path: "/locations/india/gujarat/savli-gidc",
     h1: "Manufacturer Websites for Savli GIDC",
-    metaTitle: "Savli GIDC Website Development | Manufacturer Sites from ₹45,000",
+    metaTitle: "Savli GIDC Websites | From ₹35,000",
     metaDescription:
-      "Websites for Savli GIDC manufacturers — catalogs, enquiry forms, and SEO that send buyers to WhatsApp. Vadodara team, from ₹45,000.",
+      "Manufacturer website development for Savli GIDC — catalogs, WhatsApp RFQ, SEO. From ₹35,000. Not a directory. Request a quote.",
     keywords: [
       "Savli GIDC website development",
       "manufacturer website Savli",
@@ -95,9 +95,9 @@ export const gidcEstates: GidcEstate[] = [
     cityRegion: "Vadodara",
     path: "/locations/india/gujarat/nandesari-gidc",
     h1: "Manufacturer Websites for Nandesari GIDC, Vadodara",
-    metaTitle: "Nandesari GIDC Website Development Vadodara | Chemical & Industrial",
+    metaTitle: "Nandesari GIDC Websites | Chemical Catalogs",
     metaDescription:
-      "Catalog websites for Nandesari GIDC manufacturers — chemical, industrial, and export-ready pages with owned enquiries. From ₹45,000 · Vadodara HQ.",
+      "Website development for Nandesari GIDC chemical manufacturers — catalogs, SDS paths, RFQ. From ₹35,000. Not a company list. Get a quote.",
     keywords: [
       "Nandesari GIDC website",
       "chemical manufacturer website Nandesari",
@@ -122,48 +122,15 @@ export const gidcEstates: GidcEstate[] = [
     nearbyNote: "Proven chemical-corridor delivery from Vadodara — see manufacturer hub and chemical website service.",
   },
   {
-    slug: "halol-gidc",
-    name: "Halol GIDC",
-    shortName: "Halol",
-    cityRegion: "Halol / Panchmahal",
-    path: "/locations/india/gujarat/halol-gidc",
-    h1: "Manufacturer Websites for Halol GIDC",
-    metaTitle: "Halol GIDC Website Development | Manufacturer Catalogs from ₹45,000",
-    metaDescription:
-      "Websites for Halol GIDC manufacturers — engineering, auto, and industrial catalogs with owned Google enquiries. On-site discovery from Vadodara.",
-    keywords: [
-      "Halol GIDC website development",
-      "manufacturer website Halol",
-      "Halol industrial website",
-      "website company Halol GIDC Gujarat",
-    ],
-    eyebrow: "Gujarat · Halol GIDC",
-    intro:
-      "Halol GIDC concentrates engineering, auto-ancillary, and industrial manufacturers east of Vadodara. Local search still under-serves plant-level brands. We build catalog sites that capture RFQs before buyers bounce to paid listings.",
-    industries: ["Auto ancillary", "Engineering", "Industrial manufacturing", "Ancillary services"],
-    buyerSearches: [
-      "manufacturer Halol GIDC",
-      "auto parts Halol Gujarat",
-      "engineering company Halol GIDC",
-    ],
-    siteIncludes: [
-      "Capability and product line pages",
-      "RFQ / WhatsApp conversion paths",
-      "Core SEO + local GIDC entity signals",
-      "Optional dealer-login roadmap after launch",
-    ],
-    nearbyNote: "Vadodara HQ drives on-site workshops across Halol GIDC during scoping.",
-  },
-  {
     slug: "ankleshwar-gidc",
     name: "Ankleshwar GIDC",
     shortName: "Ankleshwar",
     cityRegion: "Bharuch / Ankleshwar",
     path: "/locations/india/gujarat/ankleshwar-gidc",
     h1: "Manufacturer Websites for Ankleshwar GIDC",
-    metaTitle: "Ankleshwar GIDC Website Development | Chemical Corridor from ₹45,000",
+    metaTitle: "Ankleshwar GIDC Websites | From ₹35,000",
     metaDescription:
-      "Product catalog websites for Ankleshwar GIDC chemical and industrial manufacturers. Owned enquiries, SEO, Vadodara team ~45 min away.",
+      "Website development for Ankleshwar GIDC chemical plants — catalogs and RFQ. From ₹35,000. Not a company list. Request a quote.",
     keywords: [
       "Ankleshwar GIDC website",
       "chemical manufacturer website Ankleshwar",
@@ -186,105 +153,6 @@ export const gidcEstates: GidcEstate[] = [
       "Links into Bharuch–Ankleshwar chemical corridor pages",
     ],
     nearbyNote: "Vadodara-based delivery with corridor experience — paired with our Bharuch–Ankleshwar chemical website page.",
-  },
-  {
-    slug: "vatva-gidc",
-    name: "Vatva GIDC",
-    shortName: "Vatva",
-    cityRegion: "Ahmedabad",
-    path: "/locations/india/gujarat/vatva-gidc",
-    h1: "Manufacturer Websites for Vatva GIDC, Ahmedabad",
-    metaTitle: "Vatva GIDC Website Development Ahmedabad | From ₹45,000 | Maxwell",
-    metaDescription:
-      "Catalog and corporate websites for Vatva GIDC manufacturers in Ahmedabad. Owned enquiry channel, core SEO, Gujarat delivery from Vadodara HQ.",
-    keywords: [
-      "Vatva GIDC website development",
-      "manufacturer website Vatva Ahmedabad",
-      "Vatva industrial estate website",
-      "Ahmedabad GIDC web development",
-    ],
-    eyebrow: "Ahmedabad · Vatva GIDC",
-    intro:
-      "Vatva GIDC is one of Ahmedabad’s major industrial estates — chemicals, engineering, and MSME manufacturers selling pan-India. A Gujarat team that already ships manufacturer catalogs can put your plant on Google without another year of directory rent.",
-    industries: ["Chemicals & dyes", "Engineering MSMEs", "Industrial products", "B2B distributors on estate"],
-    buyerSearches: [
-      "manufacturer Vatva GIDC",
-      "chemical company Vatva Ahmedabad",
-      "industrial supplier Vatva GIDC",
-    ],
-    siteIncludes: [
-      "Multi-category product catalogs",
-      "Enquiry routing to sales owners",
-      "SEO for Ahmedabad + Vatva + product terms",
-      "Clear upgrade path to dealer portals",
-    ],
-    nearbyNote: "Statewide Gujarat delivery from Vadodara — discovery calls + scheduled Vatva visits.",
-  },
-  {
-    slug: "waghodia-gidc",
-    name: "Waghodia GIDC",
-    shortName: "Waghodia",
-    cityRegion: "Vadodara / Waghodia",
-    path: "/locations/india/gujarat/waghodia-gidc",
-    h1: "Manufacturer Websites for Waghodia GIDC, Vadodara",
-    metaTitle: "Waghodia GIDC Website Development Vadodara | Industrial Sites from ₹45,000",
-    metaDescription:
-      "Catalog & industrial websites for Waghodia GIDC manufacturers near Vadodara. RFQ paths, core SEO, owned enquiries. From ₹45,000 · on-site discovery.",
-    keywords: [
-      "Waghodia GIDC website development",
-      "manufacturer website Waghodia",
-      "Waghodia industrial estate website",
-      "industrial web design Waghodia Vadodara",
-    ],
-    eyebrow: "Vadodara corridor · Waghodia GIDC",
-    intro:
-      "Waghodia GIDC anchors engineering, polymers, and mid-size industrial units east of Vadodara. Local search for plant-level suppliers is rising; most plots still answer with a directory listing, not an owned product catalog with RFQ fields.",
-    industries: ["Engineering & fabrication", "Polymers & plastics", "Industrial supplies", "Process equipment"],
-    buyerSearches: [
-      "manufacturer Waghodia GIDC",
-      "engineering company Waghodia Vadodara",
-      "industrial supplier Waghodia GIDC",
-    ],
-    siteIncludes: [
-      "Capability and product page structure",
-      "RFQ / WhatsApp conversion paths",
-      "Core SEO for estate + product long-tails",
-      "Internal links into Vadodara and Gujarat manufacturer hubs",
-    ],
-    nearbyNote: "Vadodara HQ — Waghodia plant visits scheduled in the discovery week.",
-  },
-  {
-    slug: "por-gidc",
-    name: "Por GIDC",
-    shortName: "Por",
-    cityRegion: "Vadodara / Por",
-    path: "/locations/india/gujarat/por-gidc",
-    h1: "Manufacturer Websites for Por GIDC, Vadodara",
-    metaTitle: "Por GIDC Website Development Vadodara | Industrial Sites from ₹45,000",
-    metaDescription:
-      "Catalog & industrial websites for Por GIDC manufacturers near Vadodara. RFQ paths, core SEO, owned enquiries. From ₹45,000 · on-site discovery from Jetalpur Road HQ.",
-    keywords: [
-      "Por GIDC website development",
-      "manufacturer website Por GIDC",
-      "Por industrial estate website Vadodara",
-      "industrial web design Por GIDC",
-    ],
-    eyebrow: "Vadodara corridor · Por GIDC",
-    intro:
-      "Por GIDC sits in the Vadodara manufacturing belt with engineering, plastics, and industrial supply units selling B2B nationally. Local product searches still lean on directory listings; an owned catalog with RFQ fields captures those plant-level enquiries permanently.",
-    industries: ["Engineering & fabrication", "Plastics & polymers", "Industrial supplies", "Auto ancillary (select units)"],
-    buyerSearches: [
-      "manufacturer Por GIDC",
-      "engineering company Por Vadodara",
-      "industrial supplier Por GIDC Gujarat",
-    ],
-    siteIncludes: [
-      "Capability and product line pages with specs",
-      "RFQ / WhatsApp conversion paths you own",
-      "Core SEO for Por estate + product long-tails",
-      "Links into Vadodara manufacturer hub and industrial silos",
-    ],
-    nearbyNote: "Vadodara HQ on Jetalpur Road — Por plant visits scheduled during discovery week.",
   },
 ];
 

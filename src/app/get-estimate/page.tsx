@@ -3,16 +3,24 @@ import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { QuickEstimateForm } from "@/components/leads/QuickEstimateForm";
 import { ProjectEstimatorWizard } from "@/components/leads/ProjectEstimatorWizard";
+import { MoneyInternalLinks } from "@/components/seo/MoneyInternalLinks";
+import { TrackedWhatsAppLink } from "@/components/conversion/TrackedWhatsAppLink";
 import { createMetadata } from "@/lib/metadata";
 import { companyMetricDisplay } from "@/lib/company-metrics";
 import { IconWhatsApp } from "@/components/ui/Icons";
 import { whatsappHref } from "@/lib/constants";
 
 export const metadata = createMetadata({
-  title: "Get Free Project Estimate | Website Quote | Maxwell Electrodeal",
+  title: "Get Free Website Estimate | Quote in 24h",
   description:
-    "Free website project estimate in under 1 minute. Short form, no obligation. Estimate on WhatsApp and email within 24 hours. Vadodara GST-registered team.",
+    "Free website project estimate in under 1 minute. No obligation. Quote on WhatsApp and email within 24 hours. From ₹35,000. Vadodara GST team.",
   path: "/get-estimate",
+  keywords: [
+    "website quote Vadodara",
+    "manufacturer website estimate",
+    "website development cost estimate India",
+    "free website quote Vadodara",
+  ],
 });
 
 const WHY_MAXWELL = [
@@ -21,13 +29,6 @@ const WHY_MAXWELL = [
   "100% code ownership — no lock-in",
   `${companyMetricDisplay.projectsCompleted} projects across India & globally`,
   "Published pricing at /pricing — no quote games",
-];
-
-const TRUST_AVATARS = [
-  { initials: "DC", color: "bg-indigo-500" },
-  { initials: "RK", color: "bg-sky-500" },
-  { initials: "AP", color: "bg-violet-500" },
-  { initials: "SM", color: "bg-emerald-500" },
 ];
 
 const whatsappLink = whatsappHref(
@@ -73,7 +74,7 @@ export default function GetEstimatePage() {
             <div className="flex justify-center md:col-span-5 lg:col-span-4 md:justify-end">
               <div className="relative w-full max-w-[160px] sm:max-w-[180px] md:max-w-[200px] lg:max-w-[220px]">
                 <Image
-                  src="/estimate-hero-clipboard.png"
+                  src="/estimate-hero-clipboard.webp"
                   alt=""
                   width={440}
                   height={440}
@@ -100,7 +101,7 @@ export default function GetEstimatePage() {
                       Quick estimate — under 1 minute
                     </h2>
                     <p className="mt-0.5 text-sm text-slate-400">
-                      Name, email, phone, and service. Budget and details are optional.
+                      Name + Phone required (email optional). Pick a service — budget and details are optional.
                     </p>
                   </div>
                 </div>
@@ -142,33 +143,20 @@ export default function GetEstimatePage() {
                   <h3 className="font-display text-sm font-bold text-white">Prefer to talk?</h3>
                 </div>
                 <p className="mt-1.5 text-sm text-slate-400">Chat with us instantly on WhatsApp.</p>
-                <a
+                <TrackedWhatsAppLink
                   href={whatsappLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 py-3 text-sm font-semibold text-white shadow-md shadow-emerald-500/25 transition hover:bg-[#1ebe57]"
                 >
                   <IconWhatsApp className="h-4 w-4" />
                   WhatsApp us now
-                </a>
+                </TrackedWhatsAppLink>
               </div>
 
-              <div className="flex items-center gap-3 px-1">
-                <div className="flex -space-x-2">
-                  {TRUST_AVATARS.map((a) => (
-                    <span
-                      key={a.initials}
-                      className={`flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#0a0a12] text-[9px] font-bold text-white ${a.color}`}
-                    >
-                      {a.initials}
-                    </span>
-                  ))}
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#0a0a12] bg-violet-600 text-[9px] font-bold text-white">
-                    {companyMetricDisplay.projectsCompleted}
-                  </span>
-                </div>
-                <p className="text-xs leading-snug text-slate-400 sm:text-sm">
-                  Trusted by {companyMetricDisplay.projectsCompleted} businesses across India &amp; globally
+              <div className="rounded-2xl border border-white/10 bg-[#12121c] px-4 py-3">
+                <p className="text-xs leading-snug text-slate-300 sm:text-sm">
+                  Live proof:{" "}
+                  <span className="font-semibold text-white">Drashti Chemicals</span> — 263-page
+                  manufacturer catalog, 94/100 mobile PageSpeed, Nandesari GIDC.
                 </p>
               </div>
             </aside>
@@ -195,6 +183,7 @@ export default function GetEstimatePage() {
           </details>
         </Container>
       </section>
+      <MoneyInternalLinks path="/get-estimate" />
     </>
   );
 }

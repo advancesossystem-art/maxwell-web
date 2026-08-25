@@ -1,10 +1,27 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { siteConfig } from "@/lib/constants";
+import { FaqPageJsonLd } from "@/components/seo/FaqPageJsonLd";
+import { siteConfig, WHATSAPP_HREF_CONTACT } from "@/lib/constants";
+import { CTA_LABELS, CONVERSION_EXPECTATIONS } from "@/lib/conversion-copy";
 import { gidcEstates, gidcHubPath, type GidcEstate } from "@/lib/gidc-estates";
 
 export function GidcEstatePage({ estate }: { estate: GidcEstate }) {
   const otherEstates = gidcEstates.filter((e) => e.slug !== estate.slug);
+
+  const faqs = [
+    {
+      question: `Is this a ${estate.shortName} GIDC company list or directory?`,
+      answer: `No. This page is for website development for manufacturers in ${estate.name} — product catalogs, RFQ forms, and Google SEO. We do not publish phone directories or company lists. If you run a plant here and need an owned enquiry website, start from ₹35,000.`,
+    },
+    {
+      question: `How much does a manufacturer website cost for ${estate.shortName} GIDC?`,
+      answer: `Starter websites from ₹35,000 (25–30 pages + core SEO). Professional catalogs often from ₹75,000. Monthly AMC from ₹15,000. No advance — pay within 3 days of go-live + 18% GST. Delivery from Maxwell Electrodeal, Vadodara.`,
+    },
+    {
+      question: `Why build a website instead of renewing a B2B directory listing?`,
+      answer: `Directory listings rent a slot next to competitors. An owned ${estate.shortName} manufacturer website ranks for your product and estate searches, then sends the enquiry to your WhatsApp or inbox permanently.`,
+    },
+  ] as const;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -14,14 +31,12 @@ export function GidcEstatePage({ estate }: { estate: GidcEstate }) {
       "@type": "ProfessionalService",
       name: siteConfig.legalName,
       url: siteConfig.url,
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "419, Lalita Tower, Jetalpur Road",
-        addressLocality: "Vadodara",
-        addressRegion: "Gujarat",
-        postalCode: "390007",
-        addressCountry: "IN",
-      },
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Vadodara",
+          addressRegion: "Gujarat",
+          addressCountry: "IN",
+        },
       telephone: siteConfig.phone,
     },
     areaServed: {
@@ -33,7 +48,7 @@ export function GidcEstatePage({ estate }: { estate: GidcEstate }) {
     offers: {
       "@type": "Offer",
       priceCurrency: "INR",
-      price: "45000",
+      price: "35000",
       description: "Starter manufacturer / business website — 25–30 pages + core SEO",
     },
   };
@@ -43,6 +58,11 @@ export function GidcEstatePage({ estate }: { estate: GidcEstate }) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <FaqPageJsonLd
+        faqs={faqs}
+        id={`${siteConfig.url}${estate.path}#faq`}
+        name={`${estate.name} website development FAQs`}
       />
 
       <section className="bg-[#030b1f] text-white py-20 md:py-28">
@@ -66,15 +86,24 @@ export function GidcEstatePage({ estate }: { estate: GidcEstate }) {
           </h1>
           <p className="mt-6 text-lg text-slate-300 max-w-2xl">{estate.intro}</p>
           <p className="mt-4 text-base text-indigo-200">
-            Starter from ₹45,000 · 25–30 pages + core SEO · Professional catalogs often from ₹75,000
+            Not a company directory — website development for plants in {estate.shortName}. Starter from
+            ₹35,000 · Professional catalogs from ₹75,000
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4">
             <Link
               href={`/get-estimate?service=${encodeURIComponent(estate.name + " Website")}&source=${estate.slug}`}
               className="inline-flex items-center justify-center rounded-lg bg-indigo-600 px-6 py-3 text-base font-semibold text-white hover:bg-indigo-500 transition"
             >
-              Get Free Estimate
+              {CTA_LABELS.primary}
             </Link>
+            <a
+              href={WHATSAPP_HREF_CONTACT}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center rounded-lg border border-white/20 px-6 py-3 text-base font-semibold text-white hover:bg-white/10 transition"
+            >
+              {CTA_LABELS.secondary}
+            </a>
             <Link
               href="/services/website-development-for-manufacturers"
               className="inline-flex items-center justify-center rounded-lg border border-white/20 px-6 py-3 text-base font-semibold text-white hover:bg-white/10 transition"
@@ -82,28 +111,33 @@ export function GidcEstatePage({ estate }: { estate: GidcEstate }) {
               Manufacturer websites hub →
             </Link>
           </div>
+          <p className="mt-3 text-sm text-slate-400">{CONVERSION_EXPECTATIONS.responseTime}</p>
         </Container>
       </section>
 
       <section className="py-16 bg-slate-50 border-b border-slate-200">
         <Container>
           <h2 className="font-display text-2xl font-bold text-slate-900 mb-4">
-            Why {estate.shortName} manufacturers need an owned enquiry channel
+            Looking for a {estate.shortName} GIDC company list?
           </h2>
           <p className="text-slate-700 leading-relaxed max-w-3xl mb-4">
-            Paid listings and B2B directories rent you a slot next to competitors. An owned website
-            ranks for the product and estate searches buyers already type, then sends the enquiry to
-            your WhatsApp or inbox — permanently.
+            This is not a phone directory. Maxwell builds manufacturer websites for units inside{" "}
+            {estate.name} — product catalogs, certificates, and WhatsApp/RFQ paths that send buyers to you
+            instead of a rented listing.
+          </p>
+          <p className="text-slate-700 leading-relaxed max-w-3xl mb-4">
+            Why {estate.shortName} manufacturers need an owned enquiry channel: paid listings put you beside
+            competitors. An owned site ranks for the product and estate searches buyers already type.
           </p>
           <p className="text-slate-700 leading-relaxed max-w-3xl">{estate.nearbyNote}</p>
         </Container>
       </section>
 
-      <section className="py-16 border-b border-slate-200">
+      <section className="border-b border-slate-200 bg-white py-16">
         <Container>
           <div className="grid gap-10 md:grid-cols-2">
             <div>
-              <h2 className="font-display text-2xl font-bold text-slate-900 mb-4">
+              <h2 className="mb-4 font-display text-2xl font-bold text-slate-900">
                 Industries we see in {estate.name}
               </h2>
               <ul className="space-y-2">
@@ -163,14 +197,34 @@ export function GidcEstatePage({ estate }: { estate: GidcEstate }) {
             >
               owned enquiry channel
             </Link>
+            . Looking for a Vadodara web team? See{" "}
+            <Link href="/solutions/web-development-company-vadodara" className="text-indigo-600 hover:underline">
+              website development company in Vadodara
+            </Link>
             .
           </p>
         </Container>
       </section>
 
-      <section className="py-16 border-b border-slate-200">
+      <section className="py-16 border-b border-slate-200 bg-white">
         <Container>
-          <h2 className="font-display text-2xl font-bold text-slate-900 mb-4">
+          <h2 className="font-display text-2xl font-bold text-slate-900 tracking-tight mb-8">
+            Frequently asked questions
+          </h2>
+          <dl className="mx-auto max-w-3xl space-y-5">
+            {faqs.map((faq) => (
+              <div key={faq.question} className="border-b border-slate-100 pb-5 last:border-0 last:pb-0">
+                <dt className="font-semibold text-slate-900">{faq.question}</dt>
+                <dd className="mt-2 text-slate-700 leading-relaxed">{faq.answer}</dd>
+              </div>
+            ))}
+          </dl>
+        </Container>
+      </section>
+
+      <section className="border-b border-slate-200 bg-white py-16">
+        <Container>
+          <h2 className="mb-4 font-display text-2xl font-bold text-slate-900">
             Other Gujarat GIDC estates we cover
           </h2>
           <div className="flex flex-wrap gap-3">
@@ -194,17 +248,32 @@ export function GidcEstatePage({ estate }: { estate: GidcEstate }) {
             <Link href="/services/industrial-website-design" className="text-indigo-600 hover:underline">
               Industrial website design →
             </Link>
+            <Link href="/services/rfq-website-development" className="text-indigo-600 hover:underline">
+              RFQ website development →
+            </Link>
+            <Link href="/services/website-development-for-manufacturers" className="text-indigo-600 hover:underline">
+              Manufacturer websites →
+            </Link>
             <Link href="/tools/industrial-website-rfq-estimator" className="text-indigo-600 hover:underline">
               Industrial cost estimator →
             </Link>
             <Link href="/solutions/web-development-company-vadodara" className="text-indigo-600 hover:underline">
               Website development company Vadodara →
             </Link>
+            <Link href="/pricing" className="text-indigo-600 hover:underline">
+              Website pricing →
+            </Link>
+            <Link href="/get-estimate" className="text-indigo-600 hover:underline">
+              Request a quote →
+            </Link>
             <Link href="/cost/manufacturing-website-cost" className="text-indigo-600 hover:underline">
               Manufacturing website cost →
             </Link>
             <Link href="/solutions/seo-company-gujarat" className="text-indigo-600 hover:underline">
               SEO company Gujarat →
+            </Link>
+            <Link href="/reviews" className="text-indigo-600 hover:underline">
+              Reviews & proof →
             </Link>
           </div>
         </Container>

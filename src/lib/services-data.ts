@@ -99,9 +99,9 @@ export const servicesData: Record<ServiceSlug, ServicePageData> = {
     headline: "Website Engineering Company for Businesses — India",
     subheadline:
       "Business, corporate, manufacturer, and industrial websites engineered for Google, AI search, and qualified inquiries — with web apps and automation as supporting systems, not competing identities.",
-    metaTitle: "Website Development Company India | From ₹45,000 | Maxwell Electrodeal",
+    metaTitle: "Website Development Company India | From ₹35,000 | Maxwell Electrodeal",
     metaDescription:
-      "Website development for businesses and manufacturers — Next.js catalogs, owned enquiries, core SEO. From ₹45,000 (25–30 pages). Vadodara HQ · Gujarat GIDC ready.",
+      "Website development for businesses and manufacturers — Next.js catalogs, owned enquiries, core SEO. From ₹35,000 (25–30 pages). Vadodara HQ · Gujarat GIDC ready.",
     keywords: [
       "website development company India",
       "website engineering company",
@@ -116,7 +116,7 @@ export const servicesData: Record<ServiceSlug, ServicePageData> = {
     icon: "globe",
     gradient: "from-sky-950 via-blue-900 to-slate-950",
     accent: "#2563EB",
-    startingPrice: "₹45,000",
+    startingPrice: "₹35,000",
     problems: [
       {
         title: "Your website doesn't generate leads",
@@ -205,7 +205,7 @@ export const servicesData: Record<ServiceSlug, ServicePageData> = {
       "We serve B2B manufacturers, exporters, and growing companies across Vadodara, Gujarat, Mumbai, Delhi, Bengaluru, and English-speaking markets with localized landing pages where intent is verified.",
     ],
     pricingTiers: [
-      { name: "Starter business site", range: "₹45K – ₹75K", description: "5–8 pages, forms, mobile-first, SEO foundation." },
+      { name: "Starter business site", range: "₹35K – ₹75K", description: "5–8 pages, forms, mobile-first, SEO foundation." },
       { name: "Growth / manufacturer catalog", range: "₹75K – ₹2.5L", description: "Product architecture, CMS, inquiry automation." },
       { name: "Corporate / multi-language", range: "₹2.5L – ₹5L", description: "15–25 pages, blog, integrations, advanced analytics." },
       { name: "Ecommerce / portal", range: "₹5L – ₹15L", description: "Catalog, payments, accounts, deeper integrations." },
@@ -238,7 +238,7 @@ export const servicesData: Record<ServiceSlug, ServicePageData> = {
       {
         question: "How much does a professional website cost in India?",
         answer:
-          "Starter business sites typically start around ₹45,000–₹75,000. Manufacturer catalogs and corporate sites often range ₹75,000–₹5,00,000 depending on products, languages, and integrations. See our cost guide for tier breakdowns.",
+          "Starter business sites typically start around ₹35,000–₹75,000. Manufacturer catalogs and corporate sites often range ₹75,000–₹5,00,000 depending on products, languages, and integrations. See our cost guide for tier breakdowns.",
       },
       {
         question: "How long does website development take?",

@@ -4,9 +4,9 @@ import { siteConfig, WHATSAPP_HREF_ENGINEER } from "@/lib/constants";
 import { Container } from "@/components/ui/Container";
 
 export const metadata = createMetadata({
-  title: "Founder Insights — 2-Minute GIDC Website Audit Playbook | Maxwell",
+  title: "Founder Insights | GIDC Website Audit",
   description:
-    "Sales enablement for plant managers: a 2-minute website audit checklist for Gujarat GIDC manufacturers. Script, Loom process outline, and next steps from Maxwell Electrodeal.",
+    "2-minute website audit playbook for Gujarat GIDC plant managers — checklist, Loom script, and next steps. From Maxwell. Sites from ₹35,000.",
   path: "/founder-insights",
   keywords: [
     "GIDC website audit",
@@ -29,7 +29,7 @@ const LOOM_SCRIPT = [
   "Open the prospect's live URL + one IndiaMART/directory listing side by side.",
   "Record 90–120 seconds: homepage speed, product depth, inquiry path, competitor contrast.",
   "Name three fixes: (1) catalog IA, (2) RFQ/WhatsApp, (3) corridor SEO (GIDC estate).",
-  "End with: Starter ₹45K / Professional ₹75K / Growth ₹1.5L, no advance, pay after go-live.",
+  "End with: Starter ₹35K / Professional ₹75K / Growth ₹1.5L, no advance, pay after go-live.",
   "Send Loom link + link to industrial RFQ estimator + get-estimate form.",
 ];
 

@@ -10,14 +10,14 @@ export const seoSprintRestoreArticles: Article[] = [
       "What Gujarat manufacturers should expect in the first 90 days after launching a product catalog website — indexing, long-tail grades, and enquiry habits.",
     metaTitle: "Manufacturer Website SEO Timeline Gujarat | Maxwell Electrodeal",
     metaDescription:
-      "Realistic SEO timeline for Gujarat manufacturer websites: weeks 1–4 indexing, 30–90 day long-tail growth, and when to add content. From ₹45,000 builds.",
+      "Realistic SEO timeline for Gujarat manufacturer websites: weeks 1–4 indexing, 30–90 day long-tail growth, and when to add content. From ₹35,000 builds.",
     category: "web-development",
     authorId: "maxwell-team",
     tags: ["Manufacturer Website", "SEO", "Gujarat", "GIDC"],
     publishedAt: "2026-08-03",
     featured: true,
     intro:
-      "A manufacturer website in Gujarat does not “rank overnight.” What does happen quickly is indexing of product and category pages — then a compounding period where grade-level searches start sending owned enquiries. This timeline is what we set with Vadodara and GIDC clients after a Starter (₹45,000) or Professional (₹75,000) catalog launch.",
+      "A manufacturer website in Gujarat does not “rank overnight.” What does happen quickly is indexing of product and category pages — then a compounding period where grade-level searches start sending owned enquiries. This timeline is what we set with Vadodara and GIDC clients after a Starter (₹35,000) or Professional (₹75,000) catalog launch.",
     sections: [
       {
         heading: "Weeks 1–4: crawl, index, and fix gaps",
@@ -70,7 +70,7 @@ export const seoSprintRestoreArticles: Article[] = [
       "Why Gujarat manufacturers are questioning yearly paid listing renewals — and how an owned enquiry website changes the three-year math.",
     metaTitle: "Directory Renewal vs Owned Manufacturer Website | Maxwell",
     metaDescription:
-      "Compare yearly paid directory renewals with an owned manufacturer website from ₹45,000. Keep buyer data, rank for product grades, stop renting leads.",
+      "Compare yearly paid directory renewals with an owned manufacturer website from ₹35,000. Keep buyer data, rank for product grades, stop renting leads.",
     category: "web-development",
     authorId: "maxwell-team",
     tags: ["Manufacturer Website", "Owned Enquiry", "B2B", "Gujarat"],
@@ -88,7 +88,7 @@ export const seoSprintRestoreArticles: Article[] = [
       {
         heading: "What you own on a manufacturer website",
         paragraphs: [
-          "Product pages, enquiry forms, WhatsApp deep links, and analytics stay yours. Starter builds from ₹45,000 cover 25–30 pages with core SEO; Professional catalogs often start at ₹75,000 when you need multi-category depth.",
+          "Product pages, enquiry forms, WhatsApp deep links, and analytics stay yours. Starter builds from ₹35,000 cover 25–30 pages with core SEO; Professional catalogs often start at ₹75,000 when you need multi-category depth.",
           "Pair the public site with a dealer portal later if distributors need login pricing — sequence matters.",
         ],
       },
@@ -118,7 +118,7 @@ export const seoSprintRestoreArticles: Article[] = [
       "A practical checklist for Makarpura, Savli, Nandesari, and Halol manufacturers launching a catalog site that generates owned enquiries.",
     metaTitle: "GIDC Manufacturer Website Checklist Vadodara | Maxwell",
     metaDescription:
-      "Checklist for Vadodara GIDC manufacturer websites: products, SEO, enquiry paths, certifications, and estate internal links. From ₹45,000.",
+      "Checklist for Vadodara GIDC manufacturer websites: products, SEO, enquiry paths, certifications, and estate internal links. From ₹35,000.",
     category: "web-development",
     authorId: "maxwell-team",
     tags: ["GIDC", "Vadodara", "Manufacturer Website", "Checklist"],
@@ -136,7 +136,7 @@ export const seoSprintRestoreArticles: Article[] = [
           "Export English if you sell outside India",
         ],
         paragraphs: [
-          "Starter scope (₹45,000) typically covers 25–30 pages with core SEO. Expand SKUs into Professional catalog pricing when categories multiply.",
+          "Starter scope (₹35,000) typically covers 25–30 pages with core SEO. Expand SKUs into Professional catalog pricing when categories multiply.",
         ],
       },
       {
@@ -171,7 +171,7 @@ export const seoSprintRestoreArticles: Article[] = [
       "How Gujarat factories should structure RFQ forms, quote carts, and product inquiry paths so engineers convert — not bounce.",
     metaTitle: "B2B RFQ Website Architecture for Manufacturers | Maxwell",
     metaDescription:
-      "Design RFQ website systems for manufacturers: fields engineers need, drawing uploads, multi-SKU inquiries, and WhatsApp routing. From ₹45,000 builds.",
+      "Design RFQ website systems for manufacturers: fields engineers need, drawing uploads, multi-SKU inquiries, and WhatsApp routing. From ₹35,000 builds.",
     category: "web-development",
     authorId: "maxwell-team",
     tags: ["RFQ", "B2B", "Manufacturer Website", "Industrial"],
@@ -202,7 +202,7 @@ export const seoSprintRestoreArticles: Article[] = [
       {
         heading: "Implementation on Maxwell",
         paragraphs: [
-          "See RFQ website development, industrial catalog development, and industrial website design for commercial scopes. Pricing starts at ₹45,000 for core catalog + enquiry builds; deeper RFQ carts land in Professional tier work.",
+          "See RFQ website development, industrial catalog development, and industrial website design for commercial scopes. Pricing starts at ₹35,000 for core catalog + enquiry builds; deeper RFQ carts land in Professional tier work.",
         ],
         list: [
           "https://maxwellelectrodeal.com/services/rfq-website-development",
@@ -262,11 +262,11 @@ export const seoSprintRestoreArticles: Article[] = [
       {
         heading: "Local first, export ready",
         paragraphs: [
-          "Start with your plant’s GIDC page links, product depth, and RFQ system. Then add export English and multi-destination fields. Maxwell’s Vadodara HQ supports on-site discovery across Makarpura, Waghodia, Savli, Nandesari, and regional estates.",
+          "Start with your plant’s GIDC page links, product depth, and RFQ system. Then add export English and multi-destination fields. Maxwell’s Vadodara HQ supports on-site discovery across Makarpura, Savli, Nandesari, and Ankleshwar.",
         ],
         list: [
           "https://maxwellelectrodeal.com/locations/india/gujarat/gidc",
-          "https://maxwellelectrodeal.com/locations/india/gujarat/waghodia-gidc",
+          "https://maxwellelectrodeal.com/locations/india/gujarat/makarpura-gidc",
           "https://maxwellelectrodeal.com/services/industrial-website-design",
           "https://maxwellelectrodeal.com/solutions/web-development-company-vadodara",
         ],
@@ -276,7 +276,7 @@ export const seoSprintRestoreArticles: Article[] = [
       {
         question: "Do I need a full portal before I get export enquiries?",
         answer:
-          "No. Most plants should launch a fast catalog + RFQ website first (from ₹45,000), then add dealer login or ERP sync after the public channel produces measurable enquiries.",
+          "No. Most plants should launch a fast catalog + RFQ website first (from ₹35,000), then add dealer login or ERP sync after the public channel produces measurable enquiries.",
       },
     ],
     relatedSlugs: [
@@ -476,7 +476,7 @@ export const seoSprintRestoreArticles: Article[] = [
       {
         heading: "Budget bands (honest)",
         paragraphs: [
-          "Starter sites (~₹45,000) are not for 5,000-SKU launches. Professional (~₹75,000+) covers multi-category catalogs; Growth or custom programs absorb heavy migration and multi-language. Use the free industrial website cost estimator for planning ranges.",
+          "Starter sites (~₹35,000) are not for 5,000-SKU launches. Professional (~₹75,000+) covers multi-category catalogs; Growth or custom programs absorb heavy migration and multi-language. Use the free industrial website cost estimator for planning ranges.",
         ],
         list: [
           "https://maxwellelectrodeal.com/tools/industrial-website-rfq-estimator",
@@ -520,7 +520,7 @@ export const seoSprintRestoreArticles: Article[] = [
         ],
         list: [
           "https://maxwellelectrodeal.com/locations/india/gujarat/gidc",
-          "https://maxwellelectrodeal.com/locations/india/gujarat/por-gidc",
+          "https://maxwellelectrodeal.com/locations/india/gujarat/ankleshwar-gidc",
           "https://maxwellelectrodeal.com/services/industrial-website-design",
           "https://maxwellelectrodeal.com/tools/industrial-website-rfq-estimator",
         ],
@@ -586,7 +586,7 @@ export const seoSprintRestoreArticles: Article[] = [
       "A practical guide for Gujarat manufacturers: model three-year directory costs against an owned Next.js product catalog, RFQ paths, and GIDC SEO — without inventing magic ranking guarantees.",
     metaTitle: "Directory to Next.js Catalog — ₹3L/Year Vadodara Manufacturers | Maxwell",
     metaDescription:
-      "How Vadodara manufacturers cut ~₹3L/year directory rent and grow direct overseas inquiries with custom Next.js catalogs. CAS/RFQ architecture, pricing from ₹45K, owned enquiry paths.",
+      "How Vadodara manufacturers cut ~₹3L/year directory rent and grow direct overseas inquiries with custom Next.js catalogs. CAS/RFQ architecture, pricing from ₹35K, owned enquiry paths.",
     category: "web-development",
     authorId: "maxwell-team",
     tags: ["Manufacturer Website", "IndiaMART", "Directory", "Next.js", "Vadodara", "Owned Enquiry"],
@@ -594,7 +594,7 @@ export const seoSprintRestoreArticles: Article[] = [
     featured: true,
     trending: true,
     intro:
-      "Every renewal season, Gujarat plant managers open an invoice for paid B2B directory listings — often ₹1.5–3+ lakh a year — and wonder why overseas buyers still cannot download SDS or open an RFQ after 9pm IST. The durable alternative is not “more sponsored ads on someone else’s platform.” It is an owned Next.js product catalog with Direct WhatsApp and RFQ on every SKU page, corridor SEO for GIDC estates, and pricing you can defend: Starter ₹45,000 · Professional ₹75,000 · Growth ₹1,50,000 from Maxwell Electrodeal Private Limited.",
+      "Every renewal season, Gujarat plant managers open an invoice for paid B2B directory listings — often ₹1.5–3+ lakh a year — and wonder why overseas buyers still cannot download SDS or open an RFQ after 9pm IST. The durable alternative is not “more sponsored ads on someone else’s platform.” It is an owned Next.js product catalog with Direct WhatsApp and RFQ on every SKU page, corridor SEO for GIDC estates, and pricing you can defend: Starter ₹35,000 · Professional ₹75,000 · Growth ₹1,50,000 from Maxwell Electrodeal Private Limited.",
     sections: [
       {
         heading: "What directory dependency actually rents",

@@ -67,26 +67,49 @@ function stripBrandSuffix(title: string): string {
       .replace(/\s*\|\s*Maxwell Electrodeal(?:\s*[–-]\s*[^|]+)?$/i, "")
       .replace(/\s*\|\s*Maxwell\s*$/i, "")
       .replace(/\s*—\s*Maxwell Electrodeal$/i, "")
+      .replace(/\s*—\s*Maxwell\s*$/i, "")
       .trim();
   }
   return segment || title.trim();
 }
 
+/** Truncate on a word boundary so money keywords are not mid-cut in SERPs. */
+function truncateAtWord(text: string, maxLength: number): string {
+  const trimmed = text.trim();
+  if (trimmed.length <= maxLength) return trimmed;
+  const slice = trimmed.slice(0, maxLength - 1);
+  const lastSpace = slice.lastIndexOf(" ");
+  const base = lastSpace > maxLength * 0.55 ? slice.slice(0, lastSpace) : slice.trimEnd();
+  return `${base.replace(/[|,–—:\-]+$/, "").trim()}…`;
+}
+
+const SERP_TITLE_MAX = 60;
+const SERP_DESC_MAX = 155;
+const BRAND_SUFFIX = "| Maxwell";
+
 /** Page title segment only — root layout `title.template` appends the brand suffix. */
 function formatPageTitle(title: string): string {
   const segment = stripBrandSuffix(title);
-  // Keep document titles near ~60 chars in SERPs (segment + " | Maxwell Electrodeal").
+  // ~58 char full SERP with " | Maxwell Electrodeal" (~22 chars).
   const maxSegment = 38;
-  if (segment.length <= maxSegment) return segment;
-  return `${segment.slice(0, maxSegment - 1).trimEnd()}…`;
+  return truncateAtWord(segment, maxSegment);
 }
 
-/** Full SERP title when the segment would be chopped mid-phrase (compare/cost pages). */
+/**
+ * Absolute SERP title for money pages.
+ * Always keeps `| Maxwell` within 60 characters (world-class SERP packaging).
+ */
 function formatAbsoluteTitle(title: string): string {
-  const segment = stripBrandSuffix(title);
-  const maxLength = 60;
-  if (segment.length <= maxLength) return segment;
-  return `${segment.slice(0, maxLength - 1).trimEnd()}…`;
+  const core = stripBrandSuffix(title);
+  const budget = SERP_TITLE_MAX - BRAND_SUFFIX.length - 1;
+  const head = truncateAtWord(core, budget).replace(/…$/, "").trim();
+  const full = `${head} ${BRAND_SUFFIX}`;
+  return full.length <= SERP_TITLE_MAX ? full : truncateAtWord(full, SERP_TITLE_MAX);
+}
+
+/** Meta description capped for SERP snippets without mid-word cuts. */
+function formatMetaDescription(description: string): string {
+  return truncateAtWord(description.trim(), SERP_DESC_MAX);
 }
 
 /** Full resolved title for Open Graph / Twitter (template is not applied there). */
@@ -134,7 +157,7 @@ export function buildSeoMetadata({
           ? pageTitleSegment
           : `${siteConfig.name} — ${siteConfig.tagline}`;
 
-  const pageDescription = description ?? siteConfig.description;
+  const pageDescription = formatMetaDescription(description ?? siteConfig.description);
   const alternates = buildPageCanonicalAlternates(path);
 
   return {
@@ -176,22 +199,23 @@ export function buildSeoMetadata({
 }
 
 export function createHomeMetadata(): Metadata {
-  const pageTitle = homeSeo.title;
+  const pageTitle = formatAbsoluteTitle(homeSeo.title);
+  const pageDescription = formatMetaDescription(homeSeo.description);
   const alternates = buildLanguageAlternates(homeSeo.path);
 
   return {
     title: { absolute: pageTitle },
-    description: homeSeo.description,
+    description: pageDescription,
     keywords: homeSeo.keywords.join(", "),
     metadataBase: new URL(siteConfig.url),
     alternates,
     applicationName: siteConfig.name,
     openGraph: baseOpenGraph({
       title: pageTitle,
-      description: homeSeo.description,
+      description: pageDescription,
       url: alternates.canonical,
     }),
-    twitter: baseTwitter(pageTitle, homeSeo.description),
+    twitter: baseTwitter(pageTitle, pageDescription),
     robots: {
       index: true,
       follow: true,
@@ -246,12 +270,12 @@ export function buildArticleSeoMetadata(args: {
 
   return {
     title: pageTitleSegment,
-    description: args.description,
+    description: formatMetaDescription(args.description),
     metadataBase: new URL(siteConfig.url),
     alternates,
     openGraph: baseOpenGraph({
       title: pageTitleFull,
-      description: args.description,
+      description: formatMetaDescription(args.description),
       url: alternates.canonical,
       type: "article",
       publishedTime: args.publishedAt,
@@ -259,7 +283,7 @@ export function buildArticleSeoMetadata(args: {
       authors: [args.authorName],
       ogImage: ogImageUrl,
     }),
-    twitter: baseTwitter(pageTitleFull, args.description, ogImageUrl),
+    twitter: baseTwitter(pageTitleFull, formatMetaDescription(args.description), ogImageUrl),
     robots: args.noIndex
       ? { index: false, follow: false }
       : { index: true, follow: true },

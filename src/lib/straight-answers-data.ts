@@ -6,7 +6,7 @@ export type StraightAnswer = {
 
 export const straightAnswers: StraightAnswer[] = [
   {
-    question: "Why ₹45,000 when someone quoted me ₹15,000?",
+    question: "Why ₹35,000 when someone quoted me ₹15,000?",
     answer:
       "At ₹15,000 nobody can build properly. They'll use a pirated theme, skip SEO, and your site breaks in 6 months. We've rebuilt three of those. Here's what the real cost looks like over 2 years — hosting, fixes, lost Google traffic.",
     link: { label: "See our published pricing", href: "/pricing" },
@@ -24,7 +24,7 @@ export const straightAnswers: StraightAnswer[] = [
   {
     question: "Can I meet you in person?",
     answer:
-      "Yes. 419 Lalita Tower, Jetalpur Road, Vadodara. Come see us — no appointment needed during business hours.",
+      "Yes. our office in Vadodara. Come see us — no appointment needed during business hours.",
   },
   {
     question: "Will I get GST invoice?",

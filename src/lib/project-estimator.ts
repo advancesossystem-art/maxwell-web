@@ -21,7 +21,7 @@ export interface ProjectEstimateResult {
 }
 
 const BASE_COST: Record<string, { min: number; max: number }> = {
-  Website: { min: 80000, max: 300000 },
+  Website: { min: 35000, max: 150000 },
   "Mobile App": { min: 300000, max: 1200000 },
   ERP: { min: 800000, max: 3500000 },
   CRM: { min: 400000, max: 1800000 },

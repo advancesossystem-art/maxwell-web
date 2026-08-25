@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { createMetadata } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
 
 export const metadata: Metadata = createMetadata({
-  title: "Export Website for Indian Manufacturers — Reach US, UAE, Turkey & Germany Buyers",
+  title: "Export Website for Manufacturers | From ₹35,000",
   description:
-    "Build an export-ready website that gets your products found by international buyers in US, UAE, Turkey, Germany, and UK. Product catalog, IEC display, export compliance pages, English-optimized. From ₹75,000.",
+    "Export-ready websites for Indian manufacturers — catalogs, IEC display, English SEO for US, UAE, Europe buyers. From ₹35,000. Request a quote.",
   path: "/services/website-development/manufacturer-export-website",
   keywords: [
     "export website for Indian manufacturers",
@@ -38,7 +38,7 @@ export default function ManufacturerExportWebsitePage() {
         </Container>
       </section>
 
-      <section className="py-14 border-b border-slate-200">
+      <section className="py-14 border-b border-slate-200 bg-white">
         <Container>
           <h2 className="font-display text-2xl font-bold text-slate-900 mb-4">
             Who Is Searching for Your Products Internationally?
@@ -86,7 +86,7 @@ export default function ManufacturerExportWebsitePage() {
         </Container>
       </section>
 
-      <section className="py-14 border-b border-slate-200">
+      <section className="py-14 border-b border-slate-200 bg-white">
         <Container>
           <h2 className="font-display text-2xl font-bold text-slate-900 mb-6">The Cost</h2>
           <div className="grid gap-4 md:grid-cols-3">
@@ -117,7 +117,7 @@ export default function ManufacturerExportWebsitePage() {
         </Container>
       </section>
 
-      <section className="py-14 border-b border-slate-200">
+      <section className="py-14 border-b border-slate-200 bg-white">
         <Container>
           <h2 className="font-display text-2xl font-bold text-slate-900 mb-4">Real Proof</h2>
           <p className="text-slate-700 max-w-3xl">

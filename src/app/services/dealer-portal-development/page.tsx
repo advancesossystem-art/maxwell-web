@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { createMetadata } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
 
 export const metadata: Metadata = createMetadata({
-  title: "Dealer Portal Development India | B2B Login Catalogs | Maxwell Electrodeal",
+  title: "Dealer Portal Development | B2B Login",
   description:
-    "Custom dealer portals for manufacturers — login price lists, stock visibility, and order enquiries. Gujarat delivery from Vadodara. Built after your owned website.",
+    "Custom dealer portals for manufacturers — login prices, stock, order enquiries. Gujarat delivery from Vadodara. Built after your owned site.",
   path: "/services/dealer-portal-development",
   keywords: [
     "dealer portal development",
@@ -61,7 +61,7 @@ export default function DealerPortalDevelopmentPage() {
         </Container>
       </section>
 
-      <section className="py-16 border-b border-slate-200">
+      <section className="py-16 border-b border-slate-200 bg-white">
         <Container>
           <h2 className="font-display text-2xl font-bold text-slate-900 mb-4">
             What dealers actually need
@@ -99,7 +99,7 @@ export default function DealerPortalDevelopmentPage() {
             >
               owned enquiry channel
             </Link>{" "}
-            first (From ₹45,000 Starter / ₹75,000 Professional catalog), then layer dealer auth and
+            first (From ₹35,000 Starter / ₹75,000 Professional catalog), then layer dealer auth and
             private pricing. ERP sync is phase two — after dealers adopt the portal.
           </p>
           <div className="flex flex-wrap gap-4 text-sm">

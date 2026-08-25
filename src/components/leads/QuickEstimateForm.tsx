@@ -16,6 +16,8 @@ import {
   readLeadContextFromDocumentCookie,
   readLeadContextFromUrlSearchParams,
 } from "@/lib/lead-context";
+import { CTA_LABELS, CONVERSION_EXPECTATIONS } from "@/lib/conversion-copy";
+import { WHATSAPP_HREF_CONTACT } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 const SERVICES = [
@@ -190,7 +192,7 @@ export function QuickEstimateForm({
   const serviceDefault =
     resolvePrefillService(prefillService) ||
     resolvePrefillService(leadContext.service ?? "") ||
-    "";
+    "Website Development";
   const referral =
     referralSource.trim() ||
     leadContext.source?.trim() ||
@@ -209,12 +211,13 @@ export function QuickEstimateForm({
     const fd = new FormData(e.currentTarget);
     const phoneCountry = String(fd.get("phoneCountry") || defaultCountryIso);
     const description = String(fd.get("description") || "").trim();
-    const projectType = String(fd.get("service") || "").trim();
+    const projectType = String(fd.get("service") || "").trim() || "Website Development";
     const budget = String(fd.get("budget") || "").trim() || "Not sure yet";
     const phone = composeInternationalPhone(phoneCountry, String(fd.get("phoneLocal") || ""));
+    const email = String(fd.get("email") || "").trim();
 
     const messageParts = [
-      description || `Estimate request for ${projectType || "project"} — details to confirm on call.`,
+      description || `Estimate request for ${projectType} — details to confirm on call.`,
       phoneCountry ? `Phone country: ${phoneCountry}` : "",
       referral ? `Landing source: ${referral}` : "",
     ].filter(Boolean);
@@ -222,7 +225,7 @@ export function QuickEstimateForm({
     const result = await submitLeadForm({
       source: "get-estimate",
       name: fd.get("name"),
-      email: fd.get("email"),
+      email: email || undefined,
       phone,
       projectType,
       budget,
@@ -266,7 +269,7 @@ export function QuickEstimateForm({
         </div>
 
         <div>
-          <Label htmlFor="qe-email" required>
+          <Label htmlFor="qe-email" optional>
             Work Email
           </Label>
           <div className="relative">
@@ -277,7 +280,6 @@ export function QuickEstimateForm({
               id="qe-email"
               name="email"
               type="email"
-              required
               placeholder="you@company.com"
               className={fieldCls}
               autoComplete="email"
@@ -340,7 +342,7 @@ export function QuickEstimateForm({
       </div>
 
       <div>
-        <Label htmlFor="qe-service" required>
+        <Label htmlFor="qe-service" optional>
           Service needed
         </Label>
         <div className="relative">
@@ -350,13 +352,9 @@ export function QuickEstimateForm({
           <select
             id="qe-service"
             name="service"
-            required
             defaultValue={serviceDefault}
             className={selectCls}
           >
-            <option value="" disabled>
-              Select a service
-            </option>
             {SERVICES.map((s) => (
               <option key={s} value={s}>
                 {s}
@@ -417,12 +415,21 @@ export function QuickEstimateForm({
         className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-violet-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-violet-600/25 transition hover:bg-violet-500 disabled:cursor-not-allowed disabled:opacity-60"
       >
         <IconSend />
-        {loading ? "Submitting…" : "Get Free Estimate"}
+        {loading ? "Submitting…" : CTA_LABELS.primary}
       </button>
+
+      <a
+        href={WHATSAPP_HREF_CONTACT}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/15 bg-transparent px-6 py-3 text-sm font-semibold text-slate-200 transition hover:bg-white/5"
+      >
+        {CTA_LABELS.secondary}
+      </a>
 
       <p className="flex items-center justify-center gap-1.5 text-center text-xs text-slate-500">
         <IconLock />
-        We respect your privacy. Your information is safe with us.
+        {CONVERSION_EXPECTATIONS.responseTime}. {CONVERSION_EXPECTATIONS.privacyNote}
       </p>
     </form>
   );

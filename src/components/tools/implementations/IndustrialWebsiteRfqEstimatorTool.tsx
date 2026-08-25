@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -76,11 +76,11 @@ function estimateIndustrialWebsite(input: InputState): EstimateResult {
   if (score <= 1.5) {
     return {
       packageName: "Starter",
-      rangeLow: 45000,
+      rangeLow: 35000,
       rangeHigh: 60000,
         timeline: "About 1 week for a scoped Starter site",
       summary:
-        "Likely fits a Starter business / light manufacturer site (around ₹45,000, sometimes to ₹60,000 if GIDC pages or extra categories). Good for under ~50 focused pages, core SEO, and basic enquiry + WhatsApp — not a 1,000-SKU PIM.",
+        "Likely fits a Starter business / light manufacturer site (around ₹35,000, sometimes to ₹60,000 if GIDC pages or extra categories). Good for under ~50 focused pages, core SEO, and basic enquiry + WhatsApp — not a 1,000-SKU PIM.",
       drivers,
       nextSteps: [
         "Confirm first-launch page and product list",
@@ -250,7 +250,7 @@ export function IndustrialWebsiteRfqEstimatorTool() {
         {step === 1 && (
           <div className="space-y-4">
             <p className="text-sm text-muted">
-              Planning ranges only — not a fixed quote. Website Starter from ₹45,000 · Professional from ₹75,000.
+              Planning ranges only — not a fixed quote. Website Starter from ₹35,000 · Professional from ₹75,000.
             </p>
             <p className="text-sm font-medium">How many products / SKUs at launch?</p>
             <div className="grid gap-2 sm:grid-cols-2">
@@ -328,7 +328,7 @@ export function IndustrialWebsiteRfqEstimatorTool() {
               <span>Gujarat GIDC / local industrial SEO (estate + product long-tails)</span>
             </label>
             <p className="text-sm text-muted leading-relaxed">
-              Outputs map to Starter (₹45k), Professional (₹75k+), Growth (₹1.5L+), or custom programs. No guarantee of a
+              Outputs map to Starter (₹35K), Professional (₹75k+), Growth (₹1.5L+), or custom programs. No guarantee of a
               single exact number — scope workshops fix the number after discovery.
             </p>
           </div>

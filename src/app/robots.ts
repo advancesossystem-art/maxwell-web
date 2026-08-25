@@ -35,6 +35,18 @@ const crawlWasteDisallow = [
   "/cost/custom-software-",
   "/cost/ai-",
   "/cost/saas-",
+  // Legacy ERP/CRM waste still attracting impressions in GSC
+  "/compare/",
+  "/compare",
+  "/tools/erp-",
+  "/tools/crm-",
+  "/tools/vendor-",
+  "/tools/roi-",
+  "/tools/software-cost-",
+  "/services/erp-",
+  "/services/crm-",
+  "/blog/erp-",
+  "/blog/crm-",
 ];
 
 const crawlWasteAllow = [
@@ -44,14 +56,26 @@ const crawlWasteAllow = [
   "/locations/india/gujarat/makarpura-gidc",
   "/locations/india/gujarat/savli-gidc",
   "/locations/india/gujarat/nandesari-gidc",
-  "/locations/india/gujarat/halol-gidc",
   "/locations/india/gujarat/ankleshwar-gidc",
-  "/locations/india/gujarat/vatva-gidc",
-  "/locations/india/gujarat/waghodia-gidc",
-  "/locations/india/gujarat/por-gidc",
   // City pages with real GSC traffic
   "/locations/india/ahmedabad",
   "/locations/india/hyderabad",
+  "/locations/india/vadodara",
+  // Money solution spokes that share prefixes with waste disallow rules
+  "/solutions/business-website-vadodara",
+  "/solutions/web-development-company-vadodara",
+  "/solutions/web-development-company-gujarat",
+  "/solutions/web-development-company-india",
+  "/solutions/web-development-company-ahmedabad",
+  "/solutions/web-design-company-vadodara",
+  "/solutions/best-website-development-company-vadodara",
+  "/solutions/best-website-development-company-india",
+  "/solutions/wordpress-website-vadodara",
+  "/solutions/ecommerce-website-vadodara",
+  "/solutions/website-redesign-vadodara",
+  "/solutions/website-amc-vadodara",
+  "/solutions/seo-company-vadodara",
+  "/solutions/seo-company-gujarat",
 ];
 
 export default function robots(): MetadataRoute.Robots {

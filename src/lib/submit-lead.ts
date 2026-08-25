@@ -17,6 +17,16 @@ const PHONE_REQUIRED_SOURCES = new Set([
   "discovery-call",
   "get-estimate",
   "homepage-assessment",
+  "exit-intent",
+]);
+
+/** Email optional — phone + name enough for India B2B quote flows */
+const EMAIL_OPTIONAL_SOURCES = new Set([
+  "contact",
+  "get-estimate",
+  "book-consultation",
+  "discovery-call",
+  "exit-intent",
 ]);
 
 const MESSAGE_DEFAULT_SOURCES = new Set(["contact", "book-consultation", "discovery-call"]);
@@ -27,6 +37,12 @@ function isServiceSource(source: string): boolean {
 
 function isIndustrySource(source: string): boolean {
   return /^industry-[a-z0-9-]+$/.test(source);
+}
+
+function isEmailOptionalSource(source: string): boolean {
+  return (
+    EMAIL_OPTIONAL_SOURCES.has(source) || isServiceSource(source) || isIndustrySource(source)
+  );
 }
 
 export const leadSchema = z
@@ -53,10 +69,11 @@ export const leadSchema = z
       .max(80, "Name is too long")
       .refine(isValidFullName, "Enter a valid full name"),
     email: z
-      .string({ error: "Email is required" })
+      .string()
       .trim()
-      .min(1, "Email is required")
-      .refine(isValidWorkEmail, "Enter a valid work email address"),
+      .max(254)
+      .optional()
+      .transform((v) => (v && v.length > 0 ? v : undefined)),
     phone: z.string().trim().max(25).optional(),
     company: z.string().trim().max(120).optional(),
     message: z.string().trim().max(8000).optional(),
@@ -80,6 +97,23 @@ export const leadSchema = z
       .optional(),
   })
   .superRefine((data, ctx) => {
+    const email = data.email?.trim() ?? "";
+    const emailOptional = isEmailOptionalSource(data.source);
+
+    if (!emailOptional && !email) {
+      ctx.addIssue({
+        code: "custom",
+        message: "Email is required",
+        path: ["email"],
+      });
+    } else if (email && !isValidWorkEmail(email)) {
+      ctx.addIssue({
+        code: "custom",
+        message: "Enter a valid work email address",
+        path: ["email"],
+      });
+    }
+
     const phone = data.phone?.trim() ?? "";
     const phoneRequired =
       PHONE_REQUIRED_SOURCES.has(data.source) ||
@@ -107,22 +141,6 @@ export const leadSchema = z
         path: ["phone"],
       });
     }
-
-    // Contact / service / industry: allow short messages — defaults applied in submitLead
-    // (matches Book Strategy Call, which does not require a long message).
-    if (
-      (isServiceSource(data.source) || isIndustrySource(data.source)) &&
-      (!data.message || data.message.trim().length < 20)
-    ) {
-      // ServiceLeadForm pads short messages client-side; keep a soft server check only when empty
-      if (!data.message?.trim()) {
-        ctx.addIssue({
-          code: "custom",
-          message: "Please describe your project in at least 20 characters",
-          path: ["message"],
-        });
-      }
-    }
   });
 
 export type SubmitLeadResult =
@@ -144,7 +162,7 @@ export async function submitLead(raw: Record<string, unknown>): Promise<SubmitLe
   });
 
   const data = leadSchema.parse(raw);
-  diag("VALIDATION OK", { source: data.source, email: data.email });
+  diag("VALIDATION OK", { source: data.source, email: data.email ?? "(none)" });
 
   const message =
     data.message?.trim() ||
@@ -155,10 +173,12 @@ export async function submitLead(raw: Record<string, unknown>): Promise<SubmitLe
         : MESSAGE_DEFAULT_SOURCES.has(data.source)
       ? "Consultation request — details to be discussed on the call."
       : data.source === "get-estimate"
-        ? `Estimate request: ${data.projectType}, ${data.industry}, scope ${data.scope}, budget ${data.budget}, timeline ${data.timeline}. Features: ${data.features?.join(", ") || "none"}.`
+        ? `Estimate request: ${data.projectType || "Website Development"}, ${data.industry ?? "—"}, scope ${data.scope ?? "—"}, budget ${data.budget ?? "Not sure yet"}, timeline ${data.timeline ?? "—"}. Features: ${data.features?.join(", ") || "none"}.`
         : data.source === "project-calculator"
           ? `Calculator estimate: ${data.projectType}, scope ${data.scope}, timeline ${data.timeline}.`
-          : undefined);
+          : isServiceSource(data.source) || isIndustrySource(data.source)
+            ? `${data.projectType || data.source} quote request — please follow up.`
+            : undefined);
 
   const leadScore = calculateLeadScore({
     budget: data.budget,
@@ -197,7 +217,7 @@ export async function submitLead(raw: Record<string, unknown>): Promise<SubmitLe
   const payload: LeadPayload = {
     source: data.source as LeadSource,
     name: data.name.trim(),
-    email: data.email.trim().toLowerCase(),
+    email: data.email?.trim().toLowerCase(),
     phone: normalizedPhone,
     company: data.company,
     message,

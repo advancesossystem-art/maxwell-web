@@ -24,7 +24,7 @@ export const cityContentOverrides: Record<string, CityContentOverride> = {
     subheadline:
       "Headquartered in Alkapuri, Vadodara—we build business websites, manufacturer catalogs, web apps, ERP, CRM, and AI for Gujarat manufacturers, pharma suppliers, and growing SMEs.",
     localInsights:
-      "Vadodara (Baroda) is Gujarat's education and industrial hub—home to pharma API suppliers, engineering manufacturers along the Golden Corridor, and a fast-growing SME base digitizing beyond Tally. Maxwell Electrodeal was founded here in 2018 and runs discovery workshops on Jetalpur Road and at client plants across Anand, Bharuch, and Halol.",
+      "Vadodara (Baroda) is Gujarat's education and industrial hub—home to pharma API suppliers, engineering manufacturers along the Golden Corridor, and a fast-growing SME base digitizing beyond Tally. Maxwell Electrodeal was founded here in 2018 and runs discovery workshops in Vadodara and at client plants across Anand, Bharuch, and Halol.",
     localIntro: [
       "As a Vadodara-based website engineering company, we combine on-site factory visits with senior engineering—something remote-only vendors cannot replicate for manufacturer websites and shop-floor projects.",
       "Our team has delivered manufacturing ERP, healthcare portals, and AI safety systems for clients in Alkapuri, Makarpura GIDC, Savli, and clients exporting from Gujarat to the US and Middle East.",
@@ -52,7 +52,7 @@ export const cityContentOverrides: Record<string, CityContentOverride> = {
     faqs: [
       {
         question: "Is Maxwell Electrodeal based in Vadodara?",
-        answer: `Yes. Our office is at 419, Lalita Tower, Jetalpur Road, Alkapuri, Vadodara 390007. We meet clients on-site across Gujarat and deliver pan-India and internationally.`,
+        answer: `Yes. Our office is at our office in Vadodara. We meet clients on-site across Gujarat and deliver pan-India and internationally.`,
       },
       {
         question: "Do you visit factories in Vadodara for ERP discovery?",

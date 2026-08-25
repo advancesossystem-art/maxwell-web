@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { createMetadata } from "@/lib/metadata";
 import { IndustryWebsitePage } from "@/components/services/IndustryWebsitePage";
 import { ceramicExportersBlueprintSeo } from "@/lib/manufacturer-website-seo";
@@ -19,7 +19,7 @@ export default function CeramicExportersBlueprintPage() {
       description="Morbi tile and sanitary-ware exporters win overseas RFQs when catalogs expose size, finish, PEI, and packing — not only lifestyle photos. We build Next.js export catalogs with filterable collections, sample and container RFQ, and English pages international buyers actually use after IndiaMART and fair research."
       canonicalPath={ceramicExportersBlueprintSeo.path}
       serviceName="Website Development for Ceramic Exporters"
-      directAnswer="Maxwell Electrodeal builds Morbi ceramic exporter websites with tile size/finish matrices, PEI ratings, and overseas RFQ paths. Packages: Starter ₹45,000 · Professional ₹75,000 · Growth ₹1,50,000. No advance on websites; full payment within 3 days of go-live + 18% GST. Reduce perpetual directory dependence with an owned inquiry channel."
+      directAnswer="Maxwell Electrodeal builds Morbi ceramic exporter websites with tile size/finish matrices, PEI ratings, and overseas RFQ paths. Packages: Starter ₹35,000 · Professional ₹75,000 · Growth ₹1,50,000. No advance on websites; full payment within 3 days of go-live + 18% GST. Reduce perpetual directory dependence with an owned inquiry channel."
       catalogWireframe={[
         "Collection grid: size, finish, thickness, PEI filter chips",
         "SKU family page: technical table + packing options for export",

@@ -25,15 +25,6 @@ const heightClass: Record<BrandLogoSize, string> = {
   lg: "h-24",
 };
 
-const sizesAttr: Record<BrandLogoSize, string> = {
-  navMobile: "140px",
-  header: "168px",
-  footer: "220px",
-  sm: "200px",
-  md: "240px",
-  lg: "320px",
-};
-
 const maxWidthClass: Record<BrandLogoSize, string> = {
   navMobile: "max-w-[140px]",
   header: "max-w-[168px]",
@@ -57,7 +48,7 @@ export function BrandLogo({
       width={LOGO_WIDTH}
       height={LOGO_HEIGHT}
       priority={priority}
-      sizes={sizesAttr[size]}
+      unoptimized
       className={cn(
         "w-auto object-contain object-left aspect-[1774/887]",
         heightClass[size],

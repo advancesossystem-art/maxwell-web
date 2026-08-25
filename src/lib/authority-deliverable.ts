@@ -62,7 +62,7 @@ export const pageTypeEeatAudits: PageTypeEeatAudit[] = [
   },
   {
     pageType: "Service Pages",
-    samplePath: "/services/erp-development",
+    samplePath: "/services/website-development-for-manufacturers",
     experience: 8.5,
     expertise: 9,
     authority: 8.5,

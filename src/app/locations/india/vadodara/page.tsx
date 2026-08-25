@@ -6,21 +6,18 @@ const vadodaraKeywords = [
   "website developer in Vadodara",
   "website development in Vadodara",
   "website development company Vadodara",
-  "software company Vadodara",
   "web development company Vadodara",
-  "IT company Vadodara",
-  "ERP software Vadodara",
-  "custom software development Vadodara",
-  "web development company Vadodara Gujarat",
+  "website company Vadodara Gujarat",
   "manufacturer website developer Vadodara",
-  "CRM software Vadodara",
-  "software development Baroda",
-  "IT services Vadodara Gujarat",
+  "SEO company Vadodara",
+  "website AMC Vadodara",
+  "web development company Vadodara Gujarat",
+  "Next.js website company Vadodara",
 ];
 
-const pageTitle = "Website Developer in Vadodara — Software & Web Dev Company";
+const pageTitle = "Web Development Vadodara | Local Office";
 const pageDescription =
-  "Website developer in Vadodara, Gujarat: Next.js business sites, manufacturer catalogs, ERP & CRM. Local team at Lalita Tower · 50+ projects · From ₹75K. Free quote in 24h.";
+  "Website development in Vadodara for any business that needs a site — SEO & AMC included. Starter from ₹35,000 · AMC from ₹15,000/mo. Free quote in 24h.";
 
 export const metadata: Metadata = createMetadata({
   title: pageTitle,

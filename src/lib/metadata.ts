@@ -20,6 +20,8 @@ export function createMetadata({
   keywords,
   openGraphType = "website",
   publishedTime,
+  /** Hand-crafted SERP titles — do not chop mid-keyword (default true). */
+  absoluteTitle = true,
 }: {
   title?: string;
   description?: string;
@@ -28,6 +30,7 @@ export function createMetadata({
   keywords?: string[];
   openGraphType?: "website" | "article";
   publishedTime?: string;
+  absoluteTitle?: boolean;
 }): Metadata {
   return buildSeoMetadata({
     title,
@@ -37,6 +40,7 @@ export function createMetadata({
     keywords,
     openGraphType,
     publishedTime,
+    absoluteTitle,
   });
 }
 
@@ -51,6 +55,7 @@ export function createServiceMetadata(service: {
     description: service.metaDescription,
     path: `/services/${service.slug}`,
     keywords: [...new Set([...service.keywords, ...keywordsForService(service.slug)])],
+    absoluteTitle: true,
   });
 }
 

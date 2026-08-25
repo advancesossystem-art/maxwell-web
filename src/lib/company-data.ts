@@ -18,17 +18,17 @@ export const certifications = [
 ] as const;
 
 export const companyStory = {
-  headline: "Website engineering for Vadodara manufacturers since 2018",
+  headline: "Website engineering for Vadodara businesses since 2018",
   paragraphs: [
-    'Maxwell Electrodeal started in 2018 with a clear problem: Gujarat manufacturers with genuinely world-class products were invisible on Google. Their buyers were finding them on IndiaMart alongside five competitors, on a shared listing that cost ₹1.5–3L a year and shared their leads with rivals.',
-    "The solution was an owned catalog website — a direct channel where a manufacturer's chemical products, engineering components, or pharma equipment showed up when a procurement manager searched Google at 11pm. First inquiry comes directly to their WhatsApp. No platform middleman. No competitor adjacency. No annual renewal.",
-    "Our first full product catalog was for a specialty chemical supplier in Nandesari GIDC, Vadodara. 263 pages. 154 products. PageSpeed 94. Live in 6 weeks. The client received the first direct online inquiry from a buyer in Pune within 30 days — someone who found them by searching their product category, not the company name.",
-    "That discipline hasn't changed. We still start every project with a site visit or discovery call — not a template form. We build for the manufacturer's actual products, certifications, and buyers, not generic service pages. Every Maxwell website is a custom Next.js build: owned codebase, no plugin subscriptions, no annual WordPress tax.",
+    "Maxwell Electrodeal started in 2018 with a clear problem: Gujarat businesses with strong products and services were invisible on Google. Many relied on paid directories or weak brochure sites while buyers searched elsewhere.",
+    "The solution was an owned website — a direct channel where your services, products, or catalog show up when a buyer searches Google. First inquiry comes to your WhatsApp or inbox. No platform middleman. No competitor adjacency. No annual listing tax.",
+    "Our early catalog work included specialty suppliers in Nandesari GIDC, Vadodara — 263 pages, 154 products, PageSpeed 94, live in 6 weeks — and that same craft now serves manufacturers, traders, exporters, clinics, and growing companies across India.",
+    "That discipline hasn't changed. We still start every project with a discovery call or site visit — not a template form. We build for your actual offerings and buyers. Every Maxwell website is a custom Next.js build: owned codebase, no plugin subscriptions, no annual WordPress tax. Manufacturer and industrial catalogs remain a specialty.",
   ],
   mission:
-    "Build catalog websites and RFQ systems that make Gujarat manufacturers visible on Google and eliminate dependence on paid directories.",
+    "Build websites, catalogs, and RFQ systems that make businesses visible on Google and turn search into owned inquiries.",
   vision:
-    "Be the web engineering partner that industrial manufacturers in Gujarat call when they are ready to own their buyer channel — before their competitor does.",
+    "Be the web engineering partner Gujarat businesses call when they are ready to own their buyer channel — before their competitor does.",
 } as const;
 
 export const aboutPageIndustries = [
@@ -36,13 +36,13 @@ export const aboutPageIndustries = [
     slug: "chemical-manufacturing",
     title: "Chemical & Pharma Manufacturing",
     description:
-      "Product catalog websites for specialty chemical manufacturers, chemical distributors, and pharma equipment suppliers. CAS number pages, SDS/MSDS downloads, COA request forms, and category SEO — for manufacturers in Nandesari, Ankleshwar, Bharuch-Ankleshwar, and Vatva GIDC corridors.",
+      "Product catalog websites for specialty chemical manufacturers, chemical distributors, and pharma equipment suppliers. CAS number pages, SDS/MSDS downloads, COA request forms, and category SEO — for manufacturers in Nandesari, Ankleshwar, and Bharuch chemical corridors.",
   },
   {
     slug: "manufacturing",
     title: "Engineering & Machinery",
     description:
-      "B2B supplier websites for precision engineering companies, OEM machinery manufacturers, and auto component suppliers in Makarpura, Savli, and Halol GIDC. Spec sheet pages, RFQ forms, ISO/CE certification display, and export-ready catalog architecture.",
+      "B2B supplier websites for precision engineering companies, OEM machinery manufacturers, and auto component suppliers in Makarpura and Savli GIDC. Spec sheet pages, RFQ forms, ISO/CE certification display, and export-ready catalog architecture.",
   },
   {
     slug: "pharma",
@@ -163,65 +163,50 @@ export const sdlcPhases = [
   {
     id: "discovery",
     title: "Discovery",
-    duration: "1–3 weeks",
-    description: "Deep-dive into business goals, users, technical requirements, and success metrics.",
-    deliverables: ["Requirements document", "Technical feasibility assessment", "Project roadmap"],
-    clientInvolvement: "Stakeholder interviews, workflow walkthroughs, priority workshops",
-    outcomes: ["Aligned scope", "Clear timeline", "Risk identification"],
-  },
-  {
-    id: "planning",
-    title: "Planning",
-    duration: "1–2 weeks",
-    description: "Architecture design, sprint planning, resource allocation, and milestone definition.",
-    deliverables: ["Architecture document", "Sprint backlog", "Communication plan"],
-    clientInvolvement: "Architecture review, milestone approval, team introduction",
-    outcomes: ["Signed-off architecture", "Sprint 1 ready", "Clear accountability"],
+    duration: "3–7 days",
+    description:
+      "Site visit or call to map products, buyers, certificates, and enquiry paths — not a generic software requirements dump.",
+    deliverables: ["Sitemap & page list", "SEO keyword / corridor notes", "Scope & timeline"],
+    clientInvolvement: "Product list, brand assets, competitor URLs, priority pages",
+    outcomes: ["Aligned scope", "Clear Starter vs Professional fit", "Go-live target"],
   },
   {
     id: "design",
     title: "Design",
-    duration: "2–4 weeks",
-    description: "Wireframes, UI/UX design, interactive prototypes, and design system creation.",
-    deliverables: ["Wireframes", "UI mockups", "Interactive prototype", "Design system"],
-    clientInvolvement: "Design reviews, user testing feedback, brand alignment",
-    outcomes: ["Approved designs", "Developer-ready specs", "Reduced rework"],
-  },
-  {
-    id: "development",
-    title: "Development",
-    duration: "4–20+ weeks",
-    description: "Agile sprints with weekly demos, code reviews, and continuous integration.",
-    deliverables: ["Working software increments", "API documentation", "Weekly demo recordings"],
-    clientInvolvement: "Weekly demos, feedback cycles, UAT preparation",
-    outcomes: ["Visible progress", "Early issue detection", "Milestone delivery"],
-  },
-  {
-    id: "testing",
-    title: "Testing",
-    duration: "1–3 weeks",
-    description: "QA testing, performance benchmarks, security review, and user acceptance testing.",
-    deliverables: ["Test reports", "Bug fix log", "Performance audit", "UAT sign-off"],
-    clientInvolvement: "UAT sessions, bug prioritization, go-live approval",
-    outcomes: ["Production-ready quality", "Documented test coverage", "Client confidence"],
-  },
-  {
-    id: "deployment",
-    title: "Deployment",
     duration: "1–2 weeks",
-    description: "Production deployment, data migration, monitoring setup, and launch support.",
-    deliverables: ["Deployed application", "Deployment runbook", "Monitoring dashboards"],
-    clientInvolvement: "Go-live coordination, training sessions, hypercare period",
-    outcomes: ["Live production system", "Trained team", "Zero-downtime launch"],
+    description: "Wireframes and UI for catalog, RFQ, and trust pages — mobile-first, brand-aligned.",
+    deliverables: ["Key page wireframes", "UI mockups", "Component notes"],
+    clientInvolvement: "Design review, brand feedback, content owners named",
+    outcomes: ["Approved look & IA", "Build-ready specs", "Fewer mid-build changes"],
   },
   {
-    id: "support",
-    title: "Support",
+    id: "build",
+    title: "Build",
+    duration: "2–5 weeks",
+    description: "Next.js implementation: pages, forms, WhatsApp CTAs, CMS where needed, weekly demos.",
+    deliverables: ["Working site increments", "Forms & enquiry paths", "Staging URL"],
+    clientInvolvement: "Weekly demos, content upload, feedback in one channel",
+    outcomes: ["Visible progress", "Early content gaps spotted", "Milestone delivery"],
+  },
+  {
+    id: "seo-go-live",
+    title: "SEO go-live",
+    duration: "3–7 days",
+    description:
+      "Technical SEO, schema, Search Console, Analytics, redirects if redesign — then production launch.",
+    deliverables: ["Live site", "Sitemap + Search Console", "GA4 / conversion events"],
+    clientInvolvement: "DNS / hosting access, go-live approval, training session",
+    outcomes: ["Indexed foundations", "Owned enquiry tracking", "Pay-after-go-live handoff"],
+  },
+  {
+    id: "amc",
+    title: "AMC",
     duration: "Ongoing",
-    description: "Bug fixes, feature updates, performance monitoring, and dedicated support retainers.",
-    deliverables: ["SLA-backed support", "Monthly reports", "Feature roadmap updates"],
-    clientInvolvement: "Support ticket submission, roadmap prioritization, quarterly reviews",
-    outcomes: ["System reliability", "Continuous improvement", "Long-term partnership"],
+    description:
+      "Optional monthly AMC: product changes, updates, SEO report, and published articles so the site keeps working.",
+    deliverables: ["Monthly update log", "SEO report", "Security / uptime checks"],
+    clientInvolvement: "Change requests, quarterly priorities",
+    outcomes: ["Reliable site", "Steady content", "Long-term partnership"],
   },
 ] as const;
 
@@ -317,38 +302,38 @@ export const companyFaqs = [
 ] as const;
 
 export const processTrustFramework = {
-  headline: "Why clients trust our delivery process",
+  headline: "Why clients trust our website delivery",
   riskReduction: [
-    "Fixed-scope discovery before development commitments",
-    "Milestone billing tied to demonstrable deliverables",
+    "Fixed-scope discovery before build commitments",
+    "No advance on website packages — pay within 3 days of go-live",
     "100% source code and IP transfer on completion",
     "NDA and role-based access controls by default",
   ],
   qualityGates: [
-    "Architecture review before sprint 1",
-    "Peer code review on every pull request",
-    "Automated test and security scans in CI",
-    "UAT sign-off checklist before production",
+    "Sitemap and IA approved before design lock",
+    "Staging review before production go-live",
+    "Core Web Vitals and form checks before launch",
+    "Search Console + Analytics confirmed at handoff",
   ],
   reviewCycles: [
     "Weekly client demos with recorded decisions",
-    "Bi-weekly steering for enterprise engagements",
-    "Transparent Jira/Linear boards with SLA on updates",
+    "Single feedback channel (WhatsApp or email)",
+    "Transparent task board with clear owners",
   ],
   testingStandards: [
-    "Unit and integration tests on critical paths",
-    "Performance benchmarks for customer-facing flows",
-    "Regression suite before each production release",
+    "Mobile and desktop checks on money pages",
+    "Form and WhatsApp path verification",
+    "Redirect and sitemap checks on redesigns",
   ],
   communication: [
-    "Dedicated project manager and single escalation path",
-    "Slack/WhatsApp channel with business-hours response target",
-    "Documented RACI for stakeholders and approvers",
+    "Dedicated project contact and single escalation path",
+    "WhatsApp channel with business-hours response target",
+    "Clear RACI for content and approvals",
   ],
   escalation: [
-    "L1: Project manager within 4 business hours",
+    "L1: Project contact within 4 business hours",
     "L2: Engineering lead same business day",
-    "L3: CTO engagement for production-critical issues",
+    "L3: Founder engagement for production-critical issues",
   ],
 } as const;
 

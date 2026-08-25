@@ -121,8 +121,8 @@ export const pricingTerms = {
 } as const;
 
 export const pricingHero = {
-  eyebrow: "TCO-first pricing",
-  title: "Compare 3-year total cost before you choose a tier",
+  eyebrow: "Published website pricing",
+  title: "Website pricing in Vadodara — from ₹35,000",
   description:
-    "A ₹25K WordPress quote often costs ₹2.77L over three years. Our published tiers include zero plugin lock-in and full code ownership — real prices for Gujarat manufacturers with GST invoice on every project.",
+    "Published tiers with zero plugin lock-in and full code ownership — real prices for Gujarat manufacturers. GST invoice on every project.",
 } as const;

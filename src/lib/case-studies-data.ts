@@ -240,7 +240,7 @@ export const caseStudiesData: Record<CaseStudySlug, CaseStudyData> = {
       "Operator training is as critical as the software itself",
     ],
     similarSolutions: [
-      { title: "ERP Development", href: "/services/erp-development", description: "Custom ERP for manufacturing workflows" },
+      { title: "ERP Development", href: "/services/website-development-for-manufacturers", description: "Custom ERP for manufacturing workflows" },
       { title: "Manufacturing Industry", href: "/industries/manufacturing", description: "Industry-specific software solutions" },
       { title: "AI Safety Monitoring", href: "/case-studies/ai-safety-monitoring", description: "Computer vision for factory safety" },
     ],
@@ -827,7 +827,7 @@ export const caseStudiesData: Record<CaseStudySlug, CaseStudyData> = {
     similarSolutions: [
       { title: "Custom Software Development", href: "/services/custom-software-development", description: "Retail and e-commerce platforms" },
       { title: "Retail Industry", href: "/industries/retail", description: "Retail software solutions" },
-      { title: "CRM Development", href: "/services/crm-development", description: "Customer loyalty and CRM" },
+      { title: "CRM Development", href: "/services/website-development", description: "Customer loyalty and CRM" },
     ],
     trust: {
       projectValue: "₹30L–₹50L",

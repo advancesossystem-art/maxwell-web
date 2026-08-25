@@ -28,11 +28,11 @@ const siteUrl = normalizeSiteUrl(siteUrlRaw);
  * Explicitly excludes printer/toner retail and maxwells.in (Maxwell Engineering Solutions).
  */
 export const brandDisambiguation =
-  "Maxwell Electrodeal Private Limited is a website development, SEO, and website AMC company for manufacturers and businesses. Not a printer, toner, or photocopier hardware retailer. Not affiliated with Maxwell Engineering Solutions (maxwells.in)." as const;
+  "Maxwell Electrodeal Private Limited is a website development, SEO, and website AMC company for businesses — with deep strength for manufacturers. Not a printer, toner, or photocopier hardware retailer. Not affiliated with Maxwell Engineering Solutions (maxwells.in)." as const;
 
 /** Single visible disclaimer — footer only. */
 export const footerBrandNote =
-  "Maxwell Electrodeal Private Limited builds, ranks, and maintains websites for manufacturers and businesses. Not a printer/toner dealer. Not Maxwell Engineering Solutions (maxwells.in)." as const;
+  "Maxwell Electrodeal Private Limited builds, ranks, and maintains websites for businesses of every size — including manufacturers. Not a printer/toner dealer. Not Maxwell Engineering Solutions (maxwells.in)." as const;
 
 /** Corporate contact emails — single source of truth (display, mailto, schema). */
 export const corporateEmails = {
@@ -46,9 +46,9 @@ export const corporateEmails = {
 export const siteConfig = {
   name: "Maxwell Electrodeal",
   legalName: "Maxwell Electrodeal Private Limited",
-  tagline: "Website development, SEO & AMC for manufacturers",
+  tagline: "Website development, SEO & AMC for businesses",
   description:
-    "Website development company in Vadodara — manufacturer catalogs, SEO ranking, and monthly website AMC from ₹15,000. Sites from ₹35,000. GST invoice. You own the code.",
+    "Website development company in Vadodara — business sites, product catalogs, SEO, and monthly AMC from ₹15,000. Sites from ₹35,000. GST invoice. You own the code.",
   url: siteUrl,
   logoPath: "/logo.png",
   logoUrl: `${siteUrl}/logo.png`,

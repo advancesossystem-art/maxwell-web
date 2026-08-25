@@ -1,4 +1,4 @@
-import dynamic from "next/dynamic";
+﻿import dynamic from "next/dynamic";
 import { ToolRouteShell } from "@/components/tools/ToolRouteShell";
 import { buildPageMetadata } from "@/lib/seo-helpers";
 import { getToolBySlug } from "@/lib/tools/registry";
@@ -12,9 +12,9 @@ const IndustrialWebsiteRfqEstimatorTool = dynamic(() =>
 const tool = getToolBySlug("industrial-website-rfq-estimator")!;
 
 export const metadata = buildPageMetadata({
-  title: "Industrial Website Cost & RFQ Feature Estimator | Free | Maxwell",
+  title: "Industrial Website Cost Estimator | Free",
   description:
-    "Free industrial website cost estimator for manufacturers: Starter ₹45k / Professional ₹75k planning ranges based on SKU count, RFQ depth, catalog, GIDC SEO, and dealer portal needs. Not a fixed quote.",
+    "Free industrial website cost estimator: Starter ₹35K / Professional ₹75K by SKU count, RFQ depth, catalog, GIDC SEO. Planning tool — not a fixed quote.",
   path: `/tools/${tool.slug}`,
   keywords: [
     ...tool.tags,
@@ -24,6 +24,7 @@ export const metadata = buildPageMetadata({
     "industrial website cost India",
     "B2B RFQ website price",
   ],
+  absoluteTitle: true,
 });
 
 export default function Page() {
@@ -35,7 +36,7 @@ export default function Page() {
         </h2>
         <p>
           Use this planner when you need a budget ballpark for an industrial or manufacturer website — product SKUs,
-          RFQ depth, GIDC SEO, and optional dealer portal. Published anchors: Starter from ₹45,000 and Professional from
+          RFQ depth, GIDC SEO, and optional dealer portal. Published anchors: Starter from ₹35,000 and Professional from
           ₹75,000. Ranges are honest planning bands, not guaranteed quotes. ERP is billed separately with milestones.
         </p>
       </div>

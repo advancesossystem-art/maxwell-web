@@ -12,11 +12,11 @@ export function ServicesExperience() {
         <FadeIn>
           <p className="v6-eyebrow-line v6-eyebrow">What we build</p>
           <h2 className="v6-section-title v6-section-title--wide mt-4 text-balance">
-            Website Engineering & Supporting IT Solutions
+            Website Development, SEO & AMC
           </h2>
           <p className="v6-lead mt-4 max-w-3xl">
-            Business websites and manufacturer catalogs first—plus web apps, ERP, CRM, AI, cloud,
-            and custom software with transparent pricing from Vadodara, Gujarat.
+            Manufacturer catalogs, business websites, SEO, and monthly AMC — published pricing from
+            Vadodara, Gujarat. Starter from ₹35,000 · AMC from ₹15,000/mo.
           </p>
         </FadeIn>
 

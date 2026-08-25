@@ -14,6 +14,10 @@ const ExitIntentPopup = dynamic(
   () => import("@/components/leads/ExitIntentPopup").then((m) => ({ default: m.ExitIntentPopup })),
   { ssr: false },
 );
+const StickyCTA = dynamic(
+  () => import("@/components/conversion/StickyCTA").then((m) => ({ default: m.StickyCTA })),
+  { ssr: false },
+);
 
 export function TrustBadgesRow() {
   const badges = [...leadTrustBadges];
@@ -55,10 +59,11 @@ export function LeadConversionLayer() {
 
   return (
     <>
-      <MobileBodyState stickyBarActive={false} />
+      <MobileBodyState stickyBarActive={ready && showMarketing} />
       {showMarketing && ready ? (
         <>
           <FloatingCTA />
+          <StickyCTA location="sitewide-mobile" />
           <ExitIntentPopup />
         </>
       ) : null}

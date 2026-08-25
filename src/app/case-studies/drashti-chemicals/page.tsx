@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { createMetadata } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
@@ -104,7 +104,7 @@ export default function DrashtiChemicalsCaseStudy() {
       </section>
 
       {/* Challenge */}
-      <section className="py-14 border-b border-slate-200">
+      <section className="py-14 border-b border-slate-200 bg-white">
         <Container>
           <div className="max-w-3xl">
             <h2 className="font-display text-2xl font-bold text-[var(--v6-text,#0f172a)] mb-5">
@@ -153,7 +153,7 @@ export default function DrashtiChemicalsCaseStudy() {
       </section>
 
       {/* Technical Details */}
-      <section className="py-14 border-b border-slate-200">
+      <section className="py-14 border-b border-slate-200 bg-white">
         <Container>
           <h2 className="font-display text-2xl font-bold text-[var(--v6-text,#0f172a)] mb-8">
             Technical Details

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { HeroMagneticActions } from "@/components/home/HeroMagneticActions";
+import { TrackedWhatsAppLink } from "@/components/conversion/TrackedWhatsAppLink";
 import {
   heroTrustMetrics,
   heroTrustRow,
@@ -8,7 +9,6 @@ import {
   heroSidePanel,
   drashtiFeaturedCaseStudy,
 } from "@/lib/homepage";
-import { WHATSAPP_HREF_CONTACT } from "@/lib/constants";
 import { companyMetricDisplay } from "@/lib/company-metrics";
 import { founderProfile } from "@/lib/trust/founder-profile";
 import { CONVERSION_EXPECTATIONS } from "@/lib/conversion-copy";
@@ -38,7 +38,7 @@ const FEATURE_ICONS = [
 const TRUST_BLOCKS = [
   { title: "GST-Registered Enterprise", body: "Formal invoices on every project — ready for your accounts team." },
   { title: "100% IP Ownership", body: "Domain, hosting, and source code registered in your name from day one." },
-  { title: "Based in Vadodara, Gujarat", body: "Plant visits across GIDC belts — not a remote-only body shop." },
+  { title: "Based in Vadodara, Gujarat", body: "On-site discovery for local businesses — including GIDC plant visits when needed." },
   { title: "No Hidden Annual Costs", body: "Published build prices. Optional AMC from ₹15,000/month — no plugin rent." },
 ];
 
@@ -93,10 +93,10 @@ export function Hero() {
 
           <div className="relative mx-auto w-full max-w-lg lg:max-w-none">
             <Image
-              src="/home-hero-devices.png"
-              alt="Manufacturer catalog website on laptop and mobile"
-              width={1280}
-              height={720}
+              src="/home-hero-devices.webp"
+              alt="Business website on laptop and mobile"
+              width={1200}
+              height={675}
               priority
               className="h-auto w-full drop-shadow-2xl"
             />
@@ -151,10 +151,7 @@ export function HomeBuiltForBuyers() {
 }
 
 export function HomeWebsiteTypes() {
-  const types = [
-    ...heroSidePanel.websiteTypes,
-    { label: "B2B Websites", href: "/services/business-website-development" },
-  ];
+  const types = heroSidePanel.websiteTypes;
   return (
     <section className="bg-[#07070c] pb-10 md:pb-12">
       <div className="v6-container">
@@ -206,10 +203,11 @@ export function HomeProvenDelivery() {
             </div>
             <div className="hidden w-56 shrink-0 overflow-hidden rounded-xl border border-white/10 bg-black/40 md:block lg:w-64">
               <Image
-                src="/home-hero-devices.png"
+                src="/home-hero-devices.webp"
                 alt=""
                 width={400}
                 height={280}
+                loading="lazy"
                 className="h-36 w-full object-cover object-top opacity-90"
               />
             </div>
@@ -318,14 +316,9 @@ export function HomeFinalCta() {
             >
               Request Quote →
             </Link>
-            <a
-              href={WHATSAPP_HREF_CONTACT}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex h-12 items-center justify-center rounded-full bg-emerald-600 px-7 text-sm font-semibold text-white transition hover:bg-emerald-500"
-            >
+            <TrackedWhatsAppLink className="inline-flex h-12 items-center justify-center rounded-full bg-emerald-600 px-7 text-sm font-semibold text-white transition hover:bg-emerald-500">
               WhatsApp Us
-            </a>
+            </TrackedWhatsAppLink>
           </div>
         </div>
       </div>

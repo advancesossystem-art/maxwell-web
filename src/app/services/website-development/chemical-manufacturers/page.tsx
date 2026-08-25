@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { createMetadata } from "@/lib/metadata";
 import { IndustryWebsitePage } from "@/components/services/IndustryWebsitePage";
 import { chemicalManufacturersBlueprintSeo } from "@/lib/manufacturer-website-seo";
@@ -20,7 +20,7 @@ export default function ChemicalManufacturersBlueprintPage() {
       canonicalPath={chemicalManufacturersBlueprintSeo.path}
       serviceName="Website Development for Chemical Manufacturers"
       caseStudy
-      directAnswer="Maxwell Electrodeal builds Next.js chemical manufacturer websites for the Ankleshwar and Nandesari corridors with CAS tables, SDS downloads, and direct RFQ forms. Packages: Starter ₹45,000 · Professional ₹75,000 · Growth ₹1,50,000 — no advance; full pay within 3 days of go-live plus 18% GST. You own the domain, code, and inquiries — not a yearly directory slot."
+      directAnswer="Maxwell Electrodeal builds Next.js chemical manufacturer websites for the Ankleshwar and Nandesari corridors with CAS tables, SDS downloads, and direct RFQ forms. Packages: Starter ₹35,000 · Professional ₹75,000 · Growth ₹1,50,000 — no advance; full pay within 3 days of go-live plus 18% GST. You own the domain, code, and inquiries — not a yearly directory slot."
       catalogWireframe={[
         "Product landing: CAS, grade, packaging, hazard labels (display only — you supply approved text)",
         "SDS library: versioned PDF + request CoA without leaving the SKU page",

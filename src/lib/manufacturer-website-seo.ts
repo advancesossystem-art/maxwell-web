@@ -1,32 +1,30 @@
-/** SEO metadata for manufacturer website landing pages — keywords, titles, descriptions. */
+﻿/** SEO metadata for manufacturer website landing pages — keywords, titles, descriptions. */
 
 export const manufacturerHubSeo = {
-  title: "Manufacturer Website Development India | Catalogs from ₹45,000 | Maxwell",
+  title: "Manufacturer Websites India | From ₹35,000",
   description:
-    "Website development for manufacturers in India & Gujarat — product catalogs, GIDC SEO, owned enquiries. Starter from ₹45,000 · Professional catalogs often ₹75,000.",
+    "Manufacturer websites in India & Gujarat — catalogs, RFQ, GIDC SEO, WhatsApp. Starter ₹35,000 · Professional ₹75,000. Vadodara team. Request a quote.",
   path: "/services/website-development-for-manufacturers",
   keywords: [
+    "manufacturer website development India",
     "website development for manufacturers India",
     "B2B manufacturer website India",
-    "b2b manufacturing website development",
     "industrial website design company",
     "rfq website development for manufacturers",
-    "website for industrial supplier India",
-    "website development MSME India",
+    "catalog website for manufacturers",
     "factory website development India",
     "manufacturer website Gujarat",
     "website development Vadodara manufacturer",
-    "direct inquiry website manufacturer",
+    "GIDC manufacturer website",
     "industrial website design company India",
     "manufacturing company website India",
-    "GIDC manufacturer website",
   ],
 } as const;
 
 export const chemicalManufacturerSeo = {
-  title: "Chemical Manufacturer Website India",
+  title: "Chemical Manufacturer Website | From ₹35,000",
   description:
-    "Website for chemical manufacturers in India. MSDS catalogs, product pages, Vadodara-Bharuch corridor SEO. Direct inquiries from ₹75,000.",
+    "Websites for chemical manufacturers — MSDS catalogs, product pages, Bharuch corridor SEO. From ₹35,000. Vadodara team. Get a quote.",
   path: "/services/website-development/chemical-manufacturer",
   keywords: [
     "website for chemical manufacturer India",
@@ -43,9 +41,9 @@ export const chemicalManufacturerSeo = {
 } as const;
 
 export const pharmaceuticalSeo = {
-  title: "Pharmaceutical Company Website India",
+  title: "Pharmaceutical Website India | From ₹35,000",
   description:
-    "Pharmaceutical company website India. WHO-GMP catalogs, API pages, Vadodara pharma hub SEO. GST invoiced from ₹75,000.",
+    "Pharmaceutical company websites in India — WHO-GMP catalogs, API pages, Vadodara pharma hub SEO. GST invoiced from ₹35,000. Request a quote.",
   path: "/services/website-development/pharmaceutical-company",
   keywords: [
     "pharmaceutical company website India",
@@ -62,9 +60,9 @@ export const pharmaceuticalSeo = {
 } as const;
 
 export const engineeringSeo = {
-  title: "Engineering Company Website Gujarat",
+  title: "Engineering Company Website | From ₹35,000",
   description:
-    "Engineering company website Gujarat. CNC & fabrication catalogs, GIDC manufacturer SEO, RFQ forms. Vadodara delivery from ₹75,000.",
+    "Engineering company websites in Gujarat — CNC & fabrication catalogs, GIDC SEO, RFQ forms. Vadodara delivery from ₹35,000. Get a quote.",
   path: "/services/website-development/engineering-company",
   keywords: [
     "engineering company website Gujarat",
@@ -81,9 +79,9 @@ export const engineeringSeo = {
 } as const;
 
 export const textileSeo = {
-  title: "Textile Manufacturer Website India",
+  title: "Textile Manufacturer Website | From ₹35,000",
   description:
-    "Textile manufacturer website India. Fabric catalogs, sample requests, Surat-Ahmedabad cluster SEO. Export-ready sites from ₹75,000.",
+    "Textile manufacturer websites in India — fabric catalogs, sample requests, Surat cluster SEO. Export-ready sites from ₹35,000. Request a quote.",
   path: "/services/website-development/textile-manufacturer",
   keywords: [
     "textile manufacturer website India",
@@ -100,9 +98,9 @@ export const textileSeo = {
 } as const;
 
 export const ceramicSeo = {
-  title: "Ceramic Manufacturer Website Morbi",
+  title: "Ceramic Manufacturer Website | From ₹35,000",
   description:
-    "Ceramic manufacturer website Morbi Gujarat. Tile catalogs, export inquiry forms, international buyer SEO. Direct leads from ₹75,000.",
+    "Ceramic manufacturer websites for Morbi Gujarat — tile catalogs, export inquiry forms, international buyer SEO. Direct leads from ₹35,000. Get a quote.",
   path: "/services/website-development/ceramic-manufacturer",
   keywords: [
     "ceramic manufacturer website Morbi",
@@ -119,9 +117,9 @@ export const ceramicSeo = {
 } as const;
 
 export const foodProcessingSeo = {
-  title: "Website for Food Processing Company India | Maxwell Electrodeal",
+  title: "Food Processing Website India | From ₹35,000",
   description:
-    "Product catalog websites for food processing companies, FSSAI-registered manufacturers, and packaged food brands in India. Inquiry forms, certifications, export compliance. From ₹75,000.",
+    "Websites for food processing and FSSAI manufacturers — catalogs, certifications, export inquiry. From ₹35,000. Vadodara team. Request a quote.",
   path: "/services/website-development/food-processing-company",
   keywords: [
     "food processing company website India",
@@ -136,9 +134,9 @@ export const foodProcessingSeo = {
 } as const;
 
 export const autoPartsSeo = {
-  title: "Website for Auto Parts Manufacturer India | Maxwell Electrodeal",
+  title: "Auto Parts Manufacturer Website | From ₹35,000",
   description:
-    "Product catalog websites for auto parts manufacturers, OEM suppliers, and automotive component exporters in India. Part numbers, spec sheets, OEM fitment data. From ₹75,000.",
+    "Websites for auto parts manufacturers and OEM suppliers — part numbers, spec sheets, fitment data, RFQ. From ₹35,000. India delivery. Get a quote.",
   path: "/services/website-development/auto-parts-manufacturer",
   keywords: [
     "auto parts manufacturer website India",
@@ -153,9 +151,9 @@ export const autoPartsSeo = {
 } as const;
 
 export const paintCoatingSeo = {
-  title: "Website for Paint & Coating Company India | Maxwell Electrodeal",
+  title: "Paint & Coating Website India | From ₹35,000",
   description:
-    "Product catalog websites for paint manufacturers, industrial coating companies, and protective coating suppliers in India. TDS sheets, shade cards, dealer locator. From ₹75,000.",
+    "Websites for paint and coating manufacturers — TDS sheets, shade cards, dealer locator, RFQ. From ₹35,000. Gujarat delivery. Request a quote.",
   path: "/services/website-development/paint-coating-company",
   keywords: [
     "paint company website India",
@@ -170,9 +168,9 @@ export const paintCoatingSeo = {
 } as const;
 
 export const plasticManufacturerSeo = {
-  title: "Website for Plastic Manufacturer India | Maxwell Electrodeal",
+  title: "Plastic Manufacturer Website | From ₹35,000",
   description:
-    "Product catalog websites for plastic manufacturers, injection molding companies, and plastic component suppliers in India. Material grades, tolerances, custom mold requests. From ₹75,000.",
+    "Websites for plastic manufacturers and injection molding companies — material grades, tolerances, mold RFQ. From ₹35,000. India delivery. Get a quote.",
   path: "/services/website-development/plastic-manufacturer",
   keywords: [
     "plastic manufacturer website India",
@@ -187,9 +185,9 @@ export const plasticManufacturerSeo = {
 } as const;
 
 export const exporterIndiaSeo = {
-  title: "Website for Exporters India — B2B Export Website Development | Maxwell Electrodeal",
+  title: "Exporter Website India | B2B from ₹35,000",
   description:
-    "B2B export websites for Indian manufacturers and trading companies. Get direct inquiries from international buyers — US, UAE, Europe, Africa. Product catalog, IEC integration, export compliance pages. From ₹75,000.",
+    "B2B export websites for Indian manufacturers — catalogs, IEC signals, overseas RFQ for US, UAE, Europe buyers. From ₹35,000. Request a quote.",
   path: "/services/website-development/exporter-india",
   keywords: [
     "website for exporter India",
@@ -204,9 +202,9 @@ export const exporterIndiaSeo = {
 } as const;
 
 export const electricalManufacturerSeo = {
-  title: "Electrical Manufacturer Website India | Catalog & RFQ | Maxwell",
+  title: "Electrical Manufacturer Website | From ₹35,000",
   description:
-    "Websites for electrical equipment manufacturers — product catalogs, ratings, IS/IEC references, RFQ forms. Gujarat GIDC delivery from ₹45,000 / Professional ₹75,000.",
+    "Websites for electrical equipment manufacturers — catalogs, ratings, IS/IEC refs, RFQ forms. Gujarat GIDC delivery from ₹35,000. Get a quote.",
   path: "/services/website-development/electrical-manufacturer",
   keywords: [
     "electrical manufacturer website India",
@@ -219,9 +217,9 @@ export const electricalManufacturerSeo = {
 } as const;
 
 export const machineryOemSeo = {
-  title: "Machinery & OEM Manufacturer Website India | RFQ Catalogs | Maxwell",
+  title: "Machinery OEM Website India | From ₹35,000",
   description:
-    "Websites for machinery builders and OEM suppliers — machine models, specs, application pages, RFQ with drawing upload. From ₹45,000 · Professional catalogs from ₹75,000.",
+    "Websites for machinery builders and OEM suppliers — models, specs, application pages, RFQ with drawing upload. From ₹35,000. Request a quote.",
   path: "/services/website-development/machinery-oem",
   keywords: [
     "machinery manufacturer website India",
@@ -235,9 +233,9 @@ export const machineryOemSeo = {
 
 /** CEO Founder Blueprint — four authoritative corridor verticals (exact paths). */
 export const chemicalManufacturersBlueprintSeo = {
-  title: "Chemical Manufacturer Websites — Ankleshwar & Nandesari | Maxwell",
+  title: "Chemical Websites Ankleshwar | From ₹35,000",
   description:
-    "Direct RFQ catalog websites for chemical manufacturers in the Ankleshwar–Nandesari corridor. CAS, SDS PDF, REACH readiness display. Starter ₹45,000 · Professional ₹75,000 · Growth ₹1,50,000.",
+    "RFQ catalog websites for chemical manufacturers in Ankleshwar–Nandesari. CAS, SDS PDF, REACH display. Starter ₹35,000 · Professional ₹75,000. Get a quote.",
   path: "/services/website-development/chemical-manufacturers",
   keywords: [
     "chemical manufacturer website Ankleshwar",
@@ -249,9 +247,9 @@ export const chemicalManufacturersBlueprintSeo = {
 } as const;
 
 export const engineeringMachineryBlueprintSeo = {
-  title: "Engineering & Machinery Websites — Makarpura & Savli | Maxwell",
+  title: "Engineering Websites Makarpura | From ₹35,000",
   description:
-    "RFQ and CAD-ready websites for engineering and machinery OEMs in Makarpura & Savli GIDC. Machine video, specs, drawing upload. From ₹45,000 · Professional ₹75,000 · Growth ₹1,50,000.",
+    "RFQ and CAD-ready websites for engineering OEMs in Makarpura & Savli GIDC. Specs, drawing upload. From ₹35,000 · Professional ₹75,000. Request a quote.",
   path: "/services/website-development/engineering-machinery",
   keywords: [
     "engineering machinery website Gujarat",
@@ -263,9 +261,9 @@ export const engineeringMachineryBlueprintSeo = {
 } as const;
 
 export const ceramicExportersBlueprintSeo = {
-  title: "Ceramic Exporter Websites Morbi — Tile Catalog & PEI | Maxwell",
+  title: "Ceramic Exporter Websites Morbi | From ₹35,000",
   description:
-    "Export websites for Morbi ceramic and tile manufacturers — size/finish matrices, PEI ratings, overseas RFQ. Starter ₹45,000 · Professional ₹75,000 · Growth ₹1,50,000.",
+    "Export websites for Morbi ceramic and tile manufacturers — size/finish matrices, PEI ratings, overseas RFQ. From ₹35,000. Get a quote.",
   path: "/services/website-development/ceramic-exporters",
   keywords: [
     "ceramic exporter website Morbi",
@@ -277,9 +275,9 @@ export const ceramicExportersBlueprintSeo = {
 } as const;
 
 export const pharmaEquipmentBlueprintSeo = {
-  title: "Pharma Equipment Websites — Vadodara & Halol | Maxwell",
+  title: "Pharma Equipment Websites | From ₹35,000",
   description:
-    "Clean showcase and RFQ websites for pharma equipment manufacturers in Vadodara and Halol GIDC. Validation-ready presentation, not generic agency templates. From ₹45,000.",
+    "Showcase and RFQ websites for pharma equipment manufacturers in Vadodara and Gujarat. Validation-ready presentation. From ₹35,000. Request a quote.",
   path: "/services/website-development/pharma-equipment",
   keywords: [
     "pharma equipment website Vadodara",
@@ -291,9 +289,9 @@ export const pharmaEquipmentBlueprintSeo = {
 } as const;
 
 export const drashtiCaseStudySeo = {
-  title: "Drashti Chemicals Website — Chemical Supplier Vadodara",
+  title: "Drashti Chemicals Website Case Study",
   description:
-    "Case study: Drashti Chemicals, Vadodara chemical supplier. 263-page Next.js site, 154 products, PageSpeed 94. Direct organic leads from Google.",
+    "Case study: Drashti Chemicals, Vadodara. 263-page Next.js site, 154 products, PageSpeed 94. Direct organic leads from Google. See the build.",
   path: "/case-studies/drashti-chemicals",
   publishedAt: "2026-07-01",
   keywords: [

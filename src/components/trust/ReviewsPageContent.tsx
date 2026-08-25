@@ -10,6 +10,7 @@ import { TestimonialGrid } from "@/components/trust/TestimonialGrid";
 import { verifiableWorkFallback } from "@/lib/trust-content";
 import { getAllVerifiedReviews } from "@/lib/verified-reviews";
 import { siteConfig } from "@/lib/constants";
+import { businessAddress } from "@/lib/business-address";
 
 export function ReviewsPageContent() {
   const verifiedReviews = getAllVerifiedReviews();
@@ -101,19 +102,24 @@ export function ReviewsPageContent() {
         <Card interactive={false} padding="lg" className="mx-auto max-w-2xl text-center">
           <H3>Worked with Maxwell?</H3>
           <Text className="mt-3">
-            If you are a current or past client, we welcome honest feedback on Google or Clutch once your project is
-            complete. Named reviews with a specific outcome help other leaders evaluate fit.
+            Public Google reviews are the #1 trust signal for Vadodara buyers. If you are a past client, leave an honest
+            review mentioning the website outcome (e.g. catalog, RFQ, PageSpeed). We never display fake star ratings.
           </Text>
           <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
-              href={`mailto:${siteConfig.email}?subject=Client%20review%20request`}
+              href={businessAddress.googleMapsLink}
+              target="_blank"
+              rel="noopener noreferrer"
               className="v6-btn v6-btn-primary inline-flex !min-h-10"
             >
-              Request a review link
+              Open Google Maps / leave a review
             </a>
-            <Link href="/contact" className="v6-btn v6-btn-secondary inline-flex !min-h-10">
-              Contact us
-            </Link>
+            <a
+              href={`mailto:${siteConfig.email}?subject=Client%20review%20request`}
+              className="v6-btn v6-btn-secondary inline-flex !min-h-10"
+            >
+              Email us for a review link
+            </a>
           </div>
         </Card>
       </PageSection>

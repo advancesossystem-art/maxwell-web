@@ -6,13 +6,8 @@ import { CrossFade } from "@/components/motion/CrossFade";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import {
-  IconAI,
-  IconCRM,
   IconCode,
-  IconERP,
   IconGlobe,
-  IconMobile,
-  IconSaaS,
   ArrowRight,
 } from "@/components/ui/Icons";
 import { FormField, inputClass, FeatureChip } from "@/components/leads/LeadFormFields";
@@ -28,14 +23,11 @@ import {
   WizardStepNav,
 } from "@/components/leads/EstimateWizardUI";
 import {
-  leadProjectTypes,
   leadIndustries,
   leadTimelines,
-  leadBudgets,
   leadUserCounts,
-  featureOptionsByProjectType,
 } from "@/lib/leads-data";
-import type { LeadIndustry, LeadProjectType } from "@/lib/leads-data";
+import type { LeadIndustry } from "@/lib/leads-data";
 import type { EstimateFormData } from "@/lib/lead-scoring";
 import { calculateProjectEstimate } from "@/lib/project-estimator";
 import {
@@ -45,6 +37,11 @@ import {
   projectTypeWizardMeta,
   timelineMeta,
   userCountMeta,
+  wizardBudgets,
+  wizardFeatureOptions,
+  wizardProjectTypes,
+  type WizardBudget,
+  type WizardProjectType,
 } from "@/lib/estimate-wizard-config";
 import { CONVERSION_EXPECTATIONS } from "@/lib/conversion-copy";
 import { trackFormStart, trackFormStep, trackFormComplete } from "@/components/leads/LeadAnalytics";
@@ -52,7 +49,11 @@ import { trackFormStart, trackFormStep, trackFormComplete } from "@/components/l
 const STORAGE_KEY = "maxwell-estimate-draft";
 const TOTAL_STEPS = WIZARD_STEPS.length;
 
-type WizardFormData = Omit<EstimateFormData, "industry"> & { industry: LeadIndustry | "" };
+type WizardFormData = Omit<EstimateFormData, "industry" | "projectType" | "budget"> & {
+  industry: LeadIndustry | "";
+  projectType: WizardProjectType;
+  budget: WizardBudget;
+};
 
 function scopeFromUsers(userCount: string): string {
   if (userCount.startsWith("1–10")) return "Small";
@@ -62,13 +63,13 @@ function scopeFromUsers(userCount: string): string {
 }
 
 const initialData: WizardFormData = {
-  projectType: "Custom Software",
+  projectType: "Website",
   industry: "",
   scope: "Medium",
   userCount: "11–30 users",
   features: [],
   timeline: "3 Months",
-  budget: "₹1L–₹5L",
+  budget: "₹35K–₹75K",
   name: "",
   company: "",
   email: "",
@@ -81,9 +82,17 @@ function loadDraftFromStorage(): WizardFormData | null {
     if (!saved) return null;
     const parsed = JSON.parse(saved) as Partial<WizardFormData>;
     const userCount = parsed.userCount ?? initialData.userCount;
+    const projectType = wizardProjectTypes.includes(parsed.projectType as WizardProjectType)
+      ? (parsed.projectType as WizardProjectType)
+      : initialData.projectType;
+    const budget = wizardBudgets.includes(parsed.budget as WizardBudget)
+      ? (parsed.budget as WizardBudget)
+      : initialData.budget;
     return {
       ...initialData,
       ...parsed,
+      projectType,
+      budget,
       scope: scopeFromUsers(userCount),
     };
   } catch {
@@ -95,7 +104,7 @@ function IndustryIcon({ industry }: { industry: LeadIndustry }) {
   const className = "h-5 w-5";
   switch (industry) {
     case "Manufacturing":
-      return <IconERP className={className} />;
+      return <IconGlobe className={className} />;
     case "Healthcare":
       return (
         <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -131,18 +140,26 @@ function IndustryIcon({ industry }: { industry: LeadIndustry }) {
   }
 }
 
-function ProjectTypeIcon({ type }: { type: LeadProjectType }) {
+function ProjectTypeIcon({ type }: { type: WizardProjectType }) {
   const className = "h-5 w-5";
-  const map: Record<LeadProjectType, React.ReactNode> = {
-    Website: <IconGlobe className={className} />,
-    "Mobile App": <IconMobile className={className} />,
-    ERP: <IconERP className={className} />,
-    CRM: <IconCRM className={className} />,
-    AI: <IconAI className={className} />,
-    SaaS: <IconSaaS className={className} />,
-    "Custom Software": <IconCode className={className} />,
-  };
-  return map[type];
+  if (type === "Website" || type === "Website Redesign") {
+    return <IconGlobe className={className} />;
+  }
+  if (type === "Manufacturer Catalog") {
+    return (
+      <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
+      </svg>
+    );
+  }
+  if (type === "SEO / AMC") {
+    return (
+      <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+      </svg>
+    );
+  }
+  return <IconCode className={className} />;
 }
 
 function ProjectEstimatorInner() {
@@ -164,7 +181,7 @@ function ProjectEstimatorInner() {
   const estimate = useMemo(
     () =>
       calculateProjectEstimate({
-        projectType: data.projectType,
+        projectType: projectTypeWizardMeta[data.projectType].estimateKey,
         industry: (data.industry || "Other") as LeadIndustry,
         scope: scopeFromUsers(data.userCount),
         features: data.features,
@@ -201,8 +218,9 @@ function ProjectEstimatorInner() {
       if (s === 4 && data.features.length === 0) e.features = "Select at least one capability";
       if (s === TOTAL_STEPS) {
         if (!data.name.trim()) e.name = "Name is required";
-        if (!data.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email))
-          e.email = "Valid email required";
+        if (data.email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+          e.email = "Enter a valid email or leave blank";
+        }
         const phoneDigits = data.phone.replace(/\D/g, "");
         if (!data.phone.trim() || phoneDigits.length < 7) {
           e.phone = "Phone number is required (include country code, e.g. +91…)";
@@ -254,7 +272,7 @@ function ProjectEstimatorInner() {
         body: JSON.stringify({
           source: "get-estimate",
           name: data.name,
-          email: data.email,
+          email: data.email.trim() || undefined,
           phone: data.phone,
           company: data.company || undefined,
           projectType: data.projectType,
@@ -293,7 +311,7 @@ function ProjectEstimatorInner() {
     }
   };
 
-  const features = featureOptionsByProjectType[data.projectType as LeadProjectType] ?? [];
+  const features = wizardFeatureOptions[data.projectType] ?? [];
 
   const toggleFeature = (f: string) => {
     const nextFeatures = data.features.includes(f)
@@ -372,7 +390,7 @@ function ProjectEstimatorInner() {
                   {step === 2 && (
                     <>
                       <WizardOptionGrid stepKey="project-type" columns={3}>
-                        {leadProjectTypes.map((t) => (
+                        {wizardProjectTypes.map((t) => (
                           <WizardOptionItem key={t}>
                             <RichOptionCard
                               title={t}
@@ -389,8 +407,8 @@ function ProjectEstimatorInner() {
                         compact
                         title={data.projectType}
                         lines={[
-                          `Typical delivery: ${projectTypeWizardMeta[data.projectType as LeadProjectType].typicalTimeline}`,
-                          projectTypeWizardMeta[data.projectType as LeadProjectType].tagline,
+                          `Typical delivery: ${projectTypeWizardMeta[data.projectType].typicalTimeline}`,
+                          projectTypeWizardMeta[data.projectType].tagline,
                         ]}
                       />
                     </>
@@ -437,7 +455,7 @@ function ProjectEstimatorInner() {
 
                   {step === 5 && (
                     <WizardOptionGrid stepKey="budget">
-                      {leadBudgets.map((b) => (
+                      {wizardBudgets.map((b) => (
                         <WizardOptionItem key={b}>
                           <RichOptionCard
                             title={b}
@@ -505,7 +523,12 @@ function ProjectEstimatorInner() {
                             autoComplete="organization"
                           />
                         </FormField>
-                        <FormField label="Work Email" htmlFor="email" required error={errors.email}>
+                        <FormField
+                          label="Work Email"
+                          htmlFor="email"
+                          hint="Optional — phone is enough"
+                          error={errors.email}
+                        >
                           <input
                             id="email"
                             type="email"

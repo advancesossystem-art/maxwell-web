@@ -35,8 +35,7 @@ const CookieConsent = dynamic(
 
 function isLightChromeRoute(pathname: string | null): boolean {
   if (!pathname) return false;
-  if (pathname === "/blog" || pathname.startsWith("/blog/")) return true;
-  return false;
+  return pathname === "/thank-you";
 }
 
 export function DeferredClientChrome({ children }: { children: React.ReactNode }) {

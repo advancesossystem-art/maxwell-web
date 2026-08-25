@@ -1,4 +1,4 @@
-/** Pain → Agitate → Plan → Proof → Action narratives for priority service pages */
+﻿/** Pain → Agitate → Plan → Proof → Action narratives for priority service pages */
 
 export type ServiceConversionNarrative = {
   pain: string;
@@ -23,7 +23,7 @@ export const serviceConversionNarratives: Record<string, ServiceConversionNarrat
       { metric: "94", label: "Desktop PageSpeed score" },
       { metric: "6 wks", label: "Chemical supplier go-live" },
     ],
-    action: "See published pricing — Starter ₹45,000, no quote games.",
+    action: "See published pricing — Starter ₹35,000, no quote games.",
   },
   "erp-development": {
     pain: "Production runs on WhatsApp, inventory lives in Excel, and month-end reconciliation takes two weeks.",

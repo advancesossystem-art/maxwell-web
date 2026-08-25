@@ -7,14 +7,14 @@ import { createMetadata } from "@/lib/metadata";
 import { PageHero } from "@/components/design/PageHero";
 import { PageSection } from "@/components/design/PageSection";
 import { Card } from "@/components/design/Card";
-import { AccentGradient, H3, Caption } from "@/components/design/typography";
+import { H3, Caption } from "@/components/design/typography";
 import { StaggerGrid, StaggerGridItem } from "@/components/motion/StaggerGrid";
 import { HubMetrics } from "@/components/design/HubMetrics";
 
 export const metadata = createMetadata({
-  title: "Industry Website Engineering & Software India",
+  title: "Industry Websites for Manufacturers",
   description:
-    "Website engineering and vertical software for manufacturing, healthcare, education, logistics, retail & construction — business websites, ERP, mobile apps & automation by Maxwell Electrodeal, India.",
+    "Manufacturer and B2B websites by industry — catalogs, RFQ paths, and local SEO. From ₹35,000. Vadodara team. Browse industries.",
   path: "/industries",
 });
 
@@ -26,19 +26,15 @@ export default function IndustriesPage() {
       <PageHero
         compact
         eyebrow="Industries"
-        title={
-          <>
-            Systems shaped for <AccentGradient>how your sector operates</AccentGradient>
-          </>
-        }
-        description="Manufacturing, healthcare, education, logistics, retail, and construction—each with workflows we have shipped before."
+        title="Industry websites for manufacturers"
+        description="Manufacturing, healthcare, education, logistics, retail, and construction — catalog, enquiry, and SEO patterns for Indian B2B teams."
         below={
           <HubMetrics
             className="gap-3"
             stats={[
               { value: `${industries.length}`, label: "Industry verticals" },
-              { value: "ERP · MES", label: "Operations" },
-              { value: "HIPAA-ready", label: "Healthcare" },
+              { value: "Catalog · RFQ", label: "Website focus" },
+              { value: "From ₹35k", label: "Starter sites" },
               { value: "India · Global", label: "Delivery" },
             ]}
           />
@@ -49,7 +45,7 @@ export default function IndustriesPage() {
           <ArrowRight />
         </Button>
         <Button href="/get-estimate" size="lg" variant="outline">
-          Get Project Estimate
+          Get Website Estimate
         </Button>
       </PageHero>
 

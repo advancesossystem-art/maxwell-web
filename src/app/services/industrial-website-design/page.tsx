@@ -5,9 +5,9 @@ import { IndustrialServicePage } from "@/components/services/IndustrialServicePa
 const path = "/services/industrial-website-design";
 
 export const metadata: Metadata = createMetadata({
-  title: "Industrial Website Design Company Vadodara | B2B Manufacturing Sites",
+  title: "Industrial Website Design | From ₹35,000",
   description:
-    "Industrial website design for manufacturers — catalogs, RFQ paths, specs, GIDC SEO. Vadodara HQ from ₹45,000. Next.js B2B factory sites that earn enquiries.",
+    "Industrial website design for manufacturers — catalogs, RFQ paths, specs, GIDC SEO. Vadodara HQ from ₹35,000. B2B factory sites that earn enquiries.",
   path,
   keywords: [
     "industrial website design company",
@@ -16,6 +16,8 @@ export const metadata: Metadata = createMetadata({
     "industrial web design agency",
     "manufacturing website development Gujarat",
     "factory website design India",
+    "GIDC manufacturer website design",
+    "catalog website for manufacturers",
   ],
 });
 
@@ -27,7 +29,7 @@ export default function IndustrialWebsiteDesignPage() {
       eyebrow="Industrial digital · Vadodara · Gujarat"
       h1="Industrial website design for B2B manufacturers"
       lead="Generic agency pages rarely match how engineers and procurement search. Maxwell builds factory-ready websites: structured product catalogs, RFQ journeys, certificates, and Gujarat GIDC locality — not a PDF brochure online."
-      pageDirectAnswer="Industrial website design for manufacturers means HTML product catalogs, RFQ paths, certificates, and GIDC locality SEO — not a flat brochure site. Maxwell Electrodeal builds these from Vadodara starting at ₹45,000 (Starter) with Professional catalogs often from ₹75,000."
+      pageDirectAnswer="Industrial website design for manufacturers means HTML product catalogs, RFQ paths, certificates, and GIDC locality SEO — not a flat brochure site. Maxwell Electrodeal builds these from Vadodara starting at ₹35,000 (Starter) with Professional catalogs often from ₹75,000."
       estimateSource="industrial-website-design"
       schemaName="Industrial Website Design"
       schemaDescription="B2B industrial and manufacturing website design with catalogs, RFQ, and SEO from Maxwell Electrodeal Vadodara."
@@ -52,7 +54,7 @@ export default function IndustrialWebsiteDesignPage() {
           directAnswer:
             "This service fits chemical, pharma, electrical, machinery, polymer, and fabrication units selling B2B — especially plants across Vadodara-area and Gujarat GIDC estates that need owned enquiries instead of directory-only leads.",
           paragraphs: [
-            "Chemical, pharma, electrical, machinery, polymer, and fabrication units selling B2B across India and export markets — especially plants in Makarpura, Savli, Nandesari, Halol, Ankleshwar, Waghodia, Por, and Vatva GIDC estates.",
+            "Chemical, pharma, electrical, machinery, polymer, and fabrication units selling B2B across India and export markets — especially plants in Makarpura, Savli, Nandesari, and Ankleshwar GIDC estates.",
           ],
         },
         {

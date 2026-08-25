@@ -23,19 +23,19 @@ export function ProcessPageContent() {
     <>
       <CompanyPageHero
         breadcrumb={[{ label: "About", href: "/about" }, { label: "Process" }]}
-        eyebrow="Our Process"
+        eyebrow="Website delivery"
         title={
           <>
-            A process built for <AccentGradient>clarity and control</AccentGradient>
+            From discovery to <AccentGradient>SEO go-live &amp; AMC</AccentGradient>
           </>
         }
-        description="Discover, plan, design, build, deploy, and support—with weekly visibility and milestone billing at every stage."
+        description="Discovery → design → build → SEO go-live → AMC. Weekly visibility, no advance on website packages, and clear handoff so you own the site."
       />
 
       <PageSection>
         <SectionHeader
-          title="Interactive process map"
-          description="Click each phase to explore deliverables, client involvement, and outcomes."
+          title="Interactive delivery map"
+          description="Click each phase to see deliverables, your involvement, and what “done” means for a manufacturer or business website."
         />
         <ProcessFlowInteractive />
       </PageSection>

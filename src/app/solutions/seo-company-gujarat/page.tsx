@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { createMetadata } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
 
 export const metadata: Metadata = createMetadata({
-  title: "SEO Company Gujarat | Manufacturer SEO & Technical SEO | Maxwell Electrodeal",
+  title: "SEO Company Gujarat | From ₹50,000",
   description:
-    "SEO company for Gujarat manufacturers — Vadodara HQ, GIDC locality SEO, catalog clusters, technical SEO & GEO. From ₹50,000. Statewide delivery.",
+    "SEO company for Gujarat manufacturers — Vadodara HQ, GIDC locality SEO, catalog clusters, technical SEO. From ₹50,000. Statewide. Request a quote.",
   path: "/solutions/seo-company-gujarat",
   keywords: [
     "SEO company Gujarat",
@@ -49,7 +49,7 @@ export default function SeoCompanyGujaratPage() {
         </Container>
       </section>
 
-      <section className="py-16 border-b border-slate-200">
+      <section className="py-16 border-b border-slate-200 bg-white">
         <Container>
           <h2 className="font-display text-2xl font-bold text-slate-900 mb-4">
             Gujarat corridors we map into SEO

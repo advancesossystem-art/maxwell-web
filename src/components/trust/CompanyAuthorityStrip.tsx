@@ -4,12 +4,11 @@ import { businessAddress } from "@/lib/business-address";
 import { companyAuthorityFacts, founderAuthorityPaths } from "@/lib/trust/company-authority";
 
 type CompanyAuthorityStripProps = {
-  showMapLink?: boolean;
   className?: string;
 };
 
 /** NAP + business facts — contact, company, footer. */
-export function CompanyAuthorityStrip({ showMapLink = true, className = "" }: CompanyAuthorityStripProps) {
+export function CompanyAuthorityStrip({ className = "" }: CompanyAuthorityStripProps) {
   return (
     <div
       className={`rounded-2xl border border-border bg-surface-elevated p-5 text-sm text-muted ${className}`}
@@ -21,10 +20,9 @@ export function CompanyAuthorityStrip({ showMapLink = true, className = "" }: Co
         {companyAuthorityFacts.legalName}
       </p>
       <p className="mt-2" itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
-        <span itemProp="streetAddress">{businessAddress.streetAddress}</span>,{" "}
-        <span itemProp="addressLocality">{businessAddress.addressLocality}</span>,{" "}
-        <span itemProp="addressRegion">{businessAddress.addressRegion}</span>{" "}
-        <span itemProp="postalCode">{businessAddress.postalCode}</span>, India
+        <span itemProp="addressLocality">{businessAddress.publicLabel}</span>
+        <meta itemProp="addressRegion" content={businessAddress.addressRegion} />
+        <meta itemProp="addressCountry" content="IN" />
       </p>
       <ul className="mt-4 space-y-1.5">
         <li>
@@ -43,22 +41,12 @@ export function CompanyAuthorityStrip({ showMapLink = true, className = "" }: Co
           <span className="text-white">Hours:</span> {companyAuthorityFacts.businessHours}
         </li>
         <li>
-          <span className="text-white">Founded:</span> {companyAuthorityFacts.foundedYear} · Vadodara HQ
+          <span className="text-white">Founded:</span> {companyAuthorityFacts.foundedYear} · Office in Vadodara
         </li>
         <li>{companyAuthorityFacts.gstNote}</li>
         <li>{companyAuthorityFacts.responseExpectation}</li>
       </ul>
       <div className="mt-4 flex flex-wrap gap-3 text-sm font-medium">
-        {showMapLink ? (
-          <a
-            href={businessAddress.googleMapsLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-brand-600 hover:underline"
-          >
-            Open in Google Maps →
-          </a>
-        ) : null}
         <Link href={founderAuthorityPaths.company} className="text-brand-600 hover:underline">
           Company profile →
         </Link>

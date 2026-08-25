@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { createMetadata } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
@@ -6,18 +6,16 @@ import { gidcEstates, gidcHubPath } from "@/lib/gidc-estates";
 import { siteConfig } from "@/lib/constants";
 
 export const metadata: Metadata = createMetadata({
-  title: "Gujarat GIDC Manufacturer Websites | Makarpura to Vatva | From ₹45,000",
+  title: "Gujarat GIDC Manufacturer Websites | From ₹35,000",
   description:
-    "Website development for Gujarat GIDC estates — Makarpura, Savli, Nandesari, Halol, Ankleshwar, Vatva. Owned enquiry catalogs from ₹45,000. Vadodara HQ.",
+    "Website development for Gujarat GIDC estates — Makarpura, Savli, Nandesari, Ankleshwar. Catalogs from ₹35,000. Vadodara HQ. Get a quote.",
   path: gidcHubPath,
   keywords: [
     "Gujarat GIDC website development",
     "Makarpura GIDC website",
     "Savli GIDC website",
     "Nandesari GIDC website",
-    "Halol GIDC website",
     "Ankleshwar GIDC website",
-    "Vatva GIDC website",
     "manufacturer website Gujarat GIDC",
   ],
 });
@@ -58,9 +56,9 @@ export default function GujaratGidcHubPage() {
             Manufacturer Websites for Gujarat GIDC Estates
           </h1>
           <p className="mt-6 text-lg text-slate-300 max-w-2xl">
-            Hand-built catalog sites for plants in Makarpura, Savli, Nandesari, Halol, Ankleshwar, and
-            Vatva — so buyers find your products on Google and enquire on channels you own. Starter
-            from ₹45,000 (25–30 pages + core SEO).
+            Hand-built catalog sites for plants in Makarpura, Savli, Nandesari, and Ankleshwar — so
+            buyers find your products on Google and enquire on channels you own. Starter from ₹35,000
+            (25–30 pages + core SEO).
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4">
             <Link
@@ -79,7 +77,7 @@ export default function GujaratGidcHubPage() {
         </Container>
       </section>
 
-      <section className="py-16 border-b border-slate-200">
+      <section className="py-16 border-b border-slate-200 bg-white">
         <Container>
           <h2 className="font-display text-2xl font-bold text-slate-900 mb-3">
             Estate pages in this cluster

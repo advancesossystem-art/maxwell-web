@@ -65,7 +65,7 @@ export function SolutionsHub() {
             Website development, <AccentGradient>SEO & AMC</AccentGradient>
           </>
         }
-        description="Vadodara manufacturer websites from ₹35,000. Monthly AMC from ₹15,000. SEO so buyers find you on Google — not IndiaMART."
+        description="Vadodara business websites from ₹35,000. Monthly AMC from ₹15,000. SEO so buyers find you on Google — including manufacturer and industrial catalogs."
         below={<TrustStrip compact />}
       >
         <PrimaryCTA location="solutions_hub" context={{ source: "solutions-hub" }} />

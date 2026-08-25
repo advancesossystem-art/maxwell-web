@@ -1,6 +1,9 @@
 import { siteConfig } from "./constants";
 
-/** Child sitemap paths — keep in sync with `src/app/sitemap-*.xml/route.ts`. */
+/**
+ * Child sitemap paths — keep in sync with `src/app/sitemap-*.xml/route.ts`.
+ * Do not list empty segments (e.g. compare — all /compare/* 301 away; allowlist has 0 URLs).
+ */
 export const sitemapChildPaths = [
   "/sitemap-pages.xml",
   "/sitemap-services.xml",
@@ -8,7 +11,6 @@ export const sitemapChildPaths = [
   "/sitemap-work.xml",
   "/sitemap-locations.xml",
   "/sitemap-solutions.xml",
-  "/sitemap-compare.xml",
   "/sitemap-cost.xml",
   "/sitemap-content.xml",
   "/sitemap-tools.xml",

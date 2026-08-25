@@ -117,6 +117,16 @@ export function shouldNoIndexPath(path: string): boolean {
   // ERP compare demotion
   const compareMatch = clean.match(/^\/compare\/(.+)$/);
   if (compareMatch && isErpCompareNoIndexSlug(compareMatch[1])) return true;
+  if (clean === "/compare" || clean.startsWith("/compare/")) return true;
+
+  // Legacy ERP/CRM tools and service stubs (redirected, still noindex if hit)
+  if (
+    /^\/tools\/(erp-|crm-|vendor-|roi-|software-cost-)/.test(clean) ||
+    /^\/services\/(erp-|crm-)/.test(clean) ||
+    /^\/blog\/(erp-|crm-)/.test(clean)
+  ) {
+    return true;
+  }
 
   // Consolidated solution paths
   if (clean.startsWith("/solutions/") && shouldNoIndexSolutionPath(clean)) return true;

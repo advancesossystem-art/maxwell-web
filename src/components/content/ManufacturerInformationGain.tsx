@@ -35,11 +35,11 @@ export function ManufacturerInformationGain({ insight, industry }: InformationGa
         </Container>
       </section>
 
-      <section className="py-16 border-b border-slate-200">
+      <section className="border-b border-slate-200 bg-white py-16">
         <Container>
           <div className="grid gap-10 lg:grid-cols-2">
             <div>
-              <h2 className="font-display text-xl font-bold text-slate-900 mb-4">Common mistakes we fix</h2>
+              <h2 className="mb-4 font-display text-xl font-bold text-slate-900">Common mistakes we fix</h2>
               <ul className="space-y-3">
                 {insight.commonMistakes.map((m) => (
                   <li key={m} className="flex gap-2 text-sm text-slate-600">
@@ -84,9 +84,9 @@ export function ManufacturerInformationGain({ insight, industry }: InformationGa
       </section>
 
       {insight.uniqueFaqs.length > 0 ? (
-        <section className="py-14 border-b border-slate-200">
+        <section className="border-b border-slate-200 bg-white py-14">
           <Container>
-            <h2 className="font-display text-xl font-bold text-slate-900 mb-6">{industry}-specific questions</h2>
+            <h2 className="mb-6 font-display text-xl font-bold text-slate-900">{industry}-specific questions</h2>
             <dl className="divide-y divide-slate-200">
               {insight.uniqueFaqs.map((faq) => (
                 <div key={faq.question} className="py-5">

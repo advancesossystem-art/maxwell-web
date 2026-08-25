@@ -298,9 +298,7 @@ function ThankYouInner() {
                       </a>
                     </li>
                     <li className="text-slate-600 leading-relaxed">
-                      419, Lalita Tower, Jetalpur Road
-                      <br />
-                      Vadodara, Gujarat 390007
+                      Office in Vadodara
                     </li>
                   </ul>
                 </div>

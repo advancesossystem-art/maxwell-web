@@ -3,20 +3,36 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { buildSeoMetadata } from "@/lib/seo/metadata-utils";
 import { getAllCostPages, getIndexableCostPages } from "@/lib/seo/programmatic/build-pages";
-import { siteConfig } from "@/lib/constants";
 
 export const metadata: Metadata = buildSeoMetadata({
-  title: "Software Development Cost Guides India & Global",
-  description: `ERP, CRM, AI, mobile app, and custom software development cost guides. ${getAllCostPages().length}+ pricing pages for India cities and global markets. ${siteConfig.name}.`,
+  title: "Website Cost Guides India | From ₹35,000",
+  description: `Manufacturer website, catalog, RFQ & web cost guides for India. Starter from ₹35,000. ${getAllCostPages().length}+ pricing pages. Compare before you buy.`,
   path: "/cost",
-  keywords: ["ERP development cost India", "CRM development cost", "software development cost", "AI development cost"],
+  absoluteTitle: true,
+  keywords: [
+    "website development cost India",
+    "manufacturer website cost",
+    "industrial website cost Vadodara",
+    "web development cost Gujarat",
+  ],
 });
 
 export default function CostHubPage() {
   const pages = getIndexableCostPages();
   const allPages = getAllCostPages();
-  const indiaPages = pages.filter((p) => p.slug.includes("-cost-india") || p.slug.includes("-cost-vadodara"));
-  const cityPages = pages.filter(
+  const websiteFirst = [...pages].sort((a, b) => {
+    const score = (slug: string) => {
+      if (slug.includes("web-development") || slug.includes("website") || slug.includes("manufacturing-website"))
+        return 0;
+      if (slug.includes("erp") || slug.includes("crm") || slug.includes("ai-")) return 2;
+      return 1;
+    };
+    return score(a.slug) - score(b.slug);
+  });
+  const indiaPages = websiteFirst.filter(
+    (p) => p.slug.includes("-cost-india") || p.slug.includes("-cost-vadodara"),
+  );
+  const cityPages = websiteFirst.filter(
     (p) => !p.slug.endsWith("-cost-india") && !p.slug.match(/-cost-(usa|uk|uae|canada|australia|singapore|germany)$/),
   );
 
@@ -24,16 +40,22 @@ export default function CostHubPage() {
     <>
       <section className="bg-background section-hero">
         <Container>
-          <h1 className="font-display text-4xl font-bold text-white md:text-5xl">Software Development Cost Guides</h1>
+          <h1 className="font-display text-4xl font-bold text-white md:text-5xl">
+            Website &amp; Manufacturing Cost Guides
+          </h1>
           <p className="mt-4 max-w-2xl text-lg text-muted">
-            Transparent ERP, CRM, AI, and custom software pricing for India and global markets. {allPages.length} cost guides.
+            Transparent pricing for manufacturer websites, catalogs, RFQ builds, and related web work —
+            India and global markets. Published Starter from ₹35,000. {allPages.length} cost guides.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/tools/software-cost-calculator" className="text-brand-400 hover:underline">
-              Use Cost Calculator →
+            <Link href="/cost/manufacturing-website-cost" className="text-brand-400 hover:underline">
+              Manufacturing website cost →
+            </Link>
+            <Link href="/tools/industrial-website-rfq-estimator" className="text-brand-400 hover:underline">
+              Free RFQ cost estimator →
             </Link>
             <Link href="/get-estimate" className="text-brand-400 hover:underline">
-              Get Custom Quote →
+              Get website quote →
             </Link>
           </div>
         </Container>
@@ -67,7 +89,7 @@ export default function CostHubPage() {
           <div>
             <h2 className="font-display text-xl font-bold text-white">All cost guides</h2>
             <ul className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-              {pages.map((p) => (
+              {websiteFirst.map((p) => (
                 <li key={p.slug}>
                   <Link href={p.path} className="text-sm text-slate-300 hover:text-brand-400 hover:underline">
                     {p.headline}

@@ -5,9 +5,9 @@ import { IndustrialServicePage } from "@/components/services/IndustrialServicePa
 const path = "/solutions/web-development-company-india";
 
 export const metadata: Metadata = createMetadata({
-  title: "Website Development Company in India | From ₹35,000 | Maxwell",
+  title: "Website Company India | From ₹35,000",
   description:
-    "Website development company in India — business and manufacturer sites from ₹35,000. Catalog + WhatsApp enquiry, SEO, monthly AMC from ₹15,000. Vadodara team, pan-India. GST invoice. Request a quote.",
+    "Website company in India — business and manufacturer sites from ₹35,000. SEO + AMC from ₹15,000. Vadodara team, pan-India. GST. Request a quote.",
   path,
   keywords: [
     "website development company in India",
@@ -18,6 +18,19 @@ export const metadata: Metadata = createMetadata({
     "website cost India",
   ],
 });
+
+const indiaFaqs = [
+  {
+    question: "How much does a business website cost in India?",
+    answer:
+      "Maxwell publishes Starter websites from ₹35,000, Professional manufacturer catalogs from ₹75,000, and Growth catalogs from ₹1,50,000. Monthly AMC from ₹15,000. No advance — pay after go-live + 18% GST.",
+  },
+  {
+    question: "Can a Vadodara team build my website if I am in Mumbai, Delhi, or Bengaluru?",
+    answer:
+      "Yes. Most pan-India projects run on Zoom with product photos and SKU lists. Gujarat plants can get on-site discovery. Same published prices and code ownership.",
+  },
+] as const;
 
 export default function WebsiteDevelopmentCompanyIndiaPage() {
   return (
@@ -31,6 +44,7 @@ export default function WebsiteDevelopmentCompanyIndiaPage() {
       estimateSource="web-india"
       schemaName="Website Development Company India"
       schemaDescription="Website development for Indian businesses and manufacturers from ₹35,000, with monthly AMC from ₹15,000. Maxwell Electrodeal, Vadodara."
+      faqs={indiaFaqs}
       sections={[
         {
           heading: "What you actually get",
@@ -74,7 +88,7 @@ export default function WebsiteDevelopmentCompanyIndiaPage() {
           bullets: [
             "Case study: /case-studies/drashti-chemicals",
             "Live: drashtichemical.com",
-            "Office: 419, Lalita Tower, Near Hotel Rajpath, Jetalpur Road, Vadodara 390007",
+            "Office in Vadodara",
           ],
         },
         {

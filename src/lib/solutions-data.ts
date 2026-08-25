@@ -112,7 +112,7 @@ const coreSolutionsData: Record<(typeof coreSolutionSlugs)[number], SolutionPage
     primaryKeyword: "ERP Development Company",
     secondaryKeywords: ["custom ERP software", "manufacturing ERP India", "ERP development services", "enterprise resource planning company"],
     relatedSearches: ["ERP software cost India", "best ERP development company", "custom ERP vs SAP", "ERP for manufacturing SME"],
-    serviceHref: "/services/erp-development",
+    serviceHref: "/services/website-development-for-manufacturers",
     industryLinks: [
       { name: "Manufacturing", href: "/industries/manufacturing" },
       { name: "Logistics", href: "/industries/logistics" },
@@ -137,7 +137,7 @@ const coreSolutionsData: Record<(typeof coreSolutionSlugs)[number], SolutionPage
       { metric: "99.2%", label: "Inventory Accuracy", description: "From 87% baseline" },
     ],
     internalLinks: [
-      { label: "ERP Service Details", href: "/services/erp-development", description: "Full service capabilities" },
+      { label: "ERP Service Details", href: "/services/website-development-for-manufacturers", description: "Full service capabilities" },
       { label: "Manufacturing Industry", href: "/industries/manufacturing", description: "Industry-specific solutions" },
       { label: "Vadodara Office", href: "/locations/india/vadodara", description: "Local Gujarat delivery" },
       { label: "Get Estimate", href: "/get-estimate", description: "Free project estimate" },
@@ -161,7 +161,7 @@ const coreSolutionsData: Record<(typeof coreSolutionSlugs)[number], SolutionPage
     primaryKeyword: "CRM Development Company",
     secondaryKeywords: ["custom CRM software", "CRM development India", "sales CRM company", "B2B CRM development"],
     relatedSearches: ["CRM development cost", "custom CRM vs HubSpot", "CRM for sales team India"],
-    serviceHref: "/services/crm-development",
+    serviceHref: "/services/website-development",
     industryLinks: [
       { name: "Retail", href: "/industries/retail" },
       { name: "Healthcare", href: "/industries/healthcare" },
@@ -180,7 +180,7 @@ const coreSolutionsData: Record<(typeof coreSolutionSlugs)[number], SolutionPage
       { metric: "35%", label: "Pipeline Visibility", description: "Executive dashboards" },
     ],
     internalLinks: [
-      { label: "CRM Service", href: "/services/crm-development", description: "Service overview" },
+      { label: "CRM Service", href: "/services/website-development", description: "Service overview" },
       { label: "Contact Sales", href: "/contact", description: "Speak with our team" },
       { label: "major metro markets", href: "/locations/india/mumbai", description: "Enterprise clients" },
     ],

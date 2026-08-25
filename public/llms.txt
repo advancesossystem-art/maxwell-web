@@ -1,22 +1,24 @@
-# Maxwell Electrodeal — Website Engineering for Manufacturers
-> Vadodara website development, SEO, and AMC company for manufacturer catalogs and RFQ sites. Websites from ₹35,000. Monthly AMC from ₹11,000. Not a printer/toner dealer. Not maxwells.in.
+# Maxwell Electrodeal — Website Development, SEO & AMC
+> Vadodara website development, SEO, and AMC for businesses of every size. Sites from ₹35,000. Monthly AMC from ₹15,000. Specialty depth for manufacturer catalogs and RFQ. Not a printer/toner dealer. Not maxwells.in.
 
 ## Core Pages
 
-- [Home](https://maxwellelectrodeal.com/): Maxwell Electrodeal homepage — manufacturer website development from ₹35,000 · Request Quote
+- [Home](https://maxwellelectrodeal.com/): Maxwell Electrodeal homepage — business website development from ₹35,000 · Request Quote
 - [About](https://maxwellelectrodeal.com/about): About Maxwell Electrodeal — founded 2018 in Vadodara by Sanjay Prajapati
-- [Pricing](https://maxwellelectrodeal.com/pricing): Starter ₹35,000 · Professional ₹75,000 · Growth ₹1,50,000 · Website AMC from ₹11,000/mo
+- [Pricing](https://maxwellelectrodeal.com/pricing): Starter ₹35,000 · Professional ₹75,000 · Growth ₹1,50,000 · Website AMC from ₹15,000/mo
 - [Contact](https://maxwellelectrodeal.com/contact): Contact Maxwell Electrodeal — Vadodara, Gujarat
 - [Request Quote](https://maxwellelectrodeal.com/get-estimate): Request a website or AMC quote — reply in 24 hours
 - [Site Map](https://maxwellelectrodeal.com/sitemap): Full HTML sitemap of all pages
 
-## Manufacturer Website Services
+## Business & Manufacturer Website Services
 
+- [Website Development](https://maxwellelectrodeal.com/services/website-development): Website development for businesses — India
+- [Business Websites](https://maxwellelectrodeal.com/services/business-website-development): Business website development
 - [Manufacturer Websites Hub](https://maxwellelectrodeal.com/services/website-development-for-manufacturers): Website development for manufacturers India — owned RFQ catalog replacing IndiaMart
 - [Industrial Website Design](https://maxwellelectrodeal.com/services/industrial-website-design): Industrial B2B website design for manufacturers
 - [RFQ Website Development](https://maxwellelectrodeal.com/services/rfq-website-development): RFQ portal development for manufacturers — grade, MOQ, drawing upload flows
 - [Industrial Catalog Development](https://maxwellelectrodeal.com/services/industrial-catalog-development): Product catalog websites for industrial suppliers
-- [Website Maintenance AMC](https://maxwellelectrodeal.com/services/website-maintenance): Monthly website AMC from ₹11,000 — two product changes, weekly updates, SEO report, two published articles
+- [Website Maintenance AMC](https://maxwellelectrodeal.com/services/website-maintenance): Monthly website AMC from ₹15,000 — two product changes, weekly updates, SEO report, two published articles
 - [Web Design Company](https://maxwellelectrodeal.com/services/web-design): Web design company India from ₹35,000
 - [Web Design Company Vadodara](https://maxwellelectrodeal.com/solutions/web-design-company-vadodara): Web design and website designing company in Vadodara
 - [Website SEO](https://maxwellelectrodeal.com/services/website-seo): SEO services India — technical SEO and content
@@ -24,10 +26,10 @@
 - [Ecommerce Websites](https://maxwellelectrodeal.com/services/ecommerce-website-development): Ecommerce and B2B catalog sites
 - [Website Redesign](https://maxwellelectrodeal.com/services/website-redesign): Rebuild slow sites from ₹35,000
 - [Ahmedabad Website Company](https://maxwellelectrodeal.com/solutions/website-development-company-ahmedabad): Gujarat spillover from Vadodara HQ
-- [Website AMC Vadodara](https://maxwellelectrodeal.com/solutions/website-amc-vadodara): Baroda website AMC from ₹11,000/mo
+- [Website AMC Vadodara](https://maxwellelectrodeal.com/solutions/website-amc-vadodara): Baroda website AMC from ₹15,000/mo
 - [Chemical Manufacturers](https://maxwellelectrodeal.com/services/website-development/chemical-manufacturers): Website development for chemical manufacturers — Nandesari, Ankleshwar GIDC
 - [Engineering & Machinery](https://maxwellelectrodeal.com/services/website-development/engineering-machinery): Website development for engineering and machinery manufacturers — Makarpura, Savli GIDC
-- [Pharma Equipment](https://maxwellelectrodeal.com/services/website-development/pharma-equipment): Website development for pharma equipment manufacturers — Halol, Vadodara
+- [Pharma Equipment](https://maxwellelectrodeal.com/services/website-development/pharma-equipment): Website development for pharma equipment manufacturers — Vadodara & Gujarat
 - [Ceramic Exporters](https://maxwellelectrodeal.com/services/website-development/ceramic-exporters): Website development for ceramic and tile exporters — Morbi
 - [Textile Manufacturers](https://maxwellelectrodeal.com/services/website-development/textile-manufacturer): Website development for textile manufacturers — Surat, Ahmedabad
 - [Export Websites](https://maxwellelectrodeal.com/services/website-development/manufacturer-export-website): Export-ready manufacturer websites for international buyers
@@ -35,18 +37,17 @@
 ## Locations
 
 - [Website Development Company Vadodara](https://maxwellelectrodeal.com/solutions/web-development-company-vadodara): Maxwell Electrodeal — Vadodara headquarters, website engineering for Gujarat manufacturers
-- [Website Development Company India](https://maxwellelectrodeal.com/solutions/web-development-company-india): Website development company in India — manufacturer catalogs, Next.js, from ₹45,000
+- [Website Development Company India](https://maxwellelectrodeal.com/solutions/web-development-company-india): Website development company in India — manufacturer catalogs, Next.js, from ₹35,000
 - [Website Development Company Gujarat](https://maxwellelectrodeal.com/solutions/web-development-company-gujarat): Website development company in Gujarat — Vadodara, Ahmedabad, Surat, Rajkot
-- [Gujarat GIDC Hub](https://maxwellelectrodeal.com/locations/india/gujarat/gidc): Manufacturer websites for GIDC estate companies — all Gujarat corridors
+- [Gujarat GIDC Hub](https://maxwellelectrodeal.com/locations/india/gujarat/gidc): Manufacturer websites for focus GIDC estates — Makarpura, Savli, Nandesari, Ankleshwar
 - [Makarpura GIDC](https://maxwellelectrodeal.com/locations/india/gujarat/makarpura-gidc): Manufacturer websites for Makarpura GIDC, Vadodara
 - [Nandesari GIDC](https://maxwellelectrodeal.com/locations/india/gujarat/nandesari-gidc): Manufacturer websites for Nandesari GIDC — specialty chemicals
 - [Ankleshwar GIDC](https://maxwellelectrodeal.com/locations/india/gujarat/ankleshwar-gidc): Manufacturer websites for Ankleshwar GIDC — chemical belt
-- [Halol GIDC](https://maxwellelectrodeal.com/locations/india/gujarat/halol-gidc): Manufacturer websites for Halol GIDC — pharma and auto
 - [Savli GIDC](https://maxwellelectrodeal.com/locations/india/gujarat/savli-gidc): Manufacturer websites for Savli GIDC — engineering and auto components
 
 ## Tools & Pricing
 
-- [Industrial Website Cost Estimator](https://maxwellelectrodeal.com/tools/industrial-website-rfq-estimator): Free RFQ cost estimator — Starter ₹45,000 · Professional ₹75,000 planning ranges
+- [Industrial Website Cost Estimator](https://maxwellelectrodeal.com/tools/industrial-website-rfq-estimator): Free RFQ cost estimator — Starter ₹35,000 · Professional ₹75,000 planning ranges
 - [Manufacturing Website Cost](https://maxwellelectrodeal.com/cost/manufacturing-website-cost): How much does a manufacturer website cost in India?
 - [Website Cost Vadodara](https://maxwellelectrodeal.com/cost/web-development-cost-vadodara): Website development cost in Vadodara
 
@@ -64,5 +65,5 @@
 
 - Name: Maxwell Electrodeal Private Limited
 - Phone: +91 95868 68538
-- Address: 419 Lalita Tower, Jetalpur Road, Vadodara, Gujarat 390007, India
+- Location: Office in Vadodara
 - [XML Sitemap](https://maxwellelectrodeal.com/sitemap.xml): Full XML sitemap index

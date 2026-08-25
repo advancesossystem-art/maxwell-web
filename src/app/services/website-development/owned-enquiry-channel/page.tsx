@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { createMetadata } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
 
 export const metadata: Metadata = createMetadata({
-  title: "Owned Enquiry Channel vs Paid Listings | Manufacturer Websites from ₹45,000",
+  title: "Owned Enquiry Channel | From ₹35,000",
   description:
-    "Stop renting buyer attention on paid directories. Build an owned enquiry channel — product catalog + SEO + WhatsApp RFQs. Gujarat manufacturers from ₹45,000.",
+    "Stop renting buyers on paid directories. Own your enquiry channel — product catalog, SEO, WhatsApp RFQs. Gujarat manufacturers from ₹35,000. Get a quote.",
   path: "/services/website-development/owned-enquiry-channel",
   keywords: [
     "owned enquiry channel",
@@ -48,7 +48,7 @@ export default function OwnedEnquiryChannelPage() {
             month you do not renew a listing fee.
           </p>
           <p className="mt-4 text-indigo-200">
-            Starter from ₹45,000 · 25–30 pages + core SEO · Professional catalogs often ₹75,000
+            Starter from ₹35,000 · 25–30 pages + core SEO · Professional catalogs often ₹75,000
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4">
             <Link
@@ -67,7 +67,7 @@ export default function OwnedEnquiryChannelPage() {
         </Container>
       </section>
 
-      <section className="py-16 border-b border-slate-200">
+      <section className="py-16 border-b border-slate-200 bg-white">
         <Container>
           <h2 className="font-display text-2xl font-bold text-slate-900 mb-4">
             What “owned enquiry” actually means
@@ -116,7 +116,7 @@ export default function OwnedEnquiryChannelPage() {
                 <tr className="border-t border-slate-200">
                   <td className="px-4 py-3 font-medium">Cost shape</td>
                   <td className="px-4 py-3">₹1.5L–₹3L+ every renewal cycle (typical)</td>
-                  <td className="px-4 py-3">One-time build from ₹45,000 / ₹75,000 catalog</td>
+                  <td className="px-4 py-3">One-time build from ₹35,000 / ₹75,000 catalog</td>
                 </tr>
                 <tr className="border-t border-slate-200">
                   <td className="px-4 py-3 font-medium">SEO compounding</td>
@@ -129,13 +129,13 @@ export default function OwnedEnquiryChannelPage() {
         </Container>
       </section>
 
-      <section className="py-16 border-b border-slate-200">
+      <section className="py-16 border-b border-slate-200 bg-white">
         <Container>
           <h2 className="font-display text-2xl font-bold text-slate-900 mb-4">
             Typical build path
           </h2>
           <ol className="list-decimal list-inside space-y-3 text-slate-700 max-w-3xl">
-            <li>Starter or Professional catalog with enquiry CTAs (From ₹45,000 / ₹75,000).</li>
+            <li>Starter or Professional catalog with enquiry CTAs (From ₹35,000 / ₹75,000).</li>
             <li>Technical SEO + GIDC / city internal links so Google understands locality.</li>
             <li>
               Optional{" "}

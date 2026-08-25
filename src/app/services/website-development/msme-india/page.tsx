@@ -4,9 +4,9 @@ import { createMetadata } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
 
 export const metadata: Metadata = createMetadata({
-  title: "Website Development for MSME India — Small Business Websites | Maxwell Electrodeal",
+  title: "MSME Website Development India | From ₹35,000",
   description:
-    "Professional websites for Indian MSMEs starting from ₹75,000. Product catalog, WhatsApp inquiry integration, Google-optimized. GST invoice included. For manufacturers, traders, and service businesses.",
+    "Websites for Indian MSMEs from ₹35,000 — catalog, WhatsApp inquiry, Google-ready. GST invoice. Manufacturers, traders, service firms. Get a quote.",
   path: "/services/website-development/msme-india",
   keywords: [
     "website development for MSME India",

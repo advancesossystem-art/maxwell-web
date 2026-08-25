@@ -27,8 +27,8 @@ export const KEYWORD_CANONICAL_PATHS = {
 
   /** Supporting software clusters */
   customSoftwareDevelopment: "/services/custom-software-development",
-  erpDevelopmentCompany: "/services/erp-development",
-  crmDevelopmentCompany: "/services/crm-development",
+  erpDevelopmentCompany: "/services/website-development-for-manufacturers",
+  crmDevelopmentCompany: "/services/website-development",
   aiDevelopmentCompany: "/services/ai-solutions",
   mobileAppDevelopment: "/services/mobile-app-development",
 

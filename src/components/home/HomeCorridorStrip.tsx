@@ -1,36 +1,51 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 
 const corridors = [
+  {
+    label: "Vadodara web company",
+    href: "/solutions/web-development-company-vadodara",
+    blurb: "Local Next.js team · From ₹35,000",
+  },
+  {
+    label: "Business websites",
+    href: "/services/business-website-development",
+    blurb: "Company sites that convert inquiries · From ₹35,000",
+  },
   {
     label: "Manufacturer websites",
     href: "/services/website-development-for-manufacturers",
     blurb: "Product catalogs & owned enquiries from ₹75,000",
   },
   {
-    label: "Vadodara web company",
-    href: "/solutions/web-development-company-vadodara",
-    blurb: "Local Next.js team · From ₹45,000",
+    label: "Industrial website design",
+    href: "/services/industrial-website-design",
+    blurb: "Factory-ready catalogs, specs & GIDC SEO",
   },
   {
-    label: "Gujarat GIDC estates",
-    href: "/locations/india/gujarat/gidc",
-    blurb: "Makarpura · Savli · Nandesari · Halol · Ankleshwar · Vatva",
+    label: "RFQ website development",
+    href: "/services/rfq-website-development",
+    blurb: "MOQ, drawings & WhatsApp quote paths",
   },
   {
-    label: "Website cost Vadodara",
-    href: "/cost/web-development-cost-vadodara",
-    blurb: "Published Starter / Professional / Growth tiers",
+    label: "Website pricing",
+    href: "/pricing",
+    blurb: "Starter ₹35k · Pro ₹75k · Growth ₹1.5L · AMC ₹15k/mo",
+  },
+  {
+    label: "Request a quote",
+    href: "/get-estimate",
+    blurb: "Name + phone · written scope in one business day",
+  },
+  {
+    label: "Website AMC Vadodara",
+    href: "/solutions/website-amc-vadodara",
+    blurb: "Updates, ranking & content from ₹15,000/month",
   },
   {
     label: "SEO company Vadodara",
     href: "/solutions/seo-company-vadodara",
-    blurb: "Technical SEO & manufacturer clusters",
-  },
-  {
-    label: "Owned enquiry channel",
-    href: "/services/website-development/owned-enquiry-channel",
-    blurb: "Leave paid directory rent behind",
+    blurb: "Technical SEO for business & catalog sites",
   },
 ] as const;
 
@@ -46,10 +61,10 @@ export function HomeCorridorStrip() {
           Start here
         </p>
         <h2 className="font-display text-xl font-bold text-slate-900 sm:text-2xl max-w-2xl">
-          Manufacturer, Vadodara, GIDC, cost & SEO corridors
+          Business, Vadodara, catalog, cost & SEO corridors
         </h2>
         <p className="mt-2 text-sm text-slate-600 max-w-2xl">
-          Direct paths to the pages buyers and procurement teams actually search — not a tool maze.
+          Direct paths to the pages buyers actually search — business sites, catalogs, pricing, and local SEO.
         </p>
         <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {corridors.map((c) => (

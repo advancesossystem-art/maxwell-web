@@ -1,4 +1,4 @@
-import type { LeadBudget, LeadIndustry, LeadProjectType, LeadTimeline, LeadUserCount } from "@/lib/leads-data";
+import type { LeadBudget, LeadIndustry, LeadTimeline, LeadUserCount } from "@/lib/leads-data";
 
 export const WIZARD_STEPS = [
   {
@@ -6,28 +6,28 @@ export const WIZARD_STEPS = [
     key: "industry",
     navLabel: "Industry",
     title: "Your industry",
-    subtitle: "We tailor compliance, integrations, and modules to your sector — not a generic template.",
+    subtitle: "We tailor catalog structure, SEO, and enquiry paths to how your buyers search.",
   },
   {
     step: 2,
     key: "projectType",
     navLabel: "Project type",
     title: "What are you building?",
-    subtitle: "ERP, CRM, mobile, AI, or custom software — each follows a different delivery playbook.",
+    subtitle: "Website, manufacturer catalog, SEO/AMC, or redesign — each follows a different delivery playbook.",
   },
   {
     step: 3,
     key: "users",
     navLabel: "Team size",
-    title: "How many people will use it?",
-    subtitle: "Daily active users drive licensing, infrastructure, and rollout complexity.",
+    title: "Who will manage the site?",
+    subtitle: "Editors and stakeholders drive CMS training, content handoff, and AMC scope.",
   },
   {
     step: 4,
     key: "features",
     navLabel: "Features",
     title: "Expected capabilities",
-    subtitle: "Select what matters now — we phase the rest so you go live faster.",
+    subtitle: "Select what matters for launch — we phase the rest so you go live faster.",
   },
   {
     step: 5,
@@ -41,25 +41,36 @@ export const WIZARD_STEPS = [
     key: "timeline",
     navLabel: "Timeline",
     title: "Target go-live",
-    subtitle: "Aggressive timelines need phased delivery or a reduced MVP scope.",
+    subtitle: "Aggressive timelines need phased delivery or a reduced Starter scope.",
   },
   {
     step: 7,
     key: "estimate",
     navLabel: "Estimate",
     title: "Your instant estimate",
-    subtitle: "Ballpark range from 50+ similar engagements — refined after discovery.",
+    subtitle: "Ballpark range from similar website engagements — refined after discovery.",
   },
   {
     step: 8,
     key: "contact",
     navLabel: "Contact",
     title: "Get your detailed estimate",
-    subtitle: "A senior engineer reviews your inputs and responds within one business day.",
+    subtitle: "Name and phone are required — email is optional. We respond within one business day.",
   },
 ] as const;
 
 export type WizardStepKey = (typeof WIZARD_STEPS)[number]["key"];
+
+/** Primary options shown on /get-estimate — website / manufacturer / SEO focused. */
+export const wizardProjectTypes = [
+  "Website",
+  "Manufacturer Catalog",
+  "SEO / AMC",
+  "Website Redesign",
+  "Ecommerce Website",
+] as const;
+
+export type WizardProjectType = (typeof wizardProjectTypes)[number];
 
 export type IndustryWizardMeta = {
   tagline: string;
@@ -70,109 +81,169 @@ export type IndustryWizardMeta = {
 
 export const industryWizardMeta: Record<LeadIndustry, IndustryWizardMeta> = {
   Manufacturing: {
-    tagline: "Shop-floor, inventory, and GST-first delivery",
-    compliance: "GST · e-invoice · Tally sync · batch traceability",
-    modules: ["Multi-plant inventory", "Work orders & BOM", "Mobile GRN", "Quality checks"],
-    deliveryNote: "Typical manufacturing ERP engagements run 14–24 weeks with phased plant rollout.",
+    tagline: "Product catalogs, RFQ paths, and GIDC SEO",
+    compliance: "Certificates · SDS/COA requests · GST invoice ready",
+    modules: ["SKU / grade pages", "WhatsApp RFQ", "Plant / estate SEO", "Dealer portal option"],
+    deliveryNote: "Typical manufacturer catalogs launch in 5–6 weeks with Search Console at go-live.",
   },
   Healthcare: {
-    tagline: "Patient workflows with privacy built in",
-    compliance: "HIPAA-aware · encrypted records · audit trails",
-    modules: ["Patient portal", "Appointments", "Telehealth", "Billing integration"],
-    deliveryNote: "Healthcare platforms often need 12–20 weeks including compliance review.",
+    tagline: "Trust-first clinic and equipment sites",
+    compliance: "Clear service pages · appointment CTAs · privacy-aware forms",
+    modules: ["Service pages", "Booking / enquiry forms", "Doctor or product profiles", "Local SEO"],
+    deliveryNote: "Healthcare websites often launch in 3–5 weeks including content review.",
   },
   Education: {
-    tagline: "Campus ops, LMS, and parent-facing portals",
-    compliance: "DPDP Act · student data privacy · role-based access",
-    modules: ["LMS", "Fee automation", "Exam platforms", "Parent communication"],
-    deliveryNote: "EdTech builds usually launch core LMS in 10–16 weeks.",
+    tagline: "Institution sites with clear enrollment paths",
+    compliance: "Course catalogs · fee enquiry · role-based CMS access",
+    modules: ["Course listings", "Enquiry forms", "Event / news hub", "Multi-campus pages"],
+    deliveryNote: "EdTech and campus sites usually launch core pages in 3–5 weeks.",
   },
   Logistics: {
-    tagline: "Fleet, warehouse, and dispatch visibility",
-    compliance: "e-way bill · POD capture · GST invoicing",
-    modules: ["Fleet tracking", "Route planning", "Warehouse WMS", "Dealer portals"],
-    deliveryNote: "Logistics systems with GPS and offline POD typically need 12–18 weeks.",
+    tagline: "Fleet, warehouse, and corridor visibility",
+    compliance: "Service corridors · quote forms · tracking CTAs",
+    modules: ["Service coverage pages", "Quote / RFQ forms", "Fleet or warehouse proof", "Local SEO"],
+    deliveryNote: "Logistics sites with corridor SEO typically need 4–6 weeks.",
   },
   Retail: {
-    tagline: "Omnichannel stock and distributor visibility",
-    compliance: "GST · POS integration · scheme management",
-    modules: ["POS sync", "Van sales app", "Beat planning", "Inventory across stores"],
-    deliveryNote: "Retail ERP + mobile field apps often phase in 10–16 weeks.",
+    tagline: "Storefront and distributor-facing sites",
+    compliance: "Catalog · enquiry or cart · GST invoicing paths",
+    modules: ["Product catalog", "Lead or cart checkout", "Store locator", "Campaign landing pages"],
+    deliveryNote: "Retail and distributor sites often phase in 4–6 weeks.",
   },
   Construction: {
-    tagline: "Site progress, materials, and subcontractor billing",
-    compliance: "RERA workflows · material tracking · progress dashboards",
-    modules: ["Site reporting", "Material issue", "Subcontractor billing", "Project costing"],
-    deliveryNote: "Construction ERP projects commonly run 16–24 weeks across sites.",
+    tagline: "Project proof and tender-ready sites",
+    compliance: "Project galleries · certifications · enquiry routing",
+    modules: ["Project portfolio", "Capability pages", "Tender / RFQ forms", "Local SEO"],
+    deliveryNote: "Construction websites commonly launch in 4–6 weeks.",
   },
   Other: {
-    tagline: "Custom scope from your operational workflow",
-    compliance: "Scoped during discovery — finance, ops, and field requirements",
-    modules: ["Workflow automation", "Dashboards", "Integrations", "Mobile access"],
-    deliveryNote: "We start every engagement with a process walk, regardless of industry.",
+    tagline: "Custom website scope from your buyer journey",
+    compliance: "Scoped during discovery — SEO, CMS, and enquiry needs",
+    modules: ["Core pages", "Lead capture", "SEO foundation", "Optional AMC"],
+    deliveryNote: "We start every engagement with a discovery call, regardless of industry.",
   },
 };
 
 export const projectTypeWizardMeta: Record<
-  LeadProjectType,
-  { tagline: string; startingFrom: string; typicalTimeline: string }
+  WizardProjectType,
+  { tagline: string; startingFrom: string; typicalTimeline: string; estimateKey: string }
 > = {
   Website: {
-    tagline: "Next.js marketing sites built for SEO and conversion",
+    tagline: "Next.js business sites built for SEO and enquiries",
+    startingFrom: "₹35K",
+    typicalTimeline: "3–4 weeks",
+    estimateKey: "Website",
+  },
+  "Manufacturer Catalog": {
+    tagline: "Product catalogs with RFQ, specs, and WhatsApp paths",
+    startingFrom: "₹75K",
+    typicalTimeline: "5–6 weeks",
+    estimateKey: "Website",
+  },
+  "SEO / AMC": {
+    tagline: "Monthly updates, SEO reports, and two product changes",
+    startingFrom: "₹15K/mo",
+    typicalTimeline: "Ongoing",
+    estimateKey: "Website",
+  },
+  "Website Redesign": {
+    tagline: "Rebuild slow or outdated sites without losing SEO equity",
     startingFrom: "₹75K",
     typicalTimeline: "4–8 weeks",
+    estimateKey: "Website",
   },
-  "Mobile App": {
-    tagline: "iOS & Android with offline-ready field workflows",
-    startingFrom: "₹3L",
-    typicalTimeline: "10–16 weeks",
-  },
-  ERP: {
-    tagline: "GST-ready ERP with Tally sync and shop-floor screens",
-    startingFrom: "₹2L",
-    typicalTimeline: "14–24 weeks",
-  },
-  CRM: {
-    tagline: "B2B pipeline software without per-seat licensing",
-    startingFrom: "₹2.5L",
-    typicalTimeline: "10–16 weeks",
-  },
-  AI: {
-    tagline: "Focused AI on operational decisions — not slide-deck pilots",
+  "Ecommerce Website": {
+    tagline: "Catalog, checkout, and payments for B2B or B2C sales",
     startingFrom: "₹1.5L",
-    typicalTimeline: "8–14 weeks",
+    typicalTimeline: "6–10 weeks",
+    estimateKey: "Website",
   },
-  SaaS: {
-    tagline: "Multi-tenant MVP through subscription billing",
-    startingFrom: "₹4L",
-    typicalTimeline: "12–20 weeks",
-  },
-  "Custom Software": {
-    tagline: "Internal tools and platforms mapped to your process",
-    startingFrom: "₹1L",
-    typicalTimeline: "8–18 weeks",
-  },
+};
+
+export const wizardFeatureOptions: Record<WizardProjectType, string[]> = {
+  Website: [
+    "Responsive Design",
+    "CMS Integration",
+    "SEO Optimization",
+    "Blog / Content Hub",
+    "Contact Forms & Lead Capture",
+    "WhatsApp Enquiry",
+    "Multi-language Support",
+    "Analytics Dashboard",
+  ],
+  "Manufacturer Catalog": [
+    "Product / SKU Pages",
+    "Category Filters",
+    "RFQ / Enquiry Forms",
+    "WhatsApp Deep Links",
+    "Certificate / SDS Downloads",
+    "GIDC / Local SEO Pages",
+    "Dealer Portal Option",
+    "Search Console Setup",
+  ],
+  "SEO / AMC": [
+    "Weekly Content Updates",
+    "Two Product Changes / Month",
+    "SEO Performance Report",
+    "Core Web Vitals Monitoring",
+    "Two Published Articles",
+    "Security / Plugin Updates",
+    "Uptime Monitoring",
+    "Schema / Metadata Fixes",
+  ],
+  "Website Redesign": [
+    "URL Migration Plan",
+    "Design System Refresh",
+    "Performance Rebuild (Next.js)",
+    "Content Migration",
+    "SEO Redirect Map",
+    "Lead Form Rebuild",
+    "Analytics Re-instrumentation",
+    "CMS Handoff Training",
+  ],
+  "Ecommerce Website": [
+    "Product Catalog",
+    "Cart & Checkout",
+    "Razorpay / Stripe",
+    "Inventory Sync",
+    "Order Admin",
+    "Customer Accounts",
+    "SEO Product Pages",
+    "WhatsApp Order Support",
+  ],
 };
 
 export const userCountMeta: Record<LeadUserCount, string> = {
-  "1–10 users": "Single team or pilot rollout",
-  "11–30 users": "Department-wide adoption",
-  "31–75 users": "Multi-branch operations",
-  "76–150 users": "Regional rollout with training plan",
-  "150+ users": "Enterprise rollout — phased go-live recommended",
+  "1–10 users": "Owner or small marketing team",
+  "11–30 users": "Marketing + sales editors",
+  "31–75 users": "Multi-branch content owners",
+  "76–150 users": "Regional teams with training plan",
+  "150+ users": "Enterprise CMS roles — phased rollout",
 };
 
-export const budgetMeta: Record<LeadBudget, string> = {
-  "₹50K–₹1L": "Focused MVP or single-module build",
-  "₹1L–₹5L": "Core platform for one location or team",
-  "₹5L–₹10L": "Multi-module with integrations",
-  "₹10L+": "Enterprise scope — multi-site or multi-product",
+export const budgetMeta: Record<LeadBudget | "₹35K–₹75K", string> = {
+  "₹35K–₹75K": "Starter business site or focused launch",
+  "₹50K–₹1L": "Professional catalog or redesign band",
+  "₹1L–₹5L": "Large catalog, ecommerce, or multi-language",
+  "₹5L–₹10L": "Portal depth with integrations",
+  "₹10L+": "Enterprise multi-site or custom program",
 };
 
 export const timelineMeta: Record<LeadTimeline, string> = {
-  ASAP: "Requires reduced MVP scope or dedicated squad",
-  "1 Month": "Single module or landing MVP only",
-  "3 Months": "Standard phased delivery window",
-  "6 Months": "Full platform with integrations",
-  Flexible: "We align milestones to your procurement cycle",
+  ASAP: "Requires Starter scope or dedicated sprint",
+  "1 Month": "Starter site or landing MVP only",
+  "3 Months": "Standard catalog or redesign window",
+  "6 Months": "Large catalog with phased SEO",
+  Flexible: "We align milestones to your go-live date",
 };
+
+/** Budgets shown in the estimate wizard (includes Starter band). */
+export const wizardBudgets = [
+  "₹35K–₹75K",
+  "₹50K–₹1L",
+  "₹1L–₹5L",
+  "₹5L–₹10L",
+  "₹10L+",
+] as const;
+
+export type WizardBudget = (typeof wizardBudgets)[number];

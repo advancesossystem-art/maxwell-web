@@ -7,14 +7,14 @@ import { createMetadata } from "@/lib/metadata";
 import { PageHero } from "@/components/design/PageHero";
 import { PageSection } from "@/components/design/PageSection";
 import { Card } from "@/components/design/Card";
-import { AccentGradient, H3, Caption } from "@/components/design/typography";
+import { H3, Caption } from "@/components/design/typography";
 import { StaggerGrid, StaggerGridItem } from "@/components/motion/StaggerGrid";
 import { HubMetrics } from "@/components/design/HubMetrics";
 
 export const metadata = createMetadata({
-  title: "Website Development, SEO & AMC | Vadodara | From ₹35,000",
+  title: "Website Development, SEO & AMC | From ₹35,000",
   description:
-    "Website development, SEO, and monthly AMC for manufacturers and businesses. Catalog sites from ₹35,000. Website AMC from ₹15,000. Maxwell Electrodeal — Vadodara, Gujarat.",
+    "Website development, SEO, and monthly AMC for any business that needs a site. From ₹35,000. AMC from ₹15,000. Vadodara, Gujarat. Get a quote.",
   path: "/services",
 });
 
@@ -26,13 +26,8 @@ export default function ServicesPage() {
       <PageHero
         compact
         eyebrow="Services"
-        title={
-          <>
-            Website engineering{" "}
-            <AccentGradient>for businesses</AccentGradient>
-          </>
-        }
-        description="Website development from ₹35,000, monthly website AMC from ₹15,000, and SEO for manufacturers and businesses in Vadodara and Gujarat."
+        title="Website development, SEO & AMC"
+        description="Website development from ₹35,000, monthly AMC from ₹15,000, and SEO for businesses in Vadodara and Gujarat — including manufacturers and industrial catalogs."
         below={
           <HubMetrics
             className="gap-3"

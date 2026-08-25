@@ -11,7 +11,6 @@ import { FormCard } from "@/components/design/Form";
 import { MicroConversionCTA } from "@/components/conversion/MicroConversionCTA";
 import { CompanyAuthorityStrip } from "@/components/trust/CompanyAuthorityStrip";
 import { siteConfig } from "@/lib/constants";
-import { businessAddress } from "@/lib/business-address";
 import { WHATSAPP_HREF_CONTACT } from "@/lib/constants";
 import { contactFaqs, globalServiceAreas } from "@/lib/leads-data";
 import { trackCTAClick } from "@/components/leads/LeadAnalytics";
@@ -140,7 +139,7 @@ export function ContactPageContent() {
               Headquartered in Vadodara with delivery across India and internationally.
             </Caption>
             <Card className="mt-6" interactive={false}>
-              <CompanyAuthorityStrip showMapLink={false} />
+              <CompanyAuthorityStrip />
               <Link
                 href="/locations/india/vadodara"
                 className="mt-3 inline-block text-sm font-medium text-brand-600 hover:underline"
@@ -148,17 +147,6 @@ export function ContactPageContent() {
                 View our Vadodara service page →
               </Link>
             </Card>
-            <div className="mt-6 overflow-hidden rounded-2xl border border-[var(--v6-border)]">
-              <iframe
-                title="Maxwell Electrodeal office location — Vadodara, Gujarat"
-                src={businessAddress.googleMapsEmbedUrl}
-                width="100%"
-                height="280"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="block w-full border-0"
-              />
-            </div>
           </div>
           <div>
             <H3>Global service areas</H3>

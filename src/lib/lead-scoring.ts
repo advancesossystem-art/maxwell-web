@@ -42,6 +42,8 @@ const BUDGET_SCORES: Record<string, number> = {
   "₹5L–₹10L": 25,
   "₹1L–₹5L": 18,
   "₹50K–₹1L": 10,
+  "₹35K–₹75K": 8,
+  "₹35,000–₹75,000": 8,
   "₹50,000 – ₹2,00,000": 10,
   "₹2,00,000 – ₹5,00,000": 18,
   "₹5,00,000 – ₹10,00,000": 25,
@@ -64,7 +66,11 @@ const PROJECT_TYPE_SCORES: Record<string, number> = {
   "Custom Software": 16,
   CRM: 15,
   "Mobile App": 12,
+  "Ecommerce Website": 12,
+  "Manufacturer Catalog": 10,
+  "Website Redesign": 10,
   Website: 8,
+  "SEO / AMC": 6,
 };
 
 const INDUSTRY_SCORES: Record<string, number> = {

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { createMetadata } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
@@ -125,7 +125,7 @@ const serviceJsonLd = {
     url: siteConfig.url,
   },
   areaServed: ["India", "Gujarat", "Vadodara"],
-  priceRange: "₹45,000 - ₹1,50,000",
+  priceRange: "₹35,000 - ₹1,50,000",
   description: manufacturerHubSeo.description,
   url: `${siteConfig.url}${manufacturerHubSeo.path}`,
   offers: {
@@ -135,7 +135,7 @@ const serviceJsonLd = {
       {
         "@type": "Offer",
         name: "Starter",
-        price: "45000",
+        price: "35000",
         priceCurrency: "INR",
         description: "5–8 pages, 21-day delivery",
       },
@@ -213,7 +213,7 @@ export default function ManufacturerWebsitePage() {
             </div>
             <div className="mt-10 flex flex-wrap gap-4">
               {[
-                "₹45,000 Starting Price",
+                "₹35,000 Starting Price",
                 "21-Day Starter Delivery",
                 "100% Code Ownership",
                 "GST Invoice Included",
@@ -274,7 +274,7 @@ export default function ManufacturerWebsitePage() {
           </div>
           <p className="mt-8 text-center text-base font-medium text-slate-700">
             Your own website costs{" "}
-            <span className="text-indigo-600 font-bold">₹45K once</span>. Runs forever. Every
+            <span className="text-indigo-600 font-bold">₹35K once</span>. Runs forever. Every
             inquiry comes to <span className="font-bold">YOU</span>, not a marketplace.
           </p>
         </Container>
@@ -528,7 +528,6 @@ export default function ManufacturerWebsitePage() {
               { label: "Makarpura GIDC →", href: "/locations/india/gujarat/makarpura-gidc" },
               { label: "Savli GIDC →", href: "/locations/india/gujarat/savli-gidc" },
               { label: "Nandesari GIDC →", href: "/locations/india/gujarat/nandesari-gidc" },
-              { label: "Halol GIDC →", href: "/locations/india/gujarat/halol-gidc" },
               { label: "Ankleshwar GIDC →", href: "/locations/india/gujarat/ankleshwar-gidc" },
               { label: "Morbi Ceramic Corridor →", href: "/services/website-development/morbi-ceramic-website" },
               { label: "Bharuch–Ankleshwar Corridor →", href: "/services/website-development/bharuch-ankleshwar-chemical" },
@@ -550,14 +549,19 @@ export default function ManufacturerWebsitePage() {
               { label: "Industrial Website Design", href: "/services/industrial-website-design" },
               { label: "RFQ Website Development", href: "/services/rfq-website-development" },
               { label: "Industrial Catalog Development", href: "/services/industrial-catalog-development" },
+              { label: "Website Development Company Vadodara", href: "/solutions/web-development-company-vadodara" },
+              { label: "Gujarat GIDC hub", href: "/locations/india/gujarat/gidc" },
+              { label: "Website pricing", href: "/pricing" },
+              { label: "Request a quote", href: "/get-estimate" },
+              { label: "Website AMC Vadodara", href: "/solutions/website-amc-vadodara" },
+              { label: "Reviews & proof", href: "/reviews" },
               { label: "Industrial Website Cost Estimator", href: "/tools/industrial-website-rfq-estimator" },
               { label: "Owned Enquiry Channel vs Paid Listings", href: "/services/website-development/owned-enquiry-channel" },
               { label: "Manufacturing Website Cost", href: "/cost/manufacturing-website-cost" },
-              { label: "Website Development Company Vadodara", href: "/solutions/web-development-company-vadodara" },
-              { label: "B2B RFQ Systems for Manufacturers", href: "/blog/b2b-rfq-website-architecture-manufacturers" },
-              { label: "Directory → Next.js Catalog (lead magnet)", href: "/blog/vadodara-manufacturers-directory-to-nextjs-catalog" },
-              { label: "GIDC Manufacturer Website Checklist", href: "/blog/gidc-manufacturer-website-checklist-vadodara" },
               { label: "Chemical Catalog Case Study", href: "/case-studies/drashti-chemicals" },
+              { label: "B2B RFQ Systems for Manufacturers", href: "/blog/b2b-rfq-website-architecture-manufacturers" },
+              { label: "Directory → Next.js Catalog", href: "/blog/vadodara-manufacturers-directory-to-nextjs-catalog" },
+              { label: "GIDC Manufacturer Website Checklist", href: "/blog/gidc-manufacturer-website-checklist-vadodara" },
             ].map(({ label, href }) => (
               <Link key={href} href={href} className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-800 hover:underline">
                 <span aria-hidden>→</span> {label}

@@ -78,6 +78,12 @@ export function isValidFullName(name: string): boolean {
   return value.length >= 2 && value.length <= 80 && NAME_REGEX.test(value);
 }
 
+/** Empty allowed; if provided, must be a valid work email. */
+export function normalizeOptionalEmail(email: string | undefined | null): string | undefined {
+  const value = (email ?? "").trim();
+  return value || undefined;
+}
+
 const nameField = z
   .string()
   .trim()
@@ -85,11 +91,20 @@ const nameField = z
   .max(80, "Name is too long")
   .refine(isValidFullName, "Enter your full name using letters only");
 
+/** Required email (careers, tools, etc.) */
 const emailField = z
   .string()
   .trim()
   .min(1, "Email is required")
   .refine(isValidWorkEmail, "Enter a valid work email address");
+
+/** Optional email — blank OK; format checked when present */
+const optionalEmailField = z
+  .string()
+  .trim()
+  .max(254)
+  .refine((v) => v === "" || isValidWorkEmail(v), "Enter a valid work email address")
+  .transform((v) => (v === "" ? undefined : v));
 
 const phoneField = z
   .string()
@@ -106,14 +121,16 @@ const messageField = z
   .trim()
   .min(20, "Please describe your project in at least 20 characters");
 
+const optionalMessageField = z.string().trim().max(5000).optional();
+
 export const leadFormFieldsSchema = z.object({
   name: nameField,
-  email: emailField,
+  email: optionalEmailField,
   phone: phoneField,
   company: z.string().trim().max(120).optional(),
-  message: messageField,
-  projectType: z.string().trim().min(1, "Select a service"),
-  budget: z.string().trim().min(1, "Select a budget range"),
+  message: optionalMessageField,
+  projectType: z.string().trim().max(120).optional(),
+  budget: z.string().trim().max(80).optional(),
 });
 
 export type LeadFormFieldErrors = Partial<
@@ -122,23 +139,25 @@ export type LeadFormFieldErrors = Partial<
 
 export const consultationStep1Schema = z.object({
   name: nameField,
-  email: emailField,
+  email: optionalEmailField,
   phone: phoneField,
-  projectType: z.string().trim().min(1, "Select a service"),
+  projectType: z.string().trim().max(120).optional(),
 });
 
 export const consultationLeadFormSchema = z.object({
   name: nameField,
-  email: emailField,
+  email: optionalEmailField,
   phone: phoneField,
   company: z.string().trim().max(120).optional(),
   message: z.string().trim().max(5000).optional(),
-  projectType: z.string().trim().min(1, "Select a service"),
+  projectType: z.string().trim().max(120).optional(),
   budget: z.string().trim().max(80).optional(),
 });
 
 export const CONSULTATION_DEFAULT_MESSAGE =
   "Consultation request — details to be discussed on the call.";
+
+export const DEFAULT_PROJECT_TYPE = "Website Development";
 
 export function validateConsultationStep1(data: {
   name?: string;
@@ -179,7 +198,14 @@ export function validateConsultationFormFields(data: {
   projectType?: string;
   budget?: string;
 }):
-  | { success: true; data: z.infer<typeof consultationLeadFormSchema> & { message: string } }
+  | {
+      success: true;
+      data: z.infer<typeof consultationLeadFormSchema> & {
+        message: string;
+        projectType: string;
+        email?: string;
+      };
+    }
   | { success: false; errors: LeadFormFieldErrors } {
   const result = consultationLeadFormSchema.safeParse({
     name: data.name ?? "",
@@ -193,12 +219,14 @@ export function validateConsultationFormFields(data: {
 
   if (result.success) {
     const trimmedMessage = result.data.message?.trim() ?? "";
+    const projectType = result.data.projectType?.trim() || DEFAULT_PROJECT_TYPE;
     return {
       success: true,
       data: {
         ...result.data,
+        projectType,
         message:
-          trimmedMessage.length >= 20 ? trimmedMessage : CONSULTATION_DEFAULT_MESSAGE,
+          trimmedMessage.length >= 1 ? trimmedMessage : CONSULTATION_DEFAULT_MESSAGE,
       },
     };
   }
@@ -230,7 +258,16 @@ export function validateLeadFormFields(data: {
   message?: string;
   projectType?: string;
   budget?: string;
-}): { success: true; data: z.infer<typeof leadFormFieldsSchema> } | { success: false; errors: LeadFormFieldErrors } {
+}):
+  | {
+      success: true;
+      data: z.infer<typeof leadFormFieldsSchema> & {
+        message: string;
+        projectType: string;
+        email?: string;
+      };
+    }
+  | { success: false; errors: LeadFormFieldErrors } {
   const result = leadFormFieldsSchema.safeParse({
     name: data.name ?? "",
     email: data.email ?? "",
@@ -242,7 +279,15 @@ export function validateLeadFormFields(data: {
   });
 
   if (result.success) {
-    return { success: true, data: result.data };
+    const trimmedMessage = result.data.message?.trim() ?? "";
+    return {
+      success: true,
+      data: {
+        ...result.data,
+        projectType: result.data.projectType?.trim() || DEFAULT_PROJECT_TYPE,
+        message: trimmedMessage || CONSULTATION_DEFAULT_MESSAGE,
+      },
+    };
   }
 
   const errors: LeadFormFieldErrors = {};
@@ -266,5 +311,6 @@ export function validateLeadFormFields(data: {
 
 export const zodNameField = nameField;
 export const zodEmailField = emailField;
+export const zodOptionalEmailField = optionalEmailField;
 export const zodPhoneField = phoneField;
 export const zodMessageField = messageField;

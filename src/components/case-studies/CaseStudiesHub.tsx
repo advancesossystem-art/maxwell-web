@@ -67,10 +67,10 @@ export function CaseStudiesHub() {
         eyebrow="Outcomes & Business Impact"
         title={
           <>
-            Business outcomes from <AccentGradient>real client projects</AccentGradient>
+            Website <AccentGradient>case studies</AccentGradient>
           </>
         }
-        description="Documented results from 8 end-to-end projects across manufacturing, healthcare, logistics, and more — with measurable ROI, timelines, and delivery context."
+        description="Documented results from business and manufacturer sites — measurable SEO, enquiries, and delivery context."
       >
         <Button href="/contact" size="lg">
           Book Strategy Call <ArrowRight />

@@ -15,7 +15,7 @@ export const toolsRegistry: ToolDefinition[] = [
     name: "Industrial Website Cost & RFQ Estimator",
     shortName: "Industrial RFQ Cost",
     description:
-      "Planning ranges for industrial / manufacturer websites by SKU count, RFQ depth, catalog, GIDC SEO, and dealer portal — Starter ₹45k / Professional ₹75k anchors.",
+      "Planning ranges for industrial / manufacturer websites by SKU count, RFQ depth, catalog, GIDC SEO, and dealer portal — Starter ₹35k / Professional ₹75k anchors.",
     category: "finance",
     icon: "calculator",
     accent: "#0F766E",

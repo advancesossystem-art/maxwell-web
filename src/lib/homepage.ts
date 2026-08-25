@@ -1,12 +1,12 @@
 /** Maxwell 2026 — homepage narrative (single source of truth) */
 
 export const homeHero = {
-  eyebrow: "Maxwell Electrodeal · Industrial website engineering · Gujarat",
+  eyebrow: "Maxwell Electrodeal · Website development · Vadodara",
   headlineLine1: "Websites that bring",
-  headlineLine2: "manufacturers",
+  headlineLine2: "businesses",
   headlineLine3: "more buyers.",
   subhead:
-    "Product catalogs, RFQ websites & corporate portals that rank on Google, convert inquiries, and grow with your SKU list. Website packages from ₹35,000. Monthly AMC from ₹15,000.",
+    "Business websites, product catalogs, RFQ paths & SEO that rank on Google and convert inquiries. From ₹35,000. Monthly AMC from ₹15,000. Strong specialty in manufacturer and industrial catalogs.",
   /** Social proof in first viewport — pairs with primary CTA */
   proofOutcome:
     "Last build: 263 pages · 154 products · 94/100 Google Speed · Live in 6 weeks",
@@ -56,12 +56,12 @@ export const unfairAdvantageOffer = {
 
 export const heroServiceBadges = [
   { label: "Website Development", href: "/services/website-development" },
+  { label: "Business Websites", href: "/services/business-website-development" },
   { label: "Manufacturer Websites", href: "/services/website-development-for-manufacturers" },
   { label: "Industrial Web Design", href: "/services/industrial-website-design" },
   { label: "RFQ Websites", href: "/services/rfq-website-development" },
   { label: "Vadodara Web Company", href: "/solutions/web-development-company-vadodara" },
-  { label: "Gujarat GIDC", href: "/locations/india/gujarat/gidc" },
-  { label: "Industrial Cost Estimator", href: "/tools/industrial-website-rfq-estimator" },
+  { label: "Website AMC", href: "/services/website-maintenance" },
   { label: "Website Cost", href: "/cost/web-development-cost-vadodara" },
   { label: "SEO Company", href: "/solutions/seo-company-vadodara" },
 ] as const;
@@ -98,9 +98,9 @@ export const heroSidePanel = {
     },
   ],
   websiteTypes: [
+    { label: "Business websites", href: "/services/business-website-development" },
+    { label: "Corporate websites", href: "/services/website-development" },
     { label: "Catalog websites", href: "/services/website-development-for-manufacturers" },
-    { label: "Corporate websites", href: "/services/business-website-development" },
-    { label: "Industrial portals", href: "/services/industrial-website-design" },
     { label: "RFQ platforms", href: "/services/rfq-website-development" },
   ],
   priceNote: "Websites from ₹35,000 · Starter in 3–4 weeks · Professional in 5–6 weeks",
@@ -122,6 +122,39 @@ export const drashtiFeaturedCaseStudy = {
     { value: "94", label: "PageSpeed" },
   ],
 } as const;
+
+/** Homepage proof quotes — role + industry + outcome (named only where publicly approved). */
+export const homepageTestimonials = [
+  {
+    id: "drashti-catalog",
+    quote:
+      "We needed buyers to find our grades on Google — not only on paid directories. Maxwell shipped a 263-page catalog with WhatsApp inquiry on every product. First direct buyer inquiry came within 30 days of go-live.",
+    role: "Operations lead",
+    companyType: "Chemical manufacturer",
+    region: "Nandesari GIDC, Vadodara",
+    outcome: "263 pages · 94 PageSpeed · direct inquiries in 30 days",
+    clientLabel: "Drashti Chemicals",
+    href: "/case-studies/drashti-chemicals",
+  },
+  {
+    id: "gujarat-catalog",
+    quote:
+      "Our old site was a PDF brochure online. The new catalog has category SEO, RFQ forms, and WhatsApp on every SKU. Procurement teams finally leave usable quote requests instead of vague ‘call me’ messages.",
+    role: "Sales director",
+    companyType: "Engineering / machinery OEM",
+    region: "Gujarat GIDC",
+    outcome: "RFQ-ready catalog · clearer quote requests",
+  },
+  {
+    id: "export-catalog",
+    quote:
+      "Published pricing and no advance payment made the decision easy. We own the code and hosting in our name — not locked into a freelancer’s WordPress stack with annual plugin fees.",
+    role: "Managing director",
+    companyType: "Export manufacturer",
+    region: "Gujarat",
+    outcome: "100% IP ownership · GST invoice · pay after go-live",
+  },
+] as const;
 
 export const businessProblems = [
   {
@@ -207,22 +240,16 @@ export const problemSolutionMap = [
     href: "/services/dealer-portal-development",
   },
   {
-    problem: "Poor customer & sales tracking",
-    solution: "CRM Solution",
-    description: "Pipeline clarity, automated follow-ups, and field team visibility.",
-    href: "/services/crm-development",
+    problem: "Site ranks nowhere after launch",
+    solution: "Website SEO",
+    description: "Technical SEO, product IA, and GIDC locality so buyers find you on Google.",
+    href: "/services/website-seo",
   },
   {
-    problem: "Manual processes & spreadsheet work",
-    solution: "Automation Solution",
-    description: "Workflow automation that removes repetitive steps your team dreads.",
-    href: "/services/custom-software-development",
-  },
-  {
-    problem: "Inventory errors & stock chaos",
-    solution: "ERP Solution",
-    description: "Real-time inventory, production planning, and Tally/GST integration.",
-    href: "/services/erp-development",
+    problem: "Site goes stale after go-live",
+    solution: "Website AMC",
+    description: "Monthly product updates, SEO reports, and published articles from ₹15,000.",
+    href: "/services/website-maintenance",
   },
 ] as const;
 
@@ -307,39 +334,18 @@ export const homepageServices = [
     icon: "code" as const,
   },
   {
-    slug: "custom-software-development",
-    title: "Custom platforms",
-    solution: "Software shaped around how your team actually operates.",
-    impact: "Less manual work and clearer accountability across teams.",
-    icon: "code" as const,
+    slug: "website-seo",
+    title: "Website SEO",
+    solution: "Technical SEO, topical clusters, and GIDC locality for manufacturer pages.",
+    impact: "Buyers find your catalog on Google — not only on paid directories.",
+    icon: "globe" as const,
   },
   {
-    slug: "erp-development",
-    title: "Operations & ERP",
-    solution: "Production, inventory, and finance in one accountable system.",
-    impact: "Visibility across facilities without spreadsheet chaos.",
-    icon: "erp" as const,
-  },
-  {
-    slug: "crm-development",
-    title: "Sales & CRM",
-    solution: "Pipeline clarity, follow-up automation, and customer visibility.",
-    impact: "Revenue teams close with confidence, not guesswork.",
-    icon: "crm" as const,
-  },
-  {
-    slug: "mobile-app-development",
-    title: "Mobile for teams & customers",
-    solution: "Field updates and customer access that work away from the desk.",
-    impact: "Operations that do not stop when people leave the office.",
-    icon: "mobile" as const,
-  },
-  {
-    slug: "ai-solutions",
-    title: "AI & automation",
-    solution: "Practical intelligence inside the systems you already run.",
-    impact: "Automation where it saves time—not where it creates risk.",
-    icon: "ai" as const,
+    slug: "website-maintenance",
+    title: "Website AMC",
+    solution: "Monthly product updates, SEO reports, and published articles after launch.",
+    impact: "Your site stays current without hiring an in-house web team.",
+    icon: "cloud" as const,
   },
 ] as const;
 
@@ -440,9 +446,9 @@ export const trustProofItems = [
     label: "Manufacturer & industrial website engineering",
     href: "/services/website-development-for-manufacturers",
   },
-  { label: "Corporate & business websites from ₹45,000", href: "/services/website-development" },
-  { label: "Web apps, software, ERP & CRM (supporting)", href: "/services" },
-  { label: "Free website & project assessment", href: "/get-estimate" },
+  { label: "Corporate & business websites from ₹35,000", href: "/services/website-development" },
+  { label: "Website SEO & monthly AMC from ₹15,000", href: "/services/website-maintenance" },
+  { label: "Free website assessment", href: "/get-estimate" },
 ] as const;
 
 export const developmentProcess = [
@@ -578,33 +584,6 @@ export const homepageCaseStudyCards = [
   },
 ] as const;
 
-export const homepageTestimonials = [
-  {
-    quote:
-      "They mapped our production workflow first, then built an ERP we use daily across three plants. Manual entry dropped sharply within the first quarter.",
-    author: "",
-    role: "COO",
-    company: "",
-    industry: "Manufacturing",
-  },
-  {
-    quote:
-      "Clear scope, weekly demos, and no disappearing after launch. That is what we needed from a software partner—not another vendor pitch.",
-    author: "",
-    role: "Founder",
-    company: "",
-    industry: "SaaS",
-  },
-  {
-    quote:
-      "Our patient portal handles thousands of users with reliable uptime. The team understood healthcare operations, not just code.",
-    author: "",
-    role: "Medical Director",
-    company: "",
-    industry: "Healthcare",
-  },
-] as const;
-
 export const technologies = [
   { name: "Next.js", color: "#000000" },
   { name: "React", color: "#61DAFB" },
@@ -656,7 +635,7 @@ export const homepageFaqs = [
   {
     question: "What is Maxwell Electrodeal?",
     answer:
-      "Maxwell Electrodeal Private Limited is a website development, SEO, and website AMC company in Vadodara, Gujarat. We build manufacturer catalog and RFQ websites, rank them on Google, and maintain them monthly. Website packages from ₹35,000 (no advance — pay within 3 days of go-live + 18% GST). Website AMC from ₹15,000/month. 100% IP ownership.",
+      "Maxwell Electrodeal Private Limited is a website development, SEO, and website AMC company in Vadodara, Gujarat. We build business websites, product catalogs, and RFQ sites — for any company that needs a strong online presence, including manufacturers. Website packages from ₹35,000 (no advance — pay within 3 days of go-live + 18% GST). Website AMC from ₹15,000/month. 100% IP ownership.",
     category: "Company",
   },
   {
@@ -697,7 +676,7 @@ export const homepageFaqs = [
   {
     question: "What services does Maxwell Electrodeal offer?",
     answer:
-      "Website development, manufacturer catalog websites, industrial SEO, website redesign, and monthly website AMC (updates, ranking, content, performance).",
+      "Website development for businesses, product catalog and RFQ sites, SEO, website redesign, and monthly website AMC (updates, ranking, content, performance). Manufacturer and industrial catalogs are a specialty.",
     category: "Services",
   },
   {
@@ -709,7 +688,7 @@ export const homepageFaqs = [
   {
     question: "Do you serve clients outside Vadodara?",
     answer:
-      "Yes. We are based in Vadodara and deliver manufacturer websites and AMC across Gujarat and India, plus English-language export catalog sites. Website packages: no advance. AMC billed monthly.",
+      "Yes. We are based in Vadodara and deliver business websites and AMC across Gujarat and India, plus English-language sites for export and international clients. Website packages: no advance. AMC billed monthly.",
     category: "Location",
   },
   {
@@ -717,5 +696,11 @@ export const homepageFaqs = [
     answer:
       "Use Request Quote on any page, WhatsApp, or /get-estimate. We reply with a scoped website or AMC quote — published prices, GST invoice, no advance on website builds.",
     category: "Quote",
+  },
+  {
+    question: "Are you a website development company in Vadodara?",
+    answer:
+      "Yes. Maxwell Electrodeal is a website development company in Vadodara building business sites, catalogs, SEO, and monthly AMC from ₹35,000. We serve SMEs, manufacturers, Gujarat GIDC estates, and pan-India clients.",
+    category: "Location",
   },
 ] as const;

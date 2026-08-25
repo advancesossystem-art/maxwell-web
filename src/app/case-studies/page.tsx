@@ -4,9 +4,9 @@ import { CaseStudyCTA } from "@/components/case-studies/CaseStudyCTA";
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata = createMetadata({
-  title: "Case Studies — Business Outcomes & ROI",
+  title: "Website Case Studies",
   description:
-    "Documented business outcomes from 8 end-to-end client projects. ERP, healthcare, logistics, AI, and SaaS delivery with measurable ROI and timelines.",
+    "Website case studies — business and manufacturer outcomes including Drashti Chemicals catalog and SEO rebuild results. From ₹35,000 builds. See the proof.",
   path: "/case-studies",
 });
 

@@ -12,46 +12,40 @@ import { socialProfiles } from "@/lib/seo/config";
 
 const services = [
   {
-    title: "Website Developer Vadodara",
+    title: "Manufacturer Websites",
     description:
-      "Next.js corporate sites, manufacturer catalogs, and SEO-ready business websites — local team, free quote in 24h.",
+      "Product catalogs, RFQ forms, and WhatsApp enquiry paths for chemical, pharma, and engineering plants — owned leads, not directory rent.",
+    href: "/services/website-development-for-manufacturers",
+  },
+  {
+    title: "Website Development Company Vadodara",
+    description:
+      "Next.js business and industrial sites from our office in Vadodara — published Starter ₹35,000, Professional ₹75,000.",
     href: "/solutions/web-development-company-vadodara",
   },
   {
     title: "Website Development Services",
     description:
-      "Product catalog websites, B2B landing pages, and corporate sites for Vadodara manufacturers and industrial companies.",
+      "Corporate sites, B2B landing pages, and SEO-ready manufacturer catalogs for Vadodara and Gujarat GIDC estates.",
     href: "/services/website-development",
   },
   {
-    title: "Manufacturer Websites",
+    title: "Website SEO",
     description:
-      "Standalone websites that generate direct buyer inquiries — replacing paid directory dependency for chemical, pharma, and engineering companies in Gujarat.",
-    href: "/services/website-development-for-manufacturers",
+      "Technical SEO, product-page architecture, and GIDC locality signals so buyers find your plant on Google.",
+    href: "/services/website-seo",
   },
   {
-    title: "Custom ERP",
+    title: "Website Maintenance AMC",
     description:
-      "ERP systems built for Gujarat manufacturers — inventory, production, GST e-invoicing, Tally sync, and multi-plant management.",
-    href: "/services/erp-development",
+      "Monthly AMC from ₹15,000 — product updates, weekly care, SEO report, and published articles after launch.",
+    href: "/services/website-maintenance",
   },
   {
-    title: "CRM Software",
+    title: "Pricing & Packages",
     description:
-      "Sales pipeline, lead tracking, and follow-up automation for Vadodara's B2B businesses.",
-    href: "/services/crm-development",
-  },
-  {
-    title: "AI Solutions",
-    description:
-      "Computer vision for shop-floor safety, document AI for GST invoices, and forecasting tools for Gujarat manufacturers.",
-    href: "/services/ai-solutions",
-  },
-  {
-    title: "Mobile Apps",
-    description:
-      "Android and iOS apps for field teams, delivery tracking, and customer portals — built for Indian mobile networks.",
-    href: "/services/mobile-app-development",
+      "Transparent website packages: Starter ₹35,000 · Professional ₹75,000 · Growth ₹1,50,000. No advance on website builds.",
+    href: "/pricing",
   },
 ];
 
@@ -60,7 +54,7 @@ const industries = [
   { name: "Pharmaceutical", href: "/industries/pharmaceutical" },
   { name: "Engineering & Fabrication", href: "/industries/manufacturing" },
   { name: "Textile & Garments", href: "/services/website-development/textile-manufacturer" },
-  { name: "Ceramic (Morbi)", href: "/services/website-development/ceramic-manufacturer" },
+  { name: "Ceramic (Morbi)", href: "/services/website-development/ceramic-exporters" },
   { name: "Food Processing", href: "/services/website-development/food-processing-company" },
   { name: "Education", href: "/industries/education" },
   { name: "Logistics", href: "/industries/logistics" },
@@ -70,15 +64,15 @@ const industries = [
 const whyVadodara = [
   {
     title: "We're Local",
-    body: "Our office is at 419 Lalita Tower, Jetalpur Road, Vadodara. We meet clients in-person across Vadodara, GIDC estates, and the Bharuch-Ankleshwar chemical corridor. No timezone gaps, no language barriers.",
+    body: "We have an office in Vadodara. We meet clients in-person across Vadodara, GIDC estates, and the Bharuch-Ankleshwar chemical corridor. No timezone gaps, no language barriers.",
   },
   {
     title: "We Know Gujarat Industry",
-    body: "From the 800+ ceramic factories in Morbi to the pharmaceutical hubs of Makarpura, we've built digital systems specifically for how Gujarat's manufacturing sector operates — GST, Tally, and GIDC compliance included.",
+    body: "From Morbi ceramic exporters to Makarpura pharma and Nandesari chemicals, we build manufacturer catalogs and RFQ sites for how Gujarat plants actually sell — GST invoices, WhatsApp enquiry, and GIDC SEO included.",
   },
   {
     title: "Proven Delivery",
-    body: "50+ projects delivered. 4.9/5 client satisfaction. Response within 4 hours. Our Drashti Chemicals case study — a 263-page chemical supplier website in Vadodara — is live evidence of what we deliver.",
+    body: "50+ website projects delivered. Response within 4 hours. Our Drashti Chemicals case study — a 263-page chemical supplier website in Vadodara — is live evidence of what we deliver.",
   },
 ];
 
@@ -86,31 +80,31 @@ const vadodaraFaqs = [
   {
     question: "Who is the best website developer in Vadodara?",
     answer:
-      "Choose a GST-registered company with published case studies, Core Web Vitals above 90, and an office you can visit. Maxwell Electrodeal has delivered 50+ projects from our Vadodara office — including a 263-page chemical supplier website.",
+      "Choose a GST-registered company with published case studies, Core Web Vitals above 90, and an office you can visit. Maxwell Electrodeal has delivered 50+ website projects from our Vadodara office — including a 263-page chemical supplier catalog.",
   },
   {
     question: "How much does website development cost in Vadodara?",
     answer:
-      "Business websites from ₹75K; corporate sites ₹1L–₹5L; manufacturer catalogs ₹3L–₹12L. See our Vadodara website development page for detailed pricing.",
+      "Published packages: Starter ₹35,000 (25–30 pages + core SEO), Professional ₹75,000 manufacturer catalogs, Growth ₹1,50,000 for large catalogs. Monthly website AMC from ₹15,000. See /pricing for full scope.",
   },
   {
     question: "Is Maxwell Electrodeal based in Vadodara?",
-    answer: `Yes. Our office is at ${businessAddress.formatted}. We meet clients on-site across Gujarat and deliver pan-India and internationally.`,
+    answer: `Yes. We have an ${businessAddress.publicLabel.toLowerCase()}. We meet clients on-site across Gujarat and deliver pan-India and internationally.`,
   },
   {
-    question: "Do you visit factories in Vadodara for ERP discovery?",
+    question: "Do you visit factories in Vadodara for website discovery?",
     answer:
-      "Yes. Shop-floor discovery is standard for manufacturing ERP — we map BOM, job-work, and weighbridge flows before quoting modules.",
+      "Yes. Plant visits are standard for manufacturer catalogs — we map products, grades, and RFQ fields before quoting scope.",
   },
   {
     question: "What industries do you serve in Vadodara?",
     answer:
-      "Manufacturing, pharma, chemical, engineering, textile, ceramic, education, logistics, and healthcare — typical Golden Corridor verticals.",
+      "Manufacturing, pharma, chemical, engineering, textile, ceramic, education, logistics, and healthcare — typical Golden Corridor verticals needing owned enquiry websites.",
   },
   {
-    question: "How fast can a Vadodara project start?",
+    question: "How fast can a Vadodara website project start?",
     answer:
-      "Discovery can begin within one week. MVPs often launch in 6–10 weeks; ERP rollouts in 3–6 months phased by module.",
+      "Discovery can begin within one week. Starter sites often launch in 3–4 weeks; Professional manufacturer catalogs in about 5–6 weeks.",
   },
 ];
 
@@ -124,10 +118,8 @@ const localBusinessJsonLd = {
   email: siteConfig.email,
   address: {
     "@type": "PostalAddress",
-    streetAddress: businessAddress.streetAddress,
     addressLocality: businessAddress.addressLocality,
     addressRegion: businessAddress.addressRegion,
-    postalCode: businessAddress.postalCode,
     addressCountry: businessAddress.addressCountry,
   },
   geo: {
@@ -148,7 +140,7 @@ const localBusinessJsonLd = {
 const serviceJsonLd = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "Software & Website Development in Vadodara",
+  name: "Website Development in Vadodara",
   provider: {
     "@type": "Organization",
     name: siteConfig.legalName,
@@ -167,13 +159,13 @@ const serviceJsonLd = {
     },
   },
   description:
-    "Custom software development, website development, ERP, CRM, AI solutions and digital transformation for businesses in Vadodara and across Gujarat.",
-  priceRange: "₹75,000 - ₹50,00,000+",
+    "Website development, SEO, and monthly AMC for businesses in Vadodara and across Gujarat. Business sites, catalogs, RFQ paths, and Next.js builds from ₹35,000.",
+  priceRange: "₹35,000 - ₹1,50,000+",
   url: `${siteConfig.url}/locations/india/vadodara`,
 };
 
 const WHATSAPP_VADODARA =
-  "https://wa.me/919586868538?text=Hi%20Maxwell%2C%20I%20am%20from%20Vadodara%20and%20want%20to%20discuss%20a%20project.";
+  "https://wa.me/919586868538?text=Hi%20Maxwell%2C%20I%20am%20from%20Vadodara%20and%20want%20to%20discuss%20a%20website%20project.";
 
 export function VadodaraLandingPage() {
   return (
@@ -203,23 +195,30 @@ export function VadodaraLandingPage() {
             Gujarat, India
           </p>
           <h1 className="mt-4 max-w-4xl font-display text-4xl font-bold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-6xl">
-            Website Developer in Vadodara — Software & Web Development
+            Website Development Company in Vadodara
           </h1>
           <p className="mt-6 max-w-3xl text-lg leading-relaxed text-white/55">
-            Maxwell Electrodeal is your local website developer in Vadodara — headquartered at Lalita
-            Tower, Jetalpur Road. We build custom websites, ERP systems, CRM software, and AI
-            solutions for manufacturers, chemical companies, pharma firms, and MSMEs across
-            Vadodara, Bharuch, Ankleshwar, Surat, and Gujarat. Free consultation. GST invoice. 100%
-            code ownership.
+            Maxwell Electrodeal is your local website development, SEO, and AMC company with an
+            office in Vadodara. We build business websites, product catalogs, and RFQ sites for
+            companies across Vadodara, Gujarat, and India — including manufacturers and GIDC plants.
+            Free consultation. GST invoice. 100% code ownership. From ₹35,000.
           </p>
           <p className="mt-3 text-sm text-white/45">Serving Vadodara businesses since 2018</p>
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
             <Button href="/get-estimate?source=vadodara-location" size="lg">
               Get Free Estimate <ArrowRight />
             </Button>
-            <Button href="/book-consultation?location=Vadodara" size="lg" variant="outline">
-              Book Consultation
+            <Button href="/pricing" size="lg" variant="outline">
+              See Pricing
             </Button>
+            <a
+              href={WHATSAPP_VADODARA}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center rounded-lg border border-white/25 px-6 py-3 text-sm font-semibold text-white hover:border-white/50 transition"
+            >
+              WhatsApp Us
+            </a>
           </div>
         </Container>
       </section>
@@ -229,7 +228,7 @@ export function VadodaraLandingPage() {
         <Container>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-600">Services</p>
           <h2 className="mt-3 font-display text-3xl font-bold tracking-tight sm:text-4xl">
-            Services We Deliver in Vadodara
+            Website Services We Deliver in Vadodara
           </h2>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((s) => (
@@ -341,8 +340,8 @@ export function VadodaraLandingPage() {
           <div className="mt-8 grid gap-8 lg:grid-cols-2">
             <div className="space-y-4 text-muted">
               <p>
-                <span className="font-semibold text-[var(--v6-text)]">Address: </span>
-                {businessAddress.formatted}
+                <span className="font-semibold text-[var(--v6-text)]">Location: </span>
+                {businessAddress.publicLabel}
               </p>
               <p>
                 <span className="font-semibold text-[var(--v6-text)]">Phone: </span>
@@ -371,21 +370,12 @@ export function VadodaraLandingPage() {
               </a>
             </div>
           </div>
-          <div className="mt-8 overflow-hidden rounded-2xl border border-[var(--v6-border)]">
-            <iframe
-              title="Maxwell Electrodeal office location — Vadodara, Gujarat"
-              src={businessAddress.googleMapsEmbedUrl}
-              className="h-80 w-full"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-          </div>
         </Container>
       </section>
 
       <LocationFAQ
         faqs={vadodaraFaqs}
-        title="Software development in Vadodara"
+        title="Website development in Vadodara"
         locationName="Vadodara"
       />
 
@@ -393,18 +383,18 @@ export function VadodaraLandingPage() {
       <section className="border-t border-border bg-[#f8fafc] py-12">
         <Container>
           <h2 className="font-display text-xl font-bold text-[var(--v6-text)] mb-4">
-            Services we deliver in Vadodara
+            Website services in Vadodara
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {[
               { label: "Manufacturer Website Development", href: "/services/website-development-for-manufacturers" },
-              { label: "Custom ERP Development Company Vadodara", href: "/solutions/erp-development-company-vadodara" },
-              { label: "ERP Development for Manufacturers", href: "/services/erp-development" },
-              { label: "CRM & ERP for Chemical Manufacturers", href: "/industries/chemical-manufacturing" },
+              { label: "Website Development Company Vadodara", href: "/solutions/web-development-company-vadodara" },
+              { label: "Published Pricing", href: "/pricing" },
+              { label: "Gujarat GIDC Manufacturer Websites", href: "/locations/india/gujarat/gidc" },
               { label: "Drashti Chemicals — Vadodara Case Study", href: "/case-studies/drashti-chemicals" },
               { label: "Bharuch-Ankleshwar Chemical Corridor →", href: "/services/website-development/bharuch-ankleshwar-chemical" },
-              { label: "Morbi Ceramic Manufacturer Website →", href: "/services/website-development/morbi-ceramic-website" },
-              { label: "Ahmedabad Software Development", href: "/locations/india/ahmedabad" },
+              { label: "Morbi Ceramic Exporter Websites →", href: "/services/website-development/ceramic-exporters" },
+              { label: "Website Cost Vadodara", href: "/cost/web-development-cost-vadodara" },
             ].map(({ label, href }) => (
               <Link key={href} href={href} className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-800 hover:underline">
                 <span aria-hidden>→</span> {label}

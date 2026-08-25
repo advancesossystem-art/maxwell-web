@@ -6,9 +6,9 @@ import { siteConfig } from "@/lib/constants";
 import { StraightAnswers } from "@/components/conversion/StraightAnswers";
 
 export const metadata: Metadata = createMetadata({
-  title: "We Rebuilt Our Own Website — 0 to 80 Google Clicks in 28 Days",
+  title: "Our Website Rebuild | 80 Clicks in 28 Days",
   description:
-    "How Maxwell Electrodeal rebuilt maxwellelectrodeal.com from invisible to 80 Google clicks in 28 days — no ads, no bought backlinks. Search Console proof and methodology.",
+    "How Maxwell rebuilt maxwellelectrodeal.com from invisible to 80 Google clicks in 28 days — no ads, no bought links. Search Console proof. See the method.",
   path: "/case-studies/maxwell-website-rebuild",
   keywords: [
     "website SEO case study India",

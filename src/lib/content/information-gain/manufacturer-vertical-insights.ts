@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Phase 6A — Per-vertical information gain for manufacturer website spokes.
  * Factual, industry-specific — no invented clients or statistics.
  */
@@ -224,7 +224,7 @@ export const manufacturerVerticalInsights: Record<string, ManufacturerVerticalIn
     uniqueFaqs: [
       {
         question: "Morbi ceramic website cost?",
-        answer: "Published Maxwell tiers start at ₹45,000 (Starter) — Professional (₹75,000) suits tile catalogs. See /pricing.",
+        answer: "Published Maxwell tiers start at ₹35,000 (Starter) — Professional (₹75,000) suits tile catalogs. See /pricing.",
       },
     ],
     ownedVsMarketplace: "Morbi exporters compete globally — owned SEO complements trade fair contacts.",
@@ -316,7 +316,7 @@ export const manufacturerVerticalInsights: Record<string, ManufacturerVerticalIn
   },
   "msme-india": {
     slug: "msme-india",
-    buyerChecklist: ["Udyam/MSME registration display if you choose", "Clear starter package fit (₹45,000 tier)", "WhatsApp + form on every page"],
+    buyerChecklist: ["Udyam/MSME registration display if you choose", "Clear starter package fit (₹35,000 tier)", "WhatsApp + form on every page"],
     commonMistakes: [
       "Overbuilding e-commerce before catalog proof",
       "Paying for marketplace premium before basic owned presence exists",
@@ -399,7 +399,7 @@ export const manufacturerVerticalInsights: Record<string, ManufacturerVerticalIn
     selectionCriteria: [
       "Corridor experience on Bharuch–Ankleshwar chemical belt SEO",
       "Per-product document library + RFQ field schema",
-      "Published pricing — Starter ₹45,000 · Professional ₹75,000 · Growth ₹1,50,000",
+      "Published pricing — Starter ₹35,000 · Professional ₹75,000 · Growth ₹1,50,000",
     ],
     uniqueFaqs: [
       {

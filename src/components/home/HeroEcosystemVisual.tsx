@@ -52,10 +52,10 @@ export function HeroEcosystemVisual() {
                 <p className="font-semibold text-[#0f172a]">1,248</p>
               </div>
               <div className="rounded-lg border border-[#e2e8f0] bg-[#f8fafc] p-2">
-                <p className="text-[10px] text-[var(--v6-text-muted)]">Client Satisfaction</p>
-                <p className="font-semibold text-[#0f172a]">4.9/5</p>
+                <p className="text-[10px] text-[var(--v6-text-muted)]">Drashti catalog</p>
+                <p className="font-semibold text-[#0f172a]">94/100</p>
                 <div className="mt-1 h-1.5 overflow-hidden rounded-full bg-[#e2e8f0]">
-                  <div className="h-full w-[92%] rounded-full bg-[#f59e0b]" />
+                  <div className="h-full w-[94%] rounded-full bg-[#f59e0b]" />
                 </div>
               </div>
             </div>

@@ -5,9 +5,9 @@ import { IndustrialServicePage } from "@/components/services/IndustrialServicePa
 const path = "/services/rfq-website-development";
 
 export const metadata: Metadata = createMetadata({
-  title: "RFQ Website Development for Manufacturers | B2B Quote Portals",
+  title: "RFQ Website for Manufacturers | From ₹35,000",
   description:
-    "RFQ website development for manufacturers — quote carts, drawing uploads, product inquiry portals. Replace static PDFs with B2B RFQ engines. From ₹45,000.",
+    "RFQ website development for manufacturers — quote carts, drawing uploads, product inquiry portals. Replace static PDFs. From ₹35,000. Request a quote.",
   path,
   keywords: [
     "rfq website development for manufacturers",
@@ -16,6 +16,8 @@ export const metadata: Metadata = createMetadata({
     "b2b product inquiry portal",
     "manufacturer RFQ website India",
     "custom RFQ portal website",
+    "RFQ website Vadodara",
+    "inquiry website for manufacturers",
   ],
 });
 
@@ -27,7 +29,7 @@ export default function RfqWebsiteDevelopmentPage() {
       eyebrow="B2B RFQ systems · manufacturers"
       h1="RFQ website development for manufacturers"
       lead="Engineers abandon sites that only offer a generic Contact form. Maxwell builds RFQ-ready manufacturer websites — inquiry carts, drawing uploads, MOQ fields, and WhatsApp routing that match plant procurement realities."
-      pageDirectAnswer="RFQ website development adds structured quote fields (grade, MOQ, destination, drawings) and WhatsApp routing to manufacturer catalogs — not a consumer checkout cart. Maxwell ships practical RFQ layers from Starter ₹45,000 onward, with deeper multi-line carts on Professional and Growth builds."
+      pageDirectAnswer="RFQ website development adds structured quote fields (grade, MOQ, destination, drawings) and WhatsApp routing to manufacturer catalogs — not a consumer checkout cart. Maxwell ships practical RFQ layers from Starter ₹35,000 onward, with deeper multi-line carts on Professional and Growth builds."
       estimateSource="rfq-website"
       schemaName="RFQ Website Development for Manufacturers"
       schemaDescription="Custom RFQ and product inquiry websites for Indian manufacturers from Maxwell Electrodeal."

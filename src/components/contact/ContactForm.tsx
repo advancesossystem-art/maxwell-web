@@ -11,6 +11,7 @@ import {
 import { composeInternationalPhone, defaultCountryIso } from "@/lib/country-phone-codes";
 import { PhoneCountryFields } from "@/components/leads/PhoneCountryFields";
 import { HoneypotField, honeypotValueFromFormData } from "@/components/leads/HoneypotField";
+import { CTA_LABELS } from "@/lib/conversion-copy";
 
 type FormState = "idle" | "loading" | "success" | "error";
 
@@ -24,14 +25,10 @@ const budgetOptions = [
 
 const serviceOptions = [
   "Website Development",
-  "Custom Software Development",
-  "Mobile App Development",
-  "AI Solutions",
-  "ERP Development",
-  "CRM Development",
-  "SaaS Development",
-  "Cloud Solutions",
-  "Multiple Services",
+  "Manufacturer Catalog",
+  "SEO/AMC",
+  "Website Redesign",
+  "Other",
 ];
 
 function fieldInputClass(base: string, hasError?: boolean) {
@@ -44,10 +41,10 @@ function fieldInputClass(base: string, hasError?: boolean) {
 function ContactFormInner() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const defaultService = searchParams.get("service") ?? "";
+  const defaultService = searchParams.get("service") ?? "Website Development";
   const defaultIndustry = searchParams.get("industry") ?? "";
   const defaultMessage = defaultIndustry
-    ? `I'm interested in software solutions for the ${defaultIndustry} industry. `
+    ? `I'm interested in a website for the ${defaultIndustry} industry. `
     : "";
   const [state, setState] = useState<FormState>("idle");
   const [errorMessage, setErrorMessage] = useState("");
@@ -179,13 +176,12 @@ function ContactFormInner() {
         </div>
         <div>
           <label htmlFor="email" className="mb-1.5 block text-sm font-medium">
-            Work Email *
+            Work Email <span className="font-normal text-muted">(optional)</span>
           </label>
           <input
             id="email"
             name="email"
             type="email"
-            required
             autoComplete="email"
             inputMode="email"
             maxLength={254}
@@ -223,18 +219,16 @@ function ContactFormInner() {
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="service" className="mb-1.5 block text-sm font-medium">
-            Service Needed *
+            Service Needed <span className="font-normal text-muted">(optional)</span>
           </label>
           <select
             id="service"
             name="service"
-            required
             aria-invalid={fieldErrors.projectType ? true : undefined}
             aria-describedby={fieldErrors.projectType ? "service-error" : undefined}
             className={fieldInputClass(inputClass, Boolean(fieldErrors.projectType))}
             defaultValue={defaultService}
           >
-            <option value="">Select a service</option>
             {serviceOptions.map((s) => (
               <option key={s} value={s}>
                 {s}
@@ -245,15 +239,15 @@ function ContactFormInner() {
         </div>
         <div>
           <label htmlFor="budget" className="mb-1.5 block text-sm font-medium">
-            Project Budget *
+            Project Budget <span className="font-normal text-muted">(optional)</span>
           </label>
           <select
             id="budget"
             name="budget"
-            required
             aria-invalid={fieldErrors.budget ? true : undefined}
             aria-describedby={fieldErrors.budget ? "budget-error" : undefined}
             className={fieldInputClass(inputClass, Boolean(fieldErrors.budget))}
+            defaultValue="Not sure yet"
           >
             <option value="">Select budget range</option>
             {budgetOptions.map((b) => (
@@ -272,14 +266,12 @@ function ContactFormInner() {
 
       <div>
         <label htmlFor="message" className="mb-1.5 block text-sm font-medium">
-          Project Details *
+          Project Details <span className="font-normal text-muted">(optional)</span>
         </label>
         <textarea
           id="message"
           name="message"
-          required
           rows={5}
-          minLength={20}
           maxLength={5000}
           defaultValue={defaultMessage}
           aria-invalid={fieldErrors.message ? true : undefined}
@@ -297,7 +289,7 @@ function ContactFormInner() {
       )}
 
       <Button type="submit" size="lg" className="w-full sm:w-auto" disabled={state === "loading"}>
-        {state === "loading" ? "Sending..." : "Send Message"}
+        {state === "loading" ? "Sending..." : CTA_LABELS.primary}
       </Button>
 
       <p className="text-xs text-muted">

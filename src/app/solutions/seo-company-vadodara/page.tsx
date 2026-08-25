@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { createMetadata } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
 
 export const metadata: Metadata = createMetadata({
-  title: "SEO Company Vadodara | Manufacturer & Business SEO from ₹50,000 | Maxwell",
+  title: "SEO Company Vadodara | From ₹50,000",
   description:
-    "SEO company in Vadodara for manufacturer and business websites — technical SEO, topical clusters, GIDC locality, GEO for AI search. From ₹50,000. Next.js team.",
+    "SEO company in Vadodara for manufacturer and business websites — technical SEO, topical clusters, GIDC locality. From ₹50,000. Next.js team. Get a quote.",
   path: "/solutions/seo-company-vadodara",
   keywords: [
     "SEO company Vadodara",
@@ -51,7 +51,7 @@ export default function SeoCompanyVadodaraPage() {
         </Container>
       </section>
 
-      <section className="py-16 border-b border-slate-200">
+      <section className="py-16 border-b border-slate-200 bg-white">
         <Container>
           <h2 className="font-display text-2xl font-bold text-slate-900 mb-4">
             What we optimize for Vadodara buyers

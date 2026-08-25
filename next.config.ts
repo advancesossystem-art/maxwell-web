@@ -50,6 +50,11 @@ const permanentRedirects: Array<{ source: string; destination: string }> = [
   { source: "/vadodara", destination: "/locations/india/vadodara" },
   { source: "/gujarat", destination: "/locations/india/gujarat" },
   { source: "/discovery-call", destination: "/book-consultation" },
+  // Trimmed GIDC cluster — weak estates consolidate to hub
+  { source: "/locations/india/gujarat/halol-gidc", destination: "/locations/india/gujarat/gidc" },
+  { source: "/locations/india/gujarat/vatva-gidc", destination: "/locations/india/gujarat/gidc" },
+  { source: "/locations/india/gujarat/waghodia-gidc", destination: "/locations/india/gujarat/gidc" },
+  { source: "/locations/india/gujarat/por-gidc", destination: "/locations/india/gujarat/gidc" },
   // Soft-404 / legacy paths still appearing in Search Console
   { source: "/portal", destination: "/company" },
   { source: "/founders", destination: "/about" },
@@ -213,8 +218,8 @@ const nextConfig: NextConfig = {
   compress: true,
   images: {
     formats: ["image/avif", "image/webp"],
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1280, 1920],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     minimumCacheTTL: 60 * 60 * 24 * 30,
   },
   experimental: {

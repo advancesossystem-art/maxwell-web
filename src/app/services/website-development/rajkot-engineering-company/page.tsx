@@ -4,9 +4,9 @@ import { createMetadata } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
 
 export const metadata: Metadata = createMetadata({
-  title: "Website for Engineering Companies in Rajkot | Maxwell Electrodeal",
+  title: "Rajkot Engineering Website | From ₹35,000",
   description:
-    "Product catalog websites for engineering companies, machine tool manufacturers, and auto component suppliers in Rajkot, Gujarat. RFQ forms, spec sheets, ISO display. From ₹75,000.",
+    "Catalog websites for Rajkot engineering and machine tool companies — RFQ forms, spec sheets, ISO display. From ₹35,000. Request a quote.",
   path: "/services/website-development/rajkot-engineering-company",
   keywords: [
     "engineering company website Rajkot",

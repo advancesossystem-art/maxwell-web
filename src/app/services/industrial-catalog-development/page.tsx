@@ -5,9 +5,9 @@ import { IndustrialServicePage } from "@/components/services/IndustrialServicePa
 const path = "/services/industrial-catalog-development";
 
 export const metadata: Metadata = createMetadata({
-  title: "Industrial Product Catalogue Website Development | SKU Catalogs",
+  title: "Industrial Catalog Website | From ₹35,000",
   description:
-    "Industrial product catalogue website builder for manufacturers — HTML specs, filters, SDS/datasheet links, SEO for 100s–1000s of SKUs. From ₹45,000 / ₹75,000 catalog tiers.",
+    "Industrial product catalogue websites — HTML specs, filters, SDS links, SEO for hundreds of SKUs. From ₹35,000 / ₹75,000 catalog tiers. Request a quote.",
   path,
   keywords: [
     "industrial product catalogue website builder",
@@ -27,7 +27,7 @@ export default function IndustrialCatalogDevelopmentPage() {
       eyebrow="Catalog architecture · industrial SKUs"
       h1="Industrial product catalogue website development"
       lead="Organize hundreds or thousands of SKUs so engineers can filter by specification — and Google can index real HTML pages. Maxwell builds industrial catalogues that sell capability, not just company history."
-      pageDirectAnswer="An industrial product catalogue website gives each rankable SKU or category an HTML home with specs, documents, and RFQ — so engineers and Google both use the same structure. Maxwell plans taxonomy first; Starter from ₹45,000, Professional multi-category catalogs often from ₹75,000."
+      pageDirectAnswer="An industrial product catalogue website gives each rankable SKU or category an HTML home with specs, documents, and RFQ — so engineers and Google both use the same structure. Maxwell plans taxonomy first; Starter from ₹35,000, Professional multi-category catalogs often from ₹75,000."
       estimateSource="industrial-catalog"
       schemaName="Industrial Catalog Website Development"
       schemaDescription="Industrial product catalog websites with SEO and RFQ for manufacturers by Maxwell Electrodeal."

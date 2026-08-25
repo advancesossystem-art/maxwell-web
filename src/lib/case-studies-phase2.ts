@@ -61,7 +61,7 @@ function buildStudy(c: CompactCaseStudy): CaseStudyData {
     testimonial: c.testimonial,
     lessonsLearned: ["Shop-floor discovery is non-negotiable", "Phased rollout beats big-bang"],
     similarSolutions: [
-      { title: "ERP Development", href: "/services/erp-development", description: "Custom ERP solutions" },
+      { title: "ERP Development", href: "/services/website-development-for-manufacturers", description: "Custom ERP solutions" },
       { title: "Get estimate", href: "/get-estimate", description: "Free project assessment" },
     ],
     trust: {

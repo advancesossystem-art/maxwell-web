@@ -1,4 +1,4 @@
-/** Engagement & pricing models — single source for /engagement-models */
+﻿/** Engagement & pricing models — single source for /engagement-models */
 
 /** Phase 4 upsell ladder — website first, systems later (indicative ranges). */
 export const upsellLadder = [
@@ -6,32 +6,32 @@ export const upsellLadder = [
     step: 1,
     title: "Website catalog",
     range: "₹75,000 – ₹1,50,000",
-    note: "Professional–Growth published website packages (Starter from ₹45,000)",
+    note: "Professional–Growth published website packages (Starter from ₹35,000)",
     href: "/services/website-development-for-manufacturers",
     primary: true,
   },
   {
     step: 2,
-    title: "Connect inquiry → Tally / GST",
-    range: "~₹50,000 framing",
-    note: "Indicative estimate for inquiry CRM/email → Tally/GST handoff integrations after the catalog ships",
-    href: "/services/custom-software-development",
+    title: "Website SEO & ranking",
+    range: "From ₹50,000 framing",
+    note: "Technical SEO, product IA, and GIDC locality after the catalog ships",
+    href: "/services/website-seo",
     primary: false,
   },
   {
     step: 3,
-    title: "Dealer portal",
-    range: "~₹2.5L framing",
-    note: "Indicative estimate for login catalogs, price lists, and distributor-only SKUs",
-    href: "/services/dealer-portal-development",
+    title: "Website AMC",
+    range: "From ₹15,000/mo",
+    note: "Two product changes, weekly updates, SEO report, two published articles",
+    href: "/services/website-maintenance",
     primary: false,
   },
   {
     step: 4,
-    title: "Production / inventory ERP",
-    range: "₹5L – ₹12L range",
-    note: "Indicative estimate only — scoped after discovery; not website package billing",
-    href: "/services/erp-development",
+    title: "Dealer portal",
+    range: "~₹2.5L framing",
+    note: "Indicative estimate for login catalogs, price lists, and distributor-only SKUs after public RFQs prove demand",
+    href: "/services/dealer-portal-development",
     primary: false,
   },
 ] as const;

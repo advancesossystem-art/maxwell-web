@@ -162,7 +162,7 @@ const expansionBySlug: Record<string, Faq[]> = {
     {
       question: "Can I get a website under ₹20,000?",
       answer:
-        "That budget typically buys a template site — not a B2B catalog. Maxwell Starter is ₹45,000 (published on /pricing) with milestone billing and IP ownership.",
+        "That budget typically buys a template site — not a B2B catalog. Maxwell Starter is ₹35,000 (published on /pricing) with milestone billing and IP ownership.",
     },
     {
       question: "Website vs IndiaMART — do I need both?",

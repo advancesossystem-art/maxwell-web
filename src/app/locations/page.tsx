@@ -2,11 +2,12 @@ import { LocationsHub } from "@/components/locations/LocationsHub";
 import { buildPageMetadata } from "@/lib/seo-helpers";
 
 export const metadata = buildPageMetadata({
-  title: "Software Development Locations — India & Global",
+  title: "Website Development Locations | India & Gujarat",
   description:
-    "Maxwell Electrodeal serves Vadodara, Mumbai, Bengaluru, Delhi, and international clients in USA, UK, UAE, Canada, Australia, Germany, and Singapore.",
+    "Website development locations across India and Gujarat — Vadodara office, GIDC estates, pan-India delivery. Sites from ₹35,000.",
   path: "/locations",
-  keywords: ["software development India", "IT company locations", "offshore development"],
+  keywords: ["website development India", "website company Gujarat", "Vadodara web development locations"],
+  absoluteTitle: true,
 });
 
 export default function LocationsPage() {

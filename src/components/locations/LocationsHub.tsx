@@ -6,7 +6,7 @@ import { getAllCountries, getAllCities } from "@/lib/locations-data";
 import { PageHero } from "@/components/design/PageHero";
 import { PageSection, SectionHeader } from "@/components/design/PageSection";
 import { Card } from "@/components/design/Card";
-import { AccentGradient, H3, Caption } from "@/components/design/typography";
+import { H3, Caption } from "@/components/design/typography";
 
 export function LocationsHub() {
   const countries = getAllCountries();
@@ -18,12 +18,8 @@ export function LocationsHub() {
     <>
       <PageHero
         eyebrow="Locations"
-        title={
-          <>
-            Software development <AccentGradient>where you operate</AccentGradient>
-          </>
-        }
-        description="Local market expertise across India and global delivery for USA, UK, UAE, and more."
+        title="Website development locations"
+        description="Local expertise across India and Gujarat — Vadodara office, GIDC estates, and global delivery for USA, UK, and UAE."
       >
         <Button href="/contact" size="lg">
           Discuss Your Project <ArrowRight />

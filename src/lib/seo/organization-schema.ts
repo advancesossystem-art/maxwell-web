@@ -9,22 +9,22 @@ import { getFounderAuthor } from "@/lib/content/authors";
 import { headquarters, seoIds, socialProfiles } from "@/lib/seo/config";
 
 export const ORGANIZATION_DESCRIPTION =
-  "Maxwell Electrodeal Private Limited is a Software & Website Engineering Company based in Vadodara, Gujarat, India. We build industrial B2B product catalog websites, RFQ systems, manufacturer websites, web applications, and custom software. Not a printer, toner, or photocopier hardware retailer. Not affiliated with Maxwell Engineering Solutions (maxwells.in) or Waghodia pelletizing-die manufacturers.";
+  "Maxwell Electrodeal Private Limited is a website development, SEO, and AMC company based in Vadodara, Gujarat, India. We build business websites, product catalogs, RFQ systems, and enquiry channels for companies of every size — with specialty depth for manufacturers and industrial catalogs. Not a printer, toner, or photocopier hardware retailer. Not affiliated with Maxwell Engineering Solutions (maxwells.in) or Waghodia pelletizing-die manufacturers.";
 
 const ORGANIZATION_ALTERNATE_NAMES = [
   "Maxwell Electrodeal Private Limited",
   "Maxwell Electrodeal Website Engineering",
   "Maxwell Electrodeal Web Development",
-  "Maxwell Electrodeal Software Engineering",
+  "Maxwell Electrodeal Website Company",
 ] as const;
 
 const CORE_OFFER_SERVICES = [
   "Website Development",
   "Manufacturer Website Development",
   "Business Website Development",
-  "Web Application Development",
-  "Custom Software Development",
-  "AI Automation",
+  "Website SEO",
+  "Website Maintenance AMC",
+  "RFQ Website Development",
 ] as const;
 
 /** Structured data constants — aligned with company-data (founded 2018) and company-metrics. */

@@ -23,10 +23,8 @@ export const primaryLocale = "en_IN" as const;
 export const hreflangDefault = "en-IN" as const;
 
 export const headquarters = {
-  streetAddress: businessAddress.streetAddress,
   addressLocality: businessAddress.addressLocality,
   addressRegion: businessAddress.addressRegion,
-  postalCode: businessAddress.postalCode,
   addressCountry: businessAddress.addressCountry,
 } as const;
 
@@ -93,20 +91,20 @@ export const socialProfiles: string[] = [
 ];
 
 export const homeSeo = {
-  title:
-    "Website Development Company Vadodara | From ₹35,000 | AMC ₹15,000 | Maxwell",
+  // Differentiated from /solutions/web-development-company-vadodara (local money page).
+  title: "Website Development, SEO & AMC",
   description:
-    "Website development, SEO, and monthly AMC in Vadodara. Manufacturer catalogs from ₹35,000. Website AMC from ₹15,000 — weekly updates, SEO reports, two articles. Request a quote.",
+    "Maxwell builds business websites, catalogs, RFQ & SEO from Vadodara. From ₹35,000. AMC ₹15,000/mo. For any business that needs a site — including manufacturers.",
   keywords: [
     "website development company Vadodara",
-    "website engineering company",
-    "manufacturer website development India",
+    "business website development India",
     "website development Gujarat",
-    "GIDC manufacturer website",
-    "business website development",
-    "SEO company Vadodara",
+    "web developer Vadodara",
     "website AMC Vadodara",
-    "website maintenance company India",
+    "SEO company Vadodara",
+    "manufacturer website development India",
+    "corporate website design India",
+    "B2B website development",
     "Maxwell Electrodeal",
   ],
   path: "/",

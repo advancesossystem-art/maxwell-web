@@ -1,13 +1,13 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { createMetadata } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
 import { websitePricingTiers, pricingTerms } from "@/lib/pricing-data";
 
 export const metadata: Metadata = createMetadata({
-  title: "Web Development Cost Vadodara 2026 | From ₹45,000 | Maxwell Electrodeal",
+  title: "Web Development Cost Vadodara | From ₹35,000",
   description:
-    "Published website pricing for Vadodara — Starter ₹45,000 (25–30 pages + core SEO), Professional ₹75,000 catalogs, Growth ₹1,50,000. GST invoice, full ownership.",
+    "Published website pricing for Vadodara — Starter ₹35,000, Professional ₹75,000 catalogs, Growth ₹1,50,000. GST invoice, full ownership. Compare tiers.",
   path: "/cost/web-development-cost-vadodara",
   keywords: [
     "web development cost Vadodara",
@@ -31,7 +31,7 @@ export default function WebDevelopmentCostVadodaraPage() {
           </h1>
           <p className="mt-6 text-lg text-slate-300 max-w-2xl">
             Real prices from a GST-registered Vadodara team — not “contact us for quote” theatre.
-            Starter websites from ₹45,000 with 25–30 pages and core SEO; manufacturer catalogs often
+            Starter websites from ₹35,000 with 25–30 pages and core SEO; manufacturer catalogs often
             start at ₹75,000.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4">
@@ -51,7 +51,7 @@ export default function WebDevelopmentCostVadodaraPage() {
         </Container>
       </section>
 
-      <section className="py-16 border-b border-slate-200">
+      <section className="py-16 border-b border-slate-200 bg-white">
         <Container>
           <h2 className="font-display text-2xl font-bold text-slate-900 mb-6">
             Published website tiers

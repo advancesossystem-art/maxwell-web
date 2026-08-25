@@ -13,7 +13,7 @@ export type MoneySitemapEntry = {
   lastModified?: Date;
 };
 
-const LAUNCH = new Date("2026-08-04T00:00:00.000Z");
+const LAUNCH = new Date("2026-08-25T00:00:00.000Z");
 
 /**
  * Exact allowlist for Google crawl focus.
@@ -21,10 +21,12 @@ const LAUNCH = new Date("2026-08-04T00:00:00.000Z");
  */
 export const MONEY_SITEMAP_ALLOWLIST: readonly MoneySitemapEntry[] = [
   { path: "/", priority: 1, changeFreq: "weekly", lastModified: LAUNCH },
+  { path: "/process", priority: 0.88, changeFreq: "monthly", lastModified: LAUNCH },
   { path: "/about", priority: 0.7, changeFreq: "monthly" },
   { path: "/contact", priority: 0.95, changeFreq: "monthly" },
   { path: "/get-estimate", priority: 0.95, changeFreq: "monthly" },
   { path: "/pricing", priority: 0.94, changeFreq: "monthly" },
+  { path: "/reviews", priority: 0.85, changeFreq: "monthly", lastModified: LAUNCH },
 
   // Geo money
   { path: "/solutions/web-development-company-vadodara", priority: 0.98, changeFreq: "weekly", lastModified: LAUNCH },
@@ -78,14 +80,12 @@ export const MONEY_SITEMAP_ALLOWLIST: readonly MoneySitemapEntry[] = [
   { path: "/services/website-development/manufacturer-export-website", priority: 0.9, changeFreq: "monthly", lastModified: LAUNCH },
   { path: "/services/website-development/surat-textile-manufacturer", priority: 0.87, changeFreq: "monthly", lastModified: LAUNCH },
 
-  // GIDC corridors
+  // GIDC corridors (trimmed cluster)
   { path: "/locations/india/gujarat/gidc", priority: 0.94, changeFreq: "weekly", lastModified: LAUNCH },
   { path: "/locations/india/gujarat/makarpura-gidc", priority: 0.93, changeFreq: "monthly", lastModified: LAUNCH },
   { path: "/locations/india/gujarat/savli-gidc", priority: 0.93, changeFreq: "monthly", lastModified: LAUNCH },
-  { path: "/locations/india/gujarat/halol-gidc", priority: 0.93, changeFreq: "monthly", lastModified: LAUNCH },
   { path: "/locations/india/gujarat/ankleshwar-gidc", priority: 0.93, changeFreq: "monthly", lastModified: LAUNCH },
   { path: "/locations/india/gujarat/nandesari-gidc", priority: 0.93, changeFreq: "monthly", lastModified: LAUNCH },
-  { path: "/locations/india/gujarat/waghodia-gidc", priority: 0.9, changeFreq: "monthly", lastModified: LAUNCH },
 
   // Cost + tools + TCO
   { path: "/cost/web-development-cost-vadodara", priority: 0.92, changeFreq: "monthly", lastModified: LAUNCH },
@@ -97,8 +97,6 @@ export const MONEY_SITEMAP_ALLOWLIST: readonly MoneySitemapEntry[] = [
 
   // Additional geo/SEO money pages
   { path: "/solutions/seo-company-gujarat", priority: 0.88, changeFreq: "monthly", lastModified: LAUNCH },
-  { path: "/locations/india/gujarat/vatva-gidc", priority: 0.9, changeFreq: "monthly", lastModified: LAUNCH },
-  { path: "/locations/india/gujarat/por-gidc", priority: 0.9, changeFreq: "monthly", lastModified: LAUNCH },
 
   // Proof
   { path: "/case-studies/drashti-chemicals", priority: 0.94, changeFreq: "monthly", lastModified: LAUNCH },

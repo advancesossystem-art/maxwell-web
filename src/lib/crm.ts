@@ -5,7 +5,7 @@ import { webhookHeaders } from "@/lib/security/webhook-auth";
 export type LeadPayload = {
   source: LeadSource;
   name: string;
-  email: string;
+  email?: string;
   phone?: string;
   company?: string;
   message?: string;

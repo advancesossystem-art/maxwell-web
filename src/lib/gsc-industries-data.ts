@@ -29,253 +29,233 @@ export const gscIndustriesData: Record<(typeof gscIndustrySlugs)[number], Indust
   "chemical-manufacturing": {
     slug: "chemical-manufacturing",
     title: "Chemical Manufacturing",
-    headline:
-      "Smarter Formulations. Flawless Traceability. Built Specially for Chemical Manufacturers.",
+    headline: "Chemical Manufacturer Websites That Rank on Google — Not Another Directory Listing",
     subheadline:
-      "Consolidate your operations. Manage recipe version controls, automate safety compliance, and simplify GHS/HAZMAT documentation with a custom cloud platform integrated with Tally Prime. Proven 99.5% batch trace accuracy and audit prep reduced from 2 weeks to 48 hours. Projects start from ₹2,50,000.",
-    metaTitle:
-      "CRM Software for Chemical Industry India | Chemical Manufacturing CRM | Maxwell",
+      "Product catalogs with CAS/grades, SDS/COA request paths, and WhatsApp RFQ for Gujarat chemical plants. Starter from ₹35,000 · Professional catalogs from ₹75,000. Live proof: Drashti Chemicals, Nandesari GIDC.",
+    metaTitle: "Chemical Manufacturer Website India | Catalogs from ₹35,000 | Maxwell",
     metaDescription:
-      "CRM software for chemical industry India — grade catalogs, hazard flags, sample requests, GST/Tally links. Gujarat Bharuch–Ankleshwar & Vadodara corridors. From ₹2,50,000.",
+      "Website development for chemical manufacturers in Gujarat & India — product catalogs, SDS/COA paths, RFQ forms, GIDC SEO. From ₹35,000. Vadodara team.",
     keywords: [
-      "CRM software for chemical industry",
-      "chemical manufacturing CRM",
-      "chemical manufacturing ERP software",
-      "ERP for chemical manufacturing",
-      "best ERP for chemical manufacturing",
-      "CRM software for chemical industry India",
-      "chemical industry ERP India",
-      "batch tracking software chemical",
-      "MSDS management software India",
-      "CRM for chemical distributors Gujarat",
-      "hazmat inventory software",
-      "chemical ERP software India",
-      "chemical batch traceability software",
-      "SDS compliance software India",
-      "GHS label generation software",
-      "recipe management chemical ERP",
-      "custom ERP chemical manufacturers Vadodara",
+      "chemical manufacturer website India",
+      "website development for chemical manufacturers",
+      "chemical industry website design Gujarat",
+      "chemical supplier website India",
+      "specialty chemical manufacturer website",
+      "chemical manufacturer website Vadodara",
+      "Nandesari Ankleshwar chemical website",
+      "MSDS product page chemical website",
     ],
     icon: "factory",
     gradient: "from-emerald-950 via-teal-900 to-slate-950",
     accent: "#0D9488",
-    startingPrice: "₹2,50,000",
-    leadFormTitle: "Get a Chemical Industry Software Quote",
-    leadFormSubmitLabel: "Get Chemical Industry CRM Quote",
+    startingPrice: "₹35,000",
+    leadFormTitle: "Get a Chemical Manufacturer Website Quote",
+    leadFormSubmitLabel: "Request Website Quote",
     focusAreas: [
       {
-        title: "Batch & Lot Traceability",
+        title: "Product catalog pages",
         description:
-          "Forward and backward traceability from raw material receipt through reaction, blending, QC release, and dispatch — with genealogy reports auditors expect in minutes, not days.",
+          "Indexed pages per product with CAS numbers, purity grades, packing options, and applications — so procurement managers find you on Google, not only on a paid listing.",
       },
       {
-        title: "Safety Data Sheet (SDS) Vault",
+        title: "SDS / COA request paths",
         description:
-          "Version-controlled SDS library linked to SKUs, batches, and customer shipments. Automatic expiry alerts when formulations change or suppliers issue revised sheets.",
+          "Request flows for Safety Data Sheets and Certificates of Analysis linked to SKUs — builds buyer trust without a PDF brochure dump.",
       },
       {
-        title: "Hazmat & Storage Compliance",
+        title: "WhatsApp & RFQ enquiry",
         description:
-          "Segregation rules, storage capacity limits, UN classification flags, and dispatch documentation for flammable, corrosive, and toxic inventory across warehouses and tank farms.",
+          "Structured inquiry forms with quantity, grade, and delivery fields. Money pages route to WhatsApp and email you own.",
       },
       {
-        title: "Regulatory & Environmental Reporting",
+        title: "Export inquiry flows",
         description:
-          "Structured data exports for pollution control submissions, waste manifests, and internal HSE dashboards — reducing manual compilation before quarterly audits.",
+          "FOB-style enquiry fields (UN number, HS code, container size) for international buyers shortlisting Gujarat suppliers.",
       },
       {
-        title: "Chemical Distributor CRM",
+        title: "GIDC corridor SEO",
         description:
-          "Pipeline management for bulk traders and distributors: inquiry-to-quote, sample tracking, credit limits, transporter assignment, and repeat-order forecasting by product family.",
+          "On-page SEO for Nandesari, Ankleshwar, Bharuch, Vatva, and product long-tails your buyers already type.",
       },
     ],
     challenges: [
       {
-        title: "Batch records trapped in spreadsheets",
+        title: "Directory-only presence",
         description:
-          "Production teams log batch weights, reactor times, and QC results in Excel. When a customer complaint arrives six months later, reconstructing genealogy takes days and risks incomplete recall data.",
+          "Buyers search product + Gujarat terms on Google. A rented IndiaMART slot puts you next to competitors and resets every renewal.",
       },
       {
-        title: "SDS chaos across email and folders",
+        title: "PDF brochure pretending to be a website",
         description:
-          "Safety Data Sheets live in shared drives, WhatsApp forwards, and supplier emails. Sales dispatches products without confirming the latest SDS version — a compliance and liability gap.",
+          "A five-page ‘Welcome’ site with one downloadable catalog does not rank for grades or CAS terms — and does not capture RFQs.",
       },
       {
-        title: "Hazmat storage rules enforced manually",
+        title: "Missing SDS / COA paths",
         description:
-          "Warehouse staff rely on experience to segregate incompatible chemicals. Without system-enforced rules, near-misses and audit findings accumulate quietly.",
+          "Procurement teams bounce when they cannot request documents from the product page. That enquiry goes to the next vendor.",
       },
       {
-        title: "Sales and inventory on different systems",
+        title: "No WhatsApp on money pages",
         description:
-          "CRM tracks quotes in one tool while stock, batch availability, and transporter docs sit elsewhere. Order confirmation delays cost margin on time-sensitive chemical trades.",
+          "Plant owners answer WhatsApp all day. If the site only has a contact form buried in a footer, you lose speed against local competitors.",
       },
     ],
     solutions: [
       {
-        title: "Chemical Industry CRM",
+        title: "Chemical product catalog website",
         description:
-          "Lead-to-order CRM for manufacturers and distributors: account hierarchies, product catalogs with hazard flags, quote versioning, sample requests, and integration with inventory availability.",
-        category: "CRM",
-        serviceSlug: "crm-development",
+          "Category and product IA with CAS, grades, packing, and internal links that support Google indexing.",
+        category: "Website",
+        serviceSlug: "website-development",
       },
       {
-        title: "Batch Manufacturing ERP",
+        title: "RFQ & WhatsApp conversion",
         description:
-          "End-to-end ERP for process manufacturing: BOMs, reactor scheduling, in-process QC, batch release, co-product handling, and Tally/GST integration for Indian chemical units.",
-        category: "ERP",
-        serviceSlug: "erp-development",
+          "Enquiry forms and click-to-WhatsApp on every product and category page you care about.",
+        category: "Conversion",
+        serviceSlug: "rfq-website-development",
       },
       {
-        title: "Hazmat Warehouse Module",
+        title: "Industrial SEO setup",
         description:
-          "Location-aware inventory with segregation matrices, drum/tank tracking, expiry and retest dates, and dispatch checklists before goods leave the gate.",
-        category: "Inventory",
-        serviceSlug: "erp-development",
+          "Search Console, sitemap, title/meta aligned to buyer queries, Core Web Vitals on Next.js.",
+        category: "SEO",
+        serviceSlug: "website-seo",
       },
       {
-        title: "SDS & Document Compliance Hub",
+        title: "Manufacturer website hub",
         description:
-          "Central repository with approval workflows, customer-specific SDS bundles, and shipment-linked document packs for export and domestic consignments.",
-        category: "Compliance",
-        serviceSlug: "custom-software-development",
+          "Same stack we use for engineering and pharma equipment plants — published prices, code ownership.",
+        category: "Website",
+        serviceSlug: "website-development-for-manufacturers",
       },
       {
-        title: "Regulatory Reporting Dashboard",
+        title: "Monthly website AMC",
         description:
-          "Configurable exports for environmental, waste, and production summaries — replacing manual consolidation before board and authority submissions.",
-        category: "Reporting",
-        serviceSlug: "erp-development",
+          "Product edits, weekly checks, SEO report, and two articles from ₹15,000/month after go-live.",
+        category: "AMC",
+        serviceSlug: "website-maintenance",
       },
     ],
     softwareStack: [
-      { name: "React / Next.js", purpose: "Operations dashboards & CRM portals" },
-      { name: "Node.js API", purpose: "Batch logic, integrations, audit logs" },
-      { name: "PostgreSQL", purpose: "Batch genealogy & transactional records" },
-      { name: "Document Store", purpose: "SDS PDF vault with versioning" },
-      { name: "Tally / GST Bridge", purpose: "Finance & e-invoice alignment" },
-      { name: "Mobile QC App", purpose: "Shop-floor sampling & batch status" },
+      { name: "Next.js", purpose: "Fast, SEO-ready manufacturer sites" },
+      { name: "Core Web Vitals", purpose: "90+ mobile PageSpeed targets" },
+      { name: "Search Console", purpose: "Indexing + query feedback" },
+      { name: "WhatsApp CTAs", purpose: "Direct plant owner contact" },
+      { name: "RFQ forms", purpose: "Grade / MOQ / city capture" },
+      { name: "GST invoice", purpose: "Formal billing on every build" },
     ],
     impactMetrics: [
-      { value: "99.5%", label: "Batch Trace Accuracy", description: "Audit-ready genealogy from raw material to dispatch" },
-      { value: "48hr", label: "Audit Prep Time", description: "Down from two weeks of manual record compilation" },
-      { value: "35%", label: "Less Manual Entry", description: "Automated batch status and inventory updates" },
-      { value: "₹9L+", label: "Annual Savings", description: "Typical reduction in rework, write-offs, and dispatch errors" },
+      { value: "263", label: "Pages live", description: "Drashti Chemicals chemical catalog" },
+      { value: "154", label: "Products indexed", description: "Grade-level pages buyers can search" },
+      { value: "94/100", label: "Mobile PageSpeed", description: "Drashti live catalog measurement" },
+      { value: "₹35k", label: "Starter from", description: "Published website packages — no advance" },
     ],
     useCases: [
       {
-        title: "Specialty Chemical Manufacturer — Gujarat",
+        title: "Specialty chemical catalog — Nandesari GIDC",
         description:
-          "A Vadodara-area unit producing industrial intermediates needed reactor scheduling tied to batch genealogy and MSDS links on every dispatch note.",
-        outcome: "99.5% batch accuracy and audit prep in 48 hours vs. two weeks",
+          "Drashti Chemicals needed indexed product pages and enquiry paths instead of directory-only leads.",
+        outcome: "263-page live catalog with 94/100 mobile PageSpeed",
       },
       {
-        title: "Bulk Chemical Trading CRM",
+        title: "Ankleshwar corridor manufacturer site",
         description:
-          "A Gujarat chemical trading company managing 200+ SKUs across multiple warehouses required quote-to-dispatch CRM with credit control and transporter assignment.",
-        outcome: "40% faster order confirmation and fewer stock mismatches",
+          "Chemical unit wanted CAS-style product pages and export RFQ for Bharuch-belt buyers.",
+        outcome: "Owned Google enquiries without renewing directory rent",
       },
       {
-        title: "Export Consignment Documentation",
+        title: "MSME chemical trader website",
         description:
-          "Exporter needed SDS, COA, and packing lists auto-bundled per shipment with version control when formulations changed mid-season.",
-        outcome: "Zero dispatch holds for missing compliance documents",
+          "Trader with 40 SKUs needed a Starter site that looked real on Google and WhatsApp.",
+        outcome: "₹35,000 Starter launch with Search Console at go-live",
       },
       {
-        title: "Hazmat Warehouse Digitization",
+        title: "Export-ready chemical catalog",
         description:
-          "Multi-location storage for flammable and corrosive drums with segregation rules enforced at pick-list generation.",
-        outcome: "Clean internal HSE audits with digital segregation logs",
+          "Exporter needed English product pages with document request paths for overseas buyers.",
+        outcome: "Professional catalog architecture from ₹75,000",
       },
     ],
     caseStudy: {
-      title: "Chemical Industry ERP — Gujarat Trading & Manufacturing",
-      client: "Gujarat-based chemical trading and manufacturing group",
+      title: "Drashti Chemicals — Chemical Manufacturer Website",
+      client: "Drashti Chemicals, Nandesari GIDC, Vadodara",
       challenge:
-        "Batch records, MSDS files, and customer quotes lived in disconnected spreadsheets. Dispatch teams could not confirm batch availability or latest SDS versions before loading trucks.",
+        "Directory dependency and no owned catalog buyers could search by product grade.",
       solution:
-        "Integrated CRM and ERP with batch genealogy, SDS document vault, hazmat storage rules, reactor scheduling, and Tally/GST integration — deployed in phased sprints across sales and warehouse teams.",
+        "Next.js manufacturer catalog with 154 products, enquiry paths, and technical SEO — delivered by Maxwell Electrodeal.",
       results: [
-        "99.5% batch trace accuracy across production and trading divisions",
-        "Audit preparation reduced from two weeks to 48 hours",
-        "35% reduction in manual data entry on shop floor and dispatch",
+        "263 pages live with product-level indexing",
+        "94/100 mobile PageSpeed on the live catalog",
+        "Owned enquiry channel replacing rented directory slots",
       ],
-      tech: ["React", "Node.js", "PostgreSQL", "AWS", "Tally integration"],
+      tech: ["Next.js", "Core Web Vitals", "Search Console", "WhatsApp CTAs"],
     },
     workflowSteps: [
-      { step: "01", title: "Inquiry & Quote", description: "CRM capture, hazard review, sample requests" },
-      { step: "02", title: "Production / Procurement", description: "Batch planning, reactor schedule, raw material QC" },
-      { step: "03", title: "QC Release", description: "In-process tests, COA generation, batch approval" },
-      { step: "04", title: "Dispatch", description: "SDS bundle, transporter docs, e-way alignment" },
-      { step: "05", title: "Compliance Archive", description: "Genealogy reports, audit logs, regulatory exports" },
+      { step: "01", title: "Discovery", description: "SKU list, competitors, GIDC visit if needed" },
+      { step: "02", title: "IA & SEO", description: "Categories, titles, product page template" },
+      { step: "03", title: "Build", description: "Next.js catalog, forms, WhatsApp routes" },
+      { step: "04", title: "Go-live", description: "Analytics, Search Console, sitemap" },
+      { step: "05", title: "AMC", description: "Product edits + monthly SEO report" },
     ],
-    whyMaxwell: [...sharedWhyMaxwell],
+    whyMaxwell: [
+      {
+        title: "Vadodara chemical corridor delivery",
+        description: "Plant visits across Nandesari, Ankleshwar, and Vatva when the catalog needs shop-floor accuracy.",
+      },
+      {
+        title: "Published website prices",
+        description: "Starter ₹35,000 · Professional ₹75,000 · Growth ₹1.5L. No advance — pay after go-live.",
+      },
+      {
+        title: "Named chemical proof",
+        description: "Drashti Chemicals live catalog — not a logo wall of unnamed ERP projects.",
+      },
+      {
+        title: "Websites, SEO, AMC — not ERP pitch",
+        description: "This page sells manufacturer websites. We do not sell SAP or generic ERP packages here.",
+      },
+    ],
     faqs: [
       {
-        question: "What is the best CRM software for the chemical industry in India?",
+        question: "Does a chemical manufacturer need a website to get B2B buyers?",
         answer:
-          "The best CRM software for the chemical industry in India is purpose-built for chemical sales workflows — not a generic pipeline tool. It must handle product catalogs with hazard classifications and grade-specific pricing, batch-linked availability checks, sample request tracking, multi-stakeholder approval cycles (purchase manager, plant head, MD), and GST/Tally integration. Maxwell Electrodeal builds chemical manufacturing CRM specifically for these requirements, with proven deployments across Gujarat's Bharuch-Ankleshwar and Vadodara chemical corridors.",
+          "Yes. Procurement managers search Google for grades and CAS terms. A chemical manufacturer without an indexed catalog loses buyers to directories. Maxwell builds catalog websites from ₹35,000.",
       },
       {
-        question: "What is chemical manufacturing CRM and how is it different from standard CRM?",
+        question: "What should a chemical manufacturer's website include?",
         answer:
-          "Chemical manufacturing CRM goes beyond generic sales pipelines. It tracks inquiries by product grade and specification, manages hazard-flagged product catalogs, integrates with batch availability and SDS compliance, handles distributor hierarchy management with credit limits, and links to dispatch documentation for hazmat transport. Maxwell builds CRM for chemical industry India that covers these workflows natively — not as bolt-on modules.",
+          "Product pages with CAS/grades/packing, SDS/COA request paths, RFQ forms, WhatsApp CTAs, and SEO for buyer queries. See Drashti Chemicals for a live example.",
       },
       {
-        question: "What is the best ERP for chemical manufacturing in India?",
+        question: "What does a chemical manufacturer website cost in India?",
         answer:
-          "The best ERP for chemical manufacturing must natively support batch process manufacturing — not just discrete manufacturing like most generic ERPs. Key requirements: batch genealogy (raw material lots to finished goods), reactor scheduling and BOM management, in-process QC and batch release, SDS and hazmat compliance, co-product and by-product handling, and Tally Prime/GST integration. Maxwell Electrodeal's chemical ERP delivered 99.5% batch trace accuracy and reduced audit prep from 2 weeks to 48 hours for a Gujarat chemical group.",
+          "Starter from ₹35,000. Professional catalogs from ₹75,000. Growth from ₹1,50,000. AMC from ₹15,000/month. GST invoice. No advance on website packages.",
       },
       {
-        question: "Can your ERP handle batch manufacturing and full traceability?",
+        question: "Do you serve Ankleshwar, Bharuch, and Nandesari?",
         answer:
-          "Yes. Our chemical ERP supports complete batch genealogy — forward and backward traceability from raw material receipt through blending, QC release, and dispatch. Each batch links raw material lots, production parameters, and dispatch customers for audit-ready genealogy reports. Recall investigations that previously took two weeks can be completed in 48 hours.",
+          "Yes. Maxwell delivers from Vadodara across Gujarat chemical corridors including Nandesari, Ankleshwar, Bharuch, and Vatva — with plant visits when needed.",
       },
       {
-        question: "How do you manage Safety Data Sheets (SDS) in the software?",
+        question: "Is this an ERP or CRM software page?",
         answer:
-          "SDS documents are stored in a version-controlled vault linked to SKUs and individual batches. The system alerts teams when sheets expire or suppliers issue revised formulations. Dispatch workflows automatically block shipments if required SDS versions are missing, preventing compliance gaps and liability exposure.",
-      },
-      {
-        question: "What is the starting price for chemical industry CRM or ERP?",
-        answer:
-          "Chemical industry CRM and ERP engagements typically start from ₹2,50,000 for a focused CRM or warehouse module. Full ERP rollouts with batch genealogy, SDS compliance, and production scheduling are scoped after discovery. Final cost depends on batch complexity, number of locations, Tally/GST integration depth, and mobile QC requirements.",
-      },
-      {
-        question: "Have you delivered ERP for chemical companies in Gujarat?",
-        answer:
-          "Yes. Our flagship chemical industry case study (Drashti Chemicals) covers a Gujarat trading and manufacturing group — batch genealogy ERP, SDS document vault, hazmat inventory rules, and Tally/GST integration. Results: 99.5% batch trace accuracy, audit prep time reduced from 14 days to 48 hours, 35% reduction in manual shop-floor data entry, and ₹9L+ annual savings.",
-      },
-      {
-        question: "Does the system support recipe and formula version control?",
-        answer:
-          "Yes. The recipe and formula management module maintains complete version history for chemical formulations — including potency scaling, raw material substitutions, and yield loss tracking. Version approvals are workflow-controlled so only authorised changes update production batches.",
-      },
-      {
-        question: "Can you generate GHS-compliant labels and Safety Data Sheets automatically?",
-        answer:
-          "Yes. The compliance module generates GHS/OSHA compliant labels and MSDS/SDS documents automatically based on formulation data. Certificate of Analysis (COA) generation is linked to batch QC release records, ensuring every dispatch document package is accurate and audit-ready.",
-      },
-      {
-        question: "How long does chemical manufacturing ERP implementation take?",
-        answer:
-          "A phased CRM or warehouse module can go live in 8–12 weeks. Full chemical ERP with batch production, SDS compliance, and Tally integration typically runs 14–20 weeks depending on data migration, plant locations, and regulatory report configuration.",
+          "No. This page is for chemical manufacturer websites, SEO, and AMC. We do not sell SAP or custom ERP packages on this offer.",
       },
     ],
     seoParagraphs: [
-      "Chemical manufacturers across India face a unique CRM challenge: sales cycles run 3 to 18 months, each inquiry involves multiple decision-makers (purchase manager, plant head, MD), and every quote must carry technical specifications, SDS references, and grade-specific pricing. Generic CRM tools — built for SaaS or retail — break down here. Maxwell Electrodeal builds CRM software for chemical industry India, purpose-built for these workflows with batch-linked availability, hazard-flagged product catalogs, and distributor hierarchy management.",
-      "Our proven chemical manufacturing ERP delivered 99.5% batch trace accuracy, reduced audit preparation time from 14 days to 48 hours, and cut manual shop-floor data entry by 35% for a Gujarat chemical trading and manufacturing group (Drashti Chemicals case study). The platform covered batch genealogy tracking, an SDS document vault, GHS/OSHA label generation, and full Tally Prime integration — all deployed in phased sprints across sales and warehouse teams.",
-      "When evaluating the best ERP for chemical manufacturing, the decisive criteria are: batch process manufacturing support (not discrete ERP rebranded for chemicals), recipe and formula version control with yield tracking, forward and backward batch genealogy traceability, automated SDS and COA generation, and bi-directional Tally/GST integration for Indian compliance. Maxwell's chemical ERP meets all five criteria with deployments across Gujarat's Bharuch-Ankleshwar and GIDC Nandesari corridors.",
-      "The Bharuch-Ankleshwar chemical belt, GIDC Nandesari, and Vadodara pharma cluster are our primary delivery zones in Gujarat. Specialty chemical distributors, industrial chemical suppliers, paint and coating companies, hazardous goods traders, and API pharma manufacturers are our core client types for chemical manufacturing ERP and CRM software. We serve chemical companies pan-India with remote discovery and on-site workshops in Gujarat corridors.",
+      "Chemical manufacturers in Gujarat lose high-intent buyers when the only digital presence is a paid B2B directory. Procurement teams search product names, grades, and corridor terms on Google — and expect a product page with a clear enquiry path. Maxwell Electrodeal builds chemical manufacturer websites from Vadodara with catalog architecture, SDS/COA request flows, and WhatsApp RFQ.",
+      "Our live proof is Drashti Chemicals (Nandesari GIDC): 263 pages, 154 products, 94/100 mobile PageSpeed. That is a manufacturer catalog, not a software demo. Published prices start at ₹35,000 for Starter sites and ₹75,000 for Professional catalogs, with monthly AMC from ₹15,000.",
+      "Whether you are in Ankleshwar, Bharuch, Vatva, or Nandesari, the job is the same: own the enquiry channel. Maxwell focuses this page on website development for chemical manufacturers — not ERP or CRM software pitches.",
     ],
     resourceLinks: [
-      { label: "Custom ERP Development Services — Vadodara", href: "/solutions/erp-development-company-vadodara" },
-      { label: "ERP Development Services for Manufacturers", href: "/services/erp-development" },
-      { label: "CRM Development Services India", href: "/services/crm-development" },
-      { label: "Best ERP for Chemical Manufacturing India", href: "/compare/best-erp-for-chemical-manufacturing" },
       { label: "Manufacturer Website Development", href: "/services/website-development-for-manufacturers" },
-      { label: "Drashti Chemicals — Website Case Study", href: "/case-studies/drashti-chemicals" },
-      { label: "Why Manufacturers Are Moving Beyond Paid Directories", href: "/blog/indiamart-alternative-website-manufacturer" },
+      { label: "Chemical Manufacturer Websites", href: "/services/website-development/chemical-manufacturers" },
+      { label: "Drashti Chemicals Case Study", href: "/case-studies/drashti-chemicals" },
+      { label: "Website Development Company Vadodara", href: "/solutions/web-development-company-vadodara" },
+      { label: "Nandesari GIDC Websites", href: "/locations/india/gujarat/nandesari-gidc" },
+      { label: "Ankleshwar GIDC Websites", href: "/locations/india/gujarat/ankleshwar-gidc" },
+      { label: "Website Pricing", href: "/pricing" },
     ],
   },
 

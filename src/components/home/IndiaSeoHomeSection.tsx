@@ -64,7 +64,7 @@ export function IndiaSeoHomeSection() {
               <li>Clear international delivery for US, UK, and UAE buyers when intent is verified</li>
             </ul>
             <p className="mt-6 text-sm text-slate-400">
-              HQ: {businessAddress.formatted} ·{" "}
+              Location: {businessAddress.formatted} ·{" "}
               <a
                 href={`mailto:${siteConfig.email}`}
                 className="font-medium text-brand-300 underline decoration-brand-400/70 underline-offset-2 hover:text-brand-200"

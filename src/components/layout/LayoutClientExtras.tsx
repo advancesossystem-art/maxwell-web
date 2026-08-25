@@ -38,8 +38,7 @@ const CookieConsent = dynamic(
 
 function isLightChromeRoute(pathname: string | null): boolean {
   if (!pathname) return false;
-  if (pathname === "/blog" || pathname.startsWith("/blog/")) return true;
-  return false;
+  return pathname === "/thank-you";
 }
 
 /** Analytics and overlays only — page content stays in the server layout tree. */

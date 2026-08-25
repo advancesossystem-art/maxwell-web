@@ -5,9 +5,9 @@ import { IndustrialServicePage } from "@/components/services/IndustrialServicePa
 const path = "/solutions/web-development-company-gujarat";
 
 export const metadata: Metadata = createMetadata({
-  title: "Website Development Company in Gujarat | From ₹35,000 | Maxwell",
+  title: "Website Company Gujarat | From ₹35,000",
   description:
-    "Website development company in Gujarat — manufacturer catalogs, MSME sites, GIDC SEO. From ₹35,000. AMC ₹15,000/month. Vadodara HQ. Ahmedabad, Surat, Rajkot, Morbi, Ankleshwar. Request a quote.",
+    "Website development company in Gujarat — manufacturer catalogs, MSME sites, GIDC SEO. From ₹35,000. AMC ₹15,000/mo. Vadodara HQ. Request a quote.",
   path,
   keywords: [
     "website development company in Gujarat",
@@ -17,6 +17,19 @@ export const metadata: Metadata = createMetadata({
     "website company Ahmedabad Surat Rajkot",
   ],
 });
+
+const gujaratFaqs = [
+  {
+    question: "Do you serve Ahmedabad, Surat, Rajkot, and Morbi from Vadodara?",
+    answer:
+      "Yes. Maxwell is headquartered in Vadodara and delivers manufacturer websites across Gujarat — including Ahmedabad, Surat, Rajkot, Morbi, Ankleshwar, and Halol. Same published prices from ₹35,000.",
+  },
+  {
+    question: "What does a Gujarat manufacturer website include?",
+    answer:
+      "Product or capability pages, certificates, WhatsApp/RFQ enquiry paths, Core Web Vitals-focused Next.js build, and Search Console setup. Professional catalogs start at ₹75,000.",
+  },
+] as const;
 
 export default function WebsiteDevelopmentCompanyGujaratPage() {
   return (
@@ -30,6 +43,7 @@ export default function WebsiteDevelopmentCompanyGujaratPage() {
       estimateSource="web-gujarat"
       schemaName="Website Development Company Gujarat"
       schemaDescription="Website development for Gujarat manufacturers and MSMEs from ₹35,000, with monthly AMC from ₹15,000. Maxwell Electrodeal, Vadodara."
+      faqs={gujaratFaqs}
       sections={[
         {
           heading: "What Gujarat buyers look for on a vendor site",
@@ -48,7 +62,7 @@ export default function WebsiteDevelopmentCompanyGujaratPage() {
         {
           heading: "Where we show up",
           directAnswer:
-            "Office: 419, Lalita Tower, Near Hotel Rajpath, Jetalpur Road, Vadodara. We visit plants when the catalog is wrong without walking the floor.",
+            "Office in Vadodara. We visit plants when the catalog is wrong without walking the floor.",
           paragraphs: [
             "Ahmedabad, Surat, Rajkot, Bharuch, and Morbi work over Zoom if you can send product photos and an Excel list. We will not pretend we have a branch in every city.",
           ],

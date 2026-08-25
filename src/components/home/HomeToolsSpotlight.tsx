@@ -8,7 +8,7 @@ import { toolsRegistry } from "@/lib/tools/registry";
 import { ArrowRight } from "@/components/ui/Icons";
 
 const phase4Tools = [
-  { slug: "industrial-website-rfq-estimator", name: "Industrial RFQ Cost Estimator", desc: "SKU, RFQ depth, catalog & GIDC ranges from ₹45k / ₹75k anchors.", accent: "#0F766E" },
+  { slug: "industrial-website-rfq-estimator", name: "Industrial RFQ Cost Estimator", desc: "SKU, RFQ depth, catalog & GIDC ranges from ₹35k / ₹75k anchors.", accent: "#0F766E" },
   { slug: "software-cost-calculator", name: "Software Cost Calculator", desc: "Ballpark website, ERP, CRM, and custom software investment.", accent: "#F59E0B" },
   { slug: "project-timeline-estimator", name: "Timeline Estimator", desc: "Realistic delivery schedule by website or software scope.", accent: "#2563EB" },
   { slug: "vendor-comparison-scorecard", name: "Vendor Scorecard", desc: "Compare up to 3 vendors with weighted scores.", accent: "#06B6D4" },

@@ -7,7 +7,7 @@ const cards = [
     icon: IconGlobe,
     heading: "Websites for Businesses & Manufacturers",
     body: "Product catalog websites, B2B landing pages, and corporate sites built on Next.js — optimized for Google and mobile. Starting from ₹75,000.",
-    tag: "Most popular for manufacturers",
+    tag: "Most requested by businesses",
     tagClass: "bg-emerald-50 text-emerald-700 border-emerald-200",
     linkLabel: "See website projects",
     href: "/services/website-development",
@@ -16,7 +16,7 @@ const cards = [
     icon: IconERP,
     heading: "Custom Software, ERP & CRM",
     body: "Bespoke software built around your workflows — inventory, production, GST, CRM pipelines, and everything in between.",
-    tag: "Popular for manufacturers & logistics",
+    tag: "Popular for growing companies",
     tagClass: "bg-[#4f46e5]/10 text-[#4f46e5] border-[#4f46e5]/20",
     linkLabel: "Explore software services",
     href: "/services/custom-software-development",
@@ -37,7 +37,7 @@ export function HomeWhatWeBuild() {
     <HomeSection tone="white" aria-label="What we build">
       <h2 className="v6-section-title v6-section-title--wide text-balance">What We Build</h2>
       <p className="v6-lead mt-4 max-w-3xl">
-        Manufacturer catalog websites from ₹35,000, monthly AMC from ₹15,000, and SEO so buyers find you on Google — not IndiaMART.
+        Business websites from ₹35,000, monthly AMC from ₹15,000, and SEO so buyers find you on Google — including manufacturer catalogs when you need them.
       </p>
 
       <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

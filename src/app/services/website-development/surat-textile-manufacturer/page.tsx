@@ -4,9 +4,9 @@ import { createMetadata } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
 
 export const metadata: Metadata = createMetadata({
-  title: "Website for Textile Manufacturers in Surat | Maxwell Electrodeal",
+  title: "Surat Textile Manufacturer Website | From ₹35,000",
   description:
-    "Product catalog websites for fabric manufacturers, yarn suppliers, and garment exporters in Surat. Fabric swatches, MOQ, sample requests, export buyer inquiry. From ₹75,000.",
+    "Catalog websites for Surat fabric, yarn, and garment exporters — MOQ, sample requests, export inquiry. From ₹35,000. Request a quote.",
   path: "/services/website-development/surat-textile-manufacturer",
   keywords: [
     "textile manufacturer website Surat",

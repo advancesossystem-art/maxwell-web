@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { siteConfig, WHATSAPP_HREF_CONTACT } from "@/lib/constants";
 import { websitePricingTiers, pricingTerms } from "@/lib/pricing-data";
@@ -41,7 +41,7 @@ export function IndustryWebsitePage({
   serviceName,
   caseStudy,
   specificFeatures,
-  priceRange = "₹45,000 – ₹1,50,000+",
+  priceRange = "₹35,000 – ₹1,50,000+",
   directAnswer,
   positioning = "Industrial digital architect for manufacturers — owned Next.js product catalogs and RFQ paths, not rented directory slots.",
   catalogWireframe,
@@ -239,9 +239,9 @@ export function IndustryWebsitePage({
       </section>
 
       {catalogWireframe && catalogWireframe.length > 0 ? (
-        <section className="py-16 border-b border-slate-200">
+        <section className="border-b border-slate-200 bg-white py-16">
           <Container>
-            <h2 className="font-display text-2xl font-bold text-slate-900 mb-3">
+            <h2 className="mb-3 font-display text-2xl font-bold text-slate-900">
               Catalog wireframe — what buyers see
             </h2>
             <p className="text-slate-500 mb-8 max-w-2xl">
@@ -322,9 +322,9 @@ export function IndustryWebsitePage({
         </section>
       ) : null}
 
-      <section className="py-16 border-b border-slate-200">
+      <section className="border-b border-slate-200 bg-white py-16">
         <Container>
-          <h2 className="font-display text-2xl font-bold text-[var(--v6-text,#0f172a)] mb-8">
+          <h2 className="mb-8 font-display text-2xl font-bold text-slate-900">
             What every manufacturer website includes
           </h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -338,10 +338,10 @@ export function IndustryWebsitePage({
             ].map((f) => (
               <div
                 key={f}
-                className="flex items-center gap-3 rounded-xl border border-[var(--v6-border,#e2e8f0)] bg-white p-4"
+                className="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4"
               >
                 <span className="flex-shrink-0 text-indigo-600">✓</span>
-                <p className="text-sm text-[var(--v6-text-secondary,#475569)]">{f}</p>
+                <p className="text-sm text-slate-700">{f}</p>
               </div>
             ))}
           </div>

@@ -27,7 +27,7 @@ const indiaServiceBase: Record<
     accent: "#2563EB",
   },
   erp: {
-    serviceHref: "/services/erp-development",
+    serviceHref: "/services/website-development-for-manufacturers",
     technologies: ["React", "Node.js", "PostgreSQL", "AWS", "Redis"],
     caseStudySlugs: ["manufacturing-erp", "logistics-platform"],
     industryLinks: [
@@ -60,7 +60,7 @@ const indiaServiceBase: Record<
     accent: "#10B981",
   },
   crm: {
-    serviceHref: "/services/crm-development",
+    serviceHref: "/services/website-development",
     technologies: ["React", "Node.js", "PostgreSQL", "AWS"],
     caseStudySlugs: ["retail-analytics"],
     industryLinks: [
@@ -119,7 +119,7 @@ export const indiaGeoSolutionsData: Record<IndiaGeoSolutionSlug, SolutionPageDat
       "Maxwell is a website engineering company first. For manufacturers and B2B firms that need catalogs and RFQs, we then build supporting custom software, ERP, CRM, and web apps — GST-aware delivery from Vadodara, not generic agency theatre.",
     metaTitle: "Custom Software for Indian Businesses | Industrial Web + Systems | Maxwell",
     metaDescription:
-      "Custom software and operational systems for Indian manufacturers and SMEs — after your industrial website and RFQ channel. Vadodara HQ. Website packages from ₹45,000; software scoped separately.",
+      "Custom software and operational systems for Indian manufacturers and SMEs — after your industrial website and RFQ channel. Vadodara HQ. Website packages from ₹35,000; software scoped separately.",
     primaryKeyword: "custom software development India",
     secondaryKeywords: [
       "custom software for manufacturers India",
@@ -146,7 +146,7 @@ export const indiaGeoSolutionsData: Record<IndiaGeoSolutionSlug, SolutionPageDat
       {
         title: "Software Before Owned Enquiries",
         description:
-          "Many SMEs buy software before Google can find their factory. We recommend owned catalog + RFQ first (from ₹45,000), then systems — so software has clean lead data to process.",
+          "Many SMEs buy software before Google can find their factory. We recommend owned catalog + RFQ first (from ₹35,000), then systems — so software has clean lead data to process.",
       },
     ],
     recommendedApproach: [
@@ -176,7 +176,7 @@ export const indiaGeoSolutionsData: Record<IndiaGeoSolutionSlug, SolutionPageDat
       {
         question: "How much does custom software development cost in India with Maxwell?",
         answer:
-          "Focused tools from roughly ₹2L; multi-module ERP-class systems higher and quoted after discovery with milestone billing. Website packages remain separate (Starter ₹45,000 / Professional ₹75,000 anchors).",
+          "Focused tools from roughly ₹2L; multi-module ERP-class systems higher and quoted after discovery with milestone billing. Website packages remain separate (Starter ₹35,000 / Professional ₹75,000 anchors).",
       },
       {
         question: "Do you still offer ERP and CRM?",
@@ -353,7 +353,7 @@ export const indiaGeoSolutionsData: Record<IndiaGeoSolutionSlug, SolutionPageDat
     ],
     internalLinks: [
       { label: "Manufacturing", href: "/industries/manufacturing", description: "Industry solutions" },
-      { label: "ERP Service", href: "/services/erp-development", description: "Capabilities" },
+      { label: "ERP Service", href: "/services/website-development-for-manufacturers", description: "Capabilities" },
       { label: "Vadodara ERP", href: "/solutions/erp-development-company-vadodara", description: "City page" },
       { label: "ERP Cost Guide", href: "/blog/erp-development-cost-india-2026", description: "Pricing blog" },
     ],
@@ -409,7 +409,7 @@ export const indiaGeoSolutionsData: Record<IndiaGeoSolutionSlug, SolutionPageDat
     internalLinks: [
       { label: "Vadodara office", href: "/locations/india/vadodara", description: "City hub" },
       { label: "chemical manufacturers", href: "/industries/chemical-manufacturing", description: "Chemical vertical" },
-      { label: "ERP development services", href: "/services/erp-development", description: "Service page" },
+      { label: "ERP development services", href: "/services/website-development-for-manufacturers", description: "Service page" },
       { label: "Gujarat ERP", href: "/solutions/erp-development-company-gujarat", description: "State page" },
       { label: "Get Estimate", href: "/get-estimate", description: "Quote" },
     ],
@@ -421,7 +421,7 @@ export const indiaGeoSolutionsData: Record<IndiaGeoSolutionSlug, SolutionPageDat
       },
       {
         question: "Can you visit our Vadodara factory for ERP discovery?",
-        answer: "Yes — we conduct on-site discovery workshops across Vadodara industrial areas as part of ERP scoping. This includes GIDC Makarpura, GIDC Savli, Halol GIDC, and city-side offices.",
+        answer: "Yes — we conduct on-site discovery workshops across Vadodara industrial areas as part of ERP scoping. This includes GIDC Makarpura, GIDC Savli, and city-side offices.",
       },
       {
         question: "What is the cost of ERP development in Vadodara?",
@@ -576,7 +576,7 @@ export const indiaGeoSolutionsData: Record<IndiaGeoSolutionSlug, SolutionPageDat
     title: "Website Development Company Vadodara",
     headline: "Website Development Company in Vadodara",
     subheadline:
-      "Manufacturer catalogs and business sites from ₹35,000. AMC ₹15,000/month. Jetalpur Road office. GIDC plant visits. GST invoice. Pay after go-live.",
+      "Manufacturer catalogs and business sites from ₹35,000. AMC ₹15,000/month. office in Vadodara. GIDC plant visits. GST invoice. Pay after go-live.",
     metaTitle: "Website Development Company in Vadodara | From ₹35,000 | Maxwell",
     metaDescription:
       "Website development company in Vadodara — manufacturer catalogs, GIDC estates, sites from ₹35,000. AMC from ₹15,000. Request a quote.",
@@ -602,7 +602,7 @@ export const indiaGeoSolutionsData: Record<IndiaGeoSolutionSlug, SolutionPageDat
       "manufacturer website Vadodara",
     ],
     marketInsights:
-      "Vadodara manufacturers still send PDF catalogs and IndiaMART links. Buyers in Pune and Dubai Google the product name first. Maxwell is on Jetalpur Road: sites from ₹35,000, AMC ₹15,000/month, plant visits in Makarpura, Savli, Nandesari, Waghodia. Live proof is the Drashti Chemicals catalog — not a TCO spreadsheet.",
+      "Vadodara manufacturers still send PDF catalogs and IndiaMART links. Buyers in Pune and Dubai Google the product name first. Maxwell is in Vadodara: sites from ₹35,000, AMC ₹15,000/month, plant visits in Makarpura, Savli, Nandesari, Waghodia. Live proof is the Drashti Chemicals catalog — not a TCO spreadsheet.",
     industryChallenges: [
       {
         title: "Legacy WordPress Competitor Advantage",
@@ -669,7 +669,7 @@ export const indiaGeoSolutionsData: Record<IndiaGeoSolutionSlug, SolutionPageDat
       {
         label: "Web Development Cost Vadodara",
         href: "/cost/web-development-cost-vadodara",
-        description: "Published tiers from ₹45,000",
+        description: "Published tiers from ₹35,000",
       },
       {
         label: "SEO Company Vadodara",
@@ -706,17 +706,17 @@ export const indiaGeoSolutionsData: Record<IndiaGeoSolutionSlug, SolutionPageDat
       {
         question: "Who is the best website development company in Vadodara?",
         answer:
-          "Look for a GST-registered company with published case studies, Core Web Vitals above 90, documented delivery milestones, and the ability to visit your site. Maxwell Electrodeal is headquartered at 419 Lalita Tower, Near Hotel Rajpath, Jetalpur Road, Vadodara — and has delivered 50+ projects including a 263-page chemical supplier product catalog with 94+ PageSpeed.",
+          "Look for a GST-registered company with published case studies, Core Web Vitals above 90, documented delivery milestones, and the ability to visit your site. Maxwell Electrodeal is headquartered at our office in Vadodara — and has delivered 50+ projects including a 263-page chemical supplier product catalog with 94+ PageSpeed.",
       },
       {
         question: "How much does website development cost in Vadodara?",
         answer:
-          "Business and corporate websites start from ₹45,000 (25–30 pages + core SEO). Manufacturer product catalog websites often start at ₹75,000. Website packages: no advance — full payment within 3 days after go-live (+18% GST). Response in 4 hours.",
+          "Business and corporate websites start from ₹35,000 (25–30 pages + core SEO). Manufacturer product catalog websites often start at ₹75,000. Website packages: no advance — full payment within 3 days after go-live (+18% GST). Response in 4 hours.",
       },
       {
         question: "Do you have a local office in Vadodara?",
         answer:
-          "Yes. Maxwell Electrodeal is at 419 Lalita Tower, Near Hotel Rajpath, Jetalpur Road, Vadodara, Gujarat 390007. We welcome in-person meetings by appointment and conduct on-site discovery at GIDC Makarpura, Savli, Halol, and Bharuch-Ankleshwar.",
+          "Yes. Maxwell Electrodeal is at our office in Vadodara. We welcome in-person meetings by appointment and conduct on-site discovery at GIDC Makarpura, Savli, Halol, and Bharuch-Ankleshwar.",
       },
       {
         question: "Can you build export-ready websites for Vadodara manufacturers?",
@@ -822,7 +822,7 @@ export const indiaGeoSolutionsData: Record<IndiaGeoSolutionSlug, SolutionPageDat
       { metric: "0", label: "Per-Seat Fees", description: "Custom ownership" },
     ],
     internalLinks: [
-      { label: "CRM Service", href: "/services/crm-development", description: "Capabilities" },
+      { label: "CRM Service", href: "/services/website-development", description: "Capabilities" },
       { label: "CRM vs Salesforce", href: "/blog/custom-crm-vs-salesforce", description: "Comparison" },
       { label: "Retail", href: "/industries/retail", description: "Industry" },
       { label: "Contact", href: "/contact", description: "Sales inquiry" },

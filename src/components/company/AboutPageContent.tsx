@@ -30,9 +30,9 @@ export function AboutPageContent() {
         <FadeIn>
           <h2 className="font-display text-2xl font-bold">About our brand identity</h2>
           <p className="mt-4 max-w-3xl leading-relaxed text-muted">
-            Maxwell Electrodeal Private Limited is a Software &amp; Website Engineering Company. We
-            build industrial B2B product catalog websites, RFQ systems, web applications, and custom
-            software for manufacturers and businesses from Vadodara, Gujarat.
+            Maxwell Electrodeal Private Limited is a website development, SEO, and AMC company. We
+            build business websites, product catalogs, RFQ systems, and enquiry channels for companies
+            of every size from Vadodara, Gujarat — with specialty depth for manufacturers.
           </p>
           <ul className="mt-4 max-w-3xl space-y-2 text-sm leading-relaxed text-muted">
             <li>

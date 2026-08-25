@@ -4,9 +4,9 @@ import { createMetadata } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
 
 export const metadata: Metadata = createMetadata({
-  title: "Website for Chemical Manufacturers in Bharuch & Ankleshwar | Maxwell Electrodeal",
+  title: "Bharuch Ankleshwar Chemical Website | From ₹35,000",
   description:
-    "Product catalog websites for chemical manufacturers and industrial suppliers in Bharuch, Ankleshwar, and Dahej GIDC. MSDS downloads, CoA forms, export inquiry. From ₹75,000.",
+    "Catalog websites for chemical manufacturers in Bharuch, Ankleshwar & Dahej — MSDS, CoA, export inquiry. From ₹35,000. Vadodara team. Request a quote.",
   path: "/services/website-development/bharuch-ankleshwar-chemical",
   keywords: [
     "chemical manufacturer website Bharuch",

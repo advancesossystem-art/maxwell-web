@@ -136,7 +136,7 @@ function buildCityPage(config: CityConfig): CityPageData {
             ? "/solutions/erp-development-company-vadodara"
             : config.slug === "gujarat"
               ? "/solutions/erp-development-company-gujarat"
-              : "/services/erp-development",
+              : "/services/website-development-for-manufacturers",
       },
       { title: "Mobile Apps", description: "Customer and field-team apps for Android and iOS.", href: config.slug === "vadodara" ? "/solutions/mobile-app-development-company-vadodara" : "/solutions/mobile-app-development-company" },
       { title: "AI & Automation", description: "Intelligent automation for repetitive operational tasks.", href: config.slug === "gujarat" || config.slug === "vadodara" ? "/solutions/ai-development-company-india" : "/solutions/ai-development-company" },
