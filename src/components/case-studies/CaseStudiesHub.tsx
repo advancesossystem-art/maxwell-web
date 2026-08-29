@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { CaseStudyCard } from "@/components/case-studies/CaseStudyCard";
@@ -12,6 +13,7 @@ import {
   caseStudyTechnologies,
   caseStudyOutcomes,
 } from "@/lib/case-studies-data";
+import { WEBSITE_HUB_CASE_STUDIES } from "@/lib/website-case-studies-hub";
 import { ArrowRight } from "@/components/ui/Icons";
 import { AccentGradient } from "@/components/design/typography";
 import { PageHero } from "@/components/design/PageHero";
@@ -109,10 +111,39 @@ export function CaseStudiesHub() {
         <ClientLogoCloud mode="placeholder" />
       </PageSection>
 
+      <PageSection aria-label="Website case studies">
+        <SectionHeader
+          title="Website projects — live proof"
+          description="Hand-documented Next.js catalogs and SEO rebuilds with measurable outcomes."
+        />
+        <div className="grid gap-6 sm:grid-cols-2">
+          {WEBSITE_HUB_CASE_STUDIES.map((study) => (
+            <Link
+              key={study.slug}
+              href={study.href}
+              className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:border-indigo-300 transition-colors"
+            >
+              <p className="text-xs font-semibold uppercase tracking-wider text-indigo-600">{study.highlight}</p>
+              <h3 className="mt-2 font-display text-lg font-bold text-slate-900 group-hover:text-indigo-700">
+                {study.title}
+              </h3>
+              <p className="mt-2 text-sm text-slate-600">{study.subtitle}</p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {study.tags.map((tag) => (
+                  <span key={tag} className="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs text-slate-600">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </Link>
+          ))}
+        </div>
+      </PageSection>
+
       <PageSection aria-label="Case studies">
         <SectionHeader
-          title="Enterprise case studies"
-          description={`${filteredStudies.length} case stud${filteredStudies.length !== 1 ? "ies" : "y"}`}
+          title="More delivery stories"
+          description={`${filteredStudies.length} featured case stud${filteredStudies.length !== 1 ? "ies" : "y"} — legacy ERP/software projects listed after website proof.`}
           action={
             <FilterCategoryTabs
               categories={Object.keys(categoryLabels) as FilterCategory[]}

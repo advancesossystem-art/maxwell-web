@@ -1,60 +1,78 @@
-/** Phase N — recommended services for internal navigation */
+/** Recommended services for internal navigation — website product only. */
 
-export const recommendedServicesBySlug: Record<string, { slug: string; reason: string }[]> = {
-  "erp-development": [
-    { slug: "crm-development", reason: "Connect sales pipeline to inventory and dispatch" },
-    { slug: "mobile-app-development", reason: "Shop-floor and warehouse mobile capture" },
-  ],
-  "crm-development": [
-    { slug: "erp-development", reason: "Sync orders, stock, and invoicing with CRM" },
-    { slug: "ai-solutions", reason: "Lead scoring and sales forecasting" },
-  ],
-  "ai-solutions": [
-    { slug: "custom-software-development", reason: "Embed AI in operational workflows" },
-    { slug: "erp-development", reason: "Demand forecasting and inventory optimization" },
-  ],
-  "custom-software-development": [
-    { slug: "erp-development", reason: "Scale into full operations platform" },
-    { slug: "cloud-solutions", reason: "Reliable hosting and DevOps" },
-  ],
-  "mobile-app-development": [
-    { slug: "crm-development", reason: "Field sales and visit logging" },
-    { slug: "erp-development", reason: "Warehouse and production mobile apps" },
-  ],
+export type RecommendedServiceLink = {
+  reason: string;
+  slug?: string;
+  /** Use when the target is a keyword-money route not in services-data */
+  href?: string;
+  label?: string;
+};
+
+export const recommendedServicesBySlug: Record<string, RecommendedServiceLink[]> = {
   "website-development": [
-    { slug: "crm-development", reason: "Capture and nurture web leads" },
-    { slug: "custom-software-development", reason: "Customer portals and dashboards" },
+    { slug: "website-technologies", reason: "Next.js stack, SSR, and CMS choices explained" },
+    {
+      href: "/services/business-website-development",
+      label: "Business Website Development",
+      reason: "Company and MSME sites from the same pillar",
+    },
+    {
+      href: "/services/website-redesign",
+      label: "Website Redesign",
+      reason: "Rebuild slow WordPress sites on Next.js",
+    },
   ],
-  "saas-development": [
-    { slug: "cloud-solutions", reason: "Multi-tenant infrastructure" },
-    { slug: "ai-solutions", reason: "Product intelligence features" },
+  "website-technologies": [
+    { slug: "website-development", reason: "Full website builds on this stack" },
+    {
+      href: "/services/website-redesign",
+      label: "Website Redesign",
+      reason: "Migrate legacy sites to Next.js",
+    },
+    { slug: "website-seo", reason: "Technical SEO for SSR/SSG sites" },
   ],
-  "cloud-solutions": [
-    { slug: "custom-software-development", reason: "Application modernization" },
-    { slug: "saas-development", reason: "Cloud-native SaaS architecture" },
+  "website-seo": [
+    { slug: "website-maintenance", reason: "SEO hours included on AMC plans" },
+    { slug: "website-development", reason: "Fix crawlability before content SEO" },
+    {
+      href: "/services/business-website-development",
+      label: "Business Websites",
+      reason: "Local and MSME ranking pages",
+    },
+  ],
+  "website-maintenance": [
+    { slug: "website-seo", reason: "Monthly SEO reports on AMC plans" },
+    {
+      href: "/services/website-redesign",
+      label: "Website Redesign",
+      reason: "When AMC cannot fix a dead theme",
+    },
+    { slug: "website-development", reason: "Add catalog depth to Starter sites" },
   ],
 };
 
-export function getRecommendedServices(serviceSlug: string) {
-  return recommendedServicesBySlug[serviceSlug] ?? [
-    { slug: "erp-development", reason: "Operations and inventory control" },
-    { slug: "crm-development", reason: "Sales pipeline and customer visibility" },
-  ];
+const websiteDefaults: RecommendedServiceLink[] = [
+  {
+    href: "/services/business-website-development",
+    label: "Business Websites",
+    reason: "Company sites for MSMEs and professionals",
+  },
+  {
+    href: "/services/website-redesign",
+    label: "Website Redesign",
+    reason: "Rebuild outdated sites on Next.js",
+  },
+];
+
+export function getRecommendedServices(serviceSlug: string): RecommendedServiceLink[] {
+  return recommendedServicesBySlug[serviceSlug] ?? websiteDefaults;
 }
 
 export const recommendedToolsByService: Record<string, { slug: string; label: string }[]> = {
-  "erp-development": [
-    { slug: "erp-roi-calculator", label: "ERP ROI Calculator" },
-    { slug: "erp-requirement-generator", label: "ERP Requirement Generator" },
+  "website-development": [
+    { slug: "industrial-website-rfq-estimator", label: "Website Cost Estimator" },
   ],
-  "crm-development": [
-    { slug: "crm-roi-calculator", label: "CRM ROI Calculator" },
-    { slug: "crm-requirement-generator", label: "CRM Requirement Generator" },
-  ],
-  default: [
-    { slug: "software-cost-calculator", label: "Software Cost Calculator" },
-    { slug: "project-timeline-estimator", label: "Timeline Estimator" },
-  ],
+  default: [{ slug: "industrial-website-rfq-estimator", label: "Website Cost Estimator" }],
 };
 
 export function getRecommendedTools(serviceSlug: string) {

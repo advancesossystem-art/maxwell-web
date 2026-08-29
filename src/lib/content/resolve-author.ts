@@ -10,7 +10,7 @@ const categoryAuthorMap: Record<ContentCategorySlug, string> = {
   cloud: "mohit-agarwal",
   saas: "priya-sharma",
   "software-development": "amit-patel",
-  "web-development": "amit-patel",
+  "web-development": founderProfile.slug,
   "digital-transformation": "arun-kulkarni",
 };
 

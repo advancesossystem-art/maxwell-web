@@ -11,6 +11,55 @@ import { H3, Caption } from "@/components/design/typography";
 import { StaggerGrid, StaggerGridItem } from "@/components/motion/StaggerGrid";
 import { HubMetrics } from "@/components/design/HubMetrics";
 
+/** Hub-and-spoke commercial silos — maps audit pillars to existing routes. */
+const serviceSpokes = [
+  {
+    href: "/services/website-development",
+    title: "Custom Web Development",
+    desc: "Core pillar — business, corporate, and industrial sites from ₹35,000",
+  },
+  {
+    href: "/services/business-website-development",
+    title: "Corporate & Business Websites",
+    desc: "MSME company sites, clinics, traders — not only factories",
+  },
+  {
+    href: "/services/website-technologies",
+    title: "Next.js Development",
+    desc: "React, SSR, headless CMS — the stack behind every build",
+  },
+  {
+    href: "/services/ecommerce-website-development",
+    title: "Ecommerce Development",
+    desc: "Online stores with UPI or B2B RFQ catalogs",
+  },
+  {
+    href: "/services/website-redesign",
+    title: "Website Redesign",
+    desc: "Rebuild slow WordPress sites — keep domain, fix speed",
+  },
+  {
+    href: "/services/web-design",
+    title: "Web Design",
+    desc: "Design + development as one enquiry-ready build",
+  },
+  {
+    href: "/services/website-development-for-manufacturers",
+    title: "Manufacturer Websites",
+    desc: "Product catalogs, RFQ, GIDC SEO — our specialty depth",
+  },
+  {
+    href: "/services/website-seo",
+    title: "Website SEO",
+    desc: "Technical SEO and content on sites we build or inherit",
+  },
+  {
+    href: "/services/website-maintenance",
+    title: "Website AMC",
+    desc: "Monthly maintenance from ₹15,000 — updates, SEO, articles",
+  },
+] as const;
+
 export const metadata = createMetadata({
   title: "Website Development, SEO & AMC | From ₹35,000",
   description:
@@ -48,6 +97,22 @@ export default function ServicesPage() {
           Get Project Estimate
         </Button>
       </PageHero>
+
+      <PageSection tone="elevated" compact>
+        <h2 className="font-display text-xl font-bold">Website services — hub & spokes</h2>
+        <p className="mt-2 max-w-2xl text-sm text-muted">
+          Four commercial pillars — corporate sites, Next.js builds, ecommerce, redesign — plus
+          manufacturer specialty depth. All routes below are live money pages.
+        </p>
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {serviceSpokes.map((spoke) => (
+            <Card key={spoke.href} href={spoke.href} padding="md">
+              <H3 className="text-base group-hover:text-brand-400 transition-colors">{spoke.title}</H3>
+              <Caption className="mt-1 line-clamp-2 text-xs">{spoke.desc}</Caption>
+            </Card>
+          ))}
+        </div>
+      </PageSection>
 
       <PageSection tone="raised" compact>
         <StaggerGrid className="grid gap-4 sm:grid-cols-2">

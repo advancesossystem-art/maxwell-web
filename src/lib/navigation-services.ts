@@ -89,13 +89,13 @@ export const servicesNavGroups: NavServiceGroup[] = [
       },
       {
         label: "Website Speed",
-        href: "/services/website-speed-optimization",
-        description: "Core Web Vitals optimization",
+        href: "/services/website-redesign",
+        description: "Core Web Vitals via Next.js rebuild",
       },
       {
         label: "Website Security",
-        href: "/services/website-security",
-        description: "Hardening for business sites",
+        href: "/services/website-maintenance",
+        description: "Updates, backups, and hardening on AMC",
       },
       {
         label: "Chemical Manufacturer Website",

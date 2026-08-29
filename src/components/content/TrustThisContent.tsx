@@ -1,5 +1,7 @@
+import Link from "next/link";
 import type { ContentCategorySlug } from "@/lib/content/schema";
 import { companyMetricDisplay } from "@/lib/company-metrics";
+import { getContentAuthor } from "@/lib/content/resolve-author";
 
 const categoryLabels: Record<ContentCategorySlug, string> = {
   erp: "ERP and manufacturing operations",
@@ -9,7 +11,7 @@ const categoryLabels: Record<ContentCategorySlug, string> = {
   cloud: "cloud infrastructure",
   saas: "SaaS product engineering",
   "software-development": "custom software delivery",
-  "web-development": "web platforms and conversion",
+  "web-development": "website development and SEO",
   "digital-transformation": "digital transformation programs",
 };
 
@@ -20,8 +22,9 @@ interface TrustThisContentProps {
 }
 
 export function TrustThisContent({ category, authorId, contentType = "guide" }: TrustThisContentProps) {
-  void authorId;
   const topic = categoryLabels[category];
+  const author = getContentAuthor(authorId, category);
+  const isWebsite = category === "web-development";
 
   return (
     <aside
@@ -34,23 +37,35 @@ export function TrustThisContent({ category, authorId, contentType = "guide" }: 
       </h2>
       <ul className="mt-5 space-y-3 text-sm leading-relaxed text-[var(--v6-text-secondary)]">
         <li>
-          <strong className="text-[var(--v6-text)]">Industry experience:</strong> Maxwell has delivered{" "}
-          {companyMetricDisplay.projectsCompleted}+ projects across ERP, CRM, AI, automation, and software development
-          for manufacturers, healthcare, logistics, and B2B operators in India and globally.
+          <strong className="text-[var(--v6-text)]">Author:</strong>{" "}
+          <Link href={`/authors/${author.slug}`} className="text-brand-600 hover:underline">
+            {author.name}
+          </Link>
+          , {author.role} — {author.specialization}.
         </li>
         <li>
-          <strong className="text-[var(--v6-text)]">Research methodology:</strong> Findings combine client discovery
-          workshops, production implementation data, and cited industry sources — updated when delivery patterns change.
+          <strong className="text-[var(--v6-text)]">Industry experience:</strong>{" "}
+          {isWebsite
+            ? `Maxwell has delivered ${companyMetricDisplay.projectsCompleted}+ website and catalog projects — including Drashti Chemicals (263 pages, Vadodara) and our own Search Console rebuild case study.`
+            : `Maxwell has delivered ${companyMetricDisplay.projectsCompleted}+ projects across software delivery for manufacturers and B2B operators in India.`}
         </li>
         <li>
-          <strong className="text-[var(--v6-text)]">Practical project experience:</strong> Recommendations reflect
-          real rollouts: Tally/GST integration, shop-floor mobile, CRM pipelines, and phased go-lives — not slide-deck
-          theory.
+          <strong className="text-[var(--v6-text)]">Topic focus:</strong> {topic} — recommendations reflect
+          real client work, not recycled listicles.
         </li>
         <li>
-          <strong className="text-[var(--v6-text)]">Editorial standard:</strong> This material is published under the
-          Maxwell Electrodeal brand and reflects project delivery patterns, implementation research, and practical
-          guidance in {topic}.
+          <strong className="text-[var(--v6-text)]">Proof:</strong>{" "}
+          <Link href="/case-studies/drashti-chemicals" className="text-brand-600 hover:underline">
+            Drashti catalog case study
+          </Link>
+          {" · "}
+          <Link href="/reviews" className="text-brand-600 hover:underline">
+            Client reviews
+          </Link>
+          {" · "}
+          <Link href="/pricing" className="text-brand-600 hover:underline">
+            Published pricing
+          </Link>
         </li>
       </ul>
     </aside>

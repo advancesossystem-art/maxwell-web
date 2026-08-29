@@ -373,22 +373,25 @@ export const keywordMoneyPages = {
     meta: {
       title: "Ecommerce Website Vadodara | From ₹35,000",
       description:
-        "Ecommerce website development in Vadodara — online stores and manufacturer catalogs. From ₹35,000. We will not force a cart on a B2B plant. Get a quote.",
+        "Ecommerce website development in Vadodara — online stores with UPI/Razorpay or B2B RFQ catalogs. From ₹35,000. Local team. We won't force a cart on a plant. Get a quote.",
       path: "/solutions/ecommerce-website-vadodara",
       keywords: [
+        "ecommerce website development vadodara",
         "ecommerce website development Vadodara",
         "ecommerce website Vadodara",
         "online store Vadodara",
+        "ecommerce web design vadodara",
+        "shopify alternative vadodara",
       ],
     },
     page: {
       path: "/solutions/ecommerce-website-vadodara",
       breadcrumb: "Ecommerce Vadodara",
-      eyebrow: "Vadodara · ecommerce",
+      eyebrow: "Vadodara · ecommerce · catalogs",
       h1: "Ecommerce website development in Vadodara",
-      lead: "Retailers in Vadodara want UPI checkout. GIDC manufacturers want RFQ. Both search ecommerce website development Vadodara. We split those jobs on purpose.",
+      lead: "Retailers in Raopura want UPI checkout. GIDC manufacturers want RFQ. Both search ecommerce website development Vadodara — we build the right flow for each, from ₹35,000.",
       pageDirectAnswer:
-        "Maxwell builds ecommerce websites in Vadodara from ₹35,000. Local retail gets a store; industrial sellers get a catalog and quote flow. AMC from ₹15,000 for product changes.",
+        "Maxwell builds ecommerce websites in Vadodara from ₹35,000. Local retail gets catalog + cart + Razorpay/UPI; industrial sellers get SKU pages + quote + WhatsApp. AMC from ₹15,000 for product changes.",
       estimateSource: "ecommerce-vadodara",
       schemaName: "Ecommerce Website Development Vadodara",
       schemaDescription: "Ecommerce and catalog websites in Vadodara from ₹35,000.",
@@ -396,15 +399,40 @@ export const keywordMoneyPages = {
         {
           heading: "Vadodara retail vs Vadodara plant",
           directAnswer:
-            "A clothing label in Raopura and a pump OEM in Makarpura should not share a WooCommerce template.",
+            "A clothing label in Raopura and a pump OEM in Makarpura should not share the same WooCommerce template.",
           paragraphs: [
-            "Tell us what a buyer does after they like a product. Pay now, or ask for a rate. That one sentence decides the build.",
+            "Tell us what a buyer does after they like a product: pay now, or ask for a rate and MOQ. That one sentence decides cart vs RFQ.",
+            "We will not upsell a shopping cart to a chemical plant that will never sell 1 kg online.",
+          ],
+          bullets: [
+            "Retail: category pages, filters, cart, UPI/Razorpay",
+            "B2B: product specs, certificates, Request Quote, WhatsApp",
+            "Both: mobile speed, SEO titles, GST invoice from Maxwell",
+          ],
+        },
+        {
+          heading: "Ecommerce without the agency theatre",
+          directAnswer:
+            "Published Starter ₹35,000 and Professional ₹75,000 — not a ‘discovery workshop’ before you see a price.",
+          paragraphs: [
+            "If you need 200+ SKUs with filters, that is Professional territory. A 30-product boutique store can launch on Starter with a honest catalog.",
           ],
         },
       ],
-      featureGridTitle: "Ecommerce in Baroda, without the pitch deck",
-      features: ["Catalog", "Checkout or RFQ", "WhatsApp", "GST invoice", "Product AMC"],
-      related: relatedCore,
+      featureGridTitle: "Ecommerce in Baroda, scoped honestly",
+      features: [
+        "Product catalog + filters",
+        "Razorpay / UPI when it fits",
+        "RFQ + WhatsApp for B2B",
+        "SEO category pages",
+        "AMC for product updates",
+        "Local Vadodara team",
+      ],
+      related: [
+        { label: "Business website Vadodara", href: "/solutions/business-website-vadodara" },
+        { label: "Manufacturer catalogs", href: "/services/website-development-for-manufacturers" },
+        ...relatedCore,
+      ],
     },
   },
   redesignIndia: {
@@ -449,38 +477,66 @@ export const keywordMoneyPages = {
     meta: {
       title: "Website Redesign Vadodara | From ₹35,000",
       description:
-        "Website redesign in Vadodara for slow or outdated sites. Next.js rebuild from ₹35,000 with redirects. Local Baroda team. Request a quote.",
+        "Website redesign in Vadodara for slow WordPress or outdated sites. Next.js rebuild, 301 redirects, keep your domain. From ₹35,000. Local Baroda team. Request a quote.",
       path: "/solutions/website-redesign-vadodara",
       keywords: [
+        "website redesign vadodara",
         "website redesign Vadodara",
         "website redesign in Vadodara",
         "website revamp Vadodara",
+        "corporate website revamp vadodara",
+        "wordpress to nextjs vadodara",
       ],
     },
     page: {
       path: "/solutions/website-redesign-vadodara",
       breadcrumb: "Redesign Vadodara",
-      eyebrow: "Vadodara · redesign",
-      h1: "Website redesign in Vadodara",
-      lead: "If your Baroda site still says ‘Best viewed in Internet Explorer’, buyers have already left. We rebuild it, keep the domain, and put Request Quote where the Flash banner was.",
+      eyebrow: "Vadodara · redesign · speed",
+      h1: "Website redesign in Vadodara — keep the domain, fix the site",
+      lead: "If your Baroda site still runs a 2016 WordPress theme, buyers bounce before they find your phone number. We rebuild on Next.js, map every old URL, and put Request Quote where the slider was.",
       pageDirectAnswer:
-        "Website redesign Vadodara starts at ₹35,000 with Maxwell Electrodeal. Local discovery, Next.js rebuild, 301s from old pages, AMC from ₹15,000.",
+        "Website redesign Vadodara starts at ₹35,000 with Maxwell Electrodeal. Local discovery, Next.js rebuild, 301 redirects from old pages, Search Console recrawl list, AMC from ₹15,000.",
       estimateSource: "redesign-vadodara",
       schemaName: "Website Redesign Vadodara",
       schemaDescription: "Website redesign services in Vadodara from ₹35,000.",
       sections: [
         {
+          heading: "What counts as a redesign here",
+          directAnswer:
+            "New IA, mobile speed, enquiry paths, and 301s from URLs that still rank. Changing the slider plugin alone is not a redesign.",
+          paragraphs: [
+            "Send the current URL. We inventory pages in Search Console, quote a rebuild, and keep anything that still earns impressions.",
+            "Corporate website revamp vadodara searches usually mean: same company, better Google presence — not a ₹8 lakh brand sprint.",
+          ],
+          bullets: [
+            "URL inventory + 301 map before launch",
+            "Core Web Vitals target: green on mobile",
+            "WhatsApp + quote form on every money page",
+          ],
+        },
+        {
           heading: "Local redesign, not a new brand agency circus",
           directAnswer:
             "We will not charge ₹8 lakh for a ‘brand sprint’ to replace a five-page company site. We will make it fast and findable.",
           paragraphs: [
-            "Bring the login to the old site or just the domain. We take it from there.",
+            "Bring the login to the old site or just the domain. Office in Vadodara — we can meet locally for content handoff.",
           ],
         },
       ],
-      featureGridTitle: "Vadodara redesign",
-      features: ["Same domain", "New speed", "New enquiry path", "Optional AMC"],
-      related: relatedCore,
+      featureGridTitle: "Vadodara redesign deliverables",
+      features: [
+        "Same domain + redirects",
+        "Next.js speed",
+        "New enquiry paths",
+        "GSC recrawl list",
+        "Optional AMC ₹15,000/mo",
+        "GST invoice",
+      ],
+      related: [
+        { label: "Web development Vadodara", href: "/solutions/web-development-company-vadodara" },
+        { label: "Web design Vadodara", href: "/solutions/web-design-company-vadodara" },
+        ...relatedCore,
+      ],
     },
   },
   amcVadodara: {
@@ -659,39 +715,78 @@ export const keywordMoneyPages = {
     meta: {
       title: "Business Website Vadodara | MSME from ₹35,000",
       description:
-        "Business and company websites in Vadodara for MSMEs, traders, and professionals — not only manufacturers. From ₹35,000. AMC ₹15,000. Get a quote.",
+        "Custom business website design in Vadodara for MSMEs, startups, traders & professionals — not only manufacturers. From ₹35,000. AMC ₹15,000. Local office. Get a quote.",
       path: "/solutions/business-website-vadodara",
       keywords: [
         "business website Vadodara",
         "company website Vadodara",
         "MSME website Vadodara",
         "corporate website Vadodara",
+        "custom business website design vadodara",
+        "startup web design agency vadodara",
+        "affordable corporate website developers vadodara",
+        "website development for small business vadodara",
       ],
     },
     page: {
       path: "/solutions/business-website-vadodara",
       breadcrumb: "Business Website Vadodara",
       eyebrow: "Vadodara MSME · company websites",
-      h1: "Business website Vadodara — MSME company sites, not only plants",
-      lead: "If you run a trading office in Alkapuri, a clinic in Gotri, or a dealership on Old Padra Road, you still need a site Google trusts. That is this page.",
+      h1: "Business website Vadodara — custom company sites from ₹35,000",
+      lead: "If you run a trading office in Alkapuri, a clinic in Gotri, or a startup near Sayajigunj, buyers Google you before they call. This page is for company websites — not ERP software and not GIDC catalogs unless you need them later.",
       pageDirectAnswer:
-        "Maxwell builds business and company websites in Vadodara from ₹35,000 for MSMEs as well as manufacturers. Local office, GST invoice, AMC from ₹15,000.",
+        "Maxwell builds custom business and company websites in Vadodara from ₹35,000 for MSMEs, startups, and professionals. Local office, GST invoice, WhatsApp enquiry, AMC from ₹15,000. Manufacturer catalogs are our specialty — not our only client type.",
       estimateSource: "business-vadodara",
       schemaName: "Business Website Vadodara",
       schemaDescription: "MSME and company website development in Vadodara from ₹35,000.",
       sections: [
         {
+          heading: "Who searches ‘business website Vadodara’",
+          directAnswer:
+            "Clinics, CA firms, dealerships, hotels, distributors, and 5–50 person firms that need to look real on Google — not a 500-SKU chemical catalog.",
+          paragraphs: [
+            "If you typed custom business website design vadodara or startup web design agency vadodara, you want a Vadodara team with published prices — not a Mumbai deck and a ₹8 lakh retainer.",
+            "Starter (₹35,000) is 25–30 pages: home, services, about, contact, map, WhatsApp. Enough to stop losing enquiries to a competitor on a ₹8,000 template.",
+          ],
+          bullets: [
+            "Affordable corporate website developers vadodara — published ₹35k / ₹75k / ₹1.5L tiers",
+            "Same Next.js stack as our manufacturer builds — fast mobile, crawlable HTML",
+            "Optional AMC ₹15,000/mo for SEO and two articles",
+          ],
+        },
+        {
           heading: "Factories are our specialty. They are not our only client.",
           directAnswer:
-            "Manufacturer catalogs are what we are known for. Company websites for local Vadodara businesses use the same stack: Next.js, enquiry, SEO.",
+            "Manufacturer catalogs are what we are known for. Company websites for local Vadodara businesses use the same delivery: enquiry paths, SEO titles, GST invoice.",
           paragraphs: [
             "Say what you sell in one sentence on the quote form. We will not force a 200-SKU catalog on a five-person firm.",
+            "When you outgrow Starter, we add service clusters or a small product section — without rebuilding from scratch.",
+          ],
+        },
+        {
+          heading: "What you get on Starter (₹35,000)",
+          directAnswer:
+            "Home, about, services, contact, Google map, WhatsApp, basic on-page SEO, Search Console at go-live. Pay within 3 days of launch + 18% GST.",
+          paragraphs: [
+            "We are a website company in Vadodara — not an ERP vendor. If someone sent you here looking for SAP, see /services/website-development instead.",
           ],
         },
       ],
       featureGridTitle: "Vadodara company website",
-      features: ["Local NAP", "Google map", "WhatsApp", "₹35,000 Starter", "Optional AMC"],
-      related: relatedCore,
+      features: [
+        "Local Vadodara office",
+        "Google map + NAP",
+        "WhatsApp on money pages",
+        "₹35,000 Starter published",
+        "Optional AMC ₹15,000/mo",
+        "No ERP upsell",
+      ],
+      related: [
+        { label: "Web development company Vadodara", href: "/solutions/web-development-company-vadodara" },
+        { label: "Web design Vadodara", href: "/solutions/web-design-company-vadodara" },
+        { label: "Website redesign Vadodara", href: "/solutions/website-redesign-vadodara" },
+        ...relatedCore,
+      ],
     },
   },
 } satisfies Record<string, KeywordMoneyDef>;

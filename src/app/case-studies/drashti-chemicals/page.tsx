@@ -23,9 +23,10 @@ const caseStudyJsonLd = {
   datePublished: drashtiCaseStudySeo.publishedAt,
   dateModified: drashtiCaseStudySeo.publishedAt,
   author: {
-    "@type": "Organization",
-    name: siteConfig.legalName,
-    url: siteConfig.url,
+    "@type": "Person",
+    name: "Sanjay Prajapati",
+    jobTitle: "Founder & CEO",
+    url: `${siteConfig.url}/authors/sanjay-prajapati`,
   },
   publisher: {
     "@type": "Organization",

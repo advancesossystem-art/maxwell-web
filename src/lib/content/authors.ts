@@ -41,9 +41,9 @@ const authorOverrides: Record<
     specialization: "SaaS architecture, cloud-native systems, scalable platforms",
   },
   "amit-patel": {
-    role: "VP Engineering",
-    position: "Vice President of Engineering",
-    specialization: "Full-stack delivery, Agile engineering, software development",
+    role: "Website Engineering Lead",
+    position: "Lead Website Engineer",
+    specialization: "Next.js, React, business websites, and manufacturer catalogs",
   },
   "sneha-reddy": {
     role: "ERP Solutions Lead",

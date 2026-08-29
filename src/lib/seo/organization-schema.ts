@@ -20,8 +20,11 @@ const ORGANIZATION_ALTERNATE_NAMES = [
 
 const CORE_OFFER_SERVICES = [
   "Website Development",
-  "Manufacturer Website Development",
   "Business Website Development",
+  "Ecommerce Website Development",
+  "Website Redesign",
+  "Web Design",
+  "Manufacturer Website Development",
   "Website SEO",
   "Website Maintenance AMC",
   "RFQ Website Development",
@@ -135,16 +138,17 @@ export function buildOrganizationNode() {
     knowsAbout: [
       "Website Development",
       "Website Engineering for Businesses",
+      "Business Website Development",
+      "Ecommerce Website Development",
+      "Website Redesign",
+      "Corporate Website Design",
       "Manufacturer Website Development India",
       "Industrial B2B Product Catalog Websites",
       "RFQ Website Development",
-      "Business Website Development",
-      "Corporate Website Design",
       "Industrial Website Development",
-      "Web Application Development",
-      "Custom Software Development",
       "Web Development Vadodara",
       "Next.js Development India",
+      "React Web Development",
       "Gujarat GIDC Manufacturer Websites",
     ],
     speakable: {
@@ -183,7 +187,7 @@ const GOOGLE_REVIEW = getGoogleBusinessReview();
 
 export function buildLocalBusinessNode(options?: { pageUrl?: string }) {
   const node: Record<string, unknown> = {
-    "@type": "LocalBusiness" as const,
+    "@type": ["LocalBusiness", "ProfessionalService"] as const,
     "@id": seoIds.localBusiness,
     name: siteConfig.name,
     image: `${siteConfig.url}/opengraph-image`,

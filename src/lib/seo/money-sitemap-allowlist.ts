@@ -23,6 +23,8 @@ export const MONEY_SITEMAP_ALLOWLIST: readonly MoneySitemapEntry[] = [
   { path: "/", priority: 1, changeFreq: "weekly", lastModified: LAUNCH },
   { path: "/process", priority: 0.88, changeFreq: "monthly", lastModified: LAUNCH },
   { path: "/about", priority: 0.7, changeFreq: "monthly" },
+  { path: "/authors", priority: 0.72, changeFreq: "monthly" },
+  { path: "/authors/sanjay-prajapati", priority: 0.75, changeFreq: "monthly", lastModified: LAUNCH },
   { path: "/contact", priority: 0.95, changeFreq: "monthly" },
   { path: "/get-estimate", priority: 0.95, changeFreq: "monthly" },
   { path: "/pricing", priority: 0.94, changeFreq: "monthly" },
@@ -44,6 +46,7 @@ export const MONEY_SITEMAP_ALLOWLIST: readonly MoneySitemapEntry[] = [
   { path: "/services/website-development/owned-enquiry-channel", priority: 0.93, changeFreq: "monthly", lastModified: LAUNCH },
   { path: "/services/dealer-portal-development", priority: 0.88, changeFreq: "monthly" },
   { path: "/services/website-maintenance", priority: 0.92, changeFreq: "monthly", lastModified: LAUNCH },
+  { path: "/services/website-technologies", priority: 0.91, changeFreq: "monthly", lastModified: LAUNCH },
   { path: "/services/web-design", priority: 0.94, changeFreq: "weekly", lastModified: LAUNCH },
   { path: "/services/website-seo", priority: 0.94, changeFreq: "weekly", lastModified: LAUNCH },
   { path: "/services/website-redesign", priority: 0.9, changeFreq: "monthly", lastModified: LAUNCH },
@@ -89,6 +92,7 @@ export const MONEY_SITEMAP_ALLOWLIST: readonly MoneySitemapEntry[] = [
 
   // Cost + tools + TCO
   { path: "/cost/web-development-cost-vadodara", priority: 0.92, changeFreq: "monthly", lastModified: LAUNCH },
+  { path: "/cost/web-development-cost-india", priority: 0.9, changeFreq: "monthly", lastModified: LAUNCH },
   { path: "/cost/manufacturing-website-cost", priority: 0.93, changeFreq: "monthly", lastModified: LAUNCH },
   { path: "/tools/industrial-website-rfq-estimator", priority: 0.96, changeFreq: "weekly", lastModified: LAUNCH },
 
@@ -100,6 +104,7 @@ export const MONEY_SITEMAP_ALLOWLIST: readonly MoneySitemapEntry[] = [
 
   // Proof
   { path: "/case-studies/drashti-chemicals", priority: 0.94, changeFreq: "monthly", lastModified: LAUNCH },
+  { path: "/case-studies/maxwell-website-rebuild", priority: 0.88, changeFreq: "monthly", lastModified: LAUNCH },
 
   // High-intent hand blogs only (never programmatic batch)
   { path: "/blog/nextjs-vs-wordpress-industrial-website", priority: 0.88, changeFreq: "monthly", lastModified: LAUNCH },

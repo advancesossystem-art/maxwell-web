@@ -16,6 +16,7 @@ import {
 import { ServiceCTA, ServiceCTAStrip } from "@/components/services/ServiceCTA";
 import { ServiceLeadForm } from "@/components/leads/ServiceLeadForm";
 import { ServiceSeoSections } from "@/components/services/ServiceSeoSections";
+import { ServiceSpokeSection } from "@/components/services/ServiceSpokeSection";
 import { RecommendedServicesBlock } from "@/components/engagement/RecommendedServicesBlock";
 import { ServicePageJsonLd } from "@/components/seo/JsonLd";
 import { GeoContentSection } from "@/components/authority/GeoContentSection";
@@ -49,6 +50,7 @@ export function ServiceLandingPage({ service }: { service: ServicePageData }) {
       <ProofSignalsBar />
       <ServiceProblems service={service} />
       <ServiceSolutions service={service} />
+      {service.slug === "website-development" ? <ServiceSpokeSection /> : null}
       <ServiceFeatures service={service} />
       <ServiceTechStack service={service} />
       <ServiceProcessWrapper />

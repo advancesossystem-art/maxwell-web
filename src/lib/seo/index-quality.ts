@@ -122,8 +122,10 @@ export function shouldNoIndexPath(path: string): boolean {
   // Legacy ERP/CRM tools and service stubs (redirected, still noindex if hit)
   if (
     /^\/tools\/(erp-|crm-|vendor-|roi-|software-cost-)/.test(clean) ||
-    /^\/services\/(erp-|crm-)/.test(clean) ||
-    /^\/blog\/(erp-|crm-)/.test(clean)
+    /^\/services\/(erp-|crm-|mobile-app-|custom-software-|ai-solutions|saas-)/.test(clean) ||
+    /^\/blog\/(erp-|crm-)/.test(clean) ||
+    /^\/(knowledge-center|answers|compare)(\/|$)/.test(clean) ||
+    /^\/industries\/[^/]+\/[^/]+$/.test(clean)
   ) {
     return true;
   }

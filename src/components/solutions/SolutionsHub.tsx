@@ -14,6 +14,11 @@ const indiaWebPages = [
     keyword: "Website development company India",
   },
   {
+    href: "/solutions/web-development-company-india",
+    title: "Web Development Company — India",
+    keyword: "Web development company India",
+  },
+  {
     href: "/solutions/web-development-company-gujarat",
     title: "Website Development — Gujarat",
     keyword: "Website development company Gujarat",
@@ -22,6 +27,46 @@ const indiaWebPages = [
     href: "/solutions/web-development-company-vadodara",
     title: "Website Developer — Vadodara",
     keyword: "Website developer in Vadodara",
+  },
+  {
+    href: "/services/business-website-development",
+    title: "Business / Corporate Websites",
+    keyword: "Corporate website development India",
+  },
+  {
+    href: "/services/ecommerce-website-development",
+    title: "Ecommerce Development",
+    keyword: "Ecommerce website development",
+  },
+  {
+    href: "/services/website-redesign",
+    title: "Website Redesign",
+    keyword: "Website redesign company",
+  },
+  {
+    href: "/services/website-technologies",
+    title: "Next.js Development",
+    keyword: "Next.js web development services",
+  },
+  {
+    href: "/solutions/web-design-company-vadodara",
+    title: "Web Design Company — Vadodara",
+    keyword: "Web design company in Vadodara",
+  },
+  {
+    href: "/solutions/business-website-vadodara",
+    title: "Business Website — Vadodara MSME",
+    keyword: "Company website Vadodara",
+  },
+  {
+    href: "/solutions/ecommerce-website-vadodara",
+    title: "Ecommerce — Vadodara",
+    keyword: "Ecommerce website Vadodara",
+  },
+  {
+    href: "/solutions/website-redesign-vadodara",
+    title: "Redesign — Vadodara",
+    keyword: "Website redesign Vadodara",
   },
   {
     href: "/solutions/seo-company-vadodara",
@@ -37,21 +82,6 @@ const indiaWebPages = [
     href: "/pricing",
     title: "Website pricing — from ₹35,000",
     keyword: "Website development cost Vadodara",
-  },
-  {
-    href: "/solutions/web-design-company-vadodara",
-    title: "Web Design Company — Vadodara",
-    keyword: "Web design company in Vadodara",
-  },
-  {
-    href: "/solutions/website-development-company-ahmedabad",
-    title: "Website Development — Ahmedabad",
-    keyword: "Website development company Ahmedabad",
-  },
-  {
-    href: "/solutions/business-website-vadodara",
-    title: "Business Website — Vadodara MSME",
-    keyword: "Company website Vadodara",
   },
 ] as const;
 

@@ -9,6 +9,7 @@ export const caseStudyIndustries = [
 ] as const;
 
 export const caseStudyServices = [
+  "Website Development",
   "ERP Development",
   "Custom Software Development",
   "Mobile App Development",
@@ -130,6 +131,7 @@ export type CaseStudySlug = (typeof caseStudySlugs)[number];
 
 import { companyMetrics } from "@/lib/company-metrics";
 import { phase2CaseStudies } from "./case-studies-phase2";
+import { LEGACY_ERP_CASE_STUDY_SLUGS } from "./website-case-studies-hub";
 
 /** Hub metrics derived from actual case study inventory — not company-wide totals. */
 export const caseStudyStats = {
@@ -1324,7 +1326,13 @@ export function getAllCaseStudies(): CaseStudyData[] {
 }
 
 export function getFeaturedCaseStudies(): CaseStudyData[] {
-  return getAllCaseStudies().filter((c) => c.featured);
+  return getAllCaseStudies()
+    .filter((c) => c.featured)
+    .sort((a, b) => {
+      const aLegacy = LEGACY_ERP_CASE_STUDY_SLUGS.has(a.slug) ? 1 : 0;
+      const bLegacy = LEGACY_ERP_CASE_STUDY_SLUGS.has(b.slug) ? 1 : 0;
+      return aLegacy - bLegacy;
+    });
 }
 
 export function getRelatedCaseStudies(currentSlug: string, limit = 3): CaseStudyData[] {

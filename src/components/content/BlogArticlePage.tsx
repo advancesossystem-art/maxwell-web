@@ -11,7 +11,7 @@ import { GeoKeyTakeaways, buildTakeawaysFromFaqs } from "@/components/authority/
 import { TrustThisContent } from "@/components/content/TrustThisContent";
 import { BlogPostCTA } from "@/components/content/BlogPostCTA";
 import { getCategoryBySlug } from "@/lib/content/categories";
-import { formatPublishDate } from "@/lib/content/utils";
+import { ContentAuthorByline } from "@/components/content/ContentAuthorByline";
 import { getRelatedContent } from "@/lib/content/search";
 import { StickyEstimateCTA } from "@/components/common/StickyEstimateCTA";
 import type { Article } from "@/lib/content/schema";
@@ -37,11 +37,13 @@ export function BlogArticlePage({ article }: { article: Article }) {
           <span className="text-xs font-semibold uppercase tracking-wider text-brand-400">{category?.name}</span>
           <h1 className="mt-4 max-w-4xl font-display text-3xl font-bold text-white sm:text-4xl lg:text-5xl">{article.title}</h1>
           <p className="mt-4 max-w-2xl text-lg text-white/55">{article.excerpt}</p>
-          <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-white/50">
-            <span>Maxwell Electrodeal</span>
-            <span>{formatPublishDate(article.publishedAt)}</span>
-            <span>{article.readingTimeMinutes} min read</span>
-          </div>
+          <ContentAuthorByline
+            authorId={article.authorId}
+            category={article.category}
+            publishedAt={article.publishedAt}
+            readingTimeMinutes={article.readingTimeMinutes}
+            dark
+          />
           <div className="mt-4 flex flex-wrap gap-2">
             {article.tags.map((tag) => (
               <span key={tag} className="rounded-full border border-white/10 px-3 py-1 text-xs text-white/60">

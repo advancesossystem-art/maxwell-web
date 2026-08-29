@@ -92,24 +92,24 @@ const permanentRedirects: Array<{ source: string; destination: string }> = [
   { source: "/compare", destination: "/blog" },
   { source: "/compare/nextjs-vs-wordpress-business", destination: "/blog/nextjs-vs-wordpress-industrial-website" },
   { source: "/compare/wordpress-vs-custom-website", destination: "/blog/nextjs-vs-wordpress-industrial-website" },
-  { source: "/compare/:slug", destination: "/services/website-development-for-manufacturers" },
-  // ERP tools removed — redirect to manufacturer website service
-  { source: "/tools/erp-roi-calculator", destination: "/services/website-development-for-manufacturers" },
-  { source: "/tools/crm-roi-calculator", destination: "/services/website-development-for-manufacturers" },
-  { source: "/tools/erp-requirement-generator", destination: "/services/website-development-for-manufacturers" },
-  { source: "/tools/crm-requirement-generator", destination: "/services/website-development-for-manufacturers" },
+  { source: "/compare/:slug", destination: "/services/website-development" },
+  // ERP tools — send to website estimator or quote (not ERP positioning)
+  { source: "/tools/erp-roi-calculator", destination: "/tools/industrial-website-rfq-estimator" },
+  { source: "/tools/crm-roi-calculator", destination: "/tools/industrial-website-rfq-estimator" },
+  { source: "/tools/erp-requirement-generator", destination: "/get-estimate" },
+  { source: "/tools/crm-requirement-generator", destination: "/get-estimate" },
   { source: "/tools/roi-calculator", destination: "/tools/industrial-website-rfq-estimator" },
   { source: "/tools/software-cost-calculator", destination: "/cost/manufacturing-website-cost" },
   { source: "/tools/rfp-builder", destination: "/get-estimate" },
   { source: "/tools/proposal-generator", destination: "/get-estimate" },
-  { source: "/tools/vendor-comparison-scorecard", destination: "/services/website-development-for-manufacturers" },
+  { source: "/tools/vendor-comparison-scorecard", destination: "/get-estimate" },
   // Deleted tools only — never catch-all /tools/:slug (that redirected the live estimator to itself)
   { source: "/tools/ai-readiness-assessment", destination: "/tools/industrial-website-rfq-estimator" },
   { source: "/tools/digital-transformation-assessment", destination: "/tools/industrial-website-rfq-estimator" },
   { source: "/tools/project-roadmap", destination: "/get-estimate" },
   { source: "/tools/project-timeline-estimator", destination: "/get-estimate" },
   { source: "/tools/team-size-calculator", destination: "/pricing" },
-  { source: "/tools/tech-stack-advisor", destination: "/services/website-development-for-manufacturers" },
+  { source: "/tools/tech-stack-advisor", destination: "/services/website-development" },
   // International solutions removed — redirect to manufacturer service or contact
   { source: "/solutions/web-development-company-india-germany", destination: "/services/website-development/manufacturer-export-website" },
   { source: "/solutions/web-development-company-india-uk", destination: "/services/website-development/manufacturer-export-website" },
@@ -131,8 +131,6 @@ const permanentRedirects: Array<{ source: string; destination: string }> = [
   { source: "/reports/:slug", destination: "/blog" },
   { source: "/answers", destination: "/blog" },
   { source: "/answers/:slug", destination: "/blog" },
-  { source: "/authors", destination: "/about" },
-  { source: "/authors/:slug", destination: "/about" },
   { source: "/research", destination: "/blog" },
   { source: "/knowledge-center", destination: "/blog" },
   { source: "/citation-guides", destination: "/blog" },
@@ -196,6 +194,14 @@ const permanentRedirects: Array<{ source: string; destination: string }> = [
   { source: "/solutions/web-design-company-india", destination: "/services/web-design" },
   { source: "/solutions/seo-services-india", destination: "/services/website-seo" },
   { source: "/solutions/website-amc-india", destination: "/services/website-maintenance" },
+  // Thin programmatic cost clones — consolidate to money pages (GSC waste)
+  { source: "/cost/mobile-app-development-cost-:city", destination: "/cost/web-development-cost-vadodara" },
+  { source: "/cost/crm-development-cost-:city", destination: "/pricing" },
+  { source: "/cost/erp-development-cost-:city", destination: "/pricing" },
+  { source: "/cost/ai-development-cost-:city", destination: "/pricing" },
+  { source: "/cost/custom-software-development-cost-:city", destination: "/services/website-development" },
+  { source: "/cost/saas-development-cost-:city", destination: "/services/website-development" },
+  { source: "/cost/automation-cost-:city", destination: "/services/website-development" },
 ];
 
 function withTrailingSlashVariants(rules: Array<{ source: string; destination: string }>): Redirect[] {

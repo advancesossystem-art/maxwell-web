@@ -15,6 +15,7 @@ import {
   isValidAdminToken,
 } from "@/lib/security/admin-auth";
 import { safeEqual } from "@/lib/security/timing-safe";
+import { shouldNoIndexPath } from "@/lib/seo/index-quality";
 
 const isProduction = process.env.NODE_ENV === "production";
 
@@ -209,6 +210,16 @@ export function proxy(request: NextRequest) {
   }
 
   if (pathname === "/thank-you" || pathname.startsWith("/admin")) {
+    response.headers.set("X-Robots-Tag", "noindex, nofollow, noarchive");
+  }
+
+  // Belt-and-suspenders: waste URLs get noindex even if HTML cache or metadata lags.
+  if (
+    request.method === "GET" &&
+    !pathname.startsWith("/api/") &&
+    !pathname.startsWith("/admin") &&
+    shouldNoIndexPath(pathname)
+  ) {
     response.headers.set("X-Robots-Tag", "noindex, nofollow, noarchive");
   }
 

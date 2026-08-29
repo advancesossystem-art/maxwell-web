@@ -5,14 +5,16 @@ export type MoneyInternalLink = { label: string; href: string };
 /** High-priority commercial URLs every money page should eventually touch. */
 export const CORE_MONEY_LINKS: readonly MoneyInternalLink[] = [
   { label: "Website development company Vadodara", href: "/solutions/web-development-company-vadodara" },
+  { label: "Website development company India", href: "/solutions/web-development-company-india" },
+  { label: "Business website development", href: "/services/business-website-development" },
+  { label: "Web design company", href: "/services/web-design" },
+  { label: "Ecommerce website development", href: "/services/ecommerce-website-development" },
+  { label: "Website redesign", href: "/services/website-redesign" },
+  { label: "Next.js website stack", href: "/services/website-technologies" },
   { label: "Manufacturer websites", href: "/services/website-development-for-manufacturers" },
   { label: "Industrial website design", href: "/services/industrial-website-design" },
-  { label: "RFQ website development", href: "/services/rfq-website-development" },
-  { label: "Gujarat GIDC hub", href: "/locations/india/gujarat/gidc" },
   { label: "Website pricing", href: "/pricing" },
   { label: "Request a quote", href: "/get-estimate" },
-  { label: "Website AMC Vadodara", href: "/solutions/website-amc-vadodara" },
-  { label: "Reviews & proof", href: "/reviews" },
   { label: "Drashti Chemicals case study", href: "/case-studies/drashti-chemicals" },
 ] as const;
 
